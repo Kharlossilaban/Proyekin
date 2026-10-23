@@ -1,0 +1,266 @@
+{
+  "viewports": [
+    {
+      "viewport": "375",
+      "axe": {
+        "passes": 49,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "nodes": 10,
+            "sample": [
+              ".hover\\:text-foreground[href$=\"#kartu\"] :: Element's background color could not be determined because it's partially obscured by another element",
+              "a[href$=\"#tabel\"] :: Element's background color could not be determined because it's partially obscured by another element",
+              "a[href$=\"#dialog\"] :: Element's background color could not be determined because it's partially obscured by another element"
+            ]
+          }
+        ],
+        "violations": []
+      },
+      "overflow": {
+        "scrollWidth": 375,
+        "innerWidth": 375
+      },
+      "hOverflow": false,
+      "wide": [],
+      "font": "Geist, \"Geist Fallback\", ui-sans-serif, system-ui, sans-serif | geist-loaded=true",
+      "pageHeight": 8823
+    },
+    {
+      "viewport": "768",
+      "axe": {
+        "passes": 48,
+        "incomplete": [],
+        "violations": []
+      },
+      "overflow": {
+        "scrollWidth": 768,
+        "innerWidth": 768
+      },
+      "hOverflow": false,
+      "wide": [],
+      "font": "Geist, \"Geist Fallback\", ui-sans-serif, system-ui, sans-serif | geist-loaded=true",
+      "pageHeight": 6965
+    },
+    {
+      "viewport": "1280",
+      "axe": {
+        "passes": 48,
+        "incomplete": [],
+        "violations": []
+      },
+      "overflow": {
+        "scrollWidth": 1280,
+        "innerWidth": 1280
+      },
+      "hOverflow": false,
+      "wide": [],
+      "font": "Geist, \"Geist Fallback\", ui-sans-serif, system-ui, sans-serif | geist-loaded=true",
+      "pageHeight": 6231
+    }
+  ],
+  "keyboard": {
+    "focusRing": {
+      "text": "Dialog informasi",
+      "outlineWidth": "2px",
+      "outlineStyle": "solid"
+    },
+    "opened": {
+      "ariaModal": null,
+      "labelledby": true,
+      "describedby": true,
+      "focusInside": true,
+      "title": "Judul dialog contoh"
+    },
+    "outsideInert": [
+      "MAIN:",
+      "DIV:data-base-ui-inert=",
+      "BODY:",
+      "HTML:"
+    ],
+    "axeDialogOpen": {
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "aria-hidden-focus",
+          "nodes": 15,
+          "sample": [
+            ".focus\\:not-sr-only :: ",
+            "header :: ",
+            "#tombol :: "
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "nodes": 1,
+          "sample": [
+            "#base-ui-_r_2_ :: Element's background color could not be determined because it partially overlaps other elements"
+          ]
+        }
+      ],
+      "violations": []
+    },
+    "focusTrapHeld": true,
+    "closed": {
+      "gone": true,
+      "backOnTrigger": true,
+      "active": "Dialog informasi"
+    },
+    "sidebarDrawer": {
+      "ariaModal": "true",
+      "label": "Navigasi utama"
+    }
+  },
+  "reducedMotion": {
+    "mediaMatches": true,
+    "transitionDuration": "1e-05s",
+    "spinnerAnimation": "none"
+  },
+  "failures": [],
+  "appRoutes": [
+    {
+      "route": "/",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/dashboard",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/dashboard",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/dashboard",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/proyek",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/proyek",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/proyek",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/tugas",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/tugas",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/tugas",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/laporan",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/laporan",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/laporan",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/dokumen",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/dokumen",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/dokumen",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/anggota",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/anggota",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/anggota",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/pengaturan",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/pengaturan",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/pengaturan",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    }
+  ]
+}

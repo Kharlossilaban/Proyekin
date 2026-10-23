@@ -148,7 +148,7 @@ const AXE_RUN = `(async () => {
   };
 })()`;
 
-async function gotoGuide(vp, media = []) {
+async function gotoPage(vp, path, media = []) {
   await send("Emulation.setDeviceMetricsOverride", {
     width: vp.width,
     height: vp.height,
@@ -156,13 +156,16 @@ async function gotoGuide(vp, media = []) {
     mobile: vp.mobile,
   });
   await send("Emulation.setEmulatedMedia", { features: media });
-  await send("Page.navigate", { url: `${BASE}/style-guide` });
+  await send("Page.navigate", { url: `${BASE}${path}` });
   await waitFor(() => evaluate(`document.readyState === "complete" && !!document.querySelector("h1")`), 60000, "load");
   await evaluate(`document.fonts.ready.then(() => true)`);
   await sleep(600);
   const injected = await evaluate(`typeof window.axe !== "undefined"`);
   if (!injected) await evaluate(axeSource);
 }
+async function gotoGuide(vp, media = []) { return gotoPage(vp, "/style-guide", media); }
+
+const APP_ROUTES = ["/", "/dashboard", "/proyek", "/tugas", "/laporan", "/dokumen", "/anggota", "/pengaturan"];
 
 // 3) tiap viewport: axe + overflow + screenshot
 for (const vp of VIEWPORTS) {
@@ -271,6 +274,52 @@ const rm = await evaluate(`(() => {
 results.reducedMotion = rm;
 const td = parseFloat(rm.transitionDuration);
 if (!rm.mediaMatches || td > 0.001) fail(`reduced-motion tidak diterapkan: ${JSON.stringify(rm)}`);
+
+// 6) app routes: axe + overflow + screenshot di 375/768/1280
+results.appRoutes = [];
+for (const route of APP_ROUTES) {
+  for (const vp of VIEWPORTS) {
+    await gotoPage(vp, route);
+    const axe = await evaluate(AXE_RUN);
+    const overflow = await evaluate(
+      `({ scrollWidth: document.documentElement.scrollWidth, innerWidth: window.innerWidth })`,
+    );
+    const hOverflow = overflow.scrollWidth > overflow.innerWidth + 1;
+    const safeName = route === "/" ? "landing" : route.slice(1);
+    const shotName = `${safeName}-${vp.name}.png`;
+    const metrics = await send("Page.getLayoutMetrics");
+    const h = Math.ceil(metrics.cssContentSize.height);
+    const shot = await send("Page.captureScreenshot", {
+      format: "png",
+      captureBeyondViewport: true,
+      clip: { x: 0, y: 0, width: vp.width, height: Math.min(h, 16000), scale: 1 },
+    });
+    writeFileSync(join(OUT, shotName), Buffer.from(shot.data, "base64"));
+    results.appRoutes.push({ route, viewport: vp.name, axeViolations: axe.violations.length, hOverflow });
+    if (axe.violations.length) fail(`axe ${route}@${vp.name}: ${axe.violations.map((v) => v.id + ": " + v.help).join(", ")}`);
+    if (hOverflow) fail(`overflow ${route}@${vp.name}: ${overflow.scrollWidth} > ${overflow.innerWidth}`);
+  }
+}
+
+// 7) keyboard: sidebar drawer @375
+await gotoPage(VIEWPORTS[0], "/dashboard");
+const hamburger = await evaluate(`(() => {
+  const btn = document.querySelector('[aria-label="Buka navigasi"]');
+  if (!btn) return null;
+  btn.focus();
+  return { found: true, ariaExpanded: btn.getAttribute("aria-expanded") };
+})()`);
+if (hamburger) {
+  await key("Enter", "Enter", { windowsVirtualKeyCode: 13, text: "\r" });
+  await sleep(500);
+  const drawer = await evaluate(`(() => {
+    const d = document.querySelector('[data-slot="sidebar-mobile"]');
+    if (!d) return null;
+    return { ariaModal: d.getAttribute("aria-modal"), label: d.getAttribute("aria-label") };
+  })()`);
+  results.keyboard.sidebarDrawer = drawer;
+  if (!drawer) fail("sidebar drawer tidak terbuka di mobile");
+}
 
 writeFileSync(join(OUT, "results.json"), JSON.stringify(results, null, 2));
 console.log(JSON.stringify(results, null, 2));

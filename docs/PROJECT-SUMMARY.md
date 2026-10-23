@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-23 (U1 merged ke main)
+Terakhir diperbarui: 2026-10-23 (akhir fase U2, branch `feat/u2-app-shell`)
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -12,7 +12,7 @@ Terakhir diperbarui: 2026-10-23 (U1 merged ke main)
 
 ## Status saat ini
 - Next.js 16.4.2, React 19.3, TypeScript strict, Tailwind v4 (via `@tailwindcss/turbopack`), npm.
-- **Belum ada** halaman, backend, database, API, maupun auth. Semua data masih mock (`src/data/mock.ts`). **Tidak ada fitur yang production-ready.**
+- Halaman: landing publik (`/`), app shell + 7 halaman placeholder (Dashboard, Proyek, Tugas, Laporan, Dokumen, Anggota, Pengaturan). **Belum ada** backend, database, API, maupun auth. Semua data masih mock (`src/data/mock.ts`). **Tidak ada fitur yang production-ready.**
 - Git: repo diinisialisasi di root `C:\proyekin_project` (branch `main`), baseline commit sebelum U0.
 
 ## Keputusan pemilik
@@ -66,15 +66,31 @@ A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjak
 - Token kompatibel shadcn di `globals.css` (`muted`, `muted-foreground`, `border`, `input`, `ring`, `card`, `secondary`, `accent`, `destructive`); memakai `@theme static` agar semua token selalu terbit sebagai CSS variable.
 - `/style-guide`: hanya development, 404 pada build production (diverifikasi dengan `next start`). Buka lewat `npm run dev` lalu http://localhost:3000/style-guide.
 - Skrip pemeriksaan: `check:contrast` (50 pasangan), `check:tokens` (deteksi warna mentah), `check:browser` (axe-core + keyboard + screenshot di 375/768/1280 lewat Chrome/Edge lokal).
-- Palet default Tailwind belum dikunci; pengunciannya ditunda sampai `page.tsx` template diganti (U2).
+- Palet default Tailwind dikunci di U2 (22 namespace di-reset ke `initial`).
 - Catatan: pemeriksaan axe otomatis tidak menggantikan uji manual dengan pembaca layar.
+
+## Fase U2 (selesai 2026-10-23, branch `feat/u2-app-shell`)
+- **App Shell:** Sidebar (desktop fixed, mobile drawer), Header (sticky, hamburger), responsif.
+- **Routing:** `src/app/page.tsx` = landing publik di `/`; `src/app/(app)/` = route group dengan layout shell.
+- **Halaman placeholder (mock data):** Dashboard, Proyek, Tugas, Laporan, Dokumen, Anggota, Pengaturan.
+- **Navigasi per role:** `src/lib/navigation.ts` — config deklaratif, `getNavForRole()` filter. Guest tanpa shell.
+- **Komponen baru:** AppShell, Sidebar, AppHeader, Logo, Skeleton, EmptyState, ErrorState.
+- **CardTitle polimorfik:** menerima prop `as` untuk heading hierarchy (h2/h3/h4).
+- **Palet default Tailwind dikunci:** 22 namespace di-reset ke `initial` di `globals.css`.
+- **Logo:** `public/logo-proyekin.jpeg` (sementara; SVG/PNG transparan masuk backlog).
+- **Skip link:** di root layout, target `#main-content`.
+- **Error boundary:** `src/app/(app)/error.tsx` dengan `ErrorState` + tombol retry.
+- **Aksesibilitas:** 0 pelanggaran axe di 9 route × 3 viewport (27 tes). Keyboard, focus trap, dialog, reduced motion — semua lulus.
+- **Browser check diperluas:** `scripts/browser-check.mjs` sekarang menguji semua `APP_ROUTES` + sidebar drawer.
+- Commit: `83bc537`, `abff984` (a11y fix), `86f23eb` (palette lock).
+- Screenshot: `docs/u2-evidence/` (29 file, 3 viewport × 9 route + sidebar + landing).
 
 ## Roadmap UI/UX (disetujui sebagai dasar awal)
 | Fase | Isi |
 |---|---|
 | U0 | Dokumentasi, Git, toolchain, fondasi design system — **selesai** |
 | U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) — **selesai, merged** |
-| U2 | App shell: sidebar, header, navigasi per role, responsif |
+| U2 | App shell: sidebar, header, navigasi per role, responsif — **selesai** |
 | U3 | Halaman auth (UI, mock) |
 | U4 | Dashboard, Proyek, Tugas, Anggota |
 | U5 | Laporan Harian, Dokumen |
@@ -95,6 +111,5 @@ Daftar singkat:
 - `getStatusLabel()` di `utils.ts` selalu memakai label proyek (bug), parameter `lang` tidak dipakai.
 - `mock.ts`: karakter Mandarin "已完成" di FAQ, typo "angut"/"ARKIP", import `Role` tidak terpakai.
 - `DocumentCategory` memuat `"SURAT menyurat"` (tidak konsisten); `StatCard` memakai `React.ReactNode` tanpa import; `MOCK_TESTIMONIALS` tanpa tipe.
-- `src/app/page.tsx` masih template bawaan Next.js.
 - Logo hanya JPEG; perlu SVG/PNG transparan.
 - Konflik warna Figma (hijau/oranye bervariasi antar layar) tidak lagi relevan: brand mengikuti `CLAUDE.md`.

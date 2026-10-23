@@ -1,6 +1,35 @@
 @import "tailwindcss";
 
 /*
+ * Nonaktifkan palet warna default Tailwind. Hanya token Proyekin yang boleh dipakai.
+ * check:tokens mendeteksi penggunaan palet default di komponen.
+ */
+@theme {
+  --color-red-*: initial;
+  --color-orange-*: initial;
+  --color-amber-*: initial;
+  --color-yellow-*: initial;
+  --color-lime-*: initial;
+  --color-green-*: initial;
+  --color-emerald-*: initial;
+  --color-teal-*: initial;
+  --color-cyan-*: initial;
+  --color-sky-*: initial;
+  --color-blue-*: initial;
+  --color-indigo-*: initial;
+  --color-violet-*: initial;
+  --color-purple-*: initial;
+  --color-fuchsia-*: initial;
+  --color-pink-*: initial;
+  --color-rose-*: initial;
+  --color-slate-*: initial;
+  --color-gray-*: initial;
+  --color-zinc-*: initial;
+  --color-neutral-*: initial;
+  --color-stone-*: initial;
+}
+
+/*
  * PROYEKIN design tokens — satu-satunya sumber nilai warna.
  * Brand: Orange #E68D1F + Charcoal #293036 (lihat CLAUDE.md).
  * Hanya light mode; dark mode ditunda.

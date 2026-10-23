@@ -44,12 +44,7 @@ export default function StyleGuidePage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <a
-        href="#konten"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-secondary focus:px-4 focus:py-2 focus:text-secondary-foreground"
-      >
-        Lewati ke konten
-      </a>
+      {/* Skip link ada di root layout */}
       <header className="border-b border-border bg-surface">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-6 sm:px-6">
           <Badge variant="brand" className="self-start">
@@ -77,7 +72,7 @@ export default function StyleGuidePage() {
         </nav>
       </header>
 
-      <main id="konten" className="mx-auto flex max-w-6xl flex-col gap-12 px-4 py-10 sm:px-6">
+      <main id="main-content" className="mx-auto flex max-w-6xl flex-col gap-12 px-4 py-10 sm:px-6">
         <Section id="warna" title="Warna" description="Brand, netral, dan semantic. Nilai berasal dari design token di globals.css.">
           <ColorSection />
         </Section>
