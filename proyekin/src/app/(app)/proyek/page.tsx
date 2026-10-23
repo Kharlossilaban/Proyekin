@@ -41,7 +41,7 @@ export default function ProyekPage() {
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <p className="text-xs text-muted-foreground">{p.code}</p>
-                  <CardTitle className="mt-1">{p.name}</CardTitle>
+                  <CardTitle as="h2" className="mt-1">{p.name}</CardTitle>
                 </div>
                 <Badge variant={STATUS_VARIANT[p.status] ?? "neutral"} dot>
                   {STATUS_LABEL[p.status] ?? p.status}

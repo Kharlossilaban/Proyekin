@@ -89,7 +89,7 @@ export default function DashboardPage() {
       {/* Project table */}
       <Card>
         <CardHeader>
-          <CardTitle>Proyek</CardTitle>
+          <CardTitle as="h2">Proyek</CardTitle>
           <CardDescription>Daftar proyek dan statusnya</CardDescription>
         </CardHeader>
         <CardContent className="p-0">

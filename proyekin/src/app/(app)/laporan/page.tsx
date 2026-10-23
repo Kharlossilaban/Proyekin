@@ -42,7 +42,7 @@ export default function LaporanPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Semua Laporan</CardTitle>
+          <CardTitle as="h2">Semua Laporan</CardTitle>
           <CardDescription>{MOCK_REPORTS.length} laporan</CardDescription>
         </CardHeader>
         <CardContent className="p-0">

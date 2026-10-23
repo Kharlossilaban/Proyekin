@@ -38,7 +38,7 @@ export default function DokumenPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Semua Dokumen</CardTitle>
+          <CardTitle as="h2">Semua Dokumen</CardTitle>
           <CardDescription>{MOCK_DOCUMENTS.length} dokumen</CardDescription>
         </CardHeader>
         <CardContent className="p-0">

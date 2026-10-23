@@ -19,7 +19,7 @@ export default function PengaturanPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Pengaturan Umum</CardTitle>
+          <CardTitle as="h2">Pengaturan Umum</CardTitle>
           <CardDescription>
             Halaman ini akan berisi pengaturan organisasi dan preferensi pengguna.
           </CardDescription>

@@ -37,7 +37,7 @@ export default function AnggotaPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Semua Anggota</CardTitle>
+          <CardTitle as="h2">Semua Anggota</CardTitle>
           <CardDescription>{MOCK_USERS.length} anggota</CardDescription>
         </CardHeader>
         <CardContent className="p-0">

@@ -51,7 +51,7 @@ export default function TugasPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Semua Tugas</CardTitle>
+          <CardTitle as="h2">Semua Tugas</CardTitle>
           <CardDescription>{MOCK_TASKS.length} tugas</CardDescription>
         </CardHeader>
         <CardContent className="p-0">

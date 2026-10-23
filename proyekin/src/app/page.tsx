@@ -20,7 +20,7 @@ export default function LandingPage() {
             </p>
             <h1 className="text-4xl font-semibold tracking-tight text-charcoal sm:text-5xl">
               Kelola proyek konstruksi Anda dengan{" "}
-              <span className="text-primary">Proyekin</span>
+              <span className="text-brand-text">Proyekin</span>
             </h1>
             <p className="mt-6 text-lg leading-8 text-graphite">
               Pantau progres proyek, kelola tugas tim, dan dokumentasikan
@@ -47,12 +47,12 @@ export default function LandingPage() {
           <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((f) => (
               <div key={f.title} className="flex flex-col gap-2">
-                <div className="flex size-10 items-center justify-center rounded-lg bg-accent text-brand-text">
+                <div className="flex size-10 items-center justify-center rounded-lg bg-accent text-brand-text" aria-hidden="true">
                   {f.emoji}
                 </div>
-                <h3 className="text-base font-semibold text-charcoal">
+                <h2 className="text-base font-semibold text-charcoal">
                   {f.title}
-                </h3>
+                </h2>
                 <p className="text-sm leading-6 text-graphite">
                   {f.description}
                 </p>
