@@ -8,10 +8,15 @@
     "start": "next start",
     "lint": "eslint",
     "check:contrast": "node scripts/check-contrast.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:browser": "node scripts/browser-check.mjs",
+    "check:tokens": "node scripts/check-tokens.mjs"
   },
   "dependencies": {
+    "@base-ui/react": "^1.9.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "lucide-react": "^1.61.0",
     "next": "16.4.2",
     "react": "19.3.0",
     "react-dom": "19.3.0",
@@ -22,6 +27,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "axe-core": "^4.14.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.2",
     "tailwindcss": "^4",

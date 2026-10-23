@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 /*
- * PROYEKIN design tokens — satu-satunya sumber warna.
+ * PROYEKIN design tokens — satu-satunya sumber nilai warna.
  * Brand: Orange #E68D1F + Charcoal #293036 (lihat CLAUDE.md).
  * Hanya light mode; dark mode ditunda.
  * Rasio kontras diverifikasi dengan `npm run check:contrast`.
+ *
+ * Penamaan mengikuti konvensi shadcn (muted, border, input, ring, card, ...)
+ * agar komponen UI memakai nama yang sama dengan token.
  */
 
 /* Nonaktifkan dark variant berbasis preferensi OS selama dark mode ditunda. */
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
+@theme static {
   /* Brand — skala Orange (500 = Primary Orange) */
   --color-brand-50: #fdf7ef;
   --color-brand-100: #fbeddb;
@@ -29,9 +32,10 @@
   --color-canvas: #f8f9fa; /* Background */
   --color-highlight: #fff3e2; /* Warm Highlight */
   --color-surface: #ffffff;
-  --color-muted: #6b7075; /* teks pendukung/caption */
-  --color-line: #dee2e6; /* pemisah dekoratif */
-  --color-line-strong: #80868c; /* border komponen interaktif (>= 3:1) */
+  --color-muted: #eef0f2; /* latar lembut (hover ghost, header tabel) */
+  --color-muted-foreground: #62676c; /* teks pendukung/caption */
+  --color-border: #dee2e6; /* pemisah dekoratif */
+  --color-input: #80868c; /* border kontrol interaktif (>= 3:1) */
 
   /* Semantic */
   --color-success: #15803d;
@@ -39,6 +43,7 @@
   --color-warning: #b45309;
   --color-warning-soft: #fffbeb;
   --color-danger: #b91c1c;
+  --color-danger-hover: #991b1b;
   --color-danger-soft: #fef2f2;
   --color-info: #155e75;
   --color-info-soft: #ecfeff;
@@ -49,7 +54,7 @@
 }
 
 /* Alias semantik yang dipakai komponen (merujuk ke token di atas). */
-@theme inline {
+@theme static inline {
   --color-background: var(--color-canvas);
   --color-foreground: var(--color-charcoal);
 
@@ -58,10 +63,26 @@
   --color-primary-active: var(--color-brand-300);
   --color-primary-foreground: var(--color-charcoal);
 
+  --color-secondary: var(--color-charcoal);
+  --color-secondary-hover: var(--color-graphite);
+  --color-secondary-foreground: var(--color-surface);
+
+  --color-accent: var(--color-highlight);
+  --color-accent-foreground: var(--color-charcoal);
+
+  --color-card: var(--color-surface);
+  --color-card-foreground: var(--color-charcoal);
+  --color-popover: var(--color-surface);
+  --color-popover-foreground: var(--color-charcoal);
+
+  --color-destructive: var(--color-danger);
+  --color-destructive-hover: var(--color-danger-hover);
+  --color-destructive-foreground: var(--color-surface);
+
   /* Oranye untuk teks/tautan/ikon: wajib varian tua (800) agar lolos WCAG AA di semua latar brand. */
   --color-brand-text: var(--color-brand-800);
 
-  --color-focus-ring: var(--color-charcoal);
+  --color-ring: var(--color-charcoal);
 }
 
 :root {
@@ -75,6 +96,18 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-focus-ring);
+  outline: 2px solid var(--color-ring);
   outline-offset: 2px;
+}
+
+/* Hormati preferensi pengguna untuk mengurangi gerakan. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

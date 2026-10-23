@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-23 (akhir fase U0)
+Terakhir diperbarui: 2026-10-23 (akhir fase U1, branch `feat/u1-design-system`)
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -55,6 +55,14 @@ A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjak
 - Dokumentasi disinkronkan (AGENTS.md, CLAUDE.md, spesifikasi, `docs/`).
 - Git dan toolchain: dependency terpasang, `clsx` dan `tailwind-merge` ditambahkan, peringatan multi-lockfile diatasi.
 - Fondasi design system: token di `src/app/globals.css`, `src/lib/tokens.ts` merujuk token, skrip `npm run check:contrast` (37 pasangan lolos WCAG AA).
+
+## Fase U1 (selesai 2026-10-23, menunggu review)
+- Komponen di `src/components/ui`: Button, Input, Label/FieldHint/FieldError, Badge, Card, Table, Dialog (Base UI + class-variance-authority + lucide-react).
+- Token kompatibel shadcn di `globals.css` (`muted`, `muted-foreground`, `border`, `input`, `ring`, `card`, `secondary`, `accent`, `destructive`); memakai `@theme static` agar semua token selalu terbit sebagai CSS variable.
+- `/style-guide`: hanya development, 404 pada build production (diverifikasi dengan `next start`). Buka lewat `npm run dev` lalu http://localhost:3000/style-guide.
+- Skrip pemeriksaan: `check:contrast` (50 pasangan), `check:tokens` (deteksi warna mentah), `check:browser` (axe-core + keyboard + screenshot di 375/768/1280 lewat Chrome/Edge lokal).
+- Palet default Tailwind belum dikunci; pengunciannya ditunda sampai `page.tsx` template diganti (U2).
+- Catatan: pemeriksaan axe otomatis tidak menggantikan uji manual dengan pembaca layar.
 
 ## Roadmap UI/UX (disetujui sebagai dasar awal)
 | Fase | Isi |

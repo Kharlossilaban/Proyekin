@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# hasil pemeriksaan browser lokal
+/.browser-check/
