@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-23 (akhir fase U1, branch `feat/u1-design-system`)
+Terakhir diperbarui: 2026-10-23 (U1 merged ke main)
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -56,7 +56,7 @@ A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjak
 - Git dan toolchain: dependency terpasang, `clsx` dan `tailwind-merge` ditambahkan, peringatan multi-lockfile diatasi.
 - Fondasi design system: token di `src/app/globals.css`, `src/lib/tokens.ts` merujuk token, skrip `npm run check:contrast` (37 pasangan lolos WCAG AA).
 
-## Fase U1 (selesai 2026-10-23, menunggu review)
+## Fase U1 (selesai 2026-10-23, merged ke main)
 - Komponen di `src/components/ui`: Button, Input, Label/FieldHint/FieldError, Badge, Card, Table, Dialog (Base UI + class-variance-authority + lucide-react).
 - Token kompatibel shadcn di `globals.css` (`muted`, `muted-foreground`, `border`, `input`, `ring`, `card`, `secondary`, `accent`, `destructive`); memakai `@theme static` agar semua token selalu terbit sebagai CSS variable.
 - `/style-guide`: hanya development, 404 pada build production (diverifikasi dengan `next start`). Buka lewat `npm run dev` lalu http://localhost:3000/style-guide.
@@ -68,7 +68,7 @@ A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjak
 | Fase | Isi |
 |---|---|
 | U0 | Dokumentasi, Git, toolchain, fondasi design system — **selesai** |
-| U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) |
+| U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) — **selesai, merged** |
 | U2 | App shell: sidebar, header, navigasi per role, responsif |
 | U3 | Halaman auth (UI, mock) |
 | U4 | Dashboard, Proyek, Tugas, Anggota |
