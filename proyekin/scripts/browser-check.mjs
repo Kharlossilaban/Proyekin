@@ -321,6 +321,285 @@ if (hamburger) {
   if (!drawer) fail("sidebar drawer tidak terbuka di mobile");
 }
 
+// ---------- U3: halaman auth + alur demo ----------
+const FLOWS_DIR = join(OUT, "flows");
+mkdirSync(FLOWS_DIR, { recursive: true });
+const SESSION_KEY = "proyekin-demo-session";
+const slug = (route) => route.replace(/^\//, "").replace(/[^a-z0-9]+/gi, "-").replace(/-$/, "");
+const q = (s) => JSON.stringify(s);
+
+async function fullShot(file, vp) {
+  const metrics = await send("Page.getLayoutMetrics");
+  const h = Math.ceil(metrics.cssContentSize.height);
+  const shot = await send("Page.captureScreenshot", {
+    format: "png",
+    captureBeyondViewport: true,
+    clip: { x: 0, y: 0, width: vp.width, height: Math.min(h, 16000), scale: 1 },
+  });
+  writeFileSync(file, Buffer.from(shot.data, "base64"));
+}
+const fill = (sel, value) =>
+  evaluate(`(() => { const el = document.querySelector(${q(sel)}); if (!el) throw new Error("tidak ada: " + ${q(sel)});
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set.call(el, ${q(value)});
+    el.dispatchEvent(new Event("input", { bubbles: true })); return true; })()`);
+const click = (sel) =>
+  evaluate(`(() => { const el = document.querySelector(${q(sel)}); if (!el) throw new Error("tidak ada: " + ${q(sel)}); el.click(); return true; })()`);
+const clickByText = (scope, re) =>
+  evaluate(`(() => { const el = [...document.querySelectorAll(${q(scope)})].find(e => ${re}.test(e.textContent)); if (!el) throw new Error("tidak ada: " + ${q(scope)} + " " + ${q(String(re))}); el.click(); return true; })()`);
+const pathNow = () => evaluate(`location.pathname + location.search`);
+const waitPath = (p, label) => waitFor(async () => (await pathNow()) === p, 15000, label ?? `path ${p}`);
+const text = () => evaluate(`document.body.innerText`);
+async function reload() {
+  await send("Page.reload");
+  await waitFor(() => evaluate(`document.readyState === "complete" && !!document.querySelector("h1")`), 60000, "reload");
+  await sleep(600);
+}
+const check = (name, ok, detail = "") => {
+  results.flows.push({ name, ok: !!ok, detail });
+  if (!ok) fail(`flow "${name}" ${detail}`);
+};
+async function flow(name, fn) {
+  try {
+    await fn();
+  } catch (e) {
+    check(name, false, `error: ${e.message}`);
+  }
+}
+const SUBMIT = 'form button[type="submit"]';
+const invalidState = (ids) =>
+  evaluate(`(() => { const ids = ${q(ids)};
+    return {
+      invalid: [...document.querySelectorAll('[aria-invalid="true"]')].map(e => e.id),
+      focus: document.activeElement.id,
+      described: ids.every(id => { const d = document.getElementById(id)?.getAttribute("aria-describedby"); return !!d && d.split(" ").every(x => document.getElementById(x)); }),
+      labelled: ids.every(id => !!document.querySelector('label[for="' + id + '"]')),
+    }; })()`);
+const loginUi = async (email, password = "kata-sandi-demo-1") => {
+  await gotoPage(desktop, "/masuk");
+  await fill("#email", email);
+  await fill("#password", password);
+  await click(SUBMIT);
+  await waitPath("/dashboard", "redirect ke dashboard");
+  await waitFor(() => evaluate(`!!document.querySelector('[data-slot="sidebar-desktop"]')`), 15000, "app shell");
+};
+const sidebarLinks = () =>
+  evaluate(`[...document.querySelectorAll('[data-slot="sidebar-desktop"] nav a')].map(a => a.textContent.trim())`);
+
+results.flows = [];
+results.authRoutes = [];
+
+// 8) axe + overflow + screenshot semua route auth di 3 viewport
+const AUTH_ROUTES = ["/masuk", "/daftar", "/lupa-sandi", "/reset-sandi?token=demo-token", "/reset-sandi", "/akses-ditolak"];
+for (const route of AUTH_ROUTES) {
+  for (const vp of VIEWPORTS) {
+    await gotoPage(vp, route);
+    await evaluate(`sessionStorage.clear()`);
+    const axe = await evaluate(AXE_RUN);
+    const overflow = await evaluate(`({ scrollWidth: document.documentElement.scrollWidth, innerWidth: window.innerWidth })`);
+    const hOverflow = overflow.scrollWidth > overflow.innerWidth + 1;
+    await fullShot(join(OUT, `auth-${slug(route)}-${vp.name}.png`), vp);
+    results.authRoutes.push({ route, viewport: vp.name, axeViolations: axe.violations.length, hOverflow });
+    if (axe.violations.length) fail(`axe ${route}@${vp.name}: ${axe.violations.map((v) => v.id + ": " + v.help).join(", ")}`);
+    if (hOverflow) fail(`overflow ${route}@${vp.name}: ${overflow.scrollWidth} > ${overflow.innerWidth}`);
+  }
+}
+
+// 9) login: validasi, aksesibilitas error, keyboard
+await flow("login: validasi kosong", async () => {
+  await gotoPage(desktop, "/masuk");
+  await evaluate(`sessionStorage.clear()`);
+  check("login: autofocus pada email", await evaluate(`document.activeElement.id === "email"`));
+  await click(SUBMIT);
+  await sleep(300);
+  const s = await invalidState(["email", "password"]);
+  check("login: 2 field ditandai aria-invalid", s.invalid.length === 2, JSON.stringify(s.invalid));
+  check("login: fokus pindah ke error pertama", s.focus === "email", s.focus);
+  check("login: aria-describedby terhubung ke pesan error", s.described);
+  check("login: semua input punya label", s.labelled);
+  await fullShot(join(FLOWS_DIR, "login-validasi-1280.png"), desktop);
+});
+await flow("login: email tidak terdaftar", async () => {
+  await fill("#email", "tidak.ada@contoh.co.id");
+  await fill("#password", "apa-saja");
+  await click(SUBMIT);
+  await waitFor(async () => /Email atau kata sandi salah/.test(await text()), 10000, "pesan salah");
+  check("login: error generik tanpa membocorkan akun", true);
+  check("login: tidak ada sesi tersimpan", (await evaluate(`sessionStorage.getItem(${q(SESSION_KEY)})`)) === null);
+  await fullShot(join(FLOWS_DIR, "login-gagal-1280.png"), desktop);
+});
+await flow("login: urutan keyboard + toggle sandi", async () => {
+  await gotoPage(desktop, "/masuk");
+  await evaluate(`document.getElementById("email").focus()`);
+  const order = [];
+  for (let i = 0; i < 4; i++) {
+    await tab();
+    order.push(await evaluate(`(document.activeElement.getAttribute("aria-label") || document.activeElement.textContent || document.activeElement.id).trim().slice(0, 40)`));
+  }
+  check("login: urutan Tab email → sandi → toggle → lupa → masuk",
+    order[0] === "password" && order[1] === "Tampilkan kata sandi" && /Lupa kata sandi/.test(order[2]) && order[3] === "Masuk",
+    JSON.stringify(order));
+  await evaluate(`document.querySelector('[aria-label="Tampilkan kata sandi"]').focus()`);
+  await key("Enter", "Enter", { windowsVirtualKeyCode: 13, text: "\r" });
+  await sleep(200);
+  const t = await evaluate(`({ type: document.getElementById("password").type, label: document.activeElement.getAttribute("aria-label") })`);
+  check("login: toggle sandi via keyboard", t.type === "text" && t.label === "Sembunyikan kata sandi", JSON.stringify(t));
+});
+
+// 10) login berhasil, refresh, role, logout, mode pengembangan
+await flow("login: sukses → dashboard", async () => {
+  await gotoPage(desktop, "/masuk");
+  await fill("#email", "budi@proyekin.id");
+  await fill("#password", "RAHASIA-uji-123");
+  await click(SUBMIT);
+  await sleep(150);
+  const busy = await evaluate(`({ busy: document.querySelector(${q(SUBMIT)}).getAttribute("aria-busy"), disabled: document.getElementById("email").disabled })`);
+  check("login: state loading (aria-busy + input disabled)", busy.busy === "true" && busy.disabled, JSON.stringify(busy));
+  await waitPath("/dashboard", "redirect ke dashboard");
+  await waitFor(() => evaluate(`!!document.querySelector('[data-slot="sidebar-desktop"]')`), 15000, "app shell");
+  const s = await evaluate(`({
+    sidebar: document.querySelector('[data-slot="sidebar-desktop"]').textContent,
+    logout: [...document.querySelectorAll('[data-slot="sidebar-desktop"] button')].some(b => /Keluar/.test(b.textContent)),
+    stored: sessionStorage.getItem(${q(SESSION_KEY)}) || "",
+    notice: document.body.innerText.includes("Mode pengembangan"),
+    local: Object.keys(localStorage).length,
+  })`);
+  check("dashboard: nama user dari sesi demo", /Budi Santoso/.test(s.sidebar));
+  check("dashboard: tombol Keluar tersedia", s.logout);
+  check("sesi: hanya userId + waktu, tanpa password", /userId/.test(s.stored) && !/RAHASIA|password|sandi/i.test(s.stored), s.stored);
+  check("sesi: tidak memakai localStorage", s.local === 0);
+  check("dashboard: tanpa notice mode pengembangan saat login", !s.notice);
+  await fullShot(join(FLOWS_DIR, "dashboard-setelah-login-1280.png"), desktop);
+  await reload();
+  const after = await evaluate(`document.querySelector('[data-slot="sidebar-desktop"]')?.textContent || ""`);
+  check("refresh: sesi demo bertahan di tab yang sama", /Budi Santoso/.test(after));
+});
+await flow("shell: axe saat login (3 viewport)", async () => {
+  for (const vp of VIEWPORTS) {
+    await gotoPage(vp, "/dashboard");
+    const axe = await evaluate(AXE_RUN);
+    const overflow = await evaluate(`document.documentElement.scrollWidth > window.innerWidth + 1`);
+    await fullShot(join(FLOWS_DIR, `dashboard-login-${vp.name}.png`), vp);
+    check(`shell login: axe 0 pelanggaran @${vp.name}`, axe.violations.length === 0, axe.violations.map((v) => v.id).join(","));
+    check(`shell login: tanpa overflow @${vp.name}`, !overflow);
+  }
+});
+await flow("logout", async () => {
+  await gotoPage(desktop, "/dashboard");
+  await clickByText('[data-slot="sidebar-desktop"] button', /Keluar/);
+  await waitPath("/masuk", "redirect ke masuk");
+  check("logout: sesi dihapus", (await evaluate(`sessionStorage.getItem(${q(SESSION_KEY)})`)) === null);
+});
+await flow("role: Mandor tanpa menu Pengaturan", async () => {
+  await loginUi("ahmad@proyekin.id");
+  const links = await sidebarLinks();
+  check("role Mandor: menu Laporan ada, Pengaturan tidak ada", links.includes("Laporan") && !links.includes("Pengaturan"), JSON.stringify(links));
+  check("role Mandor: tidak ada role Tukang", !/tukang/i.test(await text()));
+  await evaluate(`sessionStorage.clear()`);
+});
+await flow("mode pengembangan tanpa sesi", async () => {
+  await gotoPage(desktop, "/dashboard");
+  const s = await evaluate(`({ notice: document.body.innerText.includes("Mode pengembangan"), logout: [...document.querySelectorAll("button")].some(b => /Keluar/.test(b.textContent)) })`);
+  check("tanpa sesi: route aplikasi tetap bisa dibuka (akses developer)", s.notice && !s.logout, JSON.stringify(s));
+  await fullShot(join(FLOWS_DIR, "dashboard-mode-pengembangan-1280.png"), desktop);
+});
+await flow("drawer mobile memuat Keluar", async () => {
+  await gotoPage(VIEWPORTS[0], "/masuk");
+  await evaluate(`sessionStorage.setItem(${q(SESSION_KEY)}, JSON.stringify({ userId: "u-001", loginAt: new Date().toISOString() }))`);
+  await gotoPage(VIEWPORTS[0], "/dashboard");
+  await click('[aria-label="Buka navigasi"]');
+  await sleep(400);
+  const has = await evaluate(`[...document.querySelectorAll('[data-slot="sidebar-mobile"] button')].some(b => /Keluar/.test(b.textContent))`);
+  check("drawer mobile: tombol Keluar tersedia", has);
+  await fullShot(join(FLOWS_DIR, "drawer-login-375.png"), VIEWPORTS[0]);
+  await evaluate(`sessionStorage.clear()`);
+});
+
+// 11) registrasi Owner
+await flow("registrasi Owner", async () => {
+  await gotoPage(desktop, "/daftar");
+  check("daftar: autofocus pada nama", await evaluate(`document.activeElement.id === "name"`));
+  check("daftar: tanpa pemilihan role", await evaluate(`!document.querySelector('select, [role="combobox"], [role="listbox"], input[type="radio"]')`));
+  check("daftar: menyatakan hanya untuk Owner", /hanya untuk Owner/.test(await text()));
+  await click(SUBMIT);
+  await sleep(300);
+  const s = await invalidState(["name", "email", "password", "confirmation", "terms"]);
+  check("daftar: 5 field tidak valid saat kosong", s.invalid.length === 5, JSON.stringify(s.invalid));
+  check("daftar: fokus ke error pertama", s.focus === "name", s.focus);
+  check("daftar: aria-describedby terhubung", s.described);
+  await fullShot(join(FLOWS_DIR, "daftar-validasi-1280.png"), desktop);
+
+  await fill("#password", "abc");
+  await sleep(150);
+  check("daftar: indikator kekuatan 1 dari 4", /1 dari 4/.test(await evaluate(`document.querySelector('[role="status"]').textContent`)));
+  await fill("#password", "Abcdef12");
+  await sleep(150);
+  check("daftar: indikator kekuatan 4 dari 4", /4 dari 4/.test(await evaluate(`document.querySelector('[role="status"]').textContent`)));
+  await fill("#confirmation", "Beda12345");
+  await fill("#name", "Owner Baru");
+  await fill("#email", "owner.baru@contoh.co.id");
+  await click(SUBMIT);
+  await sleep(300);
+  check("daftar: konfirmasi tidak cocok ditolak", /tidak cocok/.test(await text()));
+  await fill("#confirmation", "Abcdef12");
+  await click("#terms");
+  await click(SUBMIT);
+  await sleep(150);
+  check("daftar: state loading", (await evaluate(`document.querySelector(${q(SUBMIT)}).getAttribute("aria-busy")`)) === "true");
+  await waitPath("/masuk?registered=1", "redirect setelah daftar");
+  await waitFor(async () => /disimulasikan/.test(await text()), 10000, "pesan sukses daftar");
+  check("daftar: pesan sukses menyatakan simulasi", /disimulasikan/.test(await text()));
+  check("daftar: tidak ada data tersimpan", (await evaluate(`sessionStorage.length + localStorage.length`)) === 0);
+  await fullShot(join(FLOWS_DIR, "masuk-setelah-daftar-1280.png"), desktop);
+});
+
+// 12) lupa + reset password
+await flow("lupa password", async () => {
+  await gotoPage(desktop, "/lupa-sandi");
+  await fill("#email", "bukan-email");
+  await click(SUBMIT);
+  await sleep(300);
+  check("lupa: email tidak valid ditolak", await evaluate(`!!document.getElementById("email-error")`));
+  await fill("#email", "siapa.saja@contoh.co.id");
+  await click(SUBMIT);
+  await waitFor(async () => /Periksa email Anda/.test(await text()), 10000, "konfirmasi");
+  await sleep(200);
+  const t = await text();
+  check("lupa: fokus pindah ke judul konfirmasi", await evaluate(`document.activeElement.tagName === "H1"`));
+  check("lupa: tidak mengklaim email terkirim", !/telah dikirim|sudah dikirim|berhasil dikirim/i.test(t) && /tidak ada email yang benar-benar dikirim/i.test(t));
+  await fullShot(join(FLOWS_DIR, "lupa-konfirmasi-1280.png"), desktop);
+  await clickByText("a", /Buka halaman reset/);
+  await waitPath("/reset-sandi?token=demo-token", "ke reset");
+});
+await flow("reset password", async () => {
+  await waitFor(() => evaluate(`!!document.getElementById("password")`), 10000, "form reset");
+  await fill("#password", "Abcdef12");
+  await fill("#confirmation", "Beda12345");
+  await click(SUBMIT);
+  await sleep(300);
+  const s = await invalidState(["confirmation"]);
+  check("reset: konfirmasi tidak cocok ditolak + terhubung", s.invalid.includes("confirmation") && s.described && s.focus === "confirmation", JSON.stringify(s));
+  await fullShot(join(FLOWS_DIR, "reset-validasi-1280.png"), desktop);
+  await fill("#confirmation", "Abcdef12");
+  await click(SUBMIT);
+  await waitPath("/masuk?reset=1", "redirect setelah reset");
+  await waitFor(async () => /Pengaturan ulang kata sandi disimulasikan/.test(await text()), 10000, "pesan sukses reset");
+  check("reset: pesan sukses menyatakan simulasi", /Pengaturan ulang kata sandi disimulasikan/.test(await text()));
+  await gotoPage(desktop, "/reset-sandi");
+  check("reset: tanpa token → tautan tidak valid", /Tautan tidak valid/.test(await text()) && (await evaluate(`!!document.querySelector('a[href="/lupa-sandi"]')`)));
+});
+
+// 13) akses ditolak + navigasi dari landing
+await flow("akses ditolak + landing", async () => {
+  await gotoPage(desktop, "/akses-ditolak");
+  check("akses ditolak: judul dan tombol kembali", /Akses tidak tersedia/.test(await text()) && (await evaluate(`[...document.querySelectorAll("button")].some(b => /Kembali ke halaman sebelumnya/.test(b.textContent))`)));
+  await click('main a[href="/"]');
+  await waitPath("/", "ke beranda");
+  await click('header a[href="/masuk"]');
+  await waitPath("/masuk", "landing → masuk");
+  check("landing → login → beranda berfungsi", true);
+});
+await evaluate(`sessionStorage.clear()`);
+
 writeFileSync(join(OUT, "results.json"), JSON.stringify(results, null, 2));
 console.log(JSON.stringify(results, null, 2));
 console.log(results.failures.length ? `\n${results.failures.length} masalah.` : "\nSemua pemeriksaan lolos.");
