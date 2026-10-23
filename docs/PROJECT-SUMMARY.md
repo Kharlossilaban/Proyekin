@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-24 (U2 merged ke main, U3 tahap perencanaan)
+Terakhir diperbarui: 2026-10-24 (U2 merged ke main; U3 diimplementasikan di `feat/u3-auth-ui`, menunggu audit)
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -92,13 +92,26 @@ A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjak
 - Commit: `83bc537`, `abff984` (a11y fix), `86f23eb` (palette lock).
 - Screenshot: `docs/u2-evidence/` (29 file, 3 viewport × 9 route + sidebar + landing).
 
+## Fase U3 (implementasi selesai 2026-10-24, branch `feat/u3-auth-ui`, belum di-merge; menunggu audit Opus)
+**Semua flow auth adalah SIMULASI UI.** Tidak ada backend, database, token, atau authorization sungguhan.
+- **Route:** `/masuk`, `/daftar` (hanya Owner, tanpa pilihan role), `/lupa-sandi`, `/reset-sandi?token=...`, `/akses-ditolak`. Route group `(auth)/` memakai layout split-screen sendiri; `/akses-ditolak` di luar group (layout penuh).
+- **Mock auth:** `src/lib/auth-mock.ts` (satu-satunya titik yang diganti saat backend siap; fungsi async). Sesi di `sessionStorage` hanya berisi `{userId, loginAt}`; kata sandi tidak dibaca/disimpan. Login menerima email akun demo (`MOCK_USERS`) dengan kata sandi apa saja.
+- **Akses developer:** `(app)` tidak dikunci. Tanpa sesi, aplikasi tetap terbuka sebagai Owner demo dengan notice "Mode pengembangan". Ini bukan kontrol keamanan; menu per role tetap hanya representasi UI.
+- **Guest:** tidak ada akun/akun demo Guest; bila sesi ber-role GUEST muncul, shell mengalihkan ke `/akses-ditolak` (jalur kode, belum teruji karena tidak ada mock user Guest).
+- **Logo:** gambar JPEG ditampilkan utuh (rasio 1540x672) tanpa teks tambahan; ganti aset lewat konstanta `LOGO_ASSET` di `components/layout/logo.tsx`.
+- **Validasi:** `src/lib/auth-validation.ts` (email, nama, sandi >= 8 + huruf besar/kecil + angka, konfirmasi). Galat di-link dengan `aria-describedby`, fokus ke galat pertama.
+- **Komponen baru:** PasswordInput, FormField, PasswordStrength, AuthCard, StatusMessage, SessionShell, BackButton; `buttonVariants` dipisah ke `button-variants.ts` agar bisa dipakai server component.
+- **Di luar U3 (sesuai keputusan):** verifikasi email, company onboarding, workspace selector/multi-company, invitation flow, Vendor, role Tukang (tidak ada).
+- **Pengujian:** lint (0 error, 1 warning lama), typecheck, build, check:contrast 50/50, check:tokens 0 warna mentah, check:browser: 47/47 pemeriksaan alur, 0 pelanggaran axe di 18 tampilan auth + 24 tampilan app, 0 overflow di 375/768/1280.
+- Bukti: `docs/u3-evidence/` (lihat README di folder tersebut).
+
 ## Roadmap UI/UX (disetujui sebagai dasar awal)
 | Fase | Isi |
 |---|---|
 | U0 | Dokumentasi, Git, toolchain, fondasi design system — **selesai** |
 | U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) — **selesai, merged** |
 | U2 | App shell: sidebar, header, navigasi per role, responsif — **selesai, merged** |
-| U3 | Halaman auth (UI, mock) — **tahap perencanaan** |
+| U3 | Halaman auth (UI, mock) — **implementasi selesai di `feat/u3-auth-ui`, menunggu audit & merge** |
 | U4 | Dashboard, Proyek, Tugas, Anggota |
 | U5 | Laporan Harian, Dokumen |
 | U6 | Gantt, landing publik |
