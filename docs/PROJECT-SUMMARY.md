@@ -28,6 +28,13 @@ Terakhir diperbarui: 2026-10-24 (U2 merged ke main, U3 tahap perencanaan)
 | 2026-10-23 | Pengaturan Admin Kantor terbatas pada preferensi operasional; tidak boleh ubah kepemilikan/role global/keamanan. |
 | 2026-10-23 | Guest tanpa App Shell — hanya akses halaman publik. |
 | 2026-10-23 | `proyekin/AGENTS.md` (auto-generated) di-gitignore. Lockfile root (ECC) dibiarkan. |
+| 2026-10-24 | **U3-1:** Registrasi publik hanya untuk Owner. Role lain ditambahkan via mekanisme internal. Guest tidak perlu akun. |
+| 2026-10-24 | **U3-2:** Verifikasi email tidak diimplementasikan di U3. Struktur disiapkan agar bisa ditambahkan nanti. |
+| 2026-10-24 | **U3-3:** Company onboarding tidak termasuk U3. Registrasi hanya simulasi pembuatan akun. |
+| 2026-10-24 | **U3-4:** Workspace selector dan multi-company tidak termasuk MVP. Satu workspace, login langsung ke dashboard. |
+| 2026-10-24 | **U3-5:** Logo JPEG yang sudah memuat tulisan "Proyekin" tidak boleh diberi teks tambahan. Perbaiki komponen Logo. |
+| 2026-10-24 | **U3-6:** Invitation flow tidak termasuk U3. Penambahan anggota melalui halaman Anggota sesuai spesifikasi. |
+| 2026-10-24 | **ATURAN MUTLAK:** PROYEKIN tidak memiliki role Tukang. Jangan menambahkan atau menyamakan dengan Anggota Tim. Lima role resmi saja. |
 
 ## Matriks scope fitur Figma
 A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjakan sekarang.
