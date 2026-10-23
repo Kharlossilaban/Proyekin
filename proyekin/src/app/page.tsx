@@ -7,7 +7,7 @@ export default function LandingPage() {
     <div className="flex min-h-full flex-col">
       <header className="flex h-16 items-center justify-between border-b border-border bg-surface px-4 lg:px-8">
         <Logo />
-        <Link href="/dashboard">
+        <Link href="/masuk">
           <Button size="sm">Masuk</Button>
         </Link>
       </header>
@@ -27,7 +27,7 @@ export default function LandingPage() {
               aktivitas lapangan dalam satu platform terpadu.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-              <Link href="/dashboard">
+              <Link href="/daftar">
                 <Button size="lg">Mulai Sekarang</Button>
               </Link>
               <Link href="/dashboard">

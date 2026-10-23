@@ -1,6 +1,5 @@
-import { AppShell } from "@/components/layout/app-shell";
-import { MOCK_USER } from "@/data/mock";
+import { SessionShell } from "@/components/auth/session-shell";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
-  return <AppShell user={MOCK_USER}>{children}</AppShell>;
+  return <SessionShell>{children}</SessionShell>;
 }

@@ -11,6 +11,7 @@ import {
   Files,
   Users,
   Settings,
+  LogOut,
   X,
   type LucideIcon,
 } from "lucide-react";
@@ -37,9 +38,10 @@ interface SidebarProps {
   user: User;
   open: boolean;
   onClose: () => void;
+  onLogout?: () => void;
 }
 
-function Sidebar({ items, user, open, onClose }: SidebarProps) {
+function Sidebar({ items, user, open, onClose, onLogout }: SidebarProps) {
   const pathname = usePathname();
 
   const nav = (
@@ -87,6 +89,20 @@ function Sidebar({ items, user, open, onClose }: SidebarProps) {
           </p>
         </div>
       </div>
+      {onLogout ? (
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-3 w-full"
+          onClick={() => {
+            onClose();
+            onLogout();
+          }}
+        >
+          <LogOut aria-hidden="true" />
+          Keluar
+        </Button>
+      ) : null}
     </div>
   );
 

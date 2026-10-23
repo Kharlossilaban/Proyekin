@@ -10,10 +10,14 @@ import type { User } from "@/types";
 interface AppShellProps {
   user: User;
   pageTitle?: string;
+  /** Aksi keluar; tombol "Keluar" hanya tampil bila diberikan. */
+  onLogout?: () => void;
+  /** Pemberitahuan di atas konten halaman (mis. mode demo). */
+  notice?: React.ReactNode;
   children: React.ReactNode;
 }
 
-function AppShell({ user, pageTitle, children }: AppShellProps) {
+function AppShell({ user, pageTitle, onLogout, notice, children }: AppShellProps) {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
   const items = React.useMemo(() => getNavForRole(user.role), [user.role]);
 
@@ -24,6 +28,7 @@ function AppShell({ user, pageTitle, children }: AppShellProps) {
         user={user}
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
+        onLogout={onLogout}
       />
 
       <div className="flex flex-1 flex-col lg:pl-64">
@@ -32,6 +37,7 @@ function AppShell({ user, pageTitle, children }: AppShellProps) {
           onMenuClick={() => setSidebarOpen(true)}
         />
         <main id="main-content" className="flex-1 px-4 py-6 lg:px-6">
+          {notice}
           {children}
         </main>
       </div>
