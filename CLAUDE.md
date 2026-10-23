@@ -95,6 +95,27 @@ Sebelum mengubah apa pun:
 **Git dan dependency**
 - Gunakan npm (lockfile `proyekin/package-lock.json`). Periksa dependency yang sudah ada sebelum menambah; jangan memasang duplikat atau yang tidak dibutuhkan.
 - Dilarang menghapus riwayat Git, force push, mengubah remote, atau perubahan destruktif lain.
+- `package.json` dan `package-lock.json` di root repo milik ECC — jangan dihapus, dipindahkan, atau diubah.
+- `proyekin/AGENTS.md` (auto-generated oleh `next dev`) ditambahkan ke `.gitignore` — jangan di-commit.
+- Peringatan multi-lockfile Turbopack dibiarkan; jangan ubah `turbopack.root` hanya demi menghilangkan warning selama build berhasil.
+
+## 7. Keputusan Pemilik — Hak Akses MVP (2026-10-23)
+
+Keputusan baru yang melengkapi aturan bisnis di spesifikasi:
+
+**A. Penugasan Admin Kantor ke proyek**
+Owner menetapkan Admin Kantor sebagai penanggung jawab proyek. Untuk MVP, satu Admin utama per proyek.
+
+**B. Wewenang Mandor dalam proyek**
+Mandor boleh mengatur penugasan anggota dalam tim/proyek yang ditugaskan kepadanya. Mandor **tidak boleh** mengubah role global, keanggotaan organisasi, atau akses lintas proyek.
+
+**C. Batas Pengaturan Admin Kantor**
+Pengaturan Admin Kantor dibatasi pada preferensi operasional yang relevan. Admin **tidak boleh** mengubah kepemilikan, role global, pengaturan keamanan organisasi, atau konfigurasi sensitif milik Owner.
+
+**D. Guest tanpa App Shell**
+Guest hanya mengakses halaman publik, tanpa sidebar atau navigasi internal. Guest tidak melihat App Shell.
+
+**Catatan:** Navigasi berbasis role di frontend hanya representasi UI menggunakan mock. Ini bukan authorization yang aman — penegakan sesungguhnya ada di server (direncanakan di backend).
 
 ## Prinsip Utama
 

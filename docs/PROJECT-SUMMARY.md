@@ -23,6 +23,11 @@ Terakhir diperbarui: 2026-10-23 (U1 merged ke main)
 | 2026-10-23 | Font utama Geist. |
 | 2026-10-23 | Figma = referensi visual dan fungsional. Business logic, workflow, role, validasi tidak berubah tanpa persetujuan. |
 | 2026-10-23 | Lima role resmi saja: Owner, Admin Kantor, Mandor, Anggota Tim, Guest. |
+| 2026-10-23 | Hak akses MVP: Owner menetapkan Admin per proyek (1 Admin utama per proyek). |
+| 2026-10-23 | Mandor boleh mengatur penugasan anggota dalam tim/proyek-nya; tidak boleh ubah role global/akses lintas proyek. |
+| 2026-10-23 | Pengaturan Admin Kantor terbatas pada preferensi operasional; tidak boleh ubah kepemilikan/role global/keamanan. |
+| 2026-10-23 | Guest tanpa App Shell — hanya akses halaman publik. |
+| 2026-10-23 | `proyekin/AGENTS.md` (auto-generated) di-gitignore. Lockfile root (ECC) dibiarkan. |
 
 ## Matriks scope fitur Figma
 A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjakan sekarang.
