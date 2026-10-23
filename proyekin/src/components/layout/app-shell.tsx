@@ -12,14 +12,16 @@ interface AppShellProps {
   pageTitle?: string;
   /** Aksi keluar; tombol "Keluar" hanya tampil bila diberikan. */
   onLogout?: () => void;
+  /** Sesi belum diketahui (server/hydration): menu dan blok user menjadi placeholder. */
+  pending?: boolean;
   /** Pemberitahuan di atas konten halaman (mis. mode demo). */
   notice?: React.ReactNode;
   children: React.ReactNode;
 }
 
-function AppShell({ user, pageTitle, onLogout, notice, children }: AppShellProps) {
+function AppShell({ user, pageTitle, onLogout, pending, notice, children }: AppShellProps) {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
-  const items = React.useMemo(() => getNavForRole(user.role), [user.role]);
+  const items = React.useMemo(() => (pending ? [] : getNavForRole(user.role)), [pending, user.role]);
 
   return (
     <>
@@ -29,6 +31,7 @@ function AppShell({ user, pageTitle, onLogout, notice, children }: AppShellProps
         open={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
         onLogout={onLogout}
+        pending={pending}
       />
 
       <div className="flex flex-1 flex-col lg:pl-64">

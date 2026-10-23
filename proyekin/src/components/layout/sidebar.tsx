@@ -19,6 +19,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/layout/logo";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import type { NavItem } from "@/lib/navigation";
 import { ROLE_LABELS } from "@/lib/navigation";
 import type { User } from "@/types";
@@ -39,12 +40,20 @@ interface SidebarProps {
   open: boolean;
   onClose: () => void;
   onLogout?: () => void;
+  /** Sesi belum diketahui: placeholder agar menu role yang salah tidak sempat tampil. */
+  pending?: boolean;
 }
 
-function Sidebar({ items, user, open, onClose, onLogout }: SidebarProps) {
+function Sidebar({ items, user, open, onClose, onLogout, pending = false }: SidebarProps) {
   const pathname = usePathname();
 
-  const nav = (
+  const nav = pending ? (
+    <nav aria-label="Navigasi utama" aria-busy="true" className="flex flex-1 flex-col gap-2">
+      {Array.from({ length: 6 }, (_, i) => (
+        <Skeleton key={i} className="h-9 w-full" />
+      ))}
+    </nav>
+  ) : (
     <nav aria-label="Navigasi utama" className="flex flex-1 flex-col">
       <ul role="list" className="flex flex-1 flex-col gap-1">
         {items.map((item) => {
@@ -74,7 +83,14 @@ function Sidebar({ items, user, open, onClose, onLogout }: SidebarProps) {
     </nav>
   );
 
-  const userBlock = (
+  const userBlock = pending ? (
+    <div className="border-t border-border px-3 py-4" aria-busy="true">
+      <div className="flex items-center gap-3">
+        <Skeleton className="size-9 rounded-full" />
+        <Skeleton className="h-9 flex-1" />
+      </div>
+    </div>
+  ) : (
     <div className="border-t border-border px-3 py-4">
       <div className="flex items-center gap-3">
         <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
