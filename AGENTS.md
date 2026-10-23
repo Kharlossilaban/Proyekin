@@ -14,6 +14,11 @@ Produce production-quality work, not generic AI-generated code.
 ## Project Context
 - Primary specification: docs/deep-research-report.md
 - Progress and decisions: docs/PROJECT-SUMMARY.md
+- Brand, UI/UX and owner decisions: CLAUDE.md
+- Scope source of truth: the approved business specification and MVP scope.
+  Figma must not be used to add business modules. Classify Figma-only
+  features before implementation: A (MVP), B (post-MVP roadmap), C (needs
+  owner decision). Do not implement B or C features without approval.
 - Existing source code is the source of truth for implementation.
 - Respect the project's existing technology stack.
 - Never invent requirements missing from the specification.
@@ -31,14 +36,20 @@ Produce production-quality work, not generic AI-generated code.
 9. Update docs/PROJECT-SUMMARY.md after meaningful milestones.
 
 ## UI/UX Excellence
-- Treat the Figma design as the primary visual reference when provided.
+- Treat Figma as a visual and functional reference, not a final design to
+  copy pixel-perfect. Improve layout, navigation, typography, components and
+  responsiveness whenever the result is more professional and easier to use.
 - Use the installed UI UX Pro Max skill when relevant.
-- Preserve the product's design identity.
+- Follow the Brand Color System and typography (Geist) defined in CLAUDE.md
+  as the visual identity. Light mode only for now; dark mode is deferred.
 - Aim for modern, premium, clean, cohesive interfaces.
 - Establish consistent colors, typography, spacing and components.
 - Implement responsive layouts and accessible interactions.
 - Avoid generic AI dashboard aesthetics.
-- Do not redesign approved interfaces without permission.
+- Major UI changes require an implementation plan approved by the owner first.
+- Business logic, approved workflows, roles/permissions, validation and
+  transaction rules must not change without owner approval.
+- UI built on mock data must never be described as production-ready.
 
 ## Engineering Standards
 - Prefer simple, maintainable solutions.

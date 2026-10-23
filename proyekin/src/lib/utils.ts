@@ -1,6 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { COLORS, RADIUS, SPACING, SHADOW } from "./tokens";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -34,10 +33,6 @@ export function formatDateTime(idDate: string): string {
     hour: "2-digit",
     minute: "2-digit",
   }).format(date);
-}
-
-export function cnColor(color: string, shade: number = 600): string {
-  return COLORS.green[shade as keyof typeof COLORS.green];
 }
 
 export function truncate(str: string, len: number): string {

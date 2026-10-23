@@ -1,7 +1,9 @@
+> **Salinan lama.** Dokumen spesifikasi RESMI berada di `docs/deep-research-report.md`. Salinan di root dipertahankan sementara (menunggu persetujuan pemilik untuk dihapus); jangan diedit, edit hanya versi `docs/`. Riwayat keputusan di bawah tetap utuh.
+
 # Rencana Riset Mendalam Proyekin
 
 ## Desain UI dan Modul
-Proyekin sudah memiliki *wireframe* dan prototipe desain di Figma untuk modul-modul utama (Manajemen Proyek, Manajemen Tugas, Jadwal/Gantt, Laporan Harian, Dokumen, Dashboard, Anggota, Pengaturan). Tema utama aplikasi adalah hijau dengan antarmuka berbahasa Indonesia. Contoh data proyek awal adalah `PRJ-001 – Renovasi Gedung Kantor Batam`. Desain desktop fokus untuk Owner/Admin, sedangkan untuk Mandor difokuskan pada antarmuka mobile. (Note: modul *tender* dinyatakan tidak masuk MVP; kerja sama vendor diluar Proyekin.) Informasi detail desain akan dikumpulkan untuk memastikan implementasi sesuai spesifikasi visual.
+Proyekin sudah memiliki *wireframe* dan prototipe desain di Figma untuk modul-modul utama (Manajemen Proyek, Manajemen Tugas, Jadwal/Gantt, Laporan Harian, Dokumen, Dashboard, Anggota, Pengaturan). Tema utama aplikasi adalah ~~hijau~~ **[DIGANTI 2026-10-23: identitas resmi kini Orange `#E68D1F` + Charcoal `#293036`, lihat `CLAUDE.md`; hijau hanya untuk warna semantic/success]** dengan antarmuka berbahasa Indonesia. Contoh data proyek awal adalah `PRJ-001 – Renovasi Gedung Kantor Batam`. Desain desktop fokus untuk Owner/Admin, sedangkan untuk Mandor difokuskan pada antarmuka mobile. (Note: modul *tender* dinyatakan tidak masuk MVP; kerja sama vendor diluar Proyekin.) Informasi detail desain akan dikumpulkan untuk memastikan implementasi sesuai spesifikasi visual.
 
 ## Arsitektur & Teknologi (Keputusan Teknis)
 **Frontend:** Next.js (React) dengan TypeScript. Next.js adalah kerangka kerja React populer yang digunakan perusahaan besar untuk membangun aplikasi web berkinerja tinggi. Kelebihan Next.js antara lain *server-side rendering* (SSR) dan *static generation*. Next.js juga mendukung Tailwind CSS untuk styling langsung.  
@@ -40,7 +42,7 @@ Peran pengguna yang sudah ditentukan dan hak aksesnya (harus diimplementasikan s
 Hak akses harus di-check per modul. Contoh: hanya Owner/Admin yang bisa membuat proyek, Mandor/Anggota hanya mengupdate laporan/tugas, dll. Skema RBAC (Role-Based Access Control) direkomendasikan.  
 
 ## Keputusan yang Sudah Disepakati
-- **Bahasa dan UI:** Seluruh aplikasi dalam Bahasa Indonesia, tema hijau Proyekin (logo & palet warna).  
+- **Bahasa dan UI:** Seluruh aplikasi dalam Bahasa Indonesia, ~~tema hijau Proyekin~~ **[DIGANTI 2026-10-23: tema Orange + Charcoal Proyekin, lihat `CLAUDE.md`]** (logo & palet warna).  
 - **Contoh Data:** Proyek contoh `PRJ-001 (Renovasi Gedung Kantor Batam)` sebagai referensi.  
 - **Modul Utama:** Semua modul di daftar MVP di atas telah didesain; tidak ada modul tender/vendor di MVP.  
 - **Platform:** SaaS berbasis web; UI Owner/Admin didesain untuk desktop (resolusi lebar), UI Mandor untuk mobile.  
@@ -78,7 +80,7 @@ Agar Claude (atau coding agent lainnya) memahami konteks Proyekin, berikan instr
   > *“Mintalah GPT (atau reviewer manusia) memeriksa kode yang baru dibuat untuk memastikan kualitas.”*  
   Misalnya: *“GPT, tolong review kode modul dashboard ini dan cek kesesuaian dengan spesifikasi Proyekin.”*  
 
-- **Detail yang Diperlukan:** Claude tidak bisa membaca Figma; berikan deskripsi fitur dengan jelas (warna tema, layout, nama field). Sebutkan bahwa UI harus serupa desain Figma yang ada. Contoh warna hijau #009543, dsb., jika perlu.  
+- **Detail yang Diperlukan:** Claude tidak bisa membaca Figma; berikan deskripsi fitur dengan jelas (warna tema, layout, nama field). ~~Sebutkan bahwa UI harus serupa desain Figma yang ada. Contoh warna hijau #009543, dsb., jika perlu.~~ **[DIPERBARUI 2026-10-23: Figma adalah referensi visual dan fungsional, bukan desain final yang ditiru pixel-perfect. Warna mengikuti Brand Color System di `CLAUDE.md`; `#009543` hanya catatan historis.]**  
 
 ### Instruksi Umum
 - Jangan tambahkan fitur di luar scope yang sudah ditentukan.  
@@ -95,3 +97,18 @@ Dengan panduan di atas, tim (atau asisten AI seperti Claude) dapat mulai impleme
 - NextAuth.js for Next.js authentication  
 - Tutorial file storage Next.js + S3  
 - PostgreSQL overview.
+
+---
+
+## Catatan Keputusan Pemilik (2026-10-23)
+
+Bagian ini menambah, bukan menghapus, keputusan di atas. Bila ada pertentangan dengan teks sebelumnya, bagian ini yang berlaku.
+
+- **Warna brand:** Orange `#E68D1F` + Charcoal `#293036` menggantikan tema hijau. Detail dan aturan kontras ada di `CLAUDE.md`. Hijau hanya boleh sebagai warna semantic (success).
+- **Tipografi:** Geist sebagai font utama. Dark mode ditunda; fokus light mode.
+- **Figma:** referensi visual dan fungsional, bukan desain final. Business rules dan scope MVP di dokumen ini tetap menjadi acuan utama.
+- **Scope fitur Figma di luar daftar MVP** (klasifikasi A/B/C; tidak ada yang boleh diimplementasikan tanpa persetujuan):
+  - A (MVP): Dashboard, auth/reset password, penugasan tugas, laporan harian, dokumen (upload/download, repositori), landing publik. Kanban hanya boleh sebagai alternatif visualisasi tugas yang sudah ada.
+  - B (pasca-MVP): Manajemen Vendor, Vendor Invitation, Contractor Login.
+  - C (butuh keputusan pemilik): WBS, multi-company, versioning/arsip/pengaturan publikasi dokumen, undangan pengguna (MVP mengikuti mekanisme penambahan pengguna di spesifikasi ini), verifikasi email (detail harus diajukan dulu), halaman Tentang Kami dan Kontak (kandidat landing), role di luar lima role resmi, model harga (`MOCK_PRICING`), notifikasi.
+- **Role resmi hanya lima:** Owner, Admin Kantor, Mandor, Anggota Tim, Guest.

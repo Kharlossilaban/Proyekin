@@ -1,52 +1,59 @@
+/**
+ * Referensi design token PROYEKIN.
+ * Nilai warna TIDAK didefinisikan di sini; sumber tunggalnya adalah
+ * `src/app/globals.css` (blok `@theme`). File ini hanya memberi akses bertipe
+ * ke token tersebut (mis. untuk chart atau style inline) dan skala tipografi.
+ */
+
+const cssVar = (name: string) => `var(--color-${name})` as const;
+
+const BRAND_SHADES = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900] as const;
+type BrandShade = (typeof BRAND_SHADES)[number];
+
 export const COLORS = {
-  green: {
-    50: "#f0f9f4",
-    100: "#dcedd4",
-    200: "#badec1",
-    300: "#89c9a8",
-    400: "#5bb28b",
-    500: "#30956e",
-    600: "#257a5a",
-    700: "#1d6248",
-    800: "#19513c",
-    900: "#123d2d",
-    950: "#0a261a",
-  },
-  neutral: {
-    50: "#fafafa",
-    100: "#f4f4f5",
-    200: "#e4e4e7",
-    300: "#d4d4d8",
-    400: "#a1a1aa",
-    500: "#71717a",
-    600: "#52525b",
-    700: "#3f3f46",
-    800: "#27272a",
-    900: "#18181b",
-  },
+  brand: Object.fromEntries(
+    BRAND_SHADES.map((shade) => [shade, cssVar(`brand-${shade}`)]),
+  ) as Record<BrandShade, string>,
+  charcoal: cssVar("charcoal"),
+  graphite: cssVar("graphite"),
+  canvas: cssVar("canvas"),
+  highlight: cssVar("highlight"),
+  surface: cssVar("surface"),
+  muted: cssVar("muted"),
+  line: cssVar("line"),
+  lineStrong: cssVar("line-strong"),
+  primary: cssVar("primary"),
+  primaryForeground: cssVar("primary-foreground"),
+  brandText: cssVar("brand-text"),
   semantic: {
-    success: "#15803d",
-    warning: "#b45309",
-    error: "#b91c1c",
-    info: "#155e75",
-    surface: "#ffffff",
-    surfaceSecondary: "#f4f4f5",
-    border: "#e4e4e7",
-    text: "#18181b",
-    textSecondary: "#52525b",
-    textMuted: "#71717a",
-    divider: "#e4e4e7",
+    success: cssVar("success"),
+    successSoft: cssVar("success-soft"),
+    warning: cssVar("warning"),
+    warningSoft: cssVar("warning-soft"),
+    danger: cssVar("danger"),
+    dangerSoft: cssVar("danger-soft"),
+    info: cssVar("info"),
+    infoSoft: cssVar("info-soft"),
   },
 } as const;
 
+/**
+ * Skala tipografi (font utama: Geist, diatur di layout.tsx dan globals.css).
+ * Berupa kelas Tailwind agar konsisten antar halaman dan komponen.
+ */
 export const TYPOGRAPHY = {
-  fontSans: "var(--font-inter), system-ui, sans-serif",
-  h1: "text-3xl font-bold tracking-tight text-gray-900",
-  h2: "text-2xl font-semibold tracking-tight text-gray-900",
-  h3: "text-xl font-semibold tracking-tight text-gray-900",
-  body: "text-base text-gray-700",
-  bodySm: "text-sm text-gray-600",
-  bodyXs: "text-xs text-gray-500",
+  display: "text-4xl font-semibold tracking-tight text-charcoal sm:text-5xl",
+  h1: "text-3xl font-semibold tracking-tight text-charcoal",
+  h2: "text-2xl font-semibold tracking-tight text-charcoal",
+  h3: "text-xl font-semibold text-charcoal",
+  h4: "text-base font-semibold text-charcoal",
+  body: "text-base leading-7 text-graphite",
+  bodySm: "text-sm leading-6 text-graphite",
+  label: "text-sm font-medium text-charcoal",
+  caption: "text-xs leading-5 text-muted",
+  overline: "text-xs font-semibold uppercase tracking-wide text-muted",
+  link: "font-medium text-brand-text underline-offset-4 hover:underline",
+  numeric: "font-mono tabular-nums",
 } as const;
 
 export const SPACING = {

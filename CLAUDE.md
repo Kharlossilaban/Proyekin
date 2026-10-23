@@ -5,7 +5,7 @@ Komunikasi dengan user dalam Bahasa Indonesia. UI aplikasi dalam Bahasa Indonesi
 
 ## 1. Status Desain Figma
 
-Desain Figma adalah **REFERENSI VISUAL, bukan desain final** yang wajib diikuti 100%. Jangan menyalin pixel-perfect.
+Desain Figma adalah **REFERENSI VISUAL DAN FUNGSIONAL, bukan desain final** yang wajib diikuti 100%. Jangan menyalin pixel-perfect. Perubahan UI besar tetap diajukan lewat rencana implementasi sebelum dikerjakan.
 
 Boleh diubah (hanya aspek presentasi dan pengalaman visual):
 - Layout dan komposisi halaman.
@@ -71,6 +71,36 @@ Sebelum mengubah apa pun:
 
 **Tampilkan rencana perubahan UI/UX terlebih dahulu** (file yang dimodifikasi + potensi dampak) dan **tunggu persetujuan user sebelum mengubah kode.**
 
+## 6. Keputusan Pemilik (2026-10-23)
+
+**Warna dan tema**
+- Orange + Charcoal adalah identitas resmi dan **menggantikan** tema hijau lama. Hijau hanya boleh sebagai warna semantic (success).
+- Skala Orange 50–900 diturunkan dari `#E68D1F` (500). Teks dan elemen interaktif oranye memakai varian tua (700/800) karena `#E68D1F` sendiri hanya 2,3–2,6:1 di atas putih. Nilai dan rasio kontras tercatat di `src/app/globals.css` dan diverifikasi dengan `npm run check:contrast`.
+- Hanya **light mode**. Dark mode ditunda.
+- Warna hanya didefinisikan di design tokens (`globals.css`); `src/lib/tokens.ts` hanya merujuk token tersebut. Dilarang hardcode hex di komponen.
+
+**Tipografi:** Geist sebagai font utama (Geist Mono untuk kode/angka tabular). Gunakan skala tipografi di `src/lib/tokens.ts` (heading, body, label, caption, UI).
+
+**Scope fitur dari Figma** (klasifikasi A = MVP, B = pasca-MVP, C = butuh keputusan; rincian di `docs/PROJECT-SUMMARY.md`)
+- Kanban hanya boleh sebagai alternatif visualisasi tugas yang ada; jika butuh perubahan workflow, minta persetujuan.
+- WBS, multi-company, document versioning/archive/restore/publication settings, dan undangan pengguna: **C**. Untuk MVP ikuti mekanisme penambahan pengguna di spesifikasi resmi.
+- Verifikasi email: dipertimbangkan sebagai keamanan auth, tetapi detail dan scope harus diajukan dulu.
+- Vendor: **B** (pasca-MVP). Tetap dipertahankan di perencanaan jangka panjang, jangan diimplementasikan sekarang.
+- `MOCK_PRICING` belum disetujui sebagai model bisnis.
+- Role hanya lima: Owner, Admin Kantor, Mandor, Anggota Tim, Guest. Dilarang menambah role (mis. Project Manager) tanpa persetujuan.
+- Jangan menghapus mock data berisi konsep di luar scope sebelum dievaluasi.
+- Halaman Tentang Kami dan Kontak adalah kandidat landing publik; urutan implementasi mengikuti prioritas MVP.
+- UI yang memakai mock data tidak boleh dinyatakan production-ready.
+
+**Git dan dependency**
+- Gunakan npm (lockfile `proyekin/package-lock.json`). Periksa dependency yang sudah ada sebelum menambah; jangan memasang duplikat atau yang tidak dibutuhkan.
+- Dilarang menghapus riwayat Git, force push, mengubah remote, atau perubahan destruktif lain.
+
 ## Prinsip Utama
 
-Figma adalah referensi visual, bukan batasan kreativitas. Business logic dan aturan bisnis adalah batasan utama yang tidak boleh dilanggar tanpa persetujuan user.
+- Figma memberikan inspirasi desain.
+- Brand Guidelines menentukan identitas visual.
+- Business Rules menentukan cara aplikasi bekerja.
+- Scope MVP menentukan fitur yang boleh dikerjakan sekarang.
+
+Figma adalah referensi, bukan batasan kreativitas. Business logic dan aturan bisnis adalah batasan utama yang tidak boleh dilanggar tanpa persetujuan user.
