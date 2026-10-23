@@ -1,32 +1,38 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
+/**
+ * Aset logo sementara (JPEG berisi simbol + tulisan "Proyekin").
+ * Untuk mengganti ke SVG/PNG transparan, ubah LOGO_ASSET saja; layout tidak berubah
+ * selama rasio lebar:tinggi diperbarui di `ratio`.
+ */
+const LOGO_ASSET = {
+  src: "/logo-proyekin.jpeg",
+  width: 1540,
+  height: 672,
+} as const;
+
+/** Tinggi tampilan (px). Lebar mengikuti rasio aset. */
+const HEIGHTS = { sm: 32, md: 40, lg: 56 } as const;
+
 interface LogoProps {
-  size?: "sm" | "md" | "lg";
+  size?: keyof typeof HEIGHTS;
   className?: string;
-  showText?: boolean;
 }
 
-const SIZES = { sm: 28, md: 36, lg: 48 } as const;
-
-function Logo({ size = "md", className, showText = true }: LogoProps) {
-  const px = SIZES[size];
+function Logo({ size = "md", className }: LogoProps) {
+  const height = HEIGHTS[size];
+  const width = Math.round((height * LOGO_ASSET.width) / LOGO_ASSET.height);
   return (
-    <span className={cn("inline-flex shrink-0 items-center gap-2", className)}>
-      <Image
-        src="/logo-proyekin.jpeg"
-        alt=""
-        width={px}
-        height={px}
-        className="rounded-md"
-        priority
-      />
-      {showText ? (
-        <span className="text-lg font-semibold tracking-tight text-charcoal">
-          Proyekin
-        </span>
-      ) : null}
-    </span>
+    <Image
+      src={LOGO_ASSET.src}
+      alt="Proyekin"
+      width={width}
+      height={height}
+      className={cn("h-auto max-w-full shrink-0 object-contain", className)}
+      style={{ height, width: "auto" }}
+      priority
+    />
   );
 }
 

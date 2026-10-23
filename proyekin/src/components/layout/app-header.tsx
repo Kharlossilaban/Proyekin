@@ -26,7 +26,7 @@ function AppHeader({ title, onMenuClick }: AppHeaderProps) {
         <Menu className="size-5" />
       </Button>
       <div className="lg:hidden">
-        <Logo size="sm" showText={false} />
+        <Logo size="sm" />
       </div>
       {title ? (
         <h1 className="text-lg font-semibold text-charcoal">{title}</h1>
