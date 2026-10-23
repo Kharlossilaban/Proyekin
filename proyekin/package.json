@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "check:contrast": "node scripts/check-contrast.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:browser": "node scripts/browser-check.mjs",
+    "check:tokens": "node scripts/check-tokens.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

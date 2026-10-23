@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Plus } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -99,7 +100,7 @@ export function ButtonMatrix() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="overflow-x-auto" tabIndex={0} role="region" aria-label="Matriks state tombol">
+      <div className="relative w-full max-w-full min-w-0 overflow-x-auto" tabIndex={0} role="region" aria-label="Matriks state tombol">
         <table className="w-full min-w-[44rem] text-sm">
           <caption className="sr-only">
             Varian tombol dan state-nya. Hover, active, dan focus disimulasikan.
@@ -157,8 +158,8 @@ export function ButtonMatrix() {
         <Button size="sm">Kecil</Button>
         <Button size="md">Sedang</Button>
         <Button size="lg">Besar</Button>
-        <Button size="icon" variant="outline" aria-label="Contoh tombol ikon">
-          <span aria-hidden="true">+</span>
+        <Button size="icon" variant="outline" aria-label="Tambah">
+          <Plus aria-hidden="true" />
         </Button>
       </div>
 

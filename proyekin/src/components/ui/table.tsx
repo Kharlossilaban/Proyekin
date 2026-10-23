@@ -14,7 +14,7 @@ function Table({ className, label, ...props }: TableProps) {
       aria-label={label}
       tabIndex={0}
       data-slot="table-container"
-      className="w-full overflow-x-auto rounded-lg border border-border bg-card"
+      className="relative w-full overflow-x-auto rounded-lg border border-border bg-card"
     >
       <table
         data-slot="table"

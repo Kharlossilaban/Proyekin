@@ -13,7 +13,7 @@
 /* Nonaktifkan dark variant berbasis preferensi OS selama dark mode ditunda. */
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
+@theme static {
   /* Brand — skala Orange (500 = Primary Orange) */
   --color-brand-50: #fdf7ef;
   --color-brand-100: #fbeddb;
@@ -54,7 +54,7 @@
 }
 
 /* Alias semantik yang dipakai komponen (merujuk ke token di atas). */
-@theme inline {
+@theme static inline {
   --color-background: var(--color-canvas);
   --color-foreground: var(--color-charcoal);
 

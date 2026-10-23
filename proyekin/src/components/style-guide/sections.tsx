@@ -36,12 +36,12 @@ export function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-24 border-t border-border pt-10">
+    <section id={id} aria-labelledby={`${id}-title`} className="min-w-0 scroll-mt-24 border-t border-border pt-10">
       <h2 id={`${id}-title`} className={TYPOGRAPHY.h2}>
         {title}
       </h2>
       {description ? <p className={`${TYPOGRAPHY.body} mt-2 max-w-2xl`}>{description}</p> : null}
-      <div className="mt-6">{children}</div>
+      <div className="mt-6 min-w-0">{children}</div>
     </section>
   );
 }
