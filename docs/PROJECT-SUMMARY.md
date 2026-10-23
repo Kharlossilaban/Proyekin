@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-23 (akhir fase U2, branch `feat/u2-app-shell`)
+Terakhir diperbarui: 2026-10-24 (U2 merged ke main, U3 tahap perencanaan)
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -69,7 +69,7 @@ A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjak
 - Palet default Tailwind dikunci di U2 (22 namespace di-reset ke `initial`).
 - Catatan: pemeriksaan axe otomatis tidak menggantikan uji manual dengan pembaca layar.
 
-## Fase U2 (selesai 2026-10-23, branch `feat/u2-app-shell`)
+## Fase U2 (selesai 2026-10-24, merged ke main)
 - **App Shell:** Sidebar (desktop fixed, mobile drawer), Header (sticky, hamburger), responsif.
 - **Routing:** `src/app/page.tsx` = landing publik di `/`; `src/app/(app)/` = route group dengan layout shell.
 - **Halaman placeholder (mock data):** Dashboard, Proyek, Tugas, Laporan, Dokumen, Anggota, Pengaturan.
@@ -90,8 +90,8 @@ A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjak
 |---|---|
 | U0 | Dokumentasi, Git, toolchain, fondasi design system — **selesai** |
 | U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) — **selesai, merged** |
-| U2 | App shell: sidebar, header, navigasi per role, responsif — **selesai** |
-| U3 | Halaman auth (UI, mock) |
+| U2 | App shell: sidebar, header, navigasi per role, responsif — **selesai, merged** |
+| U3 | Halaman auth (UI, mock) — **tahap perencanaan** |
 | U4 | Dashboard, Proyek, Tugas, Anggota |
 | U5 | Laporan Harian, Dokumen |
 | U6 | Gantt, landing publik |
