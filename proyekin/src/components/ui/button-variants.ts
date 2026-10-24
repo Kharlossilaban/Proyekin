@@ -31,6 +31,8 @@ export const buttonVariants = cva(
         md: "h-10 px-4",
         lg: "h-12 px-6 text-base",
         icon: "size-10",
+        // Alur mobile (Mandor/Anggota Tim): target sentuh minimal 44x44px. Ukuran lain tidak berubah.
+        touch: "min-h-11 min-w-11 px-4 text-base",
       },
     },
     defaultVariants: { variant: "primary", size: "md" },

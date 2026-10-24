@@ -72,6 +72,14 @@ const pairs = [
   ["ring", "surface", U, "focus ring"],
   ["ring", "canvas", U, "focus ring di canvas"],
   ["ring", "primary", U, "focus ring di atas oranye"],
+  // U4-2: komponen bersama baru
+  ["brand-700", "muted", U, "isi ProgressBar di atas trek muted (grafis, 3:1)"],
+  ["brand-700", "surface", U, "indikator tab aktif dan titik radio terpilih di atas surface (3:1)"],
+  ["brand-700", "accent", U, "titik/garis radio terpilih di atas kartu accent (3:1)"],
+  ["foreground", "accent", T, "teks kartu radio terpilih"],
+  ["foreground", "info-soft", T, "teks DemoDataNotice"],
+  ["info", "info-soft", U, "ikon DemoDataNotice (3:1)"],
+  ["danger", "danger-soft", T, "angka/ikon StatCard nada danger"],
 ];
 
 let failed = 0;

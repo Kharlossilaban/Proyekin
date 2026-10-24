@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-25 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: U4-0 dan U4-1 selesai, menunggu audit dan persetujuan U4-2)
+Terakhir diperbarui: 2026-10-25 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: U4-0, U4-1, dan U4-2 selesai, menunggu audit dan persetujuan U4-3)
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -146,6 +146,12 @@ Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pe
 - **G1–G9:** diterapkan fail-closed di `access.ts`; belum ada hak yang diperluas dan belum ada konflik bisnis baru.
 - **Pengujian:** `npm run check:u4-foundation` (182 pemeriksaan: relasi seed, tenggat, store, lima role, matriks izin 7 persona) + seluruh regresi U1–U3 + `check:dynamic-routes` lulus.
 
+**U4-2 — komponen UI bersama: selesai** (detail, props, dan bukti di `docs/u4-evidence/U4-2-COMPONENTS.md` dan `docs/u4-evidence/u4-2/`). Hanya komponen presentasi + demo di `/style-guide`; belum ada halaman bisnis, guard, redirect, atau perubahan navigasi.
+- **Komponen baru:** `Textarea`, `Select` (native), `Tabs` (Base UI), `ProgressBar` (display-only), `ConfirmDialog`, `PageHeader`, `StatCard`, `DemoDataNotice`, `DeadlineBadge`, ditambah pola `RadioCardGroup` dan `TaskCard` (`components/tasks/`). Varian `size="touch"` untuk `Input`, `Select`, `Textarea`, `Button` (tinggi ≥44px, font input 16px); ukuran bawaan tidak berubah.
+- **Platform:** Mandor/Anggota Tim mobile-first (375px); Owner/Admin desktop-first (1280px); Vendor tetap di luar U4.
+- **Pengujian:** `npm run check:u4-components` (62 pemeriksaan, `mobile:true` + emulasi sentuh: keyboard Tabs/radio/Select/ConfirmDialog, target sentuh ≥44px, font ≥16px, kartu satu kolom, tab bergulir di dalam komponen, overflow 375/768/1280, axe 0 termasuk dialog terbuka); `check:contrast` 57/57; `check:u4-foundation` 183; `check:browser` 53/53 + axe 0 (style-guide 0/0/0); `check:dynamic-routes` 7/7 + 21/21. 40 dari 42 screenshot halaman lama identik dengan evidence U3 (dua `tugas-*` berbeda karena seed TSK-005 di U4-1).
+- **Catatan:** popup `<select>` native tidak teruji di headless (cek manual di ponsel nyata sebelum U4-9); kontrol aksi di dalam `TaskCard` ber-`href` harus `relative z-10`; halaman yang memakai `DeadlineBadge` wajib menampilkan `DemoDataNotice showDeadlineReference`.
+
 ## Roadmap UI/UX (disetujui sebagai dasar awal)
 | Fase | Isi |
 |---|---|
@@ -153,7 +159,7 @@ Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pe
 | U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) — **selesai, merged** |
 | U2 | App shell: sidebar, header, navigasi per role, responsif — **selesai, merged** |
 | U3 | Halaman auth (UI, mock) — **selesai, merged** (PASS WITH NOTES; catatan di Technical backlog) |
-| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 dan U4-1 selesai; U4-2 dst. menunggu persetujuan) |
+| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0, U4-1, U4-2 selesai; U4-3 dst. menunggu persetujuan) |
 | U5 | Laporan Harian, Dokumen |
 | U6 | Gantt, landing publik |
 | U7 | Polesan: state kosong/error/loading, aksesibilitas, uji responsif |

@@ -4,28 +4,22 @@ import * as React from "react";
 import { Input as InputPrimitive } from "@base-ui/react/input";
 
 import { cn } from "@/lib/utils";
+import { controlVariants, type ControlSize } from "@/components/ui/control-variants";
 
-type InputProps = InputPrimitive.Props & {
+type InputProps = Omit<InputPrimitive.Props, "size"> & {
   /** Tandai kontrol sebagai tidak valid (aria-invalid + gaya galat). */
   invalid?: boolean;
+  /** `touch`: tinggi minimal 44px, font 16px (alur mobile). Bawaan `default` tidak berubah. */
+  size?: ControlSize;
 };
 
-function Input({ className, invalid, type = "text", ...props }: InputProps) {
+function Input({ className, invalid, size = "default", type = "text", ...props }: InputProps) {
   return (
     <InputPrimitive
       data-slot="input"
       type={type}
       aria-invalid={invalid || undefined}
-      className={cn(
-        "h-10 w-full min-w-0 rounded-md border border-input bg-surface px-3 text-sm text-foreground",
-        "placeholder:text-muted-foreground transition-colors",
-        "hover:border-graphite",
-        "focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-ring",
-        "read-only:bg-canvas",
-        "disabled:cursor-not-allowed disabled:border-border disabled:bg-muted disabled:text-muted-foreground",
-        "aria-invalid:border-destructive aria-invalid:hover:border-destructive-hover",
-        className,
-      )}
+      className={cn(controlVariants({ size }), className)}
       {...props}
     />
   );

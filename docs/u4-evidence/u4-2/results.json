@@ -1,0 +1,592 @@
+{
+  "checks": [
+    {
+      "name": "regresi: Input bawaan (U1) tinggi 40px, font 14px",
+      "ok": true,
+      "detail": "40px / 14px"
+    },
+    {
+      "name": "regresi: Button sm/md/lg/icon tetap 36/40/48/40px",
+      "ok": true,
+      "detail": "{\"Kecil\":{\"h\":36,\"fs\":\"14px\"},\"Sedang\":{\"h\":40,\"fs\":\"14px\"},\"Besar\":{\"h\":48,\"fs\":\"16px\"},\"icon\":{\"h\":40,\"w\":40}}"
+    },
+    {
+      "name": "regresi: font Button sm/md 14px dan lg 16px (tidak berubah)",
+      "ok": true,
+      "detail": "[\"14px\",\"14px\",\"16px\"]"
+    },
+    {
+      "name": "regresi: kontrol default di demo: Input/Select 40px & 14px, Textarea min 80px & 14px, Button 40px",
+      "ok": true,
+      "detail": "{\"input\":{\"fontSize\":\"14px\",\"height\":40,\"width\":536},\"select\":{\"fontSize\":\"14px\",\"height\":40,\"width\":536},\"textarea\":{\"fontSize\":\"14px\",\"height\":80,\"width\":536},\"button\":{\"fontSize\":\"14px\",\"height\":40,\"width\":105.84375}}"
+    },
+    {
+      "name": "touch: Input/Select/Textarea tinggi >= 44px dan font >= 16px",
+      "ok": true,
+      "detail": "[[44,\"16px\"],[44,\"16px\"],[112,\"16px\"]]"
+    },
+    {
+      "name": "touch: Button tinggi >= 44px dan lebar >= 44px",
+      "ok": true,
+      "detail": "135.515625x44"
+    },
+    {
+      "name": "tabs: tab pertama aktif di awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tabs: ArrowRight memindah dan mengaktifkan tab berikutnya",
+      "ok": true,
+      "detail": "Tugas"
+    },
+    {
+      "name": "tabs: End ke tab terakhir",
+      "ok": true,
+      "detail": "Contoh tab keenam"
+    },
+    {
+      "name": "tabs: Home ke tab pertama",
+      "ok": true,
+      "detail": "Ringkasan"
+    },
+    {
+      "name": "tabs: ArrowLeft dari tab pertama berputar ke tab terakhir",
+      "ok": true,
+      "detail": "Contoh tab keenam"
+    },
+    {
+      "name": "tabs: Tab dari daftar tab masuk ke panel",
+      "ok": true,
+      "detail": "{\"tag\":\"div\",\"text\":\"Isi panel \\\"Contoh tab keenam\\\" (contoh).\",\"role\":\"tabpanel\",\"id\":\"base-ui-_R_del5esnelb_\",\"demo\":null,\"inDialog\":false}"
+    },
+    {
+      "name": "radio: awal terpilih 'Dalam Progres'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "radio: ArrowDown memilih opsi berikutnya dan memperbarui hasil",
+      "ok": true,
+      "detail": "Selesai"
+    },
+    {
+      "name": "radio: ArrowUp memilih opsi sebelumnya",
+      "ok": true,
+      "detail": "Belum Dimulai"
+    },
+    {
+      "name": "radio: fieldset + legend + 3 radio native",
+      "ok": true,
+      "detail": "{\"tag\":\"FIELDSET\",\"legend\":\"Status tugas (contoh)\",\"radios\":3}"
+    },
+    {
+      "name": "select: awal 'b'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "select: ArrowDown memilih opsi berikutnya",
+      "ok": true,
+      "detail": "c"
+    },
+    {
+      "name": "select: ArrowUp memilih opsi sebelumnya",
+      "ok": true,
+      "detail": "a"
+    },
+    {
+      "name": "select: terhubung dengan label",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "confirm: Enter pada pemicu membuka dialog; fokus awal di 'Batal' (aksi destruktif)",
+      "ok": true,
+      "detail": "{\"tag\":\"button\",\"text\":\"Batal\",\"role\":null,\"id\":\"\",\"demo\":null,\"inDialog\":true}"
+    },
+    {
+      "name": "confirm: judul dan teks aksi destruktif jelas",
+      "ok": true,
+      "detail": "{\"title\":\"Hapus item contoh?\",\"confirm\":[\"Batal\",\"Ya, hapus item contoh\",\"\"]}"
+    },
+    {
+      "name": "confirm: focus trap — 8x Tab tidak keluar dari dialog",
+      "ok": true,
+      "detail": "Ya, hapus item contoh > button > Batal > Ya, hapus item contoh > button > Batal > Ya, hapus item contoh > button"
+    },
+    {
+      "name": "confirm: focus trap — Shift+Tab tidak keluar dari dialog",
+      "ok": true,
+      "detail": "Ya, hapus item contoh > Batal > button > Ya, hapus item contoh"
+    },
+    {
+      "name": "axe 0 pelanggaran: 1280 dengan ConfirmDialog terbuka",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "confirm: Esc menutup dialog dan fokus kembali ke pemicu",
+      "ok": true,
+      "detail": "{\"tag\":\"button\",\"text\":\"Hapus item contoh\",\"role\":null,\"id\":\"base-ui-_R_3qv55esnelb_\",\"demo\":\"confirm-destructive\",\"inDialog\":false}"
+    },
+    {
+      "name": "confirm: tombol Batal menutup dialog tanpa aksi dan fokus kembali ke pemicu",
+      "ok": true,
+      "detail": "{\"tag\":\"button\",\"text\":\"Hapus item contoh\",\"role\":null,\"id\":\"base-ui-_R_3qv55esnelb_\",\"demo\":\"confirm-destructive\",\"inDialog\":false}"
+    },
+    {
+      "name": "confirm: saat memproses tombol dikunci (aria-busy, Batal nonaktif, tombol X hilang)",
+      "ok": true,
+      "detail": "{\"busy\":\"true\",\"cancelDisabled\":true,\"closeBtn\":false}"
+    },
+    {
+      "name": "confirm: Esc tidak menutup dialog saat memproses",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "confirm: konfirmasi menutup dialog, hasil menyebut simulasi tanpa perubahan data, fokus kembali ke pemicu",
+      "ok": true,
+      "detail": "Penghapusan contoh dikonfirmasi (simulasi). Tidak ada data yang berubah. | {\"tag\":\"button\",\"text\":\"Hapus item contoh\",\"role\":null,\"id\":\"base-ui-_R_3qv55esnelb_\",\"demo\":\"confirm-destructive\",\"inDialog\":false}"
+    },
+    {
+      "name": "confirm: varian non-destruktif memakai tombol utama (bukan merah) dan fokus di dalam dialog",
+      "ok": true,
+      "detail": "{\"inDialog\":true,\"primaryClass\":true}"
+    },
+    {
+      "name": "axe 0 pelanggaran: 1280 halaman style-guide",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "overflow halaman: 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: 768 halaman style-guide",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile: emulasi sentuh aktif (maxTouchPoints > 0)",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "mobile: lebar viewport 375px",
+      "ok": true,
+      "detail": "375"
+    },
+    {
+      "name": "overflow halaman: 375 (mobile)",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: 375 mobile halaman style-guide",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "target sentuh >= 44x44px di #kontrol-sentuh [data-demo=\"touch\"] (5 kontrol)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "target sentuh >= 44x44px di #tabs (6 kontrol)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "target sentuh >= 44x44px di #konfirmasi (2 kontrol)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "target sentuh >= 44x44px di #pola-mobile (6 kontrol)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile: font input/select/textarea touch >= 16px",
+      "ok": true,
+      "detail": "[{\"id\":\"tc-t-input\",\"fs\":16},{\"id\":\"tc-t-select\",\"fs\":16},{\"id\":\"tc-t-textarea\",\"fs\":16}]"
+    },
+    {
+      "name": "mobile: jarak antar pilihan radio >= 8px",
+      "ok": true,
+      "detail": "[8,8]"
+    },
+    {
+      "name": "mobile: jarak antar tombol touch >= 8px",
+      "ok": true,
+      "detail": "8px"
+    },
+    {
+      "name": "mobile: tidak ada kontrol penting yang bergantung pada hover (group/peer-hover)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile: 3 kartu tugas satu kolom (kiri dan lebar sama, bertumpuk ke bawah, tidak melebihi viewport)",
+      "ok": true,
+      "detail": "[{\"l\":16,\"w\":343,\"t\":11668},{\"l\":16,\"w\":343,\"t\":11906},{\"l\":16,\"w\":343,\"t\":12164}]"
+    },
+    {
+      "name": "mobile: kartu memuat status, prioritas, tenggat (acuan demo), dan progres",
+      "ok": true,
+      "detail": "{\"badges\":3,\"progress\":true,\"deadline\":\"Terlambat · 28 Feb 2026\"}"
+    },
+    {
+      "name": "mobile: daftar tab lebih lebar dari kotaknya (bergulir di dalam komponen)",
+      "ok": true,
+      "detail": "{\"scrollWidth\":725,\"clientWidth\":343}"
+    },
+    {
+      "name": "mobile: ketuk tab terakhir mengaktifkannya; halaman tidak bergeser/overflow",
+      "ok": true,
+      "detail": "{\"selected\":\"Contoh tab keenam\",\"pageScrollX\":0,\"docOverflow\":false,\"tabsScroll\":382}"
+    },
+    {
+      "name": "mobile: ketuk kartu radio 'Selesai' memilihnya (sentuhan)",
+      "ok": true,
+      "detail": "{\"checked\":\"Selesai\",\"out\":\"Status terpilih (contoh): Selesai. Tidak ada data yang disimpan.\"}"
+    },
+    {
+      "name": "mobile: ketuk kartu radio 'Belum Dimulai' memilihnya",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile: ketuk Input touch memfokuskannya",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile: teks dapat diketik ke Input touch",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile: ketuk Select touch memfokuskannya",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile: dialog di dalam viewport; tombol menumpuk, lebar penuh, tinggi >= 44px",
+      "ok": true,
+      "detail": "{\"left\":16,\"right\":359,\"vw\":375,\"bs\":[{\"t\":\"Batal\",\"w\":293,\"h\":44,\"l\":41},{\"t\":\"Ya, hapus item contoh\",\"w\":293,\"h\":44,\"l\":41}]}"
+    },
+    {
+      "name": "axe 0 pelanggaran: 375 mobile dengan ConfirmDialog terbuka",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "mobile: ketuk 'Batal' menutup dialog tanpa menjalankan aksi (teks hasil tidak berubah)",
+      "ok": true,
+      "detail": "\"Belum ada aksi.\" → \"Belum ada aksi.\""
+    },
+    {
+      "name": "mobile: setelah ketuk 'Batal' fokus kembali ke pemicu",
+      "ok": true,
+      "detail": "{\"tag\":\"button\",\"text\":\"Hapus item contoh\",\"role\":null,\"id\":\"base-ui-_R_3qv55esnelb_\",\"demo\":\"confirm-destructive\",\"inDialog\":false}"
+    },
+    {
+      "name": "mobile: ketuk konfirmasi menutup dialog dan menampilkan hasil simulasi",
+      "ok": true,
+      "detail": "Penghapusan contoh dikonfirmasi (simulasi). Tidak ada data yang berubah."
+    },
+    {
+      "name": "overflow halaman: 375 (mobile) setelah semua interaksi",
+      "ok": true,
+      "detail": "375 <= 375"
+    }
+  ],
+  "measurements": {
+    "defaultSizes": {
+      "input": {
+        "fontSize": "14px",
+        "height": 40,
+        "width": 540
+      },
+      "btn": {
+        "Kecil": {
+          "h": 36,
+          "fs": "14px"
+        },
+        "Sedang": {
+          "h": 40,
+          "fs": "14px"
+        },
+        "Besar": {
+          "h": 48,
+          "fs": "16px"
+        },
+        "icon": {
+          "h": 40,
+          "w": 40
+        }
+      },
+      "d": {
+        "input": {
+          "fontSize": "14px",
+          "height": 40,
+          "width": 536
+        },
+        "select": {
+          "fontSize": "14px",
+          "height": 40,
+          "width": 536
+        },
+        "textarea": {
+          "fontSize": "14px",
+          "height": 80,
+          "width": 536
+        },
+        "button": {
+          "fontSize": "14px",
+          "height": 40,
+          "width": 105.84375
+        }
+      }
+    },
+    "touchSizes": {
+      "input": {
+        "fontSize": "16px",
+        "height": 44,
+        "width": 536
+      },
+      "select": {
+        "fontSize": "16px",
+        "height": 44,
+        "width": 536
+      },
+      "textarea": {
+        "fontSize": "16px",
+        "height": 112,
+        "width": 536
+      },
+      "button": {
+        "fontSize": "16px",
+        "height": 44,
+        "width": 135.515625
+      }
+    },
+    "axe 1280 dengan ConfirmDialog terbuka": [],
+    "axe 1280 halaman style-guide": [],
+    "axe 768 halaman style-guide": [],
+    "axe 375 mobile halaman style-guide": [],
+    "touchTargets": {
+      "#kontrol-sentuh [data-demo=\"touch\"]": [
+        {
+          "tag": "input:text",
+          "name": "tc-t-input",
+          "viaCard": false,
+          "w": 343,
+          "h": 44
+        },
+        {
+          "tag": "select:select-one",
+          "name": "Pilihan APilihan BPilihan C",
+          "viaCard": false,
+          "w": 343,
+          "h": 44
+        },
+        {
+          "tag": "textarea:textarea",
+          "name": "tc-t-textarea",
+          "viaCard": false,
+          "w": 343,
+          "h": 112
+        },
+        {
+          "tag": "button:button",
+          "name": "Tombol touch",
+          "viaCard": false,
+          "w": 135.5,
+          "h": 44
+        },
+        {
+          "tag": "button:button",
+          "name": "Sekunder",
+          "viaCard": false,
+          "w": 106.7,
+          "h": 44
+        }
+      ],
+      "#tabs": [
+        {
+          "tag": "button:button",
+          "name": "Ringkasan",
+          "viaCard": false,
+          "w": 101,
+          "h": 44
+        },
+        {
+          "tag": "button:button",
+          "name": "Tugas",
+          "viaCard": false,
+          "w": 71,
+          "h": 44
+        },
+        {
+          "tag": "button:button",
+          "name": "Tim",
+          "viaCard": false,
+          "w": 55.7,
+          "h": 44
+        },
+        {
+          "tag": "button:button",
+          "name": "Contoh tab keempat",
+          "viaCard": false,
+          "w": 165.5,
+          "h": 44
+        },
+        {
+          "tag": "button:button",
+          "name": "Contoh tab kelima",
+          "viaCard": false,
+          "w": 151.7,
+          "h": 44
+        },
+        {
+          "tag": "button:button",
+          "name": "Contoh tab keenam",
+          "viaCard": false,
+          "w": 160.3,
+          "h": 44
+        }
+      ],
+      "#konfirmasi": [
+        {
+          "tag": "button:button",
+          "name": "Hapus item contoh",
+          "viaCard": false,
+          "w": 174.5,
+          "h": 44
+        },
+        {
+          "tag": "button:button",
+          "name": "Kirim contoh",
+          "viaCard": false,
+          "w": 128.6,
+          "h": 44
+        }
+      ],
+      "#pola-mobile": [
+        {
+          "tag": "input:radio",
+          "name": "",
+          "viaCard": false,
+          "w": 341,
+          "h": 46
+        },
+        {
+          "tag": "input:radio",
+          "name": "",
+          "viaCard": false,
+          "w": 341,
+          "h": 46
+        },
+        {
+          "tag": "input:radio",
+          "name": "",
+          "viaCard": false,
+          "w": 341,
+          "h": 46
+        },
+        {
+          "tag": "a",
+          "name": "Pengecekan sistem kelistrikan lama",
+          "viaCard": true,
+          "w": 343,
+          "h": 226
+        },
+        {
+          "tag": "a",
+          "name": "Pemesanan baja WF untuk struktur",
+          "viaCard": true,
+          "w": 343,
+          "h": 246
+        },
+        {
+          "tag": "a",
+          "name": "Pemasangan keramik lobby",
+          "viaCard": true,
+          "w": 343,
+          "h": 226
+        }
+      ]
+    },
+    "touchFonts": [
+      {
+        "id": "tc-t-input",
+        "fs": 16
+      },
+      {
+        "id": "tc-t-select",
+        "fs": 16
+      },
+      {
+        "id": "tc-t-textarea",
+        "fs": 16
+      }
+    ],
+    "taskCards": [
+      {
+        "l": 16,
+        "w": 343,
+        "t": 11668
+      },
+      {
+        "l": 16,
+        "w": 343,
+        "t": 11906
+      },
+      {
+        "l": 16,
+        "w": 343,
+        "t": 12164
+      }
+    ],
+    "dialogMobile": {
+      "left": 16,
+      "right": 359,
+      "vw": 375,
+      "bs": [
+        {
+          "t": "Batal",
+          "w": 293,
+          "h": 44,
+          "l": 41
+        },
+        {
+          "t": "Ya, hapus item contoh",
+          "w": 293,
+          "h": 44,
+          "l": 41
+        }
+      ]
+    },
+    "axe 375 mobile dengan ConfirmDialog terbuka": [],
+    "focusAfterTouchCancel": {
+      "tag": "button",
+      "text": "Hapus item contoh",
+      "role": null,
+      "id": "base-ui-_R_3qv55esnelb_",
+      "demo": "confirm-destructive",
+      "inDialog": false
+    }
+  },
+  "failures": []
+}

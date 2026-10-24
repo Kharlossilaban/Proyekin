@@ -117,6 +117,7 @@ try {
 } finally {
   globalThis.Date = RealDate;
 }
+eq("demo: formatDemoDate (UTC, deterministik) dan tanggal tidak valid → null", [demo.formatDemoDate("2026-02-28"), demo.formatDemoDate("2026-03-21T23:30:00-08:00"), demo.formatDemoDate("besok"), demo.formatDemoDate(undefined)], ["28 Feb 2026", "21 Mar 2026", null, null]);
 check("demo: sumber tidak memakai jam/tanggal sistem", !/Date\.now\(|new Date\(\s*\)/.test(readFileSync(join(SRC, "lib/demo-date.ts"), "utf8")));
 const onOrBefore = (d) => d.slice(0, 10) <= demo.DEMO_REFERENCE_DATE;
 check("demo: aktivitas seed (laporan, tanggal mulai tugas, unggahan dokumen) tidak melewati tanggal acuan",

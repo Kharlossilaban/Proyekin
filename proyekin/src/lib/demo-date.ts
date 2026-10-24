@@ -31,6 +31,15 @@ export function toDateOnly(value: string | undefined): string | null {
   return value.slice(0, 10);
 }
 
+/** "28 Feb 2026" — diformat di UTC (sama di server dan klien); null bila format tidak valid. Hanya tampilan. */
+export function formatDemoDate(value: string | undefined): string | null {
+  const date = toDateOnly(value);
+  if (!date) return null;
+  return new Intl.DateTimeFormat("id-ID", { timeZone: "UTC", day: "numeric", month: "short", year: "numeric" }).format(
+    new Date(`${date}T00:00:00Z`),
+  );
+}
+
 /**
  * Status tenggat sebuah tugas terhadap tanggal acuan.
  * - Selesai → DONE; tanpa tenggat valid → NONE.

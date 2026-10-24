@@ -15,6 +15,14 @@ import {
   TableSection,
   TypographySection,
 } from "@/components/style-guide/sections";
+import {
+  ConfirmDemo,
+  MobilePatternsDemo,
+  PagePatternsDemo,
+  ProgressDemo,
+  TabsDemo,
+  TouchControlsDemo,
+} from "@/components/style-guide/u4-demos";
 import { Badge } from "@/components/ui/badge";
 import { TYPOGRAPHY } from "@/lib/tokens";
 
@@ -32,6 +40,12 @@ const NAV = [
   ["kartu", "Card"],
   ["tabel", "Tabel"],
   ["dialog", "Dialog"],
+  ["kontrol-sentuh", "Kontrol sentuh"],
+  ["tabs", "Tabs"],
+  ["progres", "Progres"],
+  ["konfirmasi", "Konfirmasi"],
+  ["pola-halaman", "Pola halaman"],
+  ["pola-mobile", "Pola mobile"],
   ["responsif", "Responsif"],
 ] as const;
 
@@ -96,6 +110,28 @@ export default function StyleGuidePage() {
         </Section>
         <Section id="dialog" title="Dialog" description="Focus trap, Esc, fokus kembali ke pemicu, dan state loading.">
           <DialogDemos />
+        </Section>
+        <Section
+          id="kontrol-sentuh"
+          title="Kontrol sentuh (U4-2)"
+          description="Input, Select native, Textarea, dan Tombol dengan ukuran touch: tinggi minimal 44px dan font 16px. Ukuran default tidak berubah."
+        >
+          <TouchControlsDemo />
+        </Section>
+        <Section id="tabs" title="Tabs (U4-2)" description="Panah, Home, dan End berpindah tab. Di layar sempit daftar tab bergulir di dalam komponen, bukan halaman.">
+          <TabsDemo />
+        </Section>
+        <Section id="progres" title="Progress bar (U4-2)">
+          <ProgressDemo />
+        </Section>
+        <Section id="konfirmasi" title="Dialog konfirmasi (U4-2)" description="Fokus awal di Batal untuk aksi destruktif; Esc, Batal, dan fokus kembali ke pemicu. Tidak menghapus data apa pun.">
+          <ConfirmDemo />
+        </Section>
+        <Section id="pola-halaman" title="Pola halaman (U4-2)" description="PageHeader, StatCard, DemoDataNotice, dan DeadlineBadge. Status tenggat memakai tanggal acuan demo.">
+          <PagePatternsDemo />
+        </Section>
+        <Section id="pola-mobile" title="Pola mobile (U4-2)" description="Grup radio status dan kartu tugas satu kolom untuk alur Mandor dan Anggota Tim (acuan 375px). Hanya contoh presentasi.">
+          <MobilePatternsDemo />
         </Section>
         <Section id="responsif" title="Pratinjau responsif">
           <ResponsivePreview />
