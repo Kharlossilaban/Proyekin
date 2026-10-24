@@ -15,11 +15,16 @@ Status: **draf, belum disetujui.** Dasar: stack yang direkomendasikan di `docs/d
 - Seed dari contoh `PRJ-001 – Renovasi Gedung Kantor Batam`.
 
 ## 3. Authentication dan authorization
-- Registrasi, login, reset password via email (spesifikasi).
+- Registrasi publik hanya untuk Owner (keputusan U3-1); Admin Kantor, Mandor, dan Anggota Tim ditambahkan secara internal; Guest tanpa akun. Login dan reset password via email (spesifikasi).
 - Verifikasi email: diajukan sebagai proposal terpisah sebelum implementasi.
 - NextAuth di frontend, Passport JWT di backend; RBAC per modul untuk lima role.
 - Aturan akses (dari spesifikasi): Owner penuh; Admin Kantor mengelola proyek yang ditugaskan; Mandor hanya proyek yang ditugaskan, memperbarui tugas tim, membuat laporan harian, mengunggah foto/dokumen; Anggota melihat dan menandai progres tugasnya; Guest hanya konten publik.
 - Penegakan di sisi server, bukan hanya UI.
+- Kebutuhan dari audit U3 (rincian di `docs/PROJECT-SUMMARY.md`, Technical backlog U3-B1–B4):
+  - Auth + RBAC di setiap endpoint dan route sebelum data dikirim; menu per role, redirect Guest, dan `/akses-ditolak` di frontend U3 hanya representasi UI.
+  - Pemeriksaan sesi di server (middleware/proxy atau layout dinamis) untuk route aplikasi, karena HTML prerender U3 sama untuk semua pengunjung. Guest dialihkan sebelum HTML App Shell dikirim.
+  - Matikan "Mode pengembangan" (akses Owner demo tanpa sesi) di production.
+  - Ganti `proyekin/src/lib/auth-mock.ts` dengan pemanggilan API; ulangi validasi `auth-validation.ts` di backend.
 
 ## 4. Integrasi API (frontend ↔ backend)
 - Klien API bertipe (tipe bersama atau hasil generate dari OpenAPI).

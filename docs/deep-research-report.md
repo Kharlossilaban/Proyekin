@@ -1,4 +1,4 @@
-> **Dokumen resmi.** Ini adalah sumber spesifikasi resmi PROYEKIN (ditetapkan 2026-10-23). Salinan lama di root (`deep-research-report.md`) hanya arsip sementara dan tidak boleh diedit.
+> **Dokumen resmi.** Ini adalah sumber spesifikasi resmi PROYEKIN (ditetapkan 2026-10-23). Ini satu-satunya sumber **kanonis**. Salinan di root (`deep-research-report.md`) hanya cermin yang disinkronkan dari versi ini; jangan diedit langsung. Setiap perubahan dilakukan di sini lalu disalin ke root.
 
 # Rencana Riset Mendalam Proyekin
 
