@@ -88,6 +88,7 @@ Sebelum mengubah apa pun:
 - Vendor: **B** (pasca-MVP). Tetap dipertahankan di perencanaan jangka panjang, jangan diimplementasikan sekarang.
 - `MOCK_PRICING` belum disetujui sebagai model bisnis.
 - Role hanya lima: Owner, Admin Kantor, Mandor, Anggota Tim, Guest. Dilarang menambah role (mis. Project Manager) tanpa persetujuan.
+- **ATURAN MUTLAK:** PROYEKIN TIDAK memiliki role, persona, fitur, atau kategori "Tukang". Jangan menambahkannya di UI, mock data, tipe, dokumentasi, maupun kode. Anggota Tim tidak boleh disamakan dengan Tukang. Lima role resmi tetap: Owner, Admin Kantor, Mandor, Anggota Tim, Guest.
 - Jangan menghapus mock data berisi konsep di luar scope sebelum dievaluasi.
 - Halaman Tentang Kami dan Kontak adalah kandidat landing publik; urutan implementasi mengikuti prioritas MVP.
 - UI yang memakai mock data tidak boleh dinyatakan production-ready.
