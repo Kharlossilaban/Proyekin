@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { Sidebar } from "@/components/layout/sidebar";
 import { AppHeader } from "@/components/layout/app-header";
-import { getNavForRole } from "@/lib/navigation";
+import { getNavForUser } from "@/lib/navigation";
 import type { User } from "@/types";
 
 interface AppShellProps {
@@ -21,7 +21,7 @@ interface AppShellProps {
 
 function AppShell({ user, pageTitle, onLogout, pending, notice, children }: AppShellProps) {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
-  const items = React.useMemo(() => (pending ? [] : getNavForRole(user.role)), [pending, user.role]);
+  const items = React.useMemo(() => (pending ? [] : getNavForUser(user)), [pending, user]);
 
   return (
     <>

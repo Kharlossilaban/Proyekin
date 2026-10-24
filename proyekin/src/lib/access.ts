@@ -91,6 +91,47 @@ export function getHomePath(role: Role): string {
   }
 }
 
+/**
+ * Tujuan setelah login berhasil. Guest tidak punya akun dan tidak masuk App Shell (keputusan D), jadi bila sesi
+ * Guest muncul ia diarahkan ke halaman Akses Ditolak, sama seperti perilaku U3.
+ */
+export function getPostLoginPath(role: Role): string {
+  return role === "GUEST" ? "/akses-ditolak" : getHomePath(role);
+}
+
+// ---------- bagian aplikasi (menu dan URL langsung) ----------
+
+/** Bagian aplikasi yang punya menu dan route tingkat atas. Satu sumber untuk menu dan guard URL. */
+export type AppSection = "dashboard" | "proyek" | "tugas" | "laporan" | "dokumen" | "anggota" | "pengaturan";
+
+/**
+ * Siapa yang boleh membuka bagian aplikasi (dipakai menu DAN guard URL; jangan menyalin aturan ini).
+ * - Dashboard: Owner/Admin (J2). Anggota (pengguna organisasi): Owner/Admin (J4, J5, G2).
+ * - Laporan: Owner/Admin/Mandor dan Pengaturan: Owner/Admin — nilai dipindahkan dari navigasi U2 tanpa perubahan;
+ *   aturan final Laporan dan Pengaturan ditetapkan di tahap/fitur masing-masing.
+ * - Proyek, Tugas, Dokumen: semua role non-Guest, seperti navigasi U2. Lingkup datanya (proyek/tugas mana)
+ *   diatur oleh `canViewProject`/`canViewTask` dan diterapkan bertahap di U4-4, U4-8, dan seterusnya.
+ */
+export function canAccessSection(actor: Actor, section: AppSection): boolean {
+  if (!actor) return false;
+  switch (section) {
+    case "dashboard":
+      return canViewDashboard(actor);
+    case "anggota":
+      return canViewOrgUsers(actor);
+    case "laporan":
+      return actor.role === "OWNER" || actor.role === "ADMIN" || actor.role === "MANDOR";
+    case "pengaturan":
+      return actor.role === "OWNER" || actor.role === "ADMIN";
+    case "proyek":
+    case "tugas":
+    case "dokumen":
+      return actor.role !== "GUEST";
+    default:
+      return false;
+  }
+}
+
 // ---------- proyek ----------
 
 /** Owner: semua. Admin: hanya proyek yang ditugaskan (G8: lainnya tidak terlihat). Mandor/Anggota: proyek tempatnya menjadi anggota. */

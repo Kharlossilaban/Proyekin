@@ -10,6 +10,7 @@ import { StatusMessage } from "@/components/auth/status-message";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
+import { getPostLoginPath } from "@/lib/access";
 import { mockLogin } from "@/lib/auth-mock";
 import { hasErrors, validateEmail, validateRequiredPassword } from "@/lib/auth-validation";
 import { MOCK_USERS } from "@/data/mock";
@@ -45,7 +46,8 @@ function LoginForm() {
     setLoading(true);
     const result = await mockLogin({ email, password });
     if (result.ok) {
-      router.push("/dashboard");
+      // Tujuan per role (J2) berasal dari access.ts: Owner/Admin → /dashboard, Mandor/Anggota Tim → /tugas.
+      router.push(getPostLoginPath(result.user.role));
       return;
     }
     setLoading(false);

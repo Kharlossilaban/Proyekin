@@ -6,6 +6,7 @@
 // bukan dihitung dari access.ts, agar perubahan izin yang tidak disengaja tertangkap.
 import "./lib/register-ts.mjs";
 
+import { execFileSync } from "node:child_process";
 import { readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -218,7 +219,51 @@ for (const who of ["guest", "nobody"]) {
 }
 check("akses: access.ts bertanda BUKAN otorisasi/keamanan", /BUKAN OTORISASI DAN BUKAN KONTROL KEAMANAN/.test(readFileSync(join(SRC, "lib/access.ts"), "utf8")));
 check("akses: access.ts tidak memuat store/React/jaringan (fungsi murni, di luar komentar)", !/from "react"|mock-store|use-mock|fetch\(|sessionStorage|localStorage/.test(codeOf("lib/access.ts")));
-check("akses: U4-1 belum mengaktifkan guard/redirect (access.ts belum diimpor komponen/halaman)", walk(SRC).filter((f) => /\.(ts|tsx)$/.test(f) && !/lib[\\/]access\.ts$/.test(f) && !/lib[\\/]labels\.ts$/.test(f)).every((f) => !/@\/lib\/access/.test(readFileSync(f, "utf8"))));
+// ---------- 6. U4-3: bagian aplikasi (menu + URL), tujuan login, urutan menu, dan satu sumber aturan ----------
+const nav = await load("lib/navigation.ts");
+const labelsOf = (actor) => nav.getNavForUser(actor).map((i) => i.label);
+const ALL_SECTIONS = ["dashboard", "proyek", "tugas", "laporan", "dokumen", "anggota", "pengaturan"];
+const SECTION_MATRIX = {
+  owner: ALL_SECTIONS,
+  admin: ALL_SECTIONS,
+  ahmad: ["proyek", "tugas", "laporan", "dokumen"],
+  eko: ["proyek", "tugas", "laporan", "dokumen"],
+  dewi: ["proyek", "tugas", "dokumen"],
+  guest: [],
+  nobody: [],
+};
+for (const [who, expected] of Object.entries(SECTION_MATRIX)) {
+  eq(`akses: bagian aplikasi yang boleh dibuka — ${who} (J2, J5, G2)`, ALL_SECTIONS.filter((s) => access.canAccessSection(personas[who], s)), expected);
+}
+const FULL_MENU = ["Dashboard", "Proyek", "Tugas", "Laporan", "Dokumen", "Anggota", "Pengaturan"];
+eq("menu: Owner dan Admin — urutan lengkap, Dashboard pertama", [labelsOf(personas.owner), labelsOf(personas.admin)], [FULL_MENU, FULL_MENU]);
+eq("menu: Mandor — Tugas pertama, tanpa Dashboard/Anggota/Pengaturan (J2, G2)", [labelsOf(personas.ahmad), labelsOf(personas.eko)], [["Tugas", "Proyek", "Laporan", "Dokumen"], ["Tugas", "Proyek", "Laporan", "Dokumen"]]);
+eq("menu: Anggota Tim — Tugas pertama, tanpa Dashboard/Anggota/Laporan/Pengaturan (J2, J5)", labelsOf(personas.dewi), ["Tugas", "Proyek", "Dokumen"]);
+eq("menu: Guest dan aktor kosong tidak mendapat menu (tanpa App Shell)", [labelsOf(personas.guest), labelsOf(personas.nobody)], [[], []]);
+check("menu: tidak ada menu Vendor (kategori B)", nav.NAV_ITEMS.every((i) => !/vendor/i.test(`${i.label} ${i.href}`)));
+check("menu: halaman awal tiap role selalu menu pertama", ["owner", "admin", "ahmad", "dewi"].every((w) => nav.getNavForUser(personas[w])[0].href === access.getHomePath(personas[w].role)));
+eq("login: tujuan setelah login per role (J2)", FIVE.map((r) => access.getPostLoginPath(r)), ["/dashboard", "/dashboard", "/tugas", "/tugas", "/akses-ditolak"]);
+eq("route: bagian untuk path", ["/dashboard", "/proyek", "/proyek/p-001", "/tugas/t-002", "/anggota", "/laporan", "/dokumen", "/pengaturan", "/u4-spike", "/dashboardx", "/"].map((p) => nav.getSectionForPath(p)), ["dashboard", "proyek", "proyek", "tugas", "anggota", "laporan", "dokumen", "pengaturan", null, null, null]);
+
+// Satu sumber aturan: tidak ada salinan literal role di komponen/halaman/navigasi (selain berkas sumber dan SessionShell U3 yang tidak diubah).
+const ROLE_LITERAL = /["'](OWNER|ADMIN|MANDOR|ANGGOTA|GUEST)["']/;
+const RULE_SOURCES = /(lib[\\/](access|roles|labels)\.ts|data[\\/]mock\.ts|types[\\/]index\.ts|components[\\/]auth[\\/]session-shell\.tsx)$/;
+const copies = walk(SRC).filter((f) => /\.(ts|tsx)$/.test(f) && !RULE_SOURCES.test(f) && ROLE_LITERAL.test(codeOf(f.slice(SRC.length + 1))));
+eq("aturan: tidak ada salinan literal role di luar berkas sumber (navigasi, guard, halaman, komponen)", copies.map((f) => f.slice(SRC.length)), []);
+const importers = walk(SRC).filter((f) => /\.(ts|tsx)$/.test(f) && !/lib[\\/]access\.ts$/.test(f) && /@\/lib\/access"/.test(readFileSync(f, "utf8"))).map((f) => f.slice(SRC.length + 1).replace(/\\/g, "/")).sort();
+eq("aturan: pemakai access.ts hanya navigasi, guard URL/detail, login, dan label (tipe)", importers, ["components/auth/login-form.tsx", "components/auth/path-guard.tsx", "components/detail/entity-detail-placeholders.tsx", "lib/labels.ts", "lib/navigation.ts"]);
+check("guard: AccessGuard selalu merender children (pola hidden/inert, bukan menahan) dan memuat peringatan keterbatasan", /hidden=\{status !== "allowed"\}/.test(codeOf("components/auth/access-guard.tsx")) && /BUKAN OTORISASI/.test(readFileSync(join(SRC, "components/auth/access-guard.tsx"), "utf8")));
+{
+  // SessionShell tidak boleh berubah sejak commit U3 terakhir yang mengubahnya (d3d9516).
+  let unchanged = false;
+  try {
+    execFileSync("git", ["diff", "--quiet", "d3d9516", "--", "proyekin/src/components/auth/session-shell.tsx"], { cwd: join(ROOT, "..") });
+    unchanged = true;
+  } catch {
+    unchanged = false;
+  }
+  check("guard: SessionShell tidak diubah sejak U3 (git diff terhadap d3d9516 kosong)", unchanged);
+}
 
 console.log(failures.length ? `\n${failures.length} masalah dari ${passed + failures.length} pemeriksaan.` : `\nSemua ${passed} pemeriksaan lolos.`);
 process.exit(failures.length ? 1 : 0);

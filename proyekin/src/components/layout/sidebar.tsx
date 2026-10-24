@@ -148,7 +148,8 @@ function Sidebar({ items, user, open, onClose, onLogout, pending = false }: Side
             onClick={onClose}
             aria-hidden="true"
           />
-          <aside
+          {/* <div>, bukan <aside>: role="dialog" tidak diizinkan pada <aside> (axe aria-allowed-role, terlihat saat drawer terbuka). */}
+          <div
             data-slot="sidebar-mobile"
             role="dialog"
             aria-modal="true"
@@ -170,7 +171,7 @@ function Sidebar({ items, user, open, onClose, onLogout, pending = false }: Side
               {nav}
             </div>
             {userBlock}
-          </aside>
+          </div>
         </div>
       ) : null}
     </>

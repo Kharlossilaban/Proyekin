@@ -1,4 +1,4 @@
-import { TaskProbe } from "@/components/spike/entity-probe";
+import { TaskDetailPlaceholder } from "@/components/detail/entity-detail-placeholders";
 import { MOCK_TASKS } from "@/data/mock";
 
 export const metadata = { title: "Detail Tugas — Proyekin" };
@@ -10,5 +10,5 @@ export function generateStaticParams() {
 
 export default async function TugasDetailPage({ params }: { params: Promise<{ taskId: string }> }) {
   const { taskId } = await params;
-  return <TaskProbe taskId={taskId} />;
+  return <TaskDetailPlaceholder taskId={taskId} />;
 }

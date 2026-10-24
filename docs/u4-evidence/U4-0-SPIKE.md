@@ -75,3 +75,5 @@ npm run check:dynamic-routes -- <folder-bukti>          # build U4_SPIKE=1 + nex
 node scripts/check-dynamic-routes.mjs <folder> --dev    # hanya bagian browser, next dev
 npm run build                                           # setelahnya, agar build lokal tidak memuat halaman uji
 ```
+
+> **Pembaruan U4-3:** varian guard B menjadi AccessGuard/PathGuard (components/auth/); halaman eksperimen /u4-spike/guard-* dan components/spike/route-guard.tsx dihapus; probe dipindah ke components/detail/. Lihat U4-3-ACCESS.md.

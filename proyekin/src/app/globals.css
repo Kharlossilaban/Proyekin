@@ -42,6 +42,19 @@
 /* Nonaktifkan dark variant berbasis preferensi OS selama dark mode ditunda. */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Lapisan z-index (satu sumber). `z-sticky` (header, sidebar desktop) dan `z-modal` (drawer mobile) dipakai komponen
+ * layout sejak U2 tetapi tidak pernah didefinisikan sehingga tidak menghasilkan z-index: konten halaman ber-`relative`
+ * (mis. tabel) bisa menimpa drawer dan header. Ditemukan di U4-3 pada drawer terbuka di /tugas (375px).
+ * Dialog memakai `z-50` yang sama dengan `z-modal`.
+ */
+@utility z-sticky {
+  z-index: 30;
+}
+@utility z-modal {
+  z-index: 50;
+}
+
 @theme static {
   /* Brand — skala Orange (500 = Primary Orange) */
   --color-brand-50: #fdf7ef;

@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-25 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: U4-0, U4-1, dan U4-2 selesai, menunggu audit dan persetujuan U4-3)
+Terakhir diperbarui: 2026-10-25 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: U4-0 sampai U4-3 selesai, menunggu audit dan persetujuan U4-4)
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -136,7 +136,7 @@ Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pe
 - `/proyek/[projectId]` dan `/tugas/[taskId]` berfungsi di bawah `cacheComponents`: ID seed diprerender (`generateStaticParams`), ID yang dibuat saat runtime di memori klien terbuka lewat navigasi klien, ID tidak dikenal menampilkan not-found.
 - Keterbatasan: ID runtime tidak bisa dibuka lewat URL langsung/reload (store memori); status HTTP ID tidak dikenal tidak konsisten (200 lalu 404 cache); not-found dirender di klien.
 - Guard halaman: guard yang menahan `children` meniadakan konten dari HTML prerender (pola d8cd209). Rekomendasi U4-3: guard yang tetap merender `children` dan menyembunyikannya (`hidden` + `inert`). Bukan kontrol keamanan.
-- Artefak spike (halaman `/u4-spike*`, `components/spike/*`, `lib/u4-spike-gate.ts`) bersifat sementara dan dibersihkan di U4-3/U4-4 (store spike sudah digantikan di U4-1). Skrip baru: `npm run check:dynamic-routes`.
+- Artefak spike: store digantikan di U4-1; di U4-3 guard eksperimen dihapus dan probe dimigrasikan ke `components/detail/`. Sisa sementara: halaman `/u4-spike`, `components/spike/spike-controls.tsx`, `lib/u4-spike-gate.ts` (dihapus di U4-6/U4-10). Skrip baru: `npm run check:dynamic-routes`.
 
 **U4-1 — fondasi data dan matriks akses UI: selesai** (detail di `docs/u4-evidence/U4-1-FOUNDATION.md`, bukti di `docs/u4-evidence/u4-1/`). Hanya fondasi; belum ada UI bisnis, CRUD, guard, atau redirect.
 - **Tiga lapisan:** L1 pengguna organisasi + role global; L2 keanggotaan proyek (`ProjectMember`, `Project.adminId` untuk satu Admin principal); L3 penugasan dan status tugas. `Project.managerId` lama dipertahankan sebagai legacy.
@@ -152,6 +152,16 @@ Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pe
 - **Pengujian:** `npm run check:u4-components` (62 pemeriksaan, `mobile:true` + emulasi sentuh: keyboard Tabs/radio/Select/ConfirmDialog, target sentuh ≥44px, font ≥16px, kartu satu kolom, tab bergulir di dalam komponen, overflow 375/768/1280, axe 0 termasuk dialog terbuka); `check:contrast` 57/57; `check:u4-foundation` 183; `check:browser` 53/53 + axe 0 (style-guide 0/0/0); `check:dynamic-routes` 7/7 + 21/21. 40 dari 42 screenshot halaman lama identik dengan evidence U3 (dua `tugas-*` berbeda karena seed TSK-005 di U4-1).
 - **Catatan:** popup `<select>` native tidak teruji di headless (cek manual di ponsel nyata sebelum U4-9); kontrol aksi di dalam `TaskCard` ber-`href` harus `relative z-10`; halaman yang memakai `DeadlineBadge` wajib menampilkan `DemoDataNotice showDeadlineReference`.
 
+**U4-3 — navigasi, redirect login per role, dan guard URL: selesai** (detail, matriks teruji, dan bukti di `docs/u4-evidence/U4-3-ACCESS.md` dan `docs/u4-evidence/u4-3/`). Representasi UI di atas mock, **bukan** otorisasi/keamanan; belum ada halaman bisnis baru; `SessionShell` tidak diubah.
+- **Aturan satu sumber:** `access.ts` (`canAccessSection`, `getPostLoginPath`) dipakai menu, guard URL, dan redirect login; `navigation.ts` tidak lagi memuat daftar role. Login: Owner/Admin → `/dashboard`, Mandor/Anggota Tim → `/tugas`, Guest → `/akses-ditolak`. Menu: Dashboard dan Anggota hanya Owner/Admin; Tugas menu pertama untuk Mandor (Tugas, Proyek, Laporan, Dokumen) dan Anggota Tim (Tugas, Proyek, Dokumen).
+- **Guard:** `PathGuard` (seluruh `(app)`) + `AccessGuard` (pola "menyembunyikan" dari U4-0: `children` selalu dirender, `hidden`+`inert` sampai diizinkan, lalu `/akses-ditolak`); detail proyek/tugas memakai `canViewProject`/`canViewTask` (termasuk ID runtime). URL langsung dan navigasi klien teruji untuk Budi, Siti, Ahmad, Dewi, dan Guest.
+- **Keterbatasan:** HTML/RSC halaman tetap memuat data seed untuk semua pengunjung (hanya disembunyikan secara visual); sesi hanya `sessionStorage`; daftar `/proyek` dan `/tugas` belum dibatasi per lingkup (U4-4, U4-8). Penegakan sesungguhnya di backend (U3-B1, U3-B2).
+- **Cacat U2 diperbaiki:** `z-sticky`/`z-modal` tak terdefinisi (tabel menimpa drawer mobile) kini `@utility` di `globals.css`; drawer `<aside role="dialog">` → `<div>` (axe `aria-allowed-role`).
+- **Ekspektasi pengujian U3 yang berubah (J2):** login Mandor kini ke `/tugas` dan menu Mandor persis Tugas, Proyek, Laporan, Dokumen (alur 53 → 54; asersi lama tetap, tidak dilonggarkan).
+- **Cleanup spike:** guard eksperimen dihapus; probe dan not-found dimigrasikan ke `components/detail/`; `/u4-spike` + `spike-controls` + `u4-spike-gate.ts` dipertahankan sementara untuk membuat ID runtime (dihapus di U4-6/U4-10).
+- **Pengujian:** `check:u4-access` 171, `check:u4-foundation` 201, `check:u4-components` 62, `check:dynamic-routes` 7/7 + 21/21, `check:browser` 54/54 + axe 0, `check:contrast` 57/57.
+- **Temuan terbuka:** tautan drawer mobile 264×36px dan tombol 40px (bawaan U2) di bawah 44px; belum diubah, menunggu keputusan pemilik.
+
 ## Roadmap UI/UX (disetujui sebagai dasar awal)
 | Fase | Isi |
 |---|---|
@@ -159,7 +169,7 @@ Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pe
 | U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) — **selesai, merged** |
 | U2 | App shell: sidebar, header, navigasi per role, responsif — **selesai, merged** |
 | U3 | Halaman auth (UI, mock) — **selesai, merged** (PASS WITH NOTES; catatan di Technical backlog) |
-| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0, U4-1, U4-2 selesai; U4-3 dst. menunggu persetujuan) |
+| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 s.d. U4-3 selesai; U4-4 dst. menunggu persetujuan) |
 | U5 | Laporan Harian, Dokumen |
 | U6 | Gantt, landing publik |
 | U7 | Polesan: state kosong/error/loading, aksesibilitas, uji responsif |

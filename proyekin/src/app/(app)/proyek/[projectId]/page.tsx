@@ -1,4 +1,4 @@
-import { ProjectProbe } from "@/components/spike/entity-probe";
+import { ProjectDetailPlaceholder } from "@/components/detail/entity-detail-placeholders";
 import { MOCK_PROJECTS } from "@/data/mock";
 
 export const metadata = { title: "Detail Proyek — Proyekin" };
@@ -11,5 +11,5 @@ export function generateStaticParams() {
 
 export default async function ProyekDetailPage({ params }: { params: Promise<{ projectId: string }> }) {
   const { projectId } = await params;
-  return <ProjectProbe projectId={projectId} />;
+  return <ProjectDetailPlaceholder projectId={projectId} />;
 }

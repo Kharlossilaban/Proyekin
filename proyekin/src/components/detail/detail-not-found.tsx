@@ -5,10 +5,10 @@ import { buttonVariants } from "@/components/ui/button-variants";
 import { EmptyState } from "@/components/ui/empty-state";
 import { cn } from "@/lib/utils";
 
-// SPIKE U4-0 — state not-found minimal untuk route dinamis; teks final ditentukan di U4-4/U4-8.
-function SpikeNotFound({ title, backHref, backLabel }: { title: string; backHref: string; backLabel: string }) {
+/** State "tidak ditemukan" untuk route detail dinamis. Teks final ditentukan di U4-5/U4-9. */
+function DetailNotFound({ title, backHref, backLabel }: { title: string; backHref: string; backLabel: string }) {
   return (
-    <div data-spike="not-found">
+    <div data-detail="not-found">
       <EmptyState
         icon={<SearchX aria-hidden="true" />}
         title={title}
@@ -23,4 +23,4 @@ function SpikeNotFound({ title, backHref, backLabel }: { title: string; backHref
   );
 }
 
-export { SpikeNotFound };
+export { DetailNotFound };

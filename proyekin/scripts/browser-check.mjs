@@ -374,12 +374,13 @@ const invalidState = (ids) =>
       described: ids.every(id => { const d = document.getElementById(id)?.getAttribute("aria-describedby"); return !!d && d.split(" ").every(x => document.getElementById(x)); }),
       labelled: ids.every(id => !!document.querySelector('label[for="' + id + '"]')),
     }; })()`);
-const loginUi = async (email, password = "kata-sandi-demo-1") => {
+// Tujuan login per role (J2, U4-3): Owner/Admin → /dashboard (bawaan), Mandor/Anggota Tim → /tugas.
+const loginUi = async (email, password = "kata-sandi-demo-1", landing = "/dashboard") => {
   await gotoPage(desktop, "/masuk");
   await fill("#email", email);
   await fill("#password", password);
   await click(SUBMIT);
-  await waitPath("/dashboard", "redirect ke dashboard");
+  await waitPath(landing, `redirect ke ${landing}`);
   await waitFor(() => evaluate(`!!document.querySelector('[data-slot="sidebar-desktop"]')`), 15000, "app shell");
 };
 const sidebarLinks = () =>
@@ -490,9 +491,12 @@ await flow("logout", async () => {
   check("logout: sesi dihapus", (await evaluate(`sessionStorage.getItem(${q(SESSION_KEY)})`)) === null);
 });
 await flow("role: Mandor tanpa menu Pengaturan", async () => {
-  await loginUi("ahmad@proyekin.id");
+  // Berubah di U4-3 (keputusan J2): Mandor kini masuk ke /tugas (sebelumnya /dashboard) dan menu tidak lagi memuat
+  // Dashboard maupun Anggota; Tugas menjadi menu pertama. Ekspektasi lama (Laporan ada, Pengaturan tidak ada) tetap diperiksa.
+  await loginUi("ahmad@proyekin.id", undefined, "/tugas");
   const links = await sidebarLinks();
   check("role Mandor: menu Laporan ada, Pengaturan tidak ada", links.includes("Laporan") && !links.includes("Pengaturan"), JSON.stringify(links));
+  check("role Mandor (J2, G2): menu persis Tugas, Proyek, Laporan, Dokumen (Tugas pertama; tanpa Dashboard/Anggota)", JSON.stringify(links) === JSON.stringify(["Tugas", "Proyek", "Laporan", "Dokumen"]), JSON.stringify(links));
   check("role Mandor: tidak ada role Tukang", !/tukang/i.test(await text()));
   await evaluate(`sessionStorage.clear()`);
 });

@@ -1,6 +1,8 @@
 "use client";
 
-// SPIKE U4-0 — kontrol uji: membuat entitas di memori klien lalu membukanya lewat navigasi klien.
+// ARTEFAK UJI SEMENTARA (dari spike U4-0) — kontrol uji: membuat entitas di memori klien lalu membukanya lewat
+// navigasi klien, dan tautan untuk menguji guard lewat navigasi klien. Hanya ada saat development atau build
+// U4_SPIKE=1 (lihat lib/u4-spike-gate.ts). Dihapus saat alur buat proyek/tugas sungguhan tersedia (U4-6/U4-10).
 
 import * as React from "react";
 import Link from "next/link";
@@ -38,8 +40,13 @@ const SEED_LINKS = [
   { href: "/proyek/p-999", label: "Proyek ID tidak dikenal p-999" },
   { href: "/tugas/t-999", label: "Tugas ID tidak dikenal t-999" },
   { href: "/proyek/abc", label: "Proyek ID tidak lazim abc" },
-  { href: "/u4-spike/guard-gating", label: "Guard A (menahan), hanya Owner/Admin" },
-  { href: "/u4-spike/guard-hidden", label: "Guard B (menyembunyikan), hanya Owner/Admin" },
+  // Navigasi KLIEN ke bagian yang dibatasi per role (U4-3): dipakai pengujian guard tanpa muat ulang dokumen.
+  { href: "/dashboard", label: "Dashboard (Owner/Admin)" },
+  { href: "/anggota", label: "Anggota organisasi (Owner/Admin)" },
+  { href: "/laporan", label: "Laporan (Owner/Admin/Mandor)" },
+  { href: "/pengaturan", label: "Pengaturan (Owner/Admin)" },
+  ...["p-002", "p-003", "p-004", "p-005"].map((id) => ({ href: `/proyek/${id}`, label: `Proyek seed ${id}` })),
+  ...["t-002", "t-003", "t-004", "t-005", "t-006"].map((id) => ({ href: `/tugas/${id}`, label: `Tugas seed ${id}` })),
 ];
 
 function SpikeControls() {

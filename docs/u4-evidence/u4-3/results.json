@@ -1,0 +1,1104 @@
+{
+  "checks": [
+    {
+      "name": "budi (Owner): login diarahkan ke /dashboard",
+      "ok": true,
+      "detail": "path /dashboard"
+    },
+    {
+      "name": "budi (Owner): menu sidebar persis dan berurutan",
+      "ok": true,
+      "detail": "[\"Dashboard\",\"Proyek\",\"Tugas\",\"Laporan\",\"Dokumen\",\"Anggota\",\"Pengaturan\"]"
+    },
+    {
+      "name": "budi: halaman awal /dashboard adalah menu pertama",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi /dashboard 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: URL langsung /dashboard → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: URL langsung /proyek → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: URL langsung /tugas → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: URL langsung /laporan → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: URL langsung /dokumen → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: URL langsung /anggota → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: URL langsung /pengaturan → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: detail /proyek/p-001 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: detail /proyek/p-002 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: detail /proyek/p-003 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: detail /proyek/p-004 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: detail /proyek/p-005 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: detail /proyek/p-999 → not-found",
+      "ok": true,
+      "detail": "hasil not-found"
+    },
+    {
+      "name": "budi: detail /tugas/t-001 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: detail /tugas/t-002 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: detail /tugas/t-003 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: detail /tugas/t-004 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: detail /tugas/t-005 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: detail /tugas/t-006 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: detail /tugas/t-999 → not-found",
+      "ok": true,
+      "detail": "hasil not-found"
+    },
+    {
+      "name": "budi: navigasi KLIEN ke /dashboard → allowed tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: navigasi KLIEN ke /anggota → allowed tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: navigasi KLIEN ke /laporan → allowed tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: navigasi KLIEN ke /pengaturan → allowed tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti (Admin Kantor): login diarahkan ke /dashboard",
+      "ok": true,
+      "detail": "path /dashboard"
+    },
+    {
+      "name": "siti (Admin Kantor): menu sidebar persis dan berurutan",
+      "ok": true,
+      "detail": "[\"Dashboard\",\"Proyek\",\"Tugas\",\"Laporan\",\"Dokumen\",\"Anggota\",\"Pengaturan\"]"
+    },
+    {
+      "name": "siti: halaman awal /dashboard adalah menu pertama",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: siti /dashboard 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti: URL langsung /dashboard → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: URL langsung /proyek → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: URL langsung /tugas → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: URL langsung /laporan → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: URL langsung /dokumen → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: URL langsung /anggota → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: URL langsung /pengaturan → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: detail /proyek/p-001 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: detail /proyek/p-002 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: detail /proyek/p-003 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "siti: detail /proyek/p-004 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "siti: detail /proyek/p-005 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "siti: detail /proyek/p-999 → not-found",
+      "ok": true,
+      "detail": "hasil not-found"
+    },
+    {
+      "name": "siti: detail /tugas/t-001 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: detail /tugas/t-002 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: detail /tugas/t-003 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: detail /tugas/t-004 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: detail /tugas/t-005 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: detail /tugas/t-006 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: detail /tugas/t-999 → not-found",
+      "ok": true,
+      "detail": "hasil not-found"
+    },
+    {
+      "name": "siti: navigasi KLIEN ke /dashboard → allowed tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: navigasi KLIEN ke /anggota → allowed tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: navigasi KLIEN ke /laporan → allowed tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: navigasi KLIEN ke /pengaturan → allowed tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad (Mandor): login diarahkan ke /tugas",
+      "ok": true,
+      "detail": "path /tugas"
+    },
+    {
+      "name": "ahmad (Mandor): menu sidebar persis dan berurutan",
+      "ok": true,
+      "detail": "[\"Tugas\",\"Proyek\",\"Laporan\",\"Dokumen\"]"
+    },
+    {
+      "name": "ahmad: halaman awal /tugas adalah menu pertama",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad /tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad: URL langsung /dashboard → denied (konten tidak pernah terlihat)",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad: URL langsung /proyek → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: URL langsung /tugas → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: URL langsung /laporan → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: URL langsung /dokumen → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: URL langsung /anggota → denied (konten tidak pernah terlihat)",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad: URL langsung /pengaturan → denied (konten tidak pernah terlihat)",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad: detail /proyek/p-001 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: detail /proyek/p-002 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: detail /proyek/p-003 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad: detail /proyek/p-004 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad: detail /proyek/p-005 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad: detail /proyek/p-999 → not-found",
+      "ok": true,
+      "detail": "hasil not-found"
+    },
+    {
+      "name": "ahmad: detail /tugas/t-001 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: detail /tugas/t-002 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: detail /tugas/t-003 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: detail /tugas/t-004 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: detail /tugas/t-005 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: detail /tugas/t-006 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: detail /tugas/t-999 → not-found",
+      "ok": true,
+      "detail": "hasil not-found"
+    },
+    {
+      "name": "ahmad: navigasi KLIEN ke /dashboard → denied tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad: navigasi KLIEN ke /anggota → denied tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad: navigasi KLIEN ke /laporan → allowed tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: navigasi KLIEN ke /pengaturan → denied tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi (Anggota Tim): login diarahkan ke /tugas",
+      "ok": true,
+      "detail": "path /tugas"
+    },
+    {
+      "name": "dewi (Anggota Tim): menu sidebar persis dan berurutan",
+      "ok": true,
+      "detail": "[\"Tugas\",\"Proyek\",\"Dokumen\"]"
+    },
+    {
+      "name": "dewi: halaman awal /tugas adalah menu pertama",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi /tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi: URL langsung /dashboard → denied (konten tidak pernah terlihat)",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: URL langsung /proyek → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "dewi: URL langsung /tugas → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "dewi: URL langsung /laporan → denied (konten tidak pernah terlihat)",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: URL langsung /dokumen → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "dewi: URL langsung /anggota → denied (konten tidak pernah terlihat)",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: URL langsung /pengaturan → denied (konten tidak pernah terlihat)",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: detail /proyek/p-001 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "dewi: detail /proyek/p-002 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: detail /proyek/p-003 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: detail /proyek/p-004 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: detail /proyek/p-005 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: detail /proyek/p-999 → not-found",
+      "ok": true,
+      "detail": "hasil not-found"
+    },
+    {
+      "name": "dewi: detail /tugas/t-001 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: detail /tugas/t-002 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "dewi: detail /tugas/t-003 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: detail /tugas/t-004 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: detail /tugas/t-005 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: detail /tugas/t-006 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "dewi: detail /tugas/t-999 → not-found",
+      "ok": true,
+      "detail": "hasil not-found"
+    },
+    {
+      "name": "dewi: navigasi KLIEN ke /dashboard → denied tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: navigasi KLIEN ke /anggota → denied tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: navigasi KLIEN ke /laporan → denied tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: navigasi KLIEN ke /pengaturan → denied tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: navigasi KLIEN ke /proyek/p-001 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "dewi: navigasi KLIEN ke /proyek/p-002 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: navigasi KLIEN ke /tugas/t-002 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "dewi: navigasi KLIEN ke /tugas/t-001 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: navigasi KLIEN ke /proyek/p-999 → not-found",
+      "ok": true,
+      "detail": "hasil not-found"
+    },
+    {
+      "name": "siti: navigasi KLIEN ke /proyek/p-001 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: navigasi KLIEN ke /proyek/p-003 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad: navigasi KLIEN ke /proyek/p-002 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: navigasi KLIEN ke /proyek/p-004 → denied",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad: navigasi KLIEN ke /tugas/t-003 → allowed",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: proyek runtime p-006 → allowed (navigasi klien)",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "budi: tugas runtime t-007 → allowed (navigasi klien)",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "siti: proyek runtime (tanpa Admin principal) p-006 → denied (navigasi klien)",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "siti: tugas runtime di p-001 (Admin principal p-001) → allowed (navigasi klien)",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "ahmad: proyek runtime (bukan anggota) p-006 → denied (navigasi klien)",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad: tugas runtime di p-001 (anggota p-001, G5) → allowed (navigasi klien)",
+      "ok": true,
+      "detail": "hasil allowed"
+    },
+    {
+      "name": "dewi: tugas runtime tanpa penanggung jawab (bukan miliknya) → denied (navigasi klien)",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "budi: reload pada ID runtime → not-found (store memori reset)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile: emulasi sentuh aktif",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile: login (ketuk) diarahkan ke /tugas",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad /tugas 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad /tugas 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile: header sticky tetap di atas konten saat digulir",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile: drawer berisi menu persis dan berurutan (Tugas pertama)",
+      "ok": true,
+      "detail": "[\"Tugas\",\"Proyek\",\"Laporan\",\"Dokumen\"]"
+    },
+    {
+      "name": "ahmad mobile: drawer tidak memuat Dashboard/Anggota/Pengaturan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile: drawer berada di atas konten halaman (z-index; tabel tidak menimpa)",
+      "ok": true,
+      "detail": "[true,true,true]"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad drawer terbuka 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile: ketuk menu Proyek menavigasi tanpa muat ulang dan menutup drawer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad /proyek 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "ahmad mobile: URL langsung /dashboard → akses ditolak",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile: detail /tugas/t-003 (berhak) tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad /tugas/t-003 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad /tugas/t-003 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile: emulasi sentuh aktif",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile: login (ketuk) diarahkan ke /tugas",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dewi /tugas 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi /tugas 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile: header sticky tetap di atas konten saat digulir",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile: drawer berisi menu persis dan berurutan (Tugas pertama)",
+      "ok": true,
+      "detail": "[\"Tugas\",\"Proyek\",\"Dokumen\"]"
+    },
+    {
+      "name": "dewi mobile: drawer tidak memuat Dashboard/Anggota/Pengaturan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile: drawer berada di atas konten halaman (z-index; tabel tidak menimpa)",
+      "ok": true,
+      "detail": "[true,true,true]"
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi drawer terbuka 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile: ketuk menu Proyek menavigasi tanpa muat ulang dan menutup drawer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dewi /proyek 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "dewi mobile: URL langsung /dashboard → akses ditolak",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile: detail /tugas/t-002 (berhak) tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dewi /tugas/t-002 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi /tugas/t-002 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad /tugas 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad /tugas 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi /dashboard 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi /dashboard 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: login diarahkan ke /akses-ditolak (tanpa App Shell)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: tidak ada sidebar di DOM",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: URL langsung /dashboard → akses ditolak, tanpa sidebar, konten tidak pernah terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "guest: URL langsung /proyek/p-001 → akses ditolak, tanpa sidebar, konten tidak pernah terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "guest: URL langsung /tugas/t-001 → akses ditolak, tanpa sidebar, konten tidak pernah terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "guest: URL langsung /anggota → akses ditolak, tanpa sidebar, konten tidak pernah terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "guest: halaman publik (landing) tanpa sidebar",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "matrix": {
+    "budi": {
+      "sections": {
+        "/dashboard": "allowed",
+        "/proyek": "allowed",
+        "/tugas": "allowed",
+        "/laporan": "allowed",
+        "/dokumen": "allowed",
+        "/anggota": "allowed",
+        "/pengaturan": "allowed"
+      },
+      "projects": {
+        "p-001": "allowed",
+        "p-002": "allowed",
+        "p-003": "allowed",
+        "p-004": "allowed",
+        "p-005": "allowed",
+        "p-999": "not-found"
+      },
+      "tasks": {
+        "t-001": "allowed",
+        "t-002": "allowed",
+        "t-003": "allowed",
+        "t-004": "allowed",
+        "t-005": "allowed",
+        "t-006": "allowed",
+        "t-999": "not-found"
+      },
+      "client": {
+        "/dashboard": "allowed",
+        "/anggota": "allowed",
+        "/laporan": "allowed",
+        "/pengaturan": "allowed"
+      },
+      "menu": [
+        "Dashboard",
+        "Proyek",
+        "Tugas",
+        "Laporan",
+        "Dokumen",
+        "Anggota",
+        "Pengaturan"
+      ]
+    },
+    "siti": {
+      "sections": {
+        "/dashboard": "allowed",
+        "/proyek": "allowed",
+        "/tugas": "allowed",
+        "/laporan": "allowed",
+        "/dokumen": "allowed",
+        "/anggota": "allowed",
+        "/pengaturan": "allowed"
+      },
+      "projects": {
+        "p-001": "allowed",
+        "p-002": "allowed",
+        "p-003": "denied",
+        "p-004": "denied",
+        "p-005": "denied",
+        "p-999": "not-found"
+      },
+      "tasks": {
+        "t-001": "allowed",
+        "t-002": "allowed",
+        "t-003": "allowed",
+        "t-004": "allowed",
+        "t-005": "allowed",
+        "t-006": "allowed",
+        "t-999": "not-found"
+      },
+      "client": {
+        "/dashboard": "allowed",
+        "/anggota": "allowed",
+        "/laporan": "allowed",
+        "/pengaturan": "allowed"
+      },
+      "menu": [
+        "Dashboard",
+        "Proyek",
+        "Tugas",
+        "Laporan",
+        "Dokumen",
+        "Anggota",
+        "Pengaturan"
+      ]
+    },
+    "ahmad": {
+      "sections": {
+        "/dashboard": "denied",
+        "/proyek": "allowed",
+        "/tugas": "allowed",
+        "/laporan": "allowed",
+        "/dokumen": "allowed",
+        "/anggota": "denied",
+        "/pengaturan": "denied"
+      },
+      "projects": {
+        "p-001": "allowed",
+        "p-002": "allowed",
+        "p-003": "denied",
+        "p-004": "denied",
+        "p-005": "denied",
+        "p-999": "not-found"
+      },
+      "tasks": {
+        "t-001": "allowed",
+        "t-002": "allowed",
+        "t-003": "allowed",
+        "t-004": "allowed",
+        "t-005": "allowed",
+        "t-006": "allowed",
+        "t-999": "not-found"
+      },
+      "client": {
+        "/dashboard": "denied",
+        "/anggota": "denied",
+        "/laporan": "allowed",
+        "/pengaturan": "denied"
+      },
+      "menu": [
+        "Tugas",
+        "Proyek",
+        "Laporan",
+        "Dokumen"
+      ]
+    },
+    "dewi": {
+      "sections": {
+        "/dashboard": "denied",
+        "/proyek": "allowed",
+        "/tugas": "allowed",
+        "/laporan": "denied",
+        "/dokumen": "allowed",
+        "/anggota": "denied",
+        "/pengaturan": "denied"
+      },
+      "projects": {
+        "p-001": "allowed",
+        "p-002": "denied",
+        "p-003": "denied",
+        "p-004": "denied",
+        "p-005": "denied",
+        "p-999": "not-found"
+      },
+      "tasks": {
+        "t-001": "denied",
+        "t-002": "allowed",
+        "t-003": "denied",
+        "t-004": "denied",
+        "t-005": "denied",
+        "t-006": "allowed",
+        "t-999": "not-found"
+      },
+      "client": {
+        "/dashboard": "denied",
+        "/anggota": "denied",
+        "/laporan": "denied",
+        "/pengaturan": "denied"
+      },
+      "menu": [
+        "Tugas",
+        "Proyek",
+        "Dokumen"
+      ]
+    }
+  },
+  "measurements": {
+    "axe budi /dashboard 1280": [],
+    "axe siti /dashboard 1280": [],
+    "axe ahmad /tugas 1280": [],
+    "axe dewi /tugas 1280": [],
+    "axe ahmad /tugas 375 mobile": [],
+    "drawer ahmad 375": [
+      {
+        "name": "Tutup navigasi",
+        "w": 40,
+        "h": 40
+      },
+      {
+        "name": "Tugas",
+        "w": 264,
+        "h": 36
+      },
+      {
+        "name": "Proyek",
+        "w": 264,
+        "h": 36
+      },
+      {
+        "name": "Laporan",
+        "w": 264,
+        "h": 36
+      },
+      {
+        "name": "Dokumen",
+        "w": 264,
+        "h": 36
+      },
+      {
+        "name": "Keluar",
+        "w": 264,
+        "h": 36
+      }
+    ],
+    "axe ahmad drawer terbuka 375 mobile": [],
+    "axe ahmad /tugas/t-003 375 mobile": [],
+    "axe dewi /tugas 375 mobile": [],
+    "drawer dewi 375": [
+      {
+        "name": "Tutup navigasi",
+        "w": 40,
+        "h": 40
+      },
+      {
+        "name": "Tugas",
+        "w": 264,
+        "h": 36
+      },
+      {
+        "name": "Proyek",
+        "w": 264,
+        "h": 36
+      },
+      {
+        "name": "Dokumen",
+        "w": 264,
+        "h": 36
+      },
+      {
+        "name": "Keluar",
+        "w": 264,
+        "h": 36
+      }
+    ],
+    "axe dewi drawer terbuka 375 mobile": [],
+    "axe dewi /tugas/t-002 375 mobile": [],
+    "axe ahmad /tugas 768": [],
+    "axe budi /dashboard 768": []
+  },
+  "notes": [
+    "ahmad drawer 375px: 6 kontrol di bawah 44px (40x40, 264x36) — tinggi tautan drawer adalah bawaan U2 (tidak diubah di U4-3).",
+    "dewi drawer 375px: 5 kontrol di bawah 44px (40x40, 264x36) — tinggi tautan drawer adalah bawaan U2 (tidak diubah di U4-3)."
+  ],
+  "failures": []
+}
