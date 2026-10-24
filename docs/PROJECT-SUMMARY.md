@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-24 (U2 merged ke main; U3 diimplementasikan di `feat/u3-auth-ui`, menunggu audit)
+Terakhir diperbarui: 2026-10-24 (U2 merged ke main; U3 diimplementasikan di `feat/u3-auth-ui`, audit Opus selesai, perbaikan audit diterapkan, menunggu persetujuan merge)
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -8,7 +8,7 @@ Terakhir diperbarui: 2026-10-24 (U2 merged ke main; U3 diimplementasikan di `fea
 3. `AGENTS.md` — aturan kerja dan standar teknis.
 4. Figma (`Proyekin (1)/`) — referensi visual dan fungsional, bukan desain final.
 
-> `deep-research-report.md` di root repo adalah salinan identik dari `docs/deep-research-report.md`. Rujukan resmi: versi `docs/`. Salinan root belum dihapus; menunggu persetujuan pemilik.
+> `deep-research-report.md` di root repo semula salinan identik dari `docs/deep-research-report.md`. Rujukan resmi: versi `docs/`. Sejak audit U3 salinan root **tidak lagi sinkron** (belum memuat catatan keputusan autentikasi U3 dan sebaiknya tidak dipakai sebagai acuan). Salinan root belum dihapus; menunggu persetujuan pemilik.
 
 ## Status saat ini
 - Next.js 16.4.2, React 19.3, TypeScript strict, Tailwind v4 (via `@tailwindcss/turbopack`), npm.
@@ -97,13 +97,19 @@ A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjak
 - **Route:** `/masuk`, `/daftar` (hanya Owner, tanpa pilihan role), `/lupa-sandi`, `/reset-sandi?token=...`, `/akses-ditolak`. Route group `(auth)/` memakai layout split-screen sendiri; `/akses-ditolak` di luar group (layout penuh).
 - **Mock auth:** `src/lib/auth-mock.ts` (satu-satunya titik yang diganti saat backend siap; fungsi async). Sesi di `sessionStorage` hanya berisi `{userId, loginAt}`; kata sandi tidak dibaca/disimpan. Login menerima email akun demo (`MOCK_USERS`) dengan kata sandi apa saja.
 - **Akses developer:** `(app)` tidak dikunci. Tanpa sesi, aplikasi tetap terbuka sebagai Owner demo dengan notice "Mode pengembangan". Ini bukan kontrol keamanan; menu per role tetap hanya representasi UI.
-- **Guest:** tidak ada akun/akun demo Guest; bila sesi ber-role GUEST muncul, shell mengalihkan ke `/akses-ditolak` (jalur kode, belum teruji karena tidak ada mock user Guest).
+- **Guest:** tidak ada akun/akun demo Guest. Bila sesi ber-role GUEST muncul, `SessionShell` tidak merender App Shell maupun isi halaman (hanya pesan "Mengalihkan…") lalu mengalihkan ke `/akses-ditolak`. Teruji di `check:browser` (bagian "jalur Guest"): pengguna Guest disisipkan sementara ke `mock.ts` lalu dipulihkan otomatis. Keterbatasan: HTML hasil prerender sama untuk semua pengunjung (sesi hanya dikenal di klien), jadi pencegahan tampilan sebelum hidrasi baru bisa dijamin oleh pemeriksaan sesi di server (backend).
 - **Logo:** gambar JPEG ditampilkan utuh (rasio 1540x672) tanpa teks tambahan; ganti aset lewat konstanta `LOGO_ASSET` di `components/layout/logo.tsx`.
 - **Validasi:** `src/lib/auth-validation.ts` (email, nama, sandi >= 8 + huruf besar/kecil + angka, konfirmasi). Galat di-link dengan `aria-describedby`, fokus ke galat pertama.
 - **Komponen baru:** PasswordInput, FormField, PasswordStrength, AuthCard, StatusMessage, SessionShell, BackButton; `buttonVariants` dipisah ke `button-variants.ts` agar bisa dipakai server component.
 - **Di luar U3 (sesuai keputusan):** verifikasi email, company onboarding, workspace selector/multi-company, invitation flow, Vendor, role Tukang (tidak ada).
-- **Pengujian:** lint (0 error, 1 warning lama), typecheck, build, check:contrast 50/50, check:tokens 0 warna mentah, check:browser: 47/47 pemeriksaan alur, 0 pelanggaran axe di 18 tampilan auth + 24 tampilan app, 0 overflow di 375/768/1280.
+- **Pengujian (setelah perbaikan audit):** lint (0 error, 1 warning lama), typecheck, build, check:contrast 50/50, check:tokens 0 warna mentah, check:browser: 53/53 pemeriksaan alur (termasuk 6 pemeriksaan jalur Guest), 0 pelanggaran axe di 18 tampilan auth + 24 tampilan app, 0 overflow di 375/768/1280.
 - Bukti: `docs/u3-evidence/` (lihat README di folder tersebut).
+- **Audit data demo (2026-10-24):**
+  - **Sumber:** seluruh data pengguna dan proyek berasal dari satu berkas `src/data/mock.ts` (`MOCK_USERS`, `MOCK_USER`, `MOCK_TEAM_MEMBERS`, dst.). Tidak ada database, API route, server action, `fetch`, atau environment variable.
+  - **Fiktif:** 5 pengguna demo (Budi Santoso, Siti Aminah, Ahmad Rizal, Dewi Lestari, Eko Prasetyo) berdomain `@proyekin.id`; email uji di skrip memakai `contoh.co.id`. Tidak ditemukan nomor telepon, alamat, atau identitas pribadi nyata. Nomor di `MOCK_CONTACT` jelas rekayasa.
+  - **Tidak persisten:** login hanya menulis `{userId, loginAt}` ke `sessionStorage` (hilang saat tab ditutup); registrasi/lupa/reset tidak menyimpan apa pun. Tidak ada pengguna baru yang bisa dibuat.
+  - **Kredensial:** tidak ada password, token rahasia, atau API key di kode, riwayat Git (diperiksa), maupun berkas teks evidence. `demo-token` hanya literal penanda simulasi. Screenshot hanya memuat data demo di atas dan `tidak.ada@contoh.co.id`.
+  - **Catatan (belum diubah, menunggu keputusan):** (1) `proyekin.id` bisa saja domain nyata milik pihak lain; pertimbangkan domain khusus contoh (`example.com`/`.test`) saat data mock dirapikan. (2) `MOCK_CONTACT` (alamat, telepon, tautan sosial `instagram.com/proyekin`, `linkedin.com/company/proyekin`) belum dipakai UI mana pun; tautan sosial bisa menunjuk akun pihak lain dan sebaiknya diganti placeholder sebelum halaman Kontak dibuat. (3) Metadata commit Git memuat email penulis; wajar, tetapi perlu diperhatikan bila repo dipublikasikan.
 
 ## Roadmap UI/UX (disetujui sebagai dasar awal)
 | Fase | Isi |
@@ -124,6 +130,7 @@ Dicatat, tidak diperbaiki diam-diam. Perbaikan yang menyentuh business logic ata
 - **Warning lint (1):** `src/data/mock.ts:1:66` — `'Role' is defined but never used` (`@typescript-eslint/no-unused-vars`). Belum diperbaiki karena berada di file mock data; aman dihapus bersama pembersihan mock berikutnya.
 - Item di "Masalah terbuka" di bawah.
 - Logo: gunakan logo resmi PROYEKIN (`logo proyekin.jpeg`) sebagai acuan; jangan membuat identitas logo baru tanpa persetujuan.
+- Temuan audit U3 yang belum dikerjakan (tidak memblokir): (a) `logo-proyekin_1.svg` di root (untracked) adalah trace monokrom hitam tanpa warna oranye; **tidak boleh dipakai**, minta vektor resmi berwarna. (b) Tulisan pada JPEG logo kecil (~10px di header mobile) karena ruang putih; crop aset butuh persetujuan karena menyangkut brand. (c) Di Next 16 halaman sebelumnya tetap tersimpan tersembunyi di DOM sehingga `#main-content` bisa dobel setelah navigasi klien, dan skip link tidak memindahkan fokus (`<main>` tanpa `tabIndex`); berasal dari U2. (d) Notice "Mode pengembangan" juga aktif di build production; wajib dibuang saat backend/auth sungguhan masuk. (e) Pengguna yang sudah login tetap melihat form di `/masuk`. (f) Komentar di `logo.tsx` menyebut field `ratio` yang tidak ada.
 - Salinan root `deep-research-report.md`: dipertahankan sementara. Satu-satunya rujukan path ke spesifikasi (`AGENTS.md`) sudah menunjuk `docs/`; penghapusan menunggu persetujuan.
 
 ## Masalah terbuka

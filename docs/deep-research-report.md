@@ -112,3 +112,17 @@ Bagian ini menambah, bukan menghapus, keputusan di atas. Bila ada pertentangan d
   - B (pasca-MVP): Manajemen Vendor, Vendor Invitation, Contractor Login.
   - C (butuh keputusan pemilik): WBS, multi-company, versioning/arsip/pengaturan publikasi dokumen, undangan pengguna (MVP mengikuti mekanisme penambahan pengguna di spesifikasi ini), verifikasi email (detail harus diajukan dulu), halaman Tentang Kami dan Kontak (kandidat landing), role di luar lima role resmi, model harga (`MOCK_PRICING`), notifikasi.
 - **Role resmi hanya lima:** Owner, Admin Kantor, Mandor, Anggota Tim, Guest.
+
+## Catatan Keputusan Pemilik — Autentikasi U3 (2026-10-24)
+
+Bagian ini menambah, bukan menghapus, keputusan di atas. Bila ada pertentangan dengan teks sebelumnya (termasuk butir "Autentikasi & Registrasi" di bagian fitur), bagian ini yang berlaku.
+
+- **U3-1 Registrasi publik hanya untuk Owner.** Admin Kantor, Mandor, dan Anggota Tim ditambahkan lewat mekanisme internal (oleh Owner/Admin di dalam aplikasi), bukan registrasi publik. Guest tidak memerlukan akun.
+- **U3-2 Verifikasi email tidak diimplementasikan di U3.** Struktur disiapkan agar dapat ditambahkan nanti; detail dan scope tetap harus diajukan dulu (klasifikasi C).
+- **U3-3 Company onboarding tidak termasuk U3.** Registrasi hanya simulasi pembuatan akun.
+- **U3-4 Workspace selector dan multi-company tidak termasuk MVP.** Satu workspace; login langsung ke dashboard.
+- **U3-5 Logo yang sudah memuat tulisan "Proyekin" tidak boleh diberi teks tambahan.**
+- **U3-6 Invitation flow tidak termasuk U3.** Penambahan anggota mengikuti halaman Anggota sesuai spesifikasi ini.
+- **Aturan mutlak:** PROYEKIN tidak memiliki role Tukang. Jangan menambahkan role tersebut atau menyamakannya dengan Anggota Tim. Lima role resmi saja.
+- **Sifat implementasi U3:** semua alur auth di frontend adalah simulasi UI (data mock, `sessionStorage`). Bukan autentikasi atau authorization sungguhan; penegakan akses ada di backend (lihat `docs/BACKEND-ROADMAP.md`).
+- **Guest:** tidak melihat App Shell. Bila sesi ber-role Guest terdeteksi di area aplikasi, pengguna dialihkan ke halaman Akses Ditolak tanpa merender shell.
