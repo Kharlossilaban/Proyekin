@@ -1,25 +1,10 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MOCK_PROJECTS } from "@/data/mock";
+import { PROJECT_STATUS_LABELS, PROJECT_STATUS_TONES } from "@/lib/labels";
 import { formatRupiah } from "@/lib/utils";
 
 export const metadata = { title: "Proyek — Proyekin" };
-
-const STATUS_VARIANT: Record<string, "success" | "warning" | "neutral"> = {
-  ON_PROGRESS: "success",
-  PAUSED: "warning",
-  COMPLETED: "neutral",
-  ARCHIVED: "neutral",
-  DRAFT: "neutral",
-};
-
-const STATUS_LABEL: Record<string, string> = {
-  ON_PROGRESS: "Berjalan",
-  PAUSED: "Tertunda",
-  COMPLETED: "Selesai",
-  ARCHIVED: "Arsip",
-  DRAFT: "Draf",
-};
 
 export default function ProyekPage() {
   return (
@@ -43,8 +28,8 @@ export default function ProyekPage() {
                   <p className="text-xs text-muted-foreground">{p.code}</p>
                   <CardTitle as="h2" className="mt-1">{p.name}</CardTitle>
                 </div>
-                <Badge variant={STATUS_VARIANT[p.status] ?? "neutral"} dot>
-                  {STATUS_LABEL[p.status] ?? p.status}
+                <Badge variant={PROJECT_STATUS_TONES[p.status]} dot>
+                  {PROJECT_STATUS_LABELS[p.status]}
                 </Badge>
               </div>
             </CardHeader>

@@ -22,7 +22,7 @@ Hasil pengujian aktual:
 1. **Halaman server tipis** `src/app/(app)/proyek/[projectId]/page.tsx` dan `tugas/[taskId]/page.tsx`:
    `generateStaticParams()` mengembalikan ID dari seed (`MOCK_*`), lalu `const { id } = await params` dan meneruskan `id` ke komponen klien. Tidak ada `Suspense` khusus karena `generateStaticParams` memberikan sampel param.
 2. **Komponen klien** (`components/spike/entity-probe.tsx`) membaca store memori lewat `useSyncExternalStore`. Snapshot server selalu berisi seed (referensi stabil), sehingga HTML prerender dan hidrasi konsisten. Entitas tidak ada → `notFound()` dari `next/navigation` (boleh dipanggil di komponen klien), yang dirender oleh `not-found.tsx` segmen.
-3. **Store memori** (`lib/u4-spike-store.ts`): `createSpikeProject()` dan `createSpikeTask()` menghasilkan ID berikutnya (`p-006`, `t-007`). Hanya hidup di tab; reset saat reload (keputusan J9).
+3. **Store memori** (`lib/u4-spike-store.ts`): `createSpikeProject()` dan `createSpikeTask()` menghasilkan ID berikutnya (`p-006`, `t-007`). Hanya hidup di tab; reset saat reload (keputusan J9). *(Pembaruan U4-1: store spike ini sudah digantikan oleh `lib/mock-store.ts` dengan pola yang sama; lihat `U4-1-FOUNDATION.md`.)*
 4. **Halaman uji** `/u4-spike`, `/u4-spike/guard-gating`, `/u4-spike/guard-hidden` hanya aktif saat development atau build dengan `U4_SPIKE=1`; pada build biasa menghasilkan 404 (diverifikasi: status prerender 404).
 
 Alasan tidak memakai opsi lain:

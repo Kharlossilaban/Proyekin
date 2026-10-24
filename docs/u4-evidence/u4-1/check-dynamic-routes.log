@@ -1,0 +1,35 @@
+﻿
+> proyekin@0.1.0 check:dynamic-routes
+> node scripts/check-dynamic-routes.mjs C:\proyekin_project\docs\u4-evidence\u4-1
+
+Build produksi dengan U4_SPIKE=1 ...
+ok:   GET /proyek/p-001 (seed): 200 + konten di HTML prerender status 200, prerender=1, 1
+ok:   GET /tugas/t-001 (seed): 200 + konten di HTML prerender status 200
+ok:   GET /proyek/p-8389 (ID segar tidak dikenal): tidak ada konten, noindex, status 200 lalu 404 
+ok:   GET /tugas/t-8389 (ID segar tidak dikenal): tidak ada konten, noindex, status 200 lalu 404 
+ok:   GET /proyek/abc-389 (ID segar tidak dikenal): tidak ada konten, noindex, status 200 lalu 404 
+ok:   Guard A (menahan): konten tidak ada di markup HTML prerender (hanya di payload RSC) 
+ok:   Guard B (menyembunyikan): konten ada di markup HTML prerender dan bertanda hidden 
+ok:   seed: /proyek/p-001 dibuka langsung 
+ok:   seed: /tugas/t-001 dibuka langsung 
+ok:   runtime: proyek baru p-006 terbuka lewat router.push 
+ok:   runtime: tanpa muat ulang halaman (penanda window tetap ada) 
+ok:   runtime: tugas baru t-007 terbuka lewat router.push 
+ok:   store reset: dokumen baru memulai dari seed (ID runtime pertama kembali p-006) 
+ok:   runtime: proyek baru terbuka lewat klik <Link> 
+ok:   runtime: tombol back lalu forward kembali ke ID runtime yang sama (store memori tetap) 
+ok:   reload pada ID runtime: store reset, tampil state not-found status dokumen 404
+ok:   URL langsung ke ID runtime (dokumen baru): state not-found status dokumen 404
+ok:   tidak dikenal (URL langsung): proyek p-999 → not-found status dokumen 404
+ok:   tidak dikenal (URL langsung): tugas t-999 → not-found status dokumen 404
+ok:   tidak dikenal (URL langsung): proyek abc → not-found status dokumen 200
+ok:   tidak dikenal (navigasi klien): p-999 → not-found tanpa muat ulang 
+ok:   seed lewat navigasi klien setelah not-found: p-001 ditemukan 
+ok:   guard gating: tanpa sesi (akses developer = Owner demo) konten tampil 
+ok:   guard hidden: tanpa sesi (akses developer = Owner demo) konten tampil 
+ok:   guard gating: Mandor dialihkan ke /akses-ditolak dan konten terlindung tidak pernah terlihat 
+ok:   guard hidden: Mandor dialihkan ke /akses-ditolak dan konten terlindung tidak pernah terlihat 
+ok:   guard hidden: navigasi KLIEN sebagai Mandor juga dialihkan, tanpa muat ulang dokumen 
+ok:   guard gating: Owner (sesi) lewat navigasi klien diizinkan tanpa muat ulang 
+
+Semua pemeriksaan lolos.

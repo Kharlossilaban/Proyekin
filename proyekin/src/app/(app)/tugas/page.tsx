@@ -9,32 +9,14 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MOCK_TASKS } from "@/data/mock";
+import {
+  TASK_PRIORITY_LABELS,
+  TASK_PRIORITY_TONES,
+  TASK_STATUS_LABELS,
+  TASK_STATUS_TONES,
+} from "@/lib/labels";
 
 export const metadata = { title: "Tugas — Proyekin" };
-
-const STATUS_VARIANT: Record<string, "success" | "warning" | "neutral"> = {
-  DONE: "success",
-  IN_PROGRESS: "warning",
-  TODO: "neutral",
-};
-
-const STATUS_LABEL: Record<string, string> = {
-  DONE: "Selesai",
-  IN_PROGRESS: "Dalam Progres",
-  TODO: "Belum Dimulai",
-};
-
-const PRIORITY_VARIANT: Record<string, "danger" | "warning" | "neutral"> = {
-  HIGH: "danger",
-  MEDIUM: "warning",
-  LOW: "neutral",
-};
-
-const PRIORITY_LABEL: Record<string, string> = {
-  HIGH: "Tinggi",
-  MEDIUM: "Sedang",
-  LOW: "Rendah",
-};
 
 export default function TugasPage() {
   return (
@@ -77,13 +59,13 @@ export default function TugasPage() {
                     {t.assigneeName ?? "—"}
                   </TableCell>
                   <TableCell>
-                    <Badge variant={PRIORITY_VARIANT[t.priority] ?? "neutral"}>
-                      {PRIORITY_LABEL[t.priority] ?? t.priority}
+                    <Badge variant={TASK_PRIORITY_TONES[t.priority]}>
+                      {TASK_PRIORITY_LABELS[t.priority]}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge variant={STATUS_VARIANT[t.status] ?? "neutral"} dot>
-                      {STATUS_LABEL[t.status] ?? t.status}
+                    <Badge variant={TASK_STATUS_TONES[t.status]} dot>
+                      {TASK_STATUS_LABELS[t.status]}
                     </Badge>
                   </TableCell>
                   <TableCell align="right">{t.progress}%</TableCell>

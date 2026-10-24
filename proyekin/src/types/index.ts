@@ -21,7 +21,25 @@ export interface Project {
   progress: number;
   client: string;
   location: string;
+  /**
+   * @deprecated LEGACY (U0–U3): nilainya mencampur Owner dan Admin Kantor sehingga tidak bermakna.
+   * Tidak dipakai U4 dan tidak dihapus. Gunakan `adminId`.
+   */
   managerId?: string;
+  /**
+   * L2 — Admin Kantor principal proyek (satu per proyek untuk MVP; keputusan pemilik §7A).
+   * Kosong = proyek belum memiliki Admin Kantor.
+   */
+  adminId?: string;
+}
+
+/**
+ * L2 — keanggotaan proyek: hanya Mandor dan Anggota Tim. Role selalu diambil dari `User` (role global),
+ * tidak disalin ke sini. Admin principal ada di `Project.adminId`, bukan di sini.
+ */
+export interface ProjectMember {
+  projectId: string;
+  userId: string;
 }
 
 export type ProjectStatus = "DRAFT" | "ON_PROGRESS" | "PAUSED" | "COMPLETED" | "ARCHIVED";

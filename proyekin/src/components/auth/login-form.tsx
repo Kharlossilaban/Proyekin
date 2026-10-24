@@ -13,7 +13,7 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { mockLogin } from "@/lib/auth-mock";
 import { hasErrors, validateEmail, validateRequiredPassword } from "@/lib/auth-validation";
 import { MOCK_USERS } from "@/data/mock";
-import { ROLE_LABELS } from "@/lib/navigation";
+import { ROLE_LABELS } from "@/lib/labels";
 
 const NOTICES: Record<string, string> = {
   registered: "Pendaftaran Owner disimulasikan. Tidak ada akun yang benar-benar dibuat; masuk memakai akun demo di bawah.",

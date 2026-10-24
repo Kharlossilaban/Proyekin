@@ -7,7 +7,30 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { createSpikeProject, createSpikeTask } from "@/lib/u4-spike-store";
+import { createProject, createTask } from "@/lib/mock-store";
+
+// Data uji minimal untuk membuktikan ID runtime (bukan form/CRUD final).
+const createSpikeProject = () =>
+  createProject({
+    name: "Proyek uji runtime",
+    description: "Dibuat di memori klien untuk menguji route dinamis (spike U4-0).",
+    status: "DRAFT",
+    startDate: "2026-03-21",
+    endDate: "2026-03-21",
+    budget: 0,
+    progress: 0,
+    client: "(uji)",
+    location: "(uji)",
+  });
+
+const createSpikeTask = () =>
+  createTask({
+    projectId: "p-001",
+    title: "Tugas uji runtime",
+    status: "TODO",
+    priority: "LOW",
+    progress: 0,
+  });
 
 const SEED_LINKS = [
   { href: "/proyek/p-001", label: "Proyek seed p-001" },

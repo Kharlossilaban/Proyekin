@@ -1,4 +1,4 @@
-import { Project, Task, DailyReport, Document, TeamMember, User, Role } from "@/types";
+import { Project, ProjectMember, Task, DailyReport, Document, TeamMember, User, Role } from "@/types";
 
 export const MOCK_USER: User = {
   id: "u-001",
@@ -30,7 +30,8 @@ export const MOCK_PROJECTS: Project[] = [
     progress: 45,
     client: "PT. Properti Nusantara",
     location: "Balai Kota Batam, Kepulauan Riau",
-    managerId: "u-002",
+    managerId: "u-002", // LEGACY, tidak dipakai U4 (lihat `Project.managerId`)
+    adminId: "u-002",
   },
   {
     id: "p-002",
@@ -44,7 +45,8 @@ export const MOCK_PROJECTS: Project[] = [
     progress: 20,
     client: "CV. Jaya Abadi Logistics",
     location: "Kec. Sungai Manggis, Kepulauan Riau",
-    managerId: "u-002",
+    managerId: "u-002", // LEGACY
+    adminId: "u-002",
   },
   {
     id: "p-003",
@@ -58,7 +60,7 @@ export const MOCK_PROJECTS: Project[] = [
     progress: 60,
     client: "Dinas PU Kepulauan Riau",
     location: "Pelabuhan Tanjung Pinang",
-    managerId: "u-001",
+    managerId: "u-001", // LEGACY; belum ada Admin Kantor principal (adminId kosong)
   },
   {
     id: "p-004",
@@ -72,7 +74,7 @@ export const MOCK_PROJECTS: Project[] = [
     progress: 100,
     client: "PT. Batamindo Industri Perkasa",
     location: "Kawasan Industri BATAMINDO",
-    managerId: "u-001",
+    managerId: "u-001", // LEGACY; belum ada Admin Kantor principal
   },
   {
     id: "p-005",
@@ -86,8 +88,21 @@ export const MOCK_PROJECTS: Project[] = [
     progress: 100,
     client: "Desa Batu Angkut",
     location: "Desa Batu Angkut, Kepulauan Riau",
-    managerId: "u-001",
+    managerId: "u-001", // LEGACY; belum ada Admin Kantor principal
   },
+];
+
+/**
+ * L2 — keanggotaan proyek (Mandor dan Anggota Tim saja). Disusun dari relasi yang sudah ada di seed:
+ * penanggung jawab tugas (MOCK_TASKS) dan penulis laporan (MOCK_REPORTS). Role selalu dari MOCK_USERS.
+ * PRJ-003 s.d. PRJ-005 sengaja tanpa anggota (menguji state kosong).
+ */
+export const MOCK_PROJECT_MEMBERS: ProjectMember[] = [
+  { projectId: "p-001", userId: "u-003" }, // Ahmad Rizal (Mandor): t-001, laporan r-001/r-002
+  { projectId: "p-001", userId: "u-004" }, // Dewi Lestari (Anggota Tim): t-002, t-006
+  { projectId: "p-001", userId: "u-005" }, // Eko Prasetyo (Mandor): t-003
+  { projectId: "p-002", userId: "u-003" }, // Ahmad Rizal (Mandor): t-004
+  { projectId: "p-002", userId: "u-005" }, // Eko Prasetyo (Mandor): t-005, laporan r-003
 ];
 
 export const MOCK_TASKS: Task[] = [
@@ -155,8 +170,10 @@ export const MOCK_TASKS: Task[] = [
     description: "Pengadaan baja WF 200.100.5.8 sesuai RAB yang disetujui.",
     status: "TODO",
     priority: "HIGH",
-    assigneeId: "u-002",
-    assigneeName: "Siti Aminah",
+    // Semula Siti Aminah (Admin Kantor). Penanggung jawab hanya Mandor/Anggota Tim anggota proyek (J6),
+    // maka dipindahkan ke Eko Prasetyo (Mandor, anggota PRJ-002).
+    assigneeId: "u-005",
+    assigneeName: "Eko Prasetyo",
     dueDate: "2026-03-25",
     progress: 0,
   },

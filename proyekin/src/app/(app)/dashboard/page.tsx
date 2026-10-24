@@ -22,25 +22,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { MOCK_PROJECTS, MOCK_TASKS, MOCK_REPORTS, MOCK_USERS } from "@/data/mock";
+import { PROJECT_STATUS_LABELS, PROJECT_STATUS_TONES } from "@/lib/labels";
 import { formatRupiah } from "@/lib/utils";
 
 export const metadata = { title: "Dashboard — Proyekin" };
-
-const STATUS_VARIANT: Record<string, "success" | "warning" | "neutral" | "danger"> = {
-  ON_PROGRESS: "success",
-  PAUSED: "warning",
-  COMPLETED: "neutral",
-  ARCHIVED: "neutral",
-  DRAFT: "neutral",
-};
-
-const STATUS_LABEL: Record<string, string> = {
-  ON_PROGRESS: "Berjalan",
-  PAUSED: "Tertunda",
-  COMPLETED: "Selesai",
-  ARCHIVED: "Arsip",
-  DRAFT: "Draf",
-};
 
 export default function DashboardPage() {
   const activeProjects = MOCK_PROJECTS.filter(
@@ -111,11 +96,8 @@ export default function DashboardPage() {
                   </TableCell>
                   <TableCell className="min-w-[200px]">{p.name}</TableCell>
                   <TableCell>
-                    <Badge
-                      variant={STATUS_VARIANT[p.status] ?? "neutral"}
-                      dot
-                    >
-                      {STATUS_LABEL[p.status] ?? p.status}
+                    <Badge variant={PROJECT_STATUS_TONES[p.status]} dot>
+                      {PROJECT_STATUS_LABELS[p.status]}
                     </Badge>
                   </TableCell>
                   <TableCell>

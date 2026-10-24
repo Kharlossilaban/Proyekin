@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-25 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: U4-0 spike route dinamis selesai, menunggu persetujuan U4-1)
+Terakhir diperbarui: 2026-10-25 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: U4-0 dan U4-1 selesai, menunggu audit dan persetujuan U4-2)
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -136,7 +136,15 @@ Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pe
 - `/proyek/[projectId]` dan `/tugas/[taskId]` berfungsi di bawah `cacheComponents`: ID seed diprerender (`generateStaticParams`), ID yang dibuat saat runtime di memori klien terbuka lewat navigasi klien, ID tidak dikenal menampilkan not-found.
 - Keterbatasan: ID runtime tidak bisa dibuka lewat URL langsung/reload (store memori); status HTTP ID tidak dikenal tidak konsisten (200 lalu 404 cache); not-found dirender di klien.
 - Guard halaman: guard yang menahan `children` meniadakan konten dari HTML prerender (pola d8cd209). Rekomendasi U4-3: guard yang tetap merender `children` dan menyembunyikannya (`hidden` + `inert`). Bukan kontrol keamanan.
-- Artefak spike (store, halaman `/u4-spike*`, `components/spike/*`) bersifat sementara dan dibersihkan di U4-1/U4-3. Skrip baru: `npm run check:dynamic-routes`.
+- Artefak spike (halaman `/u4-spike*`, `components/spike/*`, `lib/u4-spike-gate.ts`) bersifat sementara dan dibersihkan di U4-3/U4-4 (store spike sudah digantikan di U4-1). Skrip baru: `npm run check:dynamic-routes`.
+
+**U4-1 — fondasi data dan matriks akses UI: selesai** (detail di `docs/u4-evidence/U4-1-FOUNDATION.md`, bukti di `docs/u4-evidence/u4-1/`). Hanya fondasi; belum ada UI bisnis, CRUD, guard, atau redirect.
+- **Tiga lapisan:** L1 pengguna organisasi + role global; L2 keanggotaan proyek (`ProjectMember`, `Project.adminId` untuk satu Admin principal); L3 penugasan dan status tugas. `Project.managerId` lama dipertahankan sebagai legacy.
+- **Modul baru:** `lib/mock-store.ts` (+ `use-mock-store.ts`), `lib/roles.ts` (konstanta pilihan role), `lib/labels.ts` (label dan nada Badge terpusat), `lib/demo-date.ts`, `lib/access.ts` (izin UI, fungsi murni, **bukan keamanan**), `components/auth/use-current-user.ts`.
+- **Seed:** `MOCK_PROJECT_MEMBERS` (5 baris), `adminId` PRJ-001/002 = Siti, TSK-005 dipindah ke Eko Prasetyo (penanggung jawab harus Mandor/Anggota anggota proyek). `MOCK_TEAM_MEMBERS` tidak disentuh.
+- **Tanggal acuan demo (G10):** `DEMO_REFERENCE_DATE = 2026-03-21`; seed menghasilkan 2 tugas terlambat (TSK-002, TSK-003). UI tahap berikutnya wajib menampilkan `DEMO_DATE_NOTICE`.
+- **G1–G9:** diterapkan fail-closed di `access.ts`; belum ada hak yang diperluas dan belum ada konflik bisnis baru.
+- **Pengujian:** `npm run check:u4-foundation` (182 pemeriksaan: relasi seed, tenggat, store, lima role, matriks izin 7 persona) + seluruh regresi U1–U3 + `check:dynamic-routes` lulus.
 
 ## Roadmap UI/UX (disetujui sebagai dasar awal)
 | Fase | Isi |
@@ -145,7 +153,7 @@ Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pe
 | U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) — **selesai, merged** |
 | U2 | App shell: sidebar, header, navigasi per role, responsif — **selesai, merged** |
 | U3 | Halaman auth (UI, mock) — **selesai, merged** (PASS WITH NOTES; catatan di Technical backlog) |
-| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 selesai; U4-1 dst. menunggu persetujuan) |
+| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 dan U4-1 selesai; U4-2 dst. menunggu persetujuan) |
 | U5 | Laporan Harian, Dokumen |
 | U6 | Gantt, landing publik |
 | U7 | Polesan: state kosong/error/loading, aksesibilitas, uji responsif |
@@ -178,7 +186,7 @@ Dicatat, tidak diperbaiki diam-diam. Perbaikan yang menyentuh business logic ata
 
 ## Masalah terbuka
 Daftar singkat:
-- `getStatusLabel()` di `utils.ts` selalu memakai label proyek (bug), parameter `lang` tidak dipakai.
+- ~~`getStatusLabel()` di `utils.ts` selalu memakai label proyek (bug)~~ — **selesai di U4-1**: dihapus (tanpa pemanggil) dan digantikan fungsi per domain di `lib/labels.ts`.
 - `mock.ts`: karakter Mandarin "已完成" di FAQ, typo "angut"/"ARKIP", import `Role` tidak terpakai.
 - `DocumentCategory` memuat `"SURAT menyurat"` (tidak konsisten); `StatCard` memakai `React.ReactNode` tanpa import; `MOCK_TESTIMONIALS` tanpa tipe.
 - Logo hanya JPEG; perlu SVG/PNG transparan.

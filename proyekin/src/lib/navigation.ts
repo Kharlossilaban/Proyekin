@@ -56,10 +56,5 @@ export function getNavForRole(role: Role): NavItem[] {
   return NAV_ITEMS.filter((item) => item.roles.includes(role));
 }
 
-export const ROLE_LABELS: Record<Role, string> = {
-  OWNER: "Owner",
-  ADMIN: "Admin Kantor",
-  MANDOR: "Mandor",
-  ANGGOTA: "Anggota Tim",
-  GUEST: "Guest",
-};
+// ROLE_LABELS dipindahkan ke `@/lib/labels` (satu sumber label). Visibilitas menu per role di atas TIDAK diubah
+// di U4-1; penyesuaian menu (J2/J5) dikerjakan di U4-3.

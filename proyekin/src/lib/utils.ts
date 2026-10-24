@@ -48,34 +48,8 @@ export function fileBytesToSize(bytes: number): string {
   return `${(bytes / Math.pow(k, i)).toFixed(1)} ${sizes[i]}`;
 }
 
-export function getStatusLabel(key: string, lang: "id" | "en" = "id"): string {
-  const map: Record<string, Record<string, string>> = {
-    project: {
-      DRAFT: "Draf",
-      ON_PROGRESS: "Berjalan",
-      PAUSED: "Tertunda",
-      COMPLETED: "Selesai",
-      ARCHIVED: "Arsip",
-    },
-    task: {
-      TODO: "Belum Dimulai",
-      IN_PROGRESS: "Dalam Progress",
-      DONE: "Selesai",
-    },
-    report: {
-      DRAFT: "Draft",
-      SUBMITTED: "Terkirim",
-      APPROVED: "Disetujui",
-      REJECTED: "Ditolak",
-    },
-    document: {
-      PUBLIK: "Publik",
-      PRIVAT: "Privat",
-      ARKIP: "Arsip",
-    },
-  };
-  return map[lang === "en" ? "project" : "project"][key] || key;
-}
+// getStatusLabel() dihapus: selalu memakai peta label proyek untuk kunci apa pun dan mengabaikan parameter `lang`.
+// Gunakan fungsi per domain di @/lib/labels (getProjectStatusLabel, getTaskStatusLabel, dst.).
 
 export function cnTw(...classes: string[]): string {
   return twMerge(clsx(classes));

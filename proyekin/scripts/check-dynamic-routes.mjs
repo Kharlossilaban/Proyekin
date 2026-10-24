@@ -205,6 +205,7 @@ await goto("/u4-spike");
 const mark3 = await setMark();
 await click('[data-spike-action="create-project-link"]');
 await waitFor(() => evaluate(`!!document.querySelector("[data-spike-created]")`), 10000, "tautan dibuat");
+bro("store reset: dokumen baru memulai dari seed (ID runtime pertama kembali p-006)", (await evaluate(`document.querySelector("[data-spike-created]").getAttribute("href")`)) === "/proyek/p-006");
 await click("[data-spike-created]");
 await waitPath("/proyek/p-006");
 await waitFor(async () => (await visible('[data-spike="found"]')).includes("p-006"), 15000, "p-006 via Link");

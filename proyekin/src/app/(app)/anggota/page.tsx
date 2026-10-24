@@ -9,18 +9,9 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MOCK_USERS } from "@/data/mock";
-import { ROLE_LABELS } from "@/lib/navigation";
-import type { Role } from "@/types";
+import { ROLE_LABELS, ROLE_TONES } from "@/lib/labels";
 
 export const metadata = { title: "Anggota — Proyekin" };
-
-const ROLE_VARIANT: Record<Role, "brand" | "neutral" | "info" | "success"> = {
-  OWNER: "brand",
-  ADMIN: "info",
-  MANDOR: "success",
-  ANGGOTA: "neutral",
-  GUEST: "neutral",
-};
 
 export default function AnggotaPage() {
   return (
@@ -64,7 +55,7 @@ export default function AnggotaPage() {
                     {u.email}
                   </TableCell>
                   <TableCell>
-                    <Badge variant={ROLE_VARIANT[u.role]}>
+                    <Badge variant={ROLE_TONES[u.role]}>
                       {ROLE_LABELS[u.role]}
                     </Badge>
                   </TableCell>

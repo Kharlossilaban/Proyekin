@@ -21,7 +21,7 @@ import { Logo } from "@/components/layout/logo";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { NavItem } from "@/lib/navigation";
-import { ROLE_LABELS } from "@/lib/navigation";
+import { ROLE_LABELS } from "@/lib/labels";
 import type { User } from "@/types";
 
 const ICON_MAP: Record<string, LucideIcon> = {
