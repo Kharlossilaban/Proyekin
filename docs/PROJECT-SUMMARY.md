@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-24 (U3 disetujui pemilik dengan verdict PASS WITH NOTES dan di-merge fast-forward lokal ke `main`; U4 belum dimulai)
+Terakhir diperbarui: 2026-10-25 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: U4-0 spike route dinamis selesai, menunggu persetujuan U4-1)
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -111,6 +111,33 @@ A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjak
   - **Kredensial:** tidak ada password, token rahasia, atau API key di kode, riwayat Git (diperiksa), maupun berkas teks evidence. `demo-token` hanya literal penanda simulasi. Screenshot hanya memuat data demo di atas dan `tidak.ada@contoh.co.id`.
   - **Catatan (belum diubah, menunggu keputusan):** (1) `proyekin.id` bisa saja domain nyata milik pihak lain; pertimbangkan domain khusus contoh (`example.com`/`.test`) saat data mock dirapikan. (2) `MOCK_CONTACT` (alamat, telepon, tautan sosial `instagram.com/proyekin`, `linkedin.com/company/proyekin`) belum dipakai UI mana pun; tautan sosial bisa menunjuk akun pihak lain dan sebaiknya diganti placeholder sebelum halaman Kontak dibuat. (3) Metadata commit Git memuat email penulis; wajar, tetapi perlu diperhatikan bila repo dipublikasikan.
 
+## Fase U4 (berjalan, branch `feat/u4-core-ui`; hanya langkah yang disetujui eksplisit yang boleh dikerjakan)
+Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pemilik; implementasi dilepas **per langkah**. Semua UI U4 berbasis mock dan tidak boleh disebut production-ready.
+
+**Keputusan pemilik U4 (2026-10-25):**
+| Kode | Keputusan |
+|---|---|
+| J1 | Tim Mandor = Anggota Tim di proyek tempat Mandor ditugaskan. Mandor boleh mengatur penugasan tugas dalam proyeknya, bukan role global. Hak penugasan tugas dibedakan dari hak menambah/mengeluarkan anggota proyek; jangan diperluas diam-diam. |
+| J2 | Dashboard analitik hanya Owner/Admin Kantor. Mandor dan Anggota Tim diarahkan ke `/tugas` setelah login. |
+| J3 | Owner membuat/menghapus proyek. Admin hanya mengelola proyek yang ditugaskan. |
+| J4 | Owner mengelola seluruh pengguna dan role. Admin hanya menambah Mandor/Anggota Tim untuk kebutuhan operasional, tanpa mengubah role global atau mengelola akun Owner/Admin. |
+| J5 | Anggota Tim melihat detail proyek tempatnya menjadi anggota (hanya baca) dan memperbarui status tugas miliknya. Tidak mengakses daftar pengguna organisasi. |
+| J6 | Field tugas existing dipertahankan minimal; progres (%) hanya ditampilkan; tidak ada hapus tugas di U4; penanggung jawab hanya Mandor/Anggota Tim anggota proyek tersebut. |
+| J7 | Kode proyek/tugas otomatis; field opsional diterima; Arsip bukan status yang dapat dipilih. |
+| J8 | Relasi seed mock dirapikan tanpa menghapus data lama. |
+| J9 | Store mock di memori, reset saat reload, dijelaskan di UI. |
+| J10 | Kanban di luar U4. |
+| J11 | Tidak ada dependency baru tanpa persetujuan. |
+| G10 | Tanggal acuan demo untuk status tenggat: **21 Maret 2026**, wajib diberi label jelas bahwa ini bukan tanggal hari ini. |
+| G1–G9 | Belum final; U4 memakai batas fail-closed di rencana (tidak memperluas hak). |
+| Platform | Mandor: **mobile-first** (375px). Owner/Admin: desktop-first (1280px), tetap responsif. Anggota Tim: responsif, terutama alur tugas di 375px. Vendor: direncanakan mobile-first tetapi kelas B/post-MVP; **tidak ada** role, login, halaman, atau fitur Vendor di U4. Lima role resmi saja; tidak ada Tukang. |
+
+**U4-0 — spike route dinamis: PASS** (detail dan bukti di `docs/u4-evidence/U4-0-SPIKE.md` dan `docs/u4-evidence/u4-0/`).
+- `/proyek/[projectId]` dan `/tugas/[taskId]` berfungsi di bawah `cacheComponents`: ID seed diprerender (`generateStaticParams`), ID yang dibuat saat runtime di memori klien terbuka lewat navigasi klien, ID tidak dikenal menampilkan not-found.
+- Keterbatasan: ID runtime tidak bisa dibuka lewat URL langsung/reload (store memori); status HTTP ID tidak dikenal tidak konsisten (200 lalu 404 cache); not-found dirender di klien.
+- Guard halaman: guard yang menahan `children` meniadakan konten dari HTML prerender (pola d8cd209). Rekomendasi U4-3: guard yang tetap merender `children` dan menyembunyikannya (`hidden` + `inert`). Bukan kontrol keamanan.
+- Artefak spike (store, halaman `/u4-spike*`, `components/spike/*`) bersifat sementara dan dibersihkan di U4-1/U4-3. Skrip baru: `npm run check:dynamic-routes`.
+
 ## Roadmap UI/UX (disetujui sebagai dasar awal)
 | Fase | Isi |
 |---|---|
@@ -118,7 +145,7 @@ A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjak
 | U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) — **selesai, merged** |
 | U2 | App shell: sidebar, header, navigasi per role, responsif — **selesai, merged** |
 | U3 | Halaman auth (UI, mock) — **selesai, merged** (PASS WITH NOTES; catatan di Technical backlog) |
-| U4 | Dashboard, Proyek, Tugas, Anggota |
+| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 selesai; U4-1 dst. menunggu persetujuan) |
 | U5 | Laporan Harian, Dokumen |
 | U6 | Gantt, landing publik |
 | U7 | Polesan: state kosong/error/loading, aksesibilitas, uji responsif |

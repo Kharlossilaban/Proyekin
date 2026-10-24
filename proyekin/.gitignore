@@ -45,3 +45,4 @@ next-env.d.ts
 
 # auto-generated oleh next dev (nextjs-agent-rules)
 /AGENTS.md
+/.dynamic-routes-check/
