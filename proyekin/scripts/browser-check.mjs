@@ -600,6 +600,83 @@ await flow("akses ditolak + landing", async () => {
 });
 await evaluate(`sessionStorage.clear()`);
 
+// 14) jalur GUEST. Data mock sengaja tidak punya akun Guest (keputusan U3-1), jadi pengguna Guest
+// disisipkan SEMENTARA ke mock.ts dan dipulihkan lagi (finally + handler exit). Hanya untuk pengujian.
+const MOCK_FILE = join(ROOT, "src/data/mock.ts");
+const MOCK_ORIGINAL = readFileSync(MOCK_FILE, "utf8");
+const GUEST_EMAIL = "tamu.uji@contoh.co.id";
+const restoreMock = () => {
+  try {
+    if (readFileSync(MOCK_FILE, "utf8") !== MOCK_ORIGINAL) writeFileSync(MOCK_FILE, MOCK_ORIGINAL);
+  } catch {
+    /* tidak ada yang bisa dipulihkan */
+  }
+};
+process.on("exit", restoreMock);
+process.on("SIGINT", () => process.exit(130));
+
+await flow("jalur Guest", async () => {
+  const USERS_HEAD = /export const MOCK_USERS: User\[\] = \[\r?\n/;
+  if (!USERS_HEAD.test(MOCK_ORIGINAL)) throw new Error("MOCK_USERS tidak ditemukan; sesuaikan pengujian Guest");
+  let observer;
+  try {
+    writeFileSync(
+      MOCK_FILE,
+      MOCK_ORIGINAL.replace(USERS_HEAD, (head) => `${head}  { id: "u-guest-test", name: "Tamu Uji", email: "${GUEST_EMAIL}", role: "GUEST" },\n`),
+    );
+    // tunggu HMR memuat akun uji
+    await waitFor(async () => {
+      await gotoPage(desktop, "/masuk");
+      return evaluate(`document.body.textContent.includes(${q(GUEST_EMAIL)})`);
+    }, 90000, "mock Guest termuat");
+
+    // rekam apa pun yang sempat tampil: menu role atau blok user (tombol Keluar) tidak boleh muncul untuk Guest
+    observer = await send("Page.addScriptToEvaluateOnNewDocument", {
+      source: `(() => { const seen = { roleNav: false, userBlock: false };
+        new MutationObserver(() => {
+          if (document.querySelector('[data-slot="sidebar-desktop"] nav a')) seen.roleNav = true;
+          if ([...document.querySelectorAll("button")].some(b => /Keluar/.test(b.textContent))) seen.userBlock = true;
+          try { sessionStorage.setItem("__seen", JSON.stringify(seen)); } catch {}
+        }).observe(document, { childList: true, subtree: true }); })();`,
+    });
+
+    // a) login lewat form sebagai Guest -> akses ditolak
+    await gotoPage(desktop, "/masuk");
+    await fill("#email", GUEST_EMAIL);
+    await fill("#password", "apa-saja");
+    await click(SUBMIT);
+    await waitPath("/akses-ditolak", "Guest dialihkan ke akses ditolak");
+    await waitFor(() => evaluate(`document.querySelector("h1")?.textContent === "Akses tidak tersedia"`), 15000, "h1 akses ditolak");
+    check("guest: login diarahkan ke /akses-ditolak", true);
+
+    // b) buka route aplikasi langsung dengan sesi Guest
+    await evaluate(`sessionStorage.removeItem("__seen")`);
+    await gotoPage(desktop, "/dashboard");
+    await waitPath("/akses-ditolak", "Guest di /dashboard dialihkan");
+    await waitFor(() => evaluate(`document.querySelector("h1")?.textContent === "Akses tidak tersedia"`), 15000, "h1 akses ditolak");
+    const g = await evaluate(`({
+      shell: !!document.querySelector('[data-slot="sidebar-desktop"]'),
+      keluar: [...document.querySelectorAll("button")].some(b => /Keluar/.test(b.textContent) && b.checkVisibility()),
+      seen: JSON.parse(sessionStorage.getItem("__seen") || "{}"),
+    })`);
+    check("guest: sidebar tidak ada di DOM", !g.shell, JSON.stringify(g));
+    check("guest: tidak ada tombol Keluar/blok user", !g.keluar);
+    check("guest: menu role dan blok user tidak pernah tampil", !g.seen.roleNav && !g.seen.userBlock, JSON.stringify(g.seen));
+    const axe = await evaluate(AXE_RUN);
+    check("guest: axe 0 pelanggaran di /akses-ditolak", axe.violations.length === 0, axe.violations.map((v) => v.id).join(","));
+    await fullShot(join(FLOWS_DIR, "guest-akses-ditolak-1280.png"), desktop);
+
+    // c) halaman publik tetap tanpa shell
+    await gotoPage(desktop, "/");
+    check("guest: landing publik tanpa sidebar", await evaluate(`!document.querySelector('[data-slot="sidebar-desktop"]')`));
+  } finally {
+    if (observer) await send("Page.removeScriptToEvaluateOnNewDocument", { identifier: observer.identifier });
+    await evaluate(`sessionStorage.clear()`).catch(() => {});
+    restoreMock();
+  }
+});
+restoreMock();
+
 writeFileSync(join(OUT, "results.json"), JSON.stringify(results, null, 2));
 console.log(JSON.stringify(results, null, 2));
 console.log(results.failures.length ? `\n${results.failures.length} masalah.` : "\nSemua pemeriksaan lolos.");

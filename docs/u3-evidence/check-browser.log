@@ -1,3 +1,7 @@
+﻿
+> proyekin@0.1.0 check:browser
+> node scripts/browser-check.mjs ../docs/u3-evidence
+
 {
   "viewports": [
     {
@@ -327,7 +331,7 @@
     {
       "name": "sesi: hanya userId + waktu, tanpa password",
       "ok": true,
-      "detail": "{\"userId\":\"u-001\",\"loginAt\":\"2026-10-23T18:07:06.954Z\"}"
+      "detail": "{\"userId\":\"u-001\",\"loginAt\":\"2026-10-24T15:48:01.477Z\"}"
     },
     {
       "name": "sesi: tidak memakai localStorage",
@@ -496,6 +500,36 @@
     },
     {
       "name": "landing → login → beranda berfungsi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: login diarahkan ke /akses-ditolak",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: sidebar tidak ada di DOM",
+      "ok": true,
+      "detail": "{\"shell\":false,\"keluar\":false,\"seen\":{\"roleNav\":false,\"userBlock\":false}}"
+    },
+    {
+      "name": "guest: tidak ada tombol Keluar/blok user",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: menu role dan blok user tidak pernah tampil",
+      "ok": true,
+      "detail": "{\"roleNav\":false,\"userBlock\":false}"
+    },
+    {
+      "name": "guest: axe 0 pelanggaran di /akses-ditolak",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: landing publik tanpa sidebar",
       "ok": true,
       "detail": ""
     }

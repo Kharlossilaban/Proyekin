@@ -16,6 +16,8 @@ import { mockLogout } from "@/lib/auth-mock";
  * dapat menguji semua route. Pembatasan akses sesungguhnya harus ditegakkan di backend.
  * `children` selalu dirender (termasuk di server) agar halaman tetap bisa di-prerender;
  * hanya menu dan blok user yang menjadi placeholder sampai sesi diketahui di klien.
+ * Keterbatasan: HTML hasil prerender sama untuk semua pengunjung (sesi hanya diketahui di klien),
+ * jadi pencegahan tampilan sebelum hidrasi hanya bisa dilakukan oleh pemeriksaan sesi di server.
  */
 function SessionShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -28,6 +30,18 @@ function SessionShell({ children }: { children: React.ReactNode }) {
     if (isGuest) router.replace("/akses-ditolak");
   }, [isGuest, router]);
 
+  // Guest tidak boleh melihat App Shell (keputusan pemilik D): jangan render shell maupun
+  // isi halaman selama pengalihan ke /akses-ditolak berlangsung.
+  if (isGuest) {
+    return (
+      <main className="flex flex-1 items-center justify-center bg-canvas px-4">
+        <p role="status" className="text-sm text-graphite">
+          Mengalihkan ke halaman akses…
+        </p>
+      </main>
+    );
+  }
+
   const handleLogout = () => {
     mockLogout();
     router.push("/masuk");
@@ -38,7 +52,7 @@ function SessionShell({ children }: { children: React.ReactNode }) {
   return (
     <AppShell
       user={sessionUser ?? MOCK_USER}
-      pending={pending || isGuest}
+      pending={pending}
       onLogout={sessionUser ? handleLogout : undefined}
       notice={
         showNotice ? (
