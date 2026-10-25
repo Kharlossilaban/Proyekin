@@ -47,10 +47,11 @@ interface SidebarProps {
 function Sidebar({ items, user, open, onClose, onLogout, pending = false }: SidebarProps) {
   const pathname = usePathname();
 
-  const nav = pending ? (
+  // `touch` = drawer mobile (Mandor/Anggota Tim, 375px): target sentuh minimal 44px. Sidebar desktop tetap ukuran U2.
+  const renderNav = (touch: boolean) => pending ? (
     <nav aria-label="Navigasi utama" aria-busy="true" className="flex flex-1 flex-col gap-2">
       {Array.from({ length: 6 }, (_, i) => (
-        <Skeleton key={i} className="h-9 w-full" />
+        <Skeleton key={i} className={touch ? "h-11 w-full" : "h-9 w-full"} />
       ))}
     </nav>
   ) : (
@@ -68,6 +69,7 @@ function Sidebar({ items, user, open, onClose, onLogout, pending = false }: Side
                 onClick={onClose}
                 className={cn(
                   "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                  touch && "min-h-11",
                   active
                     ? "bg-accent text-foreground"
                     : "text-graphite hover:bg-muted hover:text-foreground",
@@ -83,7 +85,7 @@ function Sidebar({ items, user, open, onClose, onLogout, pending = false }: Side
     </nav>
   );
 
-  const userBlock = pending ? (
+  const renderUserBlock = (touch: boolean) => pending ? (
     <div className="border-t border-border px-3 py-4" aria-busy="true">
       <div className="flex items-center gap-3">
         <Skeleton className="size-9 rounded-full" />
@@ -108,7 +110,7 @@ function Sidebar({ items, user, open, onClose, onLogout, pending = false }: Side
       {onLogout ? (
         <Button
           variant="outline"
-          size="sm"
+          size={touch ? "touch" : "sm"}
           className="mt-3 w-full"
           onClick={() => {
             onClose();
@@ -134,9 +136,9 @@ function Sidebar({ items, user, open, onClose, onLogout, pending = false }: Side
             <Logo />
           </div>
           <div className="flex flex-1 flex-col gap-2 overflow-y-auto px-3 py-2">
-            {nav}
+            {renderNav(false)}
           </div>
-          {userBlock}
+          {renderUserBlock(false)}
         </div>
       </aside>
 
@@ -163,14 +165,15 @@ function Sidebar({ items, user, open, onClose, onLogout, pending = false }: Side
                 size="icon"
                 aria-label="Tutup navigasi"
                 onClick={onClose}
+                className="size-11"
               >
                 <X className="size-5" />
               </Button>
             </div>
             <div className="flex flex-1 flex-col gap-2 overflow-y-auto px-3 py-2">
-              {nav}
+              {renderNav(true)}
             </div>
-            {userBlock}
+            {renderUserBlock(true)}
           </div>
         </div>
       ) : null}

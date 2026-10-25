@@ -26,10 +26,6 @@ const rec = (name, ok, detail = "") => {
     console.log("FAIL:", name, detail);
   } else console.log("ok:  ", name, detail);
 };
-const note = (text) => {
-  results.notes.push(text);
-  console.log("NOTE:", text);
-};
 const q = (s) => JSON.stringify(s);
 const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
@@ -57,7 +53,7 @@ const restoreMock = () => {
 };
 const dev = spawn(process.execPath, ["node_modules/next/dist/bin/next", "dev", "-p", String(APP_PORT)], { cwd: ROOT, stdio: "ignore" });
 const browser = await createBrowser({ cdpPort: 9666 });
-const { send, evaluate, setViewport, tap } = browser;
+const { send, evaluate, setViewport, tap, pressKey } = browser;
 const cleanup = () => {
   restoreMock();
   try {
@@ -165,6 +161,9 @@ for (const p of PERSONAS) {
   rec(`${p.key} (${p.role}): menu sidebar persis dan berurutan`, same(menu, p.menu), JSON.stringify(menu));
   rec(`${p.key}: halaman awal ${p.landing} adalah menu pertama`, menu[0] === (p.landing === "/dashboard" ? "Dashboard" : "Tugas"));
   results.matrix[p.key].menu = menu;
+  // Layout desktop tidak berubah oleh follow-up target sentuh: tautan 36px (U2), Keluar 36px (Button sm), tanpa tombol Buka navigasi.
+  const desk = await evaluate(`(() => { const h = (e) => Math.round(e.getBoundingClientRect().height); const out = [...document.querySelectorAll('[data-slot="sidebar-desktop"] nav a')].map(h); const logout = [...document.querySelectorAll('[data-slot="sidebar-desktop"] button')].find((b) => b.textContent.trim() === "Keluar"); const burger = document.querySelector('[aria-label="Buka navigasi"]'); return { links: out, logout: logout ? h(logout) : null, burgerVisible: !!burger && burger.checkVisibility() }; })()`);
+  rec(`${p.key}: desktop tidak berubah (tautan 36px, Keluar 36px, tanpa tombol Buka navigasi)`, desk.links.length === p.menu.length && desk.links.every((h) => h === 36) && desk.logout === 36 && !desk.burgerVisible, JSON.stringify(desk));
   await checkAxe(`${p.key} ${p.landing} 1280`);
   await shot(`${p.key}-landing-1280`);
 
@@ -270,6 +269,17 @@ await runtimeCase("siti", "u-002", '[data-spike-action="create-task-push"]', "al
 await runtimeCase("ahmad", "u-003", '[data-spike-action="create-project-push"]', "denied", "proyek runtime (bukan anggota) p-006");
 await runtimeCase("ahmad", "u-003", '[data-spike-action="create-task-push"]', "allowed", "tugas runtime di p-001 (anggota p-001, G5)");
 await runtimeCase("dewi", "u-004", '[data-spike-action="create-task-push"]', "denied", "tugas runtime tanpa penanggung jawab (bukan miliknya)");
+// Audit G8: tugas runtime pada proyek yang Admin principal-nya bukan Siti (p-003 tanpa Admin; proyek runtime tanpa Admin).
+// Siti (Admin) harus ditolak; Owner tetap boleh; Mandor/Anggota ditolak karena bukan anggota proyek itu.
+for (const [sel, label] of [
+  ['[data-spike-action="create-task-p003-push"]', "tugas runtime di p-003 (tanpa Admin principal)"],
+  ['[data-spike-action="create-task-runtime-project-push"]', "tugas runtime di proyek runtime (tanpa Admin principal)"],
+]) {
+  await runtimeCase("budi", "u-001", sel, "allowed", label);
+  await runtimeCase("siti", "u-002", sel, "denied", label);
+  await runtimeCase("ahmad", "u-003", sel, "denied", label);
+  await runtimeCase("dewi", "u-004", sel, "denied", label);
+}
 // reload pada ID runtime → store reset → tidak dikenal
 await setSession("u-001");
 await navigate("/u4-spike");
@@ -314,8 +324,18 @@ for (const p of PERSONAS.filter((x) => x.key === "ahmad" || x.key === "dewi")) {
   rec(`${p.key} mobile: drawer berisi menu persis dan berurutan (Tugas pertama)`, same(drawer, p.menu) && drawer[0] === "Tugas", JSON.stringify(drawer));
   const sizes = await evaluate(`[...document.querySelectorAll('[data-slot="sidebar-mobile"] nav a, [data-slot="sidebar-mobile"] button')].filter((e) => e.checkVisibility()).map((e) => { const r = e.getBoundingClientRect(); return { name: (e.getAttribute("aria-label") || e.textContent).trim().slice(0, 24), w: Math.round(r.width), h: Math.round(r.height) }; })`);
   results.measurements[`drawer ${p.key} 375`] = sizes;
+  // Follow-up U4-3: semua kontrol drawer (tautan menu, Tutup navigasi, Keluar) wajib >= 44x44px.
   const small = sizes.filter((s) => s.h < 44 || s.w < 44);
-  if (small.length) note(`${p.key} drawer 375px: ${small.length} kontrol di bawah 44px (${[...new Set(small.map((s) => `${s.w}x${s.h}`))].join(", ")}) — tinggi tautan drawer adalah bawaan U2 (tidak diubah di U4-3).`);
+  rec(`${p.key} mobile: target sentuh drawer >= 44x44px (${sizes.length} kontrol)`, sizes.length >= p.menu.length + 2 && small.length === 0, small.map((s) => `${s.name} ${s.w}x${s.h}`).join("; "));
+  const closeBox = await evaluate(`(() => { const r = document.querySelector('[aria-label="Tutup navigasi"]').getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height) }; })()`);
+  rec(`${p.key} mobile: tombol Tutup navigasi >= 44x44px`, closeBox.w >= 44 && closeBox.h >= 44, `${closeBox.w}x${closeBox.h}`);
+  const logoutBox = await evaluate(`(() => { const b = [...document.querySelectorAll('[data-slot="sidebar-mobile"] button')].find((x) => x.textContent.trim() === "Keluar"); if (!b) return null; const r = b.getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height) }; })()`);
+  rec(`${p.key} mobile: tombol Keluar di drawer >= 44x44px`, !!logoutBox && logoutBox.w >= 44 && logoutBox.h >= 44, JSON.stringify(logoutBox));
+  const openBox = await evaluate(`(() => { const r = document.querySelector('[aria-label="Buka navigasi"]').getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height) }; })()`);
+  rec(`${p.key} mobile: tombol Buka navigasi >= 44x44px`, openBox.w >= 44 && openBox.h >= 44, `${openBox.w}x${openBox.h}`);
+  // Tidak ada tautan yang saling menimpa (jarak vertikal antar tautan tidak negatif).
+  const gaps = await evaluate(`(() => { const rs = [...document.querySelectorAll('[data-slot="sidebar-mobile"] nav a')].map((a) => a.getBoundingClientRect()); return rs.slice(1).map((r, i) => Math.round(r.top - rs[i].bottom)); })()`);
+  rec(`${p.key} mobile: tautan drawer tidak saling menimpa`, gaps.every((g) => g >= 0), JSON.stringify(gaps));
   rec(`${p.key} mobile: drawer tidak memuat Dashboard/Anggota/Pengaturan`, !drawer.some((l) => ["Dashboard", "Anggota", "Pengaturan"].includes(l)));
   // Susunan lapisan: konten halaman (mis. tabel ber-`relative`) tidak boleh menimpa drawer (cacat U2: z-modal tak terdefinisi).
   const stacking = await evaluate(`(() => { const d = document.querySelector('[data-slot="sidebar-mobile"]'); return [[100, 450], [200, 300], [150, 600]].map(([x, y]) => d.contains(document.elementFromPoint(x, y))); })()`);
@@ -329,6 +349,28 @@ for (const p of PERSONAS.filter((x) => x.key === "ahmad" || x.key === "dewi")) {
   await outcome("section");
   rec(`${p.key} mobile: ketuk menu Proyek menavigasi tanpa muat ulang dan menutup drawer`, (await markIs(mark)) && !(await evaluate(`!!document.querySelector('[data-slot="sidebar-mobile"]')`)));
   await checkOverflow(`${p.key} /proyek 375 mobile`);
+
+  // keyboard: Enter pada "Buka navigasi" membuka drawer; Tab melewati tautan menu berurutan lalu Tutup/Keluar; Enter pada tautan menavigasi
+  await evaluate(`document.querySelector('[aria-label="Buka navigasi"]').focus()`);
+  await pressKey("Enter");
+  await waitFor(() => evaluate(`!!document.querySelector('[data-slot="sidebar-mobile"]')`), 5000, "drawer terbuka (keyboard)");
+  await sleep(200);
+  await evaluate(`document.querySelector('[data-slot="sidebar-mobile"] nav a').focus()`);
+  const order = [];
+  for (let i = 0; i < p.menu.length; i++) {
+    order.push(await evaluate(`document.activeElement?.textContent?.trim()`));
+    if (i < p.menu.length - 1) await pressKey("Tab");
+  }
+  rec(`${p.key} mobile: Tab melewati tautan drawer sesuai urutan menu`, same(order, p.menu), JSON.stringify(order));
+  await pressKey("Tab");
+  const afterLinks = await evaluate(`document.activeElement?.textContent?.trim()`);
+  rec(`${p.key} mobile: Tab berikutnya setelah tautan terakhir mencapai Keluar`, afterLinks === "Keluar", afterLinks);
+  const ring = await evaluate(`(() => { const s = getComputedStyle(document.activeElement); return { style: s.outlineStyle, width: parseFloat(s.outlineWidth) }; })()`);
+  rec(`${p.key} mobile: fokus keyboard terlihat pada kontrol drawer`, ring.style !== "none" && ring.width >= 2, JSON.stringify(ring));
+  await evaluate(`[...document.querySelectorAll('[data-slot="sidebar-mobile"] nav a')].find((a) => a.getAttribute("href") === "/dokumen").focus()`);
+  await pressKey("Enter");
+  await waitFor(async () => ((await evaluate(`location.pathname`)) === "/dokumen" ? true : null), 10000, "Enter pada tautan Dokumen");
+  rec(`${p.key} mobile: Enter pada tautan menavigasi tanpa muat ulang dan menutup drawer`, (await markIs(mark)) && !(await evaluate(`!!document.querySelector('[data-slot="sidebar-mobile"]')`)));
 
   // URL langsung ke bagian terlarang dan detail di 375
   await watch(null, "Dashboard");

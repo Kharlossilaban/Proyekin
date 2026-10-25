@@ -21,7 +21,7 @@ function AppHeader({ title, onMenuClick }: AppHeaderProps) {
         aria-label="Buka navigasi"
         aria-expanded={false}
         onClick={onMenuClick}
-        className="lg:hidden"
+        className="size-11 lg:hidden"
       >
         <Menu className="size-5" />
       </Button>

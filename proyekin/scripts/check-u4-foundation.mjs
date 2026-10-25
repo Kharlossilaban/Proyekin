@@ -184,6 +184,36 @@ eq("akses: kandidat Admin principal hanya role Admin Kantor", ids(access.getAdmi
 
 // L3 tugas (J1, J5, J6, G1, G5)
 perId("tugas terlihat (G5, J5)", MOCK_TASKS, (a, t) => access.canViewTask(a, t, data), { owner: T.all, admin: T.all, ahmad: T.all, eko: T.all, dewi: ["t-002", "t-006"] });
+// Audit G8 (follow-up U4-3): "Siti melihat semua tugas seed" harus karena DISTRIBUSI seed, bukan aturan yang terlalu luas.
+check("G8: seluruh tugas seed berada di p-001/p-002 (proyek yang Siti tangani sebagai Admin principal)", MOCK_TASKS.every((t) => ["p-001", "p-002"].includes(t.projectId)));
+{
+  const otherAdmin = { id: "u-102", name: "Admin Lain", email: "admin.lain@contoh.co.id", role: "ADMIN" };
+  const p6 = { ...MOCK_PROJECTS[2], id: "p-006", code: "PRJ-006", adminId: undefined }; // proyek runtime tanpa Admin principal
+  const p7 = { ...MOCK_PROJECTS[2], id: "p-007", code: "PRJ-007", adminId: "u-102" }; // Admin principal: admin lain
+  const mkTask = (id, projectId) => ({ ...MOCK_TASKS[0], id, projectId, assigneeId: undefined, assigneeName: undefined });
+  const dataG8 = {
+    users: [...data.users, otherAdmin],
+    projects: [...data.projects, p6, p7],
+    members: [...data.members, { projectId: "p-007", userId: "u-003" }],
+    tasks: [...data.tasks, mkTask("t-903", "p-003"), mkTask("t-904", "p-004"), mkTask("t-905", "p-005"), mkTask("t-906", "p-006"), mkTask("t-907", "p-007"), mkTask("t-908", "p-001")],
+  };
+  const g8 = (actor, fn) => dataG8.tasks.filter((t) => t.id >= "t-903").filter((t) => fn(actor, t)).map((t) => t.id);
+  const adminSiti = personas.admin;
+  eq("G8: Siti hanya melihat tugas runtime di proyek yang ia tangani (t-908@p-001), bukan p-003/p-004/p-005/p-006/p-007", g8(adminSiti, (a, t) => access.canViewTask(a, t, dataG8)), ["t-908"]);
+  eq("G8: Admin lain hanya melihat tugas di proyek miliknya (p-007)", g8(otherAdmin, (a, t) => access.canViewTask(a, t, dataG8)), ["t-907"]);
+  eq("G8: Owner melihat semua tugas runtime", g8(personas.owner, (a, t) => access.canViewTask(a, t, dataG8)), ["t-903", "t-904", "t-905", "t-906", "t-907", "t-908"]);
+  eq("G8: Mandor (Ahmad) hanya melihat tugas di proyek tempatnya menjadi anggota (p-001, p-007)", g8(personas.ahmad, (a, t) => access.canViewTask(a, t, dataG8)), ["t-907", "t-908"]);
+  eq("G8: Anggota Tim (Dewi) tidak melihat tugas runtime tanpa penanggung jawab dirinya", g8(personas.dewi, (a, t) => access.canViewTask(a, t, dataG8)), []);
+  for (const [name, fn] of [
+    ["ubah field", (a, t) => access.canEditTask(a, t, dataG8)],
+    ["ubah status", (a, t) => access.canChangeTaskStatus(a, t, dataG8)],
+    ["ganti penanggung jawab", (a, t) => access.canReassignTask(a, t, dataG8)],
+  ]) eq(`G8: Siti tidak ${name} tugas di proyek yang bukan miliknya`, g8(adminSiti, fn).filter((id) => id !== "t-908"), []);
+  check("G8: untuk Admin, canViewTask selalu sama dengan canViewProject proyek tugasnya", [adminSiti, otherAdmin].every((a) => dataG8.tasks.every((t) => access.canViewTask(a, t, dataG8) === access.canViewProject(a, dataG8.projects.find((p) => p.id === t.projectId), dataG8))));
+  check("G8: tugas dengan proyek tidak dikenal tidak terlihat oleh siapa pun", Object.values(personas).every((a) => !access.canViewTask(a, mkTask("t-909", "p-404"), dataG8)));
+  const noAdminIdUser = { ...adminSiti, id: "" }; // adminId kosong tidak boleh cocok dengan id kosong
+  check("G8: proyek tanpa adminId tidak cocok dengan Admin mana pun (termasuk id kosong)", !access.canViewTask(noAdminIdUser, mkTask("t-910", "p-006"), dataG8) && !access.canViewProject(noAdminIdUser, p6, dataG8));
+}
 perId("buat tugas", MOCK_PROJECTS, (a, p) => access.canCreateTask(a, p), { owner: P.active, admin: P.two });
 perId("ubah field tugas", MOCK_TASKS, (a, t) => access.canEditTask(a, t, data), { owner: T.all, admin: T.all });
 perId("ubah status tugas (G1, J5)", MOCK_TASKS, (a, t) => access.canChangeTaskStatus(a, t, data), { owner: T.all, admin: T.all, ahmad: ["t-001", "t-002", "t-004", "t-006"], eko: ["t-002", "t-003", "t-005", "t-006"], dewi: ["t-002", "t-006"] });

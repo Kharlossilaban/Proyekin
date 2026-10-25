@@ -34,6 +34,14 @@ const createSpikeTask = () =>
     progress: 0,
   });
 
+// Audit G8 (follow-up U4-3): tugas runtime pada proyek yang Admin principal-nya BUKAN Siti. Seed p-003 tidak punya
+// Admin principal; proyek runtime baru juga tidak. Admin Kantor tidak boleh melihat kedua tugas ini.
+const createSpikeTaskInSeedProjectWithoutAdmin = () =>
+  createTask({ projectId: "p-003", title: "Tugas uji runtime (p-003)", status: "TODO", priority: "LOW", progress: 0 });
+
+const createSpikeTaskInRuntimeProject = () =>
+  createTask({ projectId: createSpikeProject().id, title: "Tugas uji runtime (proyek runtime)", status: "TODO", priority: "LOW", progress: 0 });
+
 const SEED_LINKS = [
   { href: "/proyek/p-001", label: "Proyek seed p-001" },
   { href: "/tugas/t-001", label: "Tugas seed t-001" },
@@ -70,6 +78,12 @@ function SpikeControls() {
           </Button>
           <Button data-spike-action="create-task-push" onClick={() => open(`/tugas/${createSpikeTask().id}`, "router")}>
             Buat tugas uji dan buka (router.push)
+          </Button>
+          <Button variant="outline" data-spike-action="create-task-p003-push" onClick={() => open(`/tugas/${createSpikeTaskInSeedProjectWithoutAdmin().id}`, "router")}>
+            Buat tugas uji di p-003 dan buka (router.push)
+          </Button>
+          <Button variant="outline" data-spike-action="create-task-runtime-project-push" onClick={() => open(`/tugas/${createSpikeTaskInRuntimeProject().id}`, "router")}>
+            Buat tugas uji di proyek runtime dan buka (router.push)
           </Button>
           <Button variant="outline" data-spike-action="create-project-link" onClick={() => open(`/proyek/${createSpikeProject().id}`, "link")}>
             Buat proyek uji (buka lewat tautan)
