@@ -8,6 +8,7 @@ import { LinkIcon, LockKeyhole } from "lucide-react";
 import { AuthCard } from "@/components/auth/auth-card";
 import { FormField } from "@/components/auth/form-field";
 import { PasswordStrength } from "@/components/auth/password-strength";
+import { FIELD_TOUCH, LINK_TOUCH, TOGGLE_TOUCH } from "@/components/auth/touch-classes";
 import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { PasswordInput } from "@/components/ui/password-input";
@@ -67,7 +68,7 @@ function ResetPasswordForm() {
       description="Pilih kata sandi kuat yang belum pernah Anda gunakan."
       demoNote="Demo: tidak ada kata sandi yang diubah atau disimpan, dan tautan simulasi ini tidak diverifikasi."
       footer={
-        <Link href="/masuk" className="font-medium text-brand-text underline underline-offset-4">
+        <Link href="/masuk" className={`${LINK_TOUCH} font-medium text-brand-text underline underline-offset-4`}>
           Kembali ke halaman masuk
         </Link>
       }
@@ -79,6 +80,9 @@ function ResetPasswordForm() {
               <PasswordInput
                 {...control}
                 aria-describedby={[control["aria-describedby"], "password-rules"].filter(Boolean).join(" ")}
+                size="touch"
+                className={FIELD_TOUCH}
+                toggleClassName={TOGGLE_TOUCH}
                 name="password"
                 autoComplete="new-password"
                 autoFocus
@@ -96,6 +100,9 @@ function ResetPasswordForm() {
           {(control) => (
             <PasswordInput
               {...control}
+              size="touch"
+              className={FIELD_TOUCH}
+              toggleClassName={TOGGLE_TOUCH}
               name="confirmation"
               autoComplete="new-password"
               placeholder="Ulangi kata sandi baru"

@@ -7,6 +7,14 @@ import { useRouter } from "next/navigation";
 import { AuthCard } from "@/components/auth/auth-card";
 import { FormField } from "@/components/auth/form-field";
 import { PasswordStrength } from "@/components/auth/password-strength";
+import {
+  CHECKBOX_BOX_TOUCH,
+  CHECKBOX_LABEL_TOUCH,
+  FIELD_TOUCH,
+  LINK_TOUCH,
+  TOGGLE_TOUCH,
+} from "@/components/auth/touch-classes";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { FieldError } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -67,7 +75,7 @@ function RegisterForm() {
       footer={
         <p>
           Sudah punya akun?{" "}
-          <Link href="/masuk" className="font-medium text-brand-text underline underline-offset-4">
+          <Link href="/masuk" className={`${LINK_TOUCH} font-medium text-brand-text underline underline-offset-4`}>
             Masuk
           </Link>
         </p>
@@ -78,6 +86,8 @@ function RegisterForm() {
           {(control) => (
             <Input
               {...control}
+              size="touch"
+              className={FIELD_TOUCH}
               name="name"
               autoComplete="name"
               autoFocus
@@ -94,6 +104,8 @@ function RegisterForm() {
             <Input
               {...control}
               type="email"
+              size="touch"
+              className={FIELD_TOUCH}
               name="email"
               autoComplete="email"
               placeholder="nama@perusahaan.co.id"
@@ -110,6 +122,9 @@ function RegisterForm() {
               <PasswordInput
                 {...control}
                 aria-describedby={[control["aria-describedby"], "password-rules"].filter(Boolean).join(" ")}
+                size="touch"
+                className={FIELD_TOUCH}
+                toggleClassName={TOGGLE_TOUCH}
                 name="password"
                 autoComplete="new-password"
                 placeholder="Buat kata sandi"
@@ -126,6 +141,9 @@ function RegisterForm() {
           {(control) => (
             <PasswordInput
               {...control}
+              size="touch"
+              className={FIELD_TOUCH}
+              toggleClassName={TOGGLE_TOUCH}
               name="confirmation"
               autoComplete="new-password"
               placeholder="Ulangi kata sandi"
@@ -137,7 +155,8 @@ function RegisterForm() {
         </FormField>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="terms" className="flex items-start gap-2 text-sm text-foreground">
+          {/* Seluruh label adalah target sentuh: minimal 44px di bawah `lg`, kotak checkbox lebih besar di mobile. */}
+          <label htmlFor="terms" className={cn("flex items-start gap-2 text-sm text-foreground", CHECKBOX_LABEL_TOUCH)}>
             <input
               id="terms"
               type="checkbox"
@@ -148,7 +167,7 @@ function RegisterForm() {
               aria-describedby={errors.terms ? "terms-error" : undefined}
               aria-required="true"
               onChange={(e) => setAccepted(e.target.checked)}
-              className="mt-0.5 size-4 shrink-0 accent-secondary"
+              className={cn("mt-0.5 shrink-0 accent-secondary", CHECKBOX_BOX_TOUCH)}
             />
             <span>Saya menyetujui Syarat dan Ketentuan serta Kebijakan Privasi Proyekin.</span>
           </label>

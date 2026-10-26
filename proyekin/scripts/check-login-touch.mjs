@@ -68,6 +68,13 @@ async function shot(name) {
   const r = await send("Page.captureScreenshot", { format: "png" });
   writeFileSync(join(OUT, `${name}.png`), Buffer.from(r.data, "base64"));
 }
+/** Seluruh tinggi halaman (hingga 3000px), untuk meninjau form yang lebih tinggi dari viewport. */
+async function shotFull(name) {
+  const h = await evaluate(`Math.min(document.documentElement.scrollHeight, 3000)`);
+  const w = await evaluate(`innerWidth`);
+  const r = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip: { x: 0, y: 0, width: w, height: h, scale: 1 } });
+  writeFileSync(join(OUT, `${name}.png`), Buffer.from(r.data, "base64"));
+}
 const overflowOk = async (label) => {
   const o = await evaluate(`({ s: document.documentElement.scrollWidth, w: window.innerWidth })`);
   rec(`overflow halaman: ${label}`, o.s <= o.w + 1, `${o.s} <= ${o.w}`);
@@ -267,6 +274,177 @@ for (const path of ["/daftar", "/lupa-sandi", "/reset-sandi"]) {
   await overflowOk(`${path} 375 mobile`);
   await checkAxe(`${path} 375 mobile`);
 }
+
+// ================= G. Langkah 1 follow-up audit visual: Daftar, Lupa Sandi, Reset Sandi =================
+// Pola sama dengan login: kontrol 44px / font 16px di bawah lg (375 dan 768), ukuran bawaan U3 PERSIS di 1280.
+// Checkbox persetujuan: seluruh label adalah target sentuh (diukur pada label, bukan kotak 16px).
+const AUTH_CONTROLS = `[...document.querySelectorAll('main a, main button, main input, header a')].filter((e) => e.checkVisibility()).map((e) => { const cb = e.type === "checkbox"; const t = cb ? e.closest("label") : e; const r = t.getBoundingClientRect(); const i = e.getBoundingClientRect(); return { key: e.getAttribute("aria-label") || e.getAttribute("name") || (e.textContent || "").trim().slice(0, 28), tag: e.tagName.toLowerCase() + (e.type ? ":" + e.type : ""), x: r.left, y: r.top, w: r.width, h: r.height, bw: i.width, bh: i.height, fs: parseFloat(getComputedStyle(e).fontSize) }; })`;
+const LOGO = "Proyekin — kembali ke beranda";
+const AUTH_PAGES = [
+  {
+    name: "daftar",
+    path: "/daftar",
+    keys: [LOGO, "name", "email", "password", "Tampilkan kata sandi", "confirmation", "Tampilkan kata sandi", "terms", "Buat Akun", "Masuk"],
+    // [lebar|null, tinggi] di 1280 (diukur sebelum perubahan)
+    desktop: [[91, 40], [null, 40], [null, 40], [null, 40], [40, 40], [null, 40], [40, 40], [null, 40], [null, 48], [44, 18]],
+    footerLink: "Masuk",
+  },
+  {
+    name: "lupa-sandi",
+    path: "/lupa-sandi",
+    keys: [LOGO, "email", "Kirim Tautan Pemulihan", "Kembali ke halaman masuk"],
+    desktop: [[91, 40], [null, 40], [null, 48], [179, 18]],
+    footerLink: "Kembali ke halaman masuk",
+  },
+  {
+    name: "reset-sandi",
+    path: "/reset-sandi?token=demo-token",
+    keys: [LOGO, "password", "Tampilkan kata sandi", "confirmation", "Tampilkan kata sandi", "Atur Ulang Kata Sandi", "Kembali ke halaman masuk"],
+    desktop: [[91, 40], [null, 40], [40, 40], [null, 40], [40, 40], [null, 48], [179, 18]],
+    footerLink: "Kembali ke halaman masuk",
+  },
+];
+const VPS_AUTH = [
+  { n: 375, v: { width: 375, height: 800, mobile: true, touch: true } },
+  { n: 768, v: { width: 768, height: 1024 } },
+  { n: 1280, v: { width: 1280, height: 900 } },
+];
+const pathAndSearch = () => evaluate(`location.pathname + location.search`);
+const bodyHas = (text) => evaluate(`document.body.textContent.includes(${q(text)})`);
+
+for (const page of AUTH_PAGES) {
+  for (const { n, v } of VPS_AUTH) {
+    await setViewport(v);
+    await navigate(page.path);
+    const c = (await evaluate(AUTH_CONTROLS)).map((x) => ({ ...x, w: Math.round(x.w), h: Math.round(x.h), bw: Math.round(x.bw), bh: Math.round(x.bh) }));
+    results.measurements[`${page.name} ${n}`] = c;
+    rec(`${page.name} ${n}: seluruh kontrol terdeteksi`, same(c.map((x) => x.key), page.keys), JSON.stringify(c.map((x) => x.key)));
+    if (n < 1024 && n !== 1280) {
+      for (const x of c) rec(`${page.name} ${n}: "${x.key}" (${x.tag}) >= 44x44`, x.w >= 44 && x.h >= 44, `${x.w}x${x.h}`);
+      for (const x of c.filter((y) => y.tag.startsWith("input") && !y.tag.endsWith("checkbox"))) rec(`${page.name} ${n}: input ${x.key} font >= 16px`, x.fs >= 16, `${x.fs}px`);
+      const cb = c.find((x) => x.tag === "input:checkbox");
+      if (cb) rec(`${page.name} ${n}: kotak checkbox >= 20px dan seluruh label menjadi target`, cb.bw >= 20 && cb.bh >= 20 && cb.h >= 44, `kotak ${cb.bw}x${cb.bh}, label ${cb.w}x${cb.h}`);
+      // tombol mata sejajar dan setinggi inputnya
+      const eyes = await evaluate(`[...document.querySelectorAll('[aria-label="Tampilkan kata sandi"]')].map((b) => { const i = b.parentElement.querySelector("input").getBoundingClientRect(); const r = b.getBoundingClientRect(); return { dr: Math.abs(i.right - r.right), dt: Math.abs(i.top - r.top), dh: Math.abs(i.height - r.height) }; })`);
+      rec(`${page.name} ${n}: tombol mata sejajar dan setinggi input`, eyes.every((e) => e.dr <= 1 && e.dt <= 1 && e.dh <= 1), JSON.stringify(eyes));
+      // tidak ada area sentuh yang saling menimpa
+      const overlaps = [];
+      for (let i = 0; i < c.length; i++)
+        for (let j = i + 1; j < c.length; j++) {
+          const a = c[i];
+          const b2 = c[j];
+          if (a.tag === "input:password" && b2.key === "Tampilkan kata sandi") continue; // tombol mata sengaja di dalam input
+          const ix = Math.min(a.x + a.w, b2.x + b2.w) - Math.max(a.x, b2.x);
+          const iy = Math.min(a.y + a.h, b2.y + b2.h) - Math.max(a.y, b2.y);
+          if (ix > 1 && iy > 1) overlaps.push(`${a.key} × ${b2.key}`);
+        }
+      rec(`${page.name} ${n}: tidak ada area sentuh yang saling menimpa`, overlaps.length === 0, overlaps.join("; "));
+    } else {
+      c.forEach((x, i) => {
+        const [w, h] = page.desktop[i];
+        rec(`${page.name} 1280: "${x.key}" ukuran desktop tidak berubah`, (w === null || x.w === w) && x.h === h, `${x.w}x${x.h} (bawaan ${w ?? "~"}x${h})`);
+      });
+      for (const x of c.filter((y) => y.tag.startsWith("input") && !y.tag.endsWith("checkbox"))) rec(`${page.name} 1280: input ${x.key} font tetap 14px`, x.fs === 14, `${x.fs}px`);
+      const cb = c.find((x) => x.tag === "input:checkbox");
+      if (cb) rec(`${page.name} 1280: kotak checkbox tetap 16x16 dan label 40px`, cb.bw === 16 && cb.bh === 16 && cb.h === 40, `kotak ${cb.bw}x${cb.bh}, label ${cb.w}x${cb.h}`);
+    }
+    await overflowOk(`${page.name} ${n}`);
+    await checkAxe(`${page.name} normal ${n}`);
+    await shotFull(`${page.name}-${n}`);
+  }
+
+  // perilaku (375 mobile + sentuh): galat validasi, kata sandi terlihat, ketuk area tautan footer
+  await setViewport(VPS_AUTH[0].v);
+  await navigate(page.path);
+  await tap('form button[type="submit"]');
+  await waitFor(() => evaluate(`!!document.querySelector('[aria-invalid="true"]')`), 8000, `galat ${page.name}`);
+  await sleep(300);
+  const invalid = await evaluate(`[...document.querySelectorAll('[aria-invalid="true"]')].map((e) => e.getAttribute("name"))`);
+  const firstName = await evaluate(`document.activeElement?.getAttribute("name")`);
+  const wantInvalid = { daftar: ["name", "email", "password", "confirmation", "terms"], "lupa-sandi": ["email"], "reset-sandi": ["password", "confirmation"] }[page.name];
+  rec(`${page.name} 375: submit kosong menandai kolom tidak valid dan memfokuskan yang pertama (perilaku tidak berubah)`, same(invalid, wantInvalid) && firstName === wantInvalid[0], `${JSON.stringify(invalid)} fokus ${firstName}`);
+  const errH = await evaluate(`[...document.querySelectorAll('main input:not([type="checkbox"])')].map((i) => Math.round(i.getBoundingClientRect().height))`);
+  rec(`${page.name} 375: input tetap >= 44px saat galat`, errH.every((h) => h >= 44), JSON.stringify(errH));
+  await overflowOk(`${page.name} galat 375`);
+  await checkAxe(`${page.name} galat validasi 375 mobile`);
+  await shotFull(`${page.name}-375-galat`);
+
+  if (page.keys.includes("Tampilkan kata sandi")) {
+    await navigate(page.path);
+    await tap('[aria-label="Tampilkan kata sandi"]');
+    await sleep(200);
+    rec(`${page.name} 375: ketuk tombol mata menampilkan kata sandi`, await evaluate(`document.querySelector('input[name="password"]').type === "text"`));
+    const eye = await evaluate(`(() => { const r = document.querySelector('[aria-label="Sembunyikan kata sandi"]').getBoundingClientRect(); return { w: Math.round(r.width), h: Math.round(r.height) }; })()`);
+    rec(`${page.name} 375: tombol mata saat sandi terlihat >= 44x44`, eye.w >= 44 && eye.h >= 44, JSON.stringify(eye));
+    await fill('input[name="password"]', "KataSandi123");
+    await checkAxe(`${page.name} kata sandi terlihat 375 mobile`);
+    await shotFull(`${page.name}-375-sandi-terlihat`);
+  }
+
+  // ketuk area padding tautan footer (di luar teks) → /masuk
+  await navigate(page.path);
+  await evaluate(`[...document.querySelectorAll("main a")].find((a) => a.textContent.trim() === ${q(page.footerLink)}).scrollIntoView({ block: "center" })`);
+  await sleep(150);
+  const pt = await evaluate(`(() => { const a = [...document.querySelectorAll("main a")].find((x) => x.textContent.trim() === ${q(page.footerLink)}); const r = a.getBoundingClientRect(); return { x: r.left + 4, y: r.bottom - 3, hit: document.elementFromPoint(r.left + 4, r.bottom - 3) === a }; })()`);
+  rec(`${page.name} 375: titik di padding bawah tautan "${page.footerLink}" jatuh pada tautan itu (hit-test)`, pt.hit);
+  await tapAt(pt.x, pt.y);
+  await waitFor(async () => ((await evaluate(`location.pathname`)) === "/masuk" ? true : null), 15000, `ketuk ${page.footerLink}`);
+  rec(`${page.name} 375: ketuk area padding tautan "${page.footerLink}" menavigasi ke /masuk`, (await evaluate(`location.pathname`)) === "/masuk");
+
+  // keyboard: urutan Tab, fokus terlihat (375 dan 1280)
+  for (const { n, v } of [VPS_AUTH[0], VPS_AUTH[2]]) {
+    await setViewport(v);
+    await navigate(page.path);
+    await evaluate(`document.activeElement?.blur(); document.body.setAttribute("tabindex", "-1"); document.body.focus(); document.body.removeAttribute("tabindex");`);
+    const seen = [];
+    const rings = [];
+    for (let i = 0; i < page.keys.length + 1; i++) {
+      await pressKey("Tab");
+      const info = await evaluate(`(() => { const e = document.activeElement; const s = getComputedStyle(e); return { key: e.getAttribute("aria-label") || e.getAttribute("name") || (e.textContent || "").trim().slice(0, 28), ow: parseFloat(s.outlineWidth), os: s.outlineStyle }; })()`);
+      seen.push(info.key);
+      rings.push(info);
+    }
+    rec(`${page.name} ${n}: urutan Tab = lewati ke konten lalu seluruh kontrol berurutan`, same(seen, ["Langsung ke konten", ...page.keys]), JSON.stringify(seen));
+    rec(`${page.name} ${n}: fokus keyboard terlihat pada setiap kontrol (outline >= 2px)`, rings.every((r) => r.os !== "none" && r.ow >= 2), JSON.stringify(rings.filter((r) => r.os === "none" || r.ow < 2)));
+  }
+}
+
+// alur mock tidak berubah (375 mobile + sentuh untuk Daftar, desktop untuk Lupa dan Reset)
+await setViewport(VPS_AUTH[0].v);
+await navigate("/daftar");
+await fill("#name", "Pemilik Uji");
+await fill("#email", "pemilik.uji@contoh.co.id");
+await fill("#password", "KataSandi123");
+await fill("#confirmation", "KataSandi123");
+// ketuk area label checkbox (bukan kotaknya): bagian kanan-bawah label
+await evaluate(`document.querySelector("label[for=terms]").scrollIntoView({ block: "center" })`);
+await sleep(150);
+const lbl = await evaluate(`(() => { const r = document.querySelector("label[for=terms]").getBoundingClientRect(); return { x: r.right - 12, y: r.bottom - 4 }; })()`);
+await tapAt(lbl.x, lbl.y);
+await sleep(200);
+rec("daftar 375: ketuk area label (di luar kotak) mencentang persetujuan", await evaluate(`document.querySelector("#terms").checked === true`));
+await tap('form button[type="submit"]');
+await waitFor(async () => ((await pathAndSearch()) === "/masuk?registered=1" ? true : null), 20000, "daftar berhasil").catch(() => null);
+rec("daftar 375: pendaftaran valid → /masuk?registered=1 (alur tidak berubah)", (await pathAndSearch()) === "/masuk?registered=1", await pathAndSearch());
+
+await setViewport(VPS_AUTH[2].v);
+await navigate("/lupa-sandi");
+await fill("#email", "pemilik.uji@contoh.co.id");
+await clickEl('form button[type="submit"]');
+await waitFor(() => bodyHas("Periksa email Anda"), 15000, "lupa sandi terkirim");
+rec("lupa-sandi 1280: kirim valid menampilkan 'Periksa email Anda' dan memfokuskan judul (perilaku tidak berubah)", (await evaluate(`document.activeElement?.tagName`)) === "H1");
+await navigate("/reset-sandi?token=demo-token");
+await fill("#password", "KataSandi123");
+await fill("#confirmation", "KataSandi123");
+await clickEl('form button[type="submit"]');
+await waitFor(async () => ((await pathAndSearch()) === "/masuk?reset=1" ? true : null), 20000, "reset berhasil").catch(() => null);
+rec("reset-sandi 1280: reset valid → /masuk?reset=1 (alur tidak berubah)", (await pathAndSearch()) === "/masuk?reset=1", await pathAndSearch());
+await navigate("/reset-sandi");
+rec("reset-sandi 1280: tanpa token tetap menampilkan 'Tautan tidak valid'", await bodyHas("Tautan tidak valid"));
+await setViewport(VPS_AUTH[0].v);
+await navigate("/reset-sandi");
+await overflowOk("reset-sandi tanpa token 375");
+await checkAxe("reset-sandi tanpa token 375 mobile");
 
 await evaluate(`sessionStorage.clear()`);
 writeFileSync(join(OUT, "results.json"), JSON.stringify(results, null, 2));

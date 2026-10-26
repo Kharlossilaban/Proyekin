@@ -6,6 +6,7 @@ import { KeyRound, MailQuestion } from "lucide-react";
 
 import { AuthCard } from "@/components/auth/auth-card";
 import { FormField } from "@/components/auth/form-field";
+import { FIELD_TOUCH, LINK_TOUCH } from "@/components/auth/touch-classes";
 import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { Input } from "@/components/ui/input";
@@ -67,7 +68,7 @@ function ForgotPasswordForm() {
       description="Masukkan alamat email Anda untuk meminta tautan pemulihan kata sandi."
       demoNote="Demo: tidak ada email yang dikirim dan tidak ada akun yang diperiksa."
       footer={
-        <Link href="/masuk" className="font-medium text-brand-text underline underline-offset-4">
+        <Link href="/masuk" className={`${LINK_TOUCH} font-medium text-brand-text underline underline-offset-4`}>
           Kembali ke halaman masuk
         </Link>
       }
@@ -78,6 +79,8 @@ function ForgotPasswordForm() {
             <Input
               {...control}
               type="email"
+              size="touch"
+              className={FIELD_TOUCH}
               name="email"
               autoComplete="email"
               autoFocus

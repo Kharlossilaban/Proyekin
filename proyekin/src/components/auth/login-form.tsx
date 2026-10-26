@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { AuthCard } from "@/components/auth/auth-card";
 import { FormField } from "@/components/auth/form-field";
 import { StatusMessage } from "@/components/auth/status-message";
+import { FIELD_TOUCH, LINK_TOUCH, TOGGLE_TOUCH } from "@/components/auth/touch-classes";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
@@ -15,12 +16,6 @@ import { mockLogin } from "@/lib/auth-mock";
 import { hasErrors, validateEmail, validateRequiredPassword } from "@/lib/auth-validation";
 import { MOCK_USERS } from "@/data/mock";
 import { ROLE_LABELS } from "@/lib/labels";
-
-// Target sentuh mobile (Mandor mobile-first): kontrol 44px dengan font 16px di bawah `lg`; di `lg` ke atas kembali persis
-// ke ukuran bawaan U1/U3 (40px, 14px). Tautan dan ringkasan diperbesar area sentuhnya dengan padding yang diimbangi margin
-// negatif, sehingga tata letak dan teks tidak bergeser.
-const FIELD_TOUCH = "lg:h-10 lg:text-sm";
-const LINK_TOUCH = "inline-block py-3 -my-3 lg:inline lg:py-0 lg:my-0";
 
 const NOTICES: Record<string, string> = {
   registered: "Pendaftaran Owner disimulasikan. Tidak ada akun yang benar-benar dibuat; masuk memakai akun demo di bawah.",
@@ -102,7 +97,7 @@ function LoginForm() {
               {...control}
               size="touch"
               className={FIELD_TOUCH}
-              toggleClassName="lg:w-10"
+              toggleClassName={TOGGLE_TOUCH}
               name="password"
               autoComplete="current-password"
               placeholder="Masukkan kata sandi"
