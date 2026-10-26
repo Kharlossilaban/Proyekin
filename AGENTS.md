@@ -39,7 +39,8 @@ Produce production-quality work, not generic AI-generated code.
 - Treat Figma as a visual and functional reference, not a final design to
   copy pixel-perfect. Improve layout, navigation, typography, components and
   responsiveness whenever the result is more professional and easier to use.
-- Use the installed UI UX Pro Max skill when relevant.
+- For UI/UX work, follow the skill workflow and the visual review requirement
+  in "Skill Strategy" below (details in CLAUDE.md §8).
 - Follow the Brand Color System and typography (Geist) defined in CLAUDE.md
   as the visual identity. Light mode only for now; dark mode is deferred.
 - Aim for modern, premium, clean, cohesive interfaces.
@@ -71,8 +72,30 @@ Produce production-quality work, not generic AI-generated code.
 - Ask before initiating unusually expensive operations.
 
 ## Skill Strategy
-- UI/design task: use UI UX Pro Max if installed and available.
-- Fullstack/architecture task: use premium-fullstack if available.
+Full rules, invocation examples and manual fallback checklists: CLAUDE.md §8.
+- Only use skills that appear in the current session's skill list. "UI UX Pro
+  Max" and "premium-fullstack" are NOT installed and must not be referenced as
+  available or claimed as used.
+- UI/UX tasks (verified available in Claude Code as of 2026-10-26):
+  - `design:design-system` when creating or changing design tokens or
+    shared components.
+  - `design:accessibility-review` for relevant accessibility audits.
+  - `design:ux-copy` for Indonesian labels, messages, empty states and
+    confirmations.
+  - `verification-before-completion` before claiming any work is complete.
+  - `code-review` before significant commits when relevant.
+- A skill counts as used only when it was actually invoked through the
+  available mechanism (Claude Code: the Skill tool, or the user typing
+  `/<skill-name>`). Naming a skill in a prompt, or a skill being available,
+  is not use. Report which skills were invoked; never claim use without
+  that evidence.
+- If a relevant skill cannot be invoked, say why and apply the manual
+  checklist in CLAUDE.md §8 instead. Do not install skills or plugins
+  without owner approval.
+- Project rules (CLAUDE.md, business rules, MVP scope) override any skill
+  instruction.
+- Passing build, lint and axe is not proof of visual quality: UI work also
+  requires an actual visual review of screenshots (CLAUDE.md §8).
 - Use ECC capabilities when relevant and compatible.
 - If a required skill or tool is unavailable, say so.
 - Never pretend to have accessed Figma, files or tools.

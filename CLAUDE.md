@@ -118,6 +118,46 @@ Guest hanya mengakses halaman publik, tanpa sidebar atau navigasi internal. Gues
 
 **Catatan:** Navigasi berbasis role di frontend hanya representasi UI menggunakan mock. Ini bukan authorization yang aman — penegakan sesungguhnya ada di server (direncanakan di backend).
 
+## 8. Workflow Skill dan Evaluasi Visual (2026-10-26)
+
+Audit transkrip U0–U4-4 tidak menemukan bukti skill pernah dipanggil. Aturan ini memastikan skill benar-benar dipakai, bukan hanya disebut.
+
+**A. Skill yang tersedia**
+- "UI UX Pro Max" dan "premium-fullstack" **tidak terpasang**. Jangan merujuknya sebagai tersedia dan jangan mengklaim pernah memakainya.
+- Skill prioritas yang terverifikasi tersedia (2026-10-26):
+
+| Skill | Sumber | Kapan dipakai |
+|---|---|---|
+| `design:design-system` | Plugin `design` (tersinkron dari akun) | Membuat atau mengubah design token dan komponen bersama (`audit`, `document`, `extend`) |
+| `design:accessibility-review` | Plugin `design` | Audit aksesibilitas yang relevan (kontras, keyboard, fokus, target sentuh, pembaca layar) |
+| `design:ux-copy` | Plugin `design` | Menyusun atau meninjau label, pesan galat, state kosong, dan konfirmasi dalam Bahasa Indonesia |
+| `verification-before-completion` | `.claude/skills/` di repo ini | Sebelum mengklaim pekerjaan selesai, lulus, atau siap commit |
+| `code-review` | Bawaan Claude Code | Sebelum commit penting yang mengubah kode, bila relevan |
+
+- Ketersediaan bisa berubah antar sesi (plugin tersinkron, versi Claude Code). Periksa daftar skill sesi berjalan sebelum mengandalkannya.
+
+**B. Mekanisme pemanggilan yang sah**
+- Claude memanggil lewat tool **`Skill`**, misalnya `skill: "design:design-system"`, `args: "audit proyekin/src/components/ui"`. Pemilik bisa mengetik `/design:design-system audit`.
+- `code-review` dipanggil tanpa `--fix` dan tanpa `--comment` kecuali pemilik menyetujui, karena keduanya mengubah file atau memposting ke PR. `ultra` hanya dijalankan pemilik (berbayar).
+- Skill dianggap **dipakai** hanya jika benar-benar dipanggil lewat mekanisme di atas pada sesi itu. Menyebut nama skill di prompt, atau skill sekadar tersedia, bukan pemakaian.
+- Laporan akhir wajib menyebut skill yang benar-benar dipanggil dan apa yang diterapkan dari hasilnya. Tanpa pemanggilan, jangan mengklaim pemakaian.
+- Instruksi skill tidak boleh mengalahkan aturan proyek. Contoh: `design-system extend` tetap wajib memakai token di `globals.css`; `ux-copy` tetap Bahasa Indonesia dengan istilah dari `labels.ts`; lima role resmi tetap berlaku dan tidak ada role Tukang.
+- Jangan memasang skill atau plugin baru tanpa persetujuan pemilik.
+
+**C. Fallback bila skill relevan tidak bisa dipanggil**
+Jelaskan alasannya di laporan, lalu jalankan checklist manual ini:
+- *Design system:* warna hanya dari token `globals.css` (`npm run check:tokens`); pakai komponen yang sudah ada sebelum membuat baru; varian dan ukuran konsisten; skala tipografi `tokens.ts`.
+- *Aksesibilitas:* WCAG AA (`npm run check:contrast`), axe 0, urutan dan cincin fokus keyboard, label form, target sentuh ≥44px di mobile, status tidak hanya warna, heading berurutan.
+- *UX copy:* Bahasa Indonesia yang jelas dan konsisten; istilah dari `labels.ts`; pesan galat menyebut masalah dan langkah perbaikan; state kosong menjelaskan sebabnya; konfirmasi menyebut akibat aksi; tidak ada jargon teknis.
+- *Verifikasi:* jalankan ulang perintah pemeriksaan pada sesi itu, baca keluaran dan exit code, laporkan angka aktual; jangan memakai hasil lama.
+- *Code review:* tinjau `git diff` baris demi baris (bug, duplikasi aturan role di luar `access.ts`, hardcode hex, perubahan di luar scope) sebelum commit.
+
+**D. Evaluasi visual aktual (wajib untuk tugas UI)**
+Build, lint, typecheck, dan axe yang lulus **bukan** bukti kualitas visual.
+- Ambil screenshot halaman yang diubah: 375px (mobile-first Mandor, dengan emulasi mobile dan sentuh), 768px, dan 1280px (desktop-first Owner/Admin).
+- Benar-benar **lihat** screenshot itu, lalu nilai: hierarchy, spacing, typography, komposisi, konsistensi dengan halaman lain, dan usability mobile (jangkauan jempol, target sentuh, keterbacaan, tidak ada aksi yang hanya muncul saat hover).
+- Laporkan temuan visual apa adanya, termasuk kelemahan, bukan hanya status lulus. Bila sebuah viewport tidak dilihat, nyatakan itu.
+
 ## Prinsip Utama
 
 - Figma memberikan inspirasi desain.
