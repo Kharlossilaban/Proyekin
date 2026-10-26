@@ -16,6 +16,12 @@ import { hasErrors, validateEmail, validateRequiredPassword } from "@/lib/auth-v
 import { MOCK_USERS } from "@/data/mock";
 import { ROLE_LABELS } from "@/lib/labels";
 
+// Target sentuh mobile (Mandor mobile-first): kontrol 44px dengan font 16px di bawah `lg`; di `lg` ke atas kembali persis
+// ke ukuran bawaan U1/U3 (40px, 14px). Tautan dan ringkasan diperbesar area sentuhnya dengan padding yang diimbangi margin
+// negatif, sehingga tata letak dan teks tidak bergeser.
+const FIELD_TOUCH = "lg:h-10 lg:text-sm";
+const LINK_TOUCH = "inline-block py-3 -my-3 lg:inline lg:py-0 lg:my-0";
+
 const NOTICES: Record<string, string> = {
   registered: "Pendaftaran Owner disimulasikan. Tidak ada akun yang benar-benar dibuat; masuk memakai akun demo di bawah.",
   reset: "Pengaturan ulang kata sandi disimulasikan. Tidak ada kata sandi yang diubah.",
@@ -62,7 +68,7 @@ function LoginForm() {
       footer={
         <p>
           Pemilik proyek baru?{" "}
-          <Link href="/daftar" className="font-medium text-brand-text underline underline-offset-4">
+          <Link href="/daftar" className={`${LINK_TOUCH} font-medium text-brand-text underline underline-offset-4`}>
             Daftar sebagai Owner
           </Link>
         </p>
@@ -77,6 +83,8 @@ function LoginForm() {
             <Input
               {...control}
               type="email"
+              size="touch"
+              className={FIELD_TOUCH}
               name="email"
               autoComplete="username"
               autoFocus
@@ -92,6 +100,9 @@ function LoginForm() {
           {(control) => (
             <PasswordInput
               {...control}
+              size="touch"
+              className={FIELD_TOUCH}
+              toggleClassName="lg:w-10"
               name="password"
               autoComplete="current-password"
               placeholder="Masukkan kata sandi"
@@ -103,7 +114,7 @@ function LoginForm() {
         </FormField>
 
         <div className="flex justify-end">
-          <Link href="/lupa-sandi" className="text-sm font-medium text-brand-text underline underline-offset-4">
+          <Link href="/lupa-sandi" className={`${LINK_TOUCH} text-sm font-medium text-brand-text underline underline-offset-4`}>
             Lupa kata sandi?
           </Link>
         </div>
@@ -114,7 +125,7 @@ function LoginForm() {
       </form>
 
       <details className="rounded-md border border-border bg-canvas p-3 text-sm">
-        <summary className="cursor-pointer font-medium text-foreground">Akun demo untuk pengujian</summary>
+        <summary className="-m-3 cursor-pointer p-3 font-medium text-foreground lg:m-0 lg:p-0">Akun demo untuk pengujian</summary>
         <ul role="list" className="mt-2 flex flex-col gap-1 text-graphite">
           {MOCK_USERS.map((user) => (
             <li key={user.id}>

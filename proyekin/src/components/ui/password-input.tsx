@@ -7,7 +7,12 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input, type InputProps } from "@/components/ui/input";
 
-function PasswordInput({ className, ...props }: Omit<InputProps, "type">) {
+type PasswordInputProps = Omit<InputProps, "type"> & {
+  /** Kelas tambahan untuk tombol tampilkan/sembunyikan (mis. mengembalikan lebar di layar lebar). */
+  toggleClassName?: string;
+};
+
+function PasswordInput({ className, toggleClassName, ...props }: PasswordInputProps) {
   const [visible, setVisible] = React.useState(false);
   const Icon = visible ? EyeOff : Eye;
 
@@ -25,7 +30,12 @@ function PasswordInput({ className, ...props }: Omit<InputProps, "type">) {
         aria-label={visible ? "Sembunyikan kata sandi" : "Tampilkan kata sandi"}
         aria-pressed={visible}
         onClick={() => setVisible((v) => !v)}
-        className="absolute inset-y-0 right-0 text-graphite"
+        // `size="touch"` pada input: tombol selebar 44px dan setinggi input (min. 44px). Ukuran bawaan tidak berubah.
+        className={cn(
+          "absolute inset-y-0 right-0 text-graphite",
+          props.size === "touch" && "h-auto w-11",
+          toggleClassName,
+        )}
         disabled={props.disabled}
       >
         <Icon aria-hidden="true" className="size-4" />
@@ -35,3 +45,4 @@ function PasswordInput({ className, ...props }: Omit<InputProps, "type">) {
 }
 
 export { PasswordInput };
+export type { PasswordInputProps };

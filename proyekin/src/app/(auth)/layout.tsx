@@ -25,7 +25,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
 
       <div className="flex min-h-screen flex-col bg-surface px-4 py-6 sm:px-8 lg:min-h-0">
         <header>
-          <Link href="/" className="inline-flex rounded-sm" aria-label="Proyekin — kembali ke beranda">
+          {/* Target sentuh >= 44px di bawah `lg` tanpa mengubah ukuran logo (gambar tetap 40px, hanya area tautan). */}
+          <Link href="/" className="inline-flex min-h-11 items-center rounded-sm lg:min-h-0" aria-label="Proyekin — kembali ke beranda">
             <Logo />
           </Link>
         </header>
