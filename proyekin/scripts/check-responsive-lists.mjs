@@ -243,6 +243,104 @@ await checkListPage(DOKUMEN, 375, VPS[0].v, "u-004"); // Anggota Tim
 await checkListPage(ANGGOTA, 375, VPS[0].v, "u-002"); // Admin Kantor
 await checkListPage(LAPORAN, 768, VPS[1].v, "u-002");
 
+// ================= B2. Tugas (Langkah 3): TaskCard di bawah lg, tabel mulai lg =================
+// Dataset dan daftar tetap SAMA untuk semua role pada tahap ini (6 tugas). Pembatasan lingkup per role dan tautan detail
+// adalah pekerjaan U4-8; saat itu asersi "6 tugas untuk semua role" di bawah diganti dengan asersi lingkup per role.
+const TUGAS = {
+  key: "tugas",
+  path: "/tugas",
+  h1: "Tugas",
+  section: "Semua Tugas",
+  count: "6 tugas",
+  listLabel: "Daftar tugas",
+  tableLabel: "Daftar tugas",
+  tableHeaders: ["Kode", "Judul", "Penanggung Jawab", "Prioritas", "Status", "Progres"],
+  tasks: [
+    { id: "t-001", code: "TSK-001", title: "Pembongkaran dinding partisi lantai 1", project: "PRJ-001 · Renovasi Gedung Kantor Batam", assignee: "Ahmad Rizal", priority: "Tinggi", status: "Selesai", progress: 100, deadline: null },
+    { id: "t-002", code: "TSK-002", title: "Pengecekan sistem kelistrikan lama", project: "PRJ-001 · Renovasi Gedung Kantor Batam", assignee: "Dewi Lestari", priority: "Tinggi", status: "Dalam Progres", progress: 60, deadline: "Terlambat · 28 Feb 2026" },
+    { id: "t-003", code: "TSK-003", title: "Pembersihan material sisa pembongkaran", project: "PRJ-001 · Renovasi Gedung Kantor Batam", assignee: "Eko Prasetyo", priority: "Sedang", status: "Belum Dimulai", progress: 0, deadline: "Terlambat · 5 Mar 2026" },
+    { id: "t-004", code: "TSK-004", title: "Pembuatan pondasi footplate", project: "PRJ-002 · Pembangunan Gudang Logistik Tanjung Pinang", assignee: "Ahmad Rizal", priority: "Tinggi", status: "Dalam Progres", progress: 35, deadline: "Mendatang · 10 Apr 2026" },
+    { id: "t-005", code: "TSK-005", title: "Pemesanan baja WF untuk struktur", project: "PRJ-002 · Pembangunan Gudang Logistik Tanjung Pinang", assignee: "Eko Prasetyo", priority: "Tinggi", status: "Belum Dimulai", progress: 0, deadline: "Mendatang · 25 Mar 2026" },
+    { id: "t-006", code: "TSK-006", title: "Pemasangan keramik lobby", project: "PRJ-001 · Renovasi Gedung Kantor Batam", assignee: "Dewi Lestari", priority: "Sedang", status: "Belum Dimulai", progress: 0, deadline: "Mendatang · 1 Apr 2026" },
+  ],
+};
+const READ_TASK_CARDS = `(() => {
+  const list = [...document.querySelectorAll('ul[data-slot="record-card-list"]')].find((u) => u.checkVisibility() && u.getAttribute("aria-label") === ${q(TUGAS.listLabel)});
+  if (!list) return null;
+  const lis = [...list.children];
+  return { role: list.getAttribute("role"), liCount: lis.length, cards: lis.map((li) => { const c = li.querySelector('[data-slot="task-card"]'); const r = li.getBoundingClientRect(); const d = c.querySelector('[data-slot="deadline-badge"]'); return { id: c.getAttribute("data-task-id"), code: c.querySelector("p")?.textContent.trim(), title: c.querySelector("h2,h3,h4")?.textContent.trim(), titleTag: c.querySelector("h2,h3,h4")?.tagName, text: c.textContent.replace(/\\s+/g, " ").trim(), badges: [...c.querySelectorAll('[data-slot="badge"]')].map((b) => b.textContent.replace(/\\s+/g, " ").trim()), progress: c.querySelector('[role="progressbar"]')?.getAttribute("aria-valuenow") ?? null, deadline: d ? d.textContent.replace(/\\s+/g, " ").trim() : null, left: Math.round(r.left), width: Math.round(r.width), right: Math.round(r.right), interactive: c.querySelectorAll("a, button, input, select, textarea, [tabindex]").length, hoverClass: c.querySelectorAll('[class*="hover:"]').length + (c.className.includes("hover:") ? 1 : 0) }; }) };
+})()`;
+const NOTICE_STATE = `(() => { const n = [...document.querySelectorAll('[data-slot="demo-data-notice"]')].find((e) => e.checkVisibility()); return n ? { visible: true, text: n.textContent.replace(/\\s+/g, " ").trim(), reference: !!n.querySelector('[data-slot="deadline-reference"]') } : { visible: false }; })()`;
+
+async function checkTugasPage(vpName, vp, userId) {
+  await setViewport(vp);
+  await setSession(userId);
+  await navigate(TUGAS.path);
+  const got = await outcome();
+  const tag = `tugas ${vpName} (${userId})`;
+  rec(`${tag}: halaman terbuka (guard mengizinkan)`, got === "allowed", got);
+  if (got !== "allowed") return;
+  const h1 = await evaluate(`[...document.querySelectorAll("h1")].find((h) => h.checkVisibility())?.textContent.trim()`);
+  rec(`${tag}: judul halaman ${TUGAS.h1}`, h1 === TUGAS.h1, h1);
+  const levels = await evaluate(VISIBLE_HEADINGS);
+  rec(`${tag}: hierarki heading berurutan`, headingsOk(levels), JSON.stringify(levels));
+  rec(`${tag}: tidak ada wadah yang bisa digulir horizontal di dalam konten`, same(await evaluate(HSCROLL_INSIDE_MAIN), []), JSON.stringify(await evaluate(HSCROLL_INSIDE_MAIN)));
+  await overflowOk(tag);
+  const notice = await evaluate(NOTICE_STATE);
+
+  if (vp.width < 1024) {
+    const data = await evaluate(READ_TASK_CARDS);
+    results.measurements[`kartu ${tag}`] = data;
+    rec(`${tag}: daftar kartu tugas terlihat sebagai ul[role=list] bernama "${TUGAS.listLabel}"`, !!data && data.role === "list");
+    if (!data) return;
+    rec(`${tag}: tabel tersembunyi`, (await evaluate(READ_TABLE(TUGAS.tableLabel))) === null);
+    rec(`${tag}: 6 kartu (dataset sama untuk semua role pada tahap ini) dan satu li per kartu`, data.cards.length === 6 && data.liCount === 6, `${data.cards.length}`);
+    rec(`${tag}: urutan kartu sesuai data`, same(data.cards.map((c) => c.id), TUGAS.tasks.map((t) => t.id)), JSON.stringify(data.cards.map((c) => c.id)));
+    const sectionOk = await evaluate(`(() => { const s = document.querySelector('[data-slot="records-mobile"]'); return !!s && s.checkVisibility() && s.querySelector("h2")?.textContent.trim() === ${q(TUGAS.section)} && s.textContent.includes(${q(TUGAS.count)}); })()`);
+    rec(`${tag}: judul bagian "${TUGAS.section}" dan jumlah "${TUGAS.count}" tampil`, sectionOk);
+    rec(`${tag}: DemoDataNotice dengan acuan tanggal demo (G10) tampil`, notice.visible && notice.reference && notice.text.includes("21 Maret 2026") && notice.text.includes("bukan tanggal hari ini") && notice.text.includes("memori tab ini"), JSON.stringify(notice).slice(0, 200));
+    TUGAS.tasks.forEach((t, i) => {
+      const c = data.cards[i];
+      rec(`${tag}: kartu ${t.id} memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres`,
+        c.code === t.code && c.title === t.title && c.titleTag === "H3" && c.text.includes(t.project) && c.text.includes(`Penanggung jawab: ${t.assignee}`) && c.badges.includes(`Prioritas ${t.priority}`) && c.badges.includes(t.status) && c.progress === String(t.progress),
+        JSON.stringify({ code: c.code, title: c.title, badges: c.badges, progress: c.progress }));
+      rec(`${tag}: kartu ${t.id} tenggat terhadap acuan demo ${t.deadline ?? "(tidak ditampilkan untuk tugas selesai)"}`, t.deadline === null ? c.deadline === null : c.deadline === t.deadline, String(c.deadline));
+    });
+    rec(`${tag}: kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover (tautan detail = U4-8)`, data.cards.every((c) => c.interactive === 0 && c.hoverClass === 0), JSON.stringify(data.cards.map((c) => [c.interactive, c.hoverClass])));
+    if (vp.width === 375) {
+      const l0 = data.cards[0].left;
+      const w0 = data.cards[0].width;
+      rec(`${tag}: satu kolom (semua kartu selebar sama dan di dalam viewport)`, data.cards.every((c) => c.left === l0 && c.width === w0 && c.right <= 375), JSON.stringify(data.cards.map((c) => `${c.left}/${c.width}`)));
+    } else {
+      const lefts = [...new Set(data.cards.map((c) => c.left))];
+      rec(`${tag}: dua kolom`, lefts.length === 2 && data.cards.every((c) => c.right <= 768), JSON.stringify(lefts));
+    }
+  } else {
+    const t = await evaluate(READ_TABLE(TUGAS.tableLabel));
+    results.measurements[`tabel ${tag}`] = t;
+    rec(`${tag}: tabel terlihat`, !!t);
+    if (!t) return;
+    rec(`${tag}: kartu tersembunyi`, (await evaluate(READ_TASK_CARDS)) === null);
+    rec(`${tag}: tabel tidak berubah: semua kolom (${TUGAS.tableHeaders.join(", ")})`, same(t.headers, TUGAS.tableHeaders), JSON.stringify(t.headers));
+    rec(`${tag}: tabel tanpa gulir horizontal (semua kolom terlihat)`, t.scrollable === false);
+    rec(`${tag}: 6 baris sesuai urutan data`, same(t.rows.map((r) => r.id), TUGAS.tasks.map((x) => x.id)), JSON.stringify(t.rows.map((r) => r.id)));
+    rec(`${tag}: DemoDataNotice tidak tampil di desktop (tampilan tabel tidak berubah)`, notice.visible === false, JSON.stringify(notice));
+    const cardTitle = await evaluate(`[...document.querySelectorAll('[data-slot="records-desktop"] h2')].find((h) => h.checkVisibility())?.textContent.trim()`);
+    rec(`${tag}: header kartu tabel "${TUGAS.section}" tidak berubah`, cardTitle === TUGAS.section, cardTitle);
+    TUGAS.tasks.forEach((task, i) => {
+      const cells = t.rows[i].cells;
+      const expected = [task.code, task.title, task.assignee, task.priority, task.status, `${task.progress}%`];
+      rec(`${tag}: baris ${task.id} memuat semua nilai`, same(cells, expected), JSON.stringify(cells));
+    });
+  }
+  await checkAxe(tag);
+  await shotFull(`tugas-${vpName}-${userId}`);
+}
+for (const { n, v } of VPS) await checkTugasPage(n, v, "u-001");
+await checkTugasPage(375, VPS[0].v, "u-003"); // Mandor: halaman awal setelah login
+await checkTugasPage(375, VPS[0].v, "u-004"); // Anggota Tim: halaman awal setelah login
+await checkTugasPage(768, VPS[1].v, "u-002"); // Admin Kantor
+
 // ================= C. Akses menu dan guard tidak berubah =================
 await setViewport(VPS[2].v);
 for (const [userId, path, want] of [

@@ -69,7 +69,8 @@ function RecordCardList({ label, className, children, ...props }: RecordCardList
       className={cn("grid list-none gap-4 p-0 md:grid-cols-2 lg:hidden", className)}
       {...props}
     >
-      {React.Children.map(children, (child) => (child ? <li className="min-w-0">{child}</li> : null))}
+      {/* `[&>*]:h-full`: kartu mengisi tinggi baris grid sehingga tepi bawah kartu sebaris sejajar (dua kolom di 768). */}
+      {React.Children.map(children, (child) => (child ? <li className="min-w-0 [&>*]:h-full">{child}</li> : null))}
     </ul>
   );
 }
