@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-26 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: U4-0 sampai U4-4 selesai, menunggu audit dan persetujuan U4-5)
+Terakhir diperbarui: 2026-10-26 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: U4-0 sampai U4-4 selesai, menunggu audit dan persetujuan U4-5; workflow skill dan evaluasi visual dicatat, lihat "Milestone workflow")
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -168,6 +168,24 @@ Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pe
 - **Pengujian:** `check:u4-projects` 205/205 (baru; lingkup per role, runtime, state kosong, navigasi, Mandor 375 `mobile:true` + sentuhan, axe 0, tanpa overflow 375/768/1280), `check:u4-foundation` 213, `check:u4-components` 62, `check:u4-access` 201, `check:dynamic-routes` 28/28, `check:browser` 54/54 + axe 0, `check:contrast` 57/57, `check:tokens`, lint 0 error, typecheck, build. Satu asersi `check:u4-foundation` (daftar pemakai `access.ts`) hanya ditambah satu entri; tidak ada asersi dilonggarkan.
 - **Catatan:** satu kegagalan sementara `check:u4-access` (login ketuk Mandor 375) pada regresi pertama tidak terulang dua kali jalan ulang; penyebab belum terbukti, dipantau. `/u4-spike` masih dipakai pengujian (dihapus di U4-6/U4-10).
 - **Housekeeping logo:** `logo-proyekin_1.svg` (tidak dipakai aplikasi) dipindahkan ke `C:\proyekin-assets-backup\` di luar repository; logo aktif tetap `public/logo-proyekin.jpeg`.
+
+## Milestone workflow: skill dan evaluasi visual (2026-10-26)
+Perubahan **cara kerja**, bukan perubahan aplikasi: tidak ada source code, komponen, mock data, atau business logic yang diubah. Aturan lengkap, tabel skill, contoh pemanggilan, dan checklist fallback ada di `CLAUDE.md` §8; ringkasan di `AGENTS.md` bagian Skill Strategy (commit `4f95dbe`).
+
+**Latar belakang (audit transkrip, 2026-10-26):** dari seluruh transkrip yang masih tersimpan (U0 sampai U4-4), **tidak ditemukan bukti satu pun skill dipanggil**, baik lewat tool `Skill`, slash command, maupun pembacaan `SKILL.md`. Karena itu **tidak ada klaim bahwa skill digunakan pada fase U0–U4**; pekerjaan fase tersebut dilakukan dengan tool dasar. Riwayat yang tidak tersedia (mis. sesi Opus terpisah, bila ada) tidak dapat diverifikasi. `AGENTS.md` sebelumnya mewajibkan "UI UX Pro Max" dan "premium-fullstack"; keduanya tidak terpasang, rujukan wajibnya dihapus.
+
+**Aturan workflow yang berlaku mulai sekarang:**
+1. Skill yang relevan wajib **benar-benar dipanggil** lewat mekanisme yang tersedia (Claude Code: tool `Skill`, atau pemilik mengetik `/<nama-skill>`). Menyebut nama skill di prompt, atau skill sekadar tersedia, bukan pemakaian.
+2. Pekerjaan design system (token dan komponen bersama): `design:design-system`.
+3. Audit aksesibilitas yang relevan: `design:accessibility-review`.
+4. Microcopy Bahasa Indonesia (label, pesan, state kosong, konfirmasi): `design:ux-copy`.
+5. `verification-before-completion` sebelum mengklaim pekerjaan selesai, lulus, atau siap commit.
+6. `code-review` pada perubahan penting bila relevan (tanpa `--fix`/`--comment` kecuali disetujui pemilik).
+7. Bila skill tidak dapat dipanggil: laporkan alasannya dan jalankan **checklist manual** di `CLAUDE.md` §8C sebagai fallback. Skill atau plugin baru tidak dipasang tanpa persetujuan pemilik.
+8. **Evaluasi visual aktual** pada viewport **375, 768, dan 1280px** wajib untuk pekerjaan UI yang relevan: screenshot benar-benar dilihat dan dinilai (hierarchy, spacing, typography, komposisi, konsistensi antarhalaman, usability mobile), kelemahan dilaporkan apa adanya. **Build, lint, dan axe yang lolos tidak otomatis membuktikan kualitas visual baik.**
+9. Penggunaan skill tidak boleh diklaim tanpa bukti pemanggilan; laporan akhir menyebut skill yang benar-benar dipanggil.
+
+**Status verifikasi (2026-10-26):** `design:design-system`, `design:accessibility-review`, `design:ux-copy` (plugin `design` tersinkron), `verification-before-completion` (`.claude/skills/`), dan `code-review` (bawaan) terverifikasi tersedia. Satu-satunya pemanggilan terbukti sejauh ini: `verification-before-completion`, dipanggil sebelum commit dokumentasi `4f95dbe`. Skill lain belum pernah dipanggil di proyek ini.
 
 ## Roadmap UI/UX (disetujui sebagai dasar awal)
 | Fase | Isi |
