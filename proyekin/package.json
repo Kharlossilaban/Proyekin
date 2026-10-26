@@ -16,7 +16,8 @@
     "check:u4-components": "node scripts/check-u4-components.mjs",
     "check:u4-access": "node scripts/check-u4-access.mjs",
     "check:u4-projects": "node scripts/check-u4-projects.mjs",
-    "check:login-touch": "node scripts/check-login-touch.mjs"
+    "check:login-touch": "node scripts/check-login-touch.mjs",
+    "check:responsive-lists": "node scripts/check-responsive-lists.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

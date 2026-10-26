@@ -20,6 +20,7 @@ import {
   MobilePatternsDemo,
   PagePatternsDemo,
   ProgressDemo,
+  RecordCardDemo,
   TabsDemo,
   TouchControlsDemo,
 } from "@/components/style-guide/u4-demos";
@@ -46,6 +47,7 @@ const NAV = [
   ["konfirmasi", "Konfirmasi"],
   ["pola-halaman", "Pola halaman"],
   ["pola-mobile", "Pola mobile"],
+  ["kartu-data", "Kartu data"],
   ["responsif", "Responsif"],
 ] as const;
 
@@ -132,6 +134,9 @@ export default function StyleGuidePage() {
         </Section>
         <Section id="pola-mobile" title="Pola mobile (U4-2)" description="Grup radio status dan kartu tugas satu kolom untuk alur Mandor dan Anggota Tim (acuan 375px). Hanya contoh presentasi.">
           <MobilePatternsDemo />
+        </Section>
+        <Section id="kartu-data" title="Kartu data (RecordCard)" description="Pasangan label-nilai untuk daftar responsif di bawah lg (Laporan, Dokumen, Anggota). Hanya presentasi; tidak interaktif.">
+          <RecordCardDemo />
         </Section>
         <Section id="responsif" title="Pratinjau responsif">
           <ResponsivePreview />

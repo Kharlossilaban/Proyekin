@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { EmptyState } from "@/components/ui/empty-state";
+import { RecordCard, RecordCardList } from "@/components/ui/record-card";
 import { MOCK_DOCUMENTS } from "@/data/mock";
 import { fileBytesToSize, formatDate } from "@/lib/utils";
 
@@ -36,7 +37,40 @@ export default function DokumenPage() {
         </p>
       </div>
 
-      <Card>
+      {/* Di bawah lg: kartu (semua kolom tabel tampil sebagai pasangan label-nilai). */}
+      <section aria-labelledby="dokumen-kartu" data-slot="records-mobile" className="flex min-w-0 flex-col gap-4 lg:hidden">
+        <div className="flex flex-col gap-1">
+          <h2 id="dokumen-kartu" className="text-base font-semibold text-foreground">
+            Semua Dokumen
+          </h2>
+          <p className="text-sm text-muted-foreground">{MOCK_DOCUMENTS.length} dokumen</p>
+        </div>
+        {MOCK_DOCUMENTS.length === 0 ? (
+          <EmptyState
+            icon={<Files />}
+            title="Belum ada dokumen"
+            description="Dokumen proyek akan muncul di sini."
+          />
+        ) : (
+          <RecordCardList label="Daftar dokumen">
+            {MOCK_DOCUMENTS.map((d) => (
+              <RecordCard
+                key={d.id}
+                data-record-id={d.id}
+                title={d.name}
+                fields={[
+                  { label: "Kategori", value: <Badge variant="neutral">{CATEGORY_LABEL[d.category] ?? d.category}</Badge> },
+                  { label: "Diunggah", value: formatDate(d.uploadedAt) },
+                  { label: "Ukuran", value: fileBytesToSize(d.size) },
+                ]}
+              />
+            ))}
+          </RecordCardList>
+        )}
+      </section>
+
+      {/* Mulai lg: tabel. */}
+      <Card data-slot="records-desktop" className="hidden lg:flex">
         <CardHeader>
           <CardTitle as="h2">Semua Dokumen</CardTitle>
           <CardDescription>{MOCK_DOCUMENTS.length} dokumen</CardDescription>
@@ -60,7 +94,7 @@ export default function DokumenPage() {
               </TableHeader>
               <TableBody>
                 {MOCK_DOCUMENTS.map((d) => (
-                  <TableRow key={d.id}>
+                  <TableRow key={d.id} data-record-id={d.id}>
                     <TableCell className="font-medium text-foreground">
                       {d.name}
                     </TableCell>

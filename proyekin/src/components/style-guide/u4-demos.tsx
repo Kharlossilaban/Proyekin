@@ -7,6 +7,7 @@ import * as React from "react";
 import { FolderKanban, ListChecks, Timer, Users } from "lucide-react";
 
 import { TaskCard } from "@/components/tasks/task-card";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { DeadlineBadge } from "@/components/ui/deadline-badge";
@@ -16,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { PageHeader } from "@/components/ui/page-header";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import { RadioCardGroup } from "@/components/ui/radio-card-group";
+import { RecordCard, RecordCardList } from "@/components/ui/record-card";
 import { Select } from "@/components/ui/select";
 import { StatCard } from "@/components/ui/stat-card";
 import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs";
@@ -219,6 +221,63 @@ export function PagePatternsDemo() {
           ))}
         </ul>
       </div>
+    </div>
+  );
+}
+
+/**
+ * Dokumentasi RecordCard (kartu data label-nilai, presentasi saja) dan RecordCardList.
+ * Dipakai di Laporan, Dokumen, dan Anggota di bawah `lg`; tabel tampil mulai `lg`.
+ */
+export function RecordCardDemo() {
+  return (
+    <div className="flex flex-col gap-6" data-demo="record-cards">
+      <dl className="grid max-w-3xl gap-x-4 gap-y-2 text-sm sm:grid-cols-[10rem_1fr]">
+        <dt className="font-medium text-foreground">Kapan dipakai</dt>
+        <dd className="text-graphite">Daftar data yang di desktop berupa tabel. Di bawah breakpoint <code className="font-mono text-xs">lg</code> setiap baris menjadi satu kartu, sehingga tidak ada kolom yang tersembunyi.</dd>
+        <dt className="font-medium text-foreground">Props</dt>
+        <dd className="text-graphite">
+          <code className="font-mono text-xs">title</code>, <code className="font-mono text-xs">fields</code> (label + nilai, label sama dengan header tabel),{" "}
+          <code className="font-mono text-xs">titleAs</code> (default h3), <code className="font-mono text-xs">eyebrow</code> dan <code className="font-mono text-xs">leading</code> (opsional).
+        </dd>
+        <dt className="font-medium text-foreground">State</dt>
+        <dd className="text-graphite">Satu state: tampilan. Tidak interaktif (tanpa tautan, aksi, atau hover). Bila nanti perlu tautan, pakai pola tautan teregang seperti kartu proyek atau TaskCard.</dd>
+        <dt className="font-medium text-foreground">Aksesibilitas</dt>
+        <dd className="text-graphite">Daftar berupa <code className="font-mono text-xs">ul[role=list]</code> bernama; setiap kartu satu <code className="font-mono text-xs">li</code> dengan judul dan <code className="font-mono text-xs">dl</code> semantik. Status tidak hanya warna (Badge memuat teks).</dd>
+      </dl>
+
+      {/* `lg:grid` menimpa `lg:hidden` bawaan RecordCardList agar contoh tetap terlihat di desktop. */}
+      <RecordCardList label="Contoh kartu data" className="lg:grid lg:grid-cols-3">
+        <RecordCard
+          title="20 Februari 2026"
+          fields={[
+            { label: "Proyek", value: "PRJ-001" },
+            { label: "Mandor", value: "Ahmad Rizal" },
+            { label: "Pekerja", value: 12 },
+            { label: "Status", value: <Badge variant="warning" dot>Terkirim</Badge> },
+          ]}
+        />
+        <RecordCard
+          title="Gambar Arsitektur Lantai 1-3"
+          fields={[
+            { label: "Kategori", value: <Badge variant="neutral">Gambar Teknis</Badge> },
+            { label: "Diunggah", value: "20 Januari 2026" },
+            { label: "Ukuran", value: "15.0 MB" },
+          ]}
+        />
+        <RecordCard
+          title="Budi Santoso"
+          leading={
+            <div aria-hidden="true" className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+              B
+            </div>
+          }
+          fields={[
+            { label: "Email", value: "budi@proyekin.id" },
+            { label: "Role", value: <Badge variant="brand">Owner</Badge> },
+          ]}
+        />
+      </RecordCardList>
     </div>
   );
 }
