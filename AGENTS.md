@@ -100,6 +100,26 @@ Full rules, invocation examples and manual fallback checklists: CLAUDE.md §8.
 - If a required skill or tool is unavailable, say so.
 - Never pretend to have accessed Figma, files or tools.
 
+## Testing Workflow
+Full rules and suggested test groups: CLAUDE.md §9.
+- Run test commands synchronously in the foreground when possible (10 minute
+  limit per command). Run change-specific tests first, then the relevant
+  regression groups. Browser check scripts share ports: run them one at a
+  time, never in parallel.
+- Split long suites into independent groups so output and exit codes can be
+  verified. Do not rerun a whole suite for one failing check; fix, then rerun
+  only the failed and affected checks.
+- If a command must run in the background, use the background-task mechanism
+  and wait for its completion notification. Do not use Monitor to poll PIDs,
+  run sleep loops, or merely wait for a script to finish, and do not start
+  several Monitors for one process. Monitor remains fine for genuinely
+  continuous watching (log or file changes, CI, dev-server ready line).
+- If a check outlives the foreground limit, collect the result of the existing
+  background task; never rerun it automatically.
+- Always read the final output and the actual exit code. Report completed,
+  failed and not-yet-finished checks separately, and do not claim PASS,
+  commit or start the next step while a required check is unfinished.
+
 ## Safety and Approval
 Before destructive changes, migrations, dependency overhauls,
 or significant architecture changes, request approval.
@@ -110,5 +130,5 @@ Never delete existing work simply to rebuild it.
 At the end of an implementation task, provide:
 1. What was completed.
 2. Which files changed.
-3. Checks actually performed.
+3. Checks actually performed (completed, failed and not-yet-run listed separately).
 4. Remaining issues or recommended next step.

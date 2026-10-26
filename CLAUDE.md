@@ -158,6 +158,32 @@ Build, lint, typecheck, dan axe yang lulus **bukan** bukti kualitas visual.
 - Benar-benar **lihat** screenshot itu, lalu nilai: hierarchy, spacing, typography, komposisi, konsistensi dengan halaman lain, dan usability mobile (jangkauan jempol, target sentuh, keterbacaan, tidak ada aksi yang hanya muncul saat hover).
 - Laporkan temuan visual apa adanya, termasuk kelemahan, bukan hanya status lulus. Bila sebuah viewport tidak dilihat, nyatakan itu.
 
+## 9. Workflow Pengujian dan Tool Background (2026-10-26)
+
+Tujuan: hasil pengujian selalu dibaca dari output dan exit code aktual, tanpa pengulangan dan polling yang tidak perlu. Aturan ini tidak melonggarkan atau mengubah pengujian apa pun.
+
+**A. Cara menjalankan**
+1. Jalankan perintah pengujian secara **sinkron di foreground** bila memungkinkan. Batas foreground per perintah adalah 10 menit (`timeout` maksimum 600000 ms).
+2. **Pengujian yang terkait langsung dengan perubahan dijalankan lebih dulu**, baru regression suite yang relevan.
+3. Pecah suite panjang menjadi **kelompok independen**, tiap kelompok muat di batas foreground, dan baca output serta exit code kelompok itu sebelum lanjut. Pembagian yang disarankan:
+   - *Statis:* `lint`, `typecheck`, `build`, `check:contrast`, `check:tokens`, `check:u4-foundation`.
+   - *Browser U4:* `check:u4-components`, `check:u4-access`, `check:u4-projects` (dan skrip uji fitur baru).
+   - *Regresi lama:* `check:dynamic-routes`, `check:browser`.
+   - Skrip browser memakai port dev server dan port CDP yang sama: **jalankan satu per satu, jangan paralel**.
+4. **Jangan mengulang seluruh suite** bila satu pemeriksaan gagal: tampilkan penyebabnya, perbaiki, lalu jalankan ulang pemeriksaan yang gagal dan yang terdampak. Ulangi suite penuh hanya bila ada perubahan kode yang membenarkannya.
+5. Selalu baca **output akhir dan exit code aktual** setiap perintah. Jangan mengklaim lulus dari asumsi, hasil lama, atau output yang terpotong.
+
+**B. Background task dan Monitor**
+6. Bila sebuah perintah memang harus berjalan di background (di luar batas foreground), jalankan lewat **mekanisme background-task** dan **tunggu notifikasi penyelesaiannya**. Jangan polling file output atau memakai `sleep` berulang.
+7. **Jangan memakai Monitor** untuk polling PID, sleep loop, atau sekadar menunggu script selesai. Notifikasi penyelesaian background task sudah cukup.
+8. **Jangan memulai lebih dari satu Monitor untuk proses yang sama.** Bila Monitor sudah ada dan tidak diperlukan, hentikan monitornya (bukan pengujiannya).
+9. Bila sebuah pemeriksaan melewati batas foreground dan sudah berjalan sebagai background task, **ambil hasil task yang sudah ada**. Jangan otomatis menjalankannya ulang atau memulai duplikat.
+10. Monitor **tetap boleh** untuk pemantauan yang memang terus berjalan, misalnya mengikuti perubahan log atau file, status CI, atau baris "ready" dari dev server.
+
+**C. Pelaporan**
+11. Laporkan **terpisah**: pemeriksaan yang *selesai (lulus)*, yang *gagal* (dengan penyebab), dan yang *belum selesai atau belum dijalankan*. Tidak boleh ada klaim PASS selama masih ada pemeriksaan wajib yang belum selesai.
+12. Jangan mengubah kode, commit, atau memulai tahap berikutnya selama masih ada pengujian wajib yang belum selesai. Panggil `verification-before-completion` setelah membaca hasil aktual dan sebelum klaim selesai (§8).
+
 ## Prinsip Utama
 
 - Figma memberikan inspirasi desain.
