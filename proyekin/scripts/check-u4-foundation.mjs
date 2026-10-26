@@ -281,7 +281,7 @@ const RULE_SOURCES = /(lib[\\/](access|roles|labels)\.ts|data[\\/]mock\.ts|types
 const copies = walk(SRC).filter((f) => /\.(ts|tsx)$/.test(f) && !RULE_SOURCES.test(f) && ROLE_LITERAL.test(codeOf(f.slice(SRC.length + 1))));
 eq("aturan: tidak ada salinan literal role di luar berkas sumber (navigasi, guard, halaman, komponen)", copies.map((f) => f.slice(SRC.length)), []);
 const importers = walk(SRC).filter((f) => /\.(ts|tsx)$/.test(f) && !/lib[\\/]access\.ts$/.test(f) && /@\/lib\/access"/.test(readFileSync(f, "utf8"))).map((f) => f.slice(SRC.length + 1).replace(/\\/g, "/")).sort();
-eq("aturan: pemakai access.ts hanya navigasi, guard URL/detail, login, dan label (tipe)", importers, ["components/auth/login-form.tsx", "components/auth/path-guard.tsx", "components/detail/entity-detail-placeholders.tsx", "lib/labels.ts", "lib/navigation.ts"]);
+eq("aturan: pemakai access.ts hanya navigasi, guard URL/detail, login, daftar proyek (U4-4), dan label (tipe)", importers, ["components/auth/login-form.tsx", "components/auth/path-guard.tsx", "components/detail/entity-detail-placeholders.tsx", "components/projects/project-list.tsx", "lib/labels.ts", "lib/navigation.ts"]);
 check("guard: AccessGuard selalu merender children (pola hidden/inert, bukan menahan) dan memuat peringatan keterbatasan", /hidden=\{status !== "allowed"\}/.test(codeOf("components/auth/access-guard.tsx")) && /BUKAN OTORISASI/.test(readFileSync(join(SRC, "components/auth/access-guard.tsx"), "utf8")));
 {
   // SessionShell tidak boleh berubah sejak commit U3 terakhir yang mengubahnya (d3d9516).

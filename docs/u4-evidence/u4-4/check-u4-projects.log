@@ -1,0 +1,211 @@
+
+> proyekin@0.1.0 check:u4-projects
+> node scripts/check-u4-projects.mjs C:\proyekin_project\docs\u4-evidence\u4-4
+
+ok:   HTML /proyek: tidak memuat nama proyek seed (daftar dihitung setelah sesi diketahui) 
+ok:   HTML /proyek: tidak memuat kartu/baris proyek 
+ok:   budi (Owner): /proyek siap ready
+ok:   budi (Owner): tabel hanya memuat proyek dalam lingkup ["p-001","p-002","p-003","p-004","p-005"]
+ok:   budi: proyek di luar lingkup (tidak ada) tidak tampil []
+ok:   budi: kartu mobile tersembunyi di 1280 (tidak ada duplikasi tampilan) 
+ok:   budi: ringkasan jumlah "5 proyek" 5 proyek dalam lingkup akses Anda.
+ok:   budi: DemoDataNotice tampil dan tidak mengklaim data tersimpan 
+ok:   budi: tidak ada tombol bisnis (tambah/ubah/hapus) di daftar []
+ok:   budi: anggaran tidak ditampilkan 
+ok:   budi: baris p-001 memuat nama, klien, status Berjalan, periode PRJ-001Renovasi Gedung Kantor BatamBalai Kota Batam, Kepulauan RiauPT. Properti NusantaraBerjalan15 Jan 2026 – 30 Jun 202645%
+ok:   budi: p-001 tidak ditandai Hanya baca 
+ok:   budi: baris p-002 memuat nama, klien, status Berjalan, periode PRJ-002Pembangunan Gudang Logistik Tanjung PinangKec. Sungai Manggis, Kepulauan RiauCV. Jaya Abadi LogisticsBerjalan1 Mar 2026 – 15 Sep 202620%
+ok:   budi: p-002 tidak ditandai Hanya baca 
+ok:   budi: baris p-003 memuat nama, klien, status Tertunda, periode PRJ-003Pengerjaan Jalan Akses PelabuhanPelabuhan Tanjung PinangDinas PU Kepulauan RiauTertunda1 Nov 2025 – 30 Apr 202660%
+ok:   budi: p-003 tidak ditandai Hanya baca 
+ok:   budi: baris p-004 memuat nama, klien, status Selesai, periode PRJ-004Pembangunan Pos Keamanan Batang TembesiKawasan Industri BATAMINDOPT. Batamindo Industri PerkasaSelesai1 Jun 2025 – 31 Okt 2025100%
+ok:   budi: p-004 tidak ditandai Hanya baca 
+ok:   budi: baris p-005 memuat nama, klien, status Arsip, periode PRJ-005Perbaikan Jembatan Kayu AngkutDesa Batu Angkut, Kepulauan RiauDesa Batu AngkutArsipHanya baca1 Agu 2024 – 31 Des 2024100%
+ok:   budi: proyek Arsip p-005 ditandai Hanya baca 
+ok:   axe 0 pelanggaran: budi /proyek 1280 
+ok:   overflow halaman: budi /proyek 1280 1280 <= 1280
+ok:   budi: klik baris p-001 membuka detail tanpa muat ulang detail
+ok:   siti (Admin Kantor): /proyek siap ready
+ok:   siti (Admin Kantor): tabel hanya memuat proyek dalam lingkup ["p-001","p-002"]
+ok:   siti: proyek di luar lingkup (p-003, p-004, p-005) tidak tampil []
+ok:   siti: kartu mobile tersembunyi di 1280 (tidak ada duplikasi tampilan) 
+ok:   siti: ringkasan jumlah "2 proyek" 2 proyek dalam lingkup akses Anda.
+ok:   siti: DemoDataNotice tampil dan tidak mengklaim data tersimpan 
+ok:   siti: tidak ada tombol bisnis (tambah/ubah/hapus) di daftar []
+ok:   siti: anggaran tidak ditampilkan 
+ok:   siti: baris p-001 memuat nama, klien, status Berjalan, periode PRJ-001Renovasi Gedung Kantor BatamBalai Kota Batam, Kepulauan RiauPT. Properti NusantaraBerjalan15 Jan 2026 – 30 Jun 202645%
+ok:   siti: p-001 tidak ditandai Hanya baca 
+ok:   siti: baris p-002 memuat nama, klien, status Berjalan, periode PRJ-002Pembangunan Gudang Logistik Tanjung PinangKec. Sungai Manggis, Kepulauan RiauCV. Jaya Abadi LogisticsBerjalan1 Mar 2026 – 15 Sep 202620%
+ok:   siti: p-002 tidak ditandai Hanya baca 
+ok:   axe 0 pelanggaran: siti /proyek 1280 
+ok:   overflow halaman: siti /proyek 1280 1280 <= 1280
+ok:   siti: klik baris p-001 membuka detail tanpa muat ulang detail
+ok:   ahmad (Mandor): /proyek siap ready
+ok:   ahmad (Mandor): tabel hanya memuat proyek dalam lingkup ["p-001","p-002"]
+ok:   ahmad: proyek di luar lingkup (p-003, p-004, p-005) tidak tampil []
+ok:   ahmad: kartu mobile tersembunyi di 1280 (tidak ada duplikasi tampilan) 
+ok:   ahmad: ringkasan jumlah "2 proyek" 2 proyek dalam lingkup akses Anda.
+ok:   ahmad: DemoDataNotice tampil dan tidak mengklaim data tersimpan 
+ok:   ahmad: tidak ada tombol bisnis (tambah/ubah/hapus) di daftar []
+ok:   ahmad: anggaran tidak ditampilkan 
+ok:   ahmad: baris p-001 memuat nama, klien, status Berjalan, periode PRJ-001Renovasi Gedung Kantor BatamBalai Kota Batam, Kepulauan RiauPT. Properti NusantaraBerjalan15 Jan 2026 – 30 Jun 202645%
+ok:   ahmad: p-001 tidak ditandai Hanya baca 
+ok:   ahmad: baris p-002 memuat nama, klien, status Berjalan, periode PRJ-002Pembangunan Gudang Logistik Tanjung PinangKec. Sungai Manggis, Kepulauan RiauCV. Jaya Abadi LogisticsBerjalan1 Mar 2026 – 15 Sep 202620%
+ok:   ahmad: p-002 tidak ditandai Hanya baca 
+ok:   axe 0 pelanggaran: ahmad /proyek 1280 
+ok:   overflow halaman: ahmad /proyek 1280 1280 <= 1280
+ok:   ahmad: klik baris p-001 membuka detail tanpa muat ulang detail
+ok:   eko (Mandor): /proyek siap ready
+ok:   eko (Mandor): tabel hanya memuat proyek dalam lingkup ["p-001","p-002"]
+ok:   eko: proyek di luar lingkup (p-003, p-004, p-005) tidak tampil []
+ok:   eko: kartu mobile tersembunyi di 1280 (tidak ada duplikasi tampilan) 
+ok:   eko: ringkasan jumlah "2 proyek" 2 proyek dalam lingkup akses Anda.
+ok:   eko: DemoDataNotice tampil dan tidak mengklaim data tersimpan 
+ok:   eko: tidak ada tombol bisnis (tambah/ubah/hapus) di daftar []
+ok:   eko: anggaran tidak ditampilkan 
+ok:   eko: baris p-001 memuat nama, klien, status Berjalan, periode PRJ-001Renovasi Gedung Kantor BatamBalai Kota Batam, Kepulauan RiauPT. Properti NusantaraBerjalan15 Jan 2026 – 30 Jun 202645%
+ok:   eko: p-001 tidak ditandai Hanya baca 
+ok:   eko: baris p-002 memuat nama, klien, status Berjalan, periode PRJ-002Pembangunan Gudang Logistik Tanjung PinangKec. Sungai Manggis, Kepulauan RiauCV. Jaya Abadi LogisticsBerjalan1 Mar 2026 – 15 Sep 202620%
+ok:   eko: p-002 tidak ditandai Hanya baca 
+ok:   axe 0 pelanggaran: eko /proyek 1280 
+ok:   overflow halaman: eko /proyek 1280 1280 <= 1280
+ok:   eko: klik baris p-001 membuka detail tanpa muat ulang detail
+ok:   dewi (Anggota Tim): /proyek siap ready
+ok:   dewi (Anggota Tim): tabel hanya memuat proyek dalam lingkup ["p-001"]
+ok:   dewi: proyek di luar lingkup (p-002, p-003, p-004, p-005) tidak tampil []
+ok:   dewi: kartu mobile tersembunyi di 1280 (tidak ada duplikasi tampilan) 
+ok:   dewi: ringkasan jumlah "1 proyek" 1 proyek dalam lingkup akses Anda.
+ok:   dewi: DemoDataNotice tampil dan tidak mengklaim data tersimpan 
+ok:   dewi: tidak ada tombol bisnis (tambah/ubah/hapus) di daftar []
+ok:   dewi: anggaran tidak ditampilkan 
+ok:   dewi: baris p-001 memuat nama, klien, status Berjalan, periode PRJ-001Renovasi Gedung Kantor BatamBalai Kota Batam, Kepulauan RiauPT. Properti NusantaraBerjalan15 Jan 2026 – 30 Jun 202645%
+ok:   dewi: p-001 tidak ditandai Hanya baca 
+ok:   axe 0 pelanggaran: dewi /proyek 1280 
+ok:   overflow halaman: dewi /proyek 1280 1280 <= 1280
+ok:   dewi: klik baris p-001 membuka detail tanpa muat ulang detail
+ok:   budi 768: kartu sesuai lingkup ["p-001","p-002","p-003","p-004","p-005"]
+ok:   budi 768: tabel tersembunyi 
+ok:   overflow halaman: budi /proyek 768 768 <= 768
+ok:   axe 0 pelanggaran: budi /proyek 768 
+ok:   siti 768: kartu sesuai lingkup ["p-001","p-002"]
+ok:   siti 768: tabel tersembunyi 
+ok:   overflow halaman: siti /proyek 768 768 <= 768
+ok:   axe 0 pelanggaran: siti /proyek 768 
+ok:   ahmad 768: kartu sesuai lingkup ["p-001","p-002"]
+ok:   ahmad 768: tabel tersembunyi 
+ok:   overflow halaman: ahmad /proyek 768 768 <= 768
+ok:   axe 0 pelanggaran: ahmad /proyek 768 
+ok:   dewi 768: kartu sesuai lingkup ["p-001"]
+ok:   dewi 768: tabel tersembunyi 
+ok:   overflow halaman: dewi /proyek 768 768 <= 768
+ok:   axe 0 pelanggaran: dewi /proyek 768 
+ok:   budi mobile 375: emulasi sentuh aktif 
+ok:   budi mobile 375: kartu sesuai lingkup ["p-001","p-002","p-003","p-004","p-005"]
+ok:   budi mobile 375: tabel tersembunyi 
+ok:   overflow halaman: budi /proyek 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: budi /proyek 375 mobile 
+ok:   budi mobile 375: satu kolom (semua kartu selebar sama dan tidak melewati viewport) ["16/343","16/343","16/343","16/343","16/343"]
+ok:   budi mobile 375: setiap kartu >= 44px (area sentuh) ["343x224","343x248","343x224","343x248","343x244"]
+ok:   budi mobile 375: seluruh area kartu menjadi tautan ke detail (tidak hanya teks judul) [true,true,true,true,true]
+ok:   budi mobile 375: aksi utama tampil permanen (bukan hover-only) 
+ok:   budi mobile 375: ketuk area kartu p-001 membuka detail tanpa muat ulang detail
+ok:   overflow halaman: budi detail p-001 375 mobile 375 <= 375
+ok:   siti mobile 375: emulasi sentuh aktif 
+ok:   siti mobile 375: kartu sesuai lingkup ["p-001","p-002"]
+ok:   siti mobile 375: tabel tersembunyi 
+ok:   overflow halaman: siti /proyek 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: siti /proyek 375 mobile 
+ok:   siti mobile 375: satu kolom (semua kartu selebar sama dan tidak melewati viewport) ["16/343","16/343"]
+ok:   siti mobile 375: setiap kartu >= 44px (area sentuh) ["343x224","343x248"]
+ok:   siti mobile 375: seluruh area kartu menjadi tautan ke detail (tidak hanya teks judul) [true,true]
+ok:   siti mobile 375: aksi utama tampil permanen (bukan hover-only) 
+ok:   siti mobile 375: ketuk area kartu p-001 membuka detail tanpa muat ulang detail
+ok:   overflow halaman: siti detail p-001 375 mobile 375 <= 375
+ok:   ahmad mobile 375: emulasi sentuh aktif 
+ok:   ahmad mobile 375: kartu sesuai lingkup ["p-001","p-002"]
+ok:   ahmad mobile 375: tabel tersembunyi 
+ok:   overflow halaman: ahmad /proyek 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: ahmad /proyek 375 mobile 
+ok:   ahmad mobile 375: satu kolom (semua kartu selebar sama dan tidak melewati viewport) ["16/343","16/343"]
+ok:   ahmad mobile 375: setiap kartu >= 44px (area sentuh) ["343x224","343x248"]
+ok:   ahmad mobile 375: seluruh area kartu menjadi tautan ke detail (tidak hanya teks judul) [true,true]
+ok:   ahmad mobile 375: aksi utama tampil permanen (bukan hover-only) 
+ok:   ahmad mobile 375: ketuk area kartu p-001 membuka detail tanpa muat ulang detail
+ok:   overflow halaman: ahmad detail p-001 375 mobile 375 <= 375
+ok:   eko mobile 375: emulasi sentuh aktif 
+ok:   eko mobile 375: kartu sesuai lingkup ["p-001","p-002"]
+ok:   eko mobile 375: tabel tersembunyi 
+ok:   overflow halaman: eko /proyek 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: eko /proyek 375 mobile 
+ok:   eko mobile 375: satu kolom (semua kartu selebar sama dan tidak melewati viewport) ["16/343","16/343"]
+ok:   eko mobile 375: setiap kartu >= 44px (area sentuh) ["343x224","343x248"]
+ok:   eko mobile 375: seluruh area kartu menjadi tautan ke detail (tidak hanya teks judul) [true,true]
+ok:   eko mobile 375: aksi utama tampil permanen (bukan hover-only) 
+ok:   eko mobile 375: ketuk area kartu p-001 membuka detail tanpa muat ulang detail
+ok:   overflow halaman: eko detail p-001 375 mobile 375 <= 375
+ok:   dewi mobile 375: emulasi sentuh aktif 
+ok:   dewi mobile 375: kartu sesuai lingkup ["p-001"]
+ok:   dewi mobile 375: tabel tersembunyi 
+ok:   overflow halaman: dewi /proyek 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: dewi /proyek 375 mobile 
+ok:   dewi mobile 375: satu kolom (semua kartu selebar sama dan tidak melewati viewport) ["16/343"]
+ok:   dewi mobile 375: setiap kartu >= 44px (area sentuh) ["343x224"]
+ok:   dewi mobile 375: seluruh area kartu menjadi tautan ke detail (tidak hanya teks judul) [true]
+ok:   dewi mobile 375: aksi utama tampil permanen (bukan hover-only) 
+ok:   dewi mobile 375: ketuk area kartu p-001 membuka detail tanpa muat ulang detail
+ok:   overflow halaman: dewi detail p-001 375 mobile 375 <= 375
+ok:   ahmad (Mandor) mobile: login → /tugas → drawer → Proyek → daftar tanpa muat ulang 
+ok:   ahmad (Mandor) mobile: ketuk kartu p-002 → detail p-002 (berhak) 
+ok:   budi: daftar setelah proyek runtime p-006 dibuat (navigasi klien, tanpa muat ulang) ["p-001","p-002","p-003","p-004","p-005","p-006"]
+ok:   budi: proyek runtime p-006 tampil 
+ok:   budi: baris proyek runtime memuat nama, klien, status Draf PRJ-006Proyek uji runtime(uji)(uji)Draf21 Mar 2026 – 21 Mar 20260%
+ok:   budi: klik proyek runtime membuka detail p-006 
+ok:   siti: daftar setelah proyek runtime p-006 dibuat (navigasi klien, tanpa muat ulang) ["p-001","p-002"]
+ok:   siti: proyek runtime p-006 tidak tampil 
+ok:   ahmad: daftar setelah proyek runtime p-006 dibuat (navigasi klien, tanpa muat ulang) ["p-001","p-002"]
+ok:   ahmad: proyek runtime p-006 tidak tampil 
+ok:   dewi: daftar setelah proyek runtime p-006 dibuat (navigasi klien, tanpa muat ulang) ["p-001"]
+ok:   dewi: proyek runtime p-006 tidak tampil 
+ok:   tanpa sesi (Owner demo, mode pengembangan): daftar memuat semua proyek seed ["p-001","p-002","p-003","p-004","p-005"]
+ok:   ADMIN tanpa proyek (1280): halaman siap ready
+ok:   ADMIN tanpa proyek (1280): state kosong tampil Belum ada proyek yang dapat Anda aksesProyek akan muncul di sini setelah Anda ditugaskan sebagai Admin Kantor proyek atau didaftarkan sebagai anggota proyek.
+ok:   ADMIN tanpa proyek (1280): tidak ada kartu, baris, atau tautan detail 
+ok:   ADMIN tanpa proyek (1280): ringkasan "0 proyek" 0 proyek dalam lingkup akses Anda.
+ok:   overflow halaman: ADMIN kosong 1280 1280 <= 1280
+ok:   axe 0 pelanggaran: ADMIN kosong 1280 
+ok:   MANDOR tanpa proyek (1280): halaman siap ready
+ok:   MANDOR tanpa proyek (1280): state kosong tampil Belum ada proyek yang dapat Anda aksesProyek akan muncul di sini setelah Anda ditugaskan sebagai Admin Kantor proyek atau didaftarkan sebagai anggota proyek.
+ok:   MANDOR tanpa proyek (1280): tidak ada kartu, baris, atau tautan detail 
+ok:   MANDOR tanpa proyek (1280): ringkasan "0 proyek" 0 proyek dalam lingkup akses Anda.
+ok:   overflow halaman: MANDOR kosong 1280 1280 <= 1280
+ok:   axe 0 pelanggaran: MANDOR kosong 1280 
+ok:   ANGGOTA tanpa proyek (1280): halaman siap ready
+ok:   ANGGOTA tanpa proyek (1280): state kosong tampil Belum ada proyek yang dapat Anda aksesProyek akan muncul di sini setelah Anda ditugaskan sebagai Admin Kantor proyek atau didaftarkan sebagai anggota proyek.
+ok:   ANGGOTA tanpa proyek (1280): tidak ada kartu, baris, atau tautan detail 
+ok:   ANGGOTA tanpa proyek (1280): ringkasan "0 proyek" 0 proyek dalam lingkup akses Anda.
+ok:   overflow halaman: ANGGOTA kosong 1280 1280 <= 1280
+ok:   axe 0 pelanggaran: ANGGOTA kosong 1280 
+ok:   ADMIN tanpa proyek (375 mobile): halaman siap ready
+ok:   ADMIN tanpa proyek (375 mobile): state kosong tampil Belum ada proyek yang dapat Anda aksesProyek akan muncul di sini setelah Anda ditugaskan sebagai Admin Kantor proyek atau didaftarkan sebagai anggota proyek.
+ok:   ADMIN tanpa proyek (375 mobile): tidak ada kartu, baris, atau tautan detail 
+ok:   ADMIN tanpa proyek (375 mobile): ringkasan "0 proyek" 0 proyek dalam lingkup akses Anda.
+ok:   overflow halaman: ADMIN kosong 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: ADMIN kosong 375 mobile 
+ok:   MANDOR tanpa proyek (375 mobile): halaman siap ready
+ok:   MANDOR tanpa proyek (375 mobile): state kosong tampil Belum ada proyek yang dapat Anda aksesProyek akan muncul di sini setelah Anda ditugaskan sebagai Admin Kantor proyek atau didaftarkan sebagai anggota proyek.
+ok:   MANDOR tanpa proyek (375 mobile): tidak ada kartu, baris, atau tautan detail 
+ok:   MANDOR tanpa proyek (375 mobile): ringkasan "0 proyek" 0 proyek dalam lingkup akses Anda.
+ok:   overflow halaman: MANDOR kosong 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: MANDOR kosong 375 mobile 
+ok:   ANGGOTA tanpa proyek (375 mobile): halaman siap ready
+ok:   ANGGOTA tanpa proyek (375 mobile): state kosong tampil Belum ada proyek yang dapat Anda aksesProyek akan muncul di sini setelah Anda ditugaskan sebagai Admin Kantor proyek atau didaftarkan sebagai anggota proyek.
+ok:   ANGGOTA tanpa proyek (375 mobile): tidak ada kartu, baris, atau tautan detail 
+ok:   ANGGOTA tanpa proyek (375 mobile): ringkasan "0 proyek" 0 proyek dalam lingkup akses Anda.
+ok:   overflow halaman: ANGGOTA kosong 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: ANGGOTA kosong 375 mobile 
+ok:   guest: URL langsung /proyek → akses ditolak denied
+ok:   guest: daftar proyek (kartu/baris/state kosong) tidak pernah terlihat 
+ok:   guest: tanpa sidebar App Shell 
+ok:   guest: tidak ada nama proyek di halaman 
+
+Semua 205 pemeriksaan lolos.

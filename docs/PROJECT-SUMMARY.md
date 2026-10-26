@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-25 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: U4-0 sampai U4-3 selesai, menunggu audit dan persetujuan U4-4)
+Terakhir diperbarui: 2026-10-26 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: U4-0 sampai U4-4 selesai, menunggu audit dan persetujuan U4-5)
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -160,7 +160,14 @@ Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pe
 - **Ekspektasi pengujian U3 yang berubah (J2):** login Mandor kini ke `/tugas` dan menu Mandor persis Tugas, Proyek, Laporan, Dokumen (alur 53 → 54; asersi lama tetap, tidak dilonggarkan).
 - **Cleanup spike:** guard eksperimen dihapus; probe dan not-found dimigrasikan ke `components/detail/`; `/u4-spike` + `spike-controls` + `u4-spike-gate.ts` dipertahankan sementara untuk membuat ID runtime (dihapus di U4-6/U4-10).
 - **Pengujian:** `check:u4-access` 171, `check:u4-foundation` 201, `check:u4-components` 62, `check:dynamic-routes` 7/7 + 21/21, `check:browser` 54/54 + axe 0, `check:contrast` 57/57.
-- **Temuan terbuka:** tautan drawer mobile 264×36px dan tombol 40px (bawaan U2) di bawah 44px; belum diubah, menunggu keputusan pemilik.
+- **Temuan terbuka:** tautan drawer mobile 264×36px dan tombol 40px (bawaan U2) di bawah 44px; belum diubah, menunggu keputusan pemilik. (Diselesaikan di follow-up U4-3, commit `20a36e7`: kontrol drawer kini 44px; desktop tidak berubah.)
+
+**U4-4 — halaman daftar proyek `/proyek`: selesai** (detail, matriks teruji, dan bukti di `docs/u4-evidence/U4-4-PROJECTS.md` dan `docs/u4-evidence/u4-4/`). Representasi UI di atas mock, **bukan** otorisasi/keamanan dan **tidak production-ready**. Hanya DAFTAR: tanpa detail final (U4-5), CRUD (U4-6), atau kelola anggota (U4-7); `SessionShell`, redirect, dan guard U4-3 tidak diubah; tanpa dependency/backend baru.
+- **Lingkup per role** lewat `getVisibleProjects` (`access.ts`), tanpa aturan role di komponen: Owner semua proyek; Admin Kantor hanya proyek yang ia tangani sebagai Admin principal (G8); Mandor dan Anggota Tim hanya proyek tempat mereka anggota; Guest tanpa App Shell. Proyek Arsip ditandai "Hanya baca". Proyek runtime (di memori) hanya terlihat Owner.
+- **Tampilan:** kartu satu kolom di bawah `lg` (mobile-first; seluruh kartu satu target sentuh >= 44px, tanpa aksi hover-only), tabel di `lg` ke atas; informasi: kode, nama, klien, status (label + titik), periode, lokasi, progres; `DemoDataNotice`; state kosong; skeleton sebelum sesi diketahui (HTML prerender tidak memuat daftar proyek). **Anggaran sengaja tidak ditampilkan** (belum ada keputusan siapa boleh melihat; dibawa ke U4-5). Tidak ada tombol bisnis, filter, atau pencarian.
+- **Pengujian:** `check:u4-projects` 205/205 (baru; lingkup per role, runtime, state kosong, navigasi, Mandor 375 `mobile:true` + sentuhan, axe 0, tanpa overflow 375/768/1280), `check:u4-foundation` 213, `check:u4-components` 62, `check:u4-access` 201, `check:dynamic-routes` 28/28, `check:browser` 54/54 + axe 0, `check:contrast` 57/57, `check:tokens`, lint 0 error, typecheck, build. Satu asersi `check:u4-foundation` (daftar pemakai `access.ts`) hanya ditambah satu entri; tidak ada asersi dilonggarkan.
+- **Catatan:** satu kegagalan sementara `check:u4-access` (login ketuk Mandor 375) pada regresi pertama tidak terulang dua kali jalan ulang; penyebab belum terbukti, dipantau. `/u4-spike` masih dipakai pengujian (dihapus di U4-6/U4-10).
+- **Housekeeping logo:** `logo-proyekin_1.svg` (tidak dipakai aplikasi) dipindahkan ke `C:\proyekin-assets-backup\` di luar repository; logo aktif tetap `public/logo-proyekin.jpeg`.
 
 ## Roadmap UI/UX (disetujui sebagai dasar awal)
 | Fase | Isi |
@@ -169,7 +176,7 @@ Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pe
 | U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) — **selesai, merged** |
 | U2 | App shell: sidebar, header, navigasi per role, responsif — **selesai, merged** |
 | U3 | Halaman auth (UI, mock) — **selesai, merged** (PASS WITH NOTES; catatan di Technical backlog) |
-| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 s.d. U4-3 selesai; U4-4 dst. menunggu persetujuan) |
+| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 s.d. U4-4 selesai; U4-5 dst. menunggu persetujuan) |
 | U5 | Laporan Harian, Dokumen |
 | U6 | Gantt, landing publik |
 | U7 | Polesan: state kosong/error/loading, aksesibilitas, uji responsif |
@@ -193,7 +200,7 @@ Dicatat, tidak diperbaiki diam-diam. Perbaikan yang menyentuh business logic ata
     - **U3-U3** Tombol "Kembali ke halaman sebelumnya" di `/akses-ditolak` bergantung pada riwayat browser; untuk Guest, "Ke beranda" lebih tepat sebagai aksi utama.
     - **U3-U4** Teks persetujuan Syarat dan Ketentuan serta Kebijakan Privasi tanpa dokumen tujuan; dokumen legal perlu disediakan sebelum registrasi sungguhan.
   - **Brand/logo:**
-    - **U3-L1** `logo-proyekin_1.svg` di root (untracked, tidak di-commit) adalah trace monokrom hitam tanpa heksagon oranye dan titik oranye huruf "i"; **tidak boleh dipakai**. Minta file vektor resmi berwarna.
+    - **U3-L1** `logo-proyekin_1.svg` (semula di root, untracked; sejak 2026-10-26 dipindahkan ke `C:\proyekin-assets-backup\` di luar repository) adalah trace monokrom hitam tanpa heksagon oranye dan titik oranye huruf "i"; **tidak boleh dipakai**. Minta file vektor resmi berwarna.
     - **U3-L2** Tulisan pada JPEG logo kecil (~10px di header mobile) karena ruang putih di aset; crop/aset baru butuh persetujuan pemilik.
     - **U3-L3** Komentar di `logo.tsx` menyebut field `ratio` yang tidak ada.
   - **Data mock:** domain `proyekin.id` dan tautan sosial di `MOCK_CONTACT` (lihat "Audit data demo" di Fase U3).

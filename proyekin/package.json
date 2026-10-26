@@ -14,7 +14,8 @@
     "check:dynamic-routes": "node scripts/check-dynamic-routes.mjs",
     "check:u4-foundation": "node scripts/check-u4-foundation.mjs",
     "check:u4-components": "node scripts/check-u4-components.mjs",
-    "check:u4-access": "node scripts/check-u4-access.mjs"
+    "check:u4-access": "node scripts/check-u4-access.mjs",
+    "check:u4-projects": "node scripts/check-u4-projects.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
