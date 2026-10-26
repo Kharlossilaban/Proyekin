@@ -1,0 +1,68 @@
+
+> proyekin@0.1.0 check:u4-components
+> node scripts/check-u4-components.mjs C:\Users\PONGO\AppData\Local\Temp\claude\C--proyekin-project\***\scratchpad\s2-comp
+
+ok:   regresi: Input bawaan (U1) tinggi 40px, font 14px 40px / 14px
+ok:   regresi: Button sm/md/lg/icon tetap 36/40/48/40px {"Kecil":{"h":36,"fs":"14px"},"Sedang":{"h":40,"fs":"14px"},"Besar":{"h":48,"fs":"16px"},"icon":{"h":40,"w":40}}
+ok:   regresi: font Button sm/md 14px dan lg 16px (tidak berubah) ["14px","14px","16px"]
+ok:   regresi: kontrol default di demo: Input/Select 40px & 14px, Textarea min 80px & 14px, Button 40px {"input":{"fontSize":"14px","height":40,"width":536},"select":{"fontSize":"14px","height":40,"width":536},"textarea":{"fontSize":"14px","height":80,"width":536},"button":{"fontSize":"14px","height":40,"width":105.84375}}
+ok:   touch: Input/Select/Textarea tinggi >= 44px dan font >= 16px [[44,"16px"],[44,"16px"],[112,"16px"]]
+ok:   touch: Button tinggi >= 44px dan lebar >= 44px 135.515625x44
+ok:   tabs: tab pertama aktif di awal 
+ok:   tabs: ArrowRight memindah dan mengaktifkan tab berikutnya Tugas
+ok:   tabs: End ke tab terakhir Contoh tab keenam
+ok:   tabs: Home ke tab pertama Ringkasan
+ok:   tabs: ArrowLeft dari tab pertama berputar ke tab terakhir Contoh tab keenam
+ok:   tabs: Tab dari daftar tab masuk ke panel {"tag":"div","text":"Isi panel \"Contoh tab keenam\" (contoh).","role":"tabpanel","id":"base-ui-_R_qql5esnelb_","demo":null,"inDialog":false}
+ok:   radio: awal terpilih 'Dalam Progres' 
+ok:   radio: ArrowDown memilih opsi berikutnya dan memperbarui hasil Selesai
+ok:   radio: ArrowUp memilih opsi sebelumnya Belum Dimulai
+ok:   radio: fieldset + legend + 3 radio native {"tag":"FIELDSET","legend":"Status tugas (contoh)","radios":3}
+ok:   select: awal 'b' 
+ok:   select: ArrowDown memilih opsi berikutnya c
+ok:   select: ArrowUp memilih opsi sebelumnya a
+ok:   select: terhubung dengan label 
+ok:   confirm: Enter pada pemicu membuka dialog; fokus awal di 'Batal' (aksi destruktif) {"tag":"button","text":"Batal","role":null,"id":"","demo":null,"inDialog":true}
+ok:   confirm: judul dan teks aksi destruktif jelas {"title":"Hapus item contoh?","confirm":["Batal","Ya, hapus item contoh",""]}
+ok:   confirm: focus trap — 8x Tab tidak keluar dari dialog Ya, hapus item contoh > button > Batal > Ya, hapus item contoh > button > Batal > Ya, hapus item contoh > button
+ok:   confirm: focus trap — Shift+Tab tidak keluar dari dialog Ya, hapus item contoh > Batal > button > Ya, hapus item contoh
+ok:   axe 0 pelanggaran: 1280 dengan ConfirmDialog terbuka 
+ok:   confirm: Esc menutup dialog dan fokus kembali ke pemicu {"tag":"button","text":"Hapus item contoh","role":null,"id":"base-ui-_R_7lr55esnelb_","demo":"confirm-destructive","inDialog":false}
+ok:   confirm: tombol Batal menutup dialog tanpa aksi dan fokus kembali ke pemicu {"tag":"button","text":"Hapus item contoh","role":null,"id":"base-ui-_R_7lr55esnelb_","demo":"confirm-destructive","inDialog":false}
+ok:   confirm: saat memproses tombol dikunci (aria-busy, Batal nonaktif, tombol X hilang) {"busy":"true","cancelDisabled":true,"closeBtn":false}
+ok:   confirm: Esc tidak menutup dialog saat memproses 
+ok:   confirm: konfirmasi menutup dialog, hasil menyebut simulasi tanpa perubahan data, fokus kembali ke pemicu Penghapusan contoh dikonfirmasi (simulasi). Tidak ada data yang berubah. | {"tag":"button","text":"Hapus item contoh","role":null,"id":"base-ui-_R_7lr55esnelb_","demo":"confirm-destructive","inDialog":false}
+ok:   confirm: varian non-destruktif memakai tombol utama (bukan merah) dan fokus di dalam dialog {"inDialog":true,"primaryClass":true}
+ok:   axe 0 pelanggaran: 1280 halaman style-guide 
+ok:   overflow halaman: 1280 1280 <= 1280
+ok:   overflow halaman: 768 768 <= 768
+ok:   axe 0 pelanggaran: 768 halaman style-guide 
+ok:   mobile: emulasi sentuh aktif (maxTouchPoints > 0) 5
+ok:   mobile: lebar viewport 375px 375
+ok:   overflow halaman: 375 (mobile) 375 <= 375
+ok:   axe 0 pelanggaran: 375 mobile halaman style-guide 
+ok:   target sentuh >= 44x44px di #kontrol-sentuh [data-demo="touch"] (5 kontrol) 
+ok:   target sentuh >= 44x44px di #tabs (6 kontrol) 
+ok:   target sentuh >= 44x44px di #konfirmasi (2 kontrol) 
+ok:   target sentuh >= 44x44px di #pola-mobile (6 kontrol) 
+ok:   mobile: font input/select/textarea touch >= 16px [{"id":"tc-t-input","fs":16},{"id":"tc-t-select","fs":16},{"id":"tc-t-textarea","fs":16}]
+ok:   mobile: jarak antar pilihan radio >= 8px [8,8]
+ok:   mobile: jarak antar tombol touch >= 8px 8px
+ok:   mobile: tidak ada kontrol penting yang bergantung pada hover (group/peer-hover) 
+ok:   mobile: 3 kartu tugas satu kolom (kiri dan lebar sama, bertumpuk ke bawah, tidak melebihi viewport) [{"l":16,"w":343,"t":11668},{"l":16,"w":343,"t":11906},{"l":16,"w":343,"t":12164}]
+ok:   mobile: kartu memuat status, prioritas, tenggat (acuan demo), dan progres {"badges":3,"progress":true,"deadline":"Terlambat · 28 Feb 2026"}
+ok:   mobile: daftar tab lebih lebar dari kotaknya (bergulir di dalam komponen) {"scrollWidth":725,"clientWidth":343}
+ok:   mobile: ketuk tab terakhir mengaktifkannya; halaman tidak bergeser/overflow {"selected":"Contoh tab keenam","pageScrollX":0,"docOverflow":false,"tabsScroll":382}
+ok:   mobile: ketuk kartu radio 'Selesai' memilihnya (sentuhan) {"checked":"Selesai","out":"Status terpilih (contoh): Selesai. Tidak ada data yang disimpan."}
+ok:   mobile: ketuk kartu radio 'Belum Dimulai' memilihnya 
+ok:   mobile: ketuk Input touch memfokuskannya 
+ok:   mobile: teks dapat diketik ke Input touch 
+ok:   mobile: ketuk Select touch memfokuskannya 
+ok:   mobile: dialog di dalam viewport; tombol menumpuk, lebar penuh, tinggi >= 44px {"left":16,"right":359,"vw":375,"bs":[{"t":"Batal","w":293,"h":44,"l":41},{"t":"Ya, hapus item contoh","w":293,"h":44,"l":41}]}
+ok:   axe 0 pelanggaran: 375 mobile dengan ConfirmDialog terbuka 
+ok:   mobile: ketuk 'Batal' menutup dialog tanpa menjalankan aksi (teks hasil tidak berubah) "Belum ada aksi." → "Belum ada aksi."
+ok:   mobile: setelah ketuk 'Batal' fokus kembali ke pemicu {"tag":"button","text":"Hapus item contoh","role":null,"id":"base-ui-_R_7lr55esnelb_","demo":"confirm-destructive","inDialog":false}
+ok:   mobile: ketuk konfirmasi menutup dialog dan menampilkan hasil simulasi Penghapusan contoh dikonfirmasi (simulasi). Tidak ada data yang berubah.
+ok:   overflow halaman: 375 (mobile) setelah semua interaksi 375 <= 375
+
+Semua 62 pemeriksaan lolos.

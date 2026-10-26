@@ -1,0 +1,182 @@
+{
+  "http": [
+    {
+      "name": "GET /proyek/p-001 (seed): 200 + konten di HTML prerender",
+      "ok": true,
+      "detail": "status 200, prerender=1, 1"
+    },
+    {
+      "name": "GET /tugas/t-001 (seed): 200 + konten di HTML prerender",
+      "ok": true,
+      "detail": "status 200"
+    },
+    {
+      "name": "GET /proyek/p-8676 (ID segar tidak dikenal): tidak ada konten, noindex, status 200 lalu 404",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "GET /tugas/t-8676 (ID segar tidak dikenal): tidak ada konten, noindex, status 200 lalu 404",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "GET /proyek/abc-676 (ID segar tidak dikenal): tidak ada konten, noindex, status 200 lalu 404",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Guard A (menahan): konten tidak ada di markup HTML prerender (hanya di payload RSC)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "Guard B (menyembunyikan): konten ada di markup HTML prerender dan bertanda hidden",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "browser": [
+    {
+      "name": "seed: /proyek/p-001 dibuka langsung",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "seed: /tugas/t-001 dibuka langsung",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime: proyek baru p-006 terbuka lewat router.push",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime: tanpa muat ulang halaman (penanda window tetap ada)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime: tugas baru t-007 terbuka lewat router.push",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime: proyek baru terbuka lewat klik <Link>",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime: tombol back lalu forward kembali ke ID runtime yang sama (store memori tetap)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reload pada ID runtime: store reset, tampil state not-found",
+      "ok": true,
+      "detail": "status dokumen 404"
+    },
+    {
+      "name": "URL langsung ke ID runtime (dokumen baru): state not-found",
+      "ok": true,
+      "detail": "status dokumen 404"
+    },
+    {
+      "name": "tidak dikenal (URL langsung): proyek p-999 → not-found",
+      "ok": true,
+      "detail": "status dokumen 404"
+    },
+    {
+      "name": "tidak dikenal (URL langsung): tugas t-999 → not-found",
+      "ok": true,
+      "detail": "status dokumen 404"
+    },
+    {
+      "name": "tidak dikenal (URL langsung): proyek abc → not-found",
+      "ok": true,
+      "detail": "status dokumen 200"
+    },
+    {
+      "name": "tidak dikenal (navigasi klien): p-999 → not-found tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "seed lewat navigasi klien setelah not-found: p-001 ditemukan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guard gating: tanpa sesi (akses developer = Owner demo) konten tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guard hidden: tanpa sesi (akses developer = Owner demo) konten tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guard gating: Mandor dialihkan ke /akses-ditolak dan konten terlindung tidak pernah terlihat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guard hidden: Mandor dialihkan ke /akses-ditolak dan konten terlindung tidak pernah terlihat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guard hidden: navigasi KLIEN sebagai Mandor juga dialihkan, tanpa muat ulang dokumen",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guard gating: Owner (sesi) lewat navigasi klien diizinkan tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "failures": [],
+  "httpUnknown": [
+    {
+      "path": "/proyek/p-8676",
+      "firstStatus": 200,
+      "repeatStatus": 404,
+      "noindex": true,
+      "contentFoundInMarkup": false,
+      "notFoundUiInMarkup": false
+    },
+    {
+      "path": "/tugas/t-8676",
+      "firstStatus": 200,
+      "repeatStatus": 404,
+      "noindex": true,
+      "contentFoundInMarkup": false,
+      "notFoundUiInMarkup": false
+    },
+    {
+      "path": "/proyek/abc-676",
+      "firstStatus": 200,
+      "repeatStatus": 404,
+      "noindex": true,
+      "contentFoundInMarkup": false,
+      "notFoundUiInMarkup": false
+    }
+  ],
+  "guardHtml": {
+    "gatingInMarkup": false,
+    "gatingInPayload": true,
+    "hiddenInMarkup": true,
+    "hiddenInPayload": true,
+    "hiddenAttrOnWrapper": true
+  },
+  "reloadRuntimeId": {
+    "notFound": [
+      "not-found"
+    ],
+    "found": [],
+    "status": 404
+  }
+}

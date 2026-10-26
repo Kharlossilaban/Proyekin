@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+/*
+ * Nonaktifkan palet warna default Tailwind. Hanya token Proyekin yang boleh dipakai.
+ * check:tokens mendeteksi penggunaan palet default di komponen.
+ */
+@theme {
+  --color-red-*: initial;
+  --color-orange-*: initial;
+  --color-amber-*: initial;
+  --color-yellow-*: initial;
+  --color-lime-*: initial;
+  --color-green-*: initial;
+  --color-emerald-*: initial;
+  --color-teal-*: initial;
+  --color-cyan-*: initial;
+  --color-sky-*: initial;
+  --color-blue-*: initial;
+  --color-indigo-*: initial;
+  --color-violet-*: initial;
+  --color-purple-*: initial;
+  --color-fuchsia-*: initial;
+  --color-pink-*: initial;
+  --color-rose-*: initial;
+  --color-slate-*: initial;
+  --color-gray-*: initial;
+  --color-zinc-*: initial;
+  --color-neutral-*: initial;
+  --color-stone-*: initial;
+}
+
+/*
+ * PROYEKIN design tokens — satu-satunya sumber nilai warna.
+ * Brand: Orange #E68D1F + Charcoal #293036 (lihat CLAUDE.md).
+ * Hanya light mode; dark mode ditunda.
+ * Rasio kontras diverifikasi dengan `npm run check:contrast`.
+ *
+ * Penamaan mengikuti konvensi shadcn (muted, border, input, ring, card, ...)
+ * agar komponen UI memakai nama yang sama dengan token.
+ */
+
+/* Nonaktifkan dark variant berbasis preferensi OS selama dark mode ditunda. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Lapisan z-index (satu sumber). `z-sticky` (header, sidebar desktop) dan `z-modal` (drawer mobile) dipakai komponen
+ * layout sejak U2 tetapi tidak pernah didefinisikan sehingga tidak menghasilkan z-index: konten halaman ber-`relative`
+ * (mis. tabel) bisa menimpa drawer dan header. Ditemukan di U4-3 pada drawer terbuka di /tugas (375px).
+ * Dialog memakai `z-50` yang sama dengan `z-modal`.
+ */
+@utility z-sticky {
+  z-index: 30;
+}
+@utility z-modal {
+  z-index: 50;
+}
+
+@theme static {
+  /* Brand — skala Orange (500 = Primary Orange) */
+  --color-brand-50: #fdf7ef;
+  --color-brand-100: #fbeddb;
+  --color-brand-200: #f7dbb7;
+  --color-brand-300: #f3c68f;
+  --color-brand-400: #ecaa57;
+  --color-brand-500: #e68d1f;
+  --color-brand-600: #c47819;
+  --color-brand-700: #a36314;
+  --color-brand-800: #85500f;
+  --color-brand-900: #673d0a;
+
+  /* Netral brand */
+  --color-charcoal: #293036; /* Secondary Charcoal */
+  --color-graphite: #484c50; /* Supporting Gray */
+  --color-canvas: #f8f9fa; /* Background */
+  --color-highlight: #fff3e2; /* Warm Highlight */
+  --color-surface: #ffffff;
+  --color-muted: #eef0f2; /* latar lembut (hover ghost, header tabel) */
+  --color-muted-foreground: #62676c; /* teks pendukung/caption */
+  --color-border: #dee2e6; /* pemisah dekoratif */
+  --color-input: #80868c; /* border kontrol interaktif (>= 3:1) */
+
+  /* Semantic */
+  --color-success: #15803d;
+  --color-success-soft: #f0fdf4;
+  --color-warning: #b45309;
+  --color-warning-soft: #fffbeb;
+  --color-danger: #b91c1c;
+  --color-danger-hover: #991b1b;
+  --color-danger-soft: #fef2f2;
+  --color-info: #155e75;
+  --color-info-soft: #ecfeff;
+
+  /* Tipografi */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* Alias semantik yang dipakai komponen (merujuk ke token di atas). */
+@theme static inline {
+  --color-background: var(--color-canvas);
+  --color-foreground: var(--color-charcoal);
+
+  --color-primary: var(--color-brand-500);
+  --color-primary-hover: var(--color-brand-400);
+  --color-primary-active: var(--color-brand-300);
+  --color-primary-foreground: var(--color-charcoal);
+
+  --color-secondary: var(--color-charcoal);
+  --color-secondary-hover: var(--color-graphite);
+  --color-secondary-foreground: var(--color-surface);
+
+  --color-accent: var(--color-highlight);
+  --color-accent-foreground: var(--color-charcoal);
+
+  --color-card: var(--color-surface);
+  --color-card-foreground: var(--color-charcoal);
+  --color-popover: var(--color-surface);
+  --color-popover-foreground: var(--color-charcoal);
+
+  --color-destructive: var(--color-danger);
+  --color-destructive-hover: var(--color-danger-hover);
+  --color-destructive-foreground: var(--color-surface);
+
+  /* Oranye untuk teks/tautan/ikon: wajib varian tua (800) agar lolos WCAG AA di semua latar brand. */
+  --color-brand-text: var(--color-brand-800);
+
+  --color-ring: var(--color-charcoal);
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+/* Hormati preferensi pengguna untuk mengurangi gerakan. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

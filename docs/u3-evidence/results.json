@@ -1,0 +1,643 @@
+{
+  "viewports": [
+    {
+      "viewport": "375",
+      "axe": {
+        "passes": 49,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "nodes": 10,
+            "sample": [
+              ".hover\\:text-foreground[href$=\"#kartu\"] :: Element's background color could not be determined because it's partially obscured by another element",
+              "a[href$=\"#tabel\"] :: Element's background color could not be determined because it's partially obscured by another element",
+              "a[href$=\"#dialog\"] :: Element's background color could not be determined because it's partially obscured by another element"
+            ]
+          }
+        ],
+        "violations": []
+      },
+      "overflow": {
+        "scrollWidth": 375,
+        "innerWidth": 375
+      },
+      "hOverflow": false,
+      "wide": [],
+      "font": "Geist, \"Geist Fallback\", ui-sans-serif, system-ui, sans-serif | geist-loaded=true",
+      "pageHeight": 8823
+    },
+    {
+      "viewport": "768",
+      "axe": {
+        "passes": 48,
+        "incomplete": [],
+        "violations": []
+      },
+      "overflow": {
+        "scrollWidth": 768,
+        "innerWidth": 768
+      },
+      "hOverflow": false,
+      "wide": [],
+      "font": "Geist, \"Geist Fallback\", ui-sans-serif, system-ui, sans-serif | geist-loaded=true",
+      "pageHeight": 6965
+    },
+    {
+      "viewport": "1280",
+      "axe": {
+        "passes": 48,
+        "incomplete": [],
+        "violations": []
+      },
+      "overflow": {
+        "scrollWidth": 1280,
+        "innerWidth": 1280
+      },
+      "hOverflow": false,
+      "wide": [],
+      "font": "Geist, \"Geist Fallback\", ui-sans-serif, system-ui, sans-serif | geist-loaded=true",
+      "pageHeight": 6231
+    }
+  ],
+  "keyboard": {
+    "focusRing": {
+      "text": "Dialog informasi",
+      "outlineWidth": "2px",
+      "outlineStyle": "solid"
+    },
+    "opened": {
+      "ariaModal": null,
+      "labelledby": true,
+      "describedby": true,
+      "focusInside": true,
+      "title": "Judul dialog contoh"
+    },
+    "outsideInert": [
+      "MAIN:",
+      "DIV:data-base-ui-inert=",
+      "BODY:",
+      "HTML:"
+    ],
+    "axeDialogOpen": {
+      "passes": 36,
+      "incomplete": [
+        {
+          "id": "aria-hidden-focus",
+          "nodes": 15,
+          "sample": [
+            ".focus\\:not-sr-only :: ",
+            "header :: ",
+            "#tombol :: "
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "nodes": 1,
+          "sample": [
+            "#base-ui-_r_2_ :: Element's background color could not be determined because it partially overlaps other elements"
+          ]
+        }
+      ],
+      "violations": []
+    },
+    "focusTrapHeld": true,
+    "closed": {
+      "gone": true,
+      "backOnTrigger": true,
+      "active": "Dialog informasi"
+    },
+    "sidebarDrawer": {
+      "ariaModal": "true",
+      "label": "Navigasi utama"
+    }
+  },
+  "reducedMotion": {
+    "mediaMatches": true,
+    "transitionDuration": "1e-05s",
+    "spinnerAnimation": "none"
+  },
+  "failures": [],
+  "appRoutes": [
+    {
+      "route": "/",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/dashboard",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/dashboard",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/dashboard",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/proyek",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/proyek",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/proyek",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/tugas",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/tugas",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/tugas",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/laporan",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/laporan",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/laporan",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/dokumen",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/dokumen",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/dokumen",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/anggota",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/anggota",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/anggota",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/pengaturan",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/pengaturan",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/pengaturan",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    }
+  ],
+  "flows": [
+    {
+      "name": "login: autofocus pada email",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "login: 2 field ditandai aria-invalid",
+      "ok": true,
+      "detail": "[\"email\",\"password\"]"
+    },
+    {
+      "name": "login: fokus pindah ke error pertama",
+      "ok": true,
+      "detail": "email"
+    },
+    {
+      "name": "login: aria-describedby terhubung ke pesan error",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "login: semua input punya label",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "login: error generik tanpa membocorkan akun",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "login: tidak ada sesi tersimpan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "login: urutan Tab email → sandi → toggle → lupa → masuk",
+      "ok": true,
+      "detail": "[\"password\",\"Tampilkan kata sandi\",\"Lupa kata sandi?\",\"Masuk\"]"
+    },
+    {
+      "name": "login: toggle sandi via keyboard",
+      "ok": true,
+      "detail": "{\"type\":\"text\",\"label\":\"Sembunyikan kata sandi\"}"
+    },
+    {
+      "name": "login: state loading (aria-busy + input disabled)",
+      "ok": true,
+      "detail": "{\"busy\":\"true\",\"disabled\":true}"
+    },
+    {
+      "name": "dashboard: nama user dari sesi demo",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dashboard: tombol Keluar tersedia",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "sesi: hanya userId + waktu, tanpa password",
+      "ok": true,
+      "detail": "{\"userId\":\"u-001\",\"loginAt\":\"2026-10-24T15:48:01.477Z\"}"
+    },
+    {
+      "name": "sesi: tidak memakai localStorage",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dashboard: tanpa notice mode pengembangan saat login",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "refresh: sesi demo bertahan di tab yang sama",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "shell login: axe 0 pelanggaran @375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "shell login: tanpa overflow @375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "shell login: axe 0 pelanggaran @768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "shell login: tanpa overflow @768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "shell login: axe 0 pelanggaran @1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "shell login: tanpa overflow @1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "logout: sesi dihapus",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "role Mandor: menu Laporan ada, Pengaturan tidak ada",
+      "ok": true,
+      "detail": "[\"Dashboard\",\"Proyek\",\"Tugas\",\"Laporan\",\"Dokumen\",\"Anggota\"]"
+    },
+    {
+      "name": "role Mandor: tidak ada role Tukang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tanpa sesi: route aplikasi tetap bisa dibuka (akses developer)",
+      "ok": true,
+      "detail": "{\"notice\":true,\"logout\":false}"
+    },
+    {
+      "name": "drawer mobile: tombol Keluar tersedia",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar: autofocus pada nama",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar: tanpa pemilihan role",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar: menyatakan hanya untuk Owner",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar: 5 field tidak valid saat kosong",
+      "ok": true,
+      "detail": "[\"name\",\"email\",\"password\",\"confirmation\",\"terms\"]"
+    },
+    {
+      "name": "daftar: fokus ke error pertama",
+      "ok": true,
+      "detail": "name"
+    },
+    {
+      "name": "daftar: aria-describedby terhubung",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar: indikator kekuatan 1 dari 4",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar: indikator kekuatan 4 dari 4",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar: konfirmasi tidak cocok ditolak",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar: state loading",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar: pesan sukses menyatakan simulasi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar: tidak ada data tersimpan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lupa: email tidak valid ditolak",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lupa: fokus pindah ke judul konfirmasi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lupa: tidak mengklaim email terkirim",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reset: konfirmasi tidak cocok ditolak + terhubung",
+      "ok": true,
+      "detail": "{\"invalid\":[\"confirmation\"],\"focus\":\"confirmation\",\"described\":true,\"labelled\":true}"
+    },
+    {
+      "name": "reset: pesan sukses menyatakan simulasi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reset: tanpa token → tautan tidak valid",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "akses ditolak: judul dan tombol kembali",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "landing → login → beranda berfungsi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: login diarahkan ke /akses-ditolak",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: sidebar tidak ada di DOM",
+      "ok": true,
+      "detail": "{\"shell\":false,\"keluar\":false,\"seen\":{\"roleNav\":false,\"userBlock\":false}}"
+    },
+    {
+      "name": "guest: tidak ada tombol Keluar/blok user",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: menu role dan blok user tidak pernah tampil",
+      "ok": true,
+      "detail": "{\"roleNav\":false,\"userBlock\":false}"
+    },
+    {
+      "name": "guest: axe 0 pelanggaran di /akses-ditolak",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: landing publik tanpa sidebar",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "authRoutes": [
+    {
+      "route": "/masuk",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/masuk",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/masuk",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/daftar",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/daftar",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/daftar",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/lupa-sandi",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/lupa-sandi",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/lupa-sandi",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/reset-sandi?token=demo-token",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/reset-sandi?token=demo-token",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/reset-sandi?token=demo-token",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/reset-sandi",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/reset-sandi",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/reset-sandi",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/akses-ditolak",
+      "viewport": "375",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/akses-ditolak",
+      "viewport": "768",
+      "axeViolations": 0,
+      "hOverflow": false
+    },
+    {
+      "route": "/akses-ditolak",
+      "viewport": "1280",
+      "axeViolations": 0,
+      "hOverflow": false
+    }
+  ]
+}

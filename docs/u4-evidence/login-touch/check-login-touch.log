@@ -1,0 +1,81 @@
+
+> proyekin@0.1.0 check:login-touch
+> node scripts/check-login-touch.mjs C:\proyekin_project\docs\u4-evidence\login-touch
+
+ok:   375: emulasi sentuh aktif 
+ok:   375: seluruh kontrol login terdeteksi ["Proyekin — kembali ke beranda","email","password","Tampilkan kata sandi","Lupa kata sandi?","Masuk","Akun demo untuk pengujian","Daftar sebagai Owner"]
+ok:   375: "Proyekin — kembali ke beranda" >= 44x44 91x44
+ok:   375: "email" >= 44x44 293x44
+ok:   375: "password" >= 44x44 293x44
+ok:   375: "Tampilkan kata sandi" >= 44x44 44x44
+ok:   375: "Lupa kata sandi?" >= 44x44 111x44
+ok:   375: "Masuk" >= 44x44 293x48
+ok:   375: "Akun demo untuk pengujian" >= 44x44 291x44
+ok:   375: "Daftar sebagai Owner" >= 44x44 143x44
+ok:   375: input email font >= 16px (tanpa zoom otomatis iOS) 16px
+ok:   375: input password font >= 16px (tanpa zoom otomatis iOS) 16px
+ok:   375: tombol mata sejajar dan setinggi input kata sandi (tidak menjorok) {"ir":334,"br":334,"it":396,"bt":396,"ih":44,"bh":44}
+ok:   375: tidak ada area sentuh yang saling menimpa 
+ok:   375: gambar logo tetap 40px tinggi dengan rasio asli (tidak terdistorsi) {"w":91,"h":40,"natural":2.2857142857142856}
+ok:   overflow halaman: login 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: login normal 375 mobile 
+ok:   375: titik di padding bawah tautan Lupa kata sandi jatuh pada tautan itu (hit-test) 
+ok:   375: ketuk area padding tautan Lupa kata sandi menavigasi ke /lupa-sandi 
+ok:   375: titik di padding ringkasan Akun demo jatuh pada ringkasan (hit-test) 
+ok:   375: ketuk area padding ringkasan membuka daftar akun demo 
+ok:   overflow halaman: login 375 mobile, akun demo terbuka 375 <= 375
+ok:   axe 0 pelanggaran: login akun demo terbuka 375 mobile 
+ok:   375: ketuk tombol mata menampilkan kata sandi (type=text, aria-pressed=true) 
+ok:   375: tombol mata saat kata sandi terlihat tetap >= 44x44 {"w":44,"h":44}
+ok:   axe 0 pelanggaran: login kata sandi terlihat 375 mobile 
+ok:   375: ketuk lagi menyembunyikan kata sandi (type=password) 
+ok:   375: submit kosong menampilkan galat dan memfokuskan kolom email (perilaku tidak berubah) 
+ok:   375: input tetap 44px saat galat [44,44]
+ok:   overflow halaman: login galat 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: login galat validasi 375 mobile 
+ok:   375 keyboard: urutan Tab = lewati ke konten, logo, email, kata sandi, tombol mata, lupa sandi, Masuk, akun demo, daftar ["Langsung ke konten","Proyekin — kembali ke beranda","email","password","Tampilkan kata sandi","Lupa kata sandi?","Masuk","Akun demo untuk pengujian","Daftar sebagai Owner"]
+ok:   375 keyboard: fokus keyboard terlihat pada setiap kontrol (outline >= 2px) []
+ok:   375 keyboard: skip link tampil saat difokuskan keyboard (>= 44x24 dan di dalam layar) 165x36
+ok:   375 keyboard: Enter menampilkan dan Spasi menyembunyikan kata sandi pada tombol mata text → password
+ok:   768: "Proyekin — kembali ke beranda" >= 44x44 91x44
+ok:   768: "email" >= 44x44 382x44
+ok:   768: "password" >= 44x44 382x44
+ok:   768: "Tampilkan kata sandi" >= 44x44 44x44
+ok:   768: "Lupa kata sandi?" >= 44x44 111x44
+ok:   768: "Masuk" >= 44x44 382x48
+ok:   768: "Akun demo untuk pengujian" >= 44x44 380x44
+ok:   768: "Daftar sebagai Owner" >= 44x44 143x44
+ok:   overflow halaman: login 768 768 <= 768
+ok:   axe 0 pelanggaran: login normal 768 
+ok:   1280: "Proyekin — kembali ke beranda" ukuran desktop tidak berubah 91x40 (bawaan 91x40)
+ok:   1280: "email" ukuran desktop tidak berubah 382x40 (bawaan ~x40)
+ok:   1280: "password" ukuran desktop tidak berubah 382x40 (bawaan ~x40)
+ok:   1280: "Tampilkan kata sandi" ukuran desktop tidak berubah 40x40 (bawaan 40x40)
+ok:   1280: "Lupa kata sandi?" ukuran desktop tidak berubah 111x20 (bawaan 111x20)
+ok:   1280: "Masuk" ukuran desktop tidak berubah 382x48 (bawaan ~x48)
+ok:   1280: "Akun demo untuk pengujian" ukuran desktop tidak berubah 356x20 (bawaan ~x20)
+ok:   1280: "Daftar sebagai Owner" ukuran desktop tidak berubah 143x18 (bawaan 143x18)
+ok:   1280: input email font tetap 14px 14px
+ok:   1280: input password font tetap 14px 14px
+ok:   skip link tetap tersembunyi sampai difokuskan (1x1 sr-only, bukan tampil permanen) {"w":1,"h":1,"visible":true}
+ok:   overflow halaman: login 1280 1280 <= 1280
+ok:   axe 0 pelanggaran: login normal 1280 
+ok:   axe 0 pelanggaran: login kata sandi terlihat 1280 
+ok:   1280 keyboard: urutan Tab = lewati ke konten, logo, email, kata sandi, tombol mata, lupa sandi, Masuk, akun demo, daftar ["Langsung ke konten","Proyekin — kembali ke beranda","email","password","Tampilkan kata sandi","Lupa kata sandi?","Masuk","Akun demo untuk pengujian","Daftar sebagai Owner"]
+ok:   1280 keyboard: fokus keyboard terlihat pada setiap kontrol (outline >= 2px) []
+ok:   1280 keyboard: skip link tampil saat difokuskan keyboard (>= 44x24 dan di dalam layar) 165x36
+ok:   1280 keyboard: Enter menampilkan dan Spasi menyembunyikan kata sandi pada tombol mata text → password
+ok:   Mandor Ahmad 375 (ketuk): login diarahkan ke /tugas (alur dan mock auth tidak berubah) path /tugas
+ok:   Owner Budi 1280: login diarahkan ke /dashboard (alur dan mock auth tidak berubah) path /dashboard
+ok:   1280: akun tidak dikenal tetap menampilkan galat login yang sama 
+ok:   375: /daftar tautan logo >= 44px dan gambar tetap 40px {"h":44,"img":40}
+ok:   overflow halaman: /daftar 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: /daftar 375 mobile 
+ok:   375: /lupa-sandi tautan logo >= 44px dan gambar tetap 40px {"h":44,"img":40}
+ok:   overflow halaman: /lupa-sandi 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: /lupa-sandi 375 mobile 
+ok:   375: /reset-sandi tautan logo >= 44px dan gambar tetap 40px {"h":44,"img":40}
+ok:   overflow halaman: /reset-sandi 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: /reset-sandi 375 mobile 
+
+Semua 75 pemeriksaan lolos.

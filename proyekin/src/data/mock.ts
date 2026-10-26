@@ -1,0 +1,436 @@
+import { Project, ProjectMember, Task, DailyReport, Document, TeamMember, User, Role } from "@/types";
+
+export const MOCK_USER: User = {
+  id: "u-001",
+  name: "Budi Santoso",
+  email: "budi@proyekin.id",
+  role: "OWNER",
+  avatar: "/avatars/budi.png",
+  projectAccess: ["p-001"],
+};
+
+export const MOCK_USERS: User[] = [
+  { id: "u-001", name: "Budi Santoso", email: "budi@proyekin.id", role: "OWNER", avatar: "/avatars/budi.png" },
+  { id: "u-002", name: "Siti Aminah", email: "siti@proyekin.id", role: "ADMIN", avatar: "/avatars/siti.png" },
+  { id: "u-003", name: "Ahmad Rizal", email: "ahmad@proyekin.id", role: "MANDOR", avatar: "/avatars/ahmad.png" },
+  { id: "u-004", name: "Dewi Lestari", email: "dewi@proyekin.id", role: "ANGGOTA", avatar: "/avatars/dewi.png" },
+  { id: "u-005", name: "Eko Prasetyo", email: "eko@proyekin.id", role: "MANDOR", avatar: "/avatars/eko.png" },
+];
+
+export const MOCK_PROJECTS: Project[] = [
+  {
+    id: "p-001",
+    code: "PRJ-001",
+    name: "Renovasi Gedung Kantor Batam",
+    description: "Renovasi total gedung kantor lantai 1-3 termasuk perbaikan sistem kelistrikan, plumbing, dan finishing fasad.",
+    status: "ON_PROGRESS",
+    startDate: "2026-01-15",
+    endDate: "2026-06-30",
+    budget: 2500000000,
+    progress: 45,
+    client: "PT. Properti Nusantara",
+    location: "Balai Kota Batam, Kepulauan Riau",
+    managerId: "u-002", // LEGACY, tidak dipakai U4 (lihat `Project.managerId`)
+    adminId: "u-002",
+  },
+  {
+    id: "p-002",
+    code: "PRJ-002",
+    name: "Pembangunan Gudang Logistik Tanjung Pinang",
+    description: "Pembangunan gudang logistik seluas 2000m2 dengan sistem loading dock dan sprinkler.",
+    status: "ON_PROGRESS",
+    startDate: "2026-03-01",
+    endDate: "2026-09-15",
+    budget: 4200000000,
+    progress: 20,
+    client: "CV. Jaya Abadi Logistics",
+    location: "Kec. Sungai Manggis, Kepulauan Riau",
+    managerId: "u-002", // LEGACY
+    adminId: "u-002",
+  },
+  {
+    id: "p-003",
+    code: "PRJ-003",
+    name: "Pengerjaan Jalan Akses Pelabuhan",
+    description: "Rehabilitasi jalan akses pelabuhan sepanjang 1.5 km dengan perkerasan fleksibel.",
+    status: "PAUSED",
+    startDate: "2025-11-01",
+    endDate: "2026-04-30",
+    budget: 1800000000,
+    progress: 60,
+    client: "Dinas PU Kepulauan Riau",
+    location: "Pelabuhan Tanjung Pinang",
+    managerId: "u-001", // LEGACY; belum ada Admin Kantor principal (adminId kosong)
+  },
+  {
+    id: "p-004",
+    code: "PRJ-004",
+    name: "Pembangunan Pos Keamanan Batang Tembesi",
+    description: "Pembangunan 4 unit pos keamanan dan pagar keliling kawasan industri.",
+    status: "COMPLETED",
+    startDate: "2025-06-01",
+    endDate: "2025-10-31",
+    budget: 950000000,
+    progress: 100,
+    client: "PT. Batamindo Industri Perkasa",
+    location: "Kawasan Industri BATAMINDO",
+    managerId: "u-001", // LEGACY; belum ada Admin Kantor principal
+  },
+  {
+    id: "p-005",
+    code: "PRJ-005",
+    name: "Perbaikan Jembatan Kayu Angkut",
+    description: "Perbaikan struktur jembatan kayu angut untuk akses warga ke area persawahan.",
+    status: "ARCHIVED",
+    startDate: "2024-08-01",
+    endDate: "2024-12-31",
+    budget: 320000000,
+    progress: 100,
+    client: "Desa Batu Angkut",
+    location: "Desa Batu Angkut, Kepulauan Riau",
+    managerId: "u-001", // LEGACY; belum ada Admin Kantor principal
+  },
+];
+
+/**
+ * L2 — keanggotaan proyek (Mandor dan Anggota Tim saja). Disusun dari relasi yang sudah ada di seed:
+ * penanggung jawab tugas (MOCK_TASKS) dan penulis laporan (MOCK_REPORTS). Role selalu dari MOCK_USERS.
+ * PRJ-003 s.d. PRJ-005 sengaja tanpa anggota (menguji state kosong).
+ */
+export const MOCK_PROJECT_MEMBERS: ProjectMember[] = [
+  { projectId: "p-001", userId: "u-003" }, // Ahmad Rizal (Mandor): t-001, laporan r-001/r-002
+  { projectId: "p-001", userId: "u-004" }, // Dewi Lestari (Anggota Tim): t-002, t-006
+  { projectId: "p-001", userId: "u-005" }, // Eko Prasetyo (Mandor): t-003
+  { projectId: "p-002", userId: "u-003" }, // Ahmad Rizal (Mandor): t-004
+  { projectId: "p-002", userId: "u-005" }, // Eko Prasetyo (Mandor): t-005, laporan r-003
+];
+
+export const MOCK_TASKS: Task[] = [
+  {
+    id: "t-001",
+    code: "TSK-001",
+    projectId: "p-001",
+    title: "Pembongkaran dinding partisi lantai 1",
+    description: "Lakukan pembongkaran seluruh dinding partisi ruang meeting dan ruang kerja di lantai 1.",
+    status: "DONE",
+    priority: "HIGH",
+    assigneeId: "u-003",
+    assigneeName: "Ahmad Rizal",
+    dueDate: "2026-02-15",
+    startDate: "2026-02-01",
+    progress: 100,
+  },
+  {
+    id: "t-002",
+    code: "TSK-002",
+    projectId: "p-001",
+    title: "Pengecekan sistem kelistrikan lama",
+    description: "Audit menyeluruh terhadap instalasi kelistrikan existing termasuk MCB, kabel, dan panel.",
+    status: "IN_PROGRESS",
+    priority: "HIGH",
+    assigneeId: "u-004",
+    assigneeName: "Dewi Lestari",
+    dueDate: "2026-02-28",
+    startDate: "2026-02-10",
+    progress: 60,
+  },
+  {
+    id: "t-003",
+    code: "TSK-003",
+    projectId: "p-001",
+    title: "Pembersihan material sisa pembongkaran",
+    description: "Mengangkut dan membuang sisa material pembongkaran ke TPA resmi.",
+    status: "TODO",
+    priority: "MEDIUM",
+    assigneeId: "u-005",
+    assigneeName: "Eko Prasetyo",
+    dueDate: "2026-03-05",
+    startDate: "2026-03-02",
+    progress: 0,
+  },
+  {
+    id: "t-004",
+    code: "TSK-004",
+    projectId: "p-002",
+    title: "Pembuatan pondasi footplate",
+    description: "Cor pondasi footplate untuk tiang kolom utama gudang.",
+    status: "IN_PROGRESS",
+    priority: "HIGH",
+    assigneeId: "u-003",
+    assigneeName: "Ahmad Rizal",
+    dueDate: "2026-04-10",
+    startDate: "2026-03-20",
+    progress: 35,
+  },
+  {
+    id: "t-005",
+    code: "TSK-005",
+    projectId: "p-002",
+    title: "Pemesanan baja WF untuk struktur",
+    description: "Pengadaan baja WF 200.100.5.8 sesuai RAB yang disetujui.",
+    status: "TODO",
+    priority: "HIGH",
+    // Semula Siti Aminah (Admin Kantor). Penanggung jawab hanya Mandor/Anggota Tim anggota proyek (J6),
+    // maka dipindahkan ke Eko Prasetyo (Mandor, anggota PRJ-002).
+    assigneeId: "u-005",
+    assigneeName: "Eko Prasetyo",
+    dueDate: "2026-03-25",
+    progress: 0,
+  },
+  {
+    id: "t-006",
+    code: "TSK-006",
+    projectId: "p-001",
+    title: "Pemasangan keramik lobby",
+    description: "Pemasangan keramik marble 60x60 di area lobby utama.",
+    status: "TODO",
+    priority: "MEDIUM",
+    assigneeId: "u-004",
+    assigneeName: "Dewi Lestari",
+    dueDate: "2026-04-01",
+    progress: 0,
+  },
+];
+
+export const MOCK_REPORTS: DailyReport[] = [
+  {
+    id: "r-001",
+    projectId: "p-001",
+    projectCode: "PRJ-001",
+    foremanId: "u-003",
+    foremanName: "Ahmad Rizal",
+    date: "2026-02-20",
+    weather: "Cerah Berawan",
+    workersCount: 12,
+    workDone: "Pembongkaran dinding lantai 1 selesai 100%. Pengecekan panel listrik lantai 2 mencapai 80%.",
+    problems: "Terjadi keterlambatan pengiriman semen ringan dari supplier. Diperkirakan material datang besok sore.",
+    materials: "Semen ringan 40 sak, pasir pasang 2 m3, besi 8mm 10 batangan",
+    photos: ["/documents/photo1.jpg", "/documents/photo2.jpg"],
+    attachments: [],
+    status: "SUBMITTED",
+    submittedAt: "2026-02-20T17:30:00Z",
+  },
+  {
+    id: "r-002",
+    projectId: "p-001",
+    projectCode: "PRJ-001",
+    foremanId: "u-003",
+    foremanName: "Ahmad Rizal",
+    date: "2026-02-19",
+    weather: "Cerah",
+    workersCount: 10,
+    workDone: "Pembongkaran partisi lantai 1 mencapai 70%. Mulai demoli plafon ruang meeting.",
+    problems: "Tidak ada.",
+    materials: "Sikat kawat 5 buah, sekop 3 buah",
+    photos: ["/documents/photo3.jpg"],
+    attachments: [],
+    status: "APPROVED",
+    submittedAt: "2026-02-19T17:15:00Z",
+  },
+  {
+    id: "r-003",
+    projectId: "p-002",
+    projectCode: "PRJ-002",
+    foremanId: "u-005",
+    foremanName: "Eko Prasetyo",
+    date: "2026-03-21",
+    weather: "Hujan Ringan",
+    workersCount: 8,
+    workDone: "Galian tanah pondasi footplate selesai untuk 15 titik.",
+    problems: "Air tanah cukup tinggi di area utara, perlu pompa continuous.",
+    materials: "Batu pecah 5 m3, pasir 3 m3",
+    photos: ["/documents/photo4.jpg"],
+    attachments: [],
+    status: "SUBMITTED",
+    submittedAt: "2026-03-21T17:00:00Z",
+  },
+];
+
+export const MOCK_DOCUMENTS: Document[] = [
+  {
+    id: "d-001",
+    projectId: "p-001",
+    name: "Gambar Arsitektur Lantai 1-3",
+    filename: "arsitektur-lantai-1-3.pdf",
+    category: "GAMBAR_TEKNIS",
+    size: 15728640,
+    uploadedBy: "Siti Aminah",
+    uploadedAt: "2026-01-20T10:00:00Z",
+    status: "PUBLIK",
+    version: 3,
+    type: "pdf",
+  },
+  {
+    id: "d-002",
+    projectId: "p-001",
+    name: "RAB Renovasi Gedung Kantor",
+    filename: "rab-final-v2.xlsx",
+    category: "RENCANA_KERJA",
+    size: 2097152,
+    uploadedBy: "Siti Aminah",
+    uploadedAt: "2026-01-18T14:30:00Z",
+    status: "PUBLIK",
+    version: 2,
+    type: "other",
+  },
+  {
+    id: "d-003",
+    projectId: "p-001",
+    name: "Kontrak Pekerjaan No. 045/CON/2026",
+    filename: "kontrak-045.pdf",
+    category: "KONTRAK",
+    size: 5242880,
+    uploadedBy: "Budi Santoso",
+    uploadedAt: "2026-01-15T09:00:00Z",
+    status: "PRIVAT",
+    version: 1,
+    type: "pdf",
+  },
+  {
+    id: "d-004",
+    projectId: "p-001",
+    name: "Foto Progress Pembongkaran 20 Feb",
+    filename: "progress-20260220.zip",
+    category: "LAINNYA",
+    size: 52428800,
+    uploadedBy: "Ahmad Rizal",
+    uploadedAt: "2026-02-20T18:00:00Z",
+    status: "PUBLIK",
+    version: 1,
+    type: "other",
+  },
+  {
+    id: "d-005",
+    projectId: "p-003",
+    name: "Gambar Struktur Jembatan",
+    filename: "struktur-jembatan.pdf",
+    category: "GAMBAR_TEKNIS",
+    size: 12582912,
+    uploadedBy: "Budi Santoso",
+    uploadedAt: "2025-10-05T11:00:00Z",
+    status: "ARKIP",
+    version: 5,
+    type: "pdf",
+  },
+];
+
+export const MOCK_TEAM_MEMBERS: TeamMember[] = [
+  { id: "tm-001", projectId: "p-001", userId: "u-002", name: "Siti Aminah", role: "Project Manager", email: "siti@proyekin.id", assignedTasks: ["t-005"] },
+  { id: "tm-002", projectId: "p-001", userId: "u-003", name: "Ahmad Rizal", role: "Mandor", email: "ahmad@proyekin.id", assignedTasks: ["t-001", "t-002"] },
+  { id: "tm-003", projectId: "p-001", userId: "u-004", name: "Dewi Lestari", role: "Anggota Tim", email: "dewi@proyekin.id", assignedTasks: ["t-002", "t-006"] },
+  { id: "tm-004", projectId: "p-001", userId: "u-005", name: "Eko Prasetyo", role: "Mandor", email: "eko@proyekin.id", assignedTasks: ["t-003"] },
+];
+
+export const MOCK_STATS = {
+  totalProjects: 5,
+  activeProjects: 2,
+  completedProjects: 2,
+  pausedProjects: 1,
+  totalTasks: 6,
+  pendingTasks: 3,
+  inProgressTasks: 2,
+  completedTasks: 1,
+  totalReports: 3,
+  pendingReports: 2,
+  totalDocuments: 5,
+  budgetTotal: 9770000000,
+  budgetSpent: 4396500000,
+};
+
+export const MOCK_GANTT_TASKS = MOCK_TASKS.map((t) => ({
+  ...t,
+  start: t.startDate || t.dueDate || "2026-03-01",
+  duration: t.dueDate && t.startDate ? Math.ceil((new Date(t.dueDate).getTime() - new Date(t.startDate).getTime()) / (1000 * 3600 * 24)) + 1 : 5,
+}));
+
+export const MOCK_FEATURES = [
+  {
+    icon: "briefcase",
+    title: "Manajemen Proyek Terpadu",
+    description: "Kelola seluruh proyek dari perencanaan, eksekusi, hingga pelaporan dalam satu platform.",
+  },
+  {
+    icon: "check-square",
+    title: "Pelacakan Tugas Real-Time",
+    description: "Pantau progres tugas, prioritaskan pekerjaan, dan bagi tanggung jawab dengan jelas.",
+  },
+  {
+    icon: "calendar",
+    title: "Jadwal & Gantt Chart",
+    description: "Visualisasikan timeline proyek dan koordinasi jadwal antar tim dengan mudah.",
+  },
+  {
+    icon: "file-text",
+    title: "Laporan Harian Digital",
+    description: "Mandor bisa isi laporan harian via ponsel, lengkap dengan foto dan catatan lapangan.",
+  },
+  {
+    icon: "folder",
+    title: "Dokumen Proyek Terpusat",
+    description: "Simpan gambar teknis, kontrak, dan dokumen penting dalam repositori terstruktur.",
+  },
+  {
+    icon: "bar-chart-3",
+    title: "Dashboard Analitik",
+    description: "Pantau kesehatan proyek secara keseluruhan dengan statistik dan grafik yang jelas.",
+  },
+];
+
+export const MOCK_FAQ = [
+  {
+    question: "Bagaimana cara mandor mengirimkan laporan harian?",
+    answer: "Mandor cukup membuka menu Laporan Harian di aplikasi, pilih proyek yang sedang dikerjakan, isi form laporan (keadaan cuaca, jumlah pekerja, pekerjaan yang已完成, kendala, dan foto dokumentasi), lalu kirim. Laporan langsung tersimpan dan bisa dipantau admin.",
+  },
+  {
+    question: "Apakah Proyekin bisa diakses di ponsel?",
+    answer: "Ya, Proyekin dirancang responsif dan mudah diakses dari smartphone maupun laptop. UI untuk mandor dioptimalkan khusus untuk penggunaan di lapangan.",
+  },
+  {
+    question: "Bagaimana cara mengundang anggota tim ke proyek?",
+    answer: "Owner atau Admin bisa mengundang anggota tim melalui menu Anggota, cukup masukkan nama dan email, lalu tentukan perannya. Anggota akan menerima undangan dan bisa langsung mulai bekerja.",
+  },
+  {
+    question: "Di mana dokumen proyek disimpan?",
+    answer: "Semua dokumen proyek tersimpan terpusat di Proyekin sesuai kategori (gambar teknis, rencana kerja, kontrak, surat menyurat). Anda bisa mencari, mengunduh, dan mengelola versi dokumen kapan saja.",
+  },
+];
+
+export const MOCK_PRICING = [
+  {
+    name: "Starter",
+    price: "Gratis",
+    period: "",
+    features: ["1 Proyek aktif", "Hingga 5 anggota tim", "Laporan harian", "Penyimpanan 2 GB"],
+    cta: "Mulai Gratis",
+    popular: false,
+  },
+  {
+    name: "Profesional",
+    price: "Rp 199.000",
+    period: "/bulan",
+    features: ["Proyek tak terbatas", "Anggota tim tak terbatas", "Gantt chart & jadwal", "Laporan & dokumen lengkap", "Penyimpanan 50 GB"],
+    cta: "Pilih Profesional",
+    popular: true,
+  },
+  {
+    name: "Enterprise",
+    price: "Hubungi Kami",
+    period: "",
+    features: ["Semua fitur Profesional", "Integrasi API", "Dukungan prioritas", "SLA jaminan", "Penyimpanan kustom"],
+    cta: "Hubungi Penjualan",
+    popular: false,
+  },
+];
+
+export const MOCK_TESTIMONIALS = [];
+
+export const MOCK_CONTACT = {
+  email: "halo@proyekin.id",
+  phone: "+62 778 1234 5678",
+  address: "Jl. Pembangunan No. 45, Batu Hijau, Tanjung Pinang, Kepulauan Riau 29113",
+  officeHours: "Senin - Jumat, 08.00 - 17.00 WIB",
+  social: {
+    instagram: "https://instagram.com/proyekin",
+    linkedin: "https://linkedin.com/company/proyekin",
+  },
+};

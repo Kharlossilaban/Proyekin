@@ -1,0 +1,123 @@
+"use client";
+
+// ARTEFAK UJI SEMENTARA (dari spike U4-0) — kontrol uji: membuat entitas di memori klien lalu membukanya lewat
+// navigasi klien, dan tautan untuk menguji guard lewat navigasi klien. Hanya ada saat development atau build
+// U4_SPIKE=1 (lihat lib/u4-spike-gate.ts). Dihapus saat alur buat proyek/tugas sungguhan tersedia (U4-6/U4-10).
+
+import * as React from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import { Button } from "@/components/ui/button";
+import { createProject, createTask } from "@/lib/mock-store";
+
+// Data uji minimal untuk membuktikan ID runtime (bukan form/CRUD final).
+const createSpikeProject = () =>
+  createProject({
+    name: "Proyek uji runtime",
+    description: "Dibuat di memori klien untuk menguji route dinamis (spike U4-0).",
+    status: "DRAFT",
+    startDate: "2026-03-21",
+    endDate: "2026-03-21",
+    budget: 0,
+    progress: 0,
+    client: "(uji)",
+    location: "(uji)",
+  });
+
+const createSpikeTask = () =>
+  createTask({
+    projectId: "p-001",
+    title: "Tugas uji runtime",
+    status: "TODO",
+    priority: "LOW",
+    progress: 0,
+  });
+
+// Audit G8 (follow-up U4-3): tugas runtime pada proyek yang Admin principal-nya BUKAN Siti. Seed p-003 tidak punya
+// Admin principal; proyek runtime baru juga tidak. Admin Kantor tidak boleh melihat kedua tugas ini.
+const createSpikeTaskInSeedProjectWithoutAdmin = () =>
+  createTask({ projectId: "p-003", title: "Tugas uji runtime (p-003)", status: "TODO", priority: "LOW", progress: 0 });
+
+const createSpikeTaskInRuntimeProject = () =>
+  createTask({ projectId: createSpikeProject().id, title: "Tugas uji runtime (proyek runtime)", status: "TODO", priority: "LOW", progress: 0 });
+
+const SEED_LINKS = [
+  { href: "/proyek/p-001", label: "Proyek seed p-001" },
+  { href: "/tugas/t-001", label: "Tugas seed t-001" },
+  { href: "/proyek/p-999", label: "Proyek ID tidak dikenal p-999" },
+  { href: "/tugas/t-999", label: "Tugas ID tidak dikenal t-999" },
+  { href: "/proyek/abc", label: "Proyek ID tidak lazim abc" },
+  // Navigasi KLIEN ke bagian yang dibatasi per role (U4-3): dipakai pengujian guard tanpa muat ulang dokumen.
+  { href: "/dashboard", label: "Dashboard (Owner/Admin)" },
+  { href: "/anggota", label: "Anggota organisasi (Owner/Admin)" },
+  { href: "/laporan", label: "Laporan (Owner/Admin/Mandor)" },
+  { href: "/pengaturan", label: "Pengaturan (Owner/Admin)" },
+  ...["p-002", "p-003", "p-004", "p-005"].map((id) => ({ href: `/proyek/${id}`, label: `Proyek seed ${id}` })),
+  ...["t-002", "t-003", "t-004", "t-005", "t-006"].map((id) => ({ href: `/tugas/${id}`, label: `Tugas seed ${id}` })),
+];
+
+function SpikeControls() {
+  const router = useRouter();
+  const [created, setCreated] = React.useState<string[]>([]);
+
+  const open = (href: string, via: "router" | "link") => {
+    setCreated((list) => [...list, href]);
+    if (via === "router") router.push(href);
+  };
+
+  return (
+    <div className="flex flex-col gap-6">
+      <section aria-labelledby="spike-create" className="flex flex-col gap-3">
+        <h2 id="spike-create" className="text-base font-semibold text-charcoal">
+          Buat ID runtime (memori klien)
+        </h2>
+        <div className="flex flex-wrap gap-3">
+          <Button data-spike-action="create-project-push" onClick={() => open(`/proyek/${createSpikeProject().id}`, "router")}>
+            Buat proyek uji dan buka (router.push)
+          </Button>
+          <Button data-spike-action="create-task-push" onClick={() => open(`/tugas/${createSpikeTask().id}`, "router")}>
+            Buat tugas uji dan buka (router.push)
+          </Button>
+          <Button variant="outline" data-spike-action="create-task-p003-push" onClick={() => open(`/tugas/${createSpikeTaskInSeedProjectWithoutAdmin().id}`, "router")}>
+            Buat tugas uji di p-003 dan buka (router.push)
+          </Button>
+          <Button variant="outline" data-spike-action="create-task-runtime-project-push" onClick={() => open(`/tugas/${createSpikeTaskInRuntimeProject().id}`, "router")}>
+            Buat tugas uji di proyek runtime dan buka (router.push)
+          </Button>
+          <Button variant="outline" data-spike-action="create-project-link" onClick={() => open(`/proyek/${createSpikeProject().id}`, "link")}>
+            Buat proyek uji (buka lewat tautan)
+          </Button>
+        </div>
+        {created.length ? (
+          <ul role="list" className="flex flex-col gap-1 text-sm">
+            {created.map((href) => (
+              <li key={href}>
+                <Link data-spike-created href={href} className="underline underline-offset-4">
+                  {href}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </section>
+
+      <section aria-labelledby="spike-links" className="flex flex-col gap-3">
+        <h2 id="spike-links" className="text-base font-semibold text-charcoal">
+          Tautan uji
+        </h2>
+        <ul role="list" className="flex flex-col gap-1 text-sm">
+          {SEED_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} className="underline underline-offset-4">
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  );
+}
+
+export { SpikeControls };

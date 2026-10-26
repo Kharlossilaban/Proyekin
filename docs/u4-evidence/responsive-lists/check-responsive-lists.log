@@ -1,0 +1,306 @@
+﻿
+> proyekin@0.1.0 check:responsive-lists
+> node scripts/check-responsive-lists.mjs C:\proyekin_project\docs\u4-evidence\responsive-lists
+
+ok:   laporan 375 (u-001): halaman terbuka (guard mengizinkan) allowed
+ok:   laporan 375 (u-001): judul halaman Laporan Harian Laporan Harian
+ok:   laporan 375 (u-001): hierarki heading berurutan [1,2,3,3,3]
+ok:   laporan 375 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: laporan 375 (u-001) 375 <= 375
+ok:   laporan 375 (u-001): daftar kartu terlihat sebagai ul[role=list] bernama "Daftar laporan harian" "list"
+ok:   laporan 375 (u-001): tabel tersembunyi 
+ok:   laporan 375 (u-001): jumlah kartu = jumlah baris sumber (3) dan satu li per kartu 3
+ok:   laporan 375 (u-001): urutan kartu sesuai data ["r-001","r-002","r-003"]
+ok:   laporan 375 (u-001): judul bagian "Semua Laporan" dan jumlah "3 laporan" tampil 
+ok:   laporan 375 (u-001): kartu r-001 judul "20 Februari 2026" (h3) 20 Februari 2026 H3
+ok:   laporan 375 (u-001): kartu r-001 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status) {"labels":["Proyek","Mandor","Pekerja","Cuaca","Status"],"values":["PRJ-001","Ahmad Rizal","12","Cerah Berawan","Terkirim"]}
+ok:   laporan 375 (u-001): kartu r-002 judul "19 Februari 2026" (h3) 19 Februari 2026 H3
+ok:   laporan 375 (u-001): kartu r-002 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status) {"labels":["Proyek","Mandor","Pekerja","Cuaca","Status"],"values":["PRJ-001","Ahmad Rizal","10","Cerah","Disetujui"]}
+ok:   laporan 375 (u-001): kartu r-003 judul "21 Maret 2026" (h3) 21 Maret 2026 H3
+ok:   laporan 375 (u-001): kartu r-003 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status) {"labels":["Proyek","Mandor","Pekerja","Cuaca","Status"],"values":["PRJ-002","Eko Prasetyo","8","Hujan Ringan","Terkirim"]}
+ok:   laporan 375 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover [[0,0],[0,0],[0,0]]
+ok:   laporan 375 (u-001): satu kolom (semua kartu selebar sama dan di dalam viewport) ["16/343","16/343","16/343"]
+ok:   axe 0 pelanggaran: laporan 375 (u-001) 
+ok:   laporan 768 (u-001): halaman terbuka (guard mengizinkan) allowed
+ok:   laporan 768 (u-001): judul halaman Laporan Harian Laporan Harian
+ok:   laporan 768 (u-001): hierarki heading berurutan [1,2,3,3,3]
+ok:   laporan 768 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: laporan 768 (u-001) 768 <= 768
+ok:   laporan 768 (u-001): daftar kartu terlihat sebagai ul[role=list] bernama "Daftar laporan harian" "list"
+ok:   laporan 768 (u-001): tabel tersembunyi 
+ok:   laporan 768 (u-001): jumlah kartu = jumlah baris sumber (3) dan satu li per kartu 3
+ok:   laporan 768 (u-001): urutan kartu sesuai data ["r-001","r-002","r-003"]
+ok:   laporan 768 (u-001): judul bagian "Semua Laporan" dan jumlah "3 laporan" tampil 
+ok:   laporan 768 (u-001): kartu r-001 judul "20 Februari 2026" (h3) 20 Februari 2026 H3
+ok:   laporan 768 (u-001): kartu r-001 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status) {"labels":["Proyek","Mandor","Pekerja","Cuaca","Status"],"values":["PRJ-001","Ahmad Rizal","12","Cerah Berawan","Terkirim"]}
+ok:   laporan 768 (u-001): kartu r-002 judul "19 Februari 2026" (h3) 19 Februari 2026 H3
+ok:   laporan 768 (u-001): kartu r-002 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status) {"labels":["Proyek","Mandor","Pekerja","Cuaca","Status"],"values":["PRJ-001","Ahmad Rizal","10","Cerah","Disetujui"]}
+ok:   laporan 768 (u-001): kartu r-003 judul "21 Maret 2026" (h3) 21 Maret 2026 H3
+ok:   laporan 768 (u-001): kartu r-003 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status) {"labels":["Proyek","Mandor","Pekerja","Cuaca","Status"],"values":["PRJ-002","Eko Prasetyo","8","Hujan Ringan","Terkirim"]}
+ok:   laporan 768 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover [[0,0],[0,0],[0,0]]
+ok:   laporan 768 (u-001): dua kolom [16,392]
+ok:   axe 0 pelanggaran: laporan 768 (u-001) 
+ok:   laporan 1280 (u-001): halaman terbuka (guard mengizinkan) allowed
+ok:   laporan 1280 (u-001): judul halaman Laporan Harian Laporan Harian
+ok:   laporan 1280 (u-001): hierarki heading berurutan [1,2]
+ok:   laporan 1280 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: laporan 1280 (u-001) 1280 <= 1280
+ok:   laporan 1280 (u-001): tabel terlihat 
+ok:   laporan 1280 (u-001): kartu tersembunyi 
+ok:   laporan 1280 (u-001): tabel memuat SEMUA kolom (Tanggal, Proyek, Mandor, Pekerja, Cuaca, Status) ["Tanggal","Proyek","Mandor","Pekerja","Cuaca","Status"]
+ok:   laporan 1280 (u-001): tabel tanpa gulir horizontal (semua kolom terlihat) 
+ok:   laporan 1280 (u-001): jumlah baris = 3 dan urutan sesuai data ["r-001","r-002","r-003"]
+ok:   laporan 1280 (u-001): header kartu tabel "Semua Laporan" tidak berubah Semua Laporan
+ok:   laporan 1280 (u-001): baris r-001 memuat semua nilai ["20 Februari 2026","PRJ-001","Ahmad Rizal","12","Cerah Berawan","Terkirim"]
+ok:   laporan 1280 (u-001): baris r-002 memuat semua nilai ["19 Februari 2026","PRJ-001","Ahmad Rizal","10","Cerah","Disetujui"]
+ok:   laporan 1280 (u-001): baris r-003 memuat semua nilai ["21 Maret 2026","PRJ-002","Eko Prasetyo","8","Hujan Ringan","Terkirim"]
+ok:   axe 0 pelanggaran: laporan 1280 (u-001) 
+ok:   dokumen 375 (u-001): halaman terbuka (guard mengizinkan) allowed
+ok:   dokumen 375 (u-001): judul halaman Dokumen Dokumen
+ok:   dokumen 375 (u-001): hierarki heading berurutan [1,2,3,3,3,3,3]
+ok:   dokumen 375 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: dokumen 375 (u-001) 375 <= 375
+ok:   dokumen 375 (u-001): daftar kartu terlihat sebagai ul[role=list] bernama "Daftar dokumen" "list"
+ok:   dokumen 375 (u-001): tabel tersembunyi 
+ok:   dokumen 375 (u-001): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu 5
+ok:   dokumen 375 (u-001): urutan kartu sesuai data ["d-001","d-002","d-003","d-004","d-005"]
+ok:   dokumen 375 (u-001): judul bagian "Semua Dokumen" dan jumlah "5 dokumen" tampil 
+ok:   dokumen 375 (u-001): kartu d-001 judul "Gambar Arsitektur Lantai 1-3" (h3) Gambar Arsitektur Lantai 1-3 H3
+ok:   dokumen 375 (u-001): kartu d-001 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Gambar Teknis","20 Januari 2026","15.0 MB"]}
+ok:   dokumen 375 (u-001): kartu d-002 judul "RAB Renovasi Gedung Kantor" (h3) RAB Renovasi Gedung Kantor H3
+ok:   dokumen 375 (u-001): kartu d-002 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Rencana Kerja","18 Januari 2026","2.0 MB"]}
+ok:   dokumen 375 (u-001): kartu d-003 judul "Kontrak Pekerjaan No. 045/CON/2026" (h3) Kontrak Pekerjaan No. 045/CON/2026 H3
+ok:   dokumen 375 (u-001): kartu d-003 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Kontrak","15 Januari 2026","5.0 MB"]}
+ok:   dokumen 375 (u-001): kartu d-004 judul "Foto Progress Pembongkaran 20 Feb" (h3) Foto Progress Pembongkaran 20 Feb H3
+ok:   dokumen 375 (u-001): kartu d-004 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Lainnya","21 Februari 2026","50.0 MB"]}
+ok:   dokumen 375 (u-001): kartu d-005 judul "Gambar Struktur Jembatan" (h3) Gambar Struktur Jembatan H3
+ok:   dokumen 375 (u-001): kartu d-005 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Gambar Teknis","5 Oktober 2025","12.0 MB"]}
+ok:   dokumen 375 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover [[0,0],[0,0],[0,0],[0,0],[0,0]]
+ok:   dokumen 375 (u-001): satu kolom (semua kartu selebar sama dan di dalam viewport) ["16/343","16/343","16/343","16/343","16/343"]
+ok:   axe 0 pelanggaran: dokumen 375 (u-001) 
+ok:   dokumen 768 (u-001): halaman terbuka (guard mengizinkan) allowed
+ok:   dokumen 768 (u-001): judul halaman Dokumen Dokumen
+ok:   dokumen 768 (u-001): hierarki heading berurutan [1,2,3,3,3,3,3]
+ok:   dokumen 768 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: dokumen 768 (u-001) 768 <= 768
+ok:   dokumen 768 (u-001): daftar kartu terlihat sebagai ul[role=list] bernama "Daftar dokumen" "list"
+ok:   dokumen 768 (u-001): tabel tersembunyi 
+ok:   dokumen 768 (u-001): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu 5
+ok:   dokumen 768 (u-001): urutan kartu sesuai data ["d-001","d-002","d-003","d-004","d-005"]
+ok:   dokumen 768 (u-001): judul bagian "Semua Dokumen" dan jumlah "5 dokumen" tampil 
+ok:   dokumen 768 (u-001): kartu d-001 judul "Gambar Arsitektur Lantai 1-3" (h3) Gambar Arsitektur Lantai 1-3 H3
+ok:   dokumen 768 (u-001): kartu d-001 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Gambar Teknis","20 Januari 2026","15.0 MB"]}
+ok:   dokumen 768 (u-001): kartu d-002 judul "RAB Renovasi Gedung Kantor" (h3) RAB Renovasi Gedung Kantor H3
+ok:   dokumen 768 (u-001): kartu d-002 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Rencana Kerja","18 Januari 2026","2.0 MB"]}
+ok:   dokumen 768 (u-001): kartu d-003 judul "Kontrak Pekerjaan No. 045/CON/2026" (h3) Kontrak Pekerjaan No. 045/CON/2026 H3
+ok:   dokumen 768 (u-001): kartu d-003 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Kontrak","15 Januari 2026","5.0 MB"]}
+ok:   dokumen 768 (u-001): kartu d-004 judul "Foto Progress Pembongkaran 20 Feb" (h3) Foto Progress Pembongkaran 20 Feb H3
+ok:   dokumen 768 (u-001): kartu d-004 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Lainnya","21 Februari 2026","50.0 MB"]}
+ok:   dokumen 768 (u-001): kartu d-005 judul "Gambar Struktur Jembatan" (h3) Gambar Struktur Jembatan H3
+ok:   dokumen 768 (u-001): kartu d-005 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Gambar Teknis","5 Oktober 2025","12.0 MB"]}
+ok:   dokumen 768 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover [[0,0],[0,0],[0,0],[0,0],[0,0]]
+ok:   dokumen 768 (u-001): dua kolom [16,392]
+ok:   axe 0 pelanggaran: dokumen 768 (u-001) 
+ok:   dokumen 1280 (u-001): halaman terbuka (guard mengizinkan) allowed
+ok:   dokumen 1280 (u-001): judul halaman Dokumen Dokumen
+ok:   dokumen 1280 (u-001): hierarki heading berurutan [1,2]
+ok:   dokumen 1280 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: dokumen 1280 (u-001) 1280 <= 1280
+ok:   dokumen 1280 (u-001): tabel terlihat 
+ok:   dokumen 1280 (u-001): kartu tersembunyi 
+ok:   dokumen 1280 (u-001): tabel memuat SEMUA kolom (Nama, Kategori, Diunggah, Ukuran) ["Nama","Kategori","Diunggah","Ukuran"]
+ok:   dokumen 1280 (u-001): tabel tanpa gulir horizontal (semua kolom terlihat) 
+ok:   dokumen 1280 (u-001): jumlah baris = 5 dan urutan sesuai data ["d-001","d-002","d-003","d-004","d-005"]
+ok:   dokumen 1280 (u-001): header kartu tabel "Semua Dokumen" tidak berubah Semua Dokumen
+ok:   dokumen 1280 (u-001): baris d-001 memuat semua nilai ["Gambar Arsitektur Lantai 1-3","Gambar Teknis","20 Januari 2026","15.0 MB"]
+ok:   dokumen 1280 (u-001): baris d-002 memuat semua nilai ["RAB Renovasi Gedung Kantor","Rencana Kerja","18 Januari 2026","2.0 MB"]
+ok:   dokumen 1280 (u-001): baris d-003 memuat semua nilai ["Kontrak Pekerjaan No. 045/CON/2026","Kontrak","15 Januari 2026","5.0 MB"]
+ok:   dokumen 1280 (u-001): baris d-004 memuat semua nilai ["Foto Progress Pembongkaran 20 Feb","Lainnya","21 Februari 2026","50.0 MB"]
+ok:   dokumen 1280 (u-001): baris d-005 memuat semua nilai ["Gambar Struktur Jembatan","Gambar Teknis","5 Oktober 2025","12.0 MB"]
+ok:   axe 0 pelanggaran: dokumen 1280 (u-001) 
+ok:   anggota 375 (u-001): halaman terbuka (guard mengizinkan) allowed
+ok:   anggota 375 (u-001): judul halaman Anggota Anggota
+ok:   anggota 375 (u-001): hierarki heading berurutan [1,2,3,3,3,3,3]
+ok:   anggota 375 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: anggota 375 (u-001) 375 <= 375
+ok:   anggota 375 (u-001): daftar kartu terlihat sebagai ul[role=list] bernama "Daftar anggota tim" "list"
+ok:   anggota 375 (u-001): tabel tersembunyi 
+ok:   anggota 375 (u-001): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu 5
+ok:   anggota 375 (u-001): urutan kartu sesuai data ["u-001","u-002","u-003","u-004","u-005"]
+ok:   anggota 375 (u-001): judul bagian "Semua Anggota" dan jumlah "5 anggota" tampil 
+ok:   anggota 375 (u-001): kartu u-001 judul "Budi Santoso" (h3) Budi Santoso H3
+ok:   anggota 375 (u-001): kartu u-001 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["budi@proyekin.id","Owner"]}
+ok:   anggota 375 (u-001): kartu u-002 judul "Siti Aminah" (h3) Siti Aminah H3
+ok:   anggota 375 (u-001): kartu u-002 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["siti@proyekin.id","Admin Kantor"]}
+ok:   anggota 375 (u-001): kartu u-003 judul "Ahmad Rizal" (h3) Ahmad Rizal H3
+ok:   anggota 375 (u-001): kartu u-003 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["ahmad@proyekin.id","Mandor"]}
+ok:   anggota 375 (u-001): kartu u-004 judul "Dewi Lestari" (h3) Dewi Lestari H3
+ok:   anggota 375 (u-001): kartu u-004 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["dewi@proyekin.id","Anggota Tim"]}
+ok:   anggota 375 (u-001): kartu u-005 judul "Eko Prasetyo" (h3) Eko Prasetyo H3
+ok:   anggota 375 (u-001): kartu u-005 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["eko@proyekin.id","Mandor"]}
+ok:   anggota 375 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover [[0,0],[0,0],[0,0],[0,0],[0,0]]
+ok:   anggota 375 (u-001): avatar inisial dekoratif (aria-hidden) 
+ok:   anggota 375 (u-001): satu kolom (semua kartu selebar sama dan di dalam viewport) ["16/343","16/343","16/343","16/343","16/343"]
+ok:   axe 0 pelanggaran: anggota 375 (u-001) 
+ok:   anggota 768 (u-001): halaman terbuka (guard mengizinkan) allowed
+ok:   anggota 768 (u-001): judul halaman Anggota Anggota
+ok:   anggota 768 (u-001): hierarki heading berurutan [1,2,3,3,3,3,3]
+ok:   anggota 768 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: anggota 768 (u-001) 768 <= 768
+ok:   anggota 768 (u-001): daftar kartu terlihat sebagai ul[role=list] bernama "Daftar anggota tim" "list"
+ok:   anggota 768 (u-001): tabel tersembunyi 
+ok:   anggota 768 (u-001): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu 5
+ok:   anggota 768 (u-001): urutan kartu sesuai data ["u-001","u-002","u-003","u-004","u-005"]
+ok:   anggota 768 (u-001): judul bagian "Semua Anggota" dan jumlah "5 anggota" tampil 
+ok:   anggota 768 (u-001): kartu u-001 judul "Budi Santoso" (h3) Budi Santoso H3
+ok:   anggota 768 (u-001): kartu u-001 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["budi@proyekin.id","Owner"]}
+ok:   anggota 768 (u-001): kartu u-002 judul "Siti Aminah" (h3) Siti Aminah H3
+ok:   anggota 768 (u-001): kartu u-002 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["siti@proyekin.id","Admin Kantor"]}
+ok:   anggota 768 (u-001): kartu u-003 judul "Ahmad Rizal" (h3) Ahmad Rizal H3
+ok:   anggota 768 (u-001): kartu u-003 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["ahmad@proyekin.id","Mandor"]}
+ok:   anggota 768 (u-001): kartu u-004 judul "Dewi Lestari" (h3) Dewi Lestari H3
+ok:   anggota 768 (u-001): kartu u-004 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["dewi@proyekin.id","Anggota Tim"]}
+ok:   anggota 768 (u-001): kartu u-005 judul "Eko Prasetyo" (h3) Eko Prasetyo H3
+ok:   anggota 768 (u-001): kartu u-005 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["eko@proyekin.id","Mandor"]}
+ok:   anggota 768 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover [[0,0],[0,0],[0,0],[0,0],[0,0]]
+ok:   anggota 768 (u-001): avatar inisial dekoratif (aria-hidden) 
+ok:   anggota 768 (u-001): dua kolom [16,392]
+ok:   axe 0 pelanggaran: anggota 768 (u-001) 
+ok:   anggota 1280 (u-001): halaman terbuka (guard mengizinkan) allowed
+ok:   anggota 1280 (u-001): judul halaman Anggota Anggota
+ok:   anggota 1280 (u-001): hierarki heading berurutan [1,2]
+ok:   anggota 1280 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: anggota 1280 (u-001) 1280 <= 1280
+ok:   anggota 1280 (u-001): tabel terlihat 
+ok:   anggota 1280 (u-001): kartu tersembunyi 
+ok:   anggota 1280 (u-001): tabel memuat SEMUA kolom (Nama, Email, Role) ["Nama","Email","Role"]
+ok:   anggota 1280 (u-001): tabel tanpa gulir horizontal (semua kolom terlihat) 
+ok:   anggota 1280 (u-001): jumlah baris = 5 dan urutan sesuai data ["u-001","u-002","u-003","u-004","u-005"]
+ok:   anggota 1280 (u-001): header kartu tabel "Semua Anggota" tidak berubah Semua Anggota
+ok:   anggota 1280 (u-001): baris u-001 memuat semua nilai ["BBudi Santoso","budi@proyekin.id","Owner"]
+ok:   anggota 1280 (u-001): baris u-002 memuat semua nilai ["SSiti Aminah","siti@proyekin.id","Admin Kantor"]
+ok:   anggota 1280 (u-001): baris u-003 memuat semua nilai ["AAhmad Rizal","ahmad@proyekin.id","Mandor"]
+ok:   anggota 1280 (u-001): baris u-004 memuat semua nilai ["DDewi Lestari","dewi@proyekin.id","Anggota Tim"]
+ok:   anggota 1280 (u-001): baris u-005 memuat semua nilai ["EEko Prasetyo","eko@proyekin.id","Mandor"]
+ok:   axe 0 pelanggaran: anggota 1280 (u-001) 
+ok:   laporan 375 (u-003): halaman terbuka (guard mengizinkan) allowed
+ok:   laporan 375 (u-003): judul halaman Laporan Harian Laporan Harian
+ok:   laporan 375 (u-003): hierarki heading berurutan [1,2,3,3,3]
+ok:   laporan 375 (u-003): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: laporan 375 (u-003) 375 <= 375
+ok:   laporan 375 (u-003): daftar kartu terlihat sebagai ul[role=list] bernama "Daftar laporan harian" "list"
+ok:   laporan 375 (u-003): tabel tersembunyi 
+ok:   laporan 375 (u-003): jumlah kartu = jumlah baris sumber (3) dan satu li per kartu 3
+ok:   laporan 375 (u-003): urutan kartu sesuai data ["r-001","r-002","r-003"]
+ok:   laporan 375 (u-003): judul bagian "Semua Laporan" dan jumlah "3 laporan" tampil 
+ok:   laporan 375 (u-003): kartu r-001 judul "20 Februari 2026" (h3) 20 Februari 2026 H3
+ok:   laporan 375 (u-003): kartu r-001 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status) {"labels":["Proyek","Mandor","Pekerja","Cuaca","Status"],"values":["PRJ-001","Ahmad Rizal","12","Cerah Berawan","Terkirim"]}
+ok:   laporan 375 (u-003): kartu r-002 judul "19 Februari 2026" (h3) 19 Februari 2026 H3
+ok:   laporan 375 (u-003): kartu r-002 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status) {"labels":["Proyek","Mandor","Pekerja","Cuaca","Status"],"values":["PRJ-001","Ahmad Rizal","10","Cerah","Disetujui"]}
+ok:   laporan 375 (u-003): kartu r-003 judul "21 Maret 2026" (h3) 21 Maret 2026 H3
+ok:   laporan 375 (u-003): kartu r-003 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status) {"labels":["Proyek","Mandor","Pekerja","Cuaca","Status"],"values":["PRJ-002","Eko Prasetyo","8","Hujan Ringan","Terkirim"]}
+ok:   laporan 375 (u-003): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover [[0,0],[0,0],[0,0]]
+ok:   laporan 375 (u-003): satu kolom (semua kartu selebar sama dan di dalam viewport) ["16/343","16/343","16/343"]
+ok:   axe 0 pelanggaran: laporan 375 (u-003) 
+ok:   dokumen 375 (u-003): halaman terbuka (guard mengizinkan) allowed
+ok:   dokumen 375 (u-003): judul halaman Dokumen Dokumen
+ok:   dokumen 375 (u-003): hierarki heading berurutan [1,2,3,3,3,3,3]
+ok:   dokumen 375 (u-003): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: dokumen 375 (u-003) 375 <= 375
+ok:   dokumen 375 (u-003): daftar kartu terlihat sebagai ul[role=list] bernama "Daftar dokumen" "list"
+ok:   dokumen 375 (u-003): tabel tersembunyi 
+ok:   dokumen 375 (u-003): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu 5
+ok:   dokumen 375 (u-003): urutan kartu sesuai data ["d-001","d-002","d-003","d-004","d-005"]
+ok:   dokumen 375 (u-003): judul bagian "Semua Dokumen" dan jumlah "5 dokumen" tampil 
+ok:   dokumen 375 (u-003): kartu d-001 judul "Gambar Arsitektur Lantai 1-3" (h3) Gambar Arsitektur Lantai 1-3 H3
+ok:   dokumen 375 (u-003): kartu d-001 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Gambar Teknis","20 Januari 2026","15.0 MB"]}
+ok:   dokumen 375 (u-003): kartu d-002 judul "RAB Renovasi Gedung Kantor" (h3) RAB Renovasi Gedung Kantor H3
+ok:   dokumen 375 (u-003): kartu d-002 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Rencana Kerja","18 Januari 2026","2.0 MB"]}
+ok:   dokumen 375 (u-003): kartu d-003 judul "Kontrak Pekerjaan No. 045/CON/2026" (h3) Kontrak Pekerjaan No. 045/CON/2026 H3
+ok:   dokumen 375 (u-003): kartu d-003 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Kontrak","15 Januari 2026","5.0 MB"]}
+ok:   dokumen 375 (u-003): kartu d-004 judul "Foto Progress Pembongkaran 20 Feb" (h3) Foto Progress Pembongkaran 20 Feb H3
+ok:   dokumen 375 (u-003): kartu d-004 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Lainnya","21 Februari 2026","50.0 MB"]}
+ok:   dokumen 375 (u-003): kartu d-005 judul "Gambar Struktur Jembatan" (h3) Gambar Struktur Jembatan H3
+ok:   dokumen 375 (u-003): kartu d-005 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Gambar Teknis","5 Oktober 2025","12.0 MB"]}
+ok:   dokumen 375 (u-003): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover [[0,0],[0,0],[0,0],[0,0],[0,0]]
+ok:   dokumen 375 (u-003): satu kolom (semua kartu selebar sama dan di dalam viewport) ["16/343","16/343","16/343","16/343","16/343"]
+ok:   axe 0 pelanggaran: dokumen 375 (u-003) 
+ok:   dokumen 375 (u-004): halaman terbuka (guard mengizinkan) allowed
+ok:   dokumen 375 (u-004): judul halaman Dokumen Dokumen
+ok:   dokumen 375 (u-004): hierarki heading berurutan [1,2,3,3,3,3,3]
+ok:   dokumen 375 (u-004): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: dokumen 375 (u-004) 375 <= 375
+ok:   dokumen 375 (u-004): daftar kartu terlihat sebagai ul[role=list] bernama "Daftar dokumen" "list"
+ok:   dokumen 375 (u-004): tabel tersembunyi 
+ok:   dokumen 375 (u-004): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu 5
+ok:   dokumen 375 (u-004): urutan kartu sesuai data ["d-001","d-002","d-003","d-004","d-005"]
+ok:   dokumen 375 (u-004): judul bagian "Semua Dokumen" dan jumlah "5 dokumen" tampil 
+ok:   dokumen 375 (u-004): kartu d-001 judul "Gambar Arsitektur Lantai 1-3" (h3) Gambar Arsitektur Lantai 1-3 H3
+ok:   dokumen 375 (u-004): kartu d-001 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Gambar Teknis","20 Januari 2026","15.0 MB"]}
+ok:   dokumen 375 (u-004): kartu d-002 judul "RAB Renovasi Gedung Kantor" (h3) RAB Renovasi Gedung Kantor H3
+ok:   dokumen 375 (u-004): kartu d-002 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Rencana Kerja","18 Januari 2026","2.0 MB"]}
+ok:   dokumen 375 (u-004): kartu d-003 judul "Kontrak Pekerjaan No. 045/CON/2026" (h3) Kontrak Pekerjaan No. 045/CON/2026 H3
+ok:   dokumen 375 (u-004): kartu d-003 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Kontrak","15 Januari 2026","5.0 MB"]}
+ok:   dokumen 375 (u-004): kartu d-004 judul "Foto Progress Pembongkaran 20 Feb" (h3) Foto Progress Pembongkaran 20 Feb H3
+ok:   dokumen 375 (u-004): kartu d-004 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Lainnya","21 Februari 2026","50.0 MB"]}
+ok:   dokumen 375 (u-004): kartu d-005 judul "Gambar Struktur Jembatan" (h3) Gambar Struktur Jembatan H3
+ok:   dokumen 375 (u-004): kartu d-005 memuat SELURUH field (Kategori, Diunggah, Ukuran) {"labels":["Kategori","Diunggah","Ukuran"],"values":["Gambar Teknis","5 Oktober 2025","12.0 MB"]}
+ok:   dokumen 375 (u-004): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover [[0,0],[0,0],[0,0],[0,0],[0,0]]
+ok:   dokumen 375 (u-004): satu kolom (semua kartu selebar sama dan di dalam viewport) ["16/343","16/343","16/343","16/343","16/343"]
+ok:   axe 0 pelanggaran: dokumen 375 (u-004) 
+ok:   anggota 375 (u-002): halaman terbuka (guard mengizinkan) allowed
+ok:   anggota 375 (u-002): judul halaman Anggota Anggota
+ok:   anggota 375 (u-002): hierarki heading berurutan [1,2,3,3,3,3,3]
+ok:   anggota 375 (u-002): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: anggota 375 (u-002) 375 <= 375
+ok:   anggota 375 (u-002): daftar kartu terlihat sebagai ul[role=list] bernama "Daftar anggota tim" "list"
+ok:   anggota 375 (u-002): tabel tersembunyi 
+ok:   anggota 375 (u-002): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu 5
+ok:   anggota 375 (u-002): urutan kartu sesuai data ["u-001","u-002","u-003","u-004","u-005"]
+ok:   anggota 375 (u-002): judul bagian "Semua Anggota" dan jumlah "5 anggota" tampil 
+ok:   anggota 375 (u-002): kartu u-001 judul "Budi Santoso" (h3) Budi Santoso H3
+ok:   anggota 375 (u-002): kartu u-001 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["budi@proyekin.id","Owner"]}
+ok:   anggota 375 (u-002): kartu u-002 judul "Siti Aminah" (h3) Siti Aminah H3
+ok:   anggota 375 (u-002): kartu u-002 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["siti@proyekin.id","Admin Kantor"]}
+ok:   anggota 375 (u-002): kartu u-003 judul "Ahmad Rizal" (h3) Ahmad Rizal H3
+ok:   anggota 375 (u-002): kartu u-003 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["ahmad@proyekin.id","Mandor"]}
+ok:   anggota 375 (u-002): kartu u-004 judul "Dewi Lestari" (h3) Dewi Lestari H3
+ok:   anggota 375 (u-002): kartu u-004 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["dewi@proyekin.id","Anggota Tim"]}
+ok:   anggota 375 (u-002): kartu u-005 judul "Eko Prasetyo" (h3) Eko Prasetyo H3
+ok:   anggota 375 (u-002): kartu u-005 memuat SELURUH field (Email, Role) {"labels":["Email","Role"],"values":["eko@proyekin.id","Mandor"]}
+ok:   anggota 375 (u-002): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover [[0,0],[0,0],[0,0],[0,0],[0,0]]
+ok:   anggota 375 (u-002): avatar inisial dekoratif (aria-hidden) 
+ok:   anggota 375 (u-002): satu kolom (semua kartu selebar sama dan di dalam viewport) ["16/343","16/343","16/343","16/343","16/343"]
+ok:   axe 0 pelanggaran: anggota 375 (u-002) 
+ok:   laporan 768 (u-002): halaman terbuka (guard mengizinkan) allowed
+ok:   laporan 768 (u-002): judul halaman Laporan Harian Laporan Harian
+ok:   laporan 768 (u-002): hierarki heading berurutan [1,2,3,3,3]
+ok:   laporan 768 (u-002): tidak ada wadah yang bisa digulir horizontal di dalam konten []
+ok:   overflow halaman: laporan 768 (u-002) 768 <= 768
+ok:   laporan 768 (u-002): daftar kartu terlihat sebagai ul[role=list] bernama "Daftar laporan harian" "list"
+ok:   laporan 768 (u-002): tabel tersembunyi 
+ok:   laporan 768 (u-002): jumlah kartu = jumlah baris sumber (3) dan satu li per kartu 3
+ok:   laporan 768 (u-002): urutan kartu sesuai data ["r-001","r-002","r-003"]
+ok:   laporan 768 (u-002): judul bagian "Semua Laporan" dan jumlah "3 laporan" tampil 
+ok:   laporan 768 (u-002): kartu r-001 judul "20 Februari 2026" (h3) 20 Februari 2026 H3
+ok:   laporan 768 (u-002): kartu r-001 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status) {"labels":["Proyek","Mandor","Pekerja","Cuaca","Status"],"values":["PRJ-001","Ahmad Rizal","12","Cerah Berawan","Terkirim"]}
+ok:   laporan 768 (u-002): kartu r-002 judul "19 Februari 2026" (h3) 19 Februari 2026 H3
+ok:   laporan 768 (u-002): kartu r-002 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status) {"labels":["Proyek","Mandor","Pekerja","Cuaca","Status"],"values":["PRJ-001","Ahmad Rizal","10","Cerah","Disetujui"]}
+ok:   laporan 768 (u-002): kartu r-003 judul "21 Maret 2026" (h3) 21 Maret 2026 H3
+ok:   laporan 768 (u-002): kartu r-003 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status) {"labels":["Proyek","Mandor","Pekerja","Cuaca","Status"],"values":["PRJ-002","Eko Prasetyo","8","Hujan Ringan","Terkirim"]}
+ok:   laporan 768 (u-002): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover [[0,0],[0,0],[0,0]]
+ok:   laporan 768 (u-002): dua kolom [16,392]
+ok:   axe 0 pelanggaran: laporan 768 (u-002) 
+ok:   guard: u-003 membuka /anggota → denied (tidak berubah) 
+ok:   guard: u-004 membuka /anggota → denied (tidak berubah) 
+ok:   guard: u-004 membuka /laporan → denied (tidak berubah) 
+ok:   guard: u-003 membuka /laporan → allowed (tidak berubah) 
+ok:   guard: u-004 membuka /dokumen → allowed (tidak berubah) 
+ok:   style-guide 375: #kartu-data menampilkan 3 contoh RecordCard tanpa elemen interaktif {"cards":3,"titles":["20 Februari 2026","Gambar Arsitektur Lantai 1-3","Budi Santoso"],"interactive":0}
+ok:   overflow halaman: style-guide 375 375 <= 375
+ok:   axe 0 pelanggaran: style-guide 375 
+ok:   style-guide 1280: #kartu-data menampilkan 3 contoh RecordCard tanpa elemen interaktif {"cards":3,"titles":["20 Februari 2026","Gambar Arsitektur Lantai 1-3","Budi Santoso"],"interactive":0}
+ok:   overflow halaman: style-guide 1280 1280 <= 1280
+ok:   axe 0 pelanggaran: style-guide 1280 
+
+Semua 300 pemeriksaan lolos.

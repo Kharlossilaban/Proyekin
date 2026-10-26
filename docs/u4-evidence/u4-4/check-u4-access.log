@@ -1,0 +1,207 @@
+
+> proyekin@0.1.0 check:u4-access
+> node scripts/check-u4-access.mjs C:\Users\PONGO\AppData\Local\Temp\claude\C--proyekin-project\***\scratchpad\access-out2
+
+ok:   budi (Owner): login diarahkan ke /dashboard path /dashboard
+ok:   budi (Owner): menu sidebar persis dan berurutan ["Dashboard","Proyek","Tugas","Laporan","Dokumen","Anggota","Pengaturan"]
+ok:   budi: halaman awal /dashboard adalah menu pertama 
+ok:   budi: desktop tidak berubah (tautan 36px, Keluar 36px, tanpa tombol Buka navigasi) {"links":[36,36,36,36,36,36,36],"logout":36,"burgerVisible":false}
+ok:   axe 0 pelanggaran: budi /dashboard 1280 
+ok:   budi: URL langsung /dashboard → allowed hasil allowed
+ok:   budi: URL langsung /proyek → allowed hasil allowed
+ok:   budi: URL langsung /tugas → allowed hasil allowed
+ok:   budi: URL langsung /laporan → allowed hasil allowed
+ok:   budi: URL langsung /dokumen → allowed hasil allowed
+ok:   budi: URL langsung /anggota → allowed hasil allowed
+ok:   budi: URL langsung /pengaturan → allowed hasil allowed
+ok:   budi: detail /proyek/p-001 → allowed hasil allowed
+ok:   budi: detail /proyek/p-002 → allowed hasil allowed
+ok:   budi: detail /proyek/p-003 → allowed hasil allowed
+ok:   budi: detail /proyek/p-004 → allowed hasil allowed
+ok:   budi: detail /proyek/p-005 → allowed hasil allowed
+ok:   budi: detail /proyek/p-999 → not-found hasil not-found
+ok:   budi: detail /tugas/t-001 → allowed hasil allowed
+ok:   budi: detail /tugas/t-002 → allowed hasil allowed
+ok:   budi: detail /tugas/t-003 → allowed hasil allowed
+ok:   budi: detail /tugas/t-004 → allowed hasil allowed
+ok:   budi: detail /tugas/t-005 → allowed hasil allowed
+ok:   budi: detail /tugas/t-006 → allowed hasil allowed
+ok:   budi: detail /tugas/t-999 → not-found hasil not-found
+ok:   budi: navigasi KLIEN ke /dashboard → allowed tanpa muat ulang dokumen hasil allowed
+ok:   budi: navigasi KLIEN ke /anggota → allowed tanpa muat ulang dokumen hasil allowed
+ok:   budi: navigasi KLIEN ke /laporan → allowed tanpa muat ulang dokumen hasil allowed
+ok:   budi: navigasi KLIEN ke /pengaturan → allowed tanpa muat ulang dokumen hasil allowed
+ok:   siti (Admin Kantor): login diarahkan ke /dashboard path /dashboard
+ok:   siti (Admin Kantor): menu sidebar persis dan berurutan ["Dashboard","Proyek","Tugas","Laporan","Dokumen","Anggota","Pengaturan"]
+ok:   siti: halaman awal /dashboard adalah menu pertama 
+ok:   siti: desktop tidak berubah (tautan 36px, Keluar 36px, tanpa tombol Buka navigasi) {"links":[36,36,36,36,36,36,36],"logout":36,"burgerVisible":false}
+ok:   axe 0 pelanggaran: siti /dashboard 1280 
+ok:   siti: URL langsung /dashboard → allowed hasil allowed
+ok:   siti: URL langsung /proyek → allowed hasil allowed
+ok:   siti: URL langsung /tugas → allowed hasil allowed
+ok:   siti: URL langsung /laporan → allowed hasil allowed
+ok:   siti: URL langsung /dokumen → allowed hasil allowed
+ok:   siti: URL langsung /anggota → allowed hasil allowed
+ok:   siti: URL langsung /pengaturan → allowed hasil allowed
+ok:   siti: detail /proyek/p-001 → allowed hasil allowed
+ok:   siti: detail /proyek/p-002 → allowed hasil allowed
+ok:   siti: detail /proyek/p-003 → denied hasil denied
+ok:   siti: detail /proyek/p-004 → denied hasil denied
+ok:   siti: detail /proyek/p-005 → denied hasil denied
+ok:   siti: detail /proyek/p-999 → not-found hasil not-found
+ok:   siti: detail /tugas/t-001 → allowed hasil allowed
+ok:   siti: detail /tugas/t-002 → allowed hasil allowed
+ok:   siti: detail /tugas/t-003 → allowed hasil allowed
+ok:   siti: detail /tugas/t-004 → allowed hasil allowed
+ok:   siti: detail /tugas/t-005 → allowed hasil allowed
+ok:   siti: detail /tugas/t-006 → allowed hasil allowed
+ok:   siti: detail /tugas/t-999 → not-found hasil not-found
+ok:   siti: navigasi KLIEN ke /dashboard → allowed tanpa muat ulang dokumen hasil allowed
+ok:   siti: navigasi KLIEN ke /anggota → allowed tanpa muat ulang dokumen hasil allowed
+ok:   siti: navigasi KLIEN ke /laporan → allowed tanpa muat ulang dokumen hasil allowed
+ok:   siti: navigasi KLIEN ke /pengaturan → allowed tanpa muat ulang dokumen hasil allowed
+ok:   ahmad (Mandor): login diarahkan ke /tugas path /tugas
+ok:   ahmad (Mandor): menu sidebar persis dan berurutan ["Tugas","Proyek","Laporan","Dokumen"]
+ok:   ahmad: halaman awal /tugas adalah menu pertama 
+ok:   ahmad: desktop tidak berubah (tautan 36px, Keluar 36px, tanpa tombol Buka navigasi) {"links":[36,36,36,36],"logout":36,"burgerVisible":false}
+ok:   axe 0 pelanggaran: ahmad /tugas 1280 
+ok:   ahmad: URL langsung /dashboard → denied (konten tidak pernah terlihat) hasil denied
+ok:   ahmad: URL langsung /proyek → allowed hasil allowed
+ok:   ahmad: URL langsung /tugas → allowed hasil allowed
+ok:   ahmad: URL langsung /laporan → allowed hasil allowed
+ok:   ahmad: URL langsung /dokumen → allowed hasil allowed
+ok:   ahmad: URL langsung /anggota → denied (konten tidak pernah terlihat) hasil denied
+ok:   ahmad: URL langsung /pengaturan → denied (konten tidak pernah terlihat) hasil denied
+ok:   ahmad: detail /proyek/p-001 → allowed hasil allowed
+ok:   ahmad: detail /proyek/p-002 → allowed hasil allowed
+ok:   ahmad: detail /proyek/p-003 → denied hasil denied
+ok:   ahmad: detail /proyek/p-004 → denied hasil denied
+ok:   ahmad: detail /proyek/p-005 → denied hasil denied
+ok:   ahmad: detail /proyek/p-999 → not-found hasil not-found
+ok:   ahmad: detail /tugas/t-001 → allowed hasil allowed
+ok:   ahmad: detail /tugas/t-002 → allowed hasil allowed
+ok:   ahmad: detail /tugas/t-003 → allowed hasil allowed
+ok:   ahmad: detail /tugas/t-004 → allowed hasil allowed
+ok:   ahmad: detail /tugas/t-005 → allowed hasil allowed
+ok:   ahmad: detail /tugas/t-006 → allowed hasil allowed
+ok:   ahmad: detail /tugas/t-999 → not-found hasil not-found
+ok:   ahmad: navigasi KLIEN ke /dashboard → denied tanpa muat ulang dokumen hasil denied
+ok:   ahmad: navigasi KLIEN ke /anggota → denied tanpa muat ulang dokumen hasil denied
+ok:   ahmad: navigasi KLIEN ke /laporan → allowed tanpa muat ulang dokumen hasil allowed
+ok:   ahmad: navigasi KLIEN ke /pengaturan → denied tanpa muat ulang dokumen hasil denied
+ok:   dewi (Anggota Tim): login diarahkan ke /tugas path /tugas
+ok:   dewi (Anggota Tim): menu sidebar persis dan berurutan ["Tugas","Proyek","Dokumen"]
+ok:   dewi: halaman awal /tugas adalah menu pertama 
+ok:   dewi: desktop tidak berubah (tautan 36px, Keluar 36px, tanpa tombol Buka navigasi) {"links":[36,36,36],"logout":36,"burgerVisible":false}
+ok:   axe 0 pelanggaran: dewi /tugas 1280 
+ok:   dewi: URL langsung /dashboard → denied (konten tidak pernah terlihat) hasil denied
+ok:   dewi: URL langsung /proyek → allowed hasil allowed
+ok:   dewi: URL langsung /tugas → allowed hasil allowed
+ok:   dewi: URL langsung /laporan → denied (konten tidak pernah terlihat) hasil denied
+ok:   dewi: URL langsung /dokumen → allowed hasil allowed
+ok:   dewi: URL langsung /anggota → denied (konten tidak pernah terlihat) hasil denied
+ok:   dewi: URL langsung /pengaturan → denied (konten tidak pernah terlihat) hasil denied
+ok:   dewi: detail /proyek/p-001 → allowed hasil allowed
+ok:   dewi: detail /proyek/p-002 → denied hasil denied
+ok:   dewi: detail /proyek/p-003 → denied hasil denied
+ok:   dewi: detail /proyek/p-004 → denied hasil denied
+ok:   dewi: detail /proyek/p-005 → denied hasil denied
+ok:   dewi: detail /proyek/p-999 → not-found hasil not-found
+ok:   dewi: detail /tugas/t-001 → denied hasil denied
+ok:   dewi: detail /tugas/t-002 → allowed hasil allowed
+ok:   dewi: detail /tugas/t-003 → denied hasil denied
+ok:   dewi: detail /tugas/t-004 → denied hasil denied
+ok:   dewi: detail /tugas/t-005 → denied hasil denied
+ok:   dewi: detail /tugas/t-006 → allowed hasil allowed
+ok:   dewi: detail /tugas/t-999 → not-found hasil not-found
+ok:   dewi: navigasi KLIEN ke /dashboard → denied tanpa muat ulang dokumen hasil denied
+ok:   dewi: navigasi KLIEN ke /anggota → denied tanpa muat ulang dokumen hasil denied
+ok:   dewi: navigasi KLIEN ke /laporan → denied tanpa muat ulang dokumen hasil denied
+ok:   dewi: navigasi KLIEN ke /pengaturan → denied tanpa muat ulang dokumen hasil denied
+ok:   dewi: navigasi KLIEN ke /proyek/p-001 → allowed hasil allowed
+ok:   dewi: navigasi KLIEN ke /proyek/p-002 → denied hasil denied
+ok:   dewi: navigasi KLIEN ke /tugas/t-002 → allowed hasil allowed
+ok:   dewi: navigasi KLIEN ke /tugas/t-001 → denied hasil denied
+ok:   dewi: navigasi KLIEN ke /proyek/p-999 → not-found hasil not-found
+ok:   siti: navigasi KLIEN ke /proyek/p-001 → allowed hasil allowed
+ok:   siti: navigasi KLIEN ke /proyek/p-003 → denied hasil denied
+ok:   ahmad: navigasi KLIEN ke /proyek/p-002 → allowed hasil allowed
+ok:   ahmad: navigasi KLIEN ke /proyek/p-004 → denied hasil denied
+ok:   ahmad: navigasi KLIEN ke /tugas/t-003 → allowed hasil allowed
+ok:   budi: proyek runtime p-006 → allowed (navigasi klien) hasil allowed
+ok:   budi: tugas runtime t-007 → allowed (navigasi klien) hasil allowed
+ok:   siti: proyek runtime (tanpa Admin principal) p-006 → denied (navigasi klien) hasil denied
+ok:   siti: tugas runtime di p-001 (Admin principal p-001) → allowed (navigasi klien) hasil allowed
+ok:   ahmad: proyek runtime (bukan anggota) p-006 → denied (navigasi klien) hasil denied
+ok:   ahmad: tugas runtime di p-001 (anggota p-001, G5) → allowed (navigasi klien) hasil allowed
+ok:   dewi: tugas runtime tanpa penanggung jawab (bukan miliknya) → denied (navigasi klien) hasil denied
+ok:   budi: tugas runtime di p-003 (tanpa Admin principal) → allowed (navigasi klien) hasil allowed
+ok:   siti: tugas runtime di p-003 (tanpa Admin principal) → denied (navigasi klien) hasil denied
+ok:   ahmad: tugas runtime di p-003 (tanpa Admin principal) → denied (navigasi klien) hasil denied
+ok:   dewi: tugas runtime di p-003 (tanpa Admin principal) → denied (navigasi klien) hasil denied
+ok:   budi: tugas runtime di proyek runtime (tanpa Admin principal) → allowed (navigasi klien) hasil allowed
+ok:   siti: tugas runtime di proyek runtime (tanpa Admin principal) → denied (navigasi klien) hasil denied
+ok:   ahmad: tugas runtime di proyek runtime (tanpa Admin principal) → denied (navigasi klien) hasil denied
+ok:   dewi: tugas runtime di proyek runtime (tanpa Admin principal) → denied (navigasi klien) hasil denied
+ok:   budi: reload pada ID runtime → not-found (store memori reset) 
+ok:   ahmad mobile: emulasi sentuh aktif 
+ok:   ahmad mobile: login (ketuk) diarahkan ke /tugas 
+ok:   overflow halaman: ahmad /tugas 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: ahmad /tugas 375 mobile 
+ok:   ahmad mobile: header sticky tetap di atas konten saat digulir 
+ok:   ahmad mobile: drawer berisi menu persis dan berurutan (Tugas pertama) ["Tugas","Proyek","Laporan","Dokumen"]
+ok:   ahmad mobile: target sentuh drawer >= 44x44px (6 kontrol) 
+ok:   ahmad mobile: tombol Tutup navigasi >= 44x44px 44x44
+ok:   ahmad mobile: tombol Keluar di drawer >= 44x44px {"w":264,"h":44}
+ok:   ahmad mobile: tombol Buka navigasi >= 44x44px 44x44
+ok:   ahmad mobile: tautan drawer tidak saling menimpa [4,4,4]
+ok:   ahmad mobile: drawer tidak memuat Dashboard/Anggota/Pengaturan 
+ok:   ahmad mobile: drawer berada di atas konten halaman (z-index; tabel tidak menimpa) [true,true,true]
+ok:   axe 0 pelanggaran: ahmad drawer terbuka 375 mobile 
+ok:   ahmad mobile: ketuk menu Proyek menavigasi tanpa muat ulang dan menutup drawer 
+ok:   overflow halaman: ahmad /proyek 375 mobile 375 <= 375
+ok:   ahmad mobile: Tab melewati tautan drawer sesuai urutan menu ["Tugas","Proyek","Laporan","Dokumen"]
+ok:   ahmad mobile: Tab berikutnya setelah tautan terakhir mencapai Keluar Keluar
+ok:   ahmad mobile: fokus keyboard terlihat pada kontrol drawer {"style":"solid","width":2}
+ok:   ahmad mobile: Enter pada tautan menavigasi tanpa muat ulang dan menutup drawer 
+ok:   ahmad mobile: URL langsung /dashboard → akses ditolak 
+ok:   ahmad mobile: detail /tugas/t-003 (berhak) tampil 
+ok:   overflow halaman: ahmad /tugas/t-003 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: ahmad /tugas/t-003 375 mobile 
+ok:   dewi mobile: emulasi sentuh aktif 
+ok:   dewi mobile: login (ketuk) diarahkan ke /tugas 
+ok:   overflow halaman: dewi /tugas 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: dewi /tugas 375 mobile 
+ok:   dewi mobile: header sticky tetap di atas konten saat digulir 
+ok:   dewi mobile: drawer berisi menu persis dan berurutan (Tugas pertama) ["Tugas","Proyek","Dokumen"]
+ok:   dewi mobile: target sentuh drawer >= 44x44px (5 kontrol) 
+ok:   dewi mobile: tombol Tutup navigasi >= 44x44px 44x44
+ok:   dewi mobile: tombol Keluar di drawer >= 44x44px {"w":264,"h":44}
+ok:   dewi mobile: tombol Buka navigasi >= 44x44px 44x44
+ok:   dewi mobile: tautan drawer tidak saling menimpa [4,4]
+ok:   dewi mobile: drawer tidak memuat Dashboard/Anggota/Pengaturan 
+ok:   dewi mobile: drawer berada di atas konten halaman (z-index; tabel tidak menimpa) [true,true,true]
+ok:   axe 0 pelanggaran: dewi drawer terbuka 375 mobile 
+ok:   dewi mobile: ketuk menu Proyek menavigasi tanpa muat ulang dan menutup drawer 
+ok:   overflow halaman: dewi /proyek 375 mobile 375 <= 375
+ok:   dewi mobile: Tab melewati tautan drawer sesuai urutan menu ["Tugas","Proyek","Dokumen"]
+ok:   dewi mobile: Tab berikutnya setelah tautan terakhir mencapai Keluar Keluar
+ok:   dewi mobile: fokus keyboard terlihat pada kontrol drawer {"style":"solid","width":2}
+ok:   dewi mobile: Enter pada tautan menavigasi tanpa muat ulang dan menutup drawer 
+ok:   dewi mobile: URL langsung /dashboard → akses ditolak 
+ok:   dewi mobile: detail /tugas/t-002 (berhak) tampil 
+ok:   overflow halaman: dewi /tugas/t-002 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: dewi /tugas/t-002 375 mobile 
+ok:   overflow halaman: ahmad /tugas 768 768 <= 768
+ok:   axe 0 pelanggaran: ahmad /tugas 768 
+ok:   overflow halaman: budi /dashboard 768 768 <= 768
+ok:   axe 0 pelanggaran: budi /dashboard 768 
+ok:   guest: login diarahkan ke /akses-ditolak (tanpa App Shell) 
+ok:   guest: tidak ada sidebar di DOM 
+ok:   guest: URL langsung /dashboard → akses ditolak, tanpa sidebar, konten tidak pernah terlihat hasil denied
+ok:   guest: URL langsung /proyek/p-001 → akses ditolak, tanpa sidebar, konten tidak pernah terlihat hasil denied
+ok:   guest: URL langsung /tugas/t-001 → akses ditolak, tanpa sidebar, konten tidak pernah terlihat hasil denied
+ok:   guest: URL langsung /anggota → akses ditolak, tanpa sidebar, konten tidak pernah terlihat hasil denied
+ok:   guest: halaman publik (landing) tanpa sidebar 
+
+Semua 201 pemeriksaan lolos.

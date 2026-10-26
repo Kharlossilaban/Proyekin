@@ -1,0 +1,1254 @@
+{
+  "checks": [
+    {
+      "name": "HTML /proyek: tidak memuat nama proyek seed (daftar dihitung setelah sesi diketahui)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "HTML /proyek: tidak memuat kartu/baris proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi (Owner): /proyek siap",
+      "ok": true,
+      "detail": "ready"
+    },
+    {
+      "name": "budi (Owner): tabel hanya memuat proyek dalam lingkup",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\",\"p-003\",\"p-004\",\"p-005\"]"
+    },
+    {
+      "name": "budi: proyek di luar lingkup (tidak ada) tidak tampil",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi: kartu mobile tersembunyi di 1280 (tidak ada duplikasi tampilan)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: ringkasan jumlah \"5 proyek\"",
+      "ok": true,
+      "detail": "5 proyek dalam lingkup akses Anda."
+    },
+    {
+      "name": "budi: DemoDataNotice tampil dan tidak mengklaim data tersimpan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: tidak ada tombol bisnis (tambah/ubah/hapus) di daftar",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi: anggaran tidak ditampilkan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: baris p-001 memuat nama, klien, status Berjalan, periode",
+      "ok": true,
+      "detail": "PRJ-001Renovasi Gedung Kantor BatamBalai Kota Batam, Kepulauan RiauPT. Properti NusantaraBerjalan15 Jan 2026 – 30 Jun 202645%"
+    },
+    {
+      "name": "budi: p-001 tidak ditandai Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: baris p-002 memuat nama, klien, status Berjalan, periode",
+      "ok": true,
+      "detail": "PRJ-002Pembangunan Gudang Logistik Tanjung PinangKec. Sungai Manggis, Kepulauan RiauCV. Jaya Abadi LogisticsBerjalan1 Mar 2026 – 15 Sep 202620%"
+    },
+    {
+      "name": "budi: p-002 tidak ditandai Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: baris p-003 memuat nama, klien, status Tertunda, periode",
+      "ok": true,
+      "detail": "PRJ-003Pengerjaan Jalan Akses PelabuhanPelabuhan Tanjung PinangDinas PU Kepulauan RiauTertunda1 Nov 2025 – 30 Apr 202660%"
+    },
+    {
+      "name": "budi: p-003 tidak ditandai Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: baris p-004 memuat nama, klien, status Selesai, periode",
+      "ok": true,
+      "detail": "PRJ-004Pembangunan Pos Keamanan Batang TembesiKawasan Industri BATAMINDOPT. Batamindo Industri PerkasaSelesai1 Jun 2025 – 31 Okt 2025100%"
+    },
+    {
+      "name": "budi: p-004 tidak ditandai Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: baris p-005 memuat nama, klien, status Arsip, periode",
+      "ok": true,
+      "detail": "PRJ-005Perbaikan Jembatan Kayu AngkutDesa Batu Angkut, Kepulauan RiauDesa Batu AngkutArsipHanya baca1 Agu 2024 – 31 Des 2024100%"
+    },
+    {
+      "name": "budi: proyek Arsip p-005 ditandai Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi /proyek 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi /proyek 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi: klik baris p-001 membuka detail tanpa muat ulang",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "siti (Admin Kantor): /proyek siap",
+      "ok": true,
+      "detail": "ready"
+    },
+    {
+      "name": "siti (Admin Kantor): tabel hanya memuat proyek dalam lingkup",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\"]"
+    },
+    {
+      "name": "siti: proyek di luar lingkup (p-003, p-004, p-005) tidak tampil",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "siti: kartu mobile tersembunyi di 1280 (tidak ada duplikasi tampilan)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti: ringkasan jumlah \"2 proyek\"",
+      "ok": true,
+      "detail": "2 proyek dalam lingkup akses Anda."
+    },
+    {
+      "name": "siti: DemoDataNotice tampil dan tidak mengklaim data tersimpan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti: tidak ada tombol bisnis (tambah/ubah/hapus) di daftar",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "siti: anggaran tidak ditampilkan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti: baris p-001 memuat nama, klien, status Berjalan, periode",
+      "ok": true,
+      "detail": "PRJ-001Renovasi Gedung Kantor BatamBalai Kota Batam, Kepulauan RiauPT. Properti NusantaraBerjalan15 Jan 2026 – 30 Jun 202645%"
+    },
+    {
+      "name": "siti: p-001 tidak ditandai Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti: baris p-002 memuat nama, klien, status Berjalan, periode",
+      "ok": true,
+      "detail": "PRJ-002Pembangunan Gudang Logistik Tanjung PinangKec. Sungai Manggis, Kepulauan RiauCV. Jaya Abadi LogisticsBerjalan1 Mar 2026 – 15 Sep 202620%"
+    },
+    {
+      "name": "siti: p-002 tidak ditandai Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: siti /proyek 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: siti /proyek 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "siti: klik baris p-001 membuka detail tanpa muat ulang",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "ahmad (Mandor): /proyek siap",
+      "ok": true,
+      "detail": "ready"
+    },
+    {
+      "name": "ahmad (Mandor): tabel hanya memuat proyek dalam lingkup",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\"]"
+    },
+    {
+      "name": "ahmad: proyek di luar lingkup (p-003, p-004, p-005) tidak tampil",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "ahmad: kartu mobile tersembunyi di 1280 (tidak ada duplikasi tampilan)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad: ringkasan jumlah \"2 proyek\"",
+      "ok": true,
+      "detail": "2 proyek dalam lingkup akses Anda."
+    },
+    {
+      "name": "ahmad: DemoDataNotice tampil dan tidak mengklaim data tersimpan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad: tidak ada tombol bisnis (tambah/ubah/hapus) di daftar",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "ahmad: anggaran tidak ditampilkan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad: baris p-001 memuat nama, klien, status Berjalan, periode",
+      "ok": true,
+      "detail": "PRJ-001Renovasi Gedung Kantor BatamBalai Kota Batam, Kepulauan RiauPT. Properti NusantaraBerjalan15 Jan 2026 – 30 Jun 202645%"
+    },
+    {
+      "name": "ahmad: p-001 tidak ditandai Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad: baris p-002 memuat nama, klien, status Berjalan, periode",
+      "ok": true,
+      "detail": "PRJ-002Pembangunan Gudang Logistik Tanjung PinangKec. Sungai Manggis, Kepulauan RiauCV. Jaya Abadi LogisticsBerjalan1 Mar 2026 – 15 Sep 202620%"
+    },
+    {
+      "name": "ahmad: p-002 tidak ditandai Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad /proyek 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad /proyek 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "ahmad: klik baris p-001 membuka detail tanpa muat ulang",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "eko (Mandor): /proyek siap",
+      "ok": true,
+      "detail": "ready"
+    },
+    {
+      "name": "eko (Mandor): tabel hanya memuat proyek dalam lingkup",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\"]"
+    },
+    {
+      "name": "eko: proyek di luar lingkup (p-003, p-004, p-005) tidak tampil",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "eko: kartu mobile tersembunyi di 1280 (tidak ada duplikasi tampilan)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko: ringkasan jumlah \"2 proyek\"",
+      "ok": true,
+      "detail": "2 proyek dalam lingkup akses Anda."
+    },
+    {
+      "name": "eko: DemoDataNotice tampil dan tidak mengklaim data tersimpan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko: tidak ada tombol bisnis (tambah/ubah/hapus) di daftar",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "eko: anggaran tidak ditampilkan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko: baris p-001 memuat nama, klien, status Berjalan, periode",
+      "ok": true,
+      "detail": "PRJ-001Renovasi Gedung Kantor BatamBalai Kota Batam, Kepulauan RiauPT. Properti NusantaraBerjalan15 Jan 2026 – 30 Jun 202645%"
+    },
+    {
+      "name": "eko: p-001 tidak ditandai Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko: baris p-002 memuat nama, klien, status Berjalan, periode",
+      "ok": true,
+      "detail": "PRJ-002Pembangunan Gudang Logistik Tanjung PinangKec. Sungai Manggis, Kepulauan RiauCV. Jaya Abadi LogisticsBerjalan1 Mar 2026 – 15 Sep 202620%"
+    },
+    {
+      "name": "eko: p-002 tidak ditandai Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: eko /proyek 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: eko /proyek 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "eko: klik baris p-001 membuka detail tanpa muat ulang",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "dewi (Anggota Tim): /proyek siap",
+      "ok": true,
+      "detail": "ready"
+    },
+    {
+      "name": "dewi (Anggota Tim): tabel hanya memuat proyek dalam lingkup",
+      "ok": true,
+      "detail": "[\"p-001\"]"
+    },
+    {
+      "name": "dewi: proyek di luar lingkup (p-002, p-003, p-004, p-005) tidak tampil",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "dewi: kartu mobile tersembunyi di 1280 (tidak ada duplikasi tampilan)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi: ringkasan jumlah \"1 proyek\"",
+      "ok": true,
+      "detail": "1 proyek dalam lingkup akses Anda."
+    },
+    {
+      "name": "dewi: DemoDataNotice tampil dan tidak mengklaim data tersimpan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi: tidak ada tombol bisnis (tambah/ubah/hapus) di daftar",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "dewi: anggaran tidak ditampilkan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi: baris p-001 memuat nama, klien, status Berjalan, periode",
+      "ok": true,
+      "detail": "PRJ-001Renovasi Gedung Kantor BatamBalai Kota Batam, Kepulauan RiauPT. Properti NusantaraBerjalan15 Jan 2026 – 30 Jun 202645%"
+    },
+    {
+      "name": "dewi: p-001 tidak ditandai Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi /proyek 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dewi /proyek 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "dewi: klik baris p-001 membuka detail tanpa muat ulang",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "budi 768: kartu sesuai lingkup",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\",\"p-003\",\"p-004\",\"p-005\"]"
+    },
+    {
+      "name": "budi 768: tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi /proyek 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi /proyek 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti 768: kartu sesuai lingkup",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\"]"
+    },
+    {
+      "name": "siti 768: tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: siti /proyek 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: siti /proyek 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad 768: kartu sesuai lingkup",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\"]"
+    },
+    {
+      "name": "ahmad 768: tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad /proyek 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad /proyek 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi 768: kartu sesuai lingkup",
+      "ok": true,
+      "detail": "[\"p-001\"]"
+    },
+    {
+      "name": "dewi 768: tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dewi /proyek 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi /proyek 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi mobile 375: emulasi sentuh aktif",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi mobile 375: kartu sesuai lingkup",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\",\"p-003\",\"p-004\",\"p-005\"]"
+    },
+    {
+      "name": "budi mobile 375: tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi /proyek 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi /proyek 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi mobile 375: satu kolom (semua kartu selebar sama dan tidak melewati viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\",\"16/343\",\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "budi mobile 375: setiap kartu >= 44px (area sentuh)",
+      "ok": true,
+      "detail": "[\"343x224\",\"343x248\",\"343x224\",\"343x248\",\"343x244\"]"
+    },
+    {
+      "name": "budi mobile 375: seluruh area kartu menjadi tautan ke detail (tidak hanya teks judul)",
+      "ok": true,
+      "detail": "[true,true,true,true,true]"
+    },
+    {
+      "name": "budi mobile 375: aksi utama tampil permanen (bukan hover-only)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi mobile 375: ketuk area kartu p-001 membuka detail tanpa muat ulang",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "overflow halaman: budi detail p-001 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "siti mobile 375: emulasi sentuh aktif",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti mobile 375: kartu sesuai lingkup",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\"]"
+    },
+    {
+      "name": "siti mobile 375: tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: siti /proyek 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: siti /proyek 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti mobile 375: satu kolom (semua kartu selebar sama dan tidak melewati viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "siti mobile 375: setiap kartu >= 44px (area sentuh)",
+      "ok": true,
+      "detail": "[\"343x224\",\"343x248\"]"
+    },
+    {
+      "name": "siti mobile 375: seluruh area kartu menjadi tautan ke detail (tidak hanya teks judul)",
+      "ok": true,
+      "detail": "[true,true]"
+    },
+    {
+      "name": "siti mobile 375: aksi utama tampil permanen (bukan hover-only)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti mobile 375: ketuk area kartu p-001 membuka detail tanpa muat ulang",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "overflow halaman: siti detail p-001 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "ahmad mobile 375: emulasi sentuh aktif",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile 375: kartu sesuai lingkup",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\"]"
+    },
+    {
+      "name": "ahmad mobile 375: tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad /proyek 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad /proyek 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile 375: satu kolom (semua kartu selebar sama dan tidak melewati viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "ahmad mobile 375: setiap kartu >= 44px (area sentuh)",
+      "ok": true,
+      "detail": "[\"343x224\",\"343x248\"]"
+    },
+    {
+      "name": "ahmad mobile 375: seluruh area kartu menjadi tautan ke detail (tidak hanya teks judul)",
+      "ok": true,
+      "detail": "[true,true]"
+    },
+    {
+      "name": "ahmad mobile 375: aksi utama tampil permanen (bukan hover-only)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile 375: ketuk area kartu p-001 membuka detail tanpa muat ulang",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "overflow halaman: ahmad detail p-001 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "eko mobile 375: emulasi sentuh aktif",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko mobile 375: kartu sesuai lingkup",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\"]"
+    },
+    {
+      "name": "eko mobile 375: tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: eko /proyek 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: eko /proyek 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko mobile 375: satu kolom (semua kartu selebar sama dan tidak melewati viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "eko mobile 375: setiap kartu >= 44px (area sentuh)",
+      "ok": true,
+      "detail": "[\"343x224\",\"343x248\"]"
+    },
+    {
+      "name": "eko mobile 375: seluruh area kartu menjadi tautan ke detail (tidak hanya teks judul)",
+      "ok": true,
+      "detail": "[true,true]"
+    },
+    {
+      "name": "eko mobile 375: aksi utama tampil permanen (bukan hover-only)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko mobile 375: ketuk area kartu p-001 membuka detail tanpa muat ulang",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "overflow halaman: eko detail p-001 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "dewi mobile 375: emulasi sentuh aktif",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile 375: kartu sesuai lingkup",
+      "ok": true,
+      "detail": "[\"p-001\"]"
+    },
+    {
+      "name": "dewi mobile 375: tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dewi /proyek 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi /proyek 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile 375: satu kolom (semua kartu selebar sama dan tidak melewati viewport)",
+      "ok": true,
+      "detail": "[\"16/343\"]"
+    },
+    {
+      "name": "dewi mobile 375: setiap kartu >= 44px (area sentuh)",
+      "ok": true,
+      "detail": "[\"343x224\"]"
+    },
+    {
+      "name": "dewi mobile 375: seluruh area kartu menjadi tautan ke detail (tidak hanya teks judul)",
+      "ok": true,
+      "detail": "[true]"
+    },
+    {
+      "name": "dewi mobile 375: aksi utama tampil permanen (bukan hover-only)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile 375: ketuk area kartu p-001 membuka detail tanpa muat ulang",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "overflow halaman: dewi detail p-001 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "ahmad (Mandor) mobile: login → /tugas → drawer → Proyek → daftar tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad (Mandor) mobile: ketuk kartu p-002 → detail p-002 (berhak)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: daftar setelah proyek runtime p-006 dibuat (navigasi klien, tanpa muat ulang)",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\",\"p-003\",\"p-004\",\"p-005\",\"p-006\"]"
+    },
+    {
+      "name": "budi: proyek runtime p-006 tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: baris proyek runtime memuat nama, klien, status Draf",
+      "ok": true,
+      "detail": "PRJ-006Proyek uji runtime(uji)(uji)Draf21 Mar 2026 – 21 Mar 20260%"
+    },
+    {
+      "name": "budi: klik proyek runtime membuka detail p-006",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti: daftar setelah proyek runtime p-006 dibuat (navigasi klien, tanpa muat ulang)",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\"]"
+    },
+    {
+      "name": "siti: proyek runtime p-006 tidak tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad: daftar setelah proyek runtime p-006 dibuat (navigasi klien, tanpa muat ulang)",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\"]"
+    },
+    {
+      "name": "ahmad: proyek runtime p-006 tidak tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi: daftar setelah proyek runtime p-006 dibuat (navigasi klien, tanpa muat ulang)",
+      "ok": true,
+      "detail": "[\"p-001\"]"
+    },
+    {
+      "name": "dewi: proyek runtime p-006 tidak tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tanpa sesi (Owner demo, mode pengembangan): daftar memuat semua proyek seed",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\",\"p-003\",\"p-004\",\"p-005\"]"
+    },
+    {
+      "name": "ADMIN tanpa proyek (1280): halaman siap",
+      "ok": true,
+      "detail": "ready"
+    },
+    {
+      "name": "ADMIN tanpa proyek (1280): state kosong tampil",
+      "ok": true,
+      "detail": "Belum ada proyek yang dapat Anda aksesProyek akan muncul di sini setelah Anda ditugaskan sebagai Admin Kantor proyek atau didaftarkan sebagai anggota proyek."
+    },
+    {
+      "name": "ADMIN tanpa proyek (1280): tidak ada kartu, baris, atau tautan detail",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ADMIN tanpa proyek (1280): ringkasan \"0 proyek\"",
+      "ok": true,
+      "detail": "0 proyek dalam lingkup akses Anda."
+    },
+    {
+      "name": "overflow halaman: ADMIN kosong 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "axe 0 pelanggaran: ADMIN kosong 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "MANDOR tanpa proyek (1280): halaman siap",
+      "ok": true,
+      "detail": "ready"
+    },
+    {
+      "name": "MANDOR tanpa proyek (1280): state kosong tampil",
+      "ok": true,
+      "detail": "Belum ada proyek yang dapat Anda aksesProyek akan muncul di sini setelah Anda ditugaskan sebagai Admin Kantor proyek atau didaftarkan sebagai anggota proyek."
+    },
+    {
+      "name": "MANDOR tanpa proyek (1280): tidak ada kartu, baris, atau tautan detail",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "MANDOR tanpa proyek (1280): ringkasan \"0 proyek\"",
+      "ok": true,
+      "detail": "0 proyek dalam lingkup akses Anda."
+    },
+    {
+      "name": "overflow halaman: MANDOR kosong 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "axe 0 pelanggaran: MANDOR kosong 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ANGGOTA tanpa proyek (1280): halaman siap",
+      "ok": true,
+      "detail": "ready"
+    },
+    {
+      "name": "ANGGOTA tanpa proyek (1280): state kosong tampil",
+      "ok": true,
+      "detail": "Belum ada proyek yang dapat Anda aksesProyek akan muncul di sini setelah Anda ditugaskan sebagai Admin Kantor proyek atau didaftarkan sebagai anggota proyek."
+    },
+    {
+      "name": "ANGGOTA tanpa proyek (1280): tidak ada kartu, baris, atau tautan detail",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ANGGOTA tanpa proyek (1280): ringkasan \"0 proyek\"",
+      "ok": true,
+      "detail": "0 proyek dalam lingkup akses Anda."
+    },
+    {
+      "name": "overflow halaman: ANGGOTA kosong 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "axe 0 pelanggaran: ANGGOTA kosong 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ADMIN tanpa proyek (375 mobile): halaman siap",
+      "ok": true,
+      "detail": "ready"
+    },
+    {
+      "name": "ADMIN tanpa proyek (375 mobile): state kosong tampil",
+      "ok": true,
+      "detail": "Belum ada proyek yang dapat Anda aksesProyek akan muncul di sini setelah Anda ditugaskan sebagai Admin Kantor proyek atau didaftarkan sebagai anggota proyek."
+    },
+    {
+      "name": "ADMIN tanpa proyek (375 mobile): tidak ada kartu, baris, atau tautan detail",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ADMIN tanpa proyek (375 mobile): ringkasan \"0 proyek\"",
+      "ok": true,
+      "detail": "0 proyek dalam lingkup akses Anda."
+    },
+    {
+      "name": "overflow halaman: ADMIN kosong 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: ADMIN kosong 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "MANDOR tanpa proyek (375 mobile): halaman siap",
+      "ok": true,
+      "detail": "ready"
+    },
+    {
+      "name": "MANDOR tanpa proyek (375 mobile): state kosong tampil",
+      "ok": true,
+      "detail": "Belum ada proyek yang dapat Anda aksesProyek akan muncul di sini setelah Anda ditugaskan sebagai Admin Kantor proyek atau didaftarkan sebagai anggota proyek."
+    },
+    {
+      "name": "MANDOR tanpa proyek (375 mobile): tidak ada kartu, baris, atau tautan detail",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "MANDOR tanpa proyek (375 mobile): ringkasan \"0 proyek\"",
+      "ok": true,
+      "detail": "0 proyek dalam lingkup akses Anda."
+    },
+    {
+      "name": "overflow halaman: MANDOR kosong 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: MANDOR kosong 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ANGGOTA tanpa proyek (375 mobile): halaman siap",
+      "ok": true,
+      "detail": "ready"
+    },
+    {
+      "name": "ANGGOTA tanpa proyek (375 mobile): state kosong tampil",
+      "ok": true,
+      "detail": "Belum ada proyek yang dapat Anda aksesProyek akan muncul di sini setelah Anda ditugaskan sebagai Admin Kantor proyek atau didaftarkan sebagai anggota proyek."
+    },
+    {
+      "name": "ANGGOTA tanpa proyek (375 mobile): tidak ada kartu, baris, atau tautan detail",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ANGGOTA tanpa proyek (375 mobile): ringkasan \"0 proyek\"",
+      "ok": true,
+      "detail": "0 proyek dalam lingkup akses Anda."
+    },
+    {
+      "name": "overflow halaman: ANGGOTA kosong 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: ANGGOTA kosong 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: URL langsung /proyek → akses ditolak",
+      "ok": true,
+      "detail": "denied"
+    },
+    {
+      "name": "guest: daftar proyek (kartu/baris/state kosong) tidak pernah terlihat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: tanpa sidebar App Shell",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: tidak ada nama proyek di halaman",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "matrix": {
+    "budi": {
+      "visible": [
+        "p-001",
+        "p-002",
+        "p-003",
+        "p-004",
+        "p-005"
+      ],
+      "others": []
+    },
+    "siti": {
+      "visible": [
+        "p-001",
+        "p-002"
+      ],
+      "others": [
+        {
+          "id": "p-003",
+          "shown": false
+        },
+        {
+          "id": "p-004",
+          "shown": false
+        },
+        {
+          "id": "p-005",
+          "shown": false
+        }
+      ]
+    },
+    "ahmad": {
+      "visible": [
+        "p-001",
+        "p-002"
+      ],
+      "others": [
+        {
+          "id": "p-003",
+          "shown": false
+        },
+        {
+          "id": "p-004",
+          "shown": false
+        },
+        {
+          "id": "p-005",
+          "shown": false
+        }
+      ]
+    },
+    "eko": {
+      "visible": [
+        "p-001",
+        "p-002"
+      ],
+      "others": [
+        {
+          "id": "p-003",
+          "shown": false
+        },
+        {
+          "id": "p-004",
+          "shown": false
+        },
+        {
+          "id": "p-005",
+          "shown": false
+        }
+      ]
+    },
+    "dewi": {
+      "visible": [
+        "p-001"
+      ],
+      "others": [
+        {
+          "id": "p-002",
+          "shown": false
+        },
+        {
+          "id": "p-003",
+          "shown": false
+        },
+        {
+          "id": "p-004",
+          "shown": false
+        },
+        {
+          "id": "p-005",
+          "shown": false
+        }
+      ]
+    }
+  },
+  "measurements": {
+    "axe budi /proyek 1280": [],
+    "axe siti /proyek 1280": [],
+    "axe ahmad /proyek 1280": [],
+    "axe eko /proyek 1280": [],
+    "axe dewi /proyek 1280": [],
+    "axe budi /proyek 768": [],
+    "axe siti /proyek 768": [],
+    "axe ahmad /proyek 768": [],
+    "axe dewi /proyek 768": [],
+    "axe budi /proyek 375 mobile": [],
+    "kartu budi 375": [
+      {
+        "id": "p-001",
+        "left": 16,
+        "right": 359,
+        "w": 343,
+        "h": 224,
+        "linkH": 21
+      },
+      {
+        "id": "p-002",
+        "left": 16,
+        "right": 359,
+        "w": 343,
+        "h": 248,
+        "linkH": 45
+      },
+      {
+        "id": "p-003",
+        "left": 16,
+        "right": 359,
+        "w": 343,
+        "h": 224,
+        "linkH": 21
+      },
+      {
+        "id": "p-004",
+        "left": 16,
+        "right": 359,
+        "w": 343,
+        "h": 248,
+        "linkH": 45
+      },
+      {
+        "id": "p-005",
+        "left": 16,
+        "right": 359,
+        "w": 343,
+        "h": 244,
+        "linkH": 21
+      }
+    ],
+    "axe siti /proyek 375 mobile": [],
+    "kartu siti 375": [
+      {
+        "id": "p-001",
+        "left": 16,
+        "right": 359,
+        "w": 343,
+        "h": 224,
+        "linkH": 21
+      },
+      {
+        "id": "p-002",
+        "left": 16,
+        "right": 359,
+        "w": 343,
+        "h": 248,
+        "linkH": 45
+      }
+    ],
+    "axe ahmad /proyek 375 mobile": [],
+    "kartu ahmad 375": [
+      {
+        "id": "p-001",
+        "left": 16,
+        "right": 359,
+        "w": 343,
+        "h": 224,
+        "linkH": 21
+      },
+      {
+        "id": "p-002",
+        "left": 16,
+        "right": 359,
+        "w": 343,
+        "h": 248,
+        "linkH": 45
+      }
+    ],
+    "axe eko /proyek 375 mobile": [],
+    "kartu eko 375": [
+      {
+        "id": "p-001",
+        "left": 16,
+        "right": 359,
+        "w": 343,
+        "h": 224,
+        "linkH": 21
+      },
+      {
+        "id": "p-002",
+        "left": 16,
+        "right": 359,
+        "w": 343,
+        "h": 248,
+        "linkH": 45
+      }
+    ],
+    "axe dewi /proyek 375 mobile": [],
+    "kartu dewi 375": [
+      {
+        "id": "p-001",
+        "left": 16,
+        "right": 359,
+        "w": 343,
+        "h": 224,
+        "linkH": 21
+      }
+    ],
+    "axe ADMIN kosong 1280": [],
+    "axe MANDOR kosong 1280": [],
+    "axe ANGGOTA kosong 1280": [],
+    "axe ADMIN kosong 375 mobile": [],
+    "axe MANDOR kosong 375 mobile": [],
+    "axe ANGGOTA kosong 375 mobile": []
+  },
+  "notes": [],
+  "failures": []
+}
