@@ -153,6 +153,15 @@ export function canViewProject(actor: Actor, project: Project, data: AccessData)
 export const getVisibleProjects = (actor: Actor, data: AccessData): Project[] =>
   data.projects.filter((project) => canViewProject(actor, project, data));
 
+/**
+ * Tab "Tim" di detail proyek (U4-5, hanya baca): Owner, Admin principal, dan Mandor anggota proyek itu.
+ * Anggota Tim tidak (J5: ia hanya melihat tugas miliknya, tanpa susunan tim). Fail-closed: role lain, Guest, dan
+ * aktor kosong tidak. Proyek Arsip tetap dapat dibaca bila dalam lingkup (G7 hanya menutup mutasi).
+ */
+export function canViewProjectTeam(actor: Actor, project: Project, data: AccessData): boolean {
+  return canViewProject(actor, project, data) && actor?.role !== "ANGGOTA";
+}
+
 /** Owner saja (J3). */
 export const canCreateProject = (actor: Actor): boolean => isOwner(actor);
 
@@ -216,6 +225,13 @@ export function canViewTask(actor: Actor, task: Task, data: AccessData): boolean
 
 export const getVisibleTasks = (actor: Actor, data: AccessData): Task[] =>
   data.tasks.filter((task) => canViewTask(actor, task, data));
+
+/** Tugas sebuah proyek dalam lingkup pelaku (G5, J5): bagian `getVisibleTasks` untuk satu proyek. */
+export const getVisibleProjectTasks = (actor: Actor, project: Project, data: AccessData): Task[] =>
+  data.tasks.filter((task) => task.projectId === project.id && canViewTask(actor, task, data));
+
+/** Anggota Tim hanya melihat tugas miliknya (J5); dipakai UI untuk menjelaskan lingkup daftar tugas. Sejalan dengan `canViewTask`. */
+export const seesOnlyOwnTasks = (actor: Actor): boolean => actor?.role === "ANGGOTA";
 
 /** Membuat tugas: Owner, atau Admin principal proyek itu. Mandor dan Anggota Tim tidak (hanya memperbarui). */
 export const canCreateTask = (actor: Actor, project: Project): boolean => !isArchived(project) && manages(actor, project);

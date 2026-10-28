@@ -1,0 +1,3375 @@
+{
+  "checks": [
+    {
+      "name": "HTML /proyek/p-001: memuat nama proyek dan penanda detail (kontrak U4-0)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "HTML /proyek/p-001: status memuat (data-state=loading) dan skeleton, belum ada tab",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "HTML /proyek/p-001: tidak memuat judul tugas, nama tugas, atau email anggota",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi (Owner): /proyek/p-001 (dalam lingkup) siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "budi p-001: tab = ringkasan, tugas, tim",
+      "ok": true,
+      "detail": "[\"ringkasan\",\"tugas\",\"tim\"]"
+    },
+    {
+      "name": "budi p-001: tab Ringkasan terpilih awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-001: label tab Tugas memuat jumlah tugas dalam lingkup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-001: header memuat kode, nama, tautan kembali ke daftar",
+      "ok": true,
+      "detail": "{\"h1\":\"Renovasi Gedung Kantor Batam\",\"eyebrow\":\"PRJ-001\",\"back\":\"/proyek\"}"
+    },
+    {
+      "name": "budi p-001: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-001StatusBerjalanKlienPT. Properti NusantaraLokasiBalai Kota Batam, Kepulauan RiauPeriode15 Jan 2026 – 30 Jun 2026Admin Kantor penanggung jawabSiti AminahDeskripsiRenovasi tota"
+    },
+    {
+      "name": "budi p-001: ringkasan memuat deskripsi proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-001: progres proyek 45%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-001: hitungan tugas (total 4, progres 1, selesai 1, terlambat 2)",
+      "ok": true,
+      "detail": "{\"total\":{\"value\":\"4\",\"note\":\"2 belum dimulai\"},\"prog\":{\"value\":\"1\",\"note\":null},\"done\":{\"value\":\"1\",\"note\":null},\"overdue\":{\"value\":\"2\",\"note\":\"terhadap tanggal acuan demo\"}}"
+    },
+    {
+      "name": "budi p-001: judul ringkasan tugas umum",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-001: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini."
+    },
+    {
+      "name": "budi p-001: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-001 ringkasan: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-001 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-001 ringkasan: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-001: proyek non-Arsip tanpa penanda Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-001 ringkasan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-001 ringkasan 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi p-001: tab Tugas (tabel) hanya memuat tugas dalam lingkup [\"t-001\",\"t-002\",\"t-003\",\"t-006\"]",
+      "ok": true,
+      "detail": "[\"t-001\",\"t-002\",\"t-003\",\"t-006\"]"
+    },
+    {
+      "name": "budi p-001: kartu mobile tersembunyi di 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-001: baris t-001 memuat kode, judul, penanggung jawab Ahmad Rizal, status Selesai, tenggat 15 Feb 2026",
+      "ok": true,
+      "detail": "TSK-001Pembongkaran dinding partisi lantai 1Ahmad RizalTinggiSelesai15 Feb 2026100%"
+    },
+    {
+      "name": "budi p-001: baris t-002 memuat kode, judul, penanggung jawab Dewi Lestari, status Dalam Progres, tenggat 28 Feb 2026, Terlambat",
+      "ok": true,
+      "detail": "TSK-002Pengecekan sistem kelistrikan lamaDewi LestariTinggiDalam Progres28 Feb 2026Terlambat60%"
+    },
+    {
+      "name": "budi p-001: baris t-003 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 5 Mar 2026, Terlambat",
+      "ok": true,
+      "detail": "TSK-003Pembersihan material sisa pembongkaranEko PrasetyoSedangBelum Dimulai5 Mar 2026Terlambat0%"
+    },
+    {
+      "name": "budi p-001: baris t-006 memuat kode, judul, penanggung jawab Dewi Lestari, status Belum Dimulai, tenggat 1 Apr 2026",
+      "ok": true,
+      "detail": "TSK-006Pemasangan keramik lobbyDewi LestariSedangBelum Dimulai1 Apr 2026Mendatang0%"
+    },
+    {
+      "name": "budi p-001: catatan lingkup tugas (semua tugas proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-001: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas",
+      "ok": true,
+      "detail": "Tenggat mengikuti tanggal acuan demo 21 Maret 2026."
+    },
+    {
+      "name": "budi p-001: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat)",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "budi p-001 tugas: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-001 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-001 tugas: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-001 tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-001 tugas 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi p-001: tab Tim (tabel) memuat 4 orang: Admin principal lalu anggota",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "budi p-001: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, email tampil",
+      "ok": true,
+      "detail": "Siti AminahAdmin KantorPenanggung jawabsiti@proyekin.id"
+    },
+    {
+      "name": "budi p-001: baris tim Ahmad Rizal — peran Mandor, email tampil",
+      "ok": true,
+      "detail": "Ahmad RizalMandorahmad@proyekin.id"
+    },
+    {
+      "name": "budi p-001: baris tim Dewi Lestari — peran Anggota Tim, email tampil",
+      "ok": true,
+      "detail": "Dewi LestariAnggota Timdewi@proyekin.id"
+    },
+    {
+      "name": "budi p-001: baris tim Eko Prasetyo — peran Mandor, email tampil",
+      "ok": true,
+      "detail": "Eko PrasetyoMandoreko@proyekin.id"
+    },
+    {
+      "name": "budi p-001: tab Tim memuat kolom Email",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-001: tabel tim muat tanpa gulir horizontal di 1280",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "budi p-001 tim: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-001 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-001 tim: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-001 tim 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-001 tim 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi (Owner): /proyek/p-002 (dalam lingkup) siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "budi p-002: tab = ringkasan, tugas, tim",
+      "ok": true,
+      "detail": "[\"ringkasan\",\"tugas\",\"tim\"]"
+    },
+    {
+      "name": "budi p-002: tab Ringkasan terpilih awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-002: label tab Tugas memuat jumlah tugas dalam lingkup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-002: header memuat kode, nama, tautan kembali ke daftar",
+      "ok": true,
+      "detail": "{\"h1\":\"Pembangunan Gudang Logistik Tanjung Pinang\",\"eyebrow\":\"PRJ-002\",\"back\":\"/proyek\"}"
+    },
+    {
+      "name": "budi p-002: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-002StatusBerjalanKlienCV. Jaya Abadi LogisticsLokasiKec. Sungai Manggis, Kepulauan RiauPeriode1 Mar 2026 – 15 Sep 2026Admin Kantor penanggung jawabSiti AminahDeskripsiPembangun"
+    },
+    {
+      "name": "budi p-002: ringkasan memuat deskripsi proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-002: progres proyek 20%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-002: hitungan tugas (total 2, progres 1, selesai 0, terlambat 0)",
+      "ok": true,
+      "detail": "{\"total\":{\"value\":\"2\",\"note\":\"1 belum dimulai\"},\"prog\":{\"value\":\"1\",\"note\":null},\"done\":{\"value\":\"0\",\"note\":null},\"overdue\":{\"value\":\"0\",\"note\":\"terhadap tanggal acuan demo\"}}"
+    },
+    {
+      "name": "budi p-002: judul ringkasan tugas umum",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-002: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini."
+    },
+    {
+      "name": "budi p-002: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-002 ringkasan: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-002 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-002 ringkasan: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-002: proyek non-Arsip tanpa penanda Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-002 ringkasan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-002 ringkasan 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi p-002: tab Tugas (tabel) hanya memuat tugas dalam lingkup [\"t-004\",\"t-005\"]",
+      "ok": true,
+      "detail": "[\"t-004\",\"t-005\"]"
+    },
+    {
+      "name": "budi p-002: kartu mobile tersembunyi di 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-002: baris t-004 memuat kode, judul, penanggung jawab Ahmad Rizal, status Dalam Progres, tenggat 10 Apr 2026",
+      "ok": true,
+      "detail": "TSK-004Pembuatan pondasi footplateAhmad RizalTinggiDalam Progres10 Apr 2026Mendatang35%"
+    },
+    {
+      "name": "budi p-002: baris t-005 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 25 Mar 2026",
+      "ok": true,
+      "detail": "TSK-005Pemesanan baja WF untuk strukturEko PrasetyoTinggiBelum Dimulai25 Mar 2026Mendatang0%"
+    },
+    {
+      "name": "budi p-002: catatan lingkup tugas (semua tugas proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-002: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas",
+      "ok": true,
+      "detail": "Tenggat mengikuti tanggal acuan demo 21 Maret 2026."
+    },
+    {
+      "name": "budi p-002: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat)",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "budi p-002 tugas: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-002 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-002 tugas: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-002 tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-002 tugas 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi p-002: tab Tim (tabel) memuat 3 orang: Admin principal lalu anggota",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-005\"]"
+    },
+    {
+      "name": "budi p-002: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, email tampil",
+      "ok": true,
+      "detail": "Siti AminahAdmin KantorPenanggung jawabsiti@proyekin.id"
+    },
+    {
+      "name": "budi p-002: baris tim Ahmad Rizal — peran Mandor, email tampil",
+      "ok": true,
+      "detail": "Ahmad RizalMandorahmad@proyekin.id"
+    },
+    {
+      "name": "budi p-002: baris tim Eko Prasetyo — peran Mandor, email tampil",
+      "ok": true,
+      "detail": "Eko PrasetyoMandoreko@proyekin.id"
+    },
+    {
+      "name": "budi p-002: tab Tim memuat kolom Email",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-002: tabel tim muat tanpa gulir horizontal di 1280",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "budi p-002 tim: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-002 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-002 tim: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-002 tim 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-002 tim 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi (Owner): /proyek/p-003 (dalam lingkup) siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "budi p-003: tab = ringkasan, tugas, tim",
+      "ok": true,
+      "detail": "[\"ringkasan\",\"tugas\",\"tim\"]"
+    },
+    {
+      "name": "budi p-003: tab Ringkasan terpilih awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003: label tab Tugas memuat jumlah tugas dalam lingkup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003: header memuat kode, nama, tautan kembali ke daftar",
+      "ok": true,
+      "detail": "{\"h1\":\"Pengerjaan Jalan Akses Pelabuhan\",\"eyebrow\":\"PRJ-003\",\"back\":\"/proyek\"}"
+    },
+    {
+      "name": "budi p-003: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-003StatusTertundaKlienDinas PU Kepulauan RiauLokasiPelabuhan Tanjung PinangPeriode1 Nov 2025 – 30 Apr 2026Admin Kantor penanggung jawabBelum ditetapkanDeskripsiRehabilitasi jal"
+    },
+    {
+      "name": "budi p-003: ringkasan memuat deskripsi proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003: progres proyek 60%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003: hitungan tugas (total 0, progres 0, selesai 0, terlambat 0)",
+      "ok": true,
+      "detail": "{\"total\":{\"value\":\"0\",\"note\":\"0 belum dimulai\"},\"prog\":{\"value\":\"0\",\"note\":null},\"done\":{\"value\":\"0\",\"note\":null},\"overdue\":{\"value\":\"0\",\"note\":\"terhadap tanggal acuan demo\"}}"
+    },
+    {
+      "name": "budi p-003: judul ringkasan tugas umum",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini."
+    },
+    {
+      "name": "budi p-003: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003 ringkasan: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-003 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-003 ringkasan: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003: proyek non-Arsip tanpa penanda Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-003 ringkasan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-003 ringkasan 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi p-003: tab Tugas (tabel) hanya memuat tugas dalam lingkup []",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-003: kartu mobile tersembunyi di 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003: catatan lingkup tugas (semua tugas proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003: state kosong tugas tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas",
+      "ok": true,
+      "detail": "Tenggat mengikuti tanggal acuan demo 21 Maret 2026."
+    },
+    {
+      "name": "budi p-003 tugas: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-003 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-003 tugas: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-003 tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-003 tugas 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi p-003: tab Tim (tabel) memuat 0 orang: Admin principal lalu anggota",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-003: tab Tim kosong: tanpa tabel, tanpa email",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003: state kosong tim tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003 tim: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-003 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-003 tim: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-003 tim 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-003 tim 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi (Owner): /proyek/p-004 (dalam lingkup) siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "budi p-004: tab = ringkasan, tugas, tim",
+      "ok": true,
+      "detail": "[\"ringkasan\",\"tugas\",\"tim\"]"
+    },
+    {
+      "name": "budi p-004: tab Ringkasan terpilih awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: label tab Tugas memuat jumlah tugas dalam lingkup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: header memuat kode, nama, tautan kembali ke daftar",
+      "ok": true,
+      "detail": "{\"h1\":\"Pembangunan Pos Keamanan Batang Tembesi\",\"eyebrow\":\"PRJ-004\",\"back\":\"/proyek\"}"
+    },
+    {
+      "name": "budi p-004: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-004StatusSelesaiKlienPT. Batamindo Industri PerkasaLokasiKawasan Industri BATAMINDOPeriode1 Jun 2025 – 31 Okt 2025Admin Kantor penanggung jawabBelum ditetapkanDeskripsiPembangu"
+    },
+    {
+      "name": "budi p-004: ringkasan memuat deskripsi proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: progres proyek 100%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: hitungan tugas (total 0, progres 0, selesai 0, terlambat 0)",
+      "ok": true,
+      "detail": "{\"total\":{\"value\":\"0\",\"note\":\"0 belum dimulai\"},\"prog\":{\"value\":\"0\",\"note\":null},\"done\":{\"value\":\"0\",\"note\":null},\"overdue\":{\"value\":\"0\",\"note\":\"terhadap tanggal acuan demo\"}}"
+    },
+    {
+      "name": "budi p-004: judul ringkasan tugas umum",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini."
+    },
+    {
+      "name": "budi p-004: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004 ringkasan: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-004 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-004 ringkasan: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: proyek non-Arsip tanpa penanda Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-004 ringkasan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-004 ringkasan 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi p-004: tab Tugas (tabel) hanya memuat tugas dalam lingkup []",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-004: kartu mobile tersembunyi di 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: catatan lingkup tugas (semua tugas proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: state kosong tugas tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas",
+      "ok": true,
+      "detail": "Tenggat mengikuti tanggal acuan demo 21 Maret 2026."
+    },
+    {
+      "name": "budi p-004 tugas: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-004 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-004 tugas: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-004 tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-004 tugas 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi p-004: tab Tim (tabel) memuat 0 orang: Admin principal lalu anggota",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-004: tab Tim kosong: tanpa tabel, tanpa email",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: state kosong tim tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004 tim: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-004 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-004 tim: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-004 tim 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-004 tim 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi (Owner): /proyek/p-005 (dalam lingkup) siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "budi p-005: tab = ringkasan, tugas, tim",
+      "ok": true,
+      "detail": "[\"ringkasan\",\"tugas\",\"tim\"]"
+    },
+    {
+      "name": "budi p-005: tab Ringkasan terpilih awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: label tab Tugas memuat jumlah tugas dalam lingkup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: header memuat kode, nama, tautan kembali ke daftar",
+      "ok": true,
+      "detail": "{\"h1\":\"Perbaikan Jembatan Kayu Angkut\",\"eyebrow\":\"PRJ-005\",\"back\":\"/proyek\"}"
+    },
+    {
+      "name": "budi p-005: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-005StatusArsipKlienDesa Batu AngkutLokasiDesa Batu Angkut, Kepulauan RiauPeriode1 Agu 2024 – 31 Des 2024Admin Kantor penanggung jawabBelum ditetapkanDeskripsiPerbaikan struktur"
+    },
+    {
+      "name": "budi p-005: ringkasan memuat deskripsi proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: progres proyek 100%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: hitungan tugas (total 0, progres 0, selesai 0, terlambat 0)",
+      "ok": true,
+      "detail": "{\"total\":{\"value\":\"0\",\"note\":\"0 belum dimulai\"},\"prog\":{\"value\":\"0\",\"note\":null},\"done\":{\"value\":\"0\",\"note\":null},\"overdue\":{\"value\":\"0\",\"note\":\"terhadap tanggal acuan demo\"}}"
+    },
+    {
+      "name": "budi p-005: judul ringkasan tugas umum",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini."
+    },
+    {
+      "name": "budi p-005: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005 ringkasan: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-005 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-005 ringkasan: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: proyek Arsip ditandai Hanya baca dan catatan hanya baca tampil",
+      "ok": true,
+      "detail": "Proyek berstatus Arsip bersifat hanya baca."
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-005 ringkasan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-005 ringkasan 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi p-005: tab Tugas (tabel) hanya memuat tugas dalam lingkup []",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-005: kartu mobile tersembunyi di 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: catatan lingkup tugas (semua tugas proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: state kosong tugas tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas",
+      "ok": true,
+      "detail": "Tenggat mengikuti tanggal acuan demo 21 Maret 2026."
+    },
+    {
+      "name": "budi p-005 tugas: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-005 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-005 tugas: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-005 tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-005 tugas 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "budi p-005: tab Tim (tabel) memuat 0 orang: Admin principal lalu anggota",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-005: tab Tim kosong: tanpa tabel, tanpa email",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: state kosong tim tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005 tim: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "budi p-005 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "budi p-005 tim: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-005 tim 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-005 tim 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "siti (Admin Kantor): /proyek/p-001 (dalam lingkup) siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "siti p-001: tab = ringkasan, tugas, tim",
+      "ok": true,
+      "detail": "[\"ringkasan\",\"tugas\",\"tim\"]"
+    },
+    {
+      "name": "siti p-001: tab Ringkasan terpilih awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-001: label tab Tugas memuat jumlah tugas dalam lingkup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-001: header memuat kode, nama, tautan kembali ke daftar",
+      "ok": true,
+      "detail": "{\"h1\":\"Renovasi Gedung Kantor Batam\",\"eyebrow\":\"PRJ-001\",\"back\":\"/proyek\"}"
+    },
+    {
+      "name": "siti p-001: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-001StatusBerjalanKlienPT. Properti NusantaraLokasiBalai Kota Batam, Kepulauan RiauPeriode15 Jan 2026 – 30 Jun 2026Admin Kantor penanggung jawabSiti AminahDeskripsiRenovasi tota"
+    },
+    {
+      "name": "siti p-001: ringkasan memuat deskripsi proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-001: progres proyek 45%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-001: hitungan tugas (total 4, progres 1, selesai 1, terlambat 2)",
+      "ok": true,
+      "detail": "{\"total\":{\"value\":\"4\",\"note\":\"2 belum dimulai\"},\"prog\":{\"value\":\"1\",\"note\":null},\"done\":{\"value\":\"1\",\"note\":null},\"overdue\":{\"value\":\"2\",\"note\":\"terhadap tanggal acuan demo\"}}"
+    },
+    {
+      "name": "siti p-001: judul ringkasan tugas umum",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-001: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini."
+    },
+    {
+      "name": "siti p-001: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-001 ringkasan: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "siti p-001 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "siti p-001 ringkasan: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-001: proyek non-Arsip tanpa penanda Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: siti p-001 ringkasan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: siti p-001 ringkasan 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "siti p-001: tab Tugas (tabel) hanya memuat tugas dalam lingkup [\"t-001\",\"t-002\",\"t-003\",\"t-006\"]",
+      "ok": true,
+      "detail": "[\"t-001\",\"t-002\",\"t-003\",\"t-006\"]"
+    },
+    {
+      "name": "siti p-001: kartu mobile tersembunyi di 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-001: baris t-001 memuat kode, judul, penanggung jawab Ahmad Rizal, status Selesai, tenggat 15 Feb 2026",
+      "ok": true,
+      "detail": "TSK-001Pembongkaran dinding partisi lantai 1Ahmad RizalTinggiSelesai15 Feb 2026100%"
+    },
+    {
+      "name": "siti p-001: baris t-002 memuat kode, judul, penanggung jawab Dewi Lestari, status Dalam Progres, tenggat 28 Feb 2026, Terlambat",
+      "ok": true,
+      "detail": "TSK-002Pengecekan sistem kelistrikan lamaDewi LestariTinggiDalam Progres28 Feb 2026Terlambat60%"
+    },
+    {
+      "name": "siti p-001: baris t-003 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 5 Mar 2026, Terlambat",
+      "ok": true,
+      "detail": "TSK-003Pembersihan material sisa pembongkaranEko PrasetyoSedangBelum Dimulai5 Mar 2026Terlambat0%"
+    },
+    {
+      "name": "siti p-001: baris t-006 memuat kode, judul, penanggung jawab Dewi Lestari, status Belum Dimulai, tenggat 1 Apr 2026",
+      "ok": true,
+      "detail": "TSK-006Pemasangan keramik lobbyDewi LestariSedangBelum Dimulai1 Apr 2026Mendatang0%"
+    },
+    {
+      "name": "siti p-001: catatan lingkup tugas (semua tugas proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-001: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas",
+      "ok": true,
+      "detail": "Tenggat mengikuti tanggal acuan demo 21 Maret 2026."
+    },
+    {
+      "name": "siti p-001: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat)",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "siti p-001 tugas: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "siti p-001 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "siti p-001 tugas: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: siti p-001 tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: siti p-001 tugas 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "siti p-001: tab Tim (tabel) memuat 4 orang: Admin principal lalu anggota",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "siti p-001: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, email tampil",
+      "ok": true,
+      "detail": "Siti AminahAdmin KantorPenanggung jawabsiti@proyekin.id"
+    },
+    {
+      "name": "siti p-001: baris tim Ahmad Rizal — peran Mandor, email tampil",
+      "ok": true,
+      "detail": "Ahmad RizalMandorahmad@proyekin.id"
+    },
+    {
+      "name": "siti p-001: baris tim Dewi Lestari — peran Anggota Tim, email tampil",
+      "ok": true,
+      "detail": "Dewi LestariAnggota Timdewi@proyekin.id"
+    },
+    {
+      "name": "siti p-001: baris tim Eko Prasetyo — peran Mandor, email tampil",
+      "ok": true,
+      "detail": "Eko PrasetyoMandoreko@proyekin.id"
+    },
+    {
+      "name": "siti p-001: tab Tim memuat kolom Email",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-001: tabel tim muat tanpa gulir horizontal di 1280",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "siti p-001 tim: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "siti p-001 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "siti p-001 tim: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: siti p-001 tim 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: siti p-001 tim 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "siti (Admin Kantor): /proyek/p-002 (dalam lingkup) siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "siti p-002: tab = ringkasan, tugas, tim",
+      "ok": true,
+      "detail": "[\"ringkasan\",\"tugas\",\"tim\"]"
+    },
+    {
+      "name": "siti p-002: tab Ringkasan terpilih awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-002: label tab Tugas memuat jumlah tugas dalam lingkup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-002: header memuat kode, nama, tautan kembali ke daftar",
+      "ok": true,
+      "detail": "{\"h1\":\"Pembangunan Gudang Logistik Tanjung Pinang\",\"eyebrow\":\"PRJ-002\",\"back\":\"/proyek\"}"
+    },
+    {
+      "name": "siti p-002: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-002StatusBerjalanKlienCV. Jaya Abadi LogisticsLokasiKec. Sungai Manggis, Kepulauan RiauPeriode1 Mar 2026 – 15 Sep 2026Admin Kantor penanggung jawabSiti AminahDeskripsiPembangun"
+    },
+    {
+      "name": "siti p-002: ringkasan memuat deskripsi proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-002: progres proyek 20%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-002: hitungan tugas (total 2, progres 1, selesai 0, terlambat 0)",
+      "ok": true,
+      "detail": "{\"total\":{\"value\":\"2\",\"note\":\"1 belum dimulai\"},\"prog\":{\"value\":\"1\",\"note\":null},\"done\":{\"value\":\"0\",\"note\":null},\"overdue\":{\"value\":\"0\",\"note\":\"terhadap tanggal acuan demo\"}}"
+    },
+    {
+      "name": "siti p-002: judul ringkasan tugas umum",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-002: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini."
+    },
+    {
+      "name": "siti p-002: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-002 ringkasan: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "siti p-002 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "siti p-002 ringkasan: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-002: proyek non-Arsip tanpa penanda Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: siti p-002 ringkasan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: siti p-002 ringkasan 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "siti p-002: tab Tugas (tabel) hanya memuat tugas dalam lingkup [\"t-004\",\"t-005\"]",
+      "ok": true,
+      "detail": "[\"t-004\",\"t-005\"]"
+    },
+    {
+      "name": "siti p-002: kartu mobile tersembunyi di 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-002: baris t-004 memuat kode, judul, penanggung jawab Ahmad Rizal, status Dalam Progres, tenggat 10 Apr 2026",
+      "ok": true,
+      "detail": "TSK-004Pembuatan pondasi footplateAhmad RizalTinggiDalam Progres10 Apr 2026Mendatang35%"
+    },
+    {
+      "name": "siti p-002: baris t-005 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 25 Mar 2026",
+      "ok": true,
+      "detail": "TSK-005Pemesanan baja WF untuk strukturEko PrasetyoTinggiBelum Dimulai25 Mar 2026Mendatang0%"
+    },
+    {
+      "name": "siti p-002: catatan lingkup tugas (semua tugas proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-002: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas",
+      "ok": true,
+      "detail": "Tenggat mengikuti tanggal acuan demo 21 Maret 2026."
+    },
+    {
+      "name": "siti p-002: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat)",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "siti p-002 tugas: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "siti p-002 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "siti p-002 tugas: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: siti p-002 tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: siti p-002 tugas 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "siti p-002: tab Tim (tabel) memuat 3 orang: Admin principal lalu anggota",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-005\"]"
+    },
+    {
+      "name": "siti p-002: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, email tampil",
+      "ok": true,
+      "detail": "Siti AminahAdmin KantorPenanggung jawabsiti@proyekin.id"
+    },
+    {
+      "name": "siti p-002: baris tim Ahmad Rizal — peran Mandor, email tampil",
+      "ok": true,
+      "detail": "Ahmad RizalMandorahmad@proyekin.id"
+    },
+    {
+      "name": "siti p-002: baris tim Eko Prasetyo — peran Mandor, email tampil",
+      "ok": true,
+      "detail": "Eko PrasetyoMandoreko@proyekin.id"
+    },
+    {
+      "name": "siti p-002: tab Tim memuat kolom Email",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti p-002: tabel tim muat tanpa gulir horizontal di 1280",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "siti p-002 tim: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "siti p-002 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "siti p-002 tim: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: siti p-002 tim 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: siti p-002 tim 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "siti (Admin Kantor): URL langsung /proyek/p-003 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "siti (Admin Kantor): URL langsung /proyek/p-004 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "siti (Admin Kantor): URL langsung /proyek/p-005 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad (Mandor): /proyek/p-001 (dalam lingkup) siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "ahmad p-001: tab = ringkasan, tugas, tim",
+      "ok": true,
+      "detail": "[\"ringkasan\",\"tugas\",\"tim\"]"
+    },
+    {
+      "name": "ahmad p-001: tab Ringkasan terpilih awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-001: label tab Tugas memuat jumlah tugas dalam lingkup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-001: header memuat kode, nama, tautan kembali ke daftar",
+      "ok": true,
+      "detail": "{\"h1\":\"Renovasi Gedung Kantor Batam\",\"eyebrow\":\"PRJ-001\",\"back\":\"/proyek\"}"
+    },
+    {
+      "name": "ahmad p-001: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-001StatusBerjalanKlienPT. Properti NusantaraLokasiBalai Kota Batam, Kepulauan RiauPeriode15 Jan 2026 – 30 Jun 2026Admin Kantor penanggung jawabSiti AminahDeskripsiRenovasi tota"
+    },
+    {
+      "name": "ahmad p-001: ringkasan memuat deskripsi proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-001: progres proyek 45%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-001: hitungan tugas (total 4, progres 1, selesai 1, terlambat 2)",
+      "ok": true,
+      "detail": "{\"total\":{\"value\":\"4\",\"note\":\"2 belum dimulai\"},\"prog\":{\"value\":\"1\",\"note\":null},\"done\":{\"value\":\"1\",\"note\":null},\"overdue\":{\"value\":\"2\",\"note\":\"terhadap tanggal acuan demo\"}}"
+    },
+    {
+      "name": "ahmad p-001: judul ringkasan tugas umum",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-001: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini."
+    },
+    {
+      "name": "ahmad p-001: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-001 ringkasan: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "ahmad p-001 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "ahmad p-001 ringkasan: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-001: proyek non-Arsip tanpa penanda Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-001 ringkasan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad p-001 ringkasan 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "ahmad p-001: tab Tugas (tabel) hanya memuat tugas dalam lingkup [\"t-001\",\"t-002\",\"t-003\",\"t-006\"]",
+      "ok": true,
+      "detail": "[\"t-001\",\"t-002\",\"t-003\",\"t-006\"]"
+    },
+    {
+      "name": "ahmad p-001: kartu mobile tersembunyi di 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-001: baris t-001 memuat kode, judul, penanggung jawab Ahmad Rizal, status Selesai, tenggat 15 Feb 2026",
+      "ok": true,
+      "detail": "TSK-001Pembongkaran dinding partisi lantai 1Ahmad RizalTinggiSelesai15 Feb 2026100%"
+    },
+    {
+      "name": "ahmad p-001: baris t-002 memuat kode, judul, penanggung jawab Dewi Lestari, status Dalam Progres, tenggat 28 Feb 2026, Terlambat",
+      "ok": true,
+      "detail": "TSK-002Pengecekan sistem kelistrikan lamaDewi LestariTinggiDalam Progres28 Feb 2026Terlambat60%"
+    },
+    {
+      "name": "ahmad p-001: baris t-003 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 5 Mar 2026, Terlambat",
+      "ok": true,
+      "detail": "TSK-003Pembersihan material sisa pembongkaranEko PrasetyoSedangBelum Dimulai5 Mar 2026Terlambat0%"
+    },
+    {
+      "name": "ahmad p-001: baris t-006 memuat kode, judul, penanggung jawab Dewi Lestari, status Belum Dimulai, tenggat 1 Apr 2026",
+      "ok": true,
+      "detail": "TSK-006Pemasangan keramik lobbyDewi LestariSedangBelum Dimulai1 Apr 2026Mendatang0%"
+    },
+    {
+      "name": "ahmad p-001: catatan lingkup tugas (semua tugas proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-001: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas",
+      "ok": true,
+      "detail": "Tenggat mengikuti tanggal acuan demo 21 Maret 2026."
+    },
+    {
+      "name": "ahmad p-001: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat)",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "ahmad p-001 tugas: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "ahmad p-001 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "ahmad p-001 tugas: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-001 tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad p-001 tugas 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "ahmad p-001: tab Tim (tabel) memuat 4 orang: Admin principal lalu anggota",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "ahmad p-001: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, TANPA email",
+      "ok": true,
+      "detail": "Siti AminahAdmin KantorPenanggung jawab"
+    },
+    {
+      "name": "ahmad p-001: baris tim Ahmad Rizal — peran Mandor, TANPA email",
+      "ok": true,
+      "detail": "Ahmad RizalMandor"
+    },
+    {
+      "name": "ahmad p-001: baris tim Dewi Lestari — peran Anggota Tim, TANPA email",
+      "ok": true,
+      "detail": "Dewi LestariAnggota Tim"
+    },
+    {
+      "name": "ahmad p-001: baris tim Eko Prasetyo — peran Mandor, TANPA email",
+      "ok": true,
+      "detail": "Eko PrasetyoMandor"
+    },
+    {
+      "name": "ahmad p-001: tab Tim tanpa kolom Email dan tanpa alamat email sama sekali",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-001: tabel tim muat tanpa gulir horizontal di 1280",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "ahmad p-001 tim: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "ahmad p-001 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "ahmad p-001 tim: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-001 tim 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad p-001 tim 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "ahmad (Mandor): /proyek/p-002 (dalam lingkup) siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "ahmad p-002: tab = ringkasan, tugas, tim",
+      "ok": true,
+      "detail": "[\"ringkasan\",\"tugas\",\"tim\"]"
+    },
+    {
+      "name": "ahmad p-002: tab Ringkasan terpilih awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-002: label tab Tugas memuat jumlah tugas dalam lingkup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-002: header memuat kode, nama, tautan kembali ke daftar",
+      "ok": true,
+      "detail": "{\"h1\":\"Pembangunan Gudang Logistik Tanjung Pinang\",\"eyebrow\":\"PRJ-002\",\"back\":\"/proyek\"}"
+    },
+    {
+      "name": "ahmad p-002: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-002StatusBerjalanKlienCV. Jaya Abadi LogisticsLokasiKec. Sungai Manggis, Kepulauan RiauPeriode1 Mar 2026 – 15 Sep 2026Admin Kantor penanggung jawabSiti AminahDeskripsiPembangun"
+    },
+    {
+      "name": "ahmad p-002: ringkasan memuat deskripsi proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-002: progres proyek 20%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-002: hitungan tugas (total 2, progres 1, selesai 0, terlambat 0)",
+      "ok": true,
+      "detail": "{\"total\":{\"value\":\"2\",\"note\":\"1 belum dimulai\"},\"prog\":{\"value\":\"1\",\"note\":null},\"done\":{\"value\":\"0\",\"note\":null},\"overdue\":{\"value\":\"0\",\"note\":\"terhadap tanggal acuan demo\"}}"
+    },
+    {
+      "name": "ahmad p-002: judul ringkasan tugas umum",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-002: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini."
+    },
+    {
+      "name": "ahmad p-002: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-002 ringkasan: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "ahmad p-002 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "ahmad p-002 ringkasan: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-002: proyek non-Arsip tanpa penanda Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-002 ringkasan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad p-002 ringkasan 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "ahmad p-002: tab Tugas (tabel) hanya memuat tugas dalam lingkup [\"t-004\",\"t-005\"]",
+      "ok": true,
+      "detail": "[\"t-004\",\"t-005\"]"
+    },
+    {
+      "name": "ahmad p-002: kartu mobile tersembunyi di 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-002: baris t-004 memuat kode, judul, penanggung jawab Ahmad Rizal, status Dalam Progres, tenggat 10 Apr 2026",
+      "ok": true,
+      "detail": "TSK-004Pembuatan pondasi footplateAhmad RizalTinggiDalam Progres10 Apr 2026Mendatang35%"
+    },
+    {
+      "name": "ahmad p-002: baris t-005 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 25 Mar 2026",
+      "ok": true,
+      "detail": "TSK-005Pemesanan baja WF untuk strukturEko PrasetyoTinggiBelum Dimulai25 Mar 2026Mendatang0%"
+    },
+    {
+      "name": "ahmad p-002: catatan lingkup tugas (semua tugas proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-002: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas",
+      "ok": true,
+      "detail": "Tenggat mengikuti tanggal acuan demo 21 Maret 2026."
+    },
+    {
+      "name": "ahmad p-002: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat)",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "ahmad p-002 tugas: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "ahmad p-002 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "ahmad p-002 tugas: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-002 tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad p-002 tugas 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "ahmad p-002: tab Tim (tabel) memuat 3 orang: Admin principal lalu anggota",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-005\"]"
+    },
+    {
+      "name": "ahmad p-002: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, TANPA email",
+      "ok": true,
+      "detail": "Siti AminahAdmin KantorPenanggung jawab"
+    },
+    {
+      "name": "ahmad p-002: baris tim Ahmad Rizal — peran Mandor, TANPA email",
+      "ok": true,
+      "detail": "Ahmad RizalMandor"
+    },
+    {
+      "name": "ahmad p-002: baris tim Eko Prasetyo — peran Mandor, TANPA email",
+      "ok": true,
+      "detail": "Eko PrasetyoMandor"
+    },
+    {
+      "name": "ahmad p-002: tab Tim tanpa kolom Email dan tanpa alamat email sama sekali",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad p-002: tabel tim muat tanpa gulir horizontal di 1280",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "ahmad p-002 tim: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "ahmad p-002 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "ahmad p-002 tim: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-002 tim 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad p-002 tim 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "ahmad (Mandor): URL langsung /proyek/p-003 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad (Mandor): URL langsung /proyek/p-004 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad (Mandor): URL langsung /proyek/p-005 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "eko (Mandor): /proyek/p-001 (dalam lingkup) siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "eko p-001: tab = ringkasan, tugas, tim",
+      "ok": true,
+      "detail": "[\"ringkasan\",\"tugas\",\"tim\"]"
+    },
+    {
+      "name": "eko p-001: tab Ringkasan terpilih awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-001: label tab Tugas memuat jumlah tugas dalam lingkup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-001: header memuat kode, nama, tautan kembali ke daftar",
+      "ok": true,
+      "detail": "{\"h1\":\"Renovasi Gedung Kantor Batam\",\"eyebrow\":\"PRJ-001\",\"back\":\"/proyek\"}"
+    },
+    {
+      "name": "eko p-001: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-001StatusBerjalanKlienPT. Properti NusantaraLokasiBalai Kota Batam, Kepulauan RiauPeriode15 Jan 2026 – 30 Jun 2026Admin Kantor penanggung jawabSiti AminahDeskripsiRenovasi tota"
+    },
+    {
+      "name": "eko p-001: ringkasan memuat deskripsi proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-001: progres proyek 45%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-001: hitungan tugas (total 4, progres 1, selesai 1, terlambat 2)",
+      "ok": true,
+      "detail": "{\"total\":{\"value\":\"4\",\"note\":\"2 belum dimulai\"},\"prog\":{\"value\":\"1\",\"note\":null},\"done\":{\"value\":\"1\",\"note\":null},\"overdue\":{\"value\":\"2\",\"note\":\"terhadap tanggal acuan demo\"}}"
+    },
+    {
+      "name": "eko p-001: judul ringkasan tugas umum",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-001: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini."
+    },
+    {
+      "name": "eko p-001: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-001 ringkasan: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "eko p-001 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "eko p-001 ringkasan: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-001: proyek non-Arsip tanpa penanda Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: eko p-001 ringkasan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: eko p-001 ringkasan 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "eko p-001: tab Tugas (tabel) hanya memuat tugas dalam lingkup [\"t-001\",\"t-002\",\"t-003\",\"t-006\"]",
+      "ok": true,
+      "detail": "[\"t-001\",\"t-002\",\"t-003\",\"t-006\"]"
+    },
+    {
+      "name": "eko p-001: kartu mobile tersembunyi di 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-001: baris t-001 memuat kode, judul, penanggung jawab Ahmad Rizal, status Selesai, tenggat 15 Feb 2026",
+      "ok": true,
+      "detail": "TSK-001Pembongkaran dinding partisi lantai 1Ahmad RizalTinggiSelesai15 Feb 2026100%"
+    },
+    {
+      "name": "eko p-001: baris t-002 memuat kode, judul, penanggung jawab Dewi Lestari, status Dalam Progres, tenggat 28 Feb 2026, Terlambat",
+      "ok": true,
+      "detail": "TSK-002Pengecekan sistem kelistrikan lamaDewi LestariTinggiDalam Progres28 Feb 2026Terlambat60%"
+    },
+    {
+      "name": "eko p-001: baris t-003 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 5 Mar 2026, Terlambat",
+      "ok": true,
+      "detail": "TSK-003Pembersihan material sisa pembongkaranEko PrasetyoSedangBelum Dimulai5 Mar 2026Terlambat0%"
+    },
+    {
+      "name": "eko p-001: baris t-006 memuat kode, judul, penanggung jawab Dewi Lestari, status Belum Dimulai, tenggat 1 Apr 2026",
+      "ok": true,
+      "detail": "TSK-006Pemasangan keramik lobbyDewi LestariSedangBelum Dimulai1 Apr 2026Mendatang0%"
+    },
+    {
+      "name": "eko p-001: catatan lingkup tugas (semua tugas proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-001: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas",
+      "ok": true,
+      "detail": "Tenggat mengikuti tanggal acuan demo 21 Maret 2026."
+    },
+    {
+      "name": "eko p-001: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat)",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "eko p-001 tugas: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "eko p-001 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "eko p-001 tugas: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: eko p-001 tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: eko p-001 tugas 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "eko p-001: tab Tim (tabel) memuat 4 orang: Admin principal lalu anggota",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "eko p-001: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, TANPA email",
+      "ok": true,
+      "detail": "Siti AminahAdmin KantorPenanggung jawab"
+    },
+    {
+      "name": "eko p-001: baris tim Ahmad Rizal — peran Mandor, TANPA email",
+      "ok": true,
+      "detail": "Ahmad RizalMandor"
+    },
+    {
+      "name": "eko p-001: baris tim Dewi Lestari — peran Anggota Tim, TANPA email",
+      "ok": true,
+      "detail": "Dewi LestariAnggota Tim"
+    },
+    {
+      "name": "eko p-001: baris tim Eko Prasetyo — peran Mandor, TANPA email",
+      "ok": true,
+      "detail": "Eko PrasetyoMandor"
+    },
+    {
+      "name": "eko p-001: tab Tim tanpa kolom Email dan tanpa alamat email sama sekali",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-001: tabel tim muat tanpa gulir horizontal di 1280",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "eko p-001 tim: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "eko p-001 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "eko p-001 tim: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: eko p-001 tim 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: eko p-001 tim 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "eko (Mandor): /proyek/p-002 (dalam lingkup) siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "eko p-002: tab = ringkasan, tugas, tim",
+      "ok": true,
+      "detail": "[\"ringkasan\",\"tugas\",\"tim\"]"
+    },
+    {
+      "name": "eko p-002: tab Ringkasan terpilih awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-002: label tab Tugas memuat jumlah tugas dalam lingkup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-002: header memuat kode, nama, tautan kembali ke daftar",
+      "ok": true,
+      "detail": "{\"h1\":\"Pembangunan Gudang Logistik Tanjung Pinang\",\"eyebrow\":\"PRJ-002\",\"back\":\"/proyek\"}"
+    },
+    {
+      "name": "eko p-002: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-002StatusBerjalanKlienCV. Jaya Abadi LogisticsLokasiKec. Sungai Manggis, Kepulauan RiauPeriode1 Mar 2026 – 15 Sep 2026Admin Kantor penanggung jawabSiti AminahDeskripsiPembangun"
+    },
+    {
+      "name": "eko p-002: ringkasan memuat deskripsi proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-002: progres proyek 20%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-002: hitungan tugas (total 2, progres 1, selesai 0, terlambat 0)",
+      "ok": true,
+      "detail": "{\"total\":{\"value\":\"2\",\"note\":\"1 belum dimulai\"},\"prog\":{\"value\":\"1\",\"note\":null},\"done\":{\"value\":\"0\",\"note\":null},\"overdue\":{\"value\":\"0\",\"note\":\"terhadap tanggal acuan demo\"}}"
+    },
+    {
+      "name": "eko p-002: judul ringkasan tugas umum",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-002: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini."
+    },
+    {
+      "name": "eko p-002: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-002 ringkasan: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "eko p-002 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "eko p-002 ringkasan: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-002: proyek non-Arsip tanpa penanda Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: eko p-002 ringkasan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: eko p-002 ringkasan 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "eko p-002: tab Tugas (tabel) hanya memuat tugas dalam lingkup [\"t-004\",\"t-005\"]",
+      "ok": true,
+      "detail": "[\"t-004\",\"t-005\"]"
+    },
+    {
+      "name": "eko p-002: kartu mobile tersembunyi di 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-002: baris t-004 memuat kode, judul, penanggung jawab Ahmad Rizal, status Dalam Progres, tenggat 10 Apr 2026",
+      "ok": true,
+      "detail": "TSK-004Pembuatan pondasi footplateAhmad RizalTinggiDalam Progres10 Apr 2026Mendatang35%"
+    },
+    {
+      "name": "eko p-002: baris t-005 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 25 Mar 2026",
+      "ok": true,
+      "detail": "TSK-005Pemesanan baja WF untuk strukturEko PrasetyoTinggiBelum Dimulai25 Mar 2026Mendatang0%"
+    },
+    {
+      "name": "eko p-002: catatan lingkup tugas (semua tugas proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-002: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas",
+      "ok": true,
+      "detail": "Tenggat mengikuti tanggal acuan demo 21 Maret 2026."
+    },
+    {
+      "name": "eko p-002: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat)",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "eko p-002 tugas: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "eko p-002 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "eko p-002 tugas: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: eko p-002 tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: eko p-002 tugas 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "eko p-002: tab Tim (tabel) memuat 3 orang: Admin principal lalu anggota",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-005\"]"
+    },
+    {
+      "name": "eko p-002: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, TANPA email",
+      "ok": true,
+      "detail": "Siti AminahAdmin KantorPenanggung jawab"
+    },
+    {
+      "name": "eko p-002: baris tim Ahmad Rizal — peran Mandor, TANPA email",
+      "ok": true,
+      "detail": "Ahmad RizalMandor"
+    },
+    {
+      "name": "eko p-002: baris tim Eko Prasetyo — peran Mandor, TANPA email",
+      "ok": true,
+      "detail": "Eko PrasetyoMandor"
+    },
+    {
+      "name": "eko p-002: tab Tim tanpa kolom Email dan tanpa alamat email sama sekali",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko p-002: tabel tim muat tanpa gulir horizontal di 1280",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "eko p-002 tim: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "eko p-002 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "eko p-002 tim: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: eko p-002 tim 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: eko p-002 tim 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "eko (Mandor): URL langsung /proyek/p-003 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "eko (Mandor): URL langsung /proyek/p-004 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "eko (Mandor): URL langsung /proyek/p-005 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi (Anggota Tim): /proyek/p-001 (dalam lingkup) siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "dewi p-001: tab = ringkasan, tugas",
+      "ok": true,
+      "detail": "[\"ringkasan\",\"tugas\"]"
+    },
+    {
+      "name": "dewi p-001: tab Ringkasan terpilih awal",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi p-001: label tab Tugas memuat jumlah tugas dalam lingkup",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi p-001: panel Tim tidak ada di DOM (bukan hanya disembunyikan)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi p-001: header memuat kode, nama, tautan kembali ke daftar",
+      "ok": true,
+      "detail": "{\"h1\":\"Renovasi Gedung Kantor Batam\",\"eyebrow\":\"PRJ-001\",\"back\":\"/proyek\"}"
+    },
+    {
+      "name": "dewi p-001: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-001StatusBerjalanKlienPT. Properti NusantaraLokasiBalai Kota Batam, Kepulauan RiauPeriode15 Jan 2026 – 30 Jun 2026Admin Kantor penanggung jawabSiti AminahDeskripsiRenovasi tota"
+    },
+    {
+      "name": "dewi p-001: ringkasan memuat deskripsi proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi p-001: progres proyek 45%",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi p-001: hitungan tugas (total 2, progres 1, selesai 0, terlambat 1)",
+      "ok": true,
+      "detail": "{\"total\":{\"value\":\"2\",\"note\":\"1 belum dimulai\"},\"prog\":{\"value\":\"1\",\"note\":null},\"done\":{\"value\":\"0\",\"note\":null},\"overdue\":{\"value\":\"1\",\"note\":\"terhadap tanggal acuan demo\"}}"
+    },
+    {
+      "name": "dewi p-001: judul ringkasan tugas Anda",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi p-001: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini."
+    },
+    {
+      "name": "dewi p-001: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi p-001 ringkasan: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "dewi p-001 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "dewi p-001 ringkasan: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi p-001: proyek non-Arsip tanpa penanda Hanya baca",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi p-001 ringkasan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dewi p-001 ringkasan 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "dewi p-001: tab Tugas (tabel) hanya memuat tugas dalam lingkup [\"t-002\",\"t-006\"]",
+      "ok": true,
+      "detail": "[\"t-002\",\"t-006\"]"
+    },
+    {
+      "name": "dewi p-001: kartu mobile tersembunyi di 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi p-001: baris t-002 memuat kode, judul, penanggung jawab Dewi Lestari, status Dalam Progres, tenggat 28 Feb 2026, Terlambat",
+      "ok": true,
+      "detail": "TSK-002Pengecekan sistem kelistrikan lamaDewi LestariTinggiDalam Progres28 Feb 2026Terlambat60%"
+    },
+    {
+      "name": "dewi p-001: baris t-006 memuat kode, judul, penanggung jawab Dewi Lestari, status Belum Dimulai, tenggat 1 Apr 2026",
+      "ok": true,
+      "detail": "TSK-006Pemasangan keramik lobbyDewi LestariSedangBelum Dimulai1 Apr 2026Mendatang0%"
+    },
+    {
+      "name": "dewi p-001: catatan lingkup tugas (hanya milik sendiri)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi p-001: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas",
+      "ok": true,
+      "detail": "Tenggat mengikuti tanggal acuan demo 21 Maret 2026."
+    },
+    {
+      "name": "dewi p-001: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat)",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "dewi p-001: Anggota Tim tidak melihat judul tugas milik orang lain",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi p-001 tugas: read-only (tanpa tombol di luar tab, tanpa form/input)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "dewi p-001 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)",
+      "ok": true,
+      "detail": "[\"/proyek\"]"
+    },
+    {
+      "name": "dewi p-001 tugas: tanpa kata anggaran atau nominal rupiah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi p-001 tugas 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dewi p-001 tugas 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "dewi p-001: tidak ada email atau susunan tim di halaman",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi (Anggota Tim): URL langsung /proyek/p-002 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi (Anggota Tim): URL langsung /proyek/p-003 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi (Anggota Tim): URL langsung /proyek/p-004 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi (Anggota Tim): URL langsung /proyek/p-005 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "budi p-003: proyek tanpa tim dan tanpa tugas siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "budi p-003: Admin penanggung jawab \"Belum ditetapkan\" dan hitungan tugas 0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003: tab Tugas (0) menampilkan state kosong yang jelas",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-003: tab Tim menampilkan state kosong yang jelas",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: proyek tanpa tim dan tanpa tugas siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "budi p-004: Admin penanggung jawab \"Belum ditetapkan\" dan hitungan tugas 0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: tab Tugas (0) menampilkan state kosong yang jelas",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-004: tab Tim menampilkan state kosong yang jelas",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: proyek tanpa tim dan tanpa tugas siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "budi p-005: Admin penanggung jawab \"Belum ditetapkan\" dan hitungan tugas 0",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: tab Tugas (0) menampilkan state kosong yang jelas",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi p-005: tab Tim menampilkan state kosong yang jelas",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ID tidak dikenal /proyek/p-999 → not-found yang jelas dengan tautan kembali",
+      "ok": true,
+      "detail": "{\"text\":\"Proyek tidak ditemukanID tidak dikenal, atau data demo yang dibuat selama sesi ini hilang karena halaman dimuat ulang.Kembali ke daftar proyek\",\"href\":\"/proyek\"}"
+    },
+    {
+      "name": "not-found: tidak ada konten detail",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: not-found 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tanpa sesi (Owner demo, mode pengembangan): /proyek/p-001 terbuka dengan tab lengkap",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: klik proyek di daftar → detail p-001 tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: tautan Daftar proyek kembali ke /proyek tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti: klik proyek di daftar → detail p-001 tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti: tautan Daftar proyek kembali ke /proyek tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad: klik proyek di daftar → detail p-001 tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad: tautan Daftar proyek kembali ke /proyek tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko: klik proyek di daftar → detail p-001 tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "eko: tautan Daftar proyek kembali ke /proyek tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi: klik proyek di daftar → detail p-001 tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi: tautan Daftar proyek kembali ke /proyek tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti: navigasi KLIEN ke /proyek/p-003 (di luar lingkup) → akses ditolak tanpa muat ulang, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "siti: navigasi KLIEN ke /proyek/p-005 (di luar lingkup) → akses ditolak tanpa muat ulang, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "ahmad: navigasi KLIEN ke /proyek/p-003 (di luar lingkup) → akses ditolak tanpa muat ulang, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: navigasi KLIEN ke /proyek/p-002 (di luar lingkup) → akses ditolak tanpa muat ulang, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "dewi: navigasi KLIEN ke /proyek/p-005 (di luar lingkup) → akses ditolak tanpa muat ulang, konten tidak sempat terlihat",
+      "ok": true,
+      "detail": "hasil denied"
+    },
+    {
+      "name": "runtime: tugas baru di proyek seed p-003 → detail p-003 lewat navigasi klien tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime: label tab Tugas (1) dan hitungan tugas 1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime: tugas runtime TSK-007 tampil di tab Tugas dengan penanggung jawab \"Belum ditugaskan\"",
+      "ok": true,
+      "detail": "TSK-007Tugas uji runtime (p-003)Belum ditugaskanRendahBelum Dimulai—0%"
+    },
+    {
+      "name": "runtime: proyek runtime p-006 terbuka lewat navigasi klien (Owner), tanpa muat ulang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "runtime: ringkasan p-006 memuat nama, status Draf, klien (uji), dan Admin \"Belum ditetapkan\"",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-006StatusDrafKlien(uji)Lokasi(uji)Periode21 Mar 2026 – 21 Mar 2026Admin Kantor penanggung jawabBelum ditetapkanDeskripsiDibuat di memori"
+    },
+    {
+      "name": "runtime: p-006 tanpa tim → state kosong tim",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi 768: detail p-001 siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "overflow halaman: budi p-001 ringkasan 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-001 ringkasan 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi 768: tab Tugas memakai kartu (tabel tersembunyi) sesuai lingkup",
+      "ok": true,
+      "detail": "[\"t-001\",\"t-002\",\"t-003\",\"t-006\"]"
+    },
+    {
+      "name": "overflow halaman: budi p-001 tugas 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-001 tugas 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi 768: tab Tim memakai kartu (tabel tersembunyi)",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "overflow halaman: budi p-001 tim 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-001 tim 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti 768: detail p-002 siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "overflow halaman: siti p-002 ringkasan 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: siti p-002 ringkasan 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti 768: tab Tugas memakai kartu (tabel tersembunyi) sesuai lingkup",
+      "ok": true,
+      "detail": "[\"t-004\",\"t-005\"]"
+    },
+    {
+      "name": "overflow halaman: siti p-002 tugas 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: siti p-002 tugas 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti 768: tab Tim memakai kartu (tabel tersembunyi)",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-005\"]"
+    },
+    {
+      "name": "overflow halaman: siti p-002 tim 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: siti p-002 tim 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad 768: detail p-001 siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "overflow halaman: ahmad p-001 ringkasan 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-001 ringkasan 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad 768: tab Tugas memakai kartu (tabel tersembunyi) sesuai lingkup",
+      "ok": true,
+      "detail": "[\"t-001\",\"t-002\",\"t-003\",\"t-006\"]"
+    },
+    {
+      "name": "overflow halaman: ahmad p-001 tugas 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-001 tugas 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad 768: tab Tim memakai kartu (tabel tersembunyi)",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "overflow halaman: ahmad p-001 tim 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-001 tim 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi 768: detail p-001 siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "overflow halaman: dewi p-001 ringkasan 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi p-001 ringkasan 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi 768: tab Tugas memakai kartu (tabel tersembunyi) sesuai lingkup",
+      "ok": true,
+      "detail": "[\"t-002\",\"t-006\"]"
+    },
+    {
+      "name": "overflow halaman: dewi p-001 tugas 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi p-001 tugas 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi mobile 375: emulasi sentuh aktif dan detail p-001 siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "budi mobile 375: tautan kembali dan semua tab >= 44x44px",
+      "ok": true,
+      "detail": "{\"back\":{\"w\":112,\"h\":44},\"tabs\":[{\"name\":\"ringkasan\",\"w\":101,\"h\":44},{\"name\":\"tugas\",\"w\":91,\"h\":44},{\"name\":\"tim\",\"w\":56,\"h\":44}],\"hidden\":false}"
+    },
+    {
+      "name": "budi mobile 375: kontrol utama tampil permanen (bukan hover-only)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi mobile 375: ketuk tab ringkasan berpindah panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-001 ringkasan 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-001 ringkasan 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi mobile 375: ketuk tab tugas berpindah panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi mobile 375: kartu tugas satu kolom sesuai lingkup, tabel tersembunyi",
+      "ok": true,
+      "detail": "[{\"id\":\"t-001\",\"left\":16,\"right\":359,\"w\":343},{\"id\":\"t-002\",\"left\":16,\"right\":359,\"w\":343},{\"id\":\"t-003\",\"left\":16,\"right\":359,\"w\":343},{\"id\":\"t-006\",\"left\":16,\"right\":359,\"w\":343}]"
+    },
+    {
+      "name": "budi mobile 375: kartu tugas pertama sudah terlihat di layar pertama (mulai di atas 560px dari 800px)",
+      "ok": true,
+      "detail": "top 490px"
+    },
+    {
+      "name": "budi mobile 375: kartu t-001 memuat kode, judul, status, penanggung jawab dari relasi User",
+      "ok": true,
+      "detail": "TSK-001Pembongkaran dinding partisi lantai 1SelesaiPrioritas Tinggi100%Penanggung jawab: Ahmad Rizal"
+    },
+    {
+      "name": "overflow halaman: budi p-001 tugas 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-001 tugas 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi mobile 375: ketuk tab tim berpindah panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi mobile 375: kartu tim satu kolom (4 orang), tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-001 tim 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-001 tim 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti mobile 375: emulasi sentuh aktif dan detail p-002 siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "siti mobile 375: tautan kembali dan semua tab >= 44x44px",
+      "ok": true,
+      "detail": "{\"back\":{\"w\":112,\"h\":44},\"tabs\":[{\"name\":\"ringkasan\",\"w\":101,\"h\":44},{\"name\":\"tugas\",\"w\":91,\"h\":44},{\"name\":\"tim\",\"w\":56,\"h\":44}],\"hidden\":false}"
+    },
+    {
+      "name": "siti mobile 375: kontrol utama tampil permanen (bukan hover-only)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti mobile 375: ketuk tab ringkasan berpindah panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: siti p-002 ringkasan 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: siti p-002 ringkasan 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti mobile 375: ketuk tab tugas berpindah panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti mobile 375: kartu tugas satu kolom sesuai lingkup, tabel tersembunyi",
+      "ok": true,
+      "detail": "[{\"id\":\"t-004\",\"left\":16,\"right\":359,\"w\":343},{\"id\":\"t-005\",\"left\":16,\"right\":359,\"w\":343}]"
+    },
+    {
+      "name": "siti mobile 375: kartu tugas pertama sudah terlihat di layar pertama (mulai di atas 560px dari 800px)",
+      "ok": true,
+      "detail": "top 490px"
+    },
+    {
+      "name": "siti mobile 375: kartu t-004 memuat kode, judul, status, penanggung jawab dari relasi User",
+      "ok": true,
+      "detail": "TSK-004Pembuatan pondasi footplateDalam ProgresPrioritas TinggiMendatang · 10 Apr 202635%Penanggung jawab: Ahmad Rizal"
+    },
+    {
+      "name": "overflow halaman: siti p-002 tugas 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: siti p-002 tugas 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti mobile 375: ketuk tab tim berpindah panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "siti mobile 375: kartu tim satu kolom (3 orang), tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: siti p-002 tim 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: siti p-002 tim 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile 375: emulasi sentuh aktif dan detail p-001 siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "ahmad mobile 375: tautan kembali dan semua tab >= 44x44px",
+      "ok": true,
+      "detail": "{\"back\":{\"w\":112,\"h\":44},\"tabs\":[{\"name\":\"ringkasan\",\"w\":101,\"h\":44},{\"name\":\"tugas\",\"w\":91,\"h\":44},{\"name\":\"tim\",\"w\":56,\"h\":44}],\"hidden\":false}"
+    },
+    {
+      "name": "ahmad mobile 375: kontrol utama tampil permanen (bukan hover-only)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile 375: ketuk tab ringkasan berpindah panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad p-001 ringkasan 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-001 ringkasan 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile 375: ketuk tab tugas berpindah panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile 375: kartu tugas satu kolom sesuai lingkup, tabel tersembunyi",
+      "ok": true,
+      "detail": "[{\"id\":\"t-001\",\"left\":16,\"right\":359,\"w\":343},{\"id\":\"t-002\",\"left\":16,\"right\":359,\"w\":343},{\"id\":\"t-003\",\"left\":16,\"right\":359,\"w\":343},{\"id\":\"t-006\",\"left\":16,\"right\":359,\"w\":343}]"
+    },
+    {
+      "name": "ahmad mobile 375: kartu tugas pertama sudah terlihat di layar pertama (mulai di atas 560px dari 800px)",
+      "ok": true,
+      "detail": "top 490px"
+    },
+    {
+      "name": "ahmad mobile 375: kartu t-001 memuat kode, judul, status, penanggung jawab dari relasi User",
+      "ok": true,
+      "detail": "TSK-001Pembongkaran dinding partisi lantai 1SelesaiPrioritas Tinggi100%Penanggung jawab: Ahmad Rizal"
+    },
+    {
+      "name": "overflow halaman: ahmad p-001 tugas 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-001 tugas 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile 375: ketuk tab tim berpindah panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "ahmad mobile 375: kartu tim satu kolom (4 orang), tabel tersembunyi, tanpa email",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: ahmad p-001 tim 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-001 tim 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile 375: emulasi sentuh aktif dan detail p-001 siap",
+      "ok": true,
+      "detail": "detail"
+    },
+    {
+      "name": "dewi mobile 375: tautan kembali dan semua tab >= 44x44px",
+      "ok": true,
+      "detail": "{\"back\":{\"w\":112,\"h\":44},\"tabs\":[{\"name\":\"ringkasan\",\"w\":101,\"h\":44},{\"name\":\"tugas\",\"w\":91,\"h\":44}],\"hidden\":false}"
+    },
+    {
+      "name": "dewi mobile 375: kontrol utama tampil permanen (bukan hover-only)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile 375: ketuk tab ringkasan berpindah panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dewi p-001 ringkasan 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi p-001 ringkasan 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile 375: ketuk tab tugas berpindah panel",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dewi mobile 375: kartu tugas satu kolom sesuai lingkup, tabel tersembunyi",
+      "ok": true,
+      "detail": "[{\"id\":\"t-002\",\"left\":16,\"right\":359,\"w\":343},{\"id\":\"t-006\",\"left\":16,\"right\":359,\"w\":343}]"
+    },
+    {
+      "name": "dewi mobile 375: kartu tugas pertama sudah terlihat di layar pertama (mulai di atas 560px dari 800px)",
+      "ok": true,
+      "detail": "top 490px"
+    },
+    {
+      "name": "dewi mobile 375: kartu t-002 memuat kode, judul, status, penanggung jawab dari relasi User",
+      "ok": true,
+      "detail": "TSK-002Pengecekan sistem kelistrikan lamaDalam ProgresPrioritas TinggiTerlambat · 28 Feb 202660%Penanggung jawab: Dewi Lestari"
+    },
+    {
+      "name": "overflow halaman: dewi p-001 tugas 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: dewi p-001 tugas 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi mobile 375: Arsip p-005 siap, penanda Hanya baca dan catatan tampil, tanpa tombol di luar tab",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-005 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-005 ringkasan 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard: detail siap untuk uji tab",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard: ArrowRight memindahkan dan mengaktifkan tab Tugas (panel berganti)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard: End ke tab terakhir (Tim)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "keyboard: Home ke tab pertama (Ringkasan)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "budi: nama penanggung jawab diambil dari relasi User, bukan salinan teks legacy Task.assigneeName (tabel)",
+      "ok": true,
+      "detail": "legacy muncul: false"
+    },
+    {
+      "name": "ahmad: nama penanggung jawab diambil dari relasi User, bukan salinan teks legacy Task.assigneeName (tabel)",
+      "ok": true,
+      "detail": "legacy muncul: false"
+    },
+    {
+      "name": "dewi: nama penanggung jawab diambil dari relasi User, bukan salinan teks legacy Task.assigneeName (tabel)",
+      "ok": true,
+      "detail": "legacy muncul: false"
+    },
+    {
+      "name": "dewi mobile 375: kartu tugas juga memakai nama dari relasi User (bukan salinan legacy)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: URL langsung /proyek/p-001 → akses ditolak, konten detail tidak pernah terlihat",
+      "ok": true,
+      "detail": "denied"
+    },
+    {
+      "name": "guest: /proyek/p-001 tanpa sidebar App Shell dan tanpa nama proyek yang terlihat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guest: URL langsung /proyek/p-003 → akses ditolak, konten detail tidak pernah terlihat",
+      "ok": true,
+      "detail": "denied"
+    },
+    {
+      "name": "guest: /proyek/p-003 tanpa sidebar App Shell dan tanpa nama proyek yang terlihat",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "measurements": {
+    "axe budi p-001 ringkasan 1280": [],
+    "axe budi p-001 tugas 1280": [],
+    "axe budi p-001 tim 1280": [],
+    "axe budi p-002 ringkasan 1280": [],
+    "axe budi p-002 tugas 1280": [],
+    "axe budi p-002 tim 1280": [],
+    "axe budi p-003 ringkasan 1280": [],
+    "axe budi p-003 tugas 1280": [],
+    "axe budi p-003 tim 1280": [],
+    "axe budi p-004 ringkasan 1280": [],
+    "axe budi p-004 tugas 1280": [],
+    "axe budi p-004 tim 1280": [],
+    "axe budi p-005 ringkasan 1280": [],
+    "axe budi p-005 tugas 1280": [],
+    "axe budi p-005 tim 1280": [],
+    "axe siti p-001 ringkasan 1280": [],
+    "axe siti p-001 tugas 1280": [],
+    "axe siti p-001 tim 1280": [],
+    "axe siti p-002 ringkasan 1280": [],
+    "axe siti p-002 tugas 1280": [],
+    "axe siti p-002 tim 1280": [],
+    "axe ahmad p-001 ringkasan 1280": [],
+    "axe ahmad p-001 tugas 1280": [],
+    "axe ahmad p-001 tim 1280": [],
+    "axe ahmad p-002 ringkasan 1280": [],
+    "axe ahmad p-002 tugas 1280": [],
+    "axe ahmad p-002 tim 1280": [],
+    "axe eko p-001 ringkasan 1280": [],
+    "axe eko p-001 tugas 1280": [],
+    "axe eko p-001 tim 1280": [],
+    "axe eko p-002 ringkasan 1280": [],
+    "axe eko p-002 tugas 1280": [],
+    "axe eko p-002 tim 1280": [],
+    "axe dewi p-001 ringkasan 1280": [],
+    "axe dewi p-001 tugas 1280": [],
+    "axe not-found 1280": [],
+    "axe budi p-001 ringkasan 768": [],
+    "axe budi p-001 tugas 768": [],
+    "axe budi p-001 tim 768": [],
+    "axe siti p-002 ringkasan 768": [],
+    "axe siti p-002 tugas 768": [],
+    "axe siti p-002 tim 768": [],
+    "axe ahmad p-001 ringkasan 768": [],
+    "axe ahmad p-001 tugas 768": [],
+    "axe ahmad p-001 tim 768": [],
+    "axe dewi p-001 ringkasan 768": [],
+    "axe dewi p-001 tugas 768": [],
+    "geo budi p-001 375": {
+      "back": {
+        "w": 112,
+        "h": 44
+      },
+      "tabs": [
+        {
+          "name": "ringkasan",
+          "w": 101,
+          "h": 44
+        },
+        {
+          "name": "tugas",
+          "w": 91,
+          "h": 44
+        },
+        {
+          "name": "tim",
+          "w": 56,
+          "h": 44
+        }
+      ],
+      "hidden": false
+    },
+    "axe budi p-001 ringkasan 375 mobile": [],
+    "kartu pertama top budi 375": 490,
+    "axe budi p-001 tugas 375 mobile": [],
+    "axe budi p-001 tim 375 mobile": [],
+    "geo siti p-002 375": {
+      "back": {
+        "w": 112,
+        "h": 44
+      },
+      "tabs": [
+        {
+          "name": "ringkasan",
+          "w": 101,
+          "h": 44
+        },
+        {
+          "name": "tugas",
+          "w": 91,
+          "h": 44
+        },
+        {
+          "name": "tim",
+          "w": 56,
+          "h": 44
+        }
+      ],
+      "hidden": false
+    },
+    "axe siti p-002 ringkasan 375 mobile": [],
+    "kartu pertama top siti 375": 490,
+    "axe siti p-002 tugas 375 mobile": [],
+    "axe siti p-002 tim 375 mobile": [],
+    "geo ahmad p-001 375": {
+      "back": {
+        "w": 112,
+        "h": 44
+      },
+      "tabs": [
+        {
+          "name": "ringkasan",
+          "w": 101,
+          "h": 44
+        },
+        {
+          "name": "tugas",
+          "w": 91,
+          "h": 44
+        },
+        {
+          "name": "tim",
+          "w": 56,
+          "h": 44
+        }
+      ],
+      "hidden": false
+    },
+    "axe ahmad p-001 ringkasan 375 mobile": [],
+    "kartu pertama top ahmad 375": 490,
+    "axe ahmad p-001 tugas 375 mobile": [],
+    "axe ahmad p-001 tim 375 mobile": [],
+    "geo dewi p-001 375": {
+      "back": {
+        "w": 112,
+        "h": 44
+      },
+      "tabs": [
+        {
+          "name": "ringkasan",
+          "w": 101,
+          "h": 44
+        },
+        {
+          "name": "tugas",
+          "w": 91,
+          "h": 44
+        }
+      ],
+      "hidden": false
+    },
+    "axe dewi p-001 ringkasan 375 mobile": [],
+    "kartu pertama top dewi 375": 490,
+    "axe dewi p-001 tugas 375 mobile": [],
+    "axe budi p-005 ringkasan 375 mobile": [],
+    "fokus tab": {
+      "outline": "solid",
+      "width": "2px"
+    }
+  },
+  "failures": []
+}

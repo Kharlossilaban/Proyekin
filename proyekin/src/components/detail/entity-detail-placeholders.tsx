@@ -1,6 +1,7 @@
 "use client";
 
-// Isi SEMENTARA untuk route detail dinamis: dipakai sampai halaman detail sebenarnya (U4-5 proyek, U4-9 tugas).
+// Isi SEMENTARA untuk route detail TUGAS: dipakai sampai halaman detail tugas sebenarnya (U4-9). Detail proyek sudah final
+// di components/projects/project-detail.tsx (U4-5).
 // Bukan desain final dan tanpa aksi bisnis. Yang permanen di sini adalah polanya (dibuktikan di U4-0, docs/u4-evidence/U4-0-SPIKE.md):
 // server hanya meneruskan id; pencarian data di klien karena ID runtime hanya ada di memori tab; ID tidak ada → notFound();
 // ID ada tetapi di luar lingkup pengguna → AccessGuard (aturan dari access.ts) mengalihkan ke /akses-ditolak.
@@ -12,8 +13,8 @@ import { notFound } from "next/navigation";
 import { AccessGuard } from "@/components/auth/access-guard";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { canViewProject, canViewTask } from "@/lib/access";
-import { PROJECT_STATUS_LABELS, PROJECT_STATUS_TONES, TASK_STATUS_LABELS, TASK_STATUS_TONES } from "@/lib/labels";
+import { canViewTask } from "@/lib/access";
+import { TASK_STATUS_LABELS, TASK_STATUS_TONES } from "@/lib/labels";
 import { useMockStore } from "@/lib/use-mock-store";
 
 function PlaceholderNote() {
@@ -21,29 +22,6 @@ function PlaceholderNote() {
     <p className="text-xs text-muted-foreground">
       Tampilan sementara (bukan desain final). Data demo di memori tab ini; hilang saat halaman dimuat ulang.
     </p>
-  );
-}
-
-function ProjectDetailPlaceholder({ projectId }: { projectId: string }) {
-  const data = useMockStore();
-  const project = data.projects.find((p) => p.id === projectId);
-  if (!project) notFound();
-
-  return (
-    <AccessGuard allow={(actor, store) => canViewProject(actor, project, store)}>
-      <Card data-detail="found" data-entity="project" data-id={project.id}>
-        <CardHeader>
-          <CardDescription>{project.code}</CardDescription>
-          <CardTitle as="h1">{project.name}</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-3">
-          <Badge variant={PROJECT_STATUS_TONES[project.status]} dot>
-            {PROJECT_STATUS_LABELS[project.status]}
-          </Badge>
-          <PlaceholderNote />
-        </CardContent>
-      </Card>
-    </AccessGuard>
   );
 }
 
@@ -70,4 +48,4 @@ function TaskDetailPlaceholder({ taskId }: { taskId: string }) {
   );
 }
 
-export { ProjectDetailPlaceholder, TaskDetailPlaceholder };
+export { TaskDetailPlaceholder };

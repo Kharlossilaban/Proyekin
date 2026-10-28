@@ -1,4 +1,4 @@
-import { ProjectDetailPlaceholder } from "@/components/detail/entity-detail-placeholders";
+import { ProjectDetail } from "@/components/projects/project-detail";
 import { MOCK_PROJECTS } from "@/data/mock";
 
 export const metadata = { title: "Detail Proyek — Proyekin" };
@@ -11,5 +11,5 @@ export function generateStaticParams() {
 
 export default async function ProyekDetailPage({ params }: { params: Promise<{ projectId: string }> }) {
   const { projectId } = await params;
-  return <ProjectDetailPlaceholder projectId={projectId} />;
+  return <ProjectDetail projectId={projectId} />;
 }

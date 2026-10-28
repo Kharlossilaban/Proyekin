@@ -21,17 +21,10 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { getVisibleProjects } from "@/lib/access";
-import { formatDemoDate } from "@/lib/demo-date";
 import { DENY_REASON_LABELS, PROJECT_STATUS_LABELS, PROJECT_STATUS_TONES } from "@/lib/labels";
+import { formatProjectPeriod } from "@/lib/project-relations";
 import { useMockStore } from "@/lib/use-mock-store";
 import type { Project } from "@/types";
-
-const formatPeriod = (project: Project): string => {
-  const start = formatDemoDate(project.startDate);
-  const end = formatDemoDate(project.endDate);
-  if (start && end) return `${start} – ${end}`;
-  return start ?? end ?? "—";
-};
 
 const isReadOnly = (project: Project): boolean => project.status === "ARCHIVED";
 
@@ -86,7 +79,7 @@ function ProjectCard({ project }: { project: Project }) {
         <dt className="text-muted-foreground">Klien</dt>
         <dd className="min-w-0 text-foreground">{project.client}</dd>
         <dt className="text-muted-foreground">Periode</dt>
-        <dd className="min-w-0 text-foreground">{formatPeriod(project)}</dd>
+        <dd className="min-w-0 text-foreground">{formatProjectPeriod(project)}</dd>
         <dt className="text-muted-foreground">Lokasi</dt>
         <dd className="min-w-0 text-foreground">{project.location}</dd>
       </dl>
@@ -122,7 +115,7 @@ function ProjectTable({ projects }: { projects: readonly Project[] }) {
             <TableCell>
               <StatusCell project={project} />
             </TableCell>
-            <TableCell className="whitespace-nowrap">{formatPeriod(project)}</TableCell>
+            <TableCell className="whitespace-nowrap">{formatProjectPeriod(project)}</TableCell>
             <TableCell>
               <ProgressBar value={project.progress} label={`Progres ${project.code}`} />
             </TableCell>

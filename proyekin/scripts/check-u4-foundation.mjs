@@ -281,7 +281,7 @@ const RULE_SOURCES = /(lib[\\/](access|roles|labels)\.ts|data[\\/]mock\.ts|types
 const copies = walk(SRC).filter((f) => /\.(ts|tsx)$/.test(f) && !RULE_SOURCES.test(f) && ROLE_LITERAL.test(codeOf(f.slice(SRC.length + 1))));
 eq("aturan: tidak ada salinan literal role di luar berkas sumber (navigasi, guard, halaman, komponen)", copies.map((f) => f.slice(SRC.length)), []);
 const importers = walk(SRC).filter((f) => /\.(ts|tsx)$/.test(f) && !/lib[\\/]access\.ts$/.test(f) && /@\/lib\/access"/.test(readFileSync(f, "utf8"))).map((f) => f.slice(SRC.length + 1).replace(/\\/g, "/")).sort();
-eq("aturan: pemakai access.ts hanya navigasi, guard URL/detail, login, daftar proyek (U4-4), dan label (tipe)", importers, ["components/auth/login-form.tsx", "components/auth/path-guard.tsx", "components/detail/entity-detail-placeholders.tsx", "components/projects/project-list.tsx", "lib/labels.ts", "lib/navigation.ts"]);
+eq("aturan: pemakai access.ts hanya navigasi, guard URL/detail, login, daftar proyek (U4-4), detail proyek (U4-5), dan label (tipe)", importers, ["components/auth/login-form.tsx", "components/auth/path-guard.tsx", "components/detail/entity-detail-placeholders.tsx", "components/projects/project-detail.tsx", "components/projects/project-list.tsx", "lib/labels.ts", "lib/navigation.ts"]);
 check("guard: AccessGuard selalu merender children (pola hidden/inert, bukan menahan) dan memuat peringatan keterbatasan", /hidden=\{status !== "allowed"\}/.test(codeOf("components/auth/access-guard.tsx")) && /BUKAN OTORISASI/.test(readFileSync(join(SRC, "components/auth/access-guard.tsx"), "utf8")));
 {
   // SessionShell tidak boleh berubah sejak commit U3 terakhir yang mengubahnya (d3d9516).
@@ -293,6 +293,42 @@ check("guard: AccessGuard selalu merender children (pola hidden/inert, bukan men
     unchanged = false;
   }
   check("guard: SessionShell tidak diubah sejak U3 (git diff terhadap d3d9516 kosong)", unchanged);
+}
+
+// ---------- 7. U4-5: detail proyek (tab Tim, tugas dalam lingkup, relasi tim, tanpa aksi mutasi) ----------
+// Literal sengaja terpisah dari access.ts / project-relations.ts (bukan dihitung dari keduanya).
+const rel = await load("lib/project-relations.ts");
+perId("tab Tim di detail proyek (U4-5; Anggota Tim tidak, J5)", MOCK_PROJECTS, (a, p) => access.canViewProjectTeam(a, p, data), { owner: P.all, admin: P.two, ahmad: P.two, eko: P.two });
+matrix("hanya tugas miliknya (J5)", (a) => access.seesOnlyOwnTasks(a), { dewi: true });
+const PROJECT_TASKS = {
+  owner: { "p-001": ["t-001", "t-002", "t-003", "t-006"], "p-002": ["t-004", "t-005"] },
+  admin: { "p-001": ["t-001", "t-002", "t-003", "t-006"], "p-002": ["t-004", "t-005"] },
+  ahmad: { "p-001": ["t-001", "t-002", "t-003", "t-006"], "p-002": ["t-004", "t-005"] },
+  eko: { "p-001": ["t-001", "t-002", "t-003", "t-006"], "p-002": ["t-004", "t-005"] },
+  dewi: { "p-001": ["t-002", "t-006"] },
+  guest: {},
+  nobody: {},
+};
+for (const [who, actor] of Object.entries(personas)) {
+  for (const project of MOCK_PROJECTS) {
+    eq(`akses: tugas proyek ${project.id} dalam lingkup — ${who} (G5, G8, J5)`, ids(access.getVisibleProjectTasks(actor, project, data)), PROJECT_TASKS[who][project.id] ?? []);
+  }
+  eq(`akses: gabungan tugas per proyek = getVisibleTasks — ${who}`, ids(MOCK_PROJECTS.flatMap((p) => access.getVisibleProjectTasks(actor, p, data))).sort(), ids(access.getVisibleTasks(actor, data)).sort());
+}
+eq("relasi: tim p-001 = Admin principal lalu anggota (urutan keanggotaan)", rel.getProjectTeam(MOCK_PROJECTS[0], data).map((e) => [e.user.id, e.isAdminPrincipal]), [["u-002", true], ["u-003", false], ["u-004", false], ["u-005", false]]);
+eq("relasi: tim p-002", rel.getProjectTeam(MOCK_PROJECTS[1], data).map((e) => [e.user.id, e.isAdminPrincipal]), [["u-002", true], ["u-003", false], ["u-005", false]]);
+eq("relasi: tim p-003..p-005 kosong (tanpa Admin principal dan anggota)", MOCK_PROJECTS.slice(2).map((p) => rel.getProjectTeam(p, data).length), [0, 0, 0]);
+eq("relasi: pengguna tidak dikenal dan duplikat dilewati", rel.getProjectTeam({ ...MOCK_PROJECTS[0], adminId: "u-404" }, { users: data.users, members: [...data.members, { projectId: "p-001", userId: "u-003" }, { projectId: "p-001", userId: "u-404" }] }).map((e) => e.user.id), ["u-003", "u-004", "u-005"]);
+eq("relasi: nama dari relasi User (u-004, tidak dikenal, kosong)", [rel.getUserName(data.users, "u-004"), rel.getUserName(data.users, "u-404"), rel.getUserName(data.users, undefined)], ["Dewi Lestari", undefined, undefined]);
+eq("relasi: nama mengikuti User, bukan salinan teks legacy Task.assigneeName", rel.getUserName(data.users.map((u) => (u.id === "u-004" ? { ...u, name: "Dewi Baru" } : u)), MOCK_TASKS[1].assigneeId), "Dewi Baru");
+eq("relasi: periode proyek", [rel.formatProjectPeriod(MOCK_PROJECTS[0]), rel.formatProjectPeriod({ startDate: "2026-01-15", endDate: "" }), rel.formatProjectPeriod({ startDate: "", endDate: "" })], ["15 Jan 2026 – 30 Jun 2026", "15 Jan 2026", "—"]);
+{
+  const detail = codeOf("components/projects/project-detail.tsx");
+  check("detail proyek: hanya baca (tanpa button, form, input, atau penulisan store)", !/<button|<form|<input|<select|<textarea/i.test(detail) && !/lib\/mock-store"/.test(detail) && !/createProject|createTask|resetMockStore/.test(detail));
+  check("detail proyek: tidak menautkan ke detail tugas (U4-9) dan tidak ada aksi mutasi", !/href=\{?[`"']\/tugas/.test(detail) && !/onClick/.test(detail));
+  check("detail proyek: nama penanggung jawab dari relasi User, bukan Task.assigneeName", /getUserName\(/.test(detail) && !/task\.assigneeName/.test(detail));
+  check("detail proyek: memakai fungsi access.ts untuk tab Tim, tugas, dan email (tanpa aturan role sendiri)", /canViewProjectTeam/.test(detail) && /getVisibleProjectTasks/.test(detail) && /canViewOrgUsers/.test(detail) && /canViewProject\b/.test(detail));
+  check("detail proyek: memakai AccessGuard dan menampilkan DemoDataNotice tenggat", /<AccessGuard/.test(detail) && /<DemoDataNotice showDeadlineReference/.test(detail));
 }
 
 console.log(failures.length ? `\n${failures.length} masalah dari ${passed + failures.length} pemeriksaan.` : `\nSemua ${passed} pemeriksaan lolos.`);

@@ -1,0 +1,4146 @@
+{
+  "checks": [
+    {
+      "name": "laporan 375 (u-001): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "laporan 375 (u-001): judul halaman Laporan Harian",
+      "ok": true,
+      "detail": "Laporan Harian"
+    },
+    {
+      "name": "laporan 375 (u-001): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3]"
+    },
+    {
+      "name": "laporan 375 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: laporan 375 (u-001)",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "laporan 375 (u-001): daftar kartu terlihat sebagai ul[role=list] bernama \"Daftar laporan harian\"",
+      "ok": true,
+      "detail": "\"list\""
+    },
+    {
+      "name": "laporan 375 (u-001): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 375 (u-001): jumlah kartu = jumlah baris sumber (3) dan satu li per kartu",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "laporan 375 (u-001): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"r-001\",\"r-002\",\"r-003\"]"
+    },
+    {
+      "name": "laporan 375 (u-001): judul bagian \"Semua Laporan\" dan jumlah \"3 laporan\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 375 (u-001): kartu r-001 judul \"20 Februari 2026\" (h3)",
+      "ok": true,
+      "detail": "20 Februari 2026 H3"
+    },
+    {
+      "name": "laporan 375 (u-001): kartu r-001 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"],\"values\":[\"PRJ-001\",\"Ahmad Rizal\",\"12\",\"Cerah Berawan\",\"Terkirim\"]}"
+    },
+    {
+      "name": "laporan 375 (u-001): kartu r-002 judul \"19 Februari 2026\" (h3)",
+      "ok": true,
+      "detail": "19 Februari 2026 H3"
+    },
+    {
+      "name": "laporan 375 (u-001): kartu r-002 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"],\"values\":[\"PRJ-001\",\"Ahmad Rizal\",\"10\",\"Cerah\",\"Disetujui\"]}"
+    },
+    {
+      "name": "laporan 375 (u-001): kartu r-003 judul \"21 Maret 2026\" (h3)",
+      "ok": true,
+      "detail": "21 Maret 2026 H3"
+    },
+    {
+      "name": "laporan 375 (u-001): kartu r-003 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"],\"values\":[\"PRJ-002\",\"Eko Prasetyo\",\"8\",\"Hujan Ringan\",\"Terkirim\"]}"
+    },
+    {
+      "name": "laporan 375 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "laporan 375 (u-001): satu kolom (semua kartu selebar sama dan di dalam viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: laporan 375 (u-001)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 768 (u-001): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "laporan 768 (u-001): judul halaman Laporan Harian",
+      "ok": true,
+      "detail": "Laporan Harian"
+    },
+    {
+      "name": "laporan 768 (u-001): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3]"
+    },
+    {
+      "name": "laporan 768 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: laporan 768 (u-001)",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "laporan 768 (u-001): daftar kartu terlihat sebagai ul[role=list] bernama \"Daftar laporan harian\"",
+      "ok": true,
+      "detail": "\"list\""
+    },
+    {
+      "name": "laporan 768 (u-001): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 768 (u-001): jumlah kartu = jumlah baris sumber (3) dan satu li per kartu",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "laporan 768 (u-001): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"r-001\",\"r-002\",\"r-003\"]"
+    },
+    {
+      "name": "laporan 768 (u-001): judul bagian \"Semua Laporan\" dan jumlah \"3 laporan\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 768 (u-001): kartu r-001 judul \"20 Februari 2026\" (h3)",
+      "ok": true,
+      "detail": "20 Februari 2026 H3"
+    },
+    {
+      "name": "laporan 768 (u-001): kartu r-001 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"],\"values\":[\"PRJ-001\",\"Ahmad Rizal\",\"12\",\"Cerah Berawan\",\"Terkirim\"]}"
+    },
+    {
+      "name": "laporan 768 (u-001): kartu r-002 judul \"19 Februari 2026\" (h3)",
+      "ok": true,
+      "detail": "19 Februari 2026 H3"
+    },
+    {
+      "name": "laporan 768 (u-001): kartu r-002 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"],\"values\":[\"PRJ-001\",\"Ahmad Rizal\",\"10\",\"Cerah\",\"Disetujui\"]}"
+    },
+    {
+      "name": "laporan 768 (u-001): kartu r-003 judul \"21 Maret 2026\" (h3)",
+      "ok": true,
+      "detail": "21 Maret 2026 H3"
+    },
+    {
+      "name": "laporan 768 (u-001): kartu r-003 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"],\"values\":[\"PRJ-002\",\"Eko Prasetyo\",\"8\",\"Hujan Ringan\",\"Terkirim\"]}"
+    },
+    {
+      "name": "laporan 768 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "laporan 768 (u-001): dua kolom",
+      "ok": true,
+      "detail": "[16,392]"
+    },
+    {
+      "name": "axe 0 pelanggaran: laporan 768 (u-001)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 1280 (u-001): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "laporan 1280 (u-001): judul halaman Laporan Harian",
+      "ok": true,
+      "detail": "Laporan Harian"
+    },
+    {
+      "name": "laporan 1280 (u-001): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2]"
+    },
+    {
+      "name": "laporan 1280 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: laporan 1280 (u-001)",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "laporan 1280 (u-001): tabel terlihat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 1280 (u-001): kartu tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 1280 (u-001): tabel memuat SEMUA kolom (Tanggal, Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "[\"Tanggal\",\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"]"
+    },
+    {
+      "name": "laporan 1280 (u-001): tabel tanpa gulir horizontal (semua kolom terlihat)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 1280 (u-001): jumlah baris = 3 dan urutan sesuai data",
+      "ok": true,
+      "detail": "[\"r-001\",\"r-002\",\"r-003\"]"
+    },
+    {
+      "name": "laporan 1280 (u-001): header kartu tabel \"Semua Laporan\" tidak berubah",
+      "ok": true,
+      "detail": "Semua Laporan"
+    },
+    {
+      "name": "laporan 1280 (u-001): baris r-001 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"20 Februari 2026\",\"PRJ-001\",\"Ahmad Rizal\",\"12\",\"Cerah Berawan\",\"Terkirim\"]"
+    },
+    {
+      "name": "laporan 1280 (u-001): baris r-002 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"19 Februari 2026\",\"PRJ-001\",\"Ahmad Rizal\",\"10\",\"Cerah\",\"Disetujui\"]"
+    },
+    {
+      "name": "laporan 1280 (u-001): baris r-003 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"21 Maret 2026\",\"PRJ-002\",\"Eko Prasetyo\",\"8\",\"Hujan Ringan\",\"Terkirim\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: laporan 1280 (u-001)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 375 (u-001): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "dokumen 375 (u-001): judul halaman Dokumen",
+      "ok": true,
+      "detail": "Dokumen"
+    },
+    {
+      "name": "dokumen 375 (u-001): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3,3,3]"
+    },
+    {
+      "name": "dokumen 375 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: dokumen 375 (u-001)",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "dokumen 375 (u-001): daftar kartu terlihat sebagai ul[role=list] bernama \"Daftar dokumen\"",
+      "ok": true,
+      "detail": "\"list\""
+    },
+    {
+      "name": "dokumen 375 (u-001): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 375 (u-001): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "dokumen 375 (u-001): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"d-001\",\"d-002\",\"d-003\",\"d-004\",\"d-005\"]"
+    },
+    {
+      "name": "dokumen 375 (u-001): judul bagian \"Semua Dokumen\" dan jumlah \"5 dokumen\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 375 (u-001): kartu d-001 judul \"Gambar Arsitektur Lantai 1-3\" (h3)",
+      "ok": true,
+      "detail": "Gambar Arsitektur Lantai 1-3 H3"
+    },
+    {
+      "name": "dokumen 375 (u-001): kartu d-001 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Gambar Teknis\",\"20 Januari 2026\",\"15.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-001): kartu d-002 judul \"RAB Renovasi Gedung Kantor\" (h3)",
+      "ok": true,
+      "detail": "RAB Renovasi Gedung Kantor H3"
+    },
+    {
+      "name": "dokumen 375 (u-001): kartu d-002 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Rencana Kerja\",\"18 Januari 2026\",\"2.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-001): kartu d-003 judul \"Kontrak Pekerjaan No. 045/CON/2026\" (h3)",
+      "ok": true,
+      "detail": "Kontrak Pekerjaan No. 045/CON/2026 H3"
+    },
+    {
+      "name": "dokumen 375 (u-001): kartu d-003 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Kontrak\",\"15 Januari 2026\",\"5.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-001): kartu d-004 judul \"Foto Progress Pembongkaran 20 Feb\" (h3)",
+      "ok": true,
+      "detail": "Foto Progress Pembongkaran 20 Feb H3"
+    },
+    {
+      "name": "dokumen 375 (u-001): kartu d-004 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Lainnya\",\"21 Februari 2026\",\"50.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-001): kartu d-005 judul \"Gambar Struktur Jembatan\" (h3)",
+      "ok": true,
+      "detail": "Gambar Struktur Jembatan H3"
+    },
+    {
+      "name": "dokumen 375 (u-001): kartu d-005 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Gambar Teknis\",\"5 Oktober 2025\",\"12.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "dokumen 375 (u-001): satu kolom (semua kartu selebar sama dan di dalam viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\",\"16/343\",\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: dokumen 375 (u-001)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 768 (u-001): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "dokumen 768 (u-001): judul halaman Dokumen",
+      "ok": true,
+      "detail": "Dokumen"
+    },
+    {
+      "name": "dokumen 768 (u-001): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3,3,3]"
+    },
+    {
+      "name": "dokumen 768 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: dokumen 768 (u-001)",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "dokumen 768 (u-001): daftar kartu terlihat sebagai ul[role=list] bernama \"Daftar dokumen\"",
+      "ok": true,
+      "detail": "\"list\""
+    },
+    {
+      "name": "dokumen 768 (u-001): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 768 (u-001): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "dokumen 768 (u-001): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"d-001\",\"d-002\",\"d-003\",\"d-004\",\"d-005\"]"
+    },
+    {
+      "name": "dokumen 768 (u-001): judul bagian \"Semua Dokumen\" dan jumlah \"5 dokumen\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 768 (u-001): kartu d-001 judul \"Gambar Arsitektur Lantai 1-3\" (h3)",
+      "ok": true,
+      "detail": "Gambar Arsitektur Lantai 1-3 H3"
+    },
+    {
+      "name": "dokumen 768 (u-001): kartu d-001 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Gambar Teknis\",\"20 Januari 2026\",\"15.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 768 (u-001): kartu d-002 judul \"RAB Renovasi Gedung Kantor\" (h3)",
+      "ok": true,
+      "detail": "RAB Renovasi Gedung Kantor H3"
+    },
+    {
+      "name": "dokumen 768 (u-001): kartu d-002 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Rencana Kerja\",\"18 Januari 2026\",\"2.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 768 (u-001): kartu d-003 judul \"Kontrak Pekerjaan No. 045/CON/2026\" (h3)",
+      "ok": true,
+      "detail": "Kontrak Pekerjaan No. 045/CON/2026 H3"
+    },
+    {
+      "name": "dokumen 768 (u-001): kartu d-003 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Kontrak\",\"15 Januari 2026\",\"5.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 768 (u-001): kartu d-004 judul \"Foto Progress Pembongkaran 20 Feb\" (h3)",
+      "ok": true,
+      "detail": "Foto Progress Pembongkaran 20 Feb H3"
+    },
+    {
+      "name": "dokumen 768 (u-001): kartu d-004 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Lainnya\",\"21 Februari 2026\",\"50.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 768 (u-001): kartu d-005 judul \"Gambar Struktur Jembatan\" (h3)",
+      "ok": true,
+      "detail": "Gambar Struktur Jembatan H3"
+    },
+    {
+      "name": "dokumen 768 (u-001): kartu d-005 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Gambar Teknis\",\"5 Oktober 2025\",\"12.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 768 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "dokumen 768 (u-001): dua kolom",
+      "ok": true,
+      "detail": "[16,392]"
+    },
+    {
+      "name": "axe 0 pelanggaran: dokumen 768 (u-001)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 1280 (u-001): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "dokumen 1280 (u-001): judul halaman Dokumen",
+      "ok": true,
+      "detail": "Dokumen"
+    },
+    {
+      "name": "dokumen 1280 (u-001): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2]"
+    },
+    {
+      "name": "dokumen 1280 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: dokumen 1280 (u-001)",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "dokumen 1280 (u-001): tabel terlihat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 1280 (u-001): kartu tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 1280 (u-001): tabel memuat SEMUA kolom (Nama, Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "[\"Nama\",\"Kategori\",\"Diunggah\",\"Ukuran\"]"
+    },
+    {
+      "name": "dokumen 1280 (u-001): tabel tanpa gulir horizontal (semua kolom terlihat)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 1280 (u-001): jumlah baris = 5 dan urutan sesuai data",
+      "ok": true,
+      "detail": "[\"d-001\",\"d-002\",\"d-003\",\"d-004\",\"d-005\"]"
+    },
+    {
+      "name": "dokumen 1280 (u-001): header kartu tabel \"Semua Dokumen\" tidak berubah",
+      "ok": true,
+      "detail": "Semua Dokumen"
+    },
+    {
+      "name": "dokumen 1280 (u-001): baris d-001 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"Gambar Arsitektur Lantai 1-3\",\"Gambar Teknis\",\"20 Januari 2026\",\"15.0 MB\"]"
+    },
+    {
+      "name": "dokumen 1280 (u-001): baris d-002 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"RAB Renovasi Gedung Kantor\",\"Rencana Kerja\",\"18 Januari 2026\",\"2.0 MB\"]"
+    },
+    {
+      "name": "dokumen 1280 (u-001): baris d-003 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"Kontrak Pekerjaan No. 045/CON/2026\",\"Kontrak\",\"15 Januari 2026\",\"5.0 MB\"]"
+    },
+    {
+      "name": "dokumen 1280 (u-001): baris d-004 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"Foto Progress Pembongkaran 20 Feb\",\"Lainnya\",\"21 Februari 2026\",\"50.0 MB\"]"
+    },
+    {
+      "name": "dokumen 1280 (u-001): baris d-005 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"Gambar Struktur Jembatan\",\"Gambar Teknis\",\"5 Oktober 2025\",\"12.0 MB\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: dokumen 1280 (u-001)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 375 (u-001): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "anggota 375 (u-001): judul halaman Anggota",
+      "ok": true,
+      "detail": "Anggota"
+    },
+    {
+      "name": "anggota 375 (u-001): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3,3,3]"
+    },
+    {
+      "name": "anggota 375 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: anggota 375 (u-001)",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "anggota 375 (u-001): daftar kartu terlihat sebagai ul[role=list] bernama \"Daftar anggota tim\"",
+      "ok": true,
+      "detail": "\"list\""
+    },
+    {
+      "name": "anggota 375 (u-001): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 375 (u-001): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "anggota 375 (u-001): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"u-001\",\"u-002\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "anggota 375 (u-001): judul bagian \"Semua Anggota\" dan jumlah \"5 anggota\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 375 (u-001): kartu u-001 judul \"Budi Santoso\" (h3)",
+      "ok": true,
+      "detail": "Budi Santoso H3"
+    },
+    {
+      "name": "anggota 375 (u-001): kartu u-001 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"budi@proyekin.id\",\"Owner\"]}"
+    },
+    {
+      "name": "anggota 375 (u-001): kartu u-002 judul \"Siti Aminah\" (h3)",
+      "ok": true,
+      "detail": "Siti Aminah H3"
+    },
+    {
+      "name": "anggota 375 (u-001): kartu u-002 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"siti@proyekin.id\",\"Admin Kantor\"]}"
+    },
+    {
+      "name": "anggota 375 (u-001): kartu u-003 judul \"Ahmad Rizal\" (h3)",
+      "ok": true,
+      "detail": "Ahmad Rizal H3"
+    },
+    {
+      "name": "anggota 375 (u-001): kartu u-003 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"ahmad@proyekin.id\",\"Mandor\"]}"
+    },
+    {
+      "name": "anggota 375 (u-001): kartu u-004 judul \"Dewi Lestari\" (h3)",
+      "ok": true,
+      "detail": "Dewi Lestari H3"
+    },
+    {
+      "name": "anggota 375 (u-001): kartu u-004 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"dewi@proyekin.id\",\"Anggota Tim\"]}"
+    },
+    {
+      "name": "anggota 375 (u-001): kartu u-005 judul \"Eko Prasetyo\" (h3)",
+      "ok": true,
+      "detail": "Eko Prasetyo H3"
+    },
+    {
+      "name": "anggota 375 (u-001): kartu u-005 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"eko@proyekin.id\",\"Mandor\"]}"
+    },
+    {
+      "name": "anggota 375 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "anggota 375 (u-001): avatar inisial dekoratif (aria-hidden)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 375 (u-001): satu kolom (semua kartu selebar sama dan di dalam viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\",\"16/343\",\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: anggota 375 (u-001)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 768 (u-001): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "anggota 768 (u-001): judul halaman Anggota",
+      "ok": true,
+      "detail": "Anggota"
+    },
+    {
+      "name": "anggota 768 (u-001): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3,3,3]"
+    },
+    {
+      "name": "anggota 768 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: anggota 768 (u-001)",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "anggota 768 (u-001): daftar kartu terlihat sebagai ul[role=list] bernama \"Daftar anggota tim\"",
+      "ok": true,
+      "detail": "\"list\""
+    },
+    {
+      "name": "anggota 768 (u-001): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 768 (u-001): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "anggota 768 (u-001): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"u-001\",\"u-002\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "anggota 768 (u-001): judul bagian \"Semua Anggota\" dan jumlah \"5 anggota\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 768 (u-001): kartu u-001 judul \"Budi Santoso\" (h3)",
+      "ok": true,
+      "detail": "Budi Santoso H3"
+    },
+    {
+      "name": "anggota 768 (u-001): kartu u-001 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"budi@proyekin.id\",\"Owner\"]}"
+    },
+    {
+      "name": "anggota 768 (u-001): kartu u-002 judul \"Siti Aminah\" (h3)",
+      "ok": true,
+      "detail": "Siti Aminah H3"
+    },
+    {
+      "name": "anggota 768 (u-001): kartu u-002 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"siti@proyekin.id\",\"Admin Kantor\"]}"
+    },
+    {
+      "name": "anggota 768 (u-001): kartu u-003 judul \"Ahmad Rizal\" (h3)",
+      "ok": true,
+      "detail": "Ahmad Rizal H3"
+    },
+    {
+      "name": "anggota 768 (u-001): kartu u-003 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"ahmad@proyekin.id\",\"Mandor\"]}"
+    },
+    {
+      "name": "anggota 768 (u-001): kartu u-004 judul \"Dewi Lestari\" (h3)",
+      "ok": true,
+      "detail": "Dewi Lestari H3"
+    },
+    {
+      "name": "anggota 768 (u-001): kartu u-004 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"dewi@proyekin.id\",\"Anggota Tim\"]}"
+    },
+    {
+      "name": "anggota 768 (u-001): kartu u-005 judul \"Eko Prasetyo\" (h3)",
+      "ok": true,
+      "detail": "Eko Prasetyo H3"
+    },
+    {
+      "name": "anggota 768 (u-001): kartu u-005 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"eko@proyekin.id\",\"Mandor\"]}"
+    },
+    {
+      "name": "anggota 768 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "anggota 768 (u-001): avatar inisial dekoratif (aria-hidden)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 768 (u-001): dua kolom",
+      "ok": true,
+      "detail": "[16,392]"
+    },
+    {
+      "name": "axe 0 pelanggaran: anggota 768 (u-001)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 1280 (u-001): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "anggota 1280 (u-001): judul halaman Anggota",
+      "ok": true,
+      "detail": "Anggota"
+    },
+    {
+      "name": "anggota 1280 (u-001): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2]"
+    },
+    {
+      "name": "anggota 1280 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: anggota 1280 (u-001)",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "anggota 1280 (u-001): tabel terlihat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 1280 (u-001): kartu tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 1280 (u-001): tabel memuat SEMUA kolom (Nama, Email, Role)",
+      "ok": true,
+      "detail": "[\"Nama\",\"Email\",\"Role\"]"
+    },
+    {
+      "name": "anggota 1280 (u-001): tabel tanpa gulir horizontal (semua kolom terlihat)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 1280 (u-001): jumlah baris = 5 dan urutan sesuai data",
+      "ok": true,
+      "detail": "[\"u-001\",\"u-002\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "anggota 1280 (u-001): header kartu tabel \"Semua Anggota\" tidak berubah",
+      "ok": true,
+      "detail": "Semua Anggota"
+    },
+    {
+      "name": "anggota 1280 (u-001): baris u-001 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"BBudi Santoso\",\"budi@proyekin.id\",\"Owner\"]"
+    },
+    {
+      "name": "anggota 1280 (u-001): baris u-002 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"SSiti Aminah\",\"siti@proyekin.id\",\"Admin Kantor\"]"
+    },
+    {
+      "name": "anggota 1280 (u-001): baris u-003 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"AAhmad Rizal\",\"ahmad@proyekin.id\",\"Mandor\"]"
+    },
+    {
+      "name": "anggota 1280 (u-001): baris u-004 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"DDewi Lestari\",\"dewi@proyekin.id\",\"Anggota Tim\"]"
+    },
+    {
+      "name": "anggota 1280 (u-001): baris u-005 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"EEko Prasetyo\",\"eko@proyekin.id\",\"Mandor\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: anggota 1280 (u-001)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 375 (u-003): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "laporan 375 (u-003): judul halaman Laporan Harian",
+      "ok": true,
+      "detail": "Laporan Harian"
+    },
+    {
+      "name": "laporan 375 (u-003): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3]"
+    },
+    {
+      "name": "laporan 375 (u-003): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: laporan 375 (u-003)",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "laporan 375 (u-003): daftar kartu terlihat sebagai ul[role=list] bernama \"Daftar laporan harian\"",
+      "ok": true,
+      "detail": "\"list\""
+    },
+    {
+      "name": "laporan 375 (u-003): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 375 (u-003): jumlah kartu = jumlah baris sumber (3) dan satu li per kartu",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "laporan 375 (u-003): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"r-001\",\"r-002\",\"r-003\"]"
+    },
+    {
+      "name": "laporan 375 (u-003): judul bagian \"Semua Laporan\" dan jumlah \"3 laporan\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 375 (u-003): kartu r-001 judul \"20 Februari 2026\" (h3)",
+      "ok": true,
+      "detail": "20 Februari 2026 H3"
+    },
+    {
+      "name": "laporan 375 (u-003): kartu r-001 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"],\"values\":[\"PRJ-001\",\"Ahmad Rizal\",\"12\",\"Cerah Berawan\",\"Terkirim\"]}"
+    },
+    {
+      "name": "laporan 375 (u-003): kartu r-002 judul \"19 Februari 2026\" (h3)",
+      "ok": true,
+      "detail": "19 Februari 2026 H3"
+    },
+    {
+      "name": "laporan 375 (u-003): kartu r-002 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"],\"values\":[\"PRJ-001\",\"Ahmad Rizal\",\"10\",\"Cerah\",\"Disetujui\"]}"
+    },
+    {
+      "name": "laporan 375 (u-003): kartu r-003 judul \"21 Maret 2026\" (h3)",
+      "ok": true,
+      "detail": "21 Maret 2026 H3"
+    },
+    {
+      "name": "laporan 375 (u-003): kartu r-003 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"],\"values\":[\"PRJ-002\",\"Eko Prasetyo\",\"8\",\"Hujan Ringan\",\"Terkirim\"]}"
+    },
+    {
+      "name": "laporan 375 (u-003): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "laporan 375 (u-003): satu kolom (semua kartu selebar sama dan di dalam viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: laporan 375 (u-003)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 375 (u-003): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "dokumen 375 (u-003): judul halaman Dokumen",
+      "ok": true,
+      "detail": "Dokumen"
+    },
+    {
+      "name": "dokumen 375 (u-003): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3,3,3]"
+    },
+    {
+      "name": "dokumen 375 (u-003): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: dokumen 375 (u-003)",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "dokumen 375 (u-003): daftar kartu terlihat sebagai ul[role=list] bernama \"Daftar dokumen\"",
+      "ok": true,
+      "detail": "\"list\""
+    },
+    {
+      "name": "dokumen 375 (u-003): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 375 (u-003): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "dokumen 375 (u-003): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"d-001\",\"d-002\",\"d-003\",\"d-004\",\"d-005\"]"
+    },
+    {
+      "name": "dokumen 375 (u-003): judul bagian \"Semua Dokumen\" dan jumlah \"5 dokumen\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 375 (u-003): kartu d-001 judul \"Gambar Arsitektur Lantai 1-3\" (h3)",
+      "ok": true,
+      "detail": "Gambar Arsitektur Lantai 1-3 H3"
+    },
+    {
+      "name": "dokumen 375 (u-003): kartu d-001 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Gambar Teknis\",\"20 Januari 2026\",\"15.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-003): kartu d-002 judul \"RAB Renovasi Gedung Kantor\" (h3)",
+      "ok": true,
+      "detail": "RAB Renovasi Gedung Kantor H3"
+    },
+    {
+      "name": "dokumen 375 (u-003): kartu d-002 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Rencana Kerja\",\"18 Januari 2026\",\"2.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-003): kartu d-003 judul \"Kontrak Pekerjaan No. 045/CON/2026\" (h3)",
+      "ok": true,
+      "detail": "Kontrak Pekerjaan No. 045/CON/2026 H3"
+    },
+    {
+      "name": "dokumen 375 (u-003): kartu d-003 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Kontrak\",\"15 Januari 2026\",\"5.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-003): kartu d-004 judul \"Foto Progress Pembongkaran 20 Feb\" (h3)",
+      "ok": true,
+      "detail": "Foto Progress Pembongkaran 20 Feb H3"
+    },
+    {
+      "name": "dokumen 375 (u-003): kartu d-004 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Lainnya\",\"21 Februari 2026\",\"50.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-003): kartu d-005 judul \"Gambar Struktur Jembatan\" (h3)",
+      "ok": true,
+      "detail": "Gambar Struktur Jembatan H3"
+    },
+    {
+      "name": "dokumen 375 (u-003): kartu d-005 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Gambar Teknis\",\"5 Oktober 2025\",\"12.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-003): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "dokumen 375 (u-003): satu kolom (semua kartu selebar sama dan di dalam viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\",\"16/343\",\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: dokumen 375 (u-003)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 375 (u-004): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "dokumen 375 (u-004): judul halaman Dokumen",
+      "ok": true,
+      "detail": "Dokumen"
+    },
+    {
+      "name": "dokumen 375 (u-004): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3,3,3]"
+    },
+    {
+      "name": "dokumen 375 (u-004): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: dokumen 375 (u-004)",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "dokumen 375 (u-004): daftar kartu terlihat sebagai ul[role=list] bernama \"Daftar dokumen\"",
+      "ok": true,
+      "detail": "\"list\""
+    },
+    {
+      "name": "dokumen 375 (u-004): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 375 (u-004): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "dokumen 375 (u-004): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"d-001\",\"d-002\",\"d-003\",\"d-004\",\"d-005\"]"
+    },
+    {
+      "name": "dokumen 375 (u-004): judul bagian \"Semua Dokumen\" dan jumlah \"5 dokumen\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dokumen 375 (u-004): kartu d-001 judul \"Gambar Arsitektur Lantai 1-3\" (h3)",
+      "ok": true,
+      "detail": "Gambar Arsitektur Lantai 1-3 H3"
+    },
+    {
+      "name": "dokumen 375 (u-004): kartu d-001 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Gambar Teknis\",\"20 Januari 2026\",\"15.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-004): kartu d-002 judul \"RAB Renovasi Gedung Kantor\" (h3)",
+      "ok": true,
+      "detail": "RAB Renovasi Gedung Kantor H3"
+    },
+    {
+      "name": "dokumen 375 (u-004): kartu d-002 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Rencana Kerja\",\"18 Januari 2026\",\"2.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-004): kartu d-003 judul \"Kontrak Pekerjaan No. 045/CON/2026\" (h3)",
+      "ok": true,
+      "detail": "Kontrak Pekerjaan No. 045/CON/2026 H3"
+    },
+    {
+      "name": "dokumen 375 (u-004): kartu d-003 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Kontrak\",\"15 Januari 2026\",\"5.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-004): kartu d-004 judul \"Foto Progress Pembongkaran 20 Feb\" (h3)",
+      "ok": true,
+      "detail": "Foto Progress Pembongkaran 20 Feb H3"
+    },
+    {
+      "name": "dokumen 375 (u-004): kartu d-004 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Lainnya\",\"21 Februari 2026\",\"50.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-004): kartu d-005 judul \"Gambar Struktur Jembatan\" (h3)",
+      "ok": true,
+      "detail": "Gambar Struktur Jembatan H3"
+    },
+    {
+      "name": "dokumen 375 (u-004): kartu d-005 memuat SELURUH field (Kategori, Diunggah, Ukuran)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Kategori\",\"Diunggah\",\"Ukuran\"],\"values\":[\"Gambar Teknis\",\"5 Oktober 2025\",\"12.0 MB\"]}"
+    },
+    {
+      "name": "dokumen 375 (u-004): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "dokumen 375 (u-004): satu kolom (semua kartu selebar sama dan di dalam viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\",\"16/343\",\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: dokumen 375 (u-004)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 375 (u-002): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "anggota 375 (u-002): judul halaman Anggota",
+      "ok": true,
+      "detail": "Anggota"
+    },
+    {
+      "name": "anggota 375 (u-002): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3,3,3]"
+    },
+    {
+      "name": "anggota 375 (u-002): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: anggota 375 (u-002)",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "anggota 375 (u-002): daftar kartu terlihat sebagai ul[role=list] bernama \"Daftar anggota tim\"",
+      "ok": true,
+      "detail": "\"list\""
+    },
+    {
+      "name": "anggota 375 (u-002): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 375 (u-002): jumlah kartu = jumlah baris sumber (5) dan satu li per kartu",
+      "ok": true,
+      "detail": "5"
+    },
+    {
+      "name": "anggota 375 (u-002): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"u-001\",\"u-002\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "anggota 375 (u-002): judul bagian \"Semua Anggota\" dan jumlah \"5 anggota\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 375 (u-002): kartu u-001 judul \"Budi Santoso\" (h3)",
+      "ok": true,
+      "detail": "Budi Santoso H3"
+    },
+    {
+      "name": "anggota 375 (u-002): kartu u-001 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"budi@proyekin.id\",\"Owner\"]}"
+    },
+    {
+      "name": "anggota 375 (u-002): kartu u-002 judul \"Siti Aminah\" (h3)",
+      "ok": true,
+      "detail": "Siti Aminah H3"
+    },
+    {
+      "name": "anggota 375 (u-002): kartu u-002 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"siti@proyekin.id\",\"Admin Kantor\"]}"
+    },
+    {
+      "name": "anggota 375 (u-002): kartu u-003 judul \"Ahmad Rizal\" (h3)",
+      "ok": true,
+      "detail": "Ahmad Rizal H3"
+    },
+    {
+      "name": "anggota 375 (u-002): kartu u-003 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"ahmad@proyekin.id\",\"Mandor\"]}"
+    },
+    {
+      "name": "anggota 375 (u-002): kartu u-004 judul \"Dewi Lestari\" (h3)",
+      "ok": true,
+      "detail": "Dewi Lestari H3"
+    },
+    {
+      "name": "anggota 375 (u-002): kartu u-004 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"dewi@proyekin.id\",\"Anggota Tim\"]}"
+    },
+    {
+      "name": "anggota 375 (u-002): kartu u-005 judul \"Eko Prasetyo\" (h3)",
+      "ok": true,
+      "detail": "Eko Prasetyo H3"
+    },
+    {
+      "name": "anggota 375 (u-002): kartu u-005 memuat SELURUH field (Email, Role)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Email\",\"Role\"],\"values\":[\"eko@proyekin.id\",\"Mandor\"]}"
+    },
+    {
+      "name": "anggota 375 (u-002): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "anggota 375 (u-002): avatar inisial dekoratif (aria-hidden)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "anggota 375 (u-002): satu kolom (semua kartu selebar sama dan di dalam viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\",\"16/343\",\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: anggota 375 (u-002)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 768 (u-002): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "laporan 768 (u-002): judul halaman Laporan Harian",
+      "ok": true,
+      "detail": "Laporan Harian"
+    },
+    {
+      "name": "laporan 768 (u-002): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3]"
+    },
+    {
+      "name": "laporan 768 (u-002): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: laporan 768 (u-002)",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "laporan 768 (u-002): daftar kartu terlihat sebagai ul[role=list] bernama \"Daftar laporan harian\"",
+      "ok": true,
+      "detail": "\"list\""
+    },
+    {
+      "name": "laporan 768 (u-002): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 768 (u-002): jumlah kartu = jumlah baris sumber (3) dan satu li per kartu",
+      "ok": true,
+      "detail": "3"
+    },
+    {
+      "name": "laporan 768 (u-002): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"r-001\",\"r-002\",\"r-003\"]"
+    },
+    {
+      "name": "laporan 768 (u-002): judul bagian \"Semua Laporan\" dan jumlah \"3 laporan\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "laporan 768 (u-002): kartu r-001 judul \"20 Februari 2026\" (h3)",
+      "ok": true,
+      "detail": "20 Februari 2026 H3"
+    },
+    {
+      "name": "laporan 768 (u-002): kartu r-001 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"],\"values\":[\"PRJ-001\",\"Ahmad Rizal\",\"12\",\"Cerah Berawan\",\"Terkirim\"]}"
+    },
+    {
+      "name": "laporan 768 (u-002): kartu r-002 judul \"19 Februari 2026\" (h3)",
+      "ok": true,
+      "detail": "19 Februari 2026 H3"
+    },
+    {
+      "name": "laporan 768 (u-002): kartu r-002 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"],\"values\":[\"PRJ-001\",\"Ahmad Rizal\",\"10\",\"Cerah\",\"Disetujui\"]}"
+    },
+    {
+      "name": "laporan 768 (u-002): kartu r-003 judul \"21 Maret 2026\" (h3)",
+      "ok": true,
+      "detail": "21 Maret 2026 H3"
+    },
+    {
+      "name": "laporan 768 (u-002): kartu r-003 memuat SELURUH field (Proyek, Mandor, Pekerja, Cuaca, Status)",
+      "ok": true,
+      "detail": "{\"labels\":[\"Proyek\",\"Mandor\",\"Pekerja\",\"Cuaca\",\"Status\"],\"values\":[\"PRJ-002\",\"Eko Prasetyo\",\"8\",\"Hujan Ringan\",\"Terkirim\"]}"
+    },
+    {
+      "name": "laporan 768 (u-002): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "laporan 768 (u-002): dua kolom",
+      "ok": true,
+      "detail": "[16,392]"
+    },
+    {
+      "name": "axe 0 pelanggaran: laporan 768 (u-002)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 375 (u-001): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "tugas 375 (u-001): judul halaman Tugas",
+      "ok": true,
+      "detail": "Tugas"
+    },
+    {
+      "name": "tugas 375 (u-001): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3,3,3,3]"
+    },
+    {
+      "name": "tugas 375 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: tugas 375 (u-001)",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "tugas 375 (u-001): daftar kartu tugas terlihat sebagai ul[role=list] bernama \"Daftar tugas\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 375 (u-001): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 375 (u-001): 6 kartu (dataset sama untuk semua role pada tahap ini) dan satu li per kartu",
+      "ok": true,
+      "detail": "6"
+    },
+    {
+      "name": "tugas 375 (u-001): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"t-001\",\"t-002\",\"t-003\",\"t-004\",\"t-005\",\"t-006\"]"
+    },
+    {
+      "name": "tugas 375 (u-001): judul bagian \"Semua Tugas\" dan jumlah \"6 tugas\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 375 (u-001): DemoDataNotice dengan acuan tanggal demo (G10) tampil",
+      "ok": true,
+      "detail": "{\"visible\":true,\"text\":\"Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status "
+    },
+    {
+      "name": "tugas 375 (u-001): kartu t-001 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-001\",\"title\":\"Pembongkaran dinding partisi lantai 1\",\"badges\":[\"Selesai\",\"Prioritas Tinggi\"],\"progress\":\"100\"}"
+    },
+    {
+      "name": "tugas 375 (u-001): kartu t-001 tenggat terhadap acuan demo (tidak ditampilkan untuk tugas selesai)",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "name": "tugas 375 (u-001): kartu t-002 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-002\",\"title\":\"Pengecekan sistem kelistrikan lama\",\"badges\":[\"Dalam Progres\",\"Prioritas Tinggi\"],\"progress\":\"60\"}"
+    },
+    {
+      "name": "tugas 375 (u-001): kartu t-002 tenggat terhadap acuan demo Terlambat · 28 Feb 2026",
+      "ok": true,
+      "detail": "Terlambat · 28 Feb 2026"
+    },
+    {
+      "name": "tugas 375 (u-001): kartu t-003 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-003\",\"title\":\"Pembersihan material sisa pembongkaran\",\"badges\":[\"Belum Dimulai\",\"Prioritas Sedang\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 375 (u-001): kartu t-003 tenggat terhadap acuan demo Terlambat · 5 Mar 2026",
+      "ok": true,
+      "detail": "Terlambat · 5 Mar 2026"
+    },
+    {
+      "name": "tugas 375 (u-001): kartu t-004 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-004\",\"title\":\"Pembuatan pondasi footplate\",\"badges\":[\"Dalam Progres\",\"Prioritas Tinggi\"],\"progress\":\"35\"}"
+    },
+    {
+      "name": "tugas 375 (u-001): kartu t-004 tenggat terhadap acuan demo Mendatang · 10 Apr 2026",
+      "ok": true,
+      "detail": "Mendatang · 10 Apr 2026"
+    },
+    {
+      "name": "tugas 375 (u-001): kartu t-005 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-005\",\"title\":\"Pemesanan baja WF untuk struktur\",\"badges\":[\"Belum Dimulai\",\"Prioritas Tinggi\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 375 (u-001): kartu t-005 tenggat terhadap acuan demo Mendatang · 25 Mar 2026",
+      "ok": true,
+      "detail": "Mendatang · 25 Mar 2026"
+    },
+    {
+      "name": "tugas 375 (u-001): kartu t-006 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-006\",\"title\":\"Pemasangan keramik lobby\",\"badges\":[\"Belum Dimulai\",\"Prioritas Sedang\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 375 (u-001): kartu t-006 tenggat terhadap acuan demo Mendatang · 1 Apr 2026",
+      "ok": true,
+      "detail": "Mendatang · 1 Apr 2026"
+    },
+    {
+      "name": "tugas 375 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover (tautan detail = U4-8)",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "tugas 375 (u-001): satu kolom (semua kartu selebar sama dan di dalam viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\",\"16/343\",\"16/343\",\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: tugas 375 (u-001)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 768 (u-001): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "tugas 768 (u-001): judul halaman Tugas",
+      "ok": true,
+      "detail": "Tugas"
+    },
+    {
+      "name": "tugas 768 (u-001): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3,3,3,3]"
+    },
+    {
+      "name": "tugas 768 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: tugas 768 (u-001)",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "tugas 768 (u-001): daftar kartu tugas terlihat sebagai ul[role=list] bernama \"Daftar tugas\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 768 (u-001): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 768 (u-001): 6 kartu (dataset sama untuk semua role pada tahap ini) dan satu li per kartu",
+      "ok": true,
+      "detail": "6"
+    },
+    {
+      "name": "tugas 768 (u-001): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"t-001\",\"t-002\",\"t-003\",\"t-004\",\"t-005\",\"t-006\"]"
+    },
+    {
+      "name": "tugas 768 (u-001): judul bagian \"Semua Tugas\" dan jumlah \"6 tugas\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 768 (u-001): DemoDataNotice dengan acuan tanggal demo (G10) tampil",
+      "ok": true,
+      "detail": "{\"visible\":true,\"text\":\"Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status "
+    },
+    {
+      "name": "tugas 768 (u-001): kartu t-001 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-001\",\"title\":\"Pembongkaran dinding partisi lantai 1\",\"badges\":[\"Selesai\",\"Prioritas Tinggi\"],\"progress\":\"100\"}"
+    },
+    {
+      "name": "tugas 768 (u-001): kartu t-001 tenggat terhadap acuan demo (tidak ditampilkan untuk tugas selesai)",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "name": "tugas 768 (u-001): kartu t-002 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-002\",\"title\":\"Pengecekan sistem kelistrikan lama\",\"badges\":[\"Dalam Progres\",\"Prioritas Tinggi\"],\"progress\":\"60\"}"
+    },
+    {
+      "name": "tugas 768 (u-001): kartu t-002 tenggat terhadap acuan demo Terlambat · 28 Feb 2026",
+      "ok": true,
+      "detail": "Terlambat · 28 Feb 2026"
+    },
+    {
+      "name": "tugas 768 (u-001): kartu t-003 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-003\",\"title\":\"Pembersihan material sisa pembongkaran\",\"badges\":[\"Belum Dimulai\",\"Prioritas Sedang\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 768 (u-001): kartu t-003 tenggat terhadap acuan demo Terlambat · 5 Mar 2026",
+      "ok": true,
+      "detail": "Terlambat · 5 Mar 2026"
+    },
+    {
+      "name": "tugas 768 (u-001): kartu t-004 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-004\",\"title\":\"Pembuatan pondasi footplate\",\"badges\":[\"Dalam Progres\",\"Prioritas Tinggi\"],\"progress\":\"35\"}"
+    },
+    {
+      "name": "tugas 768 (u-001): kartu t-004 tenggat terhadap acuan demo Mendatang · 10 Apr 2026",
+      "ok": true,
+      "detail": "Mendatang · 10 Apr 2026"
+    },
+    {
+      "name": "tugas 768 (u-001): kartu t-005 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-005\",\"title\":\"Pemesanan baja WF untuk struktur\",\"badges\":[\"Belum Dimulai\",\"Prioritas Tinggi\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 768 (u-001): kartu t-005 tenggat terhadap acuan demo Mendatang · 25 Mar 2026",
+      "ok": true,
+      "detail": "Mendatang · 25 Mar 2026"
+    },
+    {
+      "name": "tugas 768 (u-001): kartu t-006 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-006\",\"title\":\"Pemasangan keramik lobby\",\"badges\":[\"Belum Dimulai\",\"Prioritas Sedang\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 768 (u-001): kartu t-006 tenggat terhadap acuan demo Mendatang · 1 Apr 2026",
+      "ok": true,
+      "detail": "Mendatang · 1 Apr 2026"
+    },
+    {
+      "name": "tugas 768 (u-001): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover (tautan detail = U4-8)",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "tugas 768 (u-001): dua kolom",
+      "ok": true,
+      "detail": "[16,392]"
+    },
+    {
+      "name": "axe 0 pelanggaran: tugas 768 (u-001)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 1280 (u-001): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "tugas 1280 (u-001): judul halaman Tugas",
+      "ok": true,
+      "detail": "Tugas"
+    },
+    {
+      "name": "tugas 1280 (u-001): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2]"
+    },
+    {
+      "name": "tugas 1280 (u-001): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: tugas 1280 (u-001)",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "tugas 1280 (u-001): tabel terlihat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 1280 (u-001): kartu tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 1280 (u-001): tabel tidak berubah: semua kolom (Kode, Judul, Penanggung Jawab, Prioritas, Status, Progres)",
+      "ok": true,
+      "detail": "[\"Kode\",\"Judul\",\"Penanggung Jawab\",\"Prioritas\",\"Status\",\"Progres\"]"
+    },
+    {
+      "name": "tugas 1280 (u-001): tabel tanpa gulir horizontal (semua kolom terlihat)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 1280 (u-001): 6 baris sesuai urutan data",
+      "ok": true,
+      "detail": "[\"t-001\",\"t-002\",\"t-003\",\"t-004\",\"t-005\",\"t-006\"]"
+    },
+    {
+      "name": "tugas 1280 (u-001): DemoDataNotice tidak tampil di desktop (tampilan tabel tidak berubah)",
+      "ok": true,
+      "detail": "{\"visible\":false}"
+    },
+    {
+      "name": "tugas 1280 (u-001): header kartu tabel \"Semua Tugas\" tidak berubah",
+      "ok": true,
+      "detail": "Semua Tugas"
+    },
+    {
+      "name": "tugas 1280 (u-001): baris t-001 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"TSK-001\",\"Pembongkaran dinding partisi lantai 1\",\"Ahmad Rizal\",\"Tinggi\",\"Selesai\",\"100%\"]"
+    },
+    {
+      "name": "tugas 1280 (u-001): baris t-002 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"TSK-002\",\"Pengecekan sistem kelistrikan lama\",\"Dewi Lestari\",\"Tinggi\",\"Dalam Progres\",\"60%\"]"
+    },
+    {
+      "name": "tugas 1280 (u-001): baris t-003 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"TSK-003\",\"Pembersihan material sisa pembongkaran\",\"Eko Prasetyo\",\"Sedang\",\"Belum Dimulai\",\"0%\"]"
+    },
+    {
+      "name": "tugas 1280 (u-001): baris t-004 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"TSK-004\",\"Pembuatan pondasi footplate\",\"Ahmad Rizal\",\"Tinggi\",\"Dalam Progres\",\"35%\"]"
+    },
+    {
+      "name": "tugas 1280 (u-001): baris t-005 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"TSK-005\",\"Pemesanan baja WF untuk struktur\",\"Eko Prasetyo\",\"Tinggi\",\"Belum Dimulai\",\"0%\"]"
+    },
+    {
+      "name": "tugas 1280 (u-001): baris t-006 memuat semua nilai",
+      "ok": true,
+      "detail": "[\"TSK-006\",\"Pemasangan keramik lobby\",\"Dewi Lestari\",\"Sedang\",\"Belum Dimulai\",\"0%\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: tugas 1280 (u-001)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 375 (u-003): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "tugas 375 (u-003): judul halaman Tugas",
+      "ok": true,
+      "detail": "Tugas"
+    },
+    {
+      "name": "tugas 375 (u-003): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3,3,3,3]"
+    },
+    {
+      "name": "tugas 375 (u-003): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: tugas 375 (u-003)",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "tugas 375 (u-003): daftar kartu tugas terlihat sebagai ul[role=list] bernama \"Daftar tugas\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 375 (u-003): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 375 (u-003): 6 kartu (dataset sama untuk semua role pada tahap ini) dan satu li per kartu",
+      "ok": true,
+      "detail": "6"
+    },
+    {
+      "name": "tugas 375 (u-003): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"t-001\",\"t-002\",\"t-003\",\"t-004\",\"t-005\",\"t-006\"]"
+    },
+    {
+      "name": "tugas 375 (u-003): judul bagian \"Semua Tugas\" dan jumlah \"6 tugas\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 375 (u-003): DemoDataNotice dengan acuan tanggal demo (G10) tampil",
+      "ok": true,
+      "detail": "{\"visible\":true,\"text\":\"Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status "
+    },
+    {
+      "name": "tugas 375 (u-003): kartu t-001 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-001\",\"title\":\"Pembongkaran dinding partisi lantai 1\",\"badges\":[\"Selesai\",\"Prioritas Tinggi\"],\"progress\":\"100\"}"
+    },
+    {
+      "name": "tugas 375 (u-003): kartu t-001 tenggat terhadap acuan demo (tidak ditampilkan untuk tugas selesai)",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "name": "tugas 375 (u-003): kartu t-002 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-002\",\"title\":\"Pengecekan sistem kelistrikan lama\",\"badges\":[\"Dalam Progres\",\"Prioritas Tinggi\"],\"progress\":\"60\"}"
+    },
+    {
+      "name": "tugas 375 (u-003): kartu t-002 tenggat terhadap acuan demo Terlambat · 28 Feb 2026",
+      "ok": true,
+      "detail": "Terlambat · 28 Feb 2026"
+    },
+    {
+      "name": "tugas 375 (u-003): kartu t-003 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-003\",\"title\":\"Pembersihan material sisa pembongkaran\",\"badges\":[\"Belum Dimulai\",\"Prioritas Sedang\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 375 (u-003): kartu t-003 tenggat terhadap acuan demo Terlambat · 5 Mar 2026",
+      "ok": true,
+      "detail": "Terlambat · 5 Mar 2026"
+    },
+    {
+      "name": "tugas 375 (u-003): kartu t-004 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-004\",\"title\":\"Pembuatan pondasi footplate\",\"badges\":[\"Dalam Progres\",\"Prioritas Tinggi\"],\"progress\":\"35\"}"
+    },
+    {
+      "name": "tugas 375 (u-003): kartu t-004 tenggat terhadap acuan demo Mendatang · 10 Apr 2026",
+      "ok": true,
+      "detail": "Mendatang · 10 Apr 2026"
+    },
+    {
+      "name": "tugas 375 (u-003): kartu t-005 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-005\",\"title\":\"Pemesanan baja WF untuk struktur\",\"badges\":[\"Belum Dimulai\",\"Prioritas Tinggi\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 375 (u-003): kartu t-005 tenggat terhadap acuan demo Mendatang · 25 Mar 2026",
+      "ok": true,
+      "detail": "Mendatang · 25 Mar 2026"
+    },
+    {
+      "name": "tugas 375 (u-003): kartu t-006 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-006\",\"title\":\"Pemasangan keramik lobby\",\"badges\":[\"Belum Dimulai\",\"Prioritas Sedang\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 375 (u-003): kartu t-006 tenggat terhadap acuan demo Mendatang · 1 Apr 2026",
+      "ok": true,
+      "detail": "Mendatang · 1 Apr 2026"
+    },
+    {
+      "name": "tugas 375 (u-003): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover (tautan detail = U4-8)",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "tugas 375 (u-003): satu kolom (semua kartu selebar sama dan di dalam viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\",\"16/343\",\"16/343\",\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: tugas 375 (u-003)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 375 (u-004): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "tugas 375 (u-004): judul halaman Tugas",
+      "ok": true,
+      "detail": "Tugas"
+    },
+    {
+      "name": "tugas 375 (u-004): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3,3,3,3]"
+    },
+    {
+      "name": "tugas 375 (u-004): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: tugas 375 (u-004)",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "tugas 375 (u-004): daftar kartu tugas terlihat sebagai ul[role=list] bernama \"Daftar tugas\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 375 (u-004): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 375 (u-004): 6 kartu (dataset sama untuk semua role pada tahap ini) dan satu li per kartu",
+      "ok": true,
+      "detail": "6"
+    },
+    {
+      "name": "tugas 375 (u-004): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"t-001\",\"t-002\",\"t-003\",\"t-004\",\"t-005\",\"t-006\"]"
+    },
+    {
+      "name": "tugas 375 (u-004): judul bagian \"Semua Tugas\" dan jumlah \"6 tugas\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 375 (u-004): DemoDataNotice dengan acuan tanggal demo (G10) tampil",
+      "ok": true,
+      "detail": "{\"visible\":true,\"text\":\"Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status "
+    },
+    {
+      "name": "tugas 375 (u-004): kartu t-001 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-001\",\"title\":\"Pembongkaran dinding partisi lantai 1\",\"badges\":[\"Selesai\",\"Prioritas Tinggi\"],\"progress\":\"100\"}"
+    },
+    {
+      "name": "tugas 375 (u-004): kartu t-001 tenggat terhadap acuan demo (tidak ditampilkan untuk tugas selesai)",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "name": "tugas 375 (u-004): kartu t-002 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-002\",\"title\":\"Pengecekan sistem kelistrikan lama\",\"badges\":[\"Dalam Progres\",\"Prioritas Tinggi\"],\"progress\":\"60\"}"
+    },
+    {
+      "name": "tugas 375 (u-004): kartu t-002 tenggat terhadap acuan demo Terlambat · 28 Feb 2026",
+      "ok": true,
+      "detail": "Terlambat · 28 Feb 2026"
+    },
+    {
+      "name": "tugas 375 (u-004): kartu t-003 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-003\",\"title\":\"Pembersihan material sisa pembongkaran\",\"badges\":[\"Belum Dimulai\",\"Prioritas Sedang\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 375 (u-004): kartu t-003 tenggat terhadap acuan demo Terlambat · 5 Mar 2026",
+      "ok": true,
+      "detail": "Terlambat · 5 Mar 2026"
+    },
+    {
+      "name": "tugas 375 (u-004): kartu t-004 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-004\",\"title\":\"Pembuatan pondasi footplate\",\"badges\":[\"Dalam Progres\",\"Prioritas Tinggi\"],\"progress\":\"35\"}"
+    },
+    {
+      "name": "tugas 375 (u-004): kartu t-004 tenggat terhadap acuan demo Mendatang · 10 Apr 2026",
+      "ok": true,
+      "detail": "Mendatang · 10 Apr 2026"
+    },
+    {
+      "name": "tugas 375 (u-004): kartu t-005 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-005\",\"title\":\"Pemesanan baja WF untuk struktur\",\"badges\":[\"Belum Dimulai\",\"Prioritas Tinggi\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 375 (u-004): kartu t-005 tenggat terhadap acuan demo Mendatang · 25 Mar 2026",
+      "ok": true,
+      "detail": "Mendatang · 25 Mar 2026"
+    },
+    {
+      "name": "tugas 375 (u-004): kartu t-006 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-006\",\"title\":\"Pemasangan keramik lobby\",\"badges\":[\"Belum Dimulai\",\"Prioritas Sedang\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 375 (u-004): kartu t-006 tenggat terhadap acuan demo Mendatang · 1 Apr 2026",
+      "ok": true,
+      "detail": "Mendatang · 1 Apr 2026"
+    },
+    {
+      "name": "tugas 375 (u-004): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover (tautan detail = U4-8)",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "tugas 375 (u-004): satu kolom (semua kartu selebar sama dan di dalam viewport)",
+      "ok": true,
+      "detail": "[\"16/343\",\"16/343\",\"16/343\",\"16/343\",\"16/343\",\"16/343\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: tugas 375 (u-004)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 768 (u-002): halaman terbuka (guard mengizinkan)",
+      "ok": true,
+      "detail": "allowed"
+    },
+    {
+      "name": "tugas 768 (u-002): judul halaman Tugas",
+      "ok": true,
+      "detail": "Tugas"
+    },
+    {
+      "name": "tugas 768 (u-002): hierarki heading berurutan",
+      "ok": true,
+      "detail": "[1,2,3,3,3,3,3,3]"
+    },
+    {
+      "name": "tugas 768 (u-002): tidak ada wadah yang bisa digulir horizontal di dalam konten",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: tugas 768 (u-002)",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "tugas 768 (u-002): daftar kartu tugas terlihat sebagai ul[role=list] bernama \"Daftar tugas\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 768 (u-002): tabel tersembunyi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 768 (u-002): 6 kartu (dataset sama untuk semua role pada tahap ini) dan satu li per kartu",
+      "ok": true,
+      "detail": "6"
+    },
+    {
+      "name": "tugas 768 (u-002): urutan kartu sesuai data",
+      "ok": true,
+      "detail": "[\"t-001\",\"t-002\",\"t-003\",\"t-004\",\"t-005\",\"t-006\"]"
+    },
+    {
+      "name": "tugas 768 (u-002): judul bagian \"Semua Tugas\" dan jumlah \"6 tugas\" tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tugas 768 (u-002): DemoDataNotice dengan acuan tanggal demo (G10) tampil",
+      "ok": true,
+      "detail": "{\"visible\":true,\"text\":\"Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status "
+    },
+    {
+      "name": "tugas 768 (u-002): kartu t-001 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-001\",\"title\":\"Pembongkaran dinding partisi lantai 1\",\"badges\":[\"Selesai\",\"Prioritas Tinggi\"],\"progress\":\"100\"}"
+    },
+    {
+      "name": "tugas 768 (u-002): kartu t-001 tenggat terhadap acuan demo (tidak ditampilkan untuk tugas selesai)",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "name": "tugas 768 (u-002): kartu t-002 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-002\",\"title\":\"Pengecekan sistem kelistrikan lama\",\"badges\":[\"Dalam Progres\",\"Prioritas Tinggi\"],\"progress\":\"60\"}"
+    },
+    {
+      "name": "tugas 768 (u-002): kartu t-002 tenggat terhadap acuan demo Terlambat · 28 Feb 2026",
+      "ok": true,
+      "detail": "Terlambat · 28 Feb 2026"
+    },
+    {
+      "name": "tugas 768 (u-002): kartu t-003 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-003\",\"title\":\"Pembersihan material sisa pembongkaran\",\"badges\":[\"Belum Dimulai\",\"Prioritas Sedang\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 768 (u-002): kartu t-003 tenggat terhadap acuan demo Terlambat · 5 Mar 2026",
+      "ok": true,
+      "detail": "Terlambat · 5 Mar 2026"
+    },
+    {
+      "name": "tugas 768 (u-002): kartu t-004 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-004\",\"title\":\"Pembuatan pondasi footplate\",\"badges\":[\"Dalam Progres\",\"Prioritas Tinggi\"],\"progress\":\"35\"}"
+    },
+    {
+      "name": "tugas 768 (u-002): kartu t-004 tenggat terhadap acuan demo Mendatang · 10 Apr 2026",
+      "ok": true,
+      "detail": "Mendatang · 10 Apr 2026"
+    },
+    {
+      "name": "tugas 768 (u-002): kartu t-005 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-005\",\"title\":\"Pemesanan baja WF untuk struktur\",\"badges\":[\"Belum Dimulai\",\"Prioritas Tinggi\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 768 (u-002): kartu t-005 tenggat terhadap acuan demo Mendatang · 25 Mar 2026",
+      "ok": true,
+      "detail": "Mendatang · 25 Mar 2026"
+    },
+    {
+      "name": "tugas 768 (u-002): kartu t-006 memuat kode, judul (h3), proyek, penanggung jawab, prioritas, status, progres",
+      "ok": true,
+      "detail": "{\"code\":\"TSK-006\",\"title\":\"Pemasangan keramik lobby\",\"badges\":[\"Belum Dimulai\",\"Prioritas Sedang\"],\"progress\":\"0\"}"
+    },
+    {
+      "name": "tugas 768 (u-002): kartu t-006 tenggat terhadap acuan demo Mendatang · 1 Apr 2026",
+      "ok": true,
+      "detail": "Mendatang · 1 Apr 2026"
+    },
+    {
+      "name": "tugas 768 (u-002): kartu tidak interaktif (tanpa tautan/tombol/aksi) dan tanpa gaya hover (tautan detail = U4-8)",
+      "ok": true,
+      "detail": "[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]"
+    },
+    {
+      "name": "tugas 768 (u-002): dua kolom",
+      "ok": true,
+      "detail": "[16,392]"
+    },
+    {
+      "name": "axe 0 pelanggaran: tugas 768 (u-002)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guard: u-003 membuka /anggota → denied (tidak berubah)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guard: u-004 membuka /anggota → denied (tidak berubah)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guard: u-004 membuka /laporan → denied (tidak berubah)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guard: u-003 membuka /laporan → allowed (tidak berubah)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "guard: u-004 membuka /dokumen → allowed (tidak berubah)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "style-guide 375: #kartu-data menampilkan 3 contoh RecordCard tanpa elemen interaktif",
+      "ok": true,
+      "detail": "{\"cards\":3,\"titles\":[\"20 Februari 2026\",\"Gambar Arsitektur Lantai 1-3\",\"Budi Santoso\"],\"interactive\":0}"
+    },
+    {
+      "name": "overflow halaman: style-guide 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: style-guide 375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "style-guide 1280: #kartu-data menampilkan 3 contoh RecordCard tanpa elemen interaktif",
+      "ok": true,
+      "detail": "{\"cards\":3,\"titles\":[\"20 Februari 2026\",\"Gambar Arsitektur Lantai 1-3\",\"Budi Santoso\"],\"interactive\":0}"
+    },
+    {
+      "name": "overflow halaman: style-guide 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "axe 0 pelanggaran: style-guide 1280",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "measurements": {
+    "kartu laporan 375 (u-001)": {
+      "role": "list",
+      "liCount": 3,
+      "cards": [
+        {
+          "id": "r-001",
+          "title": "20 Februari 2026",
+          "titleTag": "H3",
+          "labels": [
+            "Proyek",
+            "Mandor",
+            "Pekerja",
+            "Cuaca",
+            "Status"
+          ],
+          "values": [
+            "PRJ-001",
+            "Ahmad Rizal",
+            "12",
+            "Cerah Berawan",
+            "Terkirim"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "r-002",
+          "title": "19 Februari 2026",
+          "titleTag": "H3",
+          "labels": [
+            "Proyek",
+            "Mandor",
+            "Pekerja",
+            "Cuaca",
+            "Status"
+          ],
+          "values": [
+            "PRJ-001",
+            "Ahmad Rizal",
+            "10",
+            "Cerah",
+            "Disetujui"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "r-003",
+          "title": "21 Maret 2026",
+          "titleTag": "H3",
+          "labels": [
+            "Proyek",
+            "Mandor",
+            "Pekerja",
+            "Cuaca",
+            "Status"
+          ],
+          "values": [
+            "PRJ-002",
+            "Eko Prasetyo",
+            "8",
+            "Hujan Ringan",
+            "Terkirim"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        }
+      ]
+    },
+    "axe laporan 375 (u-001)": [],
+    "kartu laporan 768 (u-001)": {
+      "role": "list",
+      "liCount": 3,
+      "cards": [
+        {
+          "id": "r-001",
+          "title": "20 Februari 2026",
+          "titleTag": "H3",
+          "labels": [
+            "Proyek",
+            "Mandor",
+            "Pekerja",
+            "Cuaca",
+            "Status"
+          ],
+          "values": [
+            "PRJ-001",
+            "Ahmad Rizal",
+            "12",
+            "Cerah Berawan",
+            "Terkirim"
+          ],
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "r-002",
+          "title": "19 Februari 2026",
+          "titleTag": "H3",
+          "labels": [
+            "Proyek",
+            "Mandor",
+            "Pekerja",
+            "Cuaca",
+            "Status"
+          ],
+          "values": [
+            "PRJ-001",
+            "Ahmad Rizal",
+            "10",
+            "Cerah",
+            "Disetujui"
+          ],
+          "left": 392,
+          "width": 360,
+          "right": 752,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "r-003",
+          "title": "21 Maret 2026",
+          "titleTag": "H3",
+          "labels": [
+            "Proyek",
+            "Mandor",
+            "Pekerja",
+            "Cuaca",
+            "Status"
+          ],
+          "values": [
+            "PRJ-002",
+            "Eko Prasetyo",
+            "8",
+            "Hujan Ringan",
+            "Terkirim"
+          ],
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        }
+      ]
+    },
+    "axe laporan 768 (u-001)": [],
+    "tabel laporan 1280 (u-001)": {
+      "headers": [
+        "Tanggal",
+        "Proyek",
+        "Mandor",
+        "Pekerja",
+        "Cuaca",
+        "Status"
+      ],
+      "rows": [
+        {
+          "id": "r-001",
+          "cells": [
+            "20 Februari 2026",
+            "PRJ-001",
+            "Ahmad Rizal",
+            "12",
+            "Cerah Berawan",
+            "Terkirim"
+          ]
+        },
+        {
+          "id": "r-002",
+          "cells": [
+            "19 Februari 2026",
+            "PRJ-001",
+            "Ahmad Rizal",
+            "10",
+            "Cerah",
+            "Disetujui"
+          ]
+        },
+        {
+          "id": "r-003",
+          "cells": [
+            "21 Maret 2026",
+            "PRJ-002",
+            "Eko Prasetyo",
+            "8",
+            "Hujan Ringan",
+            "Terkirim"
+          ]
+        }
+      ],
+      "scrollable": false
+    },
+    "axe laporan 1280 (u-001)": [],
+    "kartu dokumen 375 (u-001)": {
+      "role": "list",
+      "liCount": 5,
+      "cards": [
+        {
+          "id": "d-001",
+          "title": "Gambar Arsitektur Lantai 1-3",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Gambar Teknis",
+            "20 Januari 2026",
+            "15.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-002",
+          "title": "RAB Renovasi Gedung Kantor",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Rencana Kerja",
+            "18 Januari 2026",
+            "2.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-003",
+          "title": "Kontrak Pekerjaan No. 045/CON/2026",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Kontrak",
+            "15 Januari 2026",
+            "5.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-004",
+          "title": "Foto Progress Pembongkaran 20 Feb",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Lainnya",
+            "21 Februari 2026",
+            "50.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-005",
+          "title": "Gambar Struktur Jembatan",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Gambar Teknis",
+            "5 Oktober 2025",
+            "12.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        }
+      ]
+    },
+    "axe dokumen 375 (u-001)": [],
+    "kartu dokumen 768 (u-001)": {
+      "role": "list",
+      "liCount": 5,
+      "cards": [
+        {
+          "id": "d-001",
+          "title": "Gambar Arsitektur Lantai 1-3",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Gambar Teknis",
+            "20 Januari 2026",
+            "15.0 MB"
+          ],
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-002",
+          "title": "RAB Renovasi Gedung Kantor",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Rencana Kerja",
+            "18 Januari 2026",
+            "2.0 MB"
+          ],
+          "left": 392,
+          "width": 360,
+          "right": 752,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-003",
+          "title": "Kontrak Pekerjaan No. 045/CON/2026",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Kontrak",
+            "15 Januari 2026",
+            "5.0 MB"
+          ],
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-004",
+          "title": "Foto Progress Pembongkaran 20 Feb",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Lainnya",
+            "21 Februari 2026",
+            "50.0 MB"
+          ],
+          "left": 392,
+          "width": 360,
+          "right": 752,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-005",
+          "title": "Gambar Struktur Jembatan",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Gambar Teknis",
+            "5 Oktober 2025",
+            "12.0 MB"
+          ],
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        }
+      ]
+    },
+    "axe dokumen 768 (u-001)": [],
+    "tabel dokumen 1280 (u-001)": {
+      "headers": [
+        "Nama",
+        "Kategori",
+        "Diunggah",
+        "Ukuran"
+      ],
+      "rows": [
+        {
+          "id": "d-001",
+          "cells": [
+            "Gambar Arsitektur Lantai 1-3",
+            "Gambar Teknis",
+            "20 Januari 2026",
+            "15.0 MB"
+          ]
+        },
+        {
+          "id": "d-002",
+          "cells": [
+            "RAB Renovasi Gedung Kantor",
+            "Rencana Kerja",
+            "18 Januari 2026",
+            "2.0 MB"
+          ]
+        },
+        {
+          "id": "d-003",
+          "cells": [
+            "Kontrak Pekerjaan No. 045/CON/2026",
+            "Kontrak",
+            "15 Januari 2026",
+            "5.0 MB"
+          ]
+        },
+        {
+          "id": "d-004",
+          "cells": [
+            "Foto Progress Pembongkaran 20 Feb",
+            "Lainnya",
+            "21 Februari 2026",
+            "50.0 MB"
+          ]
+        },
+        {
+          "id": "d-005",
+          "cells": [
+            "Gambar Struktur Jembatan",
+            "Gambar Teknis",
+            "5 Oktober 2025",
+            "12.0 MB"
+          ]
+        }
+      ],
+      "scrollable": false
+    },
+    "axe dokumen 1280 (u-001)": [],
+    "kartu anggota 375 (u-001)": {
+      "role": "list",
+      "liCount": 5,
+      "cards": [
+        {
+          "id": "u-001",
+          "title": "Budi Santoso",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "budi@proyekin.id",
+            "Owner"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "u-002",
+          "title": "Siti Aminah",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "siti@proyekin.id",
+            "Admin Kantor"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "u-003",
+          "title": "Ahmad Rizal",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "ahmad@proyekin.id",
+            "Mandor"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "u-004",
+          "title": "Dewi Lestari",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "dewi@proyekin.id",
+            "Anggota Tim"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "u-005",
+          "title": "Eko Prasetyo",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "eko@proyekin.id",
+            "Mandor"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        }
+      ]
+    },
+    "axe anggota 375 (u-001)": [],
+    "kartu anggota 768 (u-001)": {
+      "role": "list",
+      "liCount": 5,
+      "cards": [
+        {
+          "id": "u-001",
+          "title": "Budi Santoso",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "budi@proyekin.id",
+            "Owner"
+          ],
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "u-002",
+          "title": "Siti Aminah",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "siti@proyekin.id",
+            "Admin Kantor"
+          ],
+          "left": 392,
+          "width": 360,
+          "right": 752,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "u-003",
+          "title": "Ahmad Rizal",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "ahmad@proyekin.id",
+            "Mandor"
+          ],
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "u-004",
+          "title": "Dewi Lestari",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "dewi@proyekin.id",
+            "Anggota Tim"
+          ],
+          "left": 392,
+          "width": 360,
+          "right": 752,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "u-005",
+          "title": "Eko Prasetyo",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "eko@proyekin.id",
+            "Mandor"
+          ],
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        }
+      ]
+    },
+    "axe anggota 768 (u-001)": [],
+    "tabel anggota 1280 (u-001)": {
+      "headers": [
+        "Nama",
+        "Email",
+        "Role"
+      ],
+      "rows": [
+        {
+          "id": "u-001",
+          "cells": [
+            "BBudi Santoso",
+            "budi@proyekin.id",
+            "Owner"
+          ]
+        },
+        {
+          "id": "u-002",
+          "cells": [
+            "SSiti Aminah",
+            "siti@proyekin.id",
+            "Admin Kantor"
+          ]
+        },
+        {
+          "id": "u-003",
+          "cells": [
+            "AAhmad Rizal",
+            "ahmad@proyekin.id",
+            "Mandor"
+          ]
+        },
+        {
+          "id": "u-004",
+          "cells": [
+            "DDewi Lestari",
+            "dewi@proyekin.id",
+            "Anggota Tim"
+          ]
+        },
+        {
+          "id": "u-005",
+          "cells": [
+            "EEko Prasetyo",
+            "eko@proyekin.id",
+            "Mandor"
+          ]
+        }
+      ],
+      "scrollable": false
+    },
+    "axe anggota 1280 (u-001)": [],
+    "kartu laporan 375 (u-003)": {
+      "role": "list",
+      "liCount": 3,
+      "cards": [
+        {
+          "id": "r-001",
+          "title": "20 Februari 2026",
+          "titleTag": "H3",
+          "labels": [
+            "Proyek",
+            "Mandor",
+            "Pekerja",
+            "Cuaca",
+            "Status"
+          ],
+          "values": [
+            "PRJ-001",
+            "Ahmad Rizal",
+            "12",
+            "Cerah Berawan",
+            "Terkirim"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "r-002",
+          "title": "19 Februari 2026",
+          "titleTag": "H3",
+          "labels": [
+            "Proyek",
+            "Mandor",
+            "Pekerja",
+            "Cuaca",
+            "Status"
+          ],
+          "values": [
+            "PRJ-001",
+            "Ahmad Rizal",
+            "10",
+            "Cerah",
+            "Disetujui"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "r-003",
+          "title": "21 Maret 2026",
+          "titleTag": "H3",
+          "labels": [
+            "Proyek",
+            "Mandor",
+            "Pekerja",
+            "Cuaca",
+            "Status"
+          ],
+          "values": [
+            "PRJ-002",
+            "Eko Prasetyo",
+            "8",
+            "Hujan Ringan",
+            "Terkirim"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        }
+      ]
+    },
+    "axe laporan 375 (u-003)": [],
+    "kartu dokumen 375 (u-003)": {
+      "role": "list",
+      "liCount": 5,
+      "cards": [
+        {
+          "id": "d-001",
+          "title": "Gambar Arsitektur Lantai 1-3",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Gambar Teknis",
+            "20 Januari 2026",
+            "15.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-002",
+          "title": "RAB Renovasi Gedung Kantor",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Rencana Kerja",
+            "18 Januari 2026",
+            "2.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-003",
+          "title": "Kontrak Pekerjaan No. 045/CON/2026",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Kontrak",
+            "15 Januari 2026",
+            "5.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-004",
+          "title": "Foto Progress Pembongkaran 20 Feb",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Lainnya",
+            "21 Februari 2026",
+            "50.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-005",
+          "title": "Gambar Struktur Jembatan",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Gambar Teknis",
+            "5 Oktober 2025",
+            "12.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        }
+      ]
+    },
+    "axe dokumen 375 (u-003)": [],
+    "kartu dokumen 375 (u-004)": {
+      "role": "list",
+      "liCount": 5,
+      "cards": [
+        {
+          "id": "d-001",
+          "title": "Gambar Arsitektur Lantai 1-3",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Gambar Teknis",
+            "20 Januari 2026",
+            "15.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-002",
+          "title": "RAB Renovasi Gedung Kantor",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Rencana Kerja",
+            "18 Januari 2026",
+            "2.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-003",
+          "title": "Kontrak Pekerjaan No. 045/CON/2026",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Kontrak",
+            "15 Januari 2026",
+            "5.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-004",
+          "title": "Foto Progress Pembongkaran 20 Feb",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Lainnya",
+            "21 Februari 2026",
+            "50.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        },
+        {
+          "id": "d-005",
+          "title": "Gambar Struktur Jembatan",
+          "titleTag": "H3",
+          "labels": [
+            "Kategori",
+            "Diunggah",
+            "Ukuran"
+          ],
+          "values": [
+            "Gambar Teknis",
+            "5 Oktober 2025",
+            "12.0 MB"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": false
+        }
+      ]
+    },
+    "axe dokumen 375 (u-004)": [],
+    "kartu anggota 375 (u-002)": {
+      "role": "list",
+      "liCount": 5,
+      "cards": [
+        {
+          "id": "u-001",
+          "title": "Budi Santoso",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "budi@proyekin.id",
+            "Owner"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "u-002",
+          "title": "Siti Aminah",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "siti@proyekin.id",
+            "Admin Kantor"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "u-003",
+          "title": "Ahmad Rizal",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "ahmad@proyekin.id",
+            "Mandor"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "u-004",
+          "title": "Dewi Lestari",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "dewi@proyekin.id",
+            "Anggota Tim"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "u-005",
+          "title": "Eko Prasetyo",
+          "titleTag": "H3",
+          "labels": [
+            "Email",
+            "Role"
+          ],
+          "values": [
+            "eko@proyekin.id",
+            "Mandor"
+          ],
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        }
+      ]
+    },
+    "axe anggota 375 (u-002)": [],
+    "kartu laporan 768 (u-002)": {
+      "role": "list",
+      "liCount": 3,
+      "cards": [
+        {
+          "id": "r-001",
+          "title": "20 Februari 2026",
+          "titleTag": "H3",
+          "labels": [
+            "Proyek",
+            "Mandor",
+            "Pekerja",
+            "Cuaca",
+            "Status"
+          ],
+          "values": [
+            "PRJ-001",
+            "Ahmad Rizal",
+            "12",
+            "Cerah Berawan",
+            "Terkirim"
+          ],
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "r-002",
+          "title": "19 Februari 2026",
+          "titleTag": "H3",
+          "labels": [
+            "Proyek",
+            "Mandor",
+            "Pekerja",
+            "Cuaca",
+            "Status"
+          ],
+          "values": [
+            "PRJ-001",
+            "Ahmad Rizal",
+            "10",
+            "Cerah",
+            "Disetujui"
+          ],
+          "left": 392,
+          "width": 360,
+          "right": 752,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        },
+        {
+          "id": "r-003",
+          "title": "21 Maret 2026",
+          "titleTag": "H3",
+          "labels": [
+            "Proyek",
+            "Mandor",
+            "Pekerja",
+            "Cuaca",
+            "Status"
+          ],
+          "values": [
+            "PRJ-002",
+            "Eko Prasetyo",
+            "8",
+            "Hujan Ringan",
+            "Terkirim"
+          ],
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0,
+          "avatarHidden": true
+        }
+      ]
+    },
+    "axe laporan 768 (u-002)": [],
+    "kartu tugas 375 (u-001)": {
+      "role": "list",
+      "liCount": 6,
+      "cards": [
+        {
+          "id": "t-001",
+          "code": "TSK-001",
+          "title": "Pembongkaran dinding partisi lantai 1",
+          "titleTag": "H3",
+          "text": "TSK-001Pembongkaran dinding partisi lantai 1PRJ-001 · Renovasi Gedung Kantor BatamSelesaiPrioritas Tinggi100%Penanggung jawab: Ahmad Rizal",
+          "badges": [
+            "Selesai",
+            "Prioritas Tinggi"
+          ],
+          "progress": "100",
+          "deadline": null,
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-002",
+          "code": "TSK-002",
+          "title": "Pengecekan sistem kelistrikan lama",
+          "titleTag": "H3",
+          "text": "TSK-002Pengecekan sistem kelistrikan lamaPRJ-001 · Renovasi Gedung Kantor BatamDalam ProgresPrioritas TinggiTerlambat · 28 Feb 202660%Penanggung jawab: Dewi Lestari",
+          "badges": [
+            "Dalam Progres",
+            "Prioritas Tinggi"
+          ],
+          "progress": "60",
+          "deadline": "Terlambat · 28 Feb 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-003",
+          "code": "TSK-003",
+          "title": "Pembersihan material sisa pembongkaran",
+          "titleTag": "H3",
+          "text": "TSK-003Pembersihan material sisa pembongkaranPRJ-001 · Renovasi Gedung Kantor BatamBelum DimulaiPrioritas SedangTerlambat · 5 Mar 20260%Penanggung jawab: Eko Prasetyo",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Sedang"
+          ],
+          "progress": "0",
+          "deadline": "Terlambat · 5 Mar 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-004",
+          "code": "TSK-004",
+          "title": "Pembuatan pondasi footplate",
+          "titleTag": "H3",
+          "text": "TSK-004Pembuatan pondasi footplatePRJ-002 · Pembangunan Gudang Logistik Tanjung PinangDalam ProgresPrioritas TinggiMendatang · 10 Apr 202635%Penanggung jawab: Ahmad Rizal",
+          "badges": [
+            "Dalam Progres",
+            "Prioritas Tinggi"
+          ],
+          "progress": "35",
+          "deadline": "Mendatang · 10 Apr 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-005",
+          "code": "TSK-005",
+          "title": "Pemesanan baja WF untuk struktur",
+          "titleTag": "H3",
+          "text": "TSK-005Pemesanan baja WF untuk strukturPRJ-002 · Pembangunan Gudang Logistik Tanjung PinangBelum DimulaiPrioritas TinggiMendatang · 25 Mar 20260%Penanggung jawab: Eko Prasetyo",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Tinggi"
+          ],
+          "progress": "0",
+          "deadline": "Mendatang · 25 Mar 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-006",
+          "code": "TSK-006",
+          "title": "Pemasangan keramik lobby",
+          "titleTag": "H3",
+          "text": "TSK-006Pemasangan keramik lobbyPRJ-001 · Renovasi Gedung Kantor BatamBelum DimulaiPrioritas SedangMendatang · 1 Apr 20260%Penanggung jawab: Dewi Lestari",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Sedang"
+          ],
+          "progress": "0",
+          "deadline": "Mendatang · 1 Apr 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        }
+      ]
+    },
+    "axe tugas 375 (u-001)": [],
+    "kartu tugas 768 (u-001)": {
+      "role": "list",
+      "liCount": 6,
+      "cards": [
+        {
+          "id": "t-001",
+          "code": "TSK-001",
+          "title": "Pembongkaran dinding partisi lantai 1",
+          "titleTag": "H3",
+          "text": "TSK-001Pembongkaran dinding partisi lantai 1PRJ-001 · Renovasi Gedung Kantor BatamSelesaiPrioritas Tinggi100%Penanggung jawab: Ahmad Rizal",
+          "badges": [
+            "Selesai",
+            "Prioritas Tinggi"
+          ],
+          "progress": "100",
+          "deadline": null,
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-002",
+          "code": "TSK-002",
+          "title": "Pengecekan sistem kelistrikan lama",
+          "titleTag": "H3",
+          "text": "TSK-002Pengecekan sistem kelistrikan lamaPRJ-001 · Renovasi Gedung Kantor BatamDalam ProgresPrioritas TinggiTerlambat · 28 Feb 202660%Penanggung jawab: Dewi Lestari",
+          "badges": [
+            "Dalam Progres",
+            "Prioritas Tinggi"
+          ],
+          "progress": "60",
+          "deadline": "Terlambat · 28 Feb 2026",
+          "left": 392,
+          "width": 360,
+          "right": 752,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-003",
+          "code": "TSK-003",
+          "title": "Pembersihan material sisa pembongkaran",
+          "titleTag": "H3",
+          "text": "TSK-003Pembersihan material sisa pembongkaranPRJ-001 · Renovasi Gedung Kantor BatamBelum DimulaiPrioritas SedangTerlambat · 5 Mar 20260%Penanggung jawab: Eko Prasetyo",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Sedang"
+          ],
+          "progress": "0",
+          "deadline": "Terlambat · 5 Mar 2026",
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-004",
+          "code": "TSK-004",
+          "title": "Pembuatan pondasi footplate",
+          "titleTag": "H3",
+          "text": "TSK-004Pembuatan pondasi footplatePRJ-002 · Pembangunan Gudang Logistik Tanjung PinangDalam ProgresPrioritas TinggiMendatang · 10 Apr 202635%Penanggung jawab: Ahmad Rizal",
+          "badges": [
+            "Dalam Progres",
+            "Prioritas Tinggi"
+          ],
+          "progress": "35",
+          "deadline": "Mendatang · 10 Apr 2026",
+          "left": 392,
+          "width": 360,
+          "right": 752,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-005",
+          "code": "TSK-005",
+          "title": "Pemesanan baja WF untuk struktur",
+          "titleTag": "H3",
+          "text": "TSK-005Pemesanan baja WF untuk strukturPRJ-002 · Pembangunan Gudang Logistik Tanjung PinangBelum DimulaiPrioritas TinggiMendatang · 25 Mar 20260%Penanggung jawab: Eko Prasetyo",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Tinggi"
+          ],
+          "progress": "0",
+          "deadline": "Mendatang · 25 Mar 2026",
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-006",
+          "code": "TSK-006",
+          "title": "Pemasangan keramik lobby",
+          "titleTag": "H3",
+          "text": "TSK-006Pemasangan keramik lobbyPRJ-001 · Renovasi Gedung Kantor BatamBelum DimulaiPrioritas SedangMendatang · 1 Apr 20260%Penanggung jawab: Dewi Lestari",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Sedang"
+          ],
+          "progress": "0",
+          "deadline": "Mendatang · 1 Apr 2026",
+          "left": 392,
+          "width": 360,
+          "right": 752,
+          "interactive": 0,
+          "hoverClass": 0
+        }
+      ]
+    },
+    "axe tugas 768 (u-001)": [],
+    "tabel tugas 1280 (u-001)": {
+      "headers": [
+        "Kode",
+        "Judul",
+        "Penanggung Jawab",
+        "Prioritas",
+        "Status",
+        "Progres"
+      ],
+      "rows": [
+        {
+          "id": "t-001",
+          "cells": [
+            "TSK-001",
+            "Pembongkaran dinding partisi lantai 1",
+            "Ahmad Rizal",
+            "Tinggi",
+            "Selesai",
+            "100%"
+          ]
+        },
+        {
+          "id": "t-002",
+          "cells": [
+            "TSK-002",
+            "Pengecekan sistem kelistrikan lama",
+            "Dewi Lestari",
+            "Tinggi",
+            "Dalam Progres",
+            "60%"
+          ]
+        },
+        {
+          "id": "t-003",
+          "cells": [
+            "TSK-003",
+            "Pembersihan material sisa pembongkaran",
+            "Eko Prasetyo",
+            "Sedang",
+            "Belum Dimulai",
+            "0%"
+          ]
+        },
+        {
+          "id": "t-004",
+          "cells": [
+            "TSK-004",
+            "Pembuatan pondasi footplate",
+            "Ahmad Rizal",
+            "Tinggi",
+            "Dalam Progres",
+            "35%"
+          ]
+        },
+        {
+          "id": "t-005",
+          "cells": [
+            "TSK-005",
+            "Pemesanan baja WF untuk struktur",
+            "Eko Prasetyo",
+            "Tinggi",
+            "Belum Dimulai",
+            "0%"
+          ]
+        },
+        {
+          "id": "t-006",
+          "cells": [
+            "TSK-006",
+            "Pemasangan keramik lobby",
+            "Dewi Lestari",
+            "Sedang",
+            "Belum Dimulai",
+            "0%"
+          ]
+        }
+      ],
+      "scrollable": false
+    },
+    "axe tugas 1280 (u-001)": [],
+    "kartu tugas 375 (u-003)": {
+      "role": "list",
+      "liCount": 6,
+      "cards": [
+        {
+          "id": "t-001",
+          "code": "TSK-001",
+          "title": "Pembongkaran dinding partisi lantai 1",
+          "titleTag": "H3",
+          "text": "TSK-001Pembongkaran dinding partisi lantai 1PRJ-001 · Renovasi Gedung Kantor BatamSelesaiPrioritas Tinggi100%Penanggung jawab: Ahmad Rizal",
+          "badges": [
+            "Selesai",
+            "Prioritas Tinggi"
+          ],
+          "progress": "100",
+          "deadline": null,
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-002",
+          "code": "TSK-002",
+          "title": "Pengecekan sistem kelistrikan lama",
+          "titleTag": "H3",
+          "text": "TSK-002Pengecekan sistem kelistrikan lamaPRJ-001 · Renovasi Gedung Kantor BatamDalam ProgresPrioritas TinggiTerlambat · 28 Feb 202660%Penanggung jawab: Dewi Lestari",
+          "badges": [
+            "Dalam Progres",
+            "Prioritas Tinggi"
+          ],
+          "progress": "60",
+          "deadline": "Terlambat · 28 Feb 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-003",
+          "code": "TSK-003",
+          "title": "Pembersihan material sisa pembongkaran",
+          "titleTag": "H3",
+          "text": "TSK-003Pembersihan material sisa pembongkaranPRJ-001 · Renovasi Gedung Kantor BatamBelum DimulaiPrioritas SedangTerlambat · 5 Mar 20260%Penanggung jawab: Eko Prasetyo",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Sedang"
+          ],
+          "progress": "0",
+          "deadline": "Terlambat · 5 Mar 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-004",
+          "code": "TSK-004",
+          "title": "Pembuatan pondasi footplate",
+          "titleTag": "H3",
+          "text": "TSK-004Pembuatan pondasi footplatePRJ-002 · Pembangunan Gudang Logistik Tanjung PinangDalam ProgresPrioritas TinggiMendatang · 10 Apr 202635%Penanggung jawab: Ahmad Rizal",
+          "badges": [
+            "Dalam Progres",
+            "Prioritas Tinggi"
+          ],
+          "progress": "35",
+          "deadline": "Mendatang · 10 Apr 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-005",
+          "code": "TSK-005",
+          "title": "Pemesanan baja WF untuk struktur",
+          "titleTag": "H3",
+          "text": "TSK-005Pemesanan baja WF untuk strukturPRJ-002 · Pembangunan Gudang Logistik Tanjung PinangBelum DimulaiPrioritas TinggiMendatang · 25 Mar 20260%Penanggung jawab: Eko Prasetyo",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Tinggi"
+          ],
+          "progress": "0",
+          "deadline": "Mendatang · 25 Mar 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-006",
+          "code": "TSK-006",
+          "title": "Pemasangan keramik lobby",
+          "titleTag": "H3",
+          "text": "TSK-006Pemasangan keramik lobbyPRJ-001 · Renovasi Gedung Kantor BatamBelum DimulaiPrioritas SedangMendatang · 1 Apr 20260%Penanggung jawab: Dewi Lestari",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Sedang"
+          ],
+          "progress": "0",
+          "deadline": "Mendatang · 1 Apr 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        }
+      ]
+    },
+    "axe tugas 375 (u-003)": [],
+    "kartu tugas 375 (u-004)": {
+      "role": "list",
+      "liCount": 6,
+      "cards": [
+        {
+          "id": "t-001",
+          "code": "TSK-001",
+          "title": "Pembongkaran dinding partisi lantai 1",
+          "titleTag": "H3",
+          "text": "TSK-001Pembongkaran dinding partisi lantai 1PRJ-001 · Renovasi Gedung Kantor BatamSelesaiPrioritas Tinggi100%Penanggung jawab: Ahmad Rizal",
+          "badges": [
+            "Selesai",
+            "Prioritas Tinggi"
+          ],
+          "progress": "100",
+          "deadline": null,
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-002",
+          "code": "TSK-002",
+          "title": "Pengecekan sistem kelistrikan lama",
+          "titleTag": "H3",
+          "text": "TSK-002Pengecekan sistem kelistrikan lamaPRJ-001 · Renovasi Gedung Kantor BatamDalam ProgresPrioritas TinggiTerlambat · 28 Feb 202660%Penanggung jawab: Dewi Lestari",
+          "badges": [
+            "Dalam Progres",
+            "Prioritas Tinggi"
+          ],
+          "progress": "60",
+          "deadline": "Terlambat · 28 Feb 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-003",
+          "code": "TSK-003",
+          "title": "Pembersihan material sisa pembongkaran",
+          "titleTag": "H3",
+          "text": "TSK-003Pembersihan material sisa pembongkaranPRJ-001 · Renovasi Gedung Kantor BatamBelum DimulaiPrioritas SedangTerlambat · 5 Mar 20260%Penanggung jawab: Eko Prasetyo",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Sedang"
+          ],
+          "progress": "0",
+          "deadline": "Terlambat · 5 Mar 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-004",
+          "code": "TSK-004",
+          "title": "Pembuatan pondasi footplate",
+          "titleTag": "H3",
+          "text": "TSK-004Pembuatan pondasi footplatePRJ-002 · Pembangunan Gudang Logistik Tanjung PinangDalam ProgresPrioritas TinggiMendatang · 10 Apr 202635%Penanggung jawab: Ahmad Rizal",
+          "badges": [
+            "Dalam Progres",
+            "Prioritas Tinggi"
+          ],
+          "progress": "35",
+          "deadline": "Mendatang · 10 Apr 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-005",
+          "code": "TSK-005",
+          "title": "Pemesanan baja WF untuk struktur",
+          "titleTag": "H3",
+          "text": "TSK-005Pemesanan baja WF untuk strukturPRJ-002 · Pembangunan Gudang Logistik Tanjung PinangBelum DimulaiPrioritas TinggiMendatang · 25 Mar 20260%Penanggung jawab: Eko Prasetyo",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Tinggi"
+          ],
+          "progress": "0",
+          "deadline": "Mendatang · 25 Mar 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-006",
+          "code": "TSK-006",
+          "title": "Pemasangan keramik lobby",
+          "titleTag": "H3",
+          "text": "TSK-006Pemasangan keramik lobbyPRJ-001 · Renovasi Gedung Kantor BatamBelum DimulaiPrioritas SedangMendatang · 1 Apr 20260%Penanggung jawab: Dewi Lestari",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Sedang"
+          ],
+          "progress": "0",
+          "deadline": "Mendatang · 1 Apr 2026",
+          "left": 16,
+          "width": 343,
+          "right": 359,
+          "interactive": 0,
+          "hoverClass": 0
+        }
+      ]
+    },
+    "axe tugas 375 (u-004)": [],
+    "kartu tugas 768 (u-002)": {
+      "role": "list",
+      "liCount": 6,
+      "cards": [
+        {
+          "id": "t-001",
+          "code": "TSK-001",
+          "title": "Pembongkaran dinding partisi lantai 1",
+          "titleTag": "H3",
+          "text": "TSK-001Pembongkaran dinding partisi lantai 1PRJ-001 · Renovasi Gedung Kantor BatamSelesaiPrioritas Tinggi100%Penanggung jawab: Ahmad Rizal",
+          "badges": [
+            "Selesai",
+            "Prioritas Tinggi"
+          ],
+          "progress": "100",
+          "deadline": null,
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-002",
+          "code": "TSK-002",
+          "title": "Pengecekan sistem kelistrikan lama",
+          "titleTag": "H3",
+          "text": "TSK-002Pengecekan sistem kelistrikan lamaPRJ-001 · Renovasi Gedung Kantor BatamDalam ProgresPrioritas TinggiTerlambat · 28 Feb 202660%Penanggung jawab: Dewi Lestari",
+          "badges": [
+            "Dalam Progres",
+            "Prioritas Tinggi"
+          ],
+          "progress": "60",
+          "deadline": "Terlambat · 28 Feb 2026",
+          "left": 392,
+          "width": 360,
+          "right": 752,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-003",
+          "code": "TSK-003",
+          "title": "Pembersihan material sisa pembongkaran",
+          "titleTag": "H3",
+          "text": "TSK-003Pembersihan material sisa pembongkaranPRJ-001 · Renovasi Gedung Kantor BatamBelum DimulaiPrioritas SedangTerlambat · 5 Mar 20260%Penanggung jawab: Eko Prasetyo",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Sedang"
+          ],
+          "progress": "0",
+          "deadline": "Terlambat · 5 Mar 2026",
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-004",
+          "code": "TSK-004",
+          "title": "Pembuatan pondasi footplate",
+          "titleTag": "H3",
+          "text": "TSK-004Pembuatan pondasi footplatePRJ-002 · Pembangunan Gudang Logistik Tanjung PinangDalam ProgresPrioritas TinggiMendatang · 10 Apr 202635%Penanggung jawab: Ahmad Rizal",
+          "badges": [
+            "Dalam Progres",
+            "Prioritas Tinggi"
+          ],
+          "progress": "35",
+          "deadline": "Mendatang · 10 Apr 2026",
+          "left": 392,
+          "width": 360,
+          "right": 752,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-005",
+          "code": "TSK-005",
+          "title": "Pemesanan baja WF untuk struktur",
+          "titleTag": "H3",
+          "text": "TSK-005Pemesanan baja WF untuk strukturPRJ-002 · Pembangunan Gudang Logistik Tanjung PinangBelum DimulaiPrioritas TinggiMendatang · 25 Mar 20260%Penanggung jawab: Eko Prasetyo",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Tinggi"
+          ],
+          "progress": "0",
+          "deadline": "Mendatang · 25 Mar 2026",
+          "left": 16,
+          "width": 360,
+          "right": 376,
+          "interactive": 0,
+          "hoverClass": 0
+        },
+        {
+          "id": "t-006",
+          "code": "TSK-006",
+          "title": "Pemasangan keramik lobby",
+          "titleTag": "H3",
+          "text": "TSK-006Pemasangan keramik lobbyPRJ-001 · Renovasi Gedung Kantor BatamBelum DimulaiPrioritas SedangMendatang · 1 Apr 20260%Penanggung jawab: Dewi Lestari",
+          "badges": [
+            "Belum Dimulai",
+            "Prioritas Sedang"
+          ],
+          "progress": "0",
+          "deadline": "Mendatang · 1 Apr 2026",
+          "left": 392,
+          "width": 360,
+          "right": 752,
+          "interactive": 0,
+          "hoverClass": 0
+        }
+      ]
+    },
+    "axe tugas 768 (u-002)": [],
+    "axe style-guide 375": [],
+    "axe style-guide 1280": []
+  },
+  "failures": []
+}

@@ -25,7 +25,8 @@ Rencana ini tidak mengubah business logic, role, API contract, atau scope MVP. B
 | U4-2 komponen UI bersama | **PASS** | `555648d`, `U4-2-COMPONENTS.md` |
 | U4-3 navigasi, redirect login, guard URL | **PASS** | `06fc2df`, `20a36e7`, `U4-3-ACCESS.md`, `U4-3-FOLLOWUP.md` |
 | U4-4 daftar proyek `/proyek` | **PASS** | `9a29fc6`, `U4-4-PROJECTS.md` |
-| U4-5 s.d. U4-12 | **NOT STARTED** | tidak ada commit, evidence, atau skrip uji |
+| U4-5 detail proyek `/proyek/[projectId]` (read-only) | **PASS** (2026-10-28) | commit U4-5, `U4-5-PROJECT-DETAIL.md` |
+| U4-6 s.d. U4-12 | **NOT STARTED** | tidak ada commit, evidence, atau skrip uji |
 
 Commit `88b0bb7`, `951b9d7`, `709487b`, `e5b197e` adalah perbaikan responsif/aksesibilitas pada halaman placeholder. Bukan kemajuan U4-5 s.d. U4-12.
 
@@ -79,6 +80,8 @@ Commit `88b0bb7`, `951b9d7`, `709487b`, `e5b197e` adalah perbaikan responsif/aks
 ## 3. Rencana per langkah
 
 ### U4-5 — Detail proyek `/proyek/[projectId]`
+
+> **STATUS: SELESAI, PASS (2026-10-28).** Rencana di bawah dipertahankan sebagai catatan; hasil aktual, matriks per role, keputusan implementasi di celah spesifikasi, dan risiko U4-6 ada di `docs/u4-evidence/U4-5-PROJECT-DETAIL.md`. Implementasi memakai tab Ringkasan, Tugas, Tim (Tim tidak untuk Anggota Tim; email hanya Owner/Admin), fungsi izin baru `canViewProjectTeam`, `getVisibleProjectTasks`, `seesOnlyOwnTasks`, dan `lib/project-relations.ts`.
 
 **Tujuan:** mengganti `ProjectDetailPlaceholder` (`components/detail/entity-detail-placeholders.tsx`, komentarnya sendiri menyebut "dipakai sampai U4-5") dengan halaman detail proyek yang sebenarnya, hanya-baca.
 

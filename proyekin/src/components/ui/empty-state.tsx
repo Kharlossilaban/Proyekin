@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 interface EmptyStateProps extends React.ComponentProps<"div"> {
   icon?: React.ReactNode;
   title: string;
+  /** Tingkat judul. Default `h3` (di bawah `h2` bagian halaman); pakai `h1` bila state ini menggantikan seluruh halaman (mis. not-found). */
+  titleAs?: "h1" | "h2" | "h3";
   description?: string;
   action?: React.ReactNode;
 }
@@ -11,6 +13,7 @@ interface EmptyStateProps extends React.ComponentProps<"div"> {
 function EmptyState({
   icon,
   title,
+  titleAs: Title = "h3",
   description,
   action,
   className,
@@ -28,7 +31,7 @@ function EmptyState({
       {icon ? (
         <div className="mb-4 text-muted-foreground [&_svg]:size-12">{icon}</div>
       ) : null}
-      <h3 className="text-base font-semibold text-foreground">{title}</h3>
+      <Title className="text-base font-semibold text-foreground">{title}</Title>
       {description ? (
         <p className="mt-1 max-w-sm text-sm text-muted-foreground">
           {description}
