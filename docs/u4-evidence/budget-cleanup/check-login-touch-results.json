@@ -1,0 +1,2315 @@
+{
+  "checks": [
+    {
+      "name": "375: emulasi sentuh aktif",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: seluruh kontrol login terdeteksi",
+      "ok": true,
+      "detail": "[\"Proyekin — kembali ke beranda\",\"email\",\"password\",\"Tampilkan kata sandi\",\"Lupa kata sandi?\",\"Masuk\",\"Akun demo untuk pengujian\",\"Daftar sebagai Owner\"]"
+    },
+    {
+      "name": "375: \"Proyekin — kembali ke beranda\" >= 44x44",
+      "ok": true,
+      "detail": "91x44"
+    },
+    {
+      "name": "375: \"email\" >= 44x44",
+      "ok": true,
+      "detail": "293x44"
+    },
+    {
+      "name": "375: \"password\" >= 44x44",
+      "ok": true,
+      "detail": "293x44"
+    },
+    {
+      "name": "375: \"Tampilkan kata sandi\" >= 44x44",
+      "ok": true,
+      "detail": "44x44"
+    },
+    {
+      "name": "375: \"Lupa kata sandi?\" >= 44x44",
+      "ok": true,
+      "detail": "111x44"
+    },
+    {
+      "name": "375: \"Masuk\" >= 44x44",
+      "ok": true,
+      "detail": "293x48"
+    },
+    {
+      "name": "375: \"Akun demo untuk pengujian\" >= 44x44",
+      "ok": true,
+      "detail": "291x44"
+    },
+    {
+      "name": "375: \"Daftar sebagai Owner\" >= 44x44",
+      "ok": true,
+      "detail": "143x44"
+    },
+    {
+      "name": "375: input email font >= 16px (tanpa zoom otomatis iOS)",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "375: input password font >= 16px (tanpa zoom otomatis iOS)",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "375: tombol mata sejajar dan setinggi input kata sandi (tidak menjorok)",
+      "ok": true,
+      "detail": "{\"ir\":334,\"br\":334,\"it\":396,\"bt\":396,\"ih\":44,\"bh\":44}"
+    },
+    {
+      "name": "375: tidak ada area sentuh yang saling menimpa",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: gambar logo tetap 40px tinggi dengan rasio asli (tidak terdistorsi)",
+      "ok": true,
+      "detail": "{\"w\":91,\"h\":40,\"natural\":2.2857142857142856}"
+    },
+    {
+      "name": "overflow halaman: login 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: login normal 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: titik di padding bawah tautan Lupa kata sandi jatuh pada tautan itu (hit-test)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: ketuk area padding tautan Lupa kata sandi menavigasi ke /lupa-sandi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: titik di padding ringkasan Akun demo jatuh pada ringkasan (hit-test)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: ketuk area padding ringkasan membuka daftar akun demo",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: login 375 mobile, akun demo terbuka",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: login akun demo terbuka 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: ketuk tombol mata menampilkan kata sandi (type=text, aria-pressed=true)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: tombol mata saat kata sandi terlihat tetap >= 44x44",
+      "ok": true,
+      "detail": "{\"w\":44,\"h\":44}"
+    },
+    {
+      "name": "axe 0 pelanggaran: login kata sandi terlihat 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: ketuk lagi menyembunyikan kata sandi (type=password)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: submit kosong menampilkan galat dan memfokuskan kolom email (perilaku tidak berubah)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: input tetap 44px saat galat",
+      "ok": true,
+      "detail": "[44,44]"
+    },
+    {
+      "name": "overflow halaman: login galat 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: login galat validasi 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375 keyboard: urutan Tab = lewati ke konten, logo, email, kata sandi, tombol mata, lupa sandi, Masuk, akun demo, daftar",
+      "ok": true,
+      "detail": "[\"Langsung ke konten\",\"Proyekin — kembali ke beranda\",\"email\",\"password\",\"Tampilkan kata sandi\",\"Lupa kata sandi?\",\"Masuk\",\"Akun demo untuk pengujian\",\"Daftar sebagai Owner\"]"
+    },
+    {
+      "name": "375 keyboard: fokus keyboard terlihat pada setiap kontrol (outline >= 2px)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "375 keyboard: skip link tampil saat difokuskan keyboard (>= 44x24 dan di dalam layar)",
+      "ok": true,
+      "detail": "165x36"
+    },
+    {
+      "name": "375 keyboard: Enter menampilkan dan Spasi menyembunyikan kata sandi pada tombol mata",
+      "ok": true,
+      "detail": "text → password"
+    },
+    {
+      "name": "768: \"Proyekin — kembali ke beranda\" >= 44x44",
+      "ok": true,
+      "detail": "91x44"
+    },
+    {
+      "name": "768: \"email\" >= 44x44",
+      "ok": true,
+      "detail": "382x44"
+    },
+    {
+      "name": "768: \"password\" >= 44x44",
+      "ok": true,
+      "detail": "382x44"
+    },
+    {
+      "name": "768: \"Tampilkan kata sandi\" >= 44x44",
+      "ok": true,
+      "detail": "44x44"
+    },
+    {
+      "name": "768: \"Lupa kata sandi?\" >= 44x44",
+      "ok": true,
+      "detail": "111x44"
+    },
+    {
+      "name": "768: \"Masuk\" >= 44x44",
+      "ok": true,
+      "detail": "382x48"
+    },
+    {
+      "name": "768: \"Akun demo untuk pengujian\" >= 44x44",
+      "ok": true,
+      "detail": "380x44"
+    },
+    {
+      "name": "768: \"Daftar sebagai Owner\" >= 44x44",
+      "ok": true,
+      "detail": "143x44"
+    },
+    {
+      "name": "overflow halaman: login 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: login normal 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1280: \"Proyekin — kembali ke beranda\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "91x40 (bawaan 91x40)"
+    },
+    {
+      "name": "1280: \"email\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x40 (bawaan ~x40)"
+    },
+    {
+      "name": "1280: \"password\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x40 (bawaan ~x40)"
+    },
+    {
+      "name": "1280: \"Tampilkan kata sandi\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "40x40 (bawaan 40x40)"
+    },
+    {
+      "name": "1280: \"Lupa kata sandi?\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "111x20 (bawaan 111x20)"
+    },
+    {
+      "name": "1280: \"Masuk\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x48 (bawaan ~x48)"
+    },
+    {
+      "name": "1280: \"Akun demo untuk pengujian\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "356x20 (bawaan ~x20)"
+    },
+    {
+      "name": "1280: \"Daftar sebagai Owner\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "143x18 (bawaan 143x18)"
+    },
+    {
+      "name": "1280: input email font tetap 14px",
+      "ok": true,
+      "detail": "14px"
+    },
+    {
+      "name": "1280: input password font tetap 14px",
+      "ok": true,
+      "detail": "14px"
+    },
+    {
+      "name": "skip link tetap tersembunyi sampai difokuskan (1x1 sr-only, bukan tampil permanen)",
+      "ok": true,
+      "detail": "{\"w\":1,\"h\":1,\"visible\":true}"
+    },
+    {
+      "name": "overflow halaman: login 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "axe 0 pelanggaran: login normal 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: login kata sandi terlihat 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "1280 keyboard: urutan Tab = lewati ke konten, logo, email, kata sandi, tombol mata, lupa sandi, Masuk, akun demo, daftar",
+      "ok": true,
+      "detail": "[\"Langsung ke konten\",\"Proyekin — kembali ke beranda\",\"email\",\"password\",\"Tampilkan kata sandi\",\"Lupa kata sandi?\",\"Masuk\",\"Akun demo untuk pengujian\",\"Daftar sebagai Owner\"]"
+    },
+    {
+      "name": "1280 keyboard: fokus keyboard terlihat pada setiap kontrol (outline >= 2px)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "1280 keyboard: skip link tampil saat difokuskan keyboard (>= 44x24 dan di dalam layar)",
+      "ok": true,
+      "detail": "165x36"
+    },
+    {
+      "name": "1280 keyboard: Enter menampilkan dan Spasi menyembunyikan kata sandi pada tombol mata",
+      "ok": true,
+      "detail": "text → password"
+    },
+    {
+      "name": "Mandor Ahmad 375 (ketuk): login diarahkan ke /tugas (alur dan mock auth tidak berubah)",
+      "ok": true,
+      "detail": "path /tugas"
+    },
+    {
+      "name": "Owner Budi 1280: login diarahkan ke /dashboard (alur dan mock auth tidak berubah)",
+      "ok": true,
+      "detail": "path /dashboard"
+    },
+    {
+      "name": "1280: akun tidak dikenal tetap menampilkan galat login yang sama",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: /daftar tautan logo >= 44px dan gambar tetap 40px",
+      "ok": true,
+      "detail": "{\"h\":44,\"img\":40}"
+    },
+    {
+      "name": "overflow halaman: /daftar 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: /daftar 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: /lupa-sandi tautan logo >= 44px dan gambar tetap 40px",
+      "ok": true,
+      "detail": "{\"h\":44,\"img\":40}"
+    },
+    {
+      "name": "overflow halaman: /lupa-sandi 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: /lupa-sandi 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "375: /reset-sandi tautan logo >= 44px dan gambar tetap 40px",
+      "ok": true,
+      "detail": "{\"h\":44,\"img\":40}"
+    },
+    {
+      "name": "overflow halaman: /reset-sandi 375 mobile",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: /reset-sandi 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar 375: seluruh kontrol terdeteksi",
+      "ok": true,
+      "detail": "[\"Proyekin — kembali ke beranda\",\"name\",\"email\",\"password\",\"Tampilkan kata sandi\",\"confirmation\",\"Tampilkan kata sandi\",\"terms\",\"Buat Akun\",\"Masuk\"]"
+    },
+    {
+      "name": "daftar 375: \"Proyekin — kembali ke beranda\" (a) >= 44x44",
+      "ok": true,
+      "detail": "91x44"
+    },
+    {
+      "name": "daftar 375: \"name\" (input:text) >= 44x44",
+      "ok": true,
+      "detail": "293x44"
+    },
+    {
+      "name": "daftar 375: \"email\" (input:email) >= 44x44",
+      "ok": true,
+      "detail": "293x44"
+    },
+    {
+      "name": "daftar 375: \"password\" (input:password) >= 44x44",
+      "ok": true,
+      "detail": "293x44"
+    },
+    {
+      "name": "daftar 375: \"Tampilkan kata sandi\" (button:button) >= 44x44",
+      "ok": true,
+      "detail": "44x44"
+    },
+    {
+      "name": "daftar 375: \"confirmation\" (input:password) >= 44x44",
+      "ok": true,
+      "detail": "293x44"
+    },
+    {
+      "name": "daftar 375: \"Tampilkan kata sandi\" (button:button) >= 44x44",
+      "ok": true,
+      "detail": "44x44"
+    },
+    {
+      "name": "daftar 375: \"terms\" (input:checkbox) >= 44x44",
+      "ok": true,
+      "detail": "293x44"
+    },
+    {
+      "name": "daftar 375: \"Buat Akun\" (button:submit) >= 44x44",
+      "ok": true,
+      "detail": "293x48"
+    },
+    {
+      "name": "daftar 375: \"Masuk\" (a) >= 44x44",
+      "ok": true,
+      "detail": "44x44"
+    },
+    {
+      "name": "daftar 375: input name font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "daftar 375: input email font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "daftar 375: input password font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "daftar 375: input confirmation font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "daftar 375: kotak checkbox >= 20px dan seluruh label menjadi target",
+      "ok": true,
+      "detail": "kotak 20x20, label 293x44"
+    },
+    {
+      "name": "daftar 375: tombol mata sejajar dan setinggi input",
+      "ok": true,
+      "detail": "[{\"dr\":0,\"dt\":0,\"dh\":0},{\"dr\":0,\"dt\":0,\"dh\":0}]"
+    },
+    {
+      "name": "daftar 375: tidak ada area sentuh yang saling menimpa",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: daftar 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: daftar normal 375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar 768: seluruh kontrol terdeteksi",
+      "ok": true,
+      "detail": "[\"Proyekin — kembali ke beranda\",\"name\",\"email\",\"password\",\"Tampilkan kata sandi\",\"confirmation\",\"Tampilkan kata sandi\",\"terms\",\"Buat Akun\",\"Masuk\"]"
+    },
+    {
+      "name": "daftar 768: \"Proyekin — kembali ke beranda\" (a) >= 44x44",
+      "ok": true,
+      "detail": "91x44"
+    },
+    {
+      "name": "daftar 768: \"name\" (input:text) >= 44x44",
+      "ok": true,
+      "detail": "382x44"
+    },
+    {
+      "name": "daftar 768: \"email\" (input:email) >= 44x44",
+      "ok": true,
+      "detail": "382x44"
+    },
+    {
+      "name": "daftar 768: \"password\" (input:password) >= 44x44",
+      "ok": true,
+      "detail": "382x44"
+    },
+    {
+      "name": "daftar 768: \"Tampilkan kata sandi\" (button:button) >= 44x44",
+      "ok": true,
+      "detail": "44x44"
+    },
+    {
+      "name": "daftar 768: \"confirmation\" (input:password) >= 44x44",
+      "ok": true,
+      "detail": "382x44"
+    },
+    {
+      "name": "daftar 768: \"Tampilkan kata sandi\" (button:button) >= 44x44",
+      "ok": true,
+      "detail": "44x44"
+    },
+    {
+      "name": "daftar 768: \"terms\" (input:checkbox) >= 44x44",
+      "ok": true,
+      "detail": "382x44"
+    },
+    {
+      "name": "daftar 768: \"Buat Akun\" (button:submit) >= 44x44",
+      "ok": true,
+      "detail": "382x48"
+    },
+    {
+      "name": "daftar 768: \"Masuk\" (a) >= 44x44",
+      "ok": true,
+      "detail": "44x44"
+    },
+    {
+      "name": "daftar 768: input name font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "daftar 768: input email font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "daftar 768: input password font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "daftar 768: input confirmation font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "daftar 768: kotak checkbox >= 20px dan seluruh label menjadi target",
+      "ok": true,
+      "detail": "kotak 20x20, label 382x44"
+    },
+    {
+      "name": "daftar 768: tombol mata sejajar dan setinggi input",
+      "ok": true,
+      "detail": "[{\"dr\":0,\"dt\":0,\"dh\":0},{\"dr\":0,\"dt\":0,\"dh\":0}]"
+    },
+    {
+      "name": "daftar 768: tidak ada area sentuh yang saling menimpa",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: daftar 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: daftar normal 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar 1280: seluruh kontrol terdeteksi",
+      "ok": true,
+      "detail": "[\"Proyekin — kembali ke beranda\",\"name\",\"email\",\"password\",\"Tampilkan kata sandi\",\"confirmation\",\"Tampilkan kata sandi\",\"terms\",\"Buat Akun\",\"Masuk\"]"
+    },
+    {
+      "name": "daftar 1280: \"Proyekin — kembali ke beranda\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "91x40 (bawaan 91x40)"
+    },
+    {
+      "name": "daftar 1280: \"name\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x40 (bawaan ~x40)"
+    },
+    {
+      "name": "daftar 1280: \"email\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x40 (bawaan ~x40)"
+    },
+    {
+      "name": "daftar 1280: \"password\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x40 (bawaan ~x40)"
+    },
+    {
+      "name": "daftar 1280: \"Tampilkan kata sandi\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "40x40 (bawaan 40x40)"
+    },
+    {
+      "name": "daftar 1280: \"confirmation\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x40 (bawaan ~x40)"
+    },
+    {
+      "name": "daftar 1280: \"Tampilkan kata sandi\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "40x40 (bawaan 40x40)"
+    },
+    {
+      "name": "daftar 1280: \"terms\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x40 (bawaan ~x40)"
+    },
+    {
+      "name": "daftar 1280: \"Buat Akun\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x48 (bawaan ~x48)"
+    },
+    {
+      "name": "daftar 1280: \"Masuk\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "44x18 (bawaan 44x18)"
+    },
+    {
+      "name": "daftar 1280: input name font tetap 14px",
+      "ok": true,
+      "detail": "14px"
+    },
+    {
+      "name": "daftar 1280: input email font tetap 14px",
+      "ok": true,
+      "detail": "14px"
+    },
+    {
+      "name": "daftar 1280: input password font tetap 14px",
+      "ok": true,
+      "detail": "14px"
+    },
+    {
+      "name": "daftar 1280: input confirmation font tetap 14px",
+      "ok": true,
+      "detail": "14px"
+    },
+    {
+      "name": "daftar 1280: kotak checkbox tetap 16x16 dan label 40px",
+      "ok": true,
+      "detail": "kotak 16x16, label 382x40"
+    },
+    {
+      "name": "overflow halaman: daftar 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "axe 0 pelanggaran: daftar normal 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar 375: submit kosong menandai kolom tidak valid dan memfokuskan yang pertama (perilaku tidak berubah)",
+      "ok": true,
+      "detail": "[\"name\",\"email\",\"password\",\"confirmation\",\"terms\"] fokus name"
+    },
+    {
+      "name": "daftar 375: input tetap >= 44px saat galat",
+      "ok": true,
+      "detail": "[44,44,44,44]"
+    },
+    {
+      "name": "overflow halaman: daftar galat 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: daftar galat validasi 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar 375: ketuk tombol mata menampilkan kata sandi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar 375: tombol mata saat sandi terlihat >= 44x44",
+      "ok": true,
+      "detail": "{\"w\":44,\"h\":44}"
+    },
+    {
+      "name": "axe 0 pelanggaran: daftar kata sandi terlihat 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar 375: titik di padding bawah tautan \"Masuk\" jatuh pada tautan itu (hit-test)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar 375: ketuk area padding tautan \"Masuk\" menavigasi ke /masuk",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar 375: urutan Tab = lewati ke konten lalu seluruh kontrol berurutan",
+      "ok": true,
+      "detail": "[\"Langsung ke konten\",\"Proyekin — kembali ke beranda\",\"name\",\"email\",\"password\",\"Tampilkan kata sandi\",\"confirmation\",\"Tampilkan kata sandi\",\"terms\",\"Buat Akun\",\"Masuk\"]"
+    },
+    {
+      "name": "daftar 375: fokus keyboard terlihat pada setiap kontrol (outline >= 2px)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "daftar 1280: urutan Tab = lewati ke konten lalu seluruh kontrol berurutan",
+      "ok": true,
+      "detail": "[\"Langsung ke konten\",\"Proyekin — kembali ke beranda\",\"name\",\"email\",\"password\",\"Tampilkan kata sandi\",\"confirmation\",\"Tampilkan kata sandi\",\"terms\",\"Buat Akun\",\"Masuk\"]"
+    },
+    {
+      "name": "daftar 1280: fokus keyboard terlihat pada setiap kontrol (outline >= 2px)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "lupa-sandi 375: seluruh kontrol terdeteksi",
+      "ok": true,
+      "detail": "[\"Proyekin — kembali ke beranda\",\"email\",\"Kirim Tautan Pemulihan\",\"Kembali ke halaman masuk\"]"
+    },
+    {
+      "name": "lupa-sandi 375: \"Proyekin — kembali ke beranda\" (a) >= 44x44",
+      "ok": true,
+      "detail": "91x44"
+    },
+    {
+      "name": "lupa-sandi 375: \"email\" (input:email) >= 44x44",
+      "ok": true,
+      "detail": "293x44"
+    },
+    {
+      "name": "lupa-sandi 375: \"Kirim Tautan Pemulihan\" (button:submit) >= 44x44",
+      "ok": true,
+      "detail": "293x48"
+    },
+    {
+      "name": "lupa-sandi 375: \"Kembali ke halaman masuk\" (a) >= 44x44",
+      "ok": true,
+      "detail": "179x44"
+    },
+    {
+      "name": "lupa-sandi 375: input email font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "lupa-sandi 375: tombol mata sejajar dan setinggi input",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "lupa-sandi 375: tidak ada area sentuh yang saling menimpa",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: lupa-sandi 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: lupa-sandi normal 375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lupa-sandi 768: seluruh kontrol terdeteksi",
+      "ok": true,
+      "detail": "[\"Proyekin — kembali ke beranda\",\"email\",\"Kirim Tautan Pemulihan\",\"Kembali ke halaman masuk\"]"
+    },
+    {
+      "name": "lupa-sandi 768: \"Proyekin — kembali ke beranda\" (a) >= 44x44",
+      "ok": true,
+      "detail": "91x44"
+    },
+    {
+      "name": "lupa-sandi 768: \"email\" (input:email) >= 44x44",
+      "ok": true,
+      "detail": "382x44"
+    },
+    {
+      "name": "lupa-sandi 768: \"Kirim Tautan Pemulihan\" (button:submit) >= 44x44",
+      "ok": true,
+      "detail": "382x48"
+    },
+    {
+      "name": "lupa-sandi 768: \"Kembali ke halaman masuk\" (a) >= 44x44",
+      "ok": true,
+      "detail": "179x44"
+    },
+    {
+      "name": "lupa-sandi 768: input email font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "lupa-sandi 768: tombol mata sejajar dan setinggi input",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "lupa-sandi 768: tidak ada area sentuh yang saling menimpa",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: lupa-sandi 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: lupa-sandi normal 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lupa-sandi 1280: seluruh kontrol terdeteksi",
+      "ok": true,
+      "detail": "[\"Proyekin — kembali ke beranda\",\"email\",\"Kirim Tautan Pemulihan\",\"Kembali ke halaman masuk\"]"
+    },
+    {
+      "name": "lupa-sandi 1280: \"Proyekin — kembali ke beranda\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "91x40 (bawaan 91x40)"
+    },
+    {
+      "name": "lupa-sandi 1280: \"email\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x40 (bawaan ~x40)"
+    },
+    {
+      "name": "lupa-sandi 1280: \"Kirim Tautan Pemulihan\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x48 (bawaan ~x48)"
+    },
+    {
+      "name": "lupa-sandi 1280: \"Kembali ke halaman masuk\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "179x18 (bawaan 179x18)"
+    },
+    {
+      "name": "lupa-sandi 1280: input email font tetap 14px",
+      "ok": true,
+      "detail": "14px"
+    },
+    {
+      "name": "overflow halaman: lupa-sandi 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "axe 0 pelanggaran: lupa-sandi normal 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lupa-sandi 375: submit kosong menandai kolom tidak valid dan memfokuskan yang pertama (perilaku tidak berubah)",
+      "ok": true,
+      "detail": "[\"email\"] fokus email"
+    },
+    {
+      "name": "lupa-sandi 375: input tetap >= 44px saat galat",
+      "ok": true,
+      "detail": "[44]"
+    },
+    {
+      "name": "overflow halaman: lupa-sandi galat 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: lupa-sandi galat validasi 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lupa-sandi 375: titik di padding bawah tautan \"Kembali ke halaman masuk\" jatuh pada tautan itu (hit-test)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lupa-sandi 375: ketuk area padding tautan \"Kembali ke halaman masuk\" menavigasi ke /masuk",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "lupa-sandi 375: urutan Tab = lewati ke konten lalu seluruh kontrol berurutan",
+      "ok": true,
+      "detail": "[\"Langsung ke konten\",\"Proyekin — kembali ke beranda\",\"email\",\"Kirim Tautan Pemulihan\",\"Kembali ke halaman masuk\"]"
+    },
+    {
+      "name": "lupa-sandi 375: fokus keyboard terlihat pada setiap kontrol (outline >= 2px)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "lupa-sandi 1280: urutan Tab = lewati ke konten lalu seluruh kontrol berurutan",
+      "ok": true,
+      "detail": "[\"Langsung ke konten\",\"Proyekin — kembali ke beranda\",\"email\",\"Kirim Tautan Pemulihan\",\"Kembali ke halaman masuk\"]"
+    },
+    {
+      "name": "lupa-sandi 1280: fokus keyboard terlihat pada setiap kontrol (outline >= 2px)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "reset-sandi 375: seluruh kontrol terdeteksi",
+      "ok": true,
+      "detail": "[\"Proyekin — kembali ke beranda\",\"password\",\"Tampilkan kata sandi\",\"confirmation\",\"Tampilkan kata sandi\",\"Atur Ulang Kata Sandi\",\"Kembali ke halaman masuk\"]"
+    },
+    {
+      "name": "reset-sandi 375: \"Proyekin — kembali ke beranda\" (a) >= 44x44",
+      "ok": true,
+      "detail": "91x44"
+    },
+    {
+      "name": "reset-sandi 375: \"password\" (input:password) >= 44x44",
+      "ok": true,
+      "detail": "293x44"
+    },
+    {
+      "name": "reset-sandi 375: \"Tampilkan kata sandi\" (button:button) >= 44x44",
+      "ok": true,
+      "detail": "44x44"
+    },
+    {
+      "name": "reset-sandi 375: \"confirmation\" (input:password) >= 44x44",
+      "ok": true,
+      "detail": "293x44"
+    },
+    {
+      "name": "reset-sandi 375: \"Tampilkan kata sandi\" (button:button) >= 44x44",
+      "ok": true,
+      "detail": "44x44"
+    },
+    {
+      "name": "reset-sandi 375: \"Atur Ulang Kata Sandi\" (button:submit) >= 44x44",
+      "ok": true,
+      "detail": "293x48"
+    },
+    {
+      "name": "reset-sandi 375: \"Kembali ke halaman masuk\" (a) >= 44x44",
+      "ok": true,
+      "detail": "179x44"
+    },
+    {
+      "name": "reset-sandi 375: input password font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "reset-sandi 375: input confirmation font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "reset-sandi 375: tombol mata sejajar dan setinggi input",
+      "ok": true,
+      "detail": "[{\"dr\":0,\"dt\":0,\"dh\":0},{\"dr\":0,\"dt\":0,\"dh\":0}]"
+    },
+    {
+      "name": "reset-sandi 375: tidak ada area sentuh yang saling menimpa",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: reset-sandi 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: reset-sandi normal 375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reset-sandi 768: seluruh kontrol terdeteksi",
+      "ok": true,
+      "detail": "[\"Proyekin — kembali ke beranda\",\"password\",\"Tampilkan kata sandi\",\"confirmation\",\"Tampilkan kata sandi\",\"Atur Ulang Kata Sandi\",\"Kembali ke halaman masuk\"]"
+    },
+    {
+      "name": "reset-sandi 768: \"Proyekin — kembali ke beranda\" (a) >= 44x44",
+      "ok": true,
+      "detail": "91x44"
+    },
+    {
+      "name": "reset-sandi 768: \"password\" (input:password) >= 44x44",
+      "ok": true,
+      "detail": "382x44"
+    },
+    {
+      "name": "reset-sandi 768: \"Tampilkan kata sandi\" (button:button) >= 44x44",
+      "ok": true,
+      "detail": "44x44"
+    },
+    {
+      "name": "reset-sandi 768: \"confirmation\" (input:password) >= 44x44",
+      "ok": true,
+      "detail": "382x44"
+    },
+    {
+      "name": "reset-sandi 768: \"Tampilkan kata sandi\" (button:button) >= 44x44",
+      "ok": true,
+      "detail": "44x44"
+    },
+    {
+      "name": "reset-sandi 768: \"Atur Ulang Kata Sandi\" (button:submit) >= 44x44",
+      "ok": true,
+      "detail": "382x48"
+    },
+    {
+      "name": "reset-sandi 768: \"Kembali ke halaman masuk\" (a) >= 44x44",
+      "ok": true,
+      "detail": "179x44"
+    },
+    {
+      "name": "reset-sandi 768: input password font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "reset-sandi 768: input confirmation font >= 16px",
+      "ok": true,
+      "detail": "16px"
+    },
+    {
+      "name": "reset-sandi 768: tombol mata sejajar dan setinggi input",
+      "ok": true,
+      "detail": "[{\"dr\":0,\"dt\":0,\"dh\":0},{\"dr\":0,\"dt\":0,\"dh\":0}]"
+    },
+    {
+      "name": "reset-sandi 768: tidak ada area sentuh yang saling menimpa",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: reset-sandi 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: reset-sandi normal 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reset-sandi 1280: seluruh kontrol terdeteksi",
+      "ok": true,
+      "detail": "[\"Proyekin — kembali ke beranda\",\"password\",\"Tampilkan kata sandi\",\"confirmation\",\"Tampilkan kata sandi\",\"Atur Ulang Kata Sandi\",\"Kembali ke halaman masuk\"]"
+    },
+    {
+      "name": "reset-sandi 1280: \"Proyekin — kembali ke beranda\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "91x40 (bawaan 91x40)"
+    },
+    {
+      "name": "reset-sandi 1280: \"password\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x40 (bawaan ~x40)"
+    },
+    {
+      "name": "reset-sandi 1280: \"Tampilkan kata sandi\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "40x40 (bawaan 40x40)"
+    },
+    {
+      "name": "reset-sandi 1280: \"confirmation\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x40 (bawaan ~x40)"
+    },
+    {
+      "name": "reset-sandi 1280: \"Tampilkan kata sandi\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "40x40 (bawaan 40x40)"
+    },
+    {
+      "name": "reset-sandi 1280: \"Atur Ulang Kata Sandi\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "382x48 (bawaan ~x48)"
+    },
+    {
+      "name": "reset-sandi 1280: \"Kembali ke halaman masuk\" ukuran desktop tidak berubah",
+      "ok": true,
+      "detail": "179x18 (bawaan 179x18)"
+    },
+    {
+      "name": "reset-sandi 1280: input password font tetap 14px",
+      "ok": true,
+      "detail": "14px"
+    },
+    {
+      "name": "reset-sandi 1280: input confirmation font tetap 14px",
+      "ok": true,
+      "detail": "14px"
+    },
+    {
+      "name": "overflow halaman: reset-sandi 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "axe 0 pelanggaran: reset-sandi normal 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reset-sandi 375: submit kosong menandai kolom tidak valid dan memfokuskan yang pertama (perilaku tidak berubah)",
+      "ok": true,
+      "detail": "[\"password\",\"confirmation\"] fokus password"
+    },
+    {
+      "name": "reset-sandi 375: input tetap >= 44px saat galat",
+      "ok": true,
+      "detail": "[44,44]"
+    },
+    {
+      "name": "overflow halaman: reset-sandi galat 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: reset-sandi galat validasi 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reset-sandi 375: ketuk tombol mata menampilkan kata sandi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reset-sandi 375: tombol mata saat sandi terlihat >= 44x44",
+      "ok": true,
+      "detail": "{\"w\":44,\"h\":44}"
+    },
+    {
+      "name": "axe 0 pelanggaran: reset-sandi kata sandi terlihat 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reset-sandi 375: titik di padding bawah tautan \"Kembali ke halaman masuk\" jatuh pada tautan itu (hit-test)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reset-sandi 375: ketuk area padding tautan \"Kembali ke halaman masuk\" menavigasi ke /masuk",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reset-sandi 375: urutan Tab = lewati ke konten lalu seluruh kontrol berurutan",
+      "ok": true,
+      "detail": "[\"Langsung ke konten\",\"Proyekin — kembali ke beranda\",\"password\",\"Tampilkan kata sandi\",\"confirmation\",\"Tampilkan kata sandi\",\"Atur Ulang Kata Sandi\",\"Kembali ke halaman masuk\"]"
+    },
+    {
+      "name": "reset-sandi 375: fokus keyboard terlihat pada setiap kontrol (outline >= 2px)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "reset-sandi 1280: urutan Tab = lewati ke konten lalu seluruh kontrol berurutan",
+      "ok": true,
+      "detail": "[\"Langsung ke konten\",\"Proyekin — kembali ke beranda\",\"password\",\"Tampilkan kata sandi\",\"confirmation\",\"Tampilkan kata sandi\",\"Atur Ulang Kata Sandi\",\"Kembali ke halaman masuk\"]"
+    },
+    {
+      "name": "reset-sandi 1280: fokus keyboard terlihat pada setiap kontrol (outline >= 2px)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "daftar 375: ketuk area label (di luar kotak) mencentang persetujuan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "daftar 375: pendaftaran valid → /masuk?registered=1 (alur tidak berubah)",
+      "ok": true,
+      "detail": "/masuk?registered=1"
+    },
+    {
+      "name": "lupa-sandi 1280: kirim valid menampilkan 'Periksa email Anda' dan memfokuskan judul (perilaku tidak berubah)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "reset-sandi 1280: reset valid → /masuk?reset=1 (alur tidak berubah)",
+      "ok": true,
+      "detail": "/masuk?reset=1"
+    },
+    {
+      "name": "reset-sandi 1280: tanpa token tetap menampilkan 'Tautan tidak valid'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: reset-sandi tanpa token 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: reset-sandi tanpa token 375 mobile",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "measurements": {
+    "kontrol 375": [
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "tag": "a",
+        "x": 16,
+        "y": 24,
+        "w": 91,
+        "h": 44,
+        "fs": 16
+      },
+      {
+        "key": "email",
+        "tag": "input",
+        "x": 41,
+        "y": 306,
+        "w": 293,
+        "h": 44,
+        "fs": 16
+      },
+      {
+        "key": "password",
+        "tag": "input",
+        "x": 41,
+        "y": 396,
+        "w": 293,
+        "h": 44,
+        "fs": 16
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button",
+        "x": 290,
+        "y": 396,
+        "w": 44,
+        "h": 44,
+        "fs": 14
+      },
+      {
+        "key": "Lupa kata sandi?",
+        "tag": "a",
+        "x": 223.078125,
+        "y": 448,
+        "w": 111,
+        "h": 44,
+        "fs": 14
+      },
+      {
+        "key": "Masuk",
+        "tag": "button",
+        "x": 41,
+        "y": 500,
+        "w": 293,
+        "h": 48,
+        "fs": 16
+      },
+      {
+        "key": "Akun demo untuk pengujian",
+        "tag": "summary",
+        "x": 42,
+        "y": 569,
+        "w": 291,
+        "h": 44,
+        "fs": 14
+      },
+      {
+        "key": "Daftar sebagai Owner",
+        "tag": "a",
+        "x": 178.828125,
+        "y": 747,
+        "w": 143,
+        "h": 44,
+        "fs": 14
+      }
+    ],
+    "axe login normal 375 mobile": [],
+    "axe login akun demo terbuka 375 mobile": [],
+    "axe login kata sandi terlihat 375 mobile": [],
+    "axe login galat validasi 375 mobile": [],
+    "tab 375 keyboard": [
+      {
+        "key": "Langsung ke konten",
+        "outline": "solid",
+        "ow": 2,
+        "w": 165,
+        "h": 36
+      },
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "outline": "solid",
+        "ow": 2,
+        "w": 91,
+        "h": 44
+      },
+      {
+        "key": "email",
+        "outline": "solid",
+        "ow": 2,
+        "w": 293,
+        "h": 44
+      },
+      {
+        "key": "password",
+        "outline": "solid",
+        "ow": 2,
+        "w": 293,
+        "h": 44
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "outline": "solid",
+        "ow": 2,
+        "w": 44,
+        "h": 44
+      },
+      {
+        "key": "Lupa kata sandi?",
+        "outline": "solid",
+        "ow": 2,
+        "w": 111,
+        "h": 44
+      },
+      {
+        "key": "Masuk",
+        "outline": "solid",
+        "ow": 2,
+        "w": 293,
+        "h": 48
+      },
+      {
+        "key": "Akun demo untuk pengujian",
+        "outline": "solid",
+        "ow": 2,
+        "w": 291,
+        "h": 44
+      },
+      {
+        "key": "Daftar sebagai Owner",
+        "outline": "solid",
+        "ow": 2,
+        "w": 143,
+        "h": 44
+      }
+    ],
+    "kontrol 768": [
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "tag": "a",
+        "x": 32,
+        "y": 24,
+        "w": 91,
+        "h": 44,
+        "fs": 16
+      },
+      {
+        "key": "email",
+        "tag": "input",
+        "x": 193,
+        "y": 378,
+        "w": 382,
+        "h": 44,
+        "fs": 16
+      },
+      {
+        "key": "password",
+        "tag": "input",
+        "x": 193,
+        "y": 468,
+        "w": 382,
+        "h": 44,
+        "fs": 16
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button",
+        "x": 531,
+        "y": 468,
+        "w": 44,
+        "h": 44,
+        "fs": 14
+      },
+      {
+        "key": "Lupa kata sandi?",
+        "tag": "a",
+        "x": 464.078125,
+        "y": 520,
+        "w": 111,
+        "h": 44,
+        "fs": 14
+      },
+      {
+        "key": "Masuk",
+        "tag": "button",
+        "x": 193,
+        "y": 572,
+        "w": 382,
+        "h": 48,
+        "fs": 16
+      },
+      {
+        "key": "Akun demo untuk pengujian",
+        "tag": "summary",
+        "x": 194,
+        "y": 641,
+        "w": 380,
+        "h": 44,
+        "fs": 14
+      },
+      {
+        "key": "Daftar sebagai Owner",
+        "tag": "a",
+        "x": 330.828125,
+        "y": 799,
+        "w": 143,
+        "h": 44,
+        "fs": 14
+      }
+    ],
+    "axe login normal 768": [],
+    "kontrol 1280": [
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "tag": "a",
+        "x": 565.328125,
+        "y": 24,
+        "w": 91,
+        "h": 40,
+        "fs": 16
+      },
+      {
+        "key": "email",
+        "tag": "input",
+        "x": 715.65625,
+        "y": 319,
+        "w": 382,
+        "h": 40,
+        "fs": 14
+      },
+      {
+        "key": "password",
+        "tag": "input",
+        "x": 715.65625,
+        "y": 405,
+        "w": 382,
+        "h": 40,
+        "fs": 14
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button",
+        "x": 1057.65625,
+        "y": 405,
+        "w": 40,
+        "h": 40,
+        "fs": 14
+      },
+      {
+        "key": "Lupa kata sandi?",
+        "tag": "a",
+        "x": 986.734375,
+        "y": 465,
+        "w": 111,
+        "h": 20,
+        "fs": 14
+      },
+      {
+        "key": "Masuk",
+        "tag": "button",
+        "x": 715.65625,
+        "y": 505,
+        "w": 382,
+        "h": 48,
+        "fs": 16
+      },
+      {
+        "key": "Akun demo untuk pengujian",
+        "tag": "summary",
+        "x": 728.65625,
+        "y": 586,
+        "w": 356,
+        "h": 20,
+        "fs": 14
+      },
+      {
+        "key": "Daftar sebagai Owner",
+        "tag": "a",
+        "x": 853.484375,
+        "y": 745,
+        "w": 143,
+        "h": 18,
+        "fs": 14
+      }
+    ],
+    "axe login normal 1280": [],
+    "axe login kata sandi terlihat 1280": [],
+    "tab 1280 keyboard": [
+      {
+        "key": "Langsung ke konten",
+        "outline": "solid",
+        "ow": 2,
+        "w": 165,
+        "h": 36
+      },
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "outline": "solid",
+        "ow": 2,
+        "w": 91,
+        "h": 40
+      },
+      {
+        "key": "email",
+        "outline": "solid",
+        "ow": 2,
+        "w": 382,
+        "h": 40
+      },
+      {
+        "key": "password",
+        "outline": "solid",
+        "ow": 2,
+        "w": 382,
+        "h": 40
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "outline": "solid",
+        "ow": 2,
+        "w": 40,
+        "h": 40
+      },
+      {
+        "key": "Lupa kata sandi?",
+        "outline": "solid",
+        "ow": 2,
+        "w": 111,
+        "h": 20
+      },
+      {
+        "key": "Masuk",
+        "outline": "solid",
+        "ow": 2,
+        "w": 382,
+        "h": 48
+      },
+      {
+        "key": "Akun demo untuk pengujian",
+        "outline": "solid",
+        "ow": 2,
+        "w": 356,
+        "h": 20
+      },
+      {
+        "key": "Daftar sebagai Owner",
+        "outline": "solid",
+        "ow": 2,
+        "w": 143,
+        "h": 18
+      }
+    ],
+    "axe /daftar 375 mobile": [],
+    "axe /lupa-sandi 375 mobile": [],
+    "axe /reset-sandi 375 mobile": [],
+    "daftar 375": [
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "tag": "a",
+        "x": 16,
+        "y": 24,
+        "w": 91,
+        "h": 44,
+        "bw": 91,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "name",
+        "tag": "input:text",
+        "x": 41,
+        "y": 354,
+        "w": 293,
+        "h": 44,
+        "bw": 293,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "email",
+        "tag": "input:email",
+        "x": 41,
+        "y": 444,
+        "w": 293,
+        "h": 44,
+        "bw": 293,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "password",
+        "tag": "input:password",
+        "x": 41,
+        "y": 534,
+        "w": 293,
+        "h": 44,
+        "bw": 293,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button:button",
+        "x": 290,
+        "y": 534,
+        "w": 44,
+        "h": 44,
+        "bw": 44,
+        "bh": 44,
+        "fs": 14
+      },
+      {
+        "key": "confirmation",
+        "tag": "input:password",
+        "x": 41,
+        "y": 756,
+        "w": 293,
+        "h": 44,
+        "bw": 293,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button:button",
+        "x": 290,
+        "y": 756,
+        "w": 44,
+        "h": 44,
+        "bw": 44,
+        "bh": 44,
+        "fs": 14
+      },
+      {
+        "key": "terms",
+        "tag": "input:checkbox",
+        "x": 41,
+        "y": 820,
+        "w": 293,
+        "h": 44,
+        "bw": 20,
+        "bh": 20,
+        "fs": 14
+      },
+      {
+        "key": "Buat Akun",
+        "tag": "button:submit",
+        "x": 41,
+        "y": 884,
+        "w": 293,
+        "h": 48,
+        "bw": 293,
+        "bh": 48,
+        "fs": 16
+      },
+      {
+        "key": "Masuk",
+        "tag": "a",
+        "x": 170.4375,
+        "y": 1045,
+        "w": 44,
+        "h": 44,
+        "bw": 44,
+        "bh": 44,
+        "fs": 14
+      }
+    ],
+    "axe daftar normal 375": [],
+    "daftar 768": [
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "tag": "a",
+        "x": 32,
+        "y": 24,
+        "w": 91,
+        "h": 44,
+        "bw": 91,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "name",
+        "tag": "input:text",
+        "x": 193,
+        "y": 338,
+        "w": 382,
+        "h": 44,
+        "bw": 382,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "email",
+        "tag": "input:email",
+        "x": 193,
+        "y": 428,
+        "w": 382,
+        "h": 44,
+        "bw": 382,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "password",
+        "tag": "input:password",
+        "x": 193,
+        "y": 518,
+        "w": 382,
+        "h": 44,
+        "bw": 382,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button:button",
+        "x": 531,
+        "y": 518,
+        "w": 44,
+        "h": 44,
+        "bw": 44,
+        "bh": 44,
+        "fs": 14
+      },
+      {
+        "key": "confirmation",
+        "tag": "input:password",
+        "x": 193,
+        "y": 692,
+        "w": 382,
+        "h": 44,
+        "bw": 382,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button:button",
+        "x": 531,
+        "y": 692,
+        "w": 44,
+        "h": 44,
+        "bw": 44,
+        "bh": 44,
+        "fs": 14
+      },
+      {
+        "key": "terms",
+        "tag": "input:checkbox",
+        "x": 193,
+        "y": 756,
+        "w": 382,
+        "h": 44,
+        "bw": 20,
+        "bh": 20,
+        "fs": 14
+      },
+      {
+        "key": "Buat Akun",
+        "tag": "button:submit",
+        "x": 193,
+        "y": 820,
+        "w": 382,
+        "h": 48,
+        "bw": 382,
+        "bh": 48,
+        "fs": 16
+      },
+      {
+        "key": "Masuk",
+        "tag": "a",
+        "x": 322.4375,
+        "y": 981,
+        "w": 44,
+        "h": 44,
+        "bw": 44,
+        "bh": 44,
+        "fs": 14
+      }
+    ],
+    "axe daftar normal 768": [],
+    "daftar 1280": [
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "tag": "a",
+        "x": 565.328125,
+        "y": 24,
+        "w": 91,
+        "h": 40,
+        "bw": 91,
+        "bh": 40,
+        "fs": 16
+      },
+      {
+        "key": "name",
+        "tag": "input:text",
+        "x": 715.65625,
+        "y": 336,
+        "w": 382,
+        "h": 40,
+        "bw": 382,
+        "bh": 40,
+        "fs": 14
+      },
+      {
+        "key": "email",
+        "tag": "input:email",
+        "x": 715.65625,
+        "y": 422,
+        "w": 382,
+        "h": 40,
+        "bw": 382,
+        "bh": 40,
+        "fs": 14
+      },
+      {
+        "key": "password",
+        "tag": "input:password",
+        "x": 715.65625,
+        "y": 508,
+        "w": 382,
+        "h": 40,
+        "bw": 382,
+        "bh": 40,
+        "fs": 14
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button:button",
+        "x": 1057.65625,
+        "y": 508,
+        "w": 40,
+        "h": 40,
+        "bw": 40,
+        "bh": 40,
+        "fs": 14
+      },
+      {
+        "key": "confirmation",
+        "tag": "input:password",
+        "x": 715.65625,
+        "y": 678,
+        "w": 382,
+        "h": 40,
+        "bw": 382,
+        "bh": 40,
+        "fs": 14
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button:button",
+        "x": 1057.65625,
+        "y": 678,
+        "w": 40,
+        "h": 40,
+        "bw": 40,
+        "bh": 40,
+        "fs": 14
+      },
+      {
+        "key": "terms",
+        "tag": "input:checkbox",
+        "x": 715.65625,
+        "y": 738,
+        "w": 382,
+        "h": 40,
+        "bw": 16,
+        "bh": 16,
+        "fs": 14
+      },
+      {
+        "key": "Buat Akun",
+        "tag": "button:submit",
+        "x": 715.65625,
+        "y": 798,
+        "w": 382,
+        "h": 48,
+        "bw": 382,
+        "bh": 48,
+        "fs": 16
+      },
+      {
+        "key": "Masuk",
+        "tag": "a",
+        "x": 845.09375,
+        "y": 972,
+        "w": 44,
+        "h": 18,
+        "bw": 44,
+        "bh": 18,
+        "fs": 14
+      }
+    ],
+    "axe daftar normal 1280": [],
+    "axe daftar galat validasi 375 mobile": [],
+    "axe daftar kata sandi terlihat 375 mobile": [],
+    "lupa-sandi 375": [
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "tag": "a",
+        "x": 16,
+        "y": 24,
+        "w": 91,
+        "h": 44,
+        "bw": 91,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "email",
+        "tag": "input:email",
+        "x": 41,
+        "y": 406,
+        "w": 293,
+        "h": 44,
+        "bw": 293,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "Kirim Tautan Pemulihan",
+        "tag": "button:submit",
+        "x": 41,
+        "y": 470,
+        "w": 293,
+        "h": 48,
+        "bw": 293,
+        "bh": 48,
+        "fs": 16
+      },
+      {
+        "key": "Kembali ke halaman masuk",
+        "tag": "a",
+        "x": 41,
+        "y": 611,
+        "w": 179,
+        "h": 44,
+        "bw": 179,
+        "bh": 44,
+        "fs": 14
+      }
+    ],
+    "axe lupa-sandi normal 375": [],
+    "lupa-sandi 768": [
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "tag": "a",
+        "x": 32,
+        "y": 24,
+        "w": 91,
+        "h": 44,
+        "bw": 91,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "email",
+        "tag": "input:email",
+        "x": 193,
+        "y": 526,
+        "w": 382,
+        "h": 44,
+        "bw": 382,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "Kirim Tautan Pemulihan",
+        "tag": "button:submit",
+        "x": 193,
+        "y": 590,
+        "w": 382,
+        "h": 48,
+        "bw": 382,
+        "bh": 48,
+        "fs": 16
+      },
+      {
+        "key": "Kembali ke halaman masuk",
+        "tag": "a",
+        "x": 193,
+        "y": 731,
+        "w": 179,
+        "h": 44,
+        "bw": 179,
+        "bh": 44,
+        "fs": 14
+      }
+    ],
+    "axe lupa-sandi normal 768": [],
+    "lupa-sandi 1280": [
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "tag": "a",
+        "x": 565.328125,
+        "y": 24,
+        "w": 91,
+        "h": 40,
+        "bw": 91,
+        "bh": 40,
+        "fs": 16
+      },
+      {
+        "key": "email",
+        "tag": "input:email",
+        "x": 715.65625,
+        "y": 465,
+        "w": 382,
+        "h": 40,
+        "bw": 382,
+        "bh": 40,
+        "fs": 14
+      },
+      {
+        "key": "Kirim Tautan Pemulihan",
+        "tag": "button:submit",
+        "x": 715.65625,
+        "y": 525,
+        "w": 382,
+        "h": 48,
+        "bw": 382,
+        "bh": 48,
+        "fs": 16
+      },
+      {
+        "key": "Kembali ke halaman masuk",
+        "tag": "a",
+        "x": 715.65625,
+        "y": 679,
+        "w": 179,
+        "h": 18,
+        "bw": 179,
+        "bh": 18,
+        "fs": 14
+      }
+    ],
+    "axe lupa-sandi normal 1280": [],
+    "axe lupa-sandi galat validasi 375 mobile": [],
+    "reset-sandi 375": [
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "tag": "a",
+        "x": 16,
+        "y": 24,
+        "w": 91,
+        "h": 44,
+        "bw": 91,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "password",
+        "tag": "input:password",
+        "x": 41,
+        "y": 362,
+        "w": 293,
+        "h": 44,
+        "bw": 293,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button:button",
+        "x": 290,
+        "y": 362,
+        "w": 44,
+        "h": 44,
+        "bw": 44,
+        "bh": 44,
+        "fs": 14
+      },
+      {
+        "key": "confirmation",
+        "tag": "input:password",
+        "x": 41,
+        "y": 584,
+        "w": 293,
+        "h": 44,
+        "bw": 293,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button:button",
+        "x": 290,
+        "y": 584,
+        "w": 44,
+        "h": 44,
+        "bw": 44,
+        "bh": 44,
+        "fs": 14
+      },
+      {
+        "key": "Atur Ulang Kata Sandi",
+        "tag": "button:submit",
+        "x": 41,
+        "y": 648,
+        "w": 293,
+        "h": 48,
+        "bw": 293,
+        "bh": 48,
+        "fs": 16
+      },
+      {
+        "key": "Kembali ke halaman masuk",
+        "tag": "a",
+        "x": 41,
+        "y": 789,
+        "w": 179,
+        "h": 44,
+        "bw": 179,
+        "bh": 44,
+        "fs": 14
+      }
+    ],
+    "axe reset-sandi normal 375": [],
+    "reset-sandi 768": [
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "tag": "a",
+        "x": 32,
+        "y": 24,
+        "w": 91,
+        "h": 44,
+        "bw": 91,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "password",
+        "tag": "input:password",
+        "x": 193,
+        "y": 427,
+        "w": 382,
+        "h": 44,
+        "bw": 382,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button:button",
+        "x": 531,
+        "y": 427,
+        "w": 44,
+        "h": 44,
+        "bw": 44,
+        "bh": 44,
+        "fs": 14
+      },
+      {
+        "key": "confirmation",
+        "tag": "input:password",
+        "x": 193,
+        "y": 601,
+        "w": 382,
+        "h": 44,
+        "bw": 382,
+        "bh": 44,
+        "fs": 16
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button:button",
+        "x": 531,
+        "y": 601,
+        "w": 44,
+        "h": 44,
+        "bw": 44,
+        "bh": 44,
+        "fs": 14
+      },
+      {
+        "key": "Atur Ulang Kata Sandi",
+        "tag": "button:submit",
+        "x": 193,
+        "y": 665,
+        "w": 382,
+        "h": 48,
+        "bw": 382,
+        "bh": 48,
+        "fs": 16
+      },
+      {
+        "key": "Kembali ke halaman masuk",
+        "tag": "a",
+        "x": 193,
+        "y": 806,
+        "w": 179,
+        "h": 44,
+        "bw": 179,
+        "bh": 44,
+        "fs": 14
+      }
+    ],
+    "axe reset-sandi normal 768": [],
+    "reset-sandi 1280": [
+      {
+        "key": "Proyekin — kembali ke beranda",
+        "tag": "a",
+        "x": 565.328125,
+        "y": 24,
+        "w": 91,
+        "h": 40,
+        "bw": 91,
+        "bh": 40,
+        "fs": 16
+      },
+      {
+        "key": "password",
+        "tag": "input:password",
+        "x": 715.65625,
+        "y": 368,
+        "w": 382,
+        "h": 40,
+        "bw": 382,
+        "bh": 40,
+        "fs": 14
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button:button",
+        "x": 1057.65625,
+        "y": 368,
+        "w": 40,
+        "h": 40,
+        "bw": 40,
+        "bh": 40,
+        "fs": 14
+      },
+      {
+        "key": "confirmation",
+        "tag": "input:password",
+        "x": 715.65625,
+        "y": 538,
+        "w": 382,
+        "h": 40,
+        "bw": 382,
+        "bh": 40,
+        "fs": 14
+      },
+      {
+        "key": "Tampilkan kata sandi",
+        "tag": "button:button",
+        "x": 1057.65625,
+        "y": 538,
+        "w": 40,
+        "h": 40,
+        "bw": 40,
+        "bh": 40,
+        "fs": 14
+      },
+      {
+        "key": "Atur Ulang Kata Sandi",
+        "tag": "button:submit",
+        "x": 715.65625,
+        "y": 598,
+        "w": 382,
+        "h": 48,
+        "bw": 382,
+        "bh": 48,
+        "fs": 16
+      },
+      {
+        "key": "Kembali ke halaman masuk",
+        "tag": "a",
+        "x": 715.65625,
+        "y": 752,
+        "w": 179,
+        "h": 18,
+        "bw": 179,
+        "bh": 18,
+        "fs": 14
+      }
+    ],
+    "axe reset-sandi normal 1280": [],
+    "axe reset-sandi galat validasi 375 mobile": [],
+    "axe reset-sandi kata sandi terlihat 375 mobile": [],
+    "axe reset-sandi tanpa token 375 mobile": []
+  },
+  "failures": []
+}

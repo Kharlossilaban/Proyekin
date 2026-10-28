@@ -1,7 +1,8 @@
 # PROYEKIN — Rencana U4-5 sampai U4-12 (tertulis ulang)
 
 Dibuat: 2026-10-28 · Branch: `feat/u4-core-ui` · Status dokumen: **REFERENSI IMPLEMENTASI; tidak ada langkah di sini yang sudah dimulai.**
-Revisi: 2026-10-28 — dua keputusan FINAL Owner dicatat (§2 "Keputusan final Owner 2026-10-28"): **F1** Dokumen tetap ada dengan scope visual sempit; **F2** anggaran dihapus total dari produk. U4-O1 ditutup. Audit dampak anggaran dan rencana pembersihannya di §6.
+Revisi: 2026-10-28 — dua keputusan FINAL Owner dicatat (§2 "Keputusan final Owner 2026-10-28"): **F1** Dokumen tetap ada dengan scope visual sempit; **F2** anggaran dihapus total dari produk. U4-O1 ditutup. Audit dampak anggaran di §6.
+Revisi 2 (2026-10-28): Owner memerintahkan pembersihan menyeluruh **sekarang**, bukan bertahap. Pembersihan **sudah dieksekusi** dan terverifikasi; §6 kini mencatat hasil (bukan lagi rencana T1–T4). Evidence: `docs/u4-evidence/budget-cleanup/`.
 
 ## 0. Cara membaca dokumen ini
 
@@ -57,7 +58,7 @@ Commit `88b0bb7`, `951b9d7`, `709487b`, `e5b197e` adalah perbaikan responsif/aks
 | **F1** | **Menu `/dokumen` tetap dipertahankan**, isinya hanya (A) gambar/render 3D proyek/bangunan yang sedang dikerjakan dan (B) foto kegiatan/progres yang dilampirkan Mandor melalui Laporan Harian. Foto laporan punya **satu sumber data**: lampiran laporan harian; Dokumen menampilkannya sebagai galeri turunan, **tanpa unggah kedua**. Di luar scope: kontrak, RAB, surat, berita acara, administrasi umum, blueprint/denah, spesifikasi material, repositori berkas serbaguna, versioning, publikasi, arsip/restore, approval dokumen kompleks, viewer model 3D interaktif. Dikerjakan di U5 (`docs/U5-PLAN.md`), bukan U4. |
 | **F2** | **Anggaran/budget dihapus total dari scope produk** — tidak dibutuhkan role mana pun, termasuk Owner dan Admin Kantor. **Bukan** aturan menyembunyikan per role. Tidak ada nominal di Dashboard; tidak ada kolom/kartu/detail anggaran di Proyek; tidak ada input anggaran di form tambah/ubah Proyek; tidak ada statistik, kalkulasi, validasi bisnis, atau permission anggaran; tidak ada data anggaran di UI role mana pun; **tidak diganti** dengan fitur keuangan lain. |
 
-**Aturan turunan F2 untuk semua langkah:** tidak ada langkah U4 (atau U5 dan seterusnya) yang boleh memperkenalkan kembali tampilan, field, statistik, fungsi izin, atau label anggaran/keuangan. Properti legacy `Project.budget` dan data mock terkait boleh tetap ada **sementara dan internal** selama transisi (lihat §6), tetapi tidak boleh dibaca oleh UI atau dipakai sebagai fitur.
+**Aturan turunan F2 untuk semua langkah:** tidak ada langkah U4 (atau U5 dan seterusnya) yang boleh memperkenalkan kembali tampilan, field, statistik, fungsi izin, atau label anggaran/keuangan. `Project.budget`, nilai seed, dan statistik anggaran **sudah dihapus seluruhnya** dari kode (§6); tidak ada properti legacy yang dipertahankan. Penjaga otomatis (`npm run check:no-budget` dan bagian G `check:u4-projects`) menggagalkan pengujian bila anggaran muncul kembali di sumber, model data, HTML, atau DOM.
 
 **Catatan G6:** definisi G6 tidak ditemukan di `docs/` maupun komentar kode (G1–G5 dan G7–G10 ada). **[OPEN]** pemilik mengonfirmasi isinya.
 
@@ -100,7 +101,7 @@ Commit `88b0bb7`, `951b9d7`, `709487b`, `e5b197e` adalah perbaikan responsif/aks
 - **[D]** Halaman uji `/u4-spike`, `components/spike/spike-controls.tsx`, `lib/u4-spike-gate.ts` **dihapus di U4-6/U4-10** (`U4-3-ACCESS.md:95`). Pemakainya: `check:dynamic-routes`, `check:u4-access`, `check:u4-projects`. **Pengujian harus dipindahkan** ke alur buat-proyek yang sungguhan (navigasi klien) sebelum artefak dihapus, tanpa melonggarkan asersi.
 - **[R]** Pembagian penghapusan `/u4-spike`: karena `createTask` baru memiliki UI di U4-10, penghapusan tuntas realistis baru di U4-10; U4-6 cukup memindahkan pembuatan proyek runtime. Konfirmasi saat rencana langkah diajukan.
 - **[OPEN] Hapus proyek yang masih punya anggota/tugas:** `canDeleteProject` hanya memeriksa Owner + bukan Arsip (`access.ts:163`). Tidak ada aturan tertulis tentang proyek yang masih memiliki tugas/anggota/laporan (bandingkan G3 untuk akun). Implementor tidak boleh memilih sendiri (blokir, kaskade, atau izinkan).
-- **[D: F2] Form tanpa field anggaran:** form tambah dan ubah proyek **tidak memiliki** input anggaran; tidak ada validasi, nilai bawaan yang terlihat, atau ringkasan anggaran. Transisi tipe (`NewProjectInput` saat ini mewajibkan `budget`) ditangani sesuai §6 tahap T2; form dan store **tidak boleh** mengisi nilai anggaran palsu yang kemudian terlihat di UI.
+- **[D: F2] Form tanpa field anggaran:** form tambah dan ubah proyek **tidak memiliki** input anggaran; tidak ada validasi, nilai bawaan yang terlihat, atau ringkasan anggaran. `Project` dan `NewProjectInput` sudah tidak memiliki `budget` (§6), sehingga form dan store tidak punya field anggaran untuk diisi; `check:no-budget` menjaga kunci `Project` persis himpunan yang diizinkan.
 - **[OPEN] Penetapan Admin principal** (`canAssignAdminPrincipal`, Owner saja, §7A): ditempatkan di U4-6 (form proyek) atau U4-7 (kelola anggota)? Dikelompokkan sebagai L2 di `access.ts`; **[R]** usul U4-7.
 - **Pengujian [R]:** matriks per role (Owner buat/hapus; Admin principal ubah; Admin lain/Mandor/Anggota tidak), validasi form, Arsip hanya baca, ConfirmDialog, 375/768/1280, axe 0, migrasi uji `/u4-spike`, dan asersi form **tanpa** field/label anggaran.
 
@@ -161,9 +162,8 @@ Commit `88b0bb7`, `951b9d7`, `709487b`, `e5b197e` adalah perbaikan responsif/aks
 - **[D]** Perapian tes: tes browser U4 memakai navigasi klien untuk ID runtime; rapikan helper CDP yang terduplikasi di `browser-check.mjs` dan `check-dynamic-routes.mjs` (`U4-0-SPIKE.md:67`). Pantau kegagalan sementara `check:u4-access` login ketuk Mandor 375 (`U4-4-PROJECTS.md:69`, penyebab belum terbukti).
 - **[R]** Penutupan U4: regresi penuh dalam kelompok (CLAUDE.md §9), evidence ringkasan U4, status roadmap diperbarui, audit sisa placeholder (`/pengaturan` tetap "Segera hadir" sampai ada keputusan fitur).
 - **[R]** Angka "laporan menunggu" di dashboard berasal dari `MOCK_REPORTS` (domain U5). U4-12 memakai sumber yang ada apa adanya; penyambungan ke store laporan menjadi tugas U5 (lihat `U5-PLAN.md` §7).
-- **[D: F2] Hapus anggaran dari Dashboard (wajib):** kolom tabel "Anggaran" (`dashboard/page.tsx:88`), nilai `formatRupiah(p.budget)` (`:117`), dan impor `formatRupiah` (`:26`) dihapus. Tidak ada statistik/total/sisa anggaran di `StatCard`, grafik, atau ringkasan, dan **tidak diganti** dengan metrik keuangan lain. Pengujian dashboard menambah asersi tanpa `Rp`/`IDR`/"anggaran" untuk Owner dan Admin di 375/768/1280.
-- **[D: F2] Pembersihan akhir anggaran** (§6 tahap T4) dijadwalkan sebagai bagian penutupan U4-12, dengan persetujuan Owner tersendiri sebelum properti legacy dihapus.
-- **[FAKTA]** Sampai U4-12 dikerjakan, dashboard lama (kode U2) **masih menampilkan** kolom Anggaran untuk Owner/Admin. Owner menetapkan penghapusannya di U4-12; perbaikan lebih awal hanya bila Owner memintanya.
+- **[D: F2] Anggaran di Dashboard — SUDAH DIHAPUS (pembersihan 2026-10-28):** kolom "Anggaran", nilai `formatRupiah(p.budget)`, dan impor `formatRupiah` sudah dihapus dari `dashboard/page.tsx`; tabel kini Kode, Nama Proyek, Status, Progres. **Tidak diganti** dengan metrik keuangan. U4-12 **mempertahankan** penjaga (kolom tabel persis empat kolom, tanpa `Rp`/`IDR`/"anggaran" untuk Owner dan Admin di 375/768/1280) dan tidak boleh memperkenalkan kembali kolom atau statistik keuangan saat `StatCard` menggantikan kartu lokal.
+- **[FAKTA, visual 375px]** Tabel Dashboard di 375px selebar 544px dalam kontainer 299px: kolom Status dan Progres tergulir keluar tanpa petunjuk geser (halaman tidak overflow). Kelemahan lama yang tidak disebabkan pembersihan (kini satu kolom lebih sedikit); U4-12 sebaiknya memakai pola kartu `RecordCard` di bawah `lg` seperti halaman Laporan/Dokumen/Anggota.
 
 ## 4. Peta dependensi internal U4
 
@@ -198,47 +198,43 @@ Urutan fisik tetap U4-5 → U4-12 sesuai keputusan pemilik; peta ini hanya menje
 
 G1–G9 tetap fail-closed sampai Owner memfinalkan.
 
-## 6. Penghapusan anggaran (F2): audit dampak dan rencana pembersihan terkontrol
+## 6. Penghapusan anggaran (F2): hasil pembersihan
 
-Audit 2026-10-28 atas `proyekin/src`, `proyekin/scripts`, dan `docs/` (pencarian: `budget`, `anggaran`, `Rupiah`, `Rp`, `IDR`, `currency`, `RAB`, `biaya`, `harga`, `keuangan`, `finans`, `spent`). **Tidak ada kode yang diubah pada tahap ini.**
+Audit atas `proyekin/src`, `proyekin/scripts`, dan `docs/` (pencarian tidak peka huruf besar/kecil: `budget`, `anggaran`, `RAB`, `biaya`, `harga`, `price`, `cost`, `rupiah`, `Rp`, `IDR`, `currency`, `keuangan`, `finans`, `spent`, `pengeluaran`, `dana`, `nominal`). Catatan teknis: "anggaran" juga cocok dengan kata "pelanggaran" (laporan axe), sehingga penjaga memakai batas kata.
 
-### 6.1 Temuan: fitur anggaran proyek (wajib dibersihkan)
+**Status: DIEKSEKUSI 2026-10-28** atas perintah Owner (pembersihan menyeluruh sekarang, bukan bertahap). Rencana awal T1–T4 digantikan. Bukti dan hasil pengujian: `docs/u4-evidence/budget-cleanup/` (`BUDGET-CLEANUP.md`).
 
-| # | Lokasi | Jenis | Kondisi sekarang | Tindakan | Tahap |
-|---|---|---|---|---|---|
-| B1 | `src/app/(app)/dashboard/page.tsx:88` | UI | Kolom tabel "Anggaran" | Hapus kolom | T3 (U4-12) |
-| B2 | `src/app/(app)/dashboard/page.tsx:117` | UI | `formatRupiah(p.budget)` tampil untuk Owner/Admin, tanpa lingkup | Hapus | T3 (U4-12) |
-| B3 | `src/app/(app)/dashboard/page.tsx:26` | Impor | `import { formatRupiah }` | Hapus bersama B2 | T3 (U4-12) |
-| B4 | `src/types/index.ts:20` | Tipe | `Project.budget: number` (wajib) | T2: jadikan `budget?: number` bertanda `@deprecated` LEGACY (pola `managerId`), tanpa pemakai UI. T4: hapus | T2 (U4-6) → T4 |
-| B5 | `src/data/mock.ts:29,44,59,73,87` | Seed | Nilai `budget` di 5 proyek seed | Dipertahankan sementara (internal); hapus bersama B4 | T4 |
-| B6 | `src/data/mock.ts:336-337` | Seed | `MOCK_STATS.budgetTotal`, `budgetSpent` (`MOCK_STATS` **tanpa pemakai** di `src` dan `scripts`) | Hapus dua kunci ini | T4 |
-| B7 | `src/lib/utils.ts:8-16` | Util | `formatRupiah` — satu-satunya pemakai: dashboard (B2) | Hapus setelah B2 hilang dan pencarian membuktikan 0 pemakai | T4 |
-| B8 | `src/components/spike/spike-controls.tsx:22` | Uji sementara | `budget: 0` saat membuat proyek runtime | Ikut terhapus bersama `/u4-spike` (U4-6/U4-10); bila masih ada saat T2, buang argumen `budget` | T2 |
-| B9 | `scripts/check-u4-foundation.mjs:133,142` | Uji | `createProject({... budget: 0 ...})` | Buang argumen `budget` (tidak melonggarkan asersi apa pun) | T2 |
-| B10 | `src/components/projects/project-list.tsx:7` | Komentar | "belum ada keputusan siapa boleh melihat angka keuangan" — sudah usang | Perbarui komentar: anggaran dihapus dari produk (F2) | T1 (U4-5) |
-| B11 | `scripts/check-u4-projects.mjs:5,179-180` | Uji (penjaga) | Asersi "anggaran tidak ditampilkan" di daftar proyek | **Dipertahankan** sebagai penjaga regresi permanen; pola yang sama diperluas ke detail (T1), form (T2), dashboard (T3) | T1–T3 |
-| B12 | `docs/deep-research-report.md:22` (+ cermin root) | Spesifikasi | "Setiap proyek berisi detail (nama, deskripsi, anggaran, klien)" | **Sudah diselaraskan 2026-10-28** (ditandai dihapus + catatan keputusan) | selesai (dokumen) |
+### 6.1 Fitur anggaran proyek: DIHAPUS
 
-`access.ts`, `labels.ts`, `navigation.ts`, `mock-store.ts`: **tidak ada** referensi anggaran (izin anggaran memang tidak pernah ada).
-
-### 6.2 Temuan terkait keuangan yang BUKAN fitur anggaran proyek
-
-| # | Lokasi | Isi | Perlakuan |
+| # | Lokasi | Jenis | Tindakan yang dilakukan |
 |---|---|---|---|
-| N1 | `src/data/mock.ts:398-423` | `MOCK_PRICING` (harga langganan SaaS, mis. "Rp 199.000"); tanpa pemakai UI | Bukan anggaran proyek; tetap **kelas C** ("model harga belum disetujui"). Tidak diubah oleh F2 dan **tidak boleh** dipakai sebagai pengganti anggaran. |
-| N2 | `src/components/style-guide/sections.tsx:136` | Contoh tipografi angka "Rp 1.250.000 — 0123456789" (halaman dev `/style-guide`) | Bukan data/fitur; **usul** ganti contoh dengan angka non-mata-uang di T3 agar tidak ada nominal rupiah di UI. Perlu persetujuan bersama rencana U4-12. |
-| N3 | `src/data/mock.ts:170` | Deskripsi tugas "Pengadaan baja WF … sesuai RAB yang disetujui." | Teks naratif, bukan data anggaran. Akan terlihat di detail tugas (U4-9). **Usul** ubah teks netral (mis. "sesuai spesifikasi yang disetujui") dalam rencana U4-9; perubahan teks mock diajukan dulu (J8). |
-| N4 | `src/data/mock.ts:266` + `scripts/check-responsive-lists.mjs:63` | Dokumen legacy "RAB Renovasi Gedung Kantor" (`.xlsx`) | Di luar scope F1 **dan** F2. Masih tampil di placeholder `/dokumen` sampai U5-B; U5-B menghentikan tampilan dokumen legacy (lihat `U5-PLAN.md` §5.3) dan memperbarui asersi uji. Data legacy tidak dihapus sekarang. |
-| N5 | `docs/u4-evidence/U4-4-PROJECTS.md:26,75`; screenshot `docs/u2-evidence/dashboard-*.png`, `docs/u3-evidence/dashboard-*.png` | Catatan/bukti historis yang memuat anggaran sebagai keputusan tertunda / kolom dashboard | Evidence historis **tidak diubah**; status terbaru dicatat di `PROJECT-SUMMARY.md` dan dokumen ini. |
-| N6 | Rencana backend (`docs/BACKEND-ROADMAP.md`) | Tidak menyebut anggaran | Saat skema database disusun, entitas proyek **tanpa** kolom anggaran (F2). Tidak ada perubahan dokumen sekarang. |
+| B1 | `src/app/(app)/dashboard/page.tsx` | UI | Kolom tabel "Anggaran" dihapus |
+| B2 | `src/app/(app)/dashboard/page.tsx` | UI | Sel `formatRupiah(p.budget)` dihapus |
+| B3 | `src/app/(app)/dashboard/page.tsx` | Impor | `import { formatRupiah }` dihapus |
+| B4 | `src/types/index.ts` | Tipe | `Project.budget` dihapus (tanpa properti `@deprecated`); `NewProjectInput` ikut tanpa `budget` |
+| B5 | `src/data/mock.ts` | Seed | `budget` pada 5 proyek seed dihapus |
+| B6 | `src/data/mock.ts` | Statistik mock | `MOCK_STATS.budgetTotal` dan `budgetSpent` dihapus |
+| B7 | `src/lib/utils.ts` | Util | `formatRupiah` dihapus (pemakai tunggal: dashboard; terbukti 0 pemakai sisa) |
+| B8 | `src/components/spike/spike-controls.tsx` | Halaman uji sementara | Argumen `budget: 0` dibuang |
+| B9 | `scripts/check-u4-foundation.mjs` | Uji | Argumen `budget: 0` dibuang di dua pemanggilan `createProject` (tanpa asersi dilonggarkan; 213 pemeriksaan tetap) |
+| B10 | `src/components/projects/project-list.tsx` | Komentar | Paragraf "anggaran sengaja tidak ditampilkan; belum ada keputusan…" dihapus (usang) |
+| B11 | `scripts/check-u4-projects.mjs` | Uji (penjaga) | **Dipertahankan dan diperketat:** memakai pola bersama `lib/no-budget.mjs`; ditambah bagian G (HTML 8 route, DOM Dashboard Owner dan Admin di 1280/768/375, detail proyek 6 kombinasi, 6 bagian aplikasi lain, kolom tabel Dashboard persis empat) |
+| B12 | `docs/deep-research-report.md` (+ cermin root) | Spesifikasi | Diselaraskan (penanda inline + catatan keputusan) |
+| B13 | `scripts/check-no-budget.mjs`, `scripts/lib/no-budget.mjs`, skrip npm `check:no-budget` | Uji baru | Penjaga statis: nol token di `src/`, kunci `Project` persis himpunan yang diizinkan, tidak ada kunci/teks anggaran di semua ekspor `mock.ts`, `createProject` tanpa `budget`, `formatRupiah` tidak diekspor, 22 pemeriksaan. Uji merah-hijau: 5 mutasi tertangkap, kontrol negatif ("pelanggaran") tidak memicu |
 
-### 6.3 Urutan pembersihan terkontrol
+`access.ts`, `labels.ts`, `navigation.ts`, `mock-store.ts`: tidak pernah memuat referensi anggaran (tidak ada izin anggaran), jadi tidak diubah. Tidak ada permission role yang diubah.
 
-| Tahap | Kapan | Isi | Bukti selesai |
+### 6.2 Dipertahankan dengan sengaja
+
+| # | Lokasi | Isi | Alasan |
 |---|---|---|---|
-| **T1** | U4-5 | Detail proyek tanpa anggaran; perbarui komentar B10; asersi tanpa anggaran di detail | Skrip uji detail lulus; `grep budget` di komponen detail = 0 |
-| **T2** | U4-6 | Form tambah/ubah tanpa field anggaran; `Project.budget` jadi opsional + `@deprecated` (B4); `NewProjectInput` tidak lagi menuntut `budget`; B8, B9 | `typecheck` lulus; asersi form tanpa anggaran; `check:u4-foundation` lulus tanpa asersi dilonggarkan |
-| **T3** | U4-12 | Hapus B1–B3; dashboard tanpa statistik keuangan; (usul) N2 | Asersi dashboard tanpa `Rp`/`IDR`/"anggaran" (Owner, Admin; 375/768/1280); screenshot dilihat |
-| **T4** | Penutupan U4-12, **persetujuan Owner tersendiri** | Hapus B4 (tipe), B5 (seed), B6, B7. Pencarian ulang `budget|formatRupiah|anggaran` di `src` dan `scripts` hanya menyisakan asersi penjaga (B11) | `typecheck`, `lint`, `build`, `check:u4-foundation`, regresi penuh lulus; hasil pencarian dilampirkan di evidence |
+| N1 | `src/data/mock.ts` | `MOCK_PRICING` (harga langganan SaaS) | Konteks berbeda dari anggaran proyek; instruksi Owner mempertahankannya. Tetap kelas C; tidak ada fitur pricing baru. `check:no-budget` menjaga agar tidak ikut terhapus (3 paket, kunci `price`). |
+| N2 | `src/components/style-guide/sections.tsx:136` | Contoh tipografi angka "Rp 1.250.000 — 0123456789" (halaman dev `/style-guide`) | Contoh format angka tabular, bukan data atau fitur anggaran; di luar daftar rujukan yang diperintahkan dihapus. Tidak berada di rute aplikasi yang diuji penjaga UI. Dapat diganti kemudian bila Owner menghendaki UI tanpa nominal rupiah sama sekali. |
+| N3 | `src/data/mock.ts:165` | Deskripsi tugas t-005 (TSK-005) "…sesuai RAB yang disetujui." | Teks naratif mock, bukan data/fitur anggaran; aturan proyek melarang menghapus mock data konsep di luar scope sebelum dievaluasi (J8). Diusulkan netral saat U4-9; menunggu persetujuan. |
+| N4 | `src/data/mock.ts` + `scripts/check-responsive-lists.mjs` | Dokumen legacy "RAB Renovasi Gedung Kantor" (`d-002`) dan asersi isinya | Data legacy `Document`; di luar scope F1 dan tidak dihapus sekarang (keputusan Owner). Berhenti tampil di UI pada U5-B (`U5-PLAN.md` §5.4) dan asersinya diganti di sana. `check:no-budget` menjaga bahwa data ini belum terhapus. |
+| N5 | `docs/u2-evidence/`, `docs/u3-evidence/`, `docs/u4-evidence/U4-4-PROJECTS.md` | Evidence historis (screenshot dashboard lama memuat kolom anggaran; catatan "keputusan tertunda") | Perintah Owner: dipertahankan sebagai catatan hasil pengujian masa lalu. Tidak diubah. |
+| N6 | `docs/BACKEND-ROADMAP.md` | Tidak menyebut anggaran | Saat skema database disusun, entitas proyek tanpa kolom anggaran (F2). |
 
-Alasan bertahap: `Project.budget` saat ini wajib di tipe, sehingga menghapusnya sekaligus memaksa perubahan serentak pada seed, store, skrip uji, dan halaman uji sementara. Menjadikannya opsional di T2 memutus ketergantungan form/store lebih dulu; penghapusan permanen di T4 baru dilakukan setelah tidak ada pemakai yang tersisa dan diverifikasi dengan pengujian.
+### 6.3 Verifikasi (aktual, 2026-10-28)
+
+Lint 0 error (1 warning lama `Role` di `mock.ts`), typecheck, build (normal), `check:contrast` 57/57, `check:tokens`, `check:no-budget` 22/22, `check:u4-foundation` 213/213, `check:u4-projects` 261/261, `check:u4-components` 62/62, `check:u4-access` 201/201, `check:responsive-lists` 449/449, `check:login-touch` 244/244, `check:browser` (54 flow, axe 0 di 42 titik, 0 overflow), `check:dynamic-routes` 28/28. Uji merah: `check:u4-projects` terhadap Dashboard yang sengaja diberi kembali kolom Anggaran gagal pada 19 pemeriksaan (HTML dan DOM); berkas dipulihkan identik. Rincian: `docs/u4-evidence/budget-cleanup/BUDGET-CLEANUP.md`.

@@ -130,7 +130,7 @@ check("store: snapshot awal = seed; snapshot server = seed (referensi stabil)", 
 check("store: seed beku dan memuat data seed", Object.isFrozen(store.SEED) && store.SEED.projects === MOCK_PROJECTS && store.SEED.members === MOCK_PROJECT_MEMBERS);
 let notified = 0;
 const unsubscribe = store.subscribeMockStore(() => { notified += 1; });
-const newProject = store.createProject({ name: "Uji", description: "", status: "DRAFT", startDate: "2026-03-21", endDate: "2026-03-21", budget: 0, progress: 0, client: "-", location: "-" });
+const newProject = store.createProject({ name: "Uji", description: "", status: "DRAFT", startDate: "2026-03-21", endDate: "2026-03-21", progress: 0, client: "-", location: "-" });
 eq("store: proyek baru mendapat ID dan kode otomatis", [newProject.id, newProject.code], ["p-006", "PRJ-006"]);
 const newTask = store.createTask({ projectId: "p-001", title: "Uji", status: "TODO", priority: "LOW", progress: 0 });
 eq("store: tugas baru mendapat ID dan kode otomatis", [newTask.id, newTask.code], ["t-007", "TSK-007"]);
@@ -139,7 +139,7 @@ check("store: snapshot server tetap seed setelah mutasi (tanpa hydration mismatc
 check("store: array seed (MOCK_*) tidak dimutasi", MOCK_PROJECTS.length === 5 && MOCK_TASKS.length === 6 && !MOCK_PROJECTS.some((p) => p.id === "p-006"));
 eq("store: pelanggan diberi tahu sekali per perubahan", notified, 2);
 store.resetMockStore();
-check("store: reset kembali ke seed dan penghitung ID ikut kembali", store.getMockStoreSnapshot() === store.SEED && store.createProject({ name: "Uji", description: "", status: "DRAFT", startDate: "", endDate: "", budget: 0, progress: 0, client: "-", location: "-" }).id === "p-006");
+check("store: reset kembali ke seed dan penghitung ID ikut kembali", store.getMockStoreSnapshot() === store.SEED && store.createProject({ name: "Uji", description: "", status: "DRAFT", startDate: "", endDate: "", progress: 0, client: "-", location: "-" }).id === "p-006");
 store.resetMockStore();
 unsubscribe();
 eq("store: nextEntityNumber", [store.nextEntityNumber([]), store.nextEntityNumber(["p-001", "p-009"])], [1, 10]);

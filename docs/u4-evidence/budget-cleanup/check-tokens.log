@@ -1,0 +1,5 @@
+
+> proyekin@0.1.0 check:tokens
+> node scripts/check-tokens.mjs
+
+Tidak ada warna mentah. Semua memakai token.

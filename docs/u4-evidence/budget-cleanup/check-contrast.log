@@ -1,0 +1,64 @@
+
+> proyekin@0.1.0 check:contrast
+> node scripts/check-contrast.mjs
+
+PASS  13.37:1 (min 4.5)  charcoal / surface  — teks utama
+PASS   8.66:1 (min 4.5)  graphite / surface  — teks sekunder
+PASS   5.71:1 (min 4.5)  muted-foreground / surface  — caption / placeholder / disabled
+PASS   6.66:1 (min 4.5)  brand-text / surface  — teks/tautan oranye
+PASS  12.69:1 (min 4.5)  charcoal / canvas  — teks utama
+PASS   8.21:1 (min 4.5)  graphite / canvas  — teks sekunder
+PASS   5.42:1 (min 4.5)  muted-foreground / canvas  — caption / placeholder / disabled
+PASS   6.32:1 (min 4.5)  brand-text / canvas  — teks/tautan oranye
+PASS  12.21:1 (min 4.5)  charcoal / highlight  — teks utama
+PASS   7.90:1 (min 4.5)  graphite / highlight  — teks sekunder
+PASS   5.22:1 (min 4.5)  muted-foreground / highlight  — caption / placeholder / disabled
+PASS   6.08:1 (min 4.5)  brand-text / highlight  — teks/tautan oranye
+PASS  11.71:1 (min 4.5)  charcoal / muted  — teks utama
+PASS   7.58:1 (min 4.5)  graphite / muted  — teks sekunder
+PASS   5.00:1 (min 4.5)  muted-foreground / muted  — caption / placeholder / disabled
+PASS   5.83:1 (min 4.5)  brand-text / muted  — teks/tautan oranye
+PASS   5.02:1 (min 4.5)  success / surface  — teks success
+PASS   5.02:1 (min 4.5)  warning / surface  — teks warning
+PASS   6.47:1 (min 4.5)  danger / surface  — teks error
+PASS   7.27:1 (min 4.5)  info / surface  — teks info
+PASS   4.76:1 (min 4.5)  success / canvas  — teks success
+PASS   4.76:1 (min 4.5)  warning / canvas  — teks warning
+PASS   6.14:1 (min 4.5)  danger / canvas  — teks error
+PASS   6.89:1 (min 4.5)  info / canvas  — teks info
+PASS   4.58:1 (min 4.5)  success / highlight  — teks success
+PASS   4.58:1 (min 4.5)  warning / highlight  — teks warning
+PASS   5.91:1 (min 4.5)  danger / highlight  — teks error
+PASS   6.63:1 (min 4.5)  info / highlight  — teks info
+PASS   5.22:1 (min 4.5)  primary-foreground / primary  — teks tombol primer
+PASS   6.66:1 (min 4.5)  primary-foreground / primary-hover  — teks tombol primer (hover)
+PASS   8.46:1 (min 4.5)  primary-foreground / primary-active  — teks tombol primer (active)
+PASS  13.37:1 (min 4.5)  surface / charcoal  — teks putih di tombol charcoal
+PASS   4.83:1 (min 4.5)  surface / brand-700  — teks putih di oranye tua
+PASS   4.79:1 (min 4.5)  success / success-soft  — badge success
+PASS   4.84:1 (min 4.5)  warning / warning-soft  — badge warning
+PASS   5.91:1 (min 4.5)  danger / danger-soft  — badge error
+PASS   6.99:1 (min 4.5)  info / info-soft  — badge info
+PASS  13.37:1 (min 4.5)  secondary-foreground / secondary  — teks tombol secondary
+PASS   8.66:1 (min 4.5)  secondary-foreground / secondary-hover  — teks tombol secondary (hover)
+PASS   6.47:1 (min 4.5)  destructive-foreground / destructive  — teks tombol destructive
+PASS   8.31:1 (min 4.5)  destructive-foreground / destructive-hover  — teks tombol destructive (hover)
+PASS  12.21:1 (min 4.5)  accent-foreground / accent  — item terpilih / hover outline
+PASS  13.37:1 (min 4.5)  card-foreground / card  — teks di card
+PASS  13.37:1 (min 4.5)  popover-foreground / popover  — teks di dialog/popover
+PASS   3.68:1 (min 3)  input / surface  — border input
+PASS   3.49:1 (min 3)  input / canvas  — border input di canvas
+PASS   3.22:1 (min 3)  input / muted  — border input di latar muted
+PASS  13.37:1 (min 3)  ring / surface  — focus ring
+PASS  12.69:1 (min 3)  ring / canvas  — focus ring di canvas
+PASS   5.22:1 (min 3)  ring / primary  — focus ring di atas oranye
+PASS   4.22:1 (min 3)  brand-700 / muted  — isi ProgressBar di atas trek muted (grafis, 3:1)
+PASS   4.83:1 (min 3)  brand-700 / surface  — indikator tab aktif dan titik radio terpilih di atas surface (3:1)
+PASS   4.40:1 (min 3)  brand-700 / accent  — titik/garis radio terpilih di atas kartu accent (3:1)
+PASS  12.21:1 (min 4.5)  foreground / accent  — teks kartu radio terpilih
+PASS  12.86:1 (min 4.5)  foreground / info-soft  — teks DemoDataNotice
+PASS   6.99:1 (min 3)  info / info-soft  — ikon DemoDataNotice (3:1)
+PASS   5.91:1 (min 4.5)  danger / danger-soft  — angka/ikon StatCard nada danger
+
+57/57 pasangan lolos.
+CATATAN: primary (oranye) di atas surface hanya 2.56:1 (< 3:1). Jangan pakai #E68D1F sendirian sebagai teks, ikon, atau border di latar terang; pakai sebagai latar (teks charcoal), atau gunakan brand-text/charcoal.

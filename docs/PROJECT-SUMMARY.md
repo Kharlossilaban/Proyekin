@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-10-28 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: **U4-0 sampai U4-4 PASS, U4-5 sampai U4-12 NOT STARTED; U5 PLANNING ONLY**; rencana U4-5..U4-12 tertulis di `docs/U4-PLAN.md`, draf U5 di `docs/U5-PLAN.md`; **keputusan final Owner 2026-10-28: Dokumen tetap dengan scope visual sempit (F1), anggaran dihapus total (F2)**; workflow skill dan evaluasi visual dicatat, lihat "Milestone workflow")
+Terakhir diperbarui: 2026-10-28 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: **U4-0 sampai U4-4 PASS, U4-5 sampai U4-12 NOT STARTED; U5 PLANNING ONLY**; rencana U4-5..U4-12 tertulis di `docs/U4-PLAN.md`, draf U5 di `docs/U5-PLAN.md`; **keputusan final Owner 2026-10-28: Dokumen tetap dengan scope visual sempit (F1), anggaran dihapus total (F2); pembersihan kode anggaran sudah dieksekusi dan terverifikasi, evidence `docs/u4-evidence/budget-cleanup/`**; workflow skill dan evaluasi visual dicatat, lihat "Milestone workflow")
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -37,7 +37,7 @@ Terakhir diperbarui: 2026-10-28 (U3 merged ke `main`; U4 berjalan bertahap di `f
 | 2026-10-24 | **ATURAN MUTLAK:** PROYEKIN tidak memiliki role Tukang. Jangan menambahkan atau menyamakan dengan Anggota Tim. Lima role resmi saja. |
 | 2026-10-28 | **Urutan U4:** U4-5 → U4-12 dipertahankan; U5 diimplementasikan setelah U4 selesai. U5 disimpan sebagai draf (`docs/U5-PLAN.md`), belum disetujui. |
 | 2026-10-28 | **FINAL F1 — Dokumen tetap ada, scope sempit.** Menu `/dokumen` dipertahankan; isinya hanya (A) gambar/render 3D proyek/bangunan yang sedang dikerjakan dan (B) foto kegiatan/progres yang dilampirkan Mandor lewat Laporan Harian. Foto laporan satu sumber (lampiran laporan); Dokumen = galeri turunan, tanpa unggah kedua. Di luar scope: kontrak, RAB, surat, berita acara, administrasi umum, blueprint/denah, spesifikasi material, repositori serbaguna, versioning, publikasi, arsip/restore, approval kompleks, viewer 3D interaktif. Menu Dokumen dan foto laporan Mandor tidak boleh dihapus. Tipe media visual baru terpisah dari `Document` legacy; data legacy tidak dihapus sekarang. |
-| 2026-10-28 | **FINAL F2 — Anggaran dihapus total dari produk.** Tidak dibutuhkan role mana pun (termasuk Owner/Admin); bukan aturan sembunyi per role. Tanpa nominal di Dashboard, tanpa kolom/kartu/detail di Proyek, tanpa input di form Proyek, tanpa statistik/kalkulasi/validasi/permission anggaran, dan tidak diganti fitur keuangan lain. Properti legacy boleh tinggal sementara secara internal; pembersihan bertahap di `docs/U4-PLAN.md` §6. (Menggantikan status "OPEN" sebelumnya.) |
+| 2026-10-28 | **FINAL F2 — Anggaran dihapus total dari produk.** Tidak dibutuhkan role mana pun (termasuk Owner/Admin); bukan aturan sembunyi per role. Tanpa nominal di Dashboard, tanpa kolom/kartu/detail di Proyek, tanpa input di form Proyek, tanpa statistik/kalkulasi/validasi/permission anggaran, dan tidak diganti fitur keuangan lain. Kode anggaran sudah dihapus menyeluruh (tipe, seed, statistik mock, util, Dashboard) dan dijaga uji otomatis; rincian `docs/U4-PLAN.md` §6. (Menggantikan status "OPEN" sebelumnya.) |
 
 ## Matriks scope fitur Figma
 A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjakan sekarang.
@@ -49,7 +49,7 @@ A = MVP, B = pasca-MVP, C = butuh keputusan pemilik. Hanya A yang boleh dikerjak
 | Penugasan tugas ke mandor/anggota | A | |
 | Laporan Harian (mobile Mandor) | A | |
 | Dokumen (menu `/dokumen`) | A, **dipersempit (F1, final 2026-10-28)** | Hanya galeri visual: render 3D proyek + foto lampiran laporan harian (turunan, satu sumber). Tanpa kategori berkas, unggah dokumen umum, versi, arsip, atau publikasi. Lihat `docs/U5-PLAN.md`; spesifikasi sudah diselaraskan |
-| Anggaran/budget proyek (Dashboard, Proyek, form) | **Dihapus dari scope (F2, final 2026-10-28)** | Tidak untuk role mana pun; tidak diganti fitur keuangan lain. Audit dan pembersihan kode: `docs/U4-PLAN.md` §6 |
+| Anggaran/budget proyek (Dashboard, Proyek, form) | **Dihapus dari scope (F2, final 2026-10-28)** | Tidak untuk role mana pun; tidak diganti fitur keuangan lain. **Kode sudah dibersihkan** (hasil di `docs/U4-PLAN.md` §6, evidence `docs/u4-evidence/budget-cleanup/`). `MOCK_PRICING` (harga langganan SaaS) dipertahankan: konteks berbeda, tetap kelas C |
 | Landing publik (fitur) | A | |
 | Tentang Kami, Kontak | A (kandidat) | Implementasi mengikuti prioritas MVP |
 | Kanban | A (terbatas) | Hanya visualisasi alternatif tugas yang ada; perubahan workflow butuh persetujuan |
@@ -133,7 +133,14 @@ Commit `709487b`, `e5b197e`, `88b0bb7`, `951b9d7` adalah perbaikan responsif/aks
 
 **Keputusan final 2026-10-28 (bukan OPEN lagi):**
 - **F1 Dokumen** — lihat tabel Keputusan pemilik dan `docs/U5-PLAN.md` §1.
-- **F2 Anggaran dihapus total** — U4-O1 ditutup (REMOVE FEATURE ENTIRELY). U4-5 tanpa anggaran, U4-6 form tanpa field anggaran, U4-12 wajib menghapus tampilan anggaran Dashboard. Catatan faktual: sampai U4-12, `dashboard/page.tsx:88,117` (kode U2) masih menampilkan kolom Anggaran; kode belum diubah. Audit 12 referensi fitur anggaran + 6 referensi keuangan lain dan rencana pembersihan T1–T4: `docs/U4-PLAN.md` §6.
+- **F2 Anggaran dihapus total** — U4-O1 ditutup (REMOVE FEATURE ENTIRELY) dan **kodenya sudah dibersihkan** (lihat "Pembersihan anggaran" di bawah). U4-5 detail dan U4-6 form tidak boleh memuat anggaran; U4-12 mempertahankan penjaga di Dashboard.
+
+**Pembersihan anggaran (F2) — dieksekusi 2026-10-28, hasil aktual** (rincian: `docs/U4-PLAN.md` §6; evidence, log, dan screenshot: `docs/u4-evidence/budget-cleanup/`; ringkasan: `BUDGET-CLEANUP.md` di folder itu):
+- **Dihapus:** `Project.budget` (tipe, sehingga `NewProjectInput` ikut), `budget` pada 5 proyek seed, `MOCK_STATS.budgetTotal/budgetSpent`, `formatRupiah`, kolom dan sel Anggaran di Dashboard, argumen `budget` di halaman uji `/u4-spike` dan `check:u4-foundation`, komentar usang di `project-list.tsx`. Tidak ada fitur keuangan pengganti; tidak ada perubahan `access.ts` atau permission.
+- **Dipertahankan sengaja:** `MOCK_PRICING` (harga langganan SaaS), data legacy `Document`/"RAB Renovasi" (U5), teks mock tugas "sesuai RAB" (menunggu evaluasi), contoh angka "Rp 1.250.000" di `/style-guide` (dev), dan evidence historis.
+- **Penjaga baru:** `npm run check:no-budget` (22 pemeriksaan: nol token di `src/`, kunci `Project` persis himpunan diizinkan, tanpa kunci/teks anggaran di semua ekspor `mock.ts`) dan bagian G `check:u4-projects` (HTML dan DOM, Dashboard persis 4 kolom). Uji merah-hijau: 5 mutasi statis tertangkap; Dashboard yang diberi kembali kolom Anggaran menggagalkan 19 pemeriksaan browser.
+- **Hasil regresi aktual:** lint 0 error (1 warning lama); typecheck; build; `check:contrast` 57/57; `check:tokens`; `check:no-budget` 22/22; `check:u4-foundation` 213/213; `check:u4-projects` 261/261; `check:u4-components` 62/62; `check:u4-access` 201/201; `check:responsive-lists` 449/449; `check:login-touch` 244/244; `check:browser` 54 flow + axe 0 di 42 titik + 0 overflow; `check:dynamic-routes` 28/28.
+- **Temuan visual (375px):** tabel Dashboard 544px dalam kontainer 299px; kolom Status dan Progres tergulir keluar tanpa petunjuk geser (halaman tidak overflow). Kelemahan lama yang bukan akibat pembersihan; dibawa ke U4-12 (kartu responsif di bawah `lg`).
 
 **Keputusan yang masih OPEN (tidak boleh diputuskan implementor):** `docs/U4-PLAN.md` §5 (U4-O2 s.d. U4-O8, termasuk isi G6 yang tidak ditemukan di repository) dan `docs/U5-PLAN.md` §9 (U5-O0 s.d. U5-O9, U5-O11, U5-O12).
 
@@ -217,7 +224,7 @@ Perubahan **cara kerja**, bukan perubahan aplikasi: tidak ada source code, kompo
 | U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) — **selesai, merged** |
 | U2 | App shell: sidebar, header, navigasi per role, responsif — **selesai, merged** |
 | U3 | Halaman auth (UI, mock) — **selesai, merged** (PASS WITH NOTES; catatan di Technical backlog) |
-| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 s.d. U4-4 **PASS**; U4-5 s.d. U4-12 **NOT STARTED**, menunggu persetujuan per langkah; rencana di `docs/U4-PLAN.md`). **Tanpa anggaran (F2):** U4-5 detail dan U4-6 form tanpa anggaran; U4-12 menghapus anggaran dari Dashboard dan menutup pembersihan kode (T4, persetujuan tersendiri) |
+| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 s.d. U4-4 **PASS**; U4-5 s.d. U4-12 **NOT STARTED**, menunggu persetujuan per langkah; rencana di `docs/U4-PLAN.md`). **Tanpa anggaran (F2):** kode anggaran sudah dihapus (2026-10-28, terverifikasi); U4-5 detail dan U4-6 form tidak boleh memuatnya, U4-12 mempertahankan penjaga Dashboard |
 | U5 | Laporan Harian, Dokumen — **PLANNING ONLY** (draf `docs/U5-PLAN.md`: DRAFT / NOT APPROVED FOR IMPLEMENTATION; dikerjakan setelah U4 selesai). **Menu Dokumen tetap (F1):** hanya render 3D proyek + foto lampiran laporan harian Mandor (galeri turunan, satu sumber); Mandor mobile-first 375px |
 | U6 | Gantt, landing publik |
 | U7 | Polesan: state kosong/error/loading, aksesibilitas, uji responsif |
@@ -228,7 +235,7 @@ Roadmap UI/UX bukan roadmap aplikasi. Rencana backend, database, auth, integrasi
 Dicatat, tidak diperbaiki diam-diam. Perbaikan yang menyentuh business logic atau keputusan scope butuh persetujuan pemilik.
 - **Warning lint (1):** `src/data/mock.ts:1:66` — `'Role' is defined but never used` (`@typescript-eslint/no-unused-vars`). Belum diperbaiki karena berada di file mock data; aman dihapus bersama pembersihan mock berikutnya.
 - Item di "Masalah terbuka" di bawah.
-- **Pembersihan anggaran (F2, 2026-10-28):** kode belum diubah. 12 referensi fitur anggaran (`dashboard/page.tsx`, `types/index.ts:20`, seed `mock.ts`, `MOCK_STATS`, `formatRupiah`, uji, komentar) dibersihkan bertahap T1 (U4-5) → T2 (U4-6) → T3 (U4-12) → T4 (penutupan U4-12, persetujuan tersendiri). Rincian: `docs/U4-PLAN.md` §6.
+- **Pembersihan anggaran (F2, 2026-10-28): SELESAI.** Rincian `docs/U4-PLAN.md` §6 dan evidence `docs/u4-evidence/budget-cleanup/`. Sisa yang menunggu keputusan Owner: teks mock tugas "sesuai RAB" dan contoh "Rp 1.250.000" di `/style-guide` (dipertahankan sementara).
 - Logo: gunakan logo resmi PROYEKIN (`logo proyekin.jpeg`) sebagai acuan; jangan membuat identitas logo baru tanpa persetujuan.
 - **Temuan non-blocking audit U3 (2026-10-24)** — tidak memblokir merge, belum dikerjakan:
   - **Wajib di fase backend:**

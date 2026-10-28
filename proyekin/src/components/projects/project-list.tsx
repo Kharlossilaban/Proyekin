@@ -4,9 +4,6 @@
 // Lingkup per role diputuskan SEPENUHNYA oleh `getVisibleProjects` (access.ts, G8): komponen ini tidak menulis ulang
 // aturan role. Representasi UI di atas data mock, BUKAN otorisasi (lihat access-guard.tsx untuk keterbatasannya).
 //
-// Anggaran (`budget`) sengaja TIDAK ditampilkan: belum ada keputusan siapa boleh melihat angka keuangan proyek,
-// dan membuat aturan role baru di sini akan menduplikasi matriks izin. Keputusan itu dibawa ke U4-5.
-//
 // Tampilan: kartu satu kolom di bawah `lg` (mobile-first, seluruh kartu adalah satu target sentuh ≥44px) dan tabel
 // di `lg` ke atas (desktop-first untuk Owner/Admin). Status selalu berupa label + titik, tidak hanya warna.
 

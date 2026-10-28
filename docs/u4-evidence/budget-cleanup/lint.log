@@ -1,0 +1,10 @@
+
+> proyekin@0.1.0 lint
+> eslint
+
+
+C:\proyekin_project\proyekin\src\data\mock.ts
+  1:81  warning  'Role' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+

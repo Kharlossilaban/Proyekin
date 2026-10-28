@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/table";
 import { MOCK_PROJECTS, MOCK_TASKS, MOCK_REPORTS, MOCK_USERS } from "@/data/mock";
 import { PROJECT_STATUS_LABELS, PROJECT_STATUS_TONES } from "@/lib/labels";
-import { formatRupiah } from "@/lib/utils";
 
 export const metadata = { title: "Dashboard — Proyekin" };
 
@@ -85,7 +84,6 @@ export default function DashboardPage() {
                 <TableHead>Nama Proyek</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Progres</TableHead>
-                <TableHead align="right">Anggaran</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -112,9 +110,6 @@ export default function DashboardPage() {
                         {p.progress}%
                       </span>
                     </div>
-                  </TableCell>
-                  <TableCell align="right">
-                    {formatRupiah(p.budget)}
                   </TableCell>
                 </TableRow>
               ))}

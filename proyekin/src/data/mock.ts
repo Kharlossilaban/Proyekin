@@ -26,7 +26,6 @@ export const MOCK_PROJECTS: Project[] = [
     status: "ON_PROGRESS",
     startDate: "2026-01-15",
     endDate: "2026-06-30",
-    budget: 2500000000,
     progress: 45,
     client: "PT. Properti Nusantara",
     location: "Balai Kota Batam, Kepulauan Riau",
@@ -41,7 +40,6 @@ export const MOCK_PROJECTS: Project[] = [
     status: "ON_PROGRESS",
     startDate: "2026-03-01",
     endDate: "2026-09-15",
-    budget: 4200000000,
     progress: 20,
     client: "CV. Jaya Abadi Logistics",
     location: "Kec. Sungai Manggis, Kepulauan Riau",
@@ -56,7 +54,6 @@ export const MOCK_PROJECTS: Project[] = [
     status: "PAUSED",
     startDate: "2025-11-01",
     endDate: "2026-04-30",
-    budget: 1800000000,
     progress: 60,
     client: "Dinas PU Kepulauan Riau",
     location: "Pelabuhan Tanjung Pinang",
@@ -70,7 +67,6 @@ export const MOCK_PROJECTS: Project[] = [
     status: "COMPLETED",
     startDate: "2025-06-01",
     endDate: "2025-10-31",
-    budget: 950000000,
     progress: 100,
     client: "PT. Batamindo Industri Perkasa",
     location: "Kawasan Industri BATAMINDO",
@@ -84,7 +80,6 @@ export const MOCK_PROJECTS: Project[] = [
     status: "ARCHIVED",
     startDate: "2024-08-01",
     endDate: "2024-12-31",
-    budget: 320000000,
     progress: 100,
     client: "Desa Batu Angkut",
     location: "Desa Batu Angkut, Kepulauan Riau",
@@ -333,8 +328,6 @@ export const MOCK_STATS = {
   totalReports: 3,
   pendingReports: 2,
   totalDocuments: 5,
-  budgetTotal: 9770000000,
-  budgetSpent: 4396500000,
 };
 
 export const MOCK_GANTT_TASKS = MOCK_TASKS.map((t) => ({

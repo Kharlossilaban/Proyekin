@@ -5,12 +5,16 @@
 // state kosong, navigasi ke detail (klik/ketuk, tanpa muat ulang), isi kartu/baris, tanpa tampilan anggaran,
 // HTML prerender tanpa data proyek, 1280/768/375 (overflow, axe), Mandor dan Anggota 375px mobile:true + sentuhan
 // (satu kolom, target sentuh >= 44px, seluruh kartu dapat diketuk, tanpa aksi hover-only).
+// Penjaga anggaran (keputusan final Owner 2026-10-28, F2: anggaran dihapus total untuk SEMUA role): bagian G memeriksa HTML dan
+// DOM seluruh halaman aplikasi, Dashboard (kolom tabel persis Kode, Nama Proyek, Status, Progres) dan detail proyek untuk Owner
+// dan Admin Kantor di 1280/768/375 tanpa kata anggaran atau nominal rupiah. Pola dari lib/no-budget.mjs.
 // Representasi UI mock, BUKAN otorisasi. Jalankan: npm run check:u4-projects [-- <folder-bukti>]
 import { spawn } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 import { createBrowser, sleep, waitFor } from "./lib/cdp.mjs";
+import { findForbidden, UI_FORBIDDEN } from "./lib/no-budget.mjs";
 
 const ROOT = resolve(import.meta.dirname, "..");
 const OUT = resolve(process.argv[2] ?? join(ROOT, ".u4-projects-check"));
@@ -176,8 +180,8 @@ for (const p of PERSONAS) {
   rec(`${p.key}: DemoDataNotice tampil dan tidak mengklaim data tersimpan`, await evaluate(`(() => { const n = document.querySelector('[data-slot="demo-data-notice"]'); return !!n && n.checkVisibility() && n.textContent.includes("memori tab ini") && n.textContent.includes("Tidak ada data yang dikirim atau disimpan ke server"); })()`));
   const noCrud = await evaluate(`[...document.querySelectorAll('[data-slot="project-list"] button')].filter((b) => b.checkVisibility()).map((b) => b.textContent.trim())`);
   rec(`${p.key}: tidak ada tombol bisnis (tambah/ubah/hapus) di daftar`, noCrud.length === 0, JSON.stringify(noCrud));
-  const money = await evaluate(`/Rp|IDR|anggaran/i.test(document.querySelector('[data-slot="project-list"]').textContent)`);
-  rec(`${p.key}: anggaran tidak ditampilkan`, !money);
+  const listHits = findForbidden(await evaluate(`document.querySelector('[data-slot="project-list"]').textContent`), UI_FORBIDDEN);
+  rec(`${p.key}: anggaran tidak ditampilkan`, listHits.length === 0, listHits.join(" | "));
   for (const id of p.projects) {
     const f = SEED_FACTS[id];
     const text = await visibleText("table", id);
@@ -320,6 +324,65 @@ await setViewport({ width: 1280, height: 900 });
   await navigate("/proyek");
   const got = await outcome();
   rec("tanpa sesi (Owner demo, mode pengembangan): daftar memuat semua proyek seed", got === "ready" && same(await visibleIds("table"), ALL_P), JSON.stringify(await visibleIds("table")));
+}
+
+// ================= G. Tanpa anggaran di halaman aplikasi (keputusan final F2, 2026-10-28) =================
+{
+  const APP_PATHS = ["/dashboard", "/proyek", "/proyek/p-001", "/tugas", "/laporan", "/dokumen", "/anggota", "/pengaturan"];
+  for (const path of APP_PATHS) {
+    const hits = findForbidden(await (await fetch(`${BASE}${path}`)).text(), UI_FORBIDDEN);
+    rec(`HTML ${path}: tanpa kata anggaran atau nominal rupiah`, hits.length === 0, hits.join(" | "));
+  }
+  const mainReady = (what) => waitFor(() => evaluate(`!!document.querySelector("main h1")?.checkVisibility()`), 20000, what);
+  const mainText = () => evaluate(`document.querySelector("main").textContent`);
+  const DASH_HEADERS = ["Kode", "Nama Proyek", "Status", "Progres"];
+  const DASH_CODES = ["PRJ-001", "PRJ-002", "PRJ-003", "PRJ-004", "PRJ-005"];
+  const DASH_STATS = ["Proyek Aktif", "Tugas Tertunda", "Laporan Menunggu", "Anggota Tim"];
+  const VIEWPORTS = [
+    [{ width: 1280, height: 900 }, "1280"],
+    [{ width: 768, height: 1024 }, "768"],
+    [{ width: 375, height: 800, mobile: true, touch: true }, "375 mobile"],
+  ];
+
+  // Dashboard: hanya Owner dan Admin Kantor yang berhak membukanya (J2).
+  for (const p of PERSONAS.filter((x) => x.key === "budi" || x.key === "siti")) {
+    for (const [viewport, label] of VIEWPORTS) {
+      await setViewport(viewport);
+      await setSession(p.id);
+      await navigate("/dashboard");
+      await waitFor(() => evaluate(`[...document.querySelectorAll("h1")].some((h) => h.textContent.trim() === "Dashboard" && h.checkVisibility())`), 20000, `dashboard ${p.key} ${label}`);
+      const hits = findForbidden(await mainText(), UI_FORBIDDEN);
+      rec(`${p.key} dashboard ${label}: tanpa kata anggaran atau nominal rupiah`, hits.length === 0, hits.join(" | "));
+      const headers = await evaluate(`[...document.querySelectorAll("main table th")].map((e) => e.textContent.trim())`);
+      rec(`${p.key} dashboard ${label}: kolom tabel proyek persis ${DASH_HEADERS.join(", ")} (tanpa kolom anggaran)`, same(headers, DASH_HEADERS), JSON.stringify(headers));
+      const rows = await evaluate(`[...document.querySelectorAll("main table tbody tr")].map((r) => ({ cells: r.cells.length, code: r.cells[0].textContent.trim() }))`);
+      rec(`${p.key} dashboard ${label}: 5 baris proyek, masing-masing 4 sel`, same(rows.map((r) => r.code), DASH_CODES) && rows.every((r) => r.cells === 4), JSON.stringify(rows));
+      const text = await mainText();
+      rec(`${p.key} dashboard ${label}: kartu statistik tersisa hanya ${DASH_STATS.join(", ")}`, DASH_STATS.every((s) => text.includes(s)));
+      await checkOverflow(`${p.key} /dashboard ${label}`);
+      await checkAxe(`${p.key} /dashboard ${label}`);
+      await evaluate(`window.scrollTo(0, 0)`);
+      await shot(`${p.key}-dashboard-${label.replace(" ", "-")}`);
+    }
+  }
+
+  // Detail proyek (placeholder U4-3; detail final di U4-5): semua role yang berhak melihat p-001, dan Owner untuk Arsip p-005.
+  await setViewport({ width: 1280, height: 900 });
+  for (const [key, userId, id] of [["budi", "u-001", "p-001"], ["siti", "u-002", "p-001"], ["ahmad", "u-003", "p-001"], ["eko", "u-005", "p-001"], ["dewi", "u-004", "p-001"], ["budi", "u-001", "p-005"]]) {
+    const got = await gotoList(userId, `/proyek/${id}`);
+    const hits = findForbidden(await mainText(), UI_FORBIDDEN);
+    rec(`${key} detail ${id}: halaman siap, tanpa kata anggaran atau nominal rupiah`, got === "detail" && hits.length === 0, got === "detail" ? hits.join(" | ") : got);
+  }
+
+  // Bagian aplikasi lain untuk Owner (akses penuh): tidak ada anggaran atau nominal rupiah di mana pun.
+  for (const path of ["/proyek", "/tugas", "/laporan", "/dokumen", "/anggota", "/pengaturan"]) {
+    await setSession("u-001");
+    await navigate(path);
+    await mainReady(`bagian ${path}`);
+    const hits = findForbidden(await mainText(), UI_FORBIDDEN);
+    rec(`budi ${path}: tanpa kata anggaran atau nominal rupiah di DOM`, hits.length === 0, hits.join(" | "));
+  }
+  await evaluate(`sessionStorage.clear()`);
 }
 
 // ================= F. Akun uji sementara: state kosong dan Guest (mock.ts selalu dipulihkan) =================

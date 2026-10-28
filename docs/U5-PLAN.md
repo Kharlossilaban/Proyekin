@@ -154,7 +154,7 @@ Koreksi atas audit 2026-10-28: audit menyebut lingkup tugas (U4-8) sebagai depen
 | **U4-8/U4-9** tugas | Lunak | Tidak ada `taskId` di laporan; menjadi keras hanya jika U5-O8 menambahnya | Tidak memblokir |
 | **U4-10** buat tugas | Lunak | Menyelesaikan pembersihan `/u4-spike` | Tidak memblokir |
 | **U4-11** manajemen pengguna | Lunak | `foremanId`/`uploadedById` merujuk `User`; U5 harus membaca `users` dari store, bukan `MOCK_USERS` | Gunakan seed |
-| **U4-12** dashboard + perapian tes + pembersihan anggaran | **Kuat** | Dashboard memakai jumlah laporan menunggu (`MOCK_REPORTS`), jadi U5 harus menyambungkannya ke store laporan; perapian helper CDP memudahkan uji U5; pembersihan anggaran (T3/T4) selesai sebelum U5 menyentuh dashboard | Angka laporan tidak sinkron dengan store U5 |
+| **U4-12** dashboard + perapian tes | **Kuat** | Dashboard memakai jumlah laporan menunggu (`MOCK_REPORTS`), jadi U5 harus menyambungkannya ke store laporan; perapian helper CDP memudahkan uji U5. Pembersihan anggaran **sudah selesai** (`U4-PLAN.md` §6); penjaga `check:no-budget` dan bagian G `check:u4-projects` wajib tetap lulus di U5 | Angka laporan tidak sinkron dengan store U5 |
 | **F2 anggaran** | Batasan | U5 tidak menambah field biaya/harga (mis. di `materials`), statistik, atau tampilan keuangan | — |
 
 **Tugas penyambung yang menjadi bagian U5 (bukan U4):**

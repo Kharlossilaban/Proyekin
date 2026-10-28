@@ -19,7 +19,6 @@ const createSpikeProject = () =>
     status: "DRAFT",
     startDate: "2026-03-21",
     endDate: "2026-03-21",
-    budget: 0,
     progress: 0,
     client: "(uji)",
     location: "(uji)",
