@@ -19,11 +19,11 @@ Proyekin sudah memiliki *wireframe* dan prototipe desain di Figma untuk modul-mo
 Pada rilis awal, modul berikut **wajib** berfungsi (tidak hanya tampilan):
 
 - **Autentikasi & Registrasi:** Pengguna dapat mendaftar akun (Owner/Admin/Mandor/Tim) dan login. Sistem pengelolaan peran (role) ditetapkan saat pendaftaran atau oleh Owner/Admin. Reset kata sandi via email.  
-- **Manajemen Proyek:** Owner/Admin dapat membuat, mengubah, menghapus proyek. Setiap proyek berisi detail (nama, deskripsi, anggaran, klien). Proyek terkait ke anggota tim.  
+- **Manajemen Proyek:** Owner/Admin dapat membuat, mengubah, menghapus proyek. Setiap proyek berisi detail (nama, deskripsi, ~~anggaran,~~ klien). Proyek terkait ke anggota tim. **[DIHAPUS 2026-10-28: anggaran dikeluarkan dari scope produk untuk semua role, lihat "Catatan Keputusan Pemilik — Dokumen dan Anggaran (2026-10-28)"]**  
 - **Manajemen Tugas:** Di dalam proyek, dapat dibuat tugas (*task*) dengan atribut (judul, deskripsi, penanggung jawab, tanggal tenggat). Tugas bisa diubah statusnya (misalnya: baru/dalam progres/selesai).  
 - **Jadwal/Gantt Chart:** Tampilkan rangkaian tugas proyek dalam format garis waktu (Gantt) agar visualisasi timeline jelas.  
 - **Laporan Harian:** Mandor dapat membuat entri laporan harian proyek, termasuk catatan kemajuan, kondisi lapangan, dan lampiran foto atau dokumen.  
-- **Dokumen Proyek:** Upload/download file relevan (rencana kerja, gambar lapangan, kontrak, dsb.) per proyek. Buat repositori dokumen terstruktur.  
+- **Dokumen Proyek:** ~~Upload/download file relevan (rencana kerja, gambar lapangan, kontrak, dsb.) per proyek. Buat repositori dokumen terstruktur.~~ **[DIGANTI 2026-10-28: menu Dokumen tetap ada, isinya hanya gambar/render 3D proyek dan foto kegiatan/progres dari lampiran Laporan Harian Mandor; lihat "Catatan Keputusan Pemilik — Dokumen dan Anggaran (2026-10-28)"]**  
 - **Dashboard Analitik:** Halaman ringkasan (khusus Admin/Owner) menampilkan statistik proyek (total proyek, tugas tertunda, progress anggota) dan grafik dasar untuk memberi gambaran cepat.  
 - **Manajemen Anggota:** Owner/Admin menambah/menghapus pengguna, menetapkan peran, dan mengelola tim proyek.  
 - **Halaman Landing Publik:** Halaman depan (landing) untuk publik minimal menampilkan informasi umum Proyekin. (Dokumen tender dapat diakses publik jika disetujui; untuk saat ini ini opsional.)
@@ -108,7 +108,7 @@ Bagian ini menambah, bukan menghapus, keputusan di atas. Bila ada pertentangan d
 - **Tipografi:** Geist sebagai font utama. Dark mode ditunda; fokus light mode.
 - **Figma:** referensi visual dan fungsional, bukan desain final. Business rules dan scope MVP di dokumen ini tetap menjadi acuan utama.
 - **Scope fitur Figma di luar daftar MVP** (klasifikasi A/B/C; tidak ada yang boleh diimplementasikan tanpa persetujuan):
-  - A (MVP): Dashboard, auth/reset password, penugasan tugas, laporan harian, dokumen (upload/download, repositori), landing publik. Kanban hanya boleh sebagai alternatif visualisasi tugas yang sudah ada.
+  - A (MVP): Dashboard, auth/reset password, penugasan tugas, laporan harian, ~~dokumen (upload/download, repositori)~~ **[DIGANTI 2026-10-28: Dokumen visual — render 3D proyek dan foto lampiran laporan harian]**, landing publik. Kanban hanya boleh sebagai alternatif visualisasi tugas yang sudah ada.
   - B (pasca-MVP): Manajemen Vendor, Vendor Invitation, Contractor Login.
   - C (butuh keputusan pemilik): WBS, multi-company, versioning/arsip/pengaturan publikasi dokumen, undangan pengguna (MVP mengikuti mekanisme penambahan pengguna di spesifikasi ini), verifikasi email (detail harus diajukan dulu), halaman Tentang Kami dan Kontak (kandidat landing), role di luar lima role resmi, model harga (`MOCK_PRICING`), notifikasi.
 - **Role resmi hanya lima:** Owner, Admin Kantor, Mandor, Anggota Tim, Guest.
@@ -126,3 +126,21 @@ Bagian ini menambah, bukan menghapus, keputusan di atas. Bila ada pertentangan d
 - **Aturan mutlak:** PROYEKIN tidak memiliki role Tukang. Jangan menambahkan role tersebut atau menyamakannya dengan Anggota Tim. Lima role resmi saja.
 - **Sifat implementasi U3:** semua alur auth di frontend adalah simulasi UI (data mock, `sessionStorage`). Bukan autentikasi atau authorization sungguhan; penegakan akses ada di backend (lihat `docs/BACKEND-ROADMAP.md`).
 - **Guest:** tidak melihat App Shell. Bila sesi ber-role Guest terdeteksi di area aplikasi, pengguna dialihkan ke halaman Akses Ditolak tanpa merender shell.
+
+## Catatan Keputusan Pemilik — Dokumen dan Anggaran (2026-10-28)
+
+Bagian ini menambah, bukan menghapus, keputusan di atas. Bila ada pertentangan dengan teks sebelumnya (termasuk butir "Manajemen Proyek", "Dokumen Proyek", dan klasifikasi A pada Catatan 2026-10-23), bagian ini yang berlaku. Kedua keputusan berstatus **FINAL**.
+
+**Keputusan 1 — Dokumen tetap ada, scope sempit.**
+- Menu Dokumen **dipertahankan**. Isinya hanya: (A) gambar/render 3D proyek atau bangunan yang sedang dikerjakan; (B) foto kegiatan/progres yang dilampirkan Mandor melalui Laporan Harian.
+- Foto laporan memiliki **satu sumber data**, yaitu lampiran laporan harian. Menu Dokumen menampilkannya sebagai galeri/tampilan turunan. Tidak ada proses unggah foto kedua yang menduplikasi lampiran.
+- Tidak termasuk scope: kontrak, RAB, surat, berita acara, administrasi umum; blueprint/denah, spesifikasi material, repositori berkas serbaguna; versioning, publikasi, arsip/restore, approval dokumen yang kompleks; viewer model 3D interaktif tanpa keputusan baru.
+- Menu Dokumen dan fitur foto laporan Mandor tidak boleh dihapus.
+- Dokumen internal pengembang (`AGENTS.md`, `CLAUDE.md`, roadmap, ringkasan project, evidence) bukan konten fitur Dokumen aplikasi.
+- Belum diputuskan: apakah Laporan Harian boleh membawa lampiran selain foto (butir "Laporan Harian" dan peran Mandor menyebut "foto atau dokumen"). Sampai diputuskan, lampiran non-foto tidak ditampilkan di menu Dokumen.
+
+**Keputusan 2 — Anggaran dihapus total dari fitur PROYEKIN.**
+- Fitur anggaran/budget tidak dibutuhkan oleh role mana pun, termasuk Owner dan Admin Kantor. Ini **bukan** aturan menyembunyikan anggaran per role; anggaran dikeluarkan dari scope produk sepenuhnya.
+- Tidak ada nominal anggaran di Dashboard; tidak ada kolom, kartu, atau detail anggaran di halaman Proyek; tidak ada input anggaran di form tambah/ubah Proyek; tidak ada statistik, kalkulasi, validasi bisnis, atau permission terkait anggaran; tidak ada data anggaran yang ditampilkan di UI role mana pun.
+- Anggaran tidak diganti dengan fitur keuangan lain.
+- Rencana penghapusan bertahap dari kode (data legacy dipertahankan sementara secara internal selama transisi, tanpa dipakai sebagai fitur) dicatat di `docs/U4-PLAN.md` §6.
