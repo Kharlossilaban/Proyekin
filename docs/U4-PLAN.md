@@ -26,7 +26,8 @@ Rencana ini tidak mengubah business logic, role, API contract, atau scope MVP. B
 | U4-3 navigasi, redirect login, guard URL | **PASS** | `06fc2df`, `20a36e7`, `U4-3-ACCESS.md`, `U4-3-FOLLOWUP.md` |
 | U4-4 daftar proyek `/proyek` | **PASS** | `9a29fc6`, `U4-4-PROJECTS.md` |
 | U4-5 detail proyek `/proyek/[projectId]` (read-only) | **PASS** (2026-10-28) | commit U4-5, `U4-5-PROJECT-DETAIL.md` |
-| U4-6 s.d. U4-12 | **NOT STARTED** | tidak ada commit, evidence, atau skrip uji |
+| U4-6 buat, ubah, hapus proyek | **PASS WITH NOTES** (verifikasi final 2026-11-06) | commit U4-6, `U4-6-PROJECT-CRUD.md` (catatan: §5 dan §9 evidence) |
+| U4-7 s.d. U4-12 | **NOT STARTED** | tidak ada commit, evidence, atau skrip uji |
 
 Commit `88b0bb7`, `951b9d7`, `709487b`, `e5b197e` adalah perbaikan responsif/aksesibilitas pada halaman placeholder. Bukan kemajuan U4-5 s.d. U4-12.
 
@@ -96,6 +97,8 @@ Commit `88b0bb7`, `951b9d7`, `709487b`, `e5b197e` adalah perbaikan responsif/aks
 - **Pengujian [R]:** skrip baru pola `check:u4-projects` — lingkup per role di detail, ID runtime via navigasi klien, not-found, Arsip hanya baca, 375/768/1280, axe 0, dan **asersi tanpa anggaran** (pola `check-u4-projects.mjs:179`: tidak ada `Rp`/`IDR`/"anggaran" di detail) untuk Owner, Admin, Mandor, Anggota Tim.
 
 ### U4-6 — Buat, ubah, hapus proyek
+
+> **STATUS: SELESAI, PASS WITH NOTES (verifikasi final 2026-11-06).** Rencana di bawah dipertahankan sebagai catatan; hasil aktual ada di `docs/u4-evidence/U4-6-PROJECT-CRUD.md`. Butir [OPEN] di bawah sudah diputuskan: hapus proyek **diblokir** bila masih ada Task, ProjectMember, atau Admin principal — tanpa kaskade (`access.ts` `getProjectDeleteBlockers`, "ATURAN MUTLAK (pemilik, U4-6)"); penetapan Admin principal **tidak** di U4-6 (U4-7). `/u4-spike` belum dihapus; uji lama masih memakainya (U4-10). Catatan terbuka: `check:login-touch` di tree utama gagal 4/244 karena `logo.tsx` Owner yang belum di-commit (lolos 244/244 tanpa file itu); harness `check:u4-access` rawan race hidrasi saat mesin lambat; peringatan dev Next.js pada `/proyek/[projectId]` sudah ada sejak U4-5.
 
 - **[D]** Owner membuat dan menghapus proyek; Admin Kantor hanya mengubah proyek yang ia tangani (J3). `canCreateProject`, `canEditProject`, `canDeleteProject` sudah ada di `access.ts` tetapi **belum punya pemanggil UI**.
 - **[D]** Kode proyek otomatis (`PRJ-00n`); field opsional diterima; **Arsip bukan status yang dapat dipilih** di form (J7). Proyek Arsip tidak dapat diubah atau dihapus (G7).

@@ -6,12 +6,13 @@
 // - Data seed tidak pernah dimutasi: setiap perubahan membuat objek/array baru.
 // - ID runtime tidak dikenal server; halaman detail memutuskan "tidak ditemukan" di klien.
 //
-// Tahap ini hanya menyediakan fondasi + primitif pembuatan entitas yang dibutuhkan pembuktian route runtime.
-// Mutasi bisnis lain (anggota, penugasan, status, pengguna) ditambahkan bertahap di U4-5..U4-11, dan lapisan
-// async/latensi simulasi (seperti `auth-mock.ts`) ditambahkan saat form dibuat. Izin ada di `access.ts`
-// (representasi UI, bukan keamanan); store ini TIDAK memeriksa izin.
+// Mutasi bisnis ditambahkan bertahap: proyek (buat, ubah, hapus) di U4-6; anggota, penugasan, status, dan pengguna
+// di U4-7..U4-11. Latensi simulasi dipasang oleh pemanggil (form), bukan store. Izin ROLE ada di `access.ts`
+// (representasi UI, bukan keamanan); store ini TIDAK memeriksa role. Store hanya menjaga integritas data lewat
+// helper `access.ts`: proyek Arsip tidak dapat diubah/dihapus dan proyek yang masih terkait tidak dapat dihapus.
 
 import { MOCK_PROJECT_MEMBERS, MOCK_PROJECTS, MOCK_TASKS, MOCK_USERS } from "@/data/mock";
+import { getProjectDeleteBlockers, isProjectReadOnly } from "@/lib/access";
 import type { Project, ProjectMember, Task, User } from "@/types";
 
 export interface MockStoreState {
@@ -52,8 +53,15 @@ export function subscribeMockStore(listener: () => void): () => void {
 export const getMockStoreSnapshot = (): MockStoreState => state;
 export const getMockStoreServerSnapshot = (): MockStoreState => SEED;
 
+/**
+ * Nomor proyek tertinggi yang PERNAH dipakai di sesi memori ini. Proyek bisa dihapus (U4-6), jadi nomor berikutnya tidak boleh
+ * dihitung dari ID yang masih ada saja: ID/kode proyek yang dihapus tidak dipakai ulang. Kembali ke seed saat reset/reload.
+ */
+let projectHighWater = 0;
+
 /** Mengembalikan store ke seed (untuk pengujian). Dalam penggunaan normal reset terjadi saat reload. */
 export function resetMockStore(): void {
+  projectHighWater = 0;
   commit(SEED);
 }
 
@@ -66,10 +74,39 @@ const pad = (n: number): string => String(n).padStart(3, "0");
 
 /** Membuat proyek di memori; ID dan kode otomatis (J7): `p-006` / `PRJ-006`. */
 export function createProject(input: NewProjectInput): Project {
-  const n = nextEntityNumber(state.projects.map((p) => p.id));
+  const n = Math.max(nextEntityNumber(state.projects.map((p) => p.id)), projectHighWater + 1);
+  projectHighWater = n;
   const project: Project = { ...input, id: `p-${pad(n)}`, code: `PRJ-${pad(n)}` };
   commit({ ...state, projects: [...state.projects, project] });
   return project;
+}
+
+/** Field proyek yang dapat diubah lewat form (U4-6). Kode, relasi (`adminId`, anggota, tugas), dan progres tidak termasuk. */
+export type ProjectEditInput = Pick<Project, "name" | "client" | "description" | "location" | "startDate" | "endDate" | "status">;
+
+/**
+ * Mengubah field proyek di memori. ID, kode, `adminId`, `managerId`, progres, anggota, dan tugas TIDAK berubah.
+ * Mengembalikan `null` (tanpa mengubah apa pun) bila proyek tidak ada atau berstatus Arsip (G7, hanya baca).
+ * Izin role diperiksa pemanggil lewat `access.ts`; store hanya menjaga integritas data.
+ */
+export function updateProject(id: string, input: ProjectEditInput): Project | null {
+  const current = state.projects.find((p) => p.id === id);
+  if (!current || isProjectReadOnly(current)) return null;
+  const next: Project = { ...current, ...input };
+  commit({ ...state, projects: state.projects.map((p) => (p.id === id ? next : p)) });
+  return next;
+}
+
+/**
+ * Menghapus proyek dari memori. DITOLAK (mengembalikan `false`, tanpa mengubah apa pun) bila proyek tidak ada, berstatus
+ * Arsip, atau masih memiliki tugas, anggota, atau Admin principal. TIDAK ada penghapusan berantai: tugas dan
+ * keanggotaan tidak pernah ikut terhapus. Izin role diperiksa pemanggil lewat `access.ts` (`decideDeleteProject`).
+ */
+export function deleteProject(id: string): boolean {
+  const current = state.projects.find((p) => p.id === id);
+  if (!current || isProjectReadOnly(current) || getProjectDeleteBlockers(current, state).length > 0) return false;
+  commit({ ...state, projects: state.projects.filter((p) => p.id !== id) });
+  return true;
 }
 
 /** Membuat tugas di memori; ID dan kode otomatis (J7): `t-007` / `TSK-007`. */

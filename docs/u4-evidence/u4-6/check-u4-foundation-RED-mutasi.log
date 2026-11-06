@@ -1,0 +1,18 @@
+
+> proyekin@0.1.0 check:u4-foundation
+> node scripts/check-u4-foundation.mjs
+
+FAIL: hapus proyek (seed) — Owner: p-001/p-002 ditolak (tugas), p-003/p-004 boleh, p-005 Arsip ditolak diharapkan ["HAS_TASKS","HAS_TASKS","ALLOW","ALLOW","ARCHIVED"], hasil ["ALLOW","ALLOW","ALLOW","ALLOW","ARCHIVED"]
+FAIL: hapus proyek: penghalang p-001 (4 tugas, 3 anggota, Admin principal) diharapkan [{"reason":"HAS_TASKS","count":4},{"reason":"HAS_MEMBERSHIPS","count":3},{"reason":"IS_ADMIN_PRINCIPAL","count":1}], hasil []
+FAIL: hapus proyek: penghalang p-002 (2 tugas, 2 anggota, Admin principal) diharapkan [{"reason":"HAS_TASKS","count":2},{"reason":"HAS_MEMBERSHIPS","count":2},{"reason":"IS_ADMIN_PRINCIPAL","count":1}], hasil []
+FAIL: hapus proyek: hanya Task → HAS_TASKS diharapkan "HAS_TASKS", hasil "ALLOW"
+FAIL: hapus proyek: hanya ProjectMember → HAS_MEMBERSHIPS diharapkan "HAS_MEMBERSHIPS", hasil "ALLOW"
+FAIL: hapus proyek: hanya Admin principal (adminId) → IS_ADMIN_PRINCIPAL diharapkan "IS_ADMIN_PRINCIPAL", hasil "ALLOW"
+FAIL: store hapus: p-001 dan p-002 ditolak (tugas, anggota, Admin principal) tanpa perubahan 
+FAIL: store hapus: ID tidak dikenal ditolak 
+FAIL: store: penolakan tidak memberi tahu pelanggan diharapkan 0, hasil 1
+FAIL: store hapus: p-003 (tanpa keterkaitan) terhapus; tugas dan anggota seed utuh (tanpa kaskade) 
+FAIL: store hapus: proyek runtime dengan tugas ditolak; tugas tetap ada 
+FAIL: store hapus: proyek runtime dengan Admin principal ditolak 
+
+12 masalah dari 326 pemeriksaan.

@@ -281,7 +281,7 @@ const RULE_SOURCES = /(lib[\\/](access|roles|labels)\.ts|data[\\/]mock\.ts|types
 const copies = walk(SRC).filter((f) => /\.(ts|tsx)$/.test(f) && !RULE_SOURCES.test(f) && ROLE_LITERAL.test(codeOf(f.slice(SRC.length + 1))));
 eq("aturan: tidak ada salinan literal role di luar berkas sumber (navigasi, guard, halaman, komponen)", copies.map((f) => f.slice(SRC.length)), []);
 const importers = walk(SRC).filter((f) => /\.(ts|tsx)$/.test(f) && !/lib[\\/]access\.ts$/.test(f) && /@\/lib\/access"/.test(readFileSync(f, "utf8"))).map((f) => f.slice(SRC.length + 1).replace(/\\/g, "/")).sort();
-eq("aturan: pemakai access.ts hanya navigasi, guard URL/detail, login, daftar proyek (U4-4), detail proyek (U4-5), dan label (tipe)", importers, ["components/auth/login-form.tsx", "components/auth/path-guard.tsx", "components/detail/entity-detail-placeholders.tsx", "components/projects/project-detail.tsx", "components/projects/project-list.tsx", "lib/labels.ts", "lib/navigation.ts"]);
+eq("aturan: pemakai access.ts hanya navigasi, guard URL/detail, login, daftar proyek (U4-4), detail proyek (U4-5), dialog tambah/ubah/hapus proyek (U4-6), store (integritas data U4-6), dan label (tipe)", importers, ["components/auth/login-form.tsx", "components/auth/path-guard.tsx", "components/detail/entity-detail-placeholders.tsx", "components/projects/project-delete-dialog.tsx", "components/projects/project-detail.tsx", "components/projects/project-form-dialog.tsx", "components/projects/project-list.tsx", "lib/labels.ts", "lib/mock-store.ts", "lib/navigation.ts"]);
 check("guard: AccessGuard selalu merender children (pola hidden/inert, bukan menahan) dan memuat peringatan keterbatasan", /hidden=\{status !== "allowed"\}/.test(codeOf("components/auth/access-guard.tsx")) && /BUKAN OTORISASI/.test(readFileSync(join(SRC, "components/auth/access-guard.tsx"), "utf8")));
 {
   // SessionShell tidak boleh berubah sejak commit U3 terakhir yang mengubahnya (d3d9516).
@@ -324,11 +324,100 @@ eq("relasi: nama mengikuti User, bukan salinan teks legacy Task.assigneeName", r
 eq("relasi: periode proyek", [rel.formatProjectPeriod(MOCK_PROJECTS[0]), rel.formatProjectPeriod({ startDate: "2026-01-15", endDate: "" }), rel.formatProjectPeriod({ startDate: "", endDate: "" })], ["15 Jan 2026 – 30 Jun 2026", "15 Jan 2026", "—"]);
 {
   const detail = codeOf("components/projects/project-detail.tsx");
-  check("detail proyek: hanya baca (tanpa button, form, input, atau penulisan store)", !/<button|<form|<input|<select|<textarea/i.test(detail) && !/lib\/mock-store"/.test(detail) && !/createProject|createTask|resetMockStore/.test(detail));
-  check("detail proyek: tidak menautkan ke detail tugas (U4-9) dan tidak ada aksi mutasi", !/href=\{?[`"']\/tugas/.test(detail) && !/onClick/.test(detail));
+  // U4-6: detail kini memuat aksi ubah/hapus, tetapi HANYA lewat dialog khusus; detail sendiri tidak menulis store dan tidak
+  // memuat kontrol form mentah (tag HTML huruf kecil; komponen <Button> dari design system dipakai untuk tombol tutup pesan). Asersi "hanya baca" lama dipersempit (bukan dilonggarkan): kontrol mentah tetap dilarang,
+  // penulisan store tetap dilarang, dan satu-satunya onClick adalah tombol tutup pada banner sukses; penutupnya hanya
+  // menghapus pesan/penanda URL dan memindahkan fokus (daftar literal).
+  check("detail proyek: tanpa kontrol mentah (button, form, input, select, textarea) dan tanpa penulisan store langsung", !/<button|<form|<input|<select|<textarea/.test(detail) && !/lib\/mock-store"/.test(detail) && !/createProject|createTask|updateProject|deleteProject|resetMockStore/.test(detail));
+  eq("detail proyek: satu-satunya onClick adalah tombol tutup banner sukses", [...detail.matchAll(/onClick=\{([^}]*)\}/g)].map((m) => m[1].trim()), ["onDismiss"]);
+  eq("detail proyek: penutup banner hanya menghapus pesan/penanda URL dan memindahkan fokus", [...detail.matchAll(/onDismiss=\{\(\) => \{([^}]*)\}\}/g)].map((m) => m[1].replace(/\s+/g, " ").trim()), ["router.replace(pathname); onDismissed();", "setSavedNotice(null); focusSelectedTab();"]);
+  check("detail proyek: tidak menautkan ke detail tugas (U4-9)", !/href=\{?[`"']\/tugas/.test(detail));
+  check("detail proyek: aksi ubah/hapus hanya lewat canEditProject/canDeleteProject dan dialog khusus (U4-6)", /canEditProject\(actor, project\)/.test(detail) && /canDeleteProject\(actor, project\)/.test(detail) && /<ProjectFormDialog/.test(detail) && /<ProjectDeleteDialog/.test(detail));
   check("detail proyek: nama penanggung jawab dari relasi User, bukan Task.assigneeName", /getUserName\(/.test(detail) && !/task\.assigneeName/.test(detail));
   check("detail proyek: memakai fungsi access.ts untuk tab Tim, tugas, dan email (tanpa aturan role sendiri)", /canViewProjectTeam/.test(detail) && /getVisibleProjectTasks/.test(detail) && /canViewOrgUsers/.test(detail) && /canViewProject\b/.test(detail));
   check("detail proyek: memakai AccessGuard dan menampilkan DemoDataNotice tenggat", /<AccessGuard/.test(detail) && /<DemoDataNotice showDeadlineReference/.test(detail));
+}
+
+// ---------- 8. U4-6: CRUD proyek (hapus ditolak bila ada Task/ProjectMember/Admin principal, tanpa kaskade, Arsip hanya baca) ----------
+// Literal sengaja terpisah dari access.ts / mock-store.ts / project-validation.ts (bukan dihitung dari ketiganya).
+const val = await load("lib/project-validation.ts");
+const decOf = (who, project, d = data) => dec(access.decideDeleteProject(personas[who], project, d));
+eq("hapus proyek (seed) — Owner: p-001/p-002 ditolak (tugas), p-003/p-004 boleh, p-005 Arsip ditolak", MOCK_PROJECTS.map((p) => decOf("owner", p)), ["HAS_TASKS", "HAS_TASKS", "ALLOW", "ALLOW", "ARCHIVED"]);
+for (const who of ["admin", "ahmad", "eko", "dewi", "guest", "nobody"]) {
+  eq(`hapus proyek (seed) — ${who}: selalu ditolak karena role (J3), termasuk p-003/p-004 dan Arsip`, MOCK_PROJECTS.map((p) => decOf(who, p)), ["ROLE", "ROLE", "ROLE", "ROLE", "ROLE"]);
+}
+eq("hapus proyek: penghalang p-001 (4 tugas, 3 anggota, Admin principal)", access.getProjectDeleteBlockers(MOCK_PROJECTS[0], data), [{ reason: "HAS_TASKS", count: 4 }, { reason: "HAS_MEMBERSHIPS", count: 3 }, { reason: "IS_ADMIN_PRINCIPAL", count: 1 }]);
+eq("hapus proyek: penghalang p-002 (2 tugas, 2 anggota, Admin principal)", access.getProjectDeleteBlockers(MOCK_PROJECTS[1], data), [{ reason: "HAS_TASKS", count: 2 }, { reason: "HAS_MEMBERSHIPS", count: 2 }, { reason: "IS_ADMIN_PRINCIPAL", count: 1 }]);
+eq("hapus proyek: p-003..p-005 tanpa penghalang", MOCK_PROJECTS.slice(2).map((p) => access.getProjectDeleteBlockers(p, data)), [[], [], []]);
+{
+  const p3 = MOCK_PROJECTS[2];
+  const base = { users: data.users, projects: data.projects, members: [], tasks: [] };
+  const onlyTask = { ...base, tasks: [{ ...MOCK_TASKS[0], id: "t-900", projectId: "p-003" }] };
+  const onlyMember = { ...base, members: [{ projectId: "p-003", userId: "u-003" }] };
+  eq("hapus proyek: hanya Task → HAS_TASKS", decOf("owner", p3, onlyTask), "HAS_TASKS");
+  eq("hapus proyek: hanya ProjectMember → HAS_MEMBERSHIPS", decOf("owner", p3, onlyMember), "HAS_MEMBERSHIPS");
+  eq("hapus proyek: hanya Admin principal (adminId) → IS_ADMIN_PRINCIPAL", decOf("owner", { ...p3, adminId: "u-002" }, base), "IS_ADMIN_PRINCIPAL");
+  const otherProject = { ...base, tasks: [{ ...MOCK_TASKS[0], id: "t-901", projectId: "p-004" }], members: [{ projectId: "p-004", userId: "u-003" }] };
+  eq("hapus proyek: tanpa keterkaitan → ALLOW; relasi proyek lain tidak menghalangi", [decOf("owner", p3, base), decOf("owner", p3, otherProject)], ["ALLOW", "ALLOW"]);
+}
+check("proyek Arsip hanya baca: isProjectReadOnly", access.isProjectReadOnly(MOCK_PROJECTS[4]) && MOCK_PROJECTS.slice(0, 4).every((p) => !access.isProjectReadOnly(p)));
+
+// store: ubah dan hapus (tanpa kaskade, relasi terjaga, Arsip dan seed tidak termutasi)
+{
+  const edit = { name: "Renovasi Gedung Kantor (ubah)", client: "Klien Baru", description: "", location: "", startDate: "", endDate: "", status: "PAUSED" };
+  const edited = store.updateProject("p-001", edit);
+  check("store ubah: field terubah; ID, kode, adminId, progres, managerId terjaga", !!edited && edited.name === edit.name && edited.status === "PAUSED" && edited.id === "p-001" && edited.code === "PRJ-001" && edited.adminId === "u-002" && edited.progress === MOCK_PROJECTS[0].progress && edited.managerId === MOCK_PROJECTS[0].managerId);
+  check("store ubah: anggota dan tugas tidak tersentuh (referensi sama), proyek lain sama", store.getMockStoreSnapshot().members === store.SEED.members && store.getMockStoreSnapshot().tasks === store.SEED.tasks && store.getMockStoreSnapshot().projects.slice(1).every((p, i) => p === MOCK_PROJECTS[i + 1]));
+  check("store ubah: array seed tidak dimutasi", MOCK_PROJECTS[0].name === "Renovasi Gedung Kantor Batam" && MOCK_PROJECTS[0].status === "ON_PROGRESS");
+  store.resetMockStore();
+  const before = store.getMockStoreSnapshot();
+  let calls = 0;
+  const off = store.subscribeMockStore(() => { calls += 1; });
+  check("store ubah: proyek Arsip ditolak (null) tanpa perubahan", store.updateProject("p-005", edit) === null && store.getMockStoreSnapshot() === before);
+  check("store ubah: ID tidak dikenal ditolak (null) tanpa perubahan", store.updateProject("p-404", edit) === null && store.getMockStoreSnapshot() === before);
+  check("store hapus: proyek Arsip ditolak (false) tanpa perubahan", store.deleteProject("p-005") === false && store.getMockStoreSnapshot() === before);
+  check("store hapus: p-001 dan p-002 ditolak (tugas, anggota, Admin principal) tanpa perubahan", store.deleteProject("p-001") === false && store.deleteProject("p-002") === false && store.getMockStoreSnapshot() === before);
+  check("store hapus: ID tidak dikenal ditolak", store.deleteProject("p-404") === false && store.getMockStoreSnapshot() === before);
+  eq("store: penolakan tidak memberi tahu pelanggan", calls, 0);
+  check("store hapus: p-003 (tanpa keterkaitan) terhapus; tugas dan anggota seed utuh (tanpa kaskade)", store.deleteProject("p-003") === true && !store.getMockStoreSnapshot().projects.some((p) => p.id === "p-003") && store.getMockStoreSnapshot().projects.length === 4 && store.getMockStoreSnapshot().tasks === store.SEED.tasks && store.getMockStoreSnapshot().members === store.SEED.members);
+  check("store hapus: array seed tidak dimutasi", MOCK_PROJECTS.length === 5 && MOCK_PROJECTS.some((p) => p.id === "p-003"));
+  store.resetMockStore();
+  const runtime = store.createProject({ name: "Runtime", description: "", status: "DRAFT", startDate: "", endDate: "", progress: 0, client: "-", location: "" });
+  eq("store hapus: proyek runtime tanpa keterkaitan terhapus", [store.deleteProject(runtime.id), store.getMockStoreSnapshot().projects.some((p) => p.id === runtime.id)], [true, false]);
+  eq("store: ID/kode proyek yang dihapus tidak dipakai ulang (temuan code-review)", [runtime.id, store.createProject({ name: "Sesudah hapus", description: "", status: "DRAFT", startDate: "", endDate: "", progress: 0, client: "-", location: "" }).code], ["p-006", "PRJ-007"]);
+  store.resetMockStore();
+  const r2 = store.createProject({ name: "Runtime 2", description: "", status: "DRAFT", startDate: "", endDate: "", progress: 0, client: "-", location: "" });
+  const t2 = store.createTask({ projectId: r2.id, title: "Tugas uji", status: "TODO", priority: "LOW", progress: 0 });
+  check("store hapus: proyek runtime dengan tugas ditolak; tugas tetap ada", store.deleteProject(r2.id) === false && store.getMockStoreSnapshot().projects.some((p) => p.id === r2.id) && store.getMockStoreSnapshot().tasks.some((t) => t.id === t2.id));
+  const r3 = store.createProject({ name: "Runtime 3", description: "", status: "DRAFT", startDate: "", endDate: "", progress: 0, client: "-", location: "", adminId: "u-002" });
+  check("store hapus: proyek runtime dengan Admin principal ditolak", store.deleteProject(r3.id) === false && store.getMockStoreSnapshot().projects.some((p) => p.id === r3.id));
+  store.resetMockStore();
+  off();
+}
+check("store: updateProject/deleteProject tanpa pemeriksaan role, tanpa penyimpanan permanen atau jaringan", !/localStorage|sessionStorage|fetch\(/.test(codeOf("lib/mock-store.ts")) && !/\.role\b/.test(codeOf("lib/mock-store.ts")));
+
+// validasi form proyek
+{
+  const ok = { name: "Proyek Uji", client: "Klien", location: "", startDate: "", endDate: "", status: "DRAFT", description: "" };
+  const errs = (patch) => Object.keys(val.validateProjectForm({ ...ok, ...patch })).sort();
+  eq("validasi: hanya nama dan klien wajib; lokasi, tanggal, deskripsi boleh kosong", errs({}), []);
+  eq("validasi: nama kosong/spasi, klien kosong", [errs({ name: "   " }), errs({ client: "" })], [["name"], ["client"]]);
+  eq("validasi: nama 2 karakter ditolak, 3 diterima, 120 diterima, 121 ditolak", [errs({ name: "ab" }), errs({ name: "abc" }), errs({ name: "a".repeat(120) }), errs({ name: "a".repeat(121) })], [["name"], [], [], ["name"]]);
+  eq("validasi: batas klien 120, lokasi 160, deskripsi 1.000", [errs({ client: "k".repeat(121) }), errs({ location: "l".repeat(161) }), errs({ description: "d".repeat(1001) }), errs({ client: "k".repeat(120), location: "l".repeat(160), description: "d".repeat(1000) })], [["client"], ["location"], ["description"], []]);
+  eq("validasi: tanggal valid, tidak ada di kalender, format salah", [errs({ startDate: "2026-02-28" }), errs({ startDate: "2026-02-30" }), errs({ endDate: "28-02-2026" })], [[], ["startDate"], ["endDate"]]);
+  eq("validasi: selesai sebelum mulai ditolak; sama atau sesudah diterima; satu ujung saja diterima", [errs({ startDate: "2026-03-02", endDate: "2026-03-01" }), errs({ startDate: "2026-03-01", endDate: "2026-03-01" }), errs({ startDate: "2026-03-01", endDate: "2026-04-01" }), errs({ endDate: "2026-04-01" })], [["endDate"], [], [], []]);
+  eq("validasi: status — Arsip dan nilai asing ditolak", [errs({ status: "ARCHIVED" }), errs({ status: "XYZ" }), errs({ status: "COMPLETED" })], [["status"], ["status"], []]);
+  eq("normalisasi: teks dirapikan, opsional kosong menjadi string kosong", val.normalizeProjectValues({ ...ok, name: "  Proyek  ", client: " Klien ", location: "  ", description: " x " }), { ...ok, name: "Proyek", client: "Klien", location: "", description: "x" });
+}
+eq("status yang dapat dipilih di form: tanpa Arsip (J7)", labels.PROJECT_STATUS_OPTIONS, ["DRAFT", "ON_PROGRESS", "PAUSED", "COMPLETED"]);
+{
+  const form = codeOf("components/projects/project-form.tsx");
+  const dlg = codeOf("components/projects/project-form-dialog.tsx");
+  const del = codeOf("components/projects/project-delete-dialog.tsx");
+  check("U4-6: form dan dialog tidak memuat penetapan Admin principal (itu U4-7); dialog hapus hanya membaca nama Admin untuk pesan", ![form, dlg].some((c) => /adminId/.test(c)) && ![form, dlg, del].some((c) => /canAssignAdminPrincipal|getAdminPrincipalCandidates/.test(c)) && (del.match(/adminId/g) ?? []).length === 1 && /getUserName\(data\.users, project\.adminId\)/.test(del));
+  check("U4-6: dialog tambah/ubah memakai canCreateProject/canEditProject dan memeriksa ulang terhadap snapshot terbaru saat menyimpan", /canCreateProject\(actor\)/.test(dlg) && /canEditProject\(actor, latest\)/.test(dlg) && /getMockStoreSnapshot\(\)/.test(dlg));
+  check("U4-6: dialog hapus memakai decideDeleteProject dan getProjectDeleteBlockers (tanpa aturan sendiri)", /decideDeleteProject\(actor, latest, fresh\)/.test(del) && /getProjectDeleteBlockers\(project, data\)/.test(del));
+  check("U4-6: tanpa penghapusan berantai dan tanpa penyimpanan permanen di form/dialog", ![form, dlg, del].some((c) => /tasks\.filter|members\.filter|localStorage|sessionStorage|fetch\(/.test(c)));
 }
 
 console.log(failures.length ? `\n${failures.length} masalah dari ${passed + failures.length} pemeriksaan.` : `\nSemua ${passed} pemeriksaan lolos.`);

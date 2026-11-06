@@ -1,0 +1,789 @@
+{
+  "checks": [
+    {
+      "name": "A budi: daftar menampilkan 5 proyek dan satu-satunya tombol adalah Tambah proyek",
+      "ok": true,
+      "detail": "[\"Tambah proyek\"]"
+    },
+    {
+      "name": "A siti: daftar tanpa tombol Tambah proyek atau aksi lain",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "A ahmad: daftar tanpa tombol Tambah proyek atau aksi lain",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "A eko: daftar tanpa tombol Tambah proyek atau aksi lain",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "A dewi: daftar tanpa tombol Tambah proyek atau aksi lain",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "A budi p-001: aksi di header detail = Ubah proyek, Hapus proyek",
+      "ok": true,
+      "detail": "[\"Ubah proyek\",\"Hapus proyek\"]"
+    },
+    {
+      "name": "A budi p-002: aksi di header detail = Ubah proyek, Hapus proyek",
+      "ok": true,
+      "detail": "[\"Ubah proyek\",\"Hapus proyek\"]"
+    },
+    {
+      "name": "A budi p-003: aksi di header detail = Ubah proyek, Hapus proyek",
+      "ok": true,
+      "detail": "[\"Ubah proyek\",\"Hapus proyek\"]"
+    },
+    {
+      "name": "A budi p-004: aksi di header detail = Ubah proyek, Hapus proyek",
+      "ok": true,
+      "detail": "[\"Ubah proyek\",\"Hapus proyek\"]"
+    },
+    {
+      "name": "A budi p-005: aksi di header detail = tidak ada",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "A siti p-001: aksi di header detail = Ubah proyek",
+      "ok": true,
+      "detail": "[\"Ubah proyek\"]"
+    },
+    {
+      "name": "A siti p-002: aksi di header detail = Ubah proyek",
+      "ok": true,
+      "detail": "[\"Ubah proyek\"]"
+    },
+    {
+      "name": "A ahmad p-001: aksi di header detail = tidak ada",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "A ahmad p-002: aksi di header detail = tidak ada",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "A eko p-001: aksi di header detail = tidak ada",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "A eko p-002: aksi di header detail = tidak ada",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "A dewi p-001: aksi di header detail = tidak ada",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "B dialog tambah: judul 'Tambah proyek' dan deskripsi menyebut kode otomatis",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B dialog tambah: fokus awal di dalam dialog pada kolom Nama proyek",
+      "ok": true,
+      "detail": "{\"tag\":\"INPUT\",\"id\":\"project-_r_5_-name\",\"name\":\"name\",\"action\":\"\",\"text\":\"\",\"inDialog\":true}"
+    },
+    {
+      "name": "B dialog tambah: setiap kolom punya tepat satu label tertaut dan id unik; wajib = Nama proyek, Klien, Status; sisanya berlabel '(opsional)'",
+      "ok": true,
+      "detail": "{\"name\":{\"label\":\"Nama proyek*\",\"labels\":1,\"required\":true,\"idUnique\":true},\"client\":{\"label\":\"Klien*\",\"labels\":1,\"required\":true,\"idUnique\":true},\"location\":{\"label\":\"Lokasi (opsional)\",\"labels\":1,\"required\":false,\"idUnique\":true},\"start\":{\"label\":\"Tanggal mulai (opsional)\",\"labels\":1,\"required\":false,\"idUnique\":true},\"end\":{\"label\":\"Tanggal selesai (opsional)\",\"labels\":1,\"required\":false,\"idUnique\":true},\"status\":{\"label\":\"Status*\",\"labels\":1,\"required\":true,\"idUnique\":true},\"description\":{\"label\":\"Deskripsi (opsional)\",\"labels\":1,\"required\":false,\"idUnique\":true}}"
+    },
+    {
+      "name": "B dialog tambah: status Draf, Berjalan, Tertunda, Selesai (tanpa Arsip), bawaan Draf",
+      "ok": true,
+      "detail": "{\"options\":[[\"DRAFT\",\"Draf\"],[\"ON_PROGRESS\",\"Berjalan\"],[\"PAUSED\",\"Tertunda\"],[\"COMPLETED\",\"Selesai\"]],\"value\":\"DRAFT\"}"
+    },
+    {
+      "name": "B dialog tambah: tanpa kolom penetapan Admin Kantor (itu U4-7)",
+      "ok": true,
+      "detail": "Nama proyek*Klien*Lokasi (opsional)Tanggal mulai (opsional)Tanggal selesai (opsional)Status*DrafBerjalanTertundaSelesaiP"
+    },
+    {
+      "name": "B dialog tambah: catatan data demo menyebut memori tab, hilang saat dimuat ulang, tanpa server",
+      "ok": true,
+      "detail": "Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server."
+    },
+    {
+      "name": "B dialog tambah: tanpa kata anggaran atau nominal Rp",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B dialog tambah: tanpa kata Tukang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog tambah kosong 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dialog tambah 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "B validasi kosong: Nama dan Klien menolak, galat tertaut aria-describedby + aria-invalid",
+      "ok": true,
+      "detail": "{\"eName\":{\"invalid\":\"true\",\"message\":\"Nama proyek wajib diisi.\"},\"eClient\":{\"invalid\":\"true\",\"message\":\"Nama klien wajib diisi.\"}}"
+    },
+    {
+      "name": "B validasi kosong: kolom opsional tidak menolak",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B validasi kosong: fokus pindah ke galat pertama (Nama proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B validasi kosong: dialog tetap terbuka dan belum ada proyek baru",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog tambah dengan galat 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B validasi: nama 2 karakter ditolak (minimal 3); galat Klien hilang setelah diisi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B validasi: tanggal selesai sebelum mulai ditolak dan fokus ke Tanggal selesai",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B Esc menutup dialog; fokus kembali ke tombol Tambah proyek; tidak ada proyek baru",
+      "ok": true,
+      "detail": "{\"tag\":\"BUTTON\",\"id\":\"base-ui-_r_1_\",\"name\":\"\",\"action\":\"create-project\",\"text\":\"Tambah proyek\",\"inDialog\":false}"
+    },
+    {
+      "name": "B dialog dibuka ulang: form bersih (isian sebelumnya tidak bocor)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B tombol Batal menutup dialog tanpa membuat proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B keyboard: Enter pada tombol Tambah proyek membuka dialog",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B simpan: tombol memuat (aria-busy) dan kolom terkunci selama menyimpan; klik ganda tidak dikirim dua kali",
+      "ok": true,
+      "detail": "{\"busy\":\"true\",\"disabledInputs\":true}"
+    },
+    {
+      "name": "B hasil: router.push ke detail proyek baru dengan penanda ?dibuat=1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B hasil: judul dan kode otomatis PRJ-006",
+      "ok": true,
+      "detail": "{\"h1\":\"Gudang Uji Minimal\",\"eyebrow\":\"PRJ-006\"}"
+    },
+    {
+      "name": "B hasil: pesan sukses menyebut kode dan (simulasi)",
+      "ok": true,
+      "detail": "Proyek PRJ-006 berhasil ditambahkan (simulasi)."
+    },
+    {
+      "name": "B hasil: pesan sukses berperan status (diumumkan pembaca layar)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B hasil: fokus berada di pesan sukses setelah navigasi (pembaca layar membacanya)",
+      "ok": true,
+      "detail": "{\"tag\":\"DIV\",\"id\":\"\",\"name\":\"\",\"action\":\"\",\"text\":\"Proyek PRJ-006 berhasil ditambahkan (sim\",\"inDialog\":false}"
+    },
+    {
+      "name": "B hasil: ringkasan memuat klien, status Draf, dan kolom opsional kosong tampil '—'",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-006StatusDrafKlienPT Uji MinimalLokasi—Periode—Admin Kantor penanggung jawabBelum ditetapkanDeskripsi—0%"
+    },
+    {
+      "name": "B hasil: progres awal 0% dan tab Tugas (0)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B hasil: Owner melihat aksi Ubah proyek dan Hapus proyek pada proyek baru",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B detail proyek baru: tanpa kata anggaran atau nominal Rp",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B detail proyek baru: tanpa kata Tukang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B tombol Tutup pesan menghapus penanda ?dibuat=1 dan pesan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B setelah pesan ditutup: fokus pindah ke tab terpilih, tidak jatuh ke <body> (temuan code-review)",
+      "ok": true,
+      "detail": "{\"tab\":true,\"selected\":\"true\",\"body\":false}"
+    },
+    {
+      "name": "B daftar (navigasi klien): proyek baru terlihat; tepat 6 proyek (tidak ada duplikat dari klik ganda)",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\",\"p-003\",\"p-004\",\"p-005\",\"p-006\"]"
+    },
+    {
+      "name": "B daftar: ringkasan '6 proyek' dan baris PRJ-006 memuat nama, klien, status Draf",
+      "ok": true,
+      "detail": "6 proyek dalam lingkup akses Anda. | PRJ-006Gudang Uji MinimalPT Uji MinimalDraf—0%"
+    },
+    {
+      "name": "B mengetik langsung di Nama proyek memperbarui kolom terkendali",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B hasil lengkap: kode PRJ-007 berurutan, nama, klien, lokasi, periode, status Berjalan, deskripsi",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-007StatusBerjalanKlienCV Maju BersamaLokasiTanjung PinangPeriode1 Apr 2026 – 31 Okt 2026Admin Kantor penanggung jawabBelum ditetapkanDeskripsiRuko dua lantai untuk uji.0%"
+    },
+    {
+      "name": "C dialog ubah: judul 'Ubah proyek', tombol 'Simpan perubahan', deskripsi menyebut kode/tim/tugas tidak berubah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C dialog ubah: data awal terisi dari proyek",
+      "ok": true,
+      "detail": "{\"name\":\"Pembangunan Ruko Uji\",\"client\":\"CV Maju Bersama\",\"location\":\"Tanjung Pinang\",\"start\":\"2026-04-01\",\"end\":\"2026-10-31\",\"status\":\"ON_PROGRESS\",\"description\":\"Ruko dua lantai untuk uji.\"}"
+    },
+    {
+      "name": "C dialog ubah: pilihan status tanpa Arsip",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog ubah 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C validasi ubah: nama dikosongkan ditolak; data proyek belum berubah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C Batal: judul proyek tetap sama",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C Enter di kolom mengirim form (keyboard)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C setelah simpan: fokus kembali ke tombol Ubah proyek",
+      "ok": true,
+      "detail": "{\"tag\":\"BUTTON\",\"id\":\"base-ui-_r_1h_\",\"name\":\"\",\"action\":\"edit-project\",\"text\":\"Ubah proyek\",\"inDialog\":false}"
+    },
+    {
+      "name": "C setelah simpan: banner 'Perubahan proyek disimpan (simulasi).' tampil dan diumumkan lewat wilayah status persisten",
+      "ok": true,
+      "detail": "{\"notice\":\"Perubahan proyek disimpan (simulasi).\",\"region\":{\"role\":\"status\",\"text\":\"Perubahan proyek disimpan (simulasi).\"}}"
+    },
+    {
+      "name": "C detail diperbarui; kode PRJ-007 dan klien tetap; lokasi dikosongkan tampil '—'; status Tertunda",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-007StatusTertundaKlienCV Maju BersamaLokasi—Periode1 Apr 2026 – 31 Okt 2026Admin Kantor penanggung jawabBelum ditetapkanDeskripsiRuko dua lantai untuk uji.0%"
+    },
+    {
+      "name": "C daftar diperbarui konsisten dengan detail (nama baru, status Tertunda)",
+      "ok": true,
+      "detail": "PRJ-007Pembangunan Ruko Uji (rev)CV Maju BersamaTertunda1 Apr 2026 – 31 Okt 20260%"
+    },
+    {
+      "name": "D1 konfirmasi hapus: judul menyebut kode; deskripsi menyebut akibat (simulasi, kembali setelah dimuat ulang)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D1 konfirmasi hapus: fokus awal di Batal (aksi aman)",
+      "ok": true,
+      "detail": "{\"tag\":\"BUTTON\",\"id\":\"\",\"name\":\"\",\"action\":\"\",\"text\":\"Batal\",\"inDialog\":true}"
+    },
+    {
+      "name": "D1 konfirmasi hapus: tombol konfirmasi menyebut aksinya",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: konfirmasi hapus 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D1 Esc menutup konfirmasi tanpa menghapus; fokus kembali ke tombol Hapus proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D1 Batal tidak menghapus",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D1 saat menghapus: tombol memuat dan Batal terkunci",
+      "ok": true,
+      "detail": "{\"busy\":\"true\",\"cancelDisabled\":true}"
+    },
+    {
+      "name": "D1 setelah hapus: pesan 'Proyek PRJ-007 dihapus (simulasi)' dan keterangan reload",
+      "ok": true,
+      "detail": "Proyek PRJ-007 dihapus (simulasi)Proyek “Pembangunan Ruko Uji (rev)” sudah dihapus dari data demo. Perubahan ini hanya ada di memori tab ini dan proyek muncul kembali setelah halaman dimuat ulang.Kembali ke daftar proyek"
+    },
+    {
+      "name": "D1 setelah hapus: fokus dipindah ke judul keadaan terhapus; wilayah status untuk pembaca layar",
+      "ok": true,
+      "detail": "{\"tag\":\"H1\",\"id\":\"\",\"name\":\"\",\"action\":\"\",\"text\":\"Proyek PRJ-007 dihapus (simulasi)\",\"inDialog\":false}"
+    },
+    {
+      "name": "axe 0 pelanggaran: keadaan terhapus 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D1 daftar setelah hapus: p-007 hilang; p-006 dan seed tetap (6 proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "J9 muat ulang dokumen mengembalikan seed: tepat 5 proyek, tanpa p-006/p-007",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D3 p-001: dialog penolakan menyebut 4 tugas, 3 anggota tim, dan Admin penanggung jawab Siti Aminah",
+      "ok": true,
+      "detail": "[[\"HAS_TASKS\",\"4 tugas masih tercatat di proyek ini.\"],[\"HAS_MEMBERSHIPS\",\"3 anggota tim masih terdaftar di proyek ini.\"],[\"IS_ADMIN_PRINCIPAL\",\"Admin Kantor penanggung jawab masih ditetapkan: Siti Aminah.\"]]"
+    },
+    {
+      "name": "D3 p-001: judul 'Proyek belum bisa dihapus' dan menegaskan tidak ada data yang dihapus",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D3 p-001: dialog penolakan tanpa tombol hapus/konfirmasi (hanya Mengerti dan X Tutup)",
+      "ok": true,
+      "detail": "[\"Mengerti\",\"\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: hapus ditolak 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D3 p-001: fokus kembali ke tombol Hapus proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D3 p-001: setelah penolakan, 5 proyek tetap ada",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D3 p-001: tab Tugas (4) tetap utuh",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D3 p-001: tim tetap 4 orang (Admin principal + 3 anggota)",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "D3 p-002: menyebut 2 tugas, 2 anggota tim, dan Admin penanggung jawab",
+      "ok": true,
+      "detail": "[\"2 tugas masih tercatat di proyek ini.\",\"2 anggota tim masih terdaftar di proyek ini.\",\"Admin Kantor penanggung jawab masih ditetapkan: Siti Aminah.\"]"
+    },
+    {
+      "name": "D4 p-003 setelah diberi 1 tugas: ditolak hanya karena tugas (tanpa anggota/Admin)",
+      "ok": true,
+      "detail": "[[\"HAS_TASKS\",\"1 tugas masih tercatat di proyek ini.\"]]"
+    },
+    {
+      "name": "D4 p-003: proyek dan tugas tetap ada setelah penolakan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D5 proyek runtime dari halaman uji terlihat untuk Owner",
+      "ok": true,
+      "detail": "[\"p-001\",\"p-002\",\"p-003\",\"p-004\",\"p-005\",\"p-006\"]"
+    },
+    {
+      "name": "D5 proyek runtime dengan 1 tugas: ditolak (tidak ada kaskade)",
+      "ok": true,
+      "detail": "[\"1 tugas masih tercatat di proyek ini.\"]"
+    },
+    {
+      "name": "D6 p-004 (seed tanpa keterkaitan) terhapus dengan konfirmasi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D6 daftar: p-004 hilang, empat proyek lain tetap",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D6 tanpa kaskade: p-001 tetap memiliki 4 tugas dan 4 anggota tim",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C2 siti: dialog ubah tanpa kolom Admin Kantor penanggung jawab",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C2 siti: klien dan status berubah di detail; kode PRJ-001 dan Admin Siti tetap",
+      "ok": true,
+      "detail": "Informasi proyekKodePRJ-001StatusTertundaKlienPT. Klien Baru SitiLokasiBalai Kota Batam, Kepulauan RiauPeriode15 Jan 2026 – 30 Jun 2026Admin Kantor penanggung jawabSiti AminahDeskripsiRenovasi total gedung kantor lantai 1-3 termasuk perbaikan sistem kelistrikan, plumbing, dan finishing fasad.45%"
+    },
+    {
+      "name": "C2 siti: progres tidak berubah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C2 siti: tab Tugas (4) dan tim 4 orang dengan Siti sebagai penanggung jawab tetap utuh",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C2 siti: daftar memuat perubahan p-001 (klien, Tertunda) dan p-002 tidak berubah",
+      "ok": true,
+      "detail": "PRJ-001Renovasi Gedung Kantor BatamBalai Kota Batam, Kepulauan RiauPT. Klien Baru SitiTertunda15 Jan 2026 – 30 Jun 202645% | PRJ-002Pembangunan Gudang Logistik Tanjung PinangKec. Sungai Manggis, Kepulauan RiauCV. Jaya Abadi LogisticsBerjalan1 Mar 2026 – 15 Sep 202620%"
+    },
+    {
+      "name": "overflow halaman: dialog tambah 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog tambah 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: hapus ditolak 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: hapus ditolak 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: detail owner 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "F375 emulasi sentuh aktif",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "F375 owner: tombol Tambah proyek >= 44x44px",
+      "ok": true,
+      "detail": "{\"w\":172,\"h\":44}"
+    },
+    {
+      "name": "F375 dialog tambah: semua kontrol dan tombol (termasuk X Tutup) >= 44x44px",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "F375 dialog tambah: font input/select/textarea >= 16px (tanpa zoom otomatis iOS)",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "F375 dialog tambah: dialog muat di lebar layar dan dapat digulir di dalam dialog",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dialog tambah 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog tambah 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "F375 owner: alur tambah proyek selesai dengan sentuhan (PRJ-006), pesan sukses tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "F375 detail: tombol Ubah/Hapus proyek dan Tutup pesan >= 44x44px",
+      "ok": true,
+      "detail": "{\"actions\":[{\"t\":\"Ubah proyek\",\"w\":97,\"h\":44},{\"t\":\"Hapus proyek\",\"w\":106,\"h\":44}],\"close\":{\"w\":44,\"h\":44}}"
+    },
+    {
+      "name": "overflow halaman: detail owner 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: detail owner dengan aksi 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "F375 dialog ubah: semua kontrol >= 44x44px",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog ubah 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "F375 konfirmasi hapus: semua tombol >= 44x44px",
+      "ok": true,
+      "detail": "[{\"t\":\"Batal\",\"w\":293,\"h\":44},{\"t\":\"Ya, hapus proyek\",\"w\":293,\"h\":44},{\"t\":\"Tutup\",\"w\":44,\"h\":44}]"
+    },
+    {
+      "name": "axe 0 pelanggaran: konfirmasi hapus 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "F375 hapus ditolak: tombol Mengerti dan X >= 44x44px",
+      "ok": true,
+      "detail": "[{\"t\":\"Mengerti\",\"w\":293,\"h\":44},{\"t\":\"Tutup\",\"w\":44,\"h\":44}]"
+    },
+    {
+      "name": "F375 hapus ditolak: judul tidak bertumpuk dengan tombol X",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: hapus ditolak 375 mobile",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: hapus ditolak 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "F375 siti: ubah proyek p-002 selesai dengan sentuhan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "F375 ahmad: detail tanpa tombol aksi (Mandor/Anggota Tim tidak CRUD proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: detail ahmad 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "F375 dewi: detail tanpa tombol aksi (Mandor/Anggota Tim tidak CRUD proyek)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: detail dewi 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "F375 ahmad: daftar tanpa tombol Tambah proyek",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "measurements": {
+    "labels form": {
+      "name": {
+        "label": "Nama proyek*",
+        "labels": 1,
+        "required": true,
+        "idUnique": true
+      },
+      "client": {
+        "label": "Klien*",
+        "labels": 1,
+        "required": true,
+        "idUnique": true
+      },
+      "location": {
+        "label": "Lokasi (opsional)",
+        "labels": 1,
+        "required": false,
+        "idUnique": true
+      },
+      "start": {
+        "label": "Tanggal mulai (opsional)",
+        "labels": 1,
+        "required": false,
+        "idUnique": true
+      },
+      "end": {
+        "label": "Tanggal selesai (opsional)",
+        "labels": 1,
+        "required": false,
+        "idUnique": true
+      },
+      "status": {
+        "label": "Status*",
+        "labels": 1,
+        "required": true,
+        "idUnique": true
+      },
+      "description": {
+        "label": "Deskripsi (opsional)",
+        "labels": 1,
+        "required": false,
+        "idUnique": true
+      }
+    },
+    "axe dialog tambah kosong 1280": [],
+    "axe dialog tambah dengan galat 1280": [],
+    "axe dialog ubah 1280": [],
+    "axe konfirmasi hapus 1280": [],
+    "axe keadaan terhapus 1280": [],
+    "axe hapus ditolak 1280": [],
+    "axe dialog tambah 768": [],
+    "axe hapus ditolak 768": [],
+    "geo dialog tambah 375": {
+      "controls": [
+        {
+          "id": "project-_r_5_-name",
+          "tag": "INPUT",
+          "font": 16,
+          "w": 293,
+          "h": 44
+        },
+        {
+          "id": "project-_r_5_-client",
+          "tag": "INPUT",
+          "font": 16,
+          "w": 293,
+          "h": 44
+        },
+        {
+          "id": "project-_r_5_-location",
+          "tag": "INPUT",
+          "font": 16,
+          "w": 293,
+          "h": 44
+        },
+        {
+          "id": "project-_r_5_-start-date",
+          "tag": "INPUT",
+          "font": 16,
+          "w": 293,
+          "h": 44
+        },
+        {
+          "id": "project-_r_5_-end-date",
+          "tag": "INPUT",
+          "font": 16,
+          "w": 293,
+          "h": 44
+        },
+        {
+          "id": "project-_r_5_-status",
+          "tag": "SELECT",
+          "font": 16,
+          "w": 293,
+          "h": 44
+        },
+        {
+          "id": "project-_r_5_-description",
+          "tag": "TEXTAREA",
+          "font": 16,
+          "w": 293,
+          "h": 118
+        },
+        {
+          "id": "Batal",
+          "tag": "BUTTON",
+          "font": 16,
+          "w": 293,
+          "h": 44
+        },
+        {
+          "id": "Simpan proyek",
+          "tag": "BUTTON",
+          "font": 16,
+          "w": 293,
+          "h": 44
+        },
+        {
+          "id": "Tutup",
+          "tag": "BUTTON",
+          "font": 16,
+          "w": 44,
+          "h": 44
+        }
+      ],
+      "dialog": {
+        "left": 16,
+        "right": 359,
+        "height": 768
+      },
+      "scrollable": true
+    },
+    "axe dialog tambah 375 mobile": [],
+    "axe detail owner dengan aksi 375 mobile": [],
+    "axe dialog ubah 375 mobile": [],
+    "axe konfirmasi hapus 375 mobile": [],
+    "axe hapus ditolak 375 mobile": []
+  },
+  "failures": []
+}

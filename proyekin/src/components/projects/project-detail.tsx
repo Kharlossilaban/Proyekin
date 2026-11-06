@@ -1,8 +1,9 @@
 "use client";
 
-// Detail proyek (U4-5) — READ-ONLY. Tanpa buat/ubah/hapus proyek (U4-6), tanpa tambah/keluarkan anggota (U4-7), tanpa
-// detail atau ubah tugas (U4-9/U4-10) dan tanpa tautan ke detail tugas. Tidak ada aksi mutasi untuk role mana pun,
-// termasuk pada proyek Arsip.
+// Detail proyek (U4-5) dengan aksi ubah dan hapus proyek (U4-6). Aksi HANYA muncul untuk role yang berhak menurut
+// `access.ts` (`canEditProject`: Owner atau Admin principal proyek itu; `canDeleteProject`: Owner) dan tidak pernah pada
+// proyek Arsip. Tanpa tambah/keluarkan anggota atau penetapan Admin (U4-7), tanpa detail atau ubah tugas (U4-9/U4-10),
+// dan tanpa tautan ke detail tugas. Mandor, Anggota Tim, dan Guest tidak melihat aksi apa pun.
 //
 // Seluruh aturan akses datang dari `access.ts` (satu sumber); komponen ini tidak menulis ulang aturan role:
 // - boleh membuka proyek ini        → `canViewProject` (via AccessGuard; URL langsung dan navigasi klien sama)
@@ -20,13 +21,16 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { ArrowLeft, CircleCheck, Clock, ListChecks, ListTodo, Lock, TriangleAlert, Users } from "lucide-react";
+import { notFound, usePathname, useRouter, useSearchParams } from "next/navigation";
+import { ArrowLeft, CircleCheck, Clock, ListChecks, ListTodo, Lock, Pencil, TriangleAlert, Users, X } from "lucide-react";
 
 import { AccessGuard } from "@/components/auth/access-guard";
 import { useCurrentUser } from "@/components/auth/use-current-user";
+import { ProjectDeleteDialog } from "@/components/projects/project-delete-dialog";
+import { ProjectFormDialog } from "@/components/projects/project-form-dialog";
 import { TaskCard } from "@/components/tasks/task-card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { DeadlineBadge } from "@/components/ui/deadline-badge";
 import { DemoDataNotice } from "@/components/ui/demo-data-notice";
@@ -38,7 +42,16 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { StatCard } from "@/components/ui/stat-card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs";
-import { canViewOrgUsers, canViewProject, canViewProjectTeam, getVisibleProjectTasks, seesOnlyOwnTasks } from "@/lib/access";
+import {
+  canDeleteProject,
+  canEditProject,
+  canViewOrgUsers,
+  canViewProject,
+  canViewProjectTeam,
+  getVisibleProjectTasks,
+  isProjectReadOnly,
+  seesOnlyOwnTasks,
+} from "@/lib/access";
 import { countOverdue, DEMO_REFERENCE_DATE_LABEL, formatDemoDate } from "@/lib/demo-date";
 import {
   DENY_REASON_LABELS,
@@ -288,6 +301,84 @@ function TeamPanel({ team, showEmail }: { team: readonly TeamEntry[]; showEmail:
   );
 }
 
+/**
+ * Banner sukses (satu pola untuk pesan tambah dan ubah, U4-6). `focusOnMount`: fokus programatik ke banner agar pembaca layar
+ * membacanya setelah navigasi; banner bukan kontrol, jadi cincin fokus global disembunyikan pada elemen ini saja.
+ */
+function SuccessBanner({
+  message,
+  onDismiss,
+  focusOnMount = false,
+  ...props
+}: { message: string; onDismiss: () => void; focusOnMount?: boolean } & Omit<React.ComponentProps<"div">, "children">) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    if (focusOnMount) ref.current?.focus();
+  }, [focusOnMount]);
+  return (
+    <div
+      ref={ref}
+      tabIndex={focusOnMount ? -1 : undefined}
+      style={focusOnMount ? { outline: "none" } : undefined}
+      className="flex items-start gap-2 rounded-md border border-success/30 bg-success-soft p-3 text-sm text-foreground"
+      {...props}
+    >
+      <CircleCheck aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-success" />
+      <p className="min-w-0 flex-1">{message}</p>
+      <Button variant="ghost" size="icon" aria-label="Tutup pesan" onClick={onDismiss} className="-m-2.5 size-11 shrink-0">
+        <X aria-hidden="true" className="size-4" />
+      </Button>
+    </div>
+  );
+}
+
+/** Pesan sukses setelah tambah proyek (U4-6): penanda `?dibuat=1` dari `router.push` di dialog tambah. */
+function CreatedNotice({ project, onDismissed }: { project: Project; onDismissed: () => void }) {
+  const created = useSearchParams().get("dibuat") === "1";
+  const pathname = usePathname();
+  const router = useRouter();
+  if (!created) return null;
+  return (
+    <SuccessBanner
+      role="status"
+      data-slot="created-notice"
+      focusOnMount
+      message={`Proyek ${project.code} berhasil ditambahkan (simulasi).`}
+      onDismiss={() => {
+        router.replace(pathname);
+        onDismissed();
+      }}
+    />
+  );
+}
+
+/** Keadaan setelah proyek dihapus di halaman ini (simulasi). Fokus dipindah ke judul agar pembaca layar tahu hasilnya. */
+function DeletedState({ project }: { project: Project }) {
+  const headingRef = React.useRef<HTMLHeadingElement>(null);
+  React.useEffect(() => {
+    headingRef.current?.focus();
+  }, []);
+  return (
+    <div data-detail="deleted" data-entity="project" data-id={project.id} className="flex min-w-0 flex-col gap-4">
+      <div role="status" className="flex flex-col gap-2">
+        {/* Fokus programatik (tabIndex -1) hanya agar pembaca layar membaca hasilnya; judul bukan kontrol, jadi cincin fokus
+            global disembunyikan di elemen ini saja (aturan :focus-visible di luar layer mengalahkan kelas utilitas). */}
+        <h1 ref={headingRef} tabIndex={-1} style={{ outline: "none" }} className="text-2xl font-semibold tracking-tight text-charcoal">
+          Proyek {project.code} dihapus (simulasi)
+        </h1>
+        <p className="text-sm text-muted-foreground">
+          Proyek “{project.name}” sudah dihapus dari data demo. Perubahan ini hanya ada di memori tab ini dan proyek muncul
+          kembali setelah halaman dimuat ulang.
+        </p>
+      </div>
+      <Link href="/proyek" data-slot="back-link" className={BACK_LINK}>
+        <ArrowLeft aria-hidden="true" className="size-4" />
+        Kembali ke daftar proyek
+      </Link>
+    </div>
+  );
+}
+
 function ProjectDetailView({ project }: { project: Project }) {
   const current = useCurrentUser();
   const data = useMockStore();
@@ -298,10 +389,26 @@ function ProjectDetailView({ project }: { project: Project }) {
   const showTeam = actor ? canViewProjectTeam(actor, project, data) : false;
   const showEmail = actor ? canViewOrgUsers(actor) : false;
   const ownOnly = seesOnlyOwnTasks(actor);
-  const readOnlyArchive = project.status === "ARCHIVED";
+  const readOnlyArchive = isProjectReadOnly(project);
+  const [savedNotice, setSavedNotice] = React.useState<string | null>(null);
+  const rootRef = React.useRef<HTMLDivElement>(null);
+  // Setelah pesan ditutup, tombolnya hilang: pindahkan fokus ke tab terpilih (titik baca berikutnya), bukan jatuh ke <body>.
+  const focusSelectedTab = () =>
+    requestAnimationFrame(() =>
+      rootRef.current?.querySelector<HTMLElement>('[data-slot="tabs-tab"][aria-selected="true"]')?.focus(),
+    );
+  // Pesan "disimpan" dikosongkan dulu lalu diisi pada frame berikutnya, agar simpan kedua dengan teks sama tetap diumumkan.
+  const announceSaved = () => {
+    setSavedNotice(null);
+    requestAnimationFrame(() => setSavedNotice("Perubahan proyek disimpan (simulasi)."));
+  };
+  // Aksi hanya untuk role berhak (access.ts); sebelum sesi diketahui tidak ada aksi.
+  const showEdit = canEditProject(actor, project);
+  const showDelete = canDeleteProject(actor, project);
 
   return (
     <div
+      ref={rootRef}
       data-detail="found"
       data-entity="project"
       data-id={project.id}
@@ -328,9 +435,45 @@ function ProjectDetailView({ project }: { project: Project }) {
                 Hanya baca
               </span>
             ) : null}
+            {showEdit ? (
+              <ProjectFormDialog
+                mode="edit"
+                project={project}
+                onSaved={announceSaved}
+                trigger={
+                  <Button variant="outline" size="touch" data-action="edit-project">
+                    <Pencil aria-hidden="true" className="size-4" />
+                    {/* Di bawah sm cukup "Ubah" agar aksi muat satu baris (isi tab tetap di layar pertama 375px); nama aksesibel tetap lengkap. */}
+                    <span>
+                      Ubah<span className="sr-only sm:not-sr-only"> proyek</span>
+                    </span>
+                  </Button>
+                }
+              />
+            ) : null}
+            {showDelete ? <ProjectDeleteDialog project={project} /> : null}
           </>
         }
       />
+
+      <React.Suspense fallback={null}>
+        <CreatedNotice project={project} onDismissed={focusSelectedTab} />
+      </React.Suspense>
+      {/* Pengumum selalu ada (sr-only, tidak memakan ruang); hanya isinya yang berubah, sehingga pembaca layar mengumumkan
+          pesan. Banner visual di bawahnya sengaja tanpa role agar tidak diumumkan dua kali. */}
+      <p role="status" data-slot="saved-notice-region" className="sr-only">
+        {savedNotice ?? ""}
+      </p>
+      {savedNotice ? (
+        <SuccessBanner
+          data-slot="saved-notice"
+          message={savedNotice}
+          onDismiss={() => {
+            setSavedNotice(null);
+            focusSelectedTab();
+          }}
+        />
+      ) : null}
 
       {readOnlyArchive ? (
         <div
@@ -384,7 +527,14 @@ function ProjectDetailView({ project }: { project: Project }) {
 function ProjectDetail({ projectId }: { projectId: string }) {
   const data = useMockStore();
   const project = data.projects.find((p) => p.id === projectId);
-  if (!project) notFound();
+  // Proyek yang pernah tampil lalu hilang dari store = baru dihapus di halaman ini (bukan ID tidak dikenal). Pola
+  // "simpan nilai sebelumnya" resmi React: setState saat render pada komponen yang sama.
+  const [lastSeen, setLastSeen] = React.useState<Project | null>(null);
+  if (project && lastSeen !== project) setLastSeen(project);
+  if (!project) {
+    if (lastSeen) return <DeletedState project={lastSeen} />;
+    notFound();
+  }
 
   return (
     <AccessGuard allow={(actor, store) => canViewProject(actor, project, store)}>

@@ -2,7 +2,7 @@
 // laporan/dokumen, status tenggat, dan alasan penolakan akses UI. Jangan menulis ulang peta ini di komponen.
 
 import type { DeadlineState } from "@/lib/demo-date";
-import type { DenyReason } from "@/lib/access";
+import type { DenyReason, ProjectDeleteBlockerReason } from "@/lib/access";
 import type { ProjectStatus, Role, TaskPriority, TaskStatus } from "@/types";
 
 /** Sama dengan varian `Badge`. */
@@ -107,6 +107,23 @@ export const DENY_REASON_LABELS: Record<DenyReason, string> = {
   IS_ADMIN_PRINCIPAL: "Masih menjadi Admin Kantor principal proyek. Ganti Admin principal terlebih dahulu.",
   PROTECTED_ACCOUNT: "Akun Owner tidak dapat diubah atau dihapus pada tahap ini.",
 };
+
+/**
+ * Alasan proyek tidak dapat dihapus (U4-6), berbeda dari `DENY_REASON_LABELS` yang ditulis untuk anggota/akun.
+ * `adminName` hanya untuk Admin Kantor penanggung jawab. Tidak ada penghapusan berantai.
+ */
+export function getProjectDeleteBlockerText(reason: ProjectDeleteBlockerReason, count: number, adminName?: string): string {
+  switch (reason) {
+    case "HAS_TASKS":
+      return `${count} tugas masih tercatat di proyek ini.`;
+    case "HAS_MEMBERSHIPS":
+      return `${count} anggota tim masih terdaftar di proyek ini.`;
+    case "IS_ADMIN_PRINCIPAL":
+      return adminName
+        ? `Admin Kantor penanggung jawab masih ditetapkan: ${adminName}.`
+        : "Admin Kantor penanggung jawab masih ditetapkan.";
+  }
+}
 
 // Fungsi per domain. Menggantikan `getStatusLabel()` lama di utils.ts, yang selalu memakai peta proyek apa pun
 // domainnya (label tugas "TODO" jatuh ke "TODO") dan mengabaikan parameter `lang`.

@@ -1,0 +1,91 @@
+
+> proyekin@0.1.0 check:u4-project-crud
+> node scripts/check-u4-project-crud.mjs C:\Users\PONGO\AppData\Local\Temp/red
+
+ok:   A budi: daftar menampilkan 5 proyek dan satu-satunya tombol adalah Tambah proyek ["Tambah proyek"]
+ok:   A siti: daftar tanpa tombol Tambah proyek atau aksi lain []
+ok:   A ahmad: daftar tanpa tombol Tambah proyek atau aksi lain []
+ok:   A eko: daftar tanpa tombol Tambah proyek atau aksi lain []
+ok:   A dewi: daftar tanpa tombol Tambah proyek atau aksi lain []
+ok:   A budi p-001: aksi di header detail = Ubah proyek, Hapus proyek ["Ubah proyek","Hapus proyek"]
+ok:   A budi p-002: aksi di header detail = Ubah proyek, Hapus proyek ["Ubah proyek","Hapus proyek"]
+ok:   A budi p-003: aksi di header detail = Ubah proyek, Hapus proyek ["Ubah proyek","Hapus proyek"]
+ok:   A budi p-004: aksi di header detail = Ubah proyek, Hapus proyek ["Ubah proyek","Hapus proyek"]
+FAIL: A budi p-005: aksi di header detail = tidak ada ["Hapus proyek"]
+FAIL: A siti p-001: aksi di header detail = Ubah proyek ["Ubah proyek","Hapus proyek"]
+FAIL: A siti p-002: aksi di header detail = Ubah proyek ["Ubah proyek","Hapus proyek"]
+FAIL: A ahmad p-001: aksi di header detail = tidak ada ["Hapus proyek"]
+FAIL: A ahmad p-002: aksi di header detail = tidak ada ["Hapus proyek"]
+FAIL: A eko p-001: aksi di header detail = tidak ada ["Hapus proyek"]
+FAIL: A eko p-002: aksi di header detail = tidak ada ["Hapus proyek"]
+FAIL: A dewi p-001: aksi di header detail = tidak ada ["Hapus proyek"]
+ok:   B dialog tambah: judul 'Tambah proyek' dan deskripsi menyebut kode otomatis 
+ok:   B dialog tambah: fokus awal di dalam dialog pada kolom Nama proyek {"tag":"INPUT","id":"project-_r_5_-name","name":"name","action":"","text":"","inDialog":true}
+ok:   B dialog tambah: setiap kolom punya tepat satu label tertaut dan id unik; wajib = Nama proyek, Klien, Status; sisanya berlabel '(opsional)' {"name":{"label":"Nama proyek*","labels":1,"required":true,"idUnique":true},"client":{"label":"Klien*","labels":1,"required":true,"idUnique":true},"location":{"label":"Lokasi (opsional)","labels":1,"required":false,"idUnique":true},"start":{"label":"Tanggal mulai (opsional)","labels":1,"required":false,"idUnique":true},"end":{"label":"Tanggal selesai (opsional)","labels":1,"required":false,"idUnique":true},"status":{"label":"Status*","labels":1,"required":true,"idUnique":true},"description":{"label":"Deskripsi (opsional)","labels":1,"required":false,"idUnique":true}}
+ok:   B dialog tambah: status Draf, Berjalan, Tertunda, Selesai (tanpa Arsip), bawaan Draf {"options":[["DRAFT","Draf"],["ON_PROGRESS","Berjalan"],["PAUSED","Tertunda"],["COMPLETED","Selesai"]],"value":"DRAFT"}
+ok:   B dialog tambah: tanpa kolom penetapan Admin Kantor (itu U4-7) Nama proyek*Klien*Lokasi (opsional)Tanggal mulai (opsional)Tanggal selesai (opsional)Status*DrafBerjalanTertundaSelesaiP
+ok:   B dialog tambah: catatan data demo menyebut memori tab, hilang saat dimuat ulang, tanpa server Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.
+ok:   B dialog tambah: tanpa kata anggaran atau nominal Rp 
+ok:   B dialog tambah: tanpa kata Tukang 
+ok:   axe 0 pelanggaran: dialog tambah kosong 1280 
+ok:   overflow halaman: dialog tambah 1280 1280 <= 1280
+ok:   B validasi kosong: Nama dan Klien menolak, galat tertaut aria-describedby + aria-invalid {"eName":{"invalid":"true","message":"Nama proyek wajib diisi."},"eClient":{"invalid":"true","message":"Nama klien wajib diisi."}}
+ok:   B validasi kosong: kolom opsional tidak menolak 
+ok:   B validasi kosong: fokus pindah ke galat pertama (Nama proyek) 
+ok:   B validasi kosong: dialog tetap terbuka dan belum ada proyek baru 
+ok:   axe 0 pelanggaran: dialog tambah dengan galat 1280 
+ok:   B validasi: nama 2 karakter ditolak (minimal 3); galat Klien hilang setelah diisi 
+ok:   B validasi: tanggal selesai sebelum mulai ditolak dan fokus ke Tanggal selesai 
+ok:   B Esc menutup dialog; fokus kembali ke tombol Tambah proyek; tidak ada proyek baru {"tag":"BUTTON","id":"base-ui-_r_1_","name":"","action":"create-project","text":"Tambah proyek","inDialog":false}
+ok:   B dialog dibuka ulang: form bersih (isian sebelumnya tidak bocor) 
+ok:   B tombol Batal menutup dialog tanpa membuat proyek 
+ok:   B keyboard: Enter pada tombol Tambah proyek membuka dialog 
+ok:   B simpan: tombol memuat (aria-busy) dan kolom terkunci selama menyimpan; klik ganda tidak dikirim dua kali {"busy":"true","disabledInputs":true}
+ok:   B hasil: router.push ke detail proyek baru dengan penanda ?dibuat=1 
+ok:   B hasil: judul dan kode otomatis PRJ-006 {"h1":"Gudang Uji Minimal","eyebrow":"PRJ-006"}
+ok:   B hasil: pesan sukses menyebut kode dan (simulasi) Proyek PRJ-006 berhasil ditambahkan (simulasi).
+ok:   B hasil: pesan sukses berperan status (diumumkan pembaca layar) 
+ok:   B hasil: ringkasan memuat klien, status Draf, dan kolom opsional kosong tampil '—' Informasi proyekKodePRJ-006StatusDrafKlienPT Uji MinimalLokasi—Periode—Admin Kantor penanggung jawabBelum ditetapkanDeskripsi—0%
+ok:   B hasil: progres awal 0% dan tab Tugas (0) 
+ok:   B hasil: Owner melihat aksi Ubah proyek dan Hapus proyek pada proyek baru 
+ok:   B detail proyek baru: tanpa kata anggaran atau nominal Rp 
+ok:   B detail proyek baru: tanpa kata Tukang 
+ok:   B tombol Tutup pesan menghapus penanda ?dibuat=1 dan pesan 
+ok:   B daftar (navigasi klien): proyek baru terlihat; tepat 6 proyek (tidak ada duplikat dari klik ganda) ["p-001","p-002","p-003","p-004","p-005","p-006"]
+ok:   B daftar: ringkasan '6 proyek' dan baris PRJ-006 memuat nama, klien, status Draf 6 proyek dalam lingkup akses Anda. | PRJ-006Gudang Uji MinimalPT Uji MinimalDraf—0%
+ok:   B mengetik langsung di Nama proyek memperbarui kolom terkendali 
+ok:   B hasil lengkap: kode PRJ-007 berurutan, nama, klien, lokasi, periode, status Berjalan, deskripsi Informasi proyekKodePRJ-007StatusBerjalanKlienCV Maju BersamaLokasiTanjung PinangPeriode1 Apr 2026 – 31 Okt 2026Admin Kantor penanggung jawabBelum ditetapkanDeskripsiRuko dua lantai untuk uji.0%
+ok:   C dialog ubah: judul 'Ubah proyek', tombol 'Simpan perubahan', deskripsi menyebut kode/tim/tugas tidak berubah 
+ok:   C dialog ubah: data awal terisi dari proyek {"name":"Pembangunan Ruko Uji","client":"CV Maju Bersama","location":"Tanjung Pinang","start":"2026-04-01","end":"2026-10-31","status":"ON_PROGRESS","description":"Ruko dua lantai untuk uji."}
+ok:   C dialog ubah: pilihan status tanpa Arsip 
+ok:   axe 0 pelanggaran: dialog ubah 1280 
+ok:   C validasi ubah: nama dikosongkan ditolak; data proyek belum berubah 
+ok:   C Batal: judul proyek tetap sama 
+ok:   C Enter di kolom mengirim form (keyboard) 
+ok:   C setelah simpan: fokus kembali ke tombol Ubah proyek {"tag":"BUTTON","id":"base-ui-_r_1h_","name":"","action":"edit-project","text":"Ubah proyek","inDialog":false}
+ok:   C setelah simpan: pesan 'Perubahan proyek disimpan (simulasi).' berperan status Perubahan proyek disimpan (simulasi).
+ok:   C detail diperbarui; kode PRJ-007 dan klien tetap; lokasi dikosongkan tampil '—'; status Tertunda Informasi proyekKodePRJ-007StatusTertundaKlienCV Maju BersamaLokasi—Periode1 Apr 2026 – 31 Okt 2026Admin Kantor penanggung jawabBelum ditetapkanDeskripsiRuko dua lantai untuk uji.0%
+ok:   C daftar diperbarui konsisten dengan detail (nama baru, status Tertunda) PRJ-007Pembangunan Ruko Uji (rev)CV Maju BersamaTertunda1 Apr 2026 – 31 Okt 20260%
+ok:   D1 konfirmasi hapus: judul menyebut kode; deskripsi menyebut akibat (simulasi, kembali setelah dimuat ulang) 
+ok:   D1 konfirmasi hapus: fokus awal di Batal (aksi aman) {"tag":"BUTTON","id":"","name":"","action":"","text":"Batal","inDialog":true}
+ok:   D1 konfirmasi hapus: tombol konfirmasi menyebut aksinya 
+ok:   axe 0 pelanggaran: konfirmasi hapus 1280 
+ok:   D1 Esc menutup konfirmasi tanpa menghapus; fokus kembali ke tombol Hapus proyek 
+ok:   D1 Batal tidak menghapus 
+ok:   D1 saat menghapus: tombol memuat dan Batal terkunci {"busy":"true","cancelDisabled":true}
+ok:   D1 setelah hapus: pesan 'Proyek PRJ-007 dihapus (simulasi)' dan keterangan reload Proyek PRJ-007 dihapus (simulasi)Proyek “Pembangunan Ruko Uji (rev)” sudah dihapus dari data demo. Perubahan ini hanya ada di memori tab ini dan proyek muncul kembali setelah halaman dimuat ulang.Kembali ke daftar proyek
+ok:   D1 setelah hapus: fokus dipindah ke judul keadaan terhapus; wilayah status untuk pembaca layar {"tag":"H1","id":"","name":"","action":"","text":"Proyek PRJ-007 dihapus (simulasi)","inDialog":false}
+ok:   axe 0 pelanggaran: keadaan terhapus 1280 
+ok:   D1 daftar setelah hapus: p-007 hilang; p-006 dan seed tetap (6 proyek) 
+ok:   J9 muat ulang dokumen mengembalikan seed: tepat 5 proyek, tanpa p-006/p-007 
+file:///C:/proyekin_project/proyekin/scripts/lib/cdp.mjs:33
+  throw new Error(`Timeout: ${label}`);
+        ^
+
+Error: Timeout: dialog blocked terbuka
+    at waitFor (file:///C:/proyekin_project/proyekin/scripts/lib/cdp.mjs:33:9)
+    at async openDialog (file:///C:/proyekin_project/proyekin/scripts/check-u4-project-crud.mjs:184:3)
+    at async file:///C:/proyekin_project/proyekin/scripts/check-u4-project-crud.mjs:425:1
+
+Node.js v24.18.0
+EXIT=1

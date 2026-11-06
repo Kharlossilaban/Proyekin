@@ -58,7 +58,8 @@ function DialogContent({
           <DialogPrimitive.Close
             aria-label="Tutup"
             className={cn(
-              "absolute top-3 right-3 inline-flex size-9 items-center justify-center rounded-md text-graphite transition-colors",
+              // Target sentuh 44px di bawah lg (alur mobile); lg ke atas kembali ke ukuran bawaan U1 (36px).
+              "absolute top-3 right-3 inline-flex size-11 items-center justify-center rounded-md text-graphite transition-colors lg:size-9",
               "hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
             )}
           >
@@ -74,7 +75,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="dialog-header"
-      className={cn("flex flex-col gap-1.5 pr-8", className)}
+      className={cn("flex flex-col gap-1.5 pr-14 lg:pr-8", className)}
       {...props}
     />
   );

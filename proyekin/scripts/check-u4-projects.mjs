@@ -179,7 +179,9 @@ for (const p of PERSONAS) {
   rec(`${p.key}: ringkasan jumlah "${p.projects.length} proyek"`, desc?.startsWith(`${p.projects.length} proyek`), desc);
   rec(`${p.key}: DemoDataNotice tampil dan tidak mengklaim data tersimpan`, await evaluate(`(() => { const n = document.querySelector('[data-slot="demo-data-notice"]'); return !!n && n.checkVisibility() && n.textContent.includes("memori tab ini") && n.textContent.includes("Tidak ada data yang dikirim atau disimpan ke server"); })()`));
   const noCrud = await evaluate(`[...document.querySelectorAll('[data-slot="project-list"] button')].filter((b) => b.checkVisibility()).map((b) => b.textContent.trim())`);
-  rec(`${p.key}: tidak ada tombol bisnis (tambah/ubah/hapus) di daftar`, noCrud.length === 0, JSON.stringify(noCrud));
+  // U4-6: hanya Owner mendapat tombol "Tambah proyek" di daftar; ubah/hapus tidak ada di daftar untuk siapa pun (ada di detail).
+  const expectedList = p.key === "budi" ? ["Tambah proyek"] : [];
+  rec(`${p.key}: tombol di daftar hanya yang berhak (${expectedList.join(", ") || "tidak ada"}); tanpa ubah/hapus`, same(noCrud, expectedList), JSON.stringify(noCrud));
   const listHits = findForbidden(await evaluate(`document.querySelector('[data-slot="project-list"]').textContent`), UI_FORBIDDEN);
   rec(`${p.key}: anggaran tidak ditampilkan`, listHits.length === 0, listHits.join(" | "));
   for (const id of p.projects) {

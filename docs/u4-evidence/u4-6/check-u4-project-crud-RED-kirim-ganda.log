@@ -1,0 +1,53 @@
+
+> proyekin@0.1.0 check:u4-project-crud
+> node scripts/check-u4-project-crud.mjs ../docs/u4-evidence/u4-6
+
+ok:   A budi: daftar menampilkan 5 proyek dan satu-satunya tombol adalah Tambah proyek ["Tambah proyek"]
+ok:   A siti: daftar tanpa tombol Tambah proyek atau aksi lain []
+ok:   A ahmad: daftar tanpa tombol Tambah proyek atau aksi lain []
+ok:   A eko: daftar tanpa tombol Tambah proyek atau aksi lain []
+ok:   A dewi: daftar tanpa tombol Tambah proyek atau aksi lain []
+ok:   A budi p-001: aksi di header detail = Ubah proyek, Hapus proyek ["Ubah proyek","Hapus proyek"]
+ok:   A budi p-002: aksi di header detail = Ubah proyek, Hapus proyek ["Ubah proyek","Hapus proyek"]
+ok:   A budi p-003: aksi di header detail = Ubah proyek, Hapus proyek ["Ubah proyek","Hapus proyek"]
+ok:   A budi p-004: aksi di header detail = Ubah proyek, Hapus proyek ["Ubah proyek","Hapus proyek"]
+ok:   A budi p-005: aksi di header detail = tidak ada []
+ok:   A siti p-001: aksi di header detail = Ubah proyek ["Ubah proyek"]
+ok:   A siti p-002: aksi di header detail = Ubah proyek ["Ubah proyek"]
+ok:   A ahmad p-001: aksi di header detail = tidak ada []
+ok:   A ahmad p-002: aksi di header detail = tidak ada []
+ok:   A eko p-001: aksi di header detail = tidak ada []
+ok:   A eko p-002: aksi di header detail = tidak ada []
+ok:   A dewi p-001: aksi di header detail = tidak ada []
+ok:   B dialog tambah: judul 'Tambah proyek' dan deskripsi menyebut kode otomatis 
+ok:   B dialog tambah: fokus awal di dalam dialog pada kolom Nama proyek {"tag":"INPUT","id":"project-name","action":"","text":"","inDialog":true}
+ok:   B dialog tambah: setiap kolom berlabel; wajib = Nama proyek, Klien, Status; sisanya (opsional) berlabel '(opsional)' {"project-name":{"label":"Nama proyek*","required":true},"project-client":{"label":"Klien*","required":true},"project-location":{"label":"Lokasi (opsional)","required":false},"project-start-date":{"label":"Tanggal mulai (opsional)","required":false},"project-end-date":{"label":"Tanggal selesai (opsional)","required":false},"project-status":{"label":"Status*","required":true},"project-description":{"label":"Deskripsi (opsional)","required":false}}
+ok:   B dialog tambah: status Draf, Berjalan, Tertunda, Selesai (tanpa Arsip), bawaan Draf {"options":[["DRAFT","Draf"],["ON_PROGRESS","Berjalan"],["PAUSED","Tertunda"],["COMPLETED","Selesai"]],"value":"DRAFT"}
+ok:   B dialog tambah: tanpa kolom penetapan Admin Kantor (itu U4-7) Nama proyek*Klien*Lokasi (opsional)Tanggal mulai (opsional)Tanggal selesai (opsional)Status*DrafBerjalanTertundaSelesaiP
+ok:   B dialog tambah: catatan data demo menyebut memori tab, hilang saat dimuat ulang, tanpa server Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.
+ok:   B dialog tambah: tanpa kata anggaran atau nominal Rp 
+ok:   B dialog tambah: tanpa kata Tukang 
+ok:   axe 0 pelanggaran: dialog tambah kosong 1280 
+ok:   overflow halaman: dialog tambah 1280 1280 <= 1280
+ok:   B validasi kosong: Nama dan Klien menolak, galat tertaut aria-describedby + aria-invalid {"eName":{"invalid":"true","message":"Nama proyek wajib diisi."},"eClient":{"invalid":"true","message":"Nama klien wajib diisi."}}
+ok:   B validasi kosong: kolom opsional tidak menolak 
+ok:   B validasi kosong: fokus pindah ke galat pertama (Nama proyek) 
+ok:   B validasi kosong: dialog tetap terbuka dan belum ada proyek baru 
+ok:   axe 0 pelanggaran: dialog tambah dengan galat 1280 
+ok:   B validasi: nama 2 karakter ditolak (minimal 3); galat Klien hilang setelah diisi 
+ok:   B validasi: tanggal selesai sebelum mulai ditolak dan fokus ke Tanggal selesai 
+ok:   B Esc menutup dialog; fokus kembali ke tombol Tambah proyek; tidak ada proyek baru {"tag":"BUTTON","id":"base-ui-_r_1_","action":"create-project","text":"Tambah proyek","inDialog":false}
+ok:   B dialog dibuka ulang: form bersih (isian sebelumnya tidak bocor) 
+ok:   B tombol Batal menutup dialog tanpa membuat proyek 
+ok:   B keyboard: Enter pada tombol Tambah proyek membuka dialog 
+FAIL: B simpan: tombol memuat (aria-busy) dan kolom terkunci selama menyimpan; klik ganda tidak dikirim dua kali {"busy":null,"disabledInputs":false}
+file:///C:/proyekin_project/proyekin/scripts/lib/cdp.mjs:33
+  throw new Error(`Timeout: ${label}`);
+        ^
+
+Error: Timeout: navigasi ke detail proyek baru
+    at waitFor (file:///C:/proyekin_project/proyekin/scripts/lib/cdp.mjs:33:9)
+    at async file:///C:/proyekin_project/proyekin/scripts/check-u4-project-crud.mjs:292:1
+
+Node.js v24.18.0
+EXIT=1

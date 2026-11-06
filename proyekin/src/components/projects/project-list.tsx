@@ -1,7 +1,7 @@
 "use client";
 
-// Daftar proyek (U4-4). Hanya DAFTAR: tanpa buat/ubah/hapus proyek, tanpa kelola anggota, tanpa detail final.
-// Lingkup per role diputuskan SEPENUHNYA oleh `getVisibleProjects` (access.ts, G8): komponen ini tidak menulis ulang
+// Daftar proyek (U4-4) dengan tombol "Tambah proyek" (U4-6) hanya untuk role yang `canCreateProject` (Owner). Ubah dan
+// hapus ada di halaman detail. Tanpa kelola anggota. Lingkup per role diputuskan SEPENUHNYA oleh `getVisibleProjects` (access.ts, G8): komponen ini tidak menulis ulang
 // aturan role. Representasi UI di atas data mock, BUKAN otorisasi (lihat access-guard.tsx untuk keterbatasannya).
 //
 // Tampilan: kartu satu kolom di bawah `lg` (mobile-first, seluruh kartu adalah satu target sentuh ≥44px) dan tabel
@@ -9,10 +9,12 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ChevronRight, FolderKanban, Lock } from "lucide-react";
+import { ChevronRight, FolderKanban, Lock, Plus } from "lucide-react";
 
 import { useCurrentUser } from "@/components/auth/use-current-user";
+import { ProjectFormDialog } from "@/components/projects/project-form-dialog";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { DemoDataNotice } from "@/components/ui/demo-data-notice";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -20,13 +22,11 @@ import { PageHeader } from "@/components/ui/page-header";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { getVisibleProjects } from "@/lib/access";
+import { canCreateProject, getVisibleProjects, isProjectReadOnly } from "@/lib/access";
 import { DENY_REASON_LABELS, PROJECT_STATUS_LABELS, PROJECT_STATUS_TONES } from "@/lib/labels";
 import { formatProjectPeriod } from "@/lib/project-relations";
 import { useMockStore } from "@/lib/use-mock-store";
 import type { Project } from "@/types";
-
-const isReadOnly = (project: Project): boolean => project.status === "ARCHIVED";
 
 const detailHref = (project: Project): string => `/proyek/${project.id}`;
 
@@ -39,7 +39,7 @@ function StatusCell({ project }: { project: Project }) {
       <Badge variant={PROJECT_STATUS_TONES[project.status]} dot>
         {PROJECT_STATUS_LABELS[project.status]}
       </Badge>
-      {isReadOnly(project) ? (
+      {isProjectReadOnly(project) ? (
         <span className="inline-flex items-center gap-1 text-xs text-muted-foreground" title={DENY_REASON_LABELS.ARCHIVED}>
           <Lock aria-hidden="true" className="size-3" />
           Hanya baca
@@ -148,6 +148,19 @@ function ProjectList() {
       <PageHeader
         title="Proyek"
         description={projects ? `${projects.length} proyek dalam lingkup akses Anda.` : "Daftar proyek konstruksi."}
+        actions={
+          current.status === "ready" && canCreateProject(current.user) ? (
+            <ProjectFormDialog
+              mode="create"
+              trigger={
+                <Button size="touch" data-action="create-project">
+                  <Plus aria-hidden="true" className="size-4" />
+                  Tambah proyek
+                </Button>
+              }
+            />
+          ) : undefined
+        }
       />
       <DemoDataNotice />
 

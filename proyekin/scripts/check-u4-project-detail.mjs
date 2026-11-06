@@ -198,13 +198,16 @@ const teamText = (kind, id) => evaluate(`(() => { const e = document.querySelect
 const stat = (key) => evaluate(`(() => { const c = document.querySelector('[data-stat="${key}"]'); return c ? { value: c.querySelector("p.text-2xl")?.textContent.trim(), note: c.querySelector("p.text-xs")?.textContent.trim() ?? null } : null; })()`);
 
 // Pengecekan bersama untuk satu halaman detail yang siap (sesi 1280 desktop atau viewport lain).
-async function checkReadOnly(label) {
+// U4-6: aksi ubah/hapus hanya untuk role berhak. Daftar tombol yang diharapkan ditulis sebagai literal (bukan dari access.ts):
+// Owner = Ubah proyek + Hapus proyek (kecuali Arsip), Admin principal = Ubah proyek, Mandor/Anggota Tim = tidak ada.
+const expectedActions = (p, id) => (id === "p-005" ? [] : p.key === "budi" ? ["Ubah proyek", "Hapus proyek"] : p.key === "siti" ? ["Ubah proyek"] : []);
+async function checkReadOnly(label, actions = []) {
   const info = await evaluate(`(() => ({
     buttons: [...document.querySelectorAll("main button")].filter((b) => !b.closest('[role="tablist"]')).map((b) => b.textContent.trim()),
     controls: document.querySelectorAll("main input, main select, main textarea, main form").length,
     links: [...document.querySelectorAll("main a")].map((a) => a.getAttribute("href")),
   }))()`);
-  rec(`${label}: read-only (tanpa tombol di luar tab, tanpa form/input)`, info.buttons.length === 0 && info.controls === 0, JSON.stringify(info.buttons));
+  rec(`${label}: tombol di luar tab hanya aksi yang berhak (${actions.join(", ") || "tidak ada"}); tanpa form/input saat dialog tertutup`, same(info.buttons, actions) && info.controls === 0, JSON.stringify(info.buttons));
   rec(`${label}: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas)`, same([...new Set(info.links)], ["/proyek"]), JSON.stringify(info.links));
   const hits = findForbidden(await mainText(), UI_FORBIDDEN);
   rec(`${label}: tanpa kata anggaran atau nominal rupiah`, hits.length === 0, hits.join(" | "));
@@ -258,7 +261,7 @@ for (const p of PERSONAS) {
     const notice = await evaluate(`(() => { const n = document.querySelector('[data-slot="demo-data-notice"]'); return n && n.checkVisibility() ? n.textContent : null; })()`);
     rec(`${tag}: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini)`, !!notice && notice.includes("21 Maret 2026") && notice.includes("bukan tanggal hari ini") && notice.includes("memori tab ini"), notice ?? "tidak tampil");
     rec(`${tag}: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama)`, await evaluate(`!!(document.querySelector('[data-slot="tabs"]').compareDocumentPosition(document.querySelector('[data-slot="demo-data-notice"]')) & Node.DOCUMENT_POSITION_FOLLOWING)`));
-    await checkReadOnly(`${tag} ringkasan`);
+    await checkReadOnly(`${tag} ringkasan`, expectedActions(p, id));
     if (id === "p-005") {
       const arch = await evaluate(`(() => { const n = document.querySelector('[data-slot="archived-note"]'); return n && n.checkVisibility() ? n.textContent.trim() : null; })()`);
       rec(`${tag}: proyek Arsip ditandai Hanya baca dan catatan hanya baca tampil`, !!arch && arch.includes("Proyek berstatus Arsip bersifat hanya baca.") && (await mainText()).includes("Hanya baca"), arch ?? "tidak tampil");
@@ -293,7 +296,7 @@ for (const p of PERSONAS) {
       const text = await mainText();
       rec(`${tag}: Anggota Tim tidak melihat judul tugas milik orang lain`, others.every((s) => !text.includes(s)) && !text.includes("TSK-001") && !text.includes("TSK-003"));
     }
-    await checkReadOnly(`${tag} tugas`);
+    await checkReadOnly(`${tag} tugas`, expectedActions(p, id));
     if (["budi p-001", "dewi p-001"].includes(tag)) await shot(`${p.key}-${id}-tugas-1280`);
     await checkAxe(`${tag} tugas 1280`);
     await checkOverflow(`${tag} tugas 1280`);
@@ -319,7 +322,7 @@ for (const p of PERSONAS) {
         const tw = await evaluate(`(() => { const c = document.querySelector('[data-slot="project-team-table"] [data-slot="table-container"]'); return c ? { scroll: c.scrollWidth, client: c.clientWidth } : null; })()`);
         rec(`${tag}: tabel tim muat tanpa gulir horizontal di 1280`, !!tw && tw.scroll <= tw.client + 1, JSON.stringify(tw));
       }
-      await checkReadOnly(`${tag} tim`);
+      await checkReadOnly(`${tag} tim`, expectedActions(p, id));
       if (["budi p-001", "ahmad p-001"].includes(tag)) await shot(`${p.key}-${id}-tim-1280`);
       await checkAxe(`${tag} tim 1280`);
       await checkOverflow(`${tag} tim 1280`);

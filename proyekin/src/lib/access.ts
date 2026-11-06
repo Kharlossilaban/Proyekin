@@ -171,6 +171,41 @@ export const canEditProject = (actor: Actor, project: Project): boolean => !isAr
 /** Owner saja (J3). Proyek Arsip tidak dapat dihapus (G7). */
 export const canDeleteProject = (actor: Actor, project: Project): boolean => !isArchived(project) && isOwner(actor);
 
+/** G7: proyek berstatus Arsip hanya baca. Dipakai tampilan dan store agar tidak ada salinan aturan ini. */
+export const isProjectReadOnly = (project: Project): boolean => isArchived(project);
+
+/** Keterkaitan yang menghalangi penghapusan proyek (U4-6). Tidak ada penghapusan berantai. */
+export type ProjectDeleteBlockerReason = Extract<DenyReason, "HAS_TASKS" | "HAS_MEMBERSHIPS" | "IS_ADMIN_PRINCIPAL">;
+
+export interface ProjectDeleteBlocker {
+  reason: ProjectDeleteBlockerReason;
+  /** Jumlah data terkait (tugas, anggota; 1 untuk Admin principal). */
+  count: number;
+}
+
+/**
+ * ATURAN MUTLAK (pemilik, U4-6): proyek yang masih memiliki satu atau lebih Task, ProjectMember, atau Admin principal
+ * (`adminId`) TIDAK boleh dihapus. Tidak ada kaskade: data terkait tidak pernah ikut terhapus. Daftar kosong = tidak
+ * ada penghalang. Urutan tetap: tugas, anggota, Admin principal.
+ */
+export function getProjectDeleteBlockers(project: Project, data: AccessData): ProjectDeleteBlocker[] {
+  const blockers: ProjectDeleteBlocker[] = [];
+  const tasks = data.tasks.filter((t) => t.projectId === project.id).length;
+  const members = data.members.filter((m) => m.projectId === project.id).length;
+  if (tasks > 0) blockers.push({ reason: "HAS_TASKS", count: tasks });
+  if (members > 0) blockers.push({ reason: "HAS_MEMBERSHIPS", count: members });
+  if (project.adminId) blockers.push({ reason: "IS_ADMIN_PRINCIPAL", count: 1 });
+  return blockers;
+}
+
+/** Keputusan hapus proyek: Owner saja, bukan Arsip, dan tanpa penghalang keterkaitan (U4-6). */
+export function decideDeleteProject(actor: Actor, project: Project, data: AccessData): Decision {
+  if (!isOwner(actor)) return deny("ROLE");
+  if (isArchived(project)) return deny("ARCHIVED");
+  const [first] = getProjectDeleteBlockers(project, data);
+  return first ? deny(first.reason) : ALLOW;
+}
+
 // ---------- L2: keanggotaan proyek dan Admin principal ----------
 
 /** Menetapkan atau mengganti Admin principal: Owner saja (§7A). */
