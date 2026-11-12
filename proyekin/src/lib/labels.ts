@@ -106,7 +106,103 @@ export const DENY_REASON_LABELS: Record<DenyReason, string> = {
   HAS_MEMBERSHIPS: "Masih menjadi anggota proyek. Keluarkan dari proyek terlebih dahulu.",
   IS_ADMIN_PRINCIPAL: "Masih menjadi Admin Kantor principal proyek. Ganti Admin principal terlebih dahulu.",
   PROTECTED_ACCOUNT: "Akun Owner tidak dapat diubah atau dihapus pada tahap ini.",
+  // U4-7. Teks lengkap yang menyebut nama ada di `getTeamActionFailureText`.
+  NOT_MEMBER: "Pengguna ini sudah tidak terdaftar di proyek.",
+  ALREADY_MEMBER: "Pengguna ini sudah terdaftar di proyek.",
+  USER_NOT_FOUND: "Data pengguna ini tidak ditemukan.",
+  INVALID_CANDIDATE: "Pilihan ini tidak memenuhi syarat.",
+  NO_ADMIN: "Proyek ini tidak memiliki Admin penanggung jawab.",
+  ADMIN_CHANGED: "Admin penanggung jawab proyek sudah berubah.",
+  SAME_ADMIN: "Pengguna ini sudah menjadi Admin penanggung jawab proyek.",
 };
+
+// ---------- U4-7: copy tim proyek ----------
+// Istilah pengguna: "Admin penanggung jawab" (bukan istilah internal "Admin principal"). Setiap pesan galat menyebut akibatnya
+// pada data; pesan sukses menyebut "(simulasi)" karena perubahan hanya di memori tab (J9).
+
+const NO_CHANGE = "Tidak ada data yang diubah.";
+
+/** Pesan galat bila sebab penolakan tidak dikenali (mis. store menolak tanpa alasan yang diketahui). */
+export const TEAM_GENERIC_ERROR = "Perubahan belum tersimpan. Coba lagi.";
+
+/** Pesan validasi pilihan kosong di dialog tim. */
+export const TEAM_VALIDATION_TEXT = {
+  member: "Pilih satu Mandor atau Anggota Tim.",
+  admin: "Pilih satu Admin Kantor.",
+} as const;
+
+export type TeamSuccessKind = "member-added" | "member-removed" | "admin-assigned" | "admin-replaced" | "admin-revoked";
+
+/** Pesan sukses aksi tim. `previousName` hanya untuk penggantian Admin. */
+export function getTeamSuccessText(kind: TeamSuccessKind, ctx: { name: string; previousName?: string }): string {
+  switch (kind) {
+    case "member-added":
+      return `${ctx.name} ditambahkan ke tim proyek (simulasi).`;
+    case "member-removed":
+      return `${ctx.name} dikeluarkan dari tim proyek (simulasi).`;
+    case "admin-assigned":
+      return `${ctx.name} ditetapkan sebagai Admin penanggung jawab (simulasi).`;
+    case "admin-replaced":
+      return `Admin penanggung jawab diganti dari ${ctx.previousName ?? "Admin sebelumnya"} ke ${ctx.name} (simulasi).`;
+    case "admin-revoked":
+      return `${ctx.name} tidak lagi menjadi Admin penanggung jawab (simulasi).`;
+  }
+}
+
+/** Anggota tidak dapat dikeluarkan karena masih tercatat di tugas (semua status, termasuk Selesai). Jumlah dari data aktual. */
+export function getMemberRemoveBlockedText(name: string, tasks: { total: number; done: number }): string {
+  const doneNote =
+    tasks.done === 0
+      ? ""
+      : tasks.done === tasks.total
+        ? tasks.total === 1
+          ? " (tugas tersebut sudah selesai)"
+          : " (semuanya sudah selesai)"
+        : ` (${tasks.done} di antaranya sudah selesai)`;
+  return `${name} tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab ${tasks.total} tugas di proyek ini${doneNote}. ${NO_CHANGE}`;
+}
+
+export interface TeamFailureContext {
+  /** Anggota yang ditambah/dikeluarkan. */
+  memberName?: string;
+  /** Admin Kantor yang dipilih (tetapkan/ganti) atau yang hendak dicabut. */
+  adminName?: string;
+  /** Admin penanggung jawab proyek SEKARANG (stale); kosong bila sudah dicabut. */
+  currentAdminName?: string;
+  /** Tugas yang masih mencatat anggota (untuk `HAS_TASKS`). */
+  tasks?: { total: number; done: number };
+}
+
+/** Pesan galat aksi tim per alasan penolakan; spesifik bila sebabnya diketahui, generik hanya untuk sebab tak dikenal. */
+export function getTeamActionFailureText(reason: string, ctx: TeamFailureContext = {}): string {
+  const member = ctx.memberName ?? "Pengguna ini";
+  switch (reason) {
+    case "ROLE":
+      return `Peran Anda tidak lagi memiliki hak untuk aksi ini. ${NO_CHANGE}`;
+    case "ARCHIVED":
+      return `Proyek ini sudah berstatus Arsip dan hanya dapat dibaca. ${NO_CHANGE}`;
+    case "ALREADY_MEMBER":
+      return `${member} sudah terdaftar di proyek ini. ${NO_CHANGE} Pilih anggota lain.`;
+    case "NOT_MEMBER":
+      return `${member} sudah tidak terdaftar di proyek ini. ${NO_CHANGE}`;
+    case "USER_NOT_FOUND":
+      return `Data pengguna ini tidak ditemukan. ${NO_CHANGE}`;
+    case "INVALID_CANDIDATE":
+      return `Pilihan ini tidak memenuhi syarat. Pilih dari daftar yang tersedia. ${NO_CHANGE}`;
+    case "HAS_TASKS":
+      return getMemberRemoveBlockedText(member, ctx.tasks ?? { total: 0, done: 0 });
+    case "NO_ADMIN":
+      return `Proyek ini sudah tidak memiliki Admin penanggung jawab. ${NO_CHANGE}`;
+    case "ADMIN_CHANGED":
+      return ctx.currentAdminName
+        ? `Admin penanggung jawab sudah berubah menjadi ${ctx.currentAdminName}. Periksa lagi sebelum melanjutkan. ${NO_CHANGE}`
+        : `Admin penanggung jawab sudah dicabut. Periksa lagi sebelum melanjutkan. ${NO_CHANGE}`;
+    case "SAME_ADMIN":
+      return `${ctx.adminName ?? "Pengguna ini"} sudah menjadi Admin penanggung jawab proyek ini. Pilih Admin Kantor lain.`;
+    default:
+      return TEAM_GENERIC_ERROR;
+  }
+}
 
 /**
  * Alasan proyek tidak dapat dihapus (U4-6), berbeda dari `DENY_REASON_LABELS` yang ditulis untuk anggota/akun.

@@ -36,7 +36,15 @@ export type DenyReason =
   | "HAS_TASKS"
   | "HAS_MEMBERSHIPS"
   | "IS_ADMIN_PRINCIPAL"
-  | "PROTECTED_ACCOUNT";
+  | "PROTECTED_ACCOUNT"
+  // U4-7 (keanggotaan dan Admin principal). Sebagian adalah keadaan "stale": data sudah berubah sejak dialog dibuka.
+  | "NOT_MEMBER"
+  | "ALREADY_MEMBER"
+  | "USER_NOT_FOUND"
+  | "INVALID_CANDIDATE"
+  | "NO_ADMIN"
+  | "ADMIN_CHANGED"
+  | "SAME_ADMIN";
 
 export type Decision = { allowed: true } | { allowed: false; reason: DenyReason };
 
@@ -207,32 +215,102 @@ export function decideDeleteProject(actor: Actor, project: Project, data: Access
 }
 
 // ---------- L2: keanggotaan proyek dan Admin principal ----------
+//
+// U4-7: setiap `decide*` dipanggil dua kali oleh UI — saat dialog dibuka (untuk menampilkan keadaan) dan SAAT MENYIMPAN
+// terhadap snapshot store terbaru (data atau hak bisa berubah di antaranya). Store hanya menjaga integritas data lewat
+// helper di bawah ini dan tidak memeriksa role pelaku.
 
-/** Menetapkan atau mengganti Admin principal: Owner saja (§7A). */
+/** Pengguna yang boleh menjadi anggota proyek (`ProjectMember`): hanya Mandor dan Anggota Tim (role global). */
+export const isEligibleProjectMember = (user: User | null | undefined): boolean => !!user && PROJECT_MEMBER_ROLES.includes(user.role);
+
+/** Pengguna yang boleh menjadi Admin principal proyek (`Project.adminId`): hanya Admin Kantor (role global). */
+export const isEligibleAdminPrincipal = (user: User | null | undefined): boolean => !!user && user.role === ADMIN_PRINCIPAL_ROLE;
+
+/** Menetapkan, mengganti, atau mencabut Admin principal: Owner saja (§7A; pencabutan: keputusan pemilik U4-O10). */
 export const canAssignAdminPrincipal = (actor: Actor, project: Project): boolean =>
   !isArchived(project) && isOwner(actor);
 
 /** Menambah Mandor/Anggota ke proyek: Owner, atau Admin principal proyek itu. Mandor TIDAK (J1: penugasan ≠ keanggotaan). */
 export const canAddProjectMember = (actor: Actor, project: Project): boolean => !isArchived(project) && manages(actor, project);
 
+/** Tombol "Keluarkan dari proyek" tampil: Owner saja (G9), bukan proyek Arsip. Keputusan per anggota: `decideRemoveProjectMember`. */
+export const canRemoveProjectMembers = (actor: Actor, project: Project): boolean => !isArchived(project) && isOwner(actor);
+
+/**
+ * Keputusan menambah anggota (U4-7): Owner atau Admin principal proyek itu; bukan Arsip; kandidat harus pengguna yang
+ * dikenal dengan role Mandor/Anggota Tim; tidak boleh sudah menjadi anggota (tanpa duplikat).
+ */
+export function decideAddProjectMember(actor: Actor, project: Project, userId: string, data: AccessData): Decision {
+  if (!manages(actor, project)) return deny("ROLE");
+  if (isArchived(project)) return deny("ARCHIVED");
+  const user = userById(data, userId);
+  if (!user) return deny("USER_NOT_FOUND");
+  if (!isEligibleProjectMember(user)) return deny("INVALID_CANDIDATE");
+  return isMember(data, project.id, userId) ? deny("ALREADY_MEMBER") : ALLOW;
+}
+
+/** Tugas proyek yang mencatat pengguna sebagai penanggung jawab, SEMUA status (termasuk Selesai). */
+export function countMemberTasks(project: Project, userId: string, data: AccessData): { total: number; done: number } {
+  const held = data.tasks.filter((t) => t.projectId === project.id && t.assigneeId === userId);
+  return { total: held.length, done: held.filter((t) => t.status === "DONE").length };
+}
+
 /**
  * Mengeluarkan anggota dari proyek: Owner saja. Admin tidak (G9, fail-closed: Admin hanya boleh menambah).
- * Diblokir selama anggota masih memegang tugas di proyek itu (G3).
+ * Diblokir selama anggota masih tercatat sebagai penanggung jawab tugas APA PUN di proyek itu, termasuk tugas Selesai
+ * (G3; keputusan pemilik U4-7). Hanya keanggotaan yang dihapus: akun, tugas, dan data lain tidak tersentuh.
  */
 export function decideRemoveProjectMember(actor: Actor, project: Project, userId: string, data: AccessData): Decision {
   if (!isOwner(actor)) return deny("ROLE");
   if (isArchived(project)) return deny("ARCHIVED");
-  const holdsTasks = data.tasks.some((t) => t.projectId === project.id && t.assigneeId === userId);
-  return holdsTasks ? deny("HAS_TASKS") : ALLOW;
+  if (!userById(data, userId)) return deny("USER_NOT_FOUND");
+  if (!isMember(data, project.id, userId)) return deny("NOT_MEMBER");
+  return countMemberTasks(project, userId, data).total > 0 ? deny("HAS_TASKS") : ALLOW;
 }
 
 /** Kandidat anggota proyek: Mandor/Anggota Tim yang belum menjadi anggota proyek itu. */
 export const getProjectMemberCandidates = (project: Project, data: AccessData): User[] =>
-  data.users.filter((u) => PROJECT_MEMBER_ROLES.includes(u.role) && !isMember(data, project.id, u.id));
+  data.users.filter((u) => isEligibleProjectMember(u) && !isMember(data, project.id, u.id));
 
 /** Kandidat Admin principal: hanya role Admin Kantor. */
-export const getAdminPrincipalCandidates = (data: AccessData): User[] =>
-  data.users.filter((u) => u.role === ADMIN_PRINCIPAL_ROLE);
+export const getAdminPrincipalCandidates = (data: AccessData): User[] => data.users.filter((u) => isEligibleAdminPrincipal(u));
+
+/** Kandidat untuk menetapkan/mengganti Admin principal proyek: Admin Kantor, TANPA Admin yang sedang menjabat. */
+export const getAdminReplacementCandidates = (project: Project, data: AccessData): User[] =>
+  getAdminPrincipalCandidates(data).filter((u) => u.id !== project.adminId);
+
+/**
+ * Keputusan menetapkan (proyek tanpa Admin) atau mengganti Admin principal: Owner saja; bukan Arsip; satu Admin per proyek.
+ * `expectedAdminId` = Admin yang terlihat saat dialog dibuka (kosong bila belum ada). Bila Admin proyek sekarang berbeda,
+ * data sudah berubah (`ADMIN_CHANGED`) dan aksi tidak dilanjutkan dengan data lama.
+ */
+export function decideAssignAdminPrincipal(
+  actor: Actor,
+  project: Project,
+  userId: string,
+  expectedAdminId: string | undefined,
+  data: AccessData,
+): Decision {
+  if (!isOwner(actor)) return deny("ROLE");
+  if (isArchived(project)) return deny("ARCHIVED");
+  if ((project.adminId || undefined) !== (expectedAdminId || undefined)) return deny("ADMIN_CHANGED");
+  const user = userById(data, userId);
+  if (!user) return deny("USER_NOT_FOUND");
+  if (!isEligibleAdminPrincipal(user)) return deny("INVALID_CANDIDATE");
+  return project.adminId === userId ? deny("SAME_ADMIN") : ALLOW;
+}
+
+/**
+ * Keputusan mencabut Admin principal (keputusan pemilik U4-O10): Owner saja; bukan Arsip. Hanya relasi Admin principal
+ * yang dihapus; akun dan role global Admin Kantor, anggota, dan tugas tidak berubah. `expectedAdminId` = Admin yang
+ * terlihat saat dialog dibuka.
+ */
+export function decideRevokeAdminPrincipal(actor: Actor, project: Project, expectedAdminId: string): Decision {
+  if (!isOwner(actor)) return deny("ROLE");
+  if (isArchived(project)) return deny("ARCHIVED");
+  if (!project.adminId) return deny("NO_ADMIN");
+  return project.adminId !== expectedAdminId ? deny("ADMIN_CHANGED") : ALLOW;
+}
 
 // ---------- L3: tugas ----------
 

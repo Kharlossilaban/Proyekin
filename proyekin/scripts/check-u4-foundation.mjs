@@ -433,5 +433,171 @@ eq("status yang dapat dipilih di form: tanpa Arsip (J7)", labels.PROJECT_STATUS_
   check("U4-6: tanpa penghapusan berantai dan tanpa penyimpanan permanen di form/dialog", ![form, dlg, del].some((c) => /tasks\.filter|members\.filter|localStorage|sessionStorage|fetch\(/.test(c)));
 }
 
+// ---------- 9. U4-7: anggota proyek dan Admin principal (tambah, keluarkan, tetapkan, ganti, cabut) ----------
+// Literal sengaja terpisah dari access.ts / mock-store.ts / labels.ts (bukan dihitung dari ketiganya). Fungsi yang belum ada
+// dicatat sebagai GAGAL (bukan crash) agar fase RED terbaca utuh.
+{
+  const safe = (f) => {
+    try {
+      return f();
+    } catch (e) {
+      return `ERROR: ${e?.message ?? e}`;
+    }
+  };
+  const decS = (f) => safe(() => dec(f()));
+  const rinaP = U("u-006");
+  const P_ = Object.fromEntries(MOCK_PROJECTS.map((p) => [p.id, p]));
+  const who7 = { owner: personas.owner, siti: personas.admin, rina: rinaP, ahmad: personas.ahmad, eko: personas.eko, dewi: personas.dewi, guest, nobody: null };
+
+  // 9a. kelayakan kandidat (satu sumber; dipakai juga oleh store tanpa membaca role sendiri)
+  eq("U4-7 kandidat anggota: hanya Mandor/Anggota Tim (Owner, Admin Kantor, Guest tidak)", safe(() => MOCK_USERS.map((u) => access.isEligibleProjectMember(u))), [false, false, true, true, true, false]);
+  eq("U4-7 kandidat Admin principal: hanya Admin Kantor (Siti, Rina)", safe(() => MOCK_USERS.map((u) => access.isEligibleAdminPrincipal(u))), [false, true, false, false, false, true]);
+  check("U4-7 kandidat: Guest dan pengguna kosong tidak pernah layak", safe(() => !access.isEligibleProjectMember(guest) && !access.isEligibleAdminPrincipal(guest) && !access.isEligibleProjectMember(undefined) && !access.isEligibleAdminPrincipal(undefined)) === true);
+
+  // 9b. tambah anggota: Owner atau Admin principal proyek itu; kandidat Mandor/Anggota Tim; tanpa duplikat; bukan Arsip
+  eq("U4-7 tambah anggota — Owner: p-003 Ahmad boleh, p-004 (Selesai) boleh, p-001 Ahmad sudah anggota, p-005 Arsip",
+    [decS(() => access.decideAddProjectMember(personas.owner, P_["p-003"], "u-003", data)), decS(() => access.decideAddProjectMember(personas.owner, P_["p-004"], "u-003", data)), decS(() => access.decideAddProjectMember(personas.owner, P_["p-001"], "u-003", data)), decS(() => access.decideAddProjectMember(personas.owner, P_["p-005"], "u-003", data))],
+    ["ALLOW", "ALLOW", "ALREADY_MEMBER", "ARCHIVED"]);
+  eq("U4-7 tambah anggota — Owner: kandidat bukan Mandor/Anggota ditolak (Owner, Admin Kantor Siti/Rina), pengguna tidak dikenal",
+    ["u-001", "u-002", "u-006", "u-404"].map((id) => decS(() => access.decideAddProjectMember(personas.owner, P_["p-003"], id, data))),
+    ["INVALID_CANDIDATE", "INVALID_CANDIDATE", "INVALID_CANDIDATE", "USER_NOT_FOUND"]);
+  eq("U4-7 tambah anggota — Admin principal (Siti): p-002 Dewi boleh; p-001 Dewi sudah anggota; p-003 bukan proyeknya",
+    [decS(() => access.decideAddProjectMember(personas.admin, P_["p-002"], "u-004", data)), decS(() => access.decideAddProjectMember(personas.admin, P_["p-001"], "u-004", data)), decS(() => access.decideAddProjectMember(personas.admin, P_["p-003"], "u-003", data))],
+    ["ALLOW", "ALREADY_MEMBER", "ROLE"]);
+  eq("U4-7 tambah anggota — Rina (Admin lain), Mandor, Anggota Tim, Guest, aktor kosong: ditolak karena role",
+    ["rina", "ahmad", "eko", "dewi", "guest", "nobody"].map((w) => decS(() => access.decideAddProjectMember(who7[w], P_["p-002"], "u-004", data))),
+    ["ROLE", "ROLE", "ROLE", "ROLE", "ROLE", "ROLE"]);
+  eq("U4-7 tambah anggota — kandidat seed per proyek (tanpa Rina)", MOCK_PROJECTS.map((p) => ids(access.getProjectMemberCandidates(p, data))), [[], ["u-004"], ["u-003", "u-004", "u-005"], ["u-003", "u-004", "u-005"], ["u-003", "u-004", "u-005"]]);
+
+  // 9c. keluarkan anggota: Owner saja; diblokir bila masih tercatat di tugas APA PUN (termasuk Selesai); bukan Arsip
+  eq("U4-7 jumlah tugas anggota (total, selesai): p-001 Ahmad 1/1 selesai, Dewi 2/0, Eko 1/0; p-002 Ahmad 1/0, Eko 1/0; p-003 Ahmad 0",
+    safe(() => [["p-001", "u-003"], ["p-001", "u-004"], ["p-001", "u-005"], ["p-002", "u-003"], ["p-002", "u-005"], ["p-003", "u-003"]].map(([p, u]) => access.countMemberTasks(P_[p], u, data))),
+    [{ total: 1, done: 1 }, { total: 2, done: 0 }, { total: 1, done: 0 }, { total: 1, done: 0 }, { total: 1, done: 0 }, { total: 0, done: 0 }]);
+  eq("U4-7 keluarkan — Owner, seed: semua anggota p-001/p-002 diblokir HAS_TASKS (termasuk Ahmad yang tugasnya Selesai)",
+    [["p-001", "u-003"], ["p-001", "u-004"], ["p-001", "u-005"], ["p-002", "u-003"], ["p-002", "u-005"]].map(([p, u]) => decS(() => access.decideRemoveProjectMember(personas.owner, P_[p], u, data))),
+    ["HAS_TASKS", "HAS_TASKS", "HAS_TASKS", "HAS_TASKS", "HAS_TASKS"]);
+  {
+    const onlyDone = { ...data, members: [...data.members, { projectId: "p-003", userId: "u-004" }], tasks: [...data.tasks, { ...MOCK_TASKS[0], id: "t-950", projectId: "p-003", assigneeId: "u-004", status: "DONE", progress: 100 }] };
+    eq("U4-7 keluarkan — hanya tugas Selesai tetap memblokir (fail-closed)", decS(() => access.decideRemoveProjectMember(personas.owner, P_["p-003"], "u-004", onlyDone)), "HAS_TASKS");
+    const freeMember = { ...data, members: [...data.members, { projectId: "p-003", userId: "u-003" }] };
+    eq("U4-7 keluarkan — Owner: anggota tanpa tugas boleh; bukan anggota → NOT_MEMBER; pengguna tak dikenal → USER_NOT_FOUND",
+      [decS(() => access.decideRemoveProjectMember(personas.owner, P_["p-003"], "u-003", freeMember)), decS(() => access.decideRemoveProjectMember(personas.owner, P_["p-003"], "u-003", data)), decS(() => access.decideRemoveProjectMember(personas.owner, P_["p-003"], "u-404", data))],
+      ["ALLOW", "NOT_MEMBER", "USER_NOT_FOUND"]);
+    eq("U4-7 keluarkan — Admin principal (Siti), Rina, Mandor, Anggota Tim, Guest, kosong: ROLE (Owner saja)",
+      ["siti", "rina", "ahmad", "dewi", "guest", "nobody"].map((w) => decS(() => access.decideRemoveProjectMember(who7[w], P_["p-003"], "u-003", freeMember))),
+      ["ROLE", "ROLE", "ROLE", "ROLE", "ROLE", "ROLE"]);
+  }
+  perId("U4-7 tombol Keluarkan tampil (Owner, bukan Arsip)", MOCK_PROJECTS, (a, p) => safe(() => access.canRemoveProjectMembers(a, p)) === true, { owner: P.active });
+
+  // 9d. Admin principal: tetapkan, ganti, cabut — Owner saja; satu per proyek; Admin aktif bukan kandidat pengganti
+  eq("U4-7 kandidat pengganti Admin: tanpa Admin yang sedang menjabat", safe(() => MOCK_PROJECTS.map((p) => ids(access.getAdminReplacementCandidates(p, data)))), [["u-006"], ["u-006"], ["u-002", "u-006"], ["u-002", "u-006"], ["u-002", "u-006"]]);
+  eq("U4-7 tetapkan (p-003 tanpa Admin) — Owner: Rina boleh; Mandor tidak layak; pengguna tak dikenal; Arsip p-005",
+    [decS(() => access.decideAssignAdminPrincipal(personas.owner, P_["p-003"], "u-006", undefined, data)), decS(() => access.decideAssignAdminPrincipal(personas.owner, P_["p-003"], "u-003", undefined, data)), decS(() => access.decideAssignAdminPrincipal(personas.owner, P_["p-003"], "u-404", undefined, data)), decS(() => access.decideAssignAdminPrincipal(personas.owner, P_["p-005"], "u-006", undefined, data))],
+    ["ALLOW", "INVALID_CANDIDATE", "USER_NOT_FOUND", "ARCHIVED"]);
+  eq("U4-7 ganti (p-001 Admin Siti) — Owner: ke Rina boleh; ke Siti sendiri SAME_ADMIN; p-004 Selesai boleh ditetapkan",
+    [decS(() => access.decideAssignAdminPrincipal(personas.owner, P_["p-001"], "u-006", "u-002", data)), decS(() => access.decideAssignAdminPrincipal(personas.owner, P_["p-001"], "u-002", "u-002", data)), decS(() => access.decideAssignAdminPrincipal(personas.owner, P_["p-004"], "u-002", undefined, data))],
+    ["ALLOW", "SAME_ADMIN", "ALLOW"]);
+  eq("U4-7 tetapkan/ganti — stale: Admin berbeda dari yang terlihat saat dialog dibuka → ADMIN_CHANGED",
+    [decS(() => access.decideAssignAdminPrincipal(personas.owner, P_["p-001"], "u-006", undefined, data)), decS(() => access.decideAssignAdminPrincipal(personas.owner, P_["p-003"], "u-006", "u-002", data))],
+    ["ADMIN_CHANGED", "ADMIN_CHANGED"]);
+  eq("U4-7 tetapkan/ganti — Siti (Admin principal), Rina, Mandor, Anggota Tim, Guest, kosong: ROLE (Owner saja)",
+    ["siti", "rina", "ahmad", "dewi", "guest", "nobody"].map((w) => decS(() => access.decideAssignAdminPrincipal(who7[w], P_["p-001"], "u-006", "u-002", data))),
+    ["ROLE", "ROLE", "ROLE", "ROLE", "ROLE", "ROLE"]);
+  eq("U4-7 cabut — Owner: p-001 Siti boleh; p-003 tanpa Admin → NO_ADMIN; Admin berubah → ADMIN_CHANGED; Arsip",
+    [decS(() => access.decideRevokeAdminPrincipal(personas.owner, P_["p-001"], "u-002")), decS(() => access.decideRevokeAdminPrincipal(personas.owner, P_["p-003"], "u-002")), decS(() => access.decideRevokeAdminPrincipal(personas.owner, P_["p-001"], "u-006")), decS(() => access.decideRevokeAdminPrincipal(personas.owner, { ...P_["p-005"], adminId: "u-002" }, "u-002"))],
+    ["ALLOW", "NO_ADMIN", "ADMIN_CHANGED", "ARCHIVED"]);
+  eq("U4-7 cabut — selain Owner ditolak (termasuk Siti yang menjabat)",
+    ["siti", "rina", "ahmad", "dewi", "guest", "nobody"].map((w) => decS(() => access.decideRevokeAdminPrincipal(who7[w], P_["p-001"], "u-002"))),
+    ["ROLE", "ROLE", "ROLE", "ROLE", "ROLE", "ROLE"]);
+
+  // 9e. akses setelah perubahan (G8): Admin lama kehilangan akses, Admin baru mendapat akses; role global tidak berubah
+  {
+    const replaced = { ...data, projects: data.projects.map((p) => (p.id === "p-001" ? { ...p, adminId: "u-006" } : p)) };
+    const pr = replaced.projects[0];
+    eq("U4-7 setelah ganti p-001 ke Rina: Siti tidak lagi melihat/mengubah/menambah; Rina ya",
+      [access.canViewProject(personas.admin, pr, replaced), access.canEditProject(personas.admin, pr), access.canAddProjectMember(personas.admin, pr), access.canViewProject(rinaP, pr, replaced), access.canEditProject(rinaP, pr), access.canAddProjectMember(rinaP, pr)],
+      [false, false, false, true, true, true]);
+    eq("U4-7 setelah ganti: proyek Siti lainnya (p-002) tidak terdampak; Rina hanya p-001", [ids(access.getVisibleProjects(personas.admin, replaced)), ids(access.getVisibleProjects(rinaP, replaced))], [["p-002"], ["p-001"]]);
+    eq("U4-7 stale akses: Siti setelah diganti tidak dapat menambah anggota (ROLE)", decS(() => access.decideAddProjectMember(personas.admin, pr, "u-004", replaced)), "ROLE");
+    const noAdmin = { ...data.projects[0] };
+    delete noAdmin.adminId;
+    const revoked = { ...data, projects: data.projects.map((p) => (p.id === "p-001" ? noAdmin : p)) };
+    eq("U4-7 setelah cabut p-001: Siti tidak lagi melihat p-001; anggota dan tugas tetap", [access.canViewProject(personas.admin, revoked.projects[0], revoked), revoked.members.length, revoked.tasks.length], [false, 5, 6]);
+    const archivedNow = { ...data, projects: data.projects.map((p) => (p.id === "p-002" ? { ...p, status: "ARCHIVED" } : p)) };
+    eq("U4-7 stale: proyek menjadi Arsip → semua aksi ditolak ARCHIVED", [decS(() => access.decideAddProjectMember(personas.owner, archivedNow.projects[1], "u-004", archivedNow)), decS(() => access.decideAssignAdminPrincipal(personas.owner, archivedNow.projects[1], "u-006", "u-002", archivedNow)), decS(() => access.decideRevokeAdminPrincipal(personas.owner, archivedNow.projects[1], "u-002"))], ["ARCHIVED", "ARCHIVED", "ARCHIVED"]);
+  }
+
+  // 9f. copy (Bahasa Indonesia, spesifik; sukses menyebut simulasi)
+  eq("U4-7 copy sukses", safe(() => [labels.getTeamSuccessText("member-added", { name: "Ahmad Rizal" }), labels.getTeamSuccessText("member-removed", { name: "Ahmad Rizal" }), labels.getTeamSuccessText("admin-assigned", { name: "Siti Aminah" }), labels.getTeamSuccessText("admin-replaced", { name: "Rina Wulandari", previousName: "Siti Aminah" }), labels.getTeamSuccessText("admin-revoked", { name: "Siti Aminah" })]),
+    ["Ahmad Rizal ditambahkan ke tim proyek (simulasi).", "Ahmad Rizal dikeluarkan dari tim proyek (simulasi).", "Siti Aminah ditetapkan sebagai Admin penanggung jawab (simulasi).", "Admin penanggung jawab diganti dari Siti Aminah ke Rina Wulandari (simulasi).", "Siti Aminah tidak lagi menjadi Admin penanggung jawab (simulasi)."]);
+  eq("U4-7 copy blokir tugas: jumlah aktual, status Selesai disebut, tidak ada data yang diubah", safe(() => [labels.getMemberRemoveBlockedText("Dewi Lestari", { total: 2, done: 0 }), labels.getMemberRemoveBlockedText("Ahmad Rizal", { total: 1, done: 1 }), labels.getMemberRemoveBlockedText("Eko Prasetyo", { total: 3, done: 1 }), labels.getMemberRemoveBlockedText("Eko Prasetyo", { total: 3, done: 3 })]),
+    ["Dewi Lestari tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 2 tugas di proyek ini. Tidak ada data yang diubah.",
+      "Ahmad Rizal tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 1 tugas di proyek ini (tugas tersebut sudah selesai). Tidak ada data yang diubah.",
+      "Eko Prasetyo tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 3 tugas di proyek ini (1 di antaranya sudah selesai). Tidak ada data yang diubah.",
+      "Eko Prasetyo tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 3 tugas di proyek ini (semuanya sudah selesai). Tidak ada data yang diubah."]);
+  const ctx = { memberName: "Ahmad Rizal", adminName: "Siti Aminah", currentAdminName: "Rina Wulandari", tasks: { total: 1, done: 0 } };
+  eq("U4-7 copy galat per alasan (spesifik, tanpa pesan generik bila sebab diketahui)",
+    safe(() => ["ROLE", "ARCHIVED", "ALREADY_MEMBER", "NOT_MEMBER", "USER_NOT_FOUND", "INVALID_CANDIDATE", "HAS_TASKS", "NO_ADMIN", "ADMIN_CHANGED", "SAME_ADMIN"].map((r) => labels.getTeamActionFailureText(r, ctx))),
+    ["Peran Anda tidak lagi memiliki hak untuk aksi ini. Tidak ada data yang diubah.",
+      "Proyek ini sudah berstatus Arsip dan hanya dapat dibaca. Tidak ada data yang diubah.",
+      "Ahmad Rizal sudah terdaftar di proyek ini. Tidak ada data yang diubah. Pilih anggota lain.",
+      "Ahmad Rizal sudah tidak terdaftar di proyek ini. Tidak ada data yang diubah.",
+      "Data pengguna ini tidak ditemukan. Tidak ada data yang diubah.",
+      "Pilihan ini tidak memenuhi syarat. Pilih dari daftar yang tersedia. Tidak ada data yang diubah.",
+      "Ahmad Rizal tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 1 tugas di proyek ini. Tidak ada data yang diubah.",
+      "Proyek ini sudah tidak memiliki Admin penanggung jawab. Tidak ada data yang diubah.",
+      "Admin penanggung jawab sudah berubah menjadi Rina Wulandari. Periksa lagi sebelum melanjutkan. Tidak ada data yang diubah.",
+      "Siti Aminah sudah menjadi Admin penanggung jawab proyek ini. Pilih Admin Kantor lain."]);
+  eq("U4-7 copy galat: Admin sudah dicabut (tanpa Admin saat ini) dan sebab tak dikenal (generik)", safe(() => [labels.getTeamActionFailureText("ADMIN_CHANGED", { ...ctx, currentAdminName: undefined }), labels.getTeamActionFailureText("STORE_REFUSED", ctx)]),
+    ["Admin penanggung jawab sudah dicabut. Periksa lagi sebelum melanjutkan. Tidak ada data yang diubah.", "Perubahan belum tersimpan. Coba lagi."]);
+  check("U4-7 copy: setiap DenyReason (termasuk alasan U4-7) memiliki teks", ["ROLE", "ARCHIVED", "HAS_TASKS", "HAS_MEMBERSHIPS", "IS_ADMIN_PRINCIPAL", "PROTECTED_ACCOUNT", "NOT_MEMBER", "ALREADY_MEMBER", "USER_NOT_FOUND", "INVALID_CANDIDATE", "NO_ADMIN", "ADMIN_CHANGED", "SAME_ADMIN"].every((r) => !!labels.DENY_REASON_LABELS[r]));
+  check("U4-7 copy: tanpa istilah internal 'Admin principal' di teks pengguna U4-7", safe(() => !/principal/i.test(JSON.stringify([labels.getTeamSuccessText("admin-replaced", { name: "A", previousName: "B" }), labels.getTeamActionFailureText("ADMIN_CHANGED", ctx), labels.getTeamActionFailureText("NO_ADMIN", ctx), labels.TEAM_VALIDATION_TEXT]))) === true);
+  eq("U4-7 copy validasi pilihan kosong", safe(() => labels.TEAM_VALIDATION_TEXT), { member: "Pilih satu Mandor atau Anggota Tim.", admin: "Pilih satu Admin Kantor." });
+
+  // 9g. store: mutasi U4-7 (integritas saja; role pelaku diperiksa pemanggil lewat access.ts)
+  store.resetMockStore();
+  let calls7 = 0;
+  const off7 = store.subscribeMockStore(() => { calls7 += 1; });
+  const s = () => store.getMockStoreSnapshot();
+  try {
+    const before = s();
+    const added = safe(() => store.addProjectMember("p-003", "u-003"));
+    eq("U4-7 store tambah: p-003 + Ahmad → keanggotaan baru di akhir", [added, s().members.slice(-1)[0]], [{ projectId: "p-003", userId: "u-003" }, { projectId: "p-003", userId: "u-003" }]);
+    check("U4-7 store tambah: proyek dan tugas tidak tersentuh (referensi sama); seed tidak dimutasi", s().projects === before.projects && s().tasks === before.tasks && MOCK_PROJECT_MEMBERS.length === 5 && store.SEED.members.length === 5);
+    eq("U4-7 store tambah ditolak tanpa perubahan: duplikat, Admin Kantor, Owner, tak dikenal, Arsip p-005, proyek tak ada",
+      [safe(() => store.addProjectMember("p-003", "u-003")), safe(() => store.addProjectMember("p-003", "u-002")), safe(() => store.addProjectMember("p-003", "u-001")), safe(() => store.addProjectMember("p-003", "u-404")), safe(() => store.addProjectMember("p-005", "u-003")), safe(() => store.addProjectMember("p-999", "u-003"))],
+      [null, null, null, null, null, null]);
+    eq("U4-7 store: hanya satu keanggotaan p-003 + Ahmad; pelanggan diberi tahu sekali", [s().members.filter((m) => m.projectId === "p-003" && m.userId === "u-003").length, calls7], [1, 1]);
+    check("U4-7 store: proyek dengan anggota baru tetap tidak dapat dihapus (aturan U4-6)", store.deleteProject("p-003") === false && s().projects.some((p) => p.id === "p-003"));
+    eq("U4-7 store keluarkan ditolak: p-001 Dewi (tugas), p-001 Ahmad (tugas Selesai), p-002 Dewi (bukan anggota), Arsip p-005",
+      [safe(() => store.removeProjectMember("p-001", "u-004")), safe(() => store.removeProjectMember("p-001", "u-003")), safe(() => store.removeProjectMember("p-002", "u-004")), safe(() => store.removeProjectMember("p-005", "u-003"))],
+      [false, false, false, false]);
+    const tasksBefore = s().tasks;
+    eq("U4-7 store keluarkan: p-003 Ahmad tanpa tugas → berhasil; kedua kali ditolak (sudah keluar)", [safe(() => store.removeProjectMember("p-003", "u-003")), safe(() => store.removeProjectMember("p-003", "u-003"))], [true, false]);
+    check("U4-7 store keluarkan: tugas tidak tersentuh, akun tetap ada, keanggotaan seed utuh", s().tasks === tasksBefore && s().users.some((u) => u.id === "u-003") && s().members.length === 5);
+    check("U4-7 store: proyek tanpa keterkaitan dapat dihapus lagi setelah anggota dikeluarkan (tanpa kaskade)", store.deleteProject("p-003") === true);
+    store.resetMockStore();
+
+    const p1Before = s().projects.find((p) => p.id === "p-001");
+    const membersRef = s().members;
+    const replacedP = safe(() => store.setProjectAdmin("p-001", "u-006"));
+    eq("U4-7 store ganti: p-001 Siti → Rina (satu field, satu Admin); field lain tetap", replacedP && { adminId: replacedP.adminId, managerId: replacedP.managerId, name: replacedP.name, status: replacedP.status, progress: replacedP.progress }, { adminId: "u-006", managerId: p1Before.managerId, name: p1Before.name, status: p1Before.status, progress: p1Before.progress });
+    check("U4-7 store ganti: keanggotaan dan tugas tidak tersentuh; proyek lain sama; seed tidak dimutasi", s().members === membersRef && s().tasks === store.SEED.tasks && s().projects[1] === store.SEED.projects[1] && MOCK_PROJECTS[0].adminId === "u-002");
+    eq("U4-7 store tetapkan/ganti ditolak: Mandor, tak dikenal, Admin yang sama, proyek tak ada", [safe(() => store.setProjectAdmin("p-001", "u-003")), safe(() => store.setProjectAdmin("p-001", "u-404")), safe(() => store.setProjectAdmin("p-001", "u-006")), safe(() => store.setProjectAdmin("p-999", "u-006"))], [null, null, null, null]);
+    const revokedP = safe(() => store.setProjectAdmin("p-001", null));
+    check("U4-7 store cabut: kunci adminId dihapus (sama seperti proyek seed tanpa Admin); managerId tetap", !!revokedP && typeof revokedP === "object" && !("adminId" in revokedP) && revokedP.managerId === p1Before.managerId && !("adminId" in s().projects.find((p) => p.id === "p-001")));
+    eq("U4-7 store cabut kedua kali (tidak ada Admin) ditolak", safe(() => store.setProjectAdmin("p-001", null)), null);
+    check("U4-7 store cabut: anggota dan tugas p-001 tetap; akun Siti tetap Admin Kantor", s().members.filter((m) => m.projectId === "p-001").length === 3 && s().tasks.filter((t) => t.projectId === "p-001").length === 4 && s().users.find((u) => u.id === "u-002")?.role === "ADMIN");
+    eq("U4-7 store tetapkan p-001 (kosong) ke Siti", safe(() => store.setProjectAdmin("p-001", "u-002")?.adminId), "u-002");
+    const archivedRuntime = store.createProject({ name: "Arsip runtime", description: "", status: "ARCHIVED", startDate: "", endDate: "", progress: 0, client: "-", location: "" });
+    eq("U4-7 store: proyek Arsip menolak tambah anggota dan tetapkan Admin", [safe(() => store.addProjectMember(archivedRuntime.id, "u-003")), safe(() => store.setProjectAdmin(archivedRuntime.id, "u-006"))], [null, null]);
+    check("U4-7 store: Admin principal tidak otomatis menjadi anggota proyek", !s().members.some((m) => m.userId === "u-002" || m.userId === "u-006"));
+  } finally {
+    store.resetMockStore();
+    off7();
+  }
+  check("U4-7 store: tanpa pemeriksaan role sendiri (memakai helper access.ts), tanpa penyimpanan permanen atau jaringan", !/\.role\b/.test(codeOf("lib/mock-store.ts")) && /isEligibleProjectMember/.test(codeOf("lib/mock-store.ts")) && /isEligibleAdminPrincipal/.test(codeOf("lib/mock-store.ts")) && !/localStorage|sessionStorage|fetch\(/.test(codeOf("lib/mock-store.ts")));
+}
+
 console.log(failures.length ? `\n${failures.length} masalah dari ${passed + failures.length} pemeriksaan.` : `\nSemua ${passed} pemeriksaan lolos.`);
 process.exit(failures.length ? 1 : 0);
