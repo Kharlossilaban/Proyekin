@@ -72,7 +72,8 @@ check("label: setiap status/prioritas memiliki label dan nada", ["PROJECT_STATUS
 check("label: setiap DenyReason memiliki teks", ["ROLE", "ARCHIVED", "HAS_TASKS", "HAS_MEMBERSHIPS", "IS_ADMIN_PRINCIPAL", "PROTECTED_ACCOUNT"].every((r) => !!labels.DENY_REASON_LABELS[r]));
 
 // ---------- 2. relasi seed ----------
-eq("seed: jumlah pengguna/proyek/tugas", [MOCK_USERS.length, MOCK_PROJECTS.length, MOCK_TASKS.length], [5, 5, 6]);
+// U4-7 (U4-O9): pengguna keenam = Admin Kantor kedua (Rina Wulandari). Proyek dan tugas tidak berubah.
+eq("seed: jumlah pengguna/proyek/tugas", [MOCK_USERS.length, MOCK_PROJECTS.length, MOCK_TASKS.length], [6, 5, 6]);
 eq("seed: Admin principal per proyek (adminId)", MOCK_PROJECTS.map((p) => p.adminId ?? null), ["u-002", "u-002", null, null, null]);
 check("seed: Admin principal berperan Admin Kantor", MOCK_PROJECTS.filter((p) => p.adminId).every((p) => MOCK_USERS.find((u) => u.id === p.adminId)?.role === "ADMIN"));
 eq("seed: managerId lama tetap utuh (legacy)", MOCK_PROJECTS.map((p) => p.managerId), ["u-002", "u-002", "u-001", "u-001", "u-001"]);
@@ -88,6 +89,14 @@ eq("seed: TSK-005 dipindah ke Eko Prasetyo (Mandor, anggota PRJ-002)", [t5.assig
 check("seed: assigneeName selaras dengan nama pengguna", MOCK_TASKS.every((t) => MOCK_USERS.find((u) => u.id === t.assigneeId)?.name === t.assigneeName));
 check("seed: penulis laporan adalah anggota proyek laporannya", MOCK_REPORTS.every((r) => MOCK_PROJECT_MEMBERS.some((m) => m.projectId === r.projectId && m.userId === r.foremanId)));
 eq("seed: MOCK_TEAM_MEMBERS utuh dan tidak dipakai sebagai dasar role", [MOCK_TEAM_MEMBERS.length, MOCK_TEAM_MEMBERS.some((m) => m.role === "Project Manager")], [4, true]);
+// U4-7 (U4-O9): Admin Kantor kedua — tidak otomatis menjadi Admin principal atau anggota proyek mana pun.
+const rina = MOCK_USERS.find((u) => u.id === "u-006");
+eq("seed U4-7: Rina Wulandari (u-006) = Admin Kantor, email rina@proyekin.id", rina && [rina.name, rina.email, rina.role], ["Rina Wulandari", "rina@proyekin.id", "ADMIN"]);
+eq("seed U4-7: lima pengguna lama tidak berubah (ID, nama, role)", MOCK_USERS.slice(0, 5).map((u) => [u.id, u.name, u.role]), [["u-001", "Budi Santoso", "OWNER"], ["u-002", "Siti Aminah", "ADMIN"], ["u-003", "Ahmad Rizal", "MANDOR"], ["u-004", "Dewi Lestari", "ANGGOTA"], ["u-005", "Eko Prasetyo", "MANDOR"]]);
+check("seed U4-7: Rina bukan Admin principal proyek mana pun", !MOCK_PROJECTS.some((p) => p.adminId === "u-006"));
+check("seed U4-7: Rina bukan anggota proyek mana pun dan tidak memegang tugas", !MOCK_PROJECT_MEMBERS.some((m) => m.userId === "u-006") && !MOCK_TASKS.some((t) => t.assigneeId === "u-006"));
+check("seed U4-7: daftar akun demo di login dan sesi demo membaca MOCK_USERS (Rina dapat masuk tanpa kode tambahan)", /MOCK_USERS\.map\(/.test(codeOf("components/auth/login-form.tsx")) && /MOCK_USERS\.find\(/.test(codeOf("lib/auth-mock.ts")));
+check("seed U4-7: email pengguna unik (login picker membaca MOCK_USERS)", new Set(MOCK_USERS.map((u) => u.email.toLowerCase())).size === MOCK_USERS.length);
 check("seed: store tidak memakai MOCK_TEAM_MEMBERS", !/MOCK_TEAM_MEMBERS/.test(readFileSync(join(SRC, "lib/mock-store.ts"), "utf8")) && !/MOCK_TEAM_MEMBERS/.test(readFileSync(join(SRC, "lib/access.ts"), "utf8")));
 
 // ---------- 3. tanggal acuan demo dan tenggat ----------
@@ -180,7 +189,11 @@ eq("akses: keluarkan anggota — Admin ditolak (G9), Mandor/Anggota/Guest/kosong
 const dataFree = { ...data, members: [...data.members, { projectId: "p-002", userId: "u-004" }, { projectId: "p-005", userId: "u-003" }] };
 eq("akses: keluarkan anggota tanpa tugas — Owner boleh; Admin tetap tidak (G9); proyek Arsip ditolak", [dec(access.decideRemoveProjectMember(personas.owner, MOCK_PROJECTS[1], "u-004", dataFree)), dec(access.decideRemoveProjectMember(personas.admin, MOCK_PROJECTS[1], "u-004", dataFree)), dec(access.decideRemoveProjectMember(personas.owner, MOCK_PROJECTS[4], "u-003", dataFree))], ["ALLOW", "ROLE", "ARCHIVED"]);
 eq("akses: kandidat anggota proyek hanya Mandor/Anggota yang belum menjadi anggota", [ids(access.getProjectMemberCandidates(MOCK_PROJECTS[0], data)), ids(access.getProjectMemberCandidates(MOCK_PROJECTS[2], data))], [[], ["u-003", "u-004", "u-005"]]);
-eq("akses: kandidat Admin principal hanya role Admin Kantor", ids(access.getAdminPrincipalCandidates(data)), ["u-002"]);
+// U4-7 (U4-O9): kandidat bertambah Rina (u-006) karena ia Admin Kantor; tetap hanya role Admin Kantor.
+eq("akses: kandidat Admin principal hanya role Admin Kantor", ids(access.getAdminPrincipalCandidates(data)), ["u-002", "u-006"]);
+eq("akses U4-7: Rina tanpa proyek — tidak melihat proyek atau tugas seed (G8)", [ids(access.getVisibleProjects(rina, data)), ids(access.getVisibleTasks(rina, data))], [[], []]);
+check("akses U4-7: Rina tidak dapat mengubah proyek atau menambah anggota di proyek mana pun", MOCK_PROJECTS.every((p) => !access.canEditProject(rina, p) && !access.canAddProjectMember(rina, p) && !access.canAssignAdminPrincipal(rina, p)));
+eq("akses U4-7: Rina bukan kandidat anggota proyek (hanya Mandor/Anggota Tim)", MOCK_PROJECTS.map((p) => ids(access.getProjectMemberCandidates(p, data)).includes("u-006")), [false, false, false, false, false]);
 
 // L3 tugas (J1, J5, J6, G1, G5)
 perId("tugas terlihat (G5, J5)", MOCK_TASKS, (a, t) => access.canViewTask(a, t, data), { owner: T.all, admin: T.all, ahmad: T.all, eko: T.all, dewi: ["t-002", "t-006"] });
@@ -230,12 +243,12 @@ check("akses: penanggung jawab valid wajib Mandor/Anggota anggota proyek (J6)", 
 matrix("lihat pengguna organisasi (J4, J5, G2)", (a) => access.canViewOrgUsers(a), { owner: true, admin: true });
 matrix("tambah akun (J4)", (a) => access.canAddOrgUser(a), { owner: true, admin: true });
 eq("akses: role yang boleh ditambahkan per pelaku (J4)", Object.keys(personas).map((w) => access.getAddableOrgRoles(personas[w])), [["ADMIN", "MANDOR", "ANGGOTA"], ["MANDOR", "ANGGOTA"], [], [], [], [], []]);
-eq("akses: Owner mengubah role/menghapus akun seed — ditahan oleh keterkaitan atau dilindungi (G3, G4)", MOCK_USERS.map((u) => [dec(access.decideChangeOrgUserRole(personas.owner, u, data)), dec(access.decideDeleteOrgUser(personas.owner, u, data))]), [["PROTECTED_ACCOUNT", "PROTECTED_ACCOUNT"], ["IS_ADMIN_PRINCIPAL", "IS_ADMIN_PRINCIPAL"], ["HAS_MEMBERSHIPS", "HAS_MEMBERSHIPS"], ["HAS_MEMBERSHIPS", "HAS_MEMBERSHIPS"], ["HAS_MEMBERSHIPS", "HAS_MEMBERSHIPS"]]);
+eq("akses: Owner mengubah role/menghapus akun seed — ditahan oleh keterkaitan atau dilindungi (G3, G4)", MOCK_USERS.map((u) => [dec(access.decideChangeOrgUserRole(personas.owner, u, data)), dec(access.decideDeleteOrgUser(personas.owner, u, data))]), [["PROTECTED_ACCOUNT", "PROTECTED_ACCOUNT"], ["IS_ADMIN_PRINCIPAL", "IS_ADMIN_PRINCIPAL"], ["HAS_MEMBERSHIPS", "HAS_MEMBERSHIPS"], ["HAS_MEMBERSHIPS", "HAS_MEMBERSHIPS"], ["HAS_MEMBERSHIPS", "HAS_MEMBERSHIPS"], ["ALLOW", "ALLOW"]]); // u-006 Rina: tanpa keterkaitan (U4-7)
 eq("akses: Admin tidak mengubah role atau menghapus akun siapa pun (J4)", MOCK_USERS.map((u) => [dec(access.decideChangeOrgUserRole(personas.admin, u, data)), dec(access.decideDeleteOrgUser(personas.admin, u, data))]), MOCK_USERS.map(() => ["ROLE", "ROLE"]));
 eq("akses: Mandor/Anggota/Guest/kosong tidak mengelola akun", ["ahmad", "dewi", "guest", "nobody"].map((w) => dec(access.decideDeleteOrgUser(personas[w], MOCK_USERS[2], data))), ["ROLE", "ROLE", "ROLE", "ROLE"]);
 const free = { id: "u-100", name: "Baru", email: "baru@contoh.co.id", role: "MANDOR" };
 const dataFreeUser = { ...data, users: [...data.users, free, { ...free, id: "u-101", role: "ANGGOTA" }, { ...free, id: "u-102", role: "ADMIN" }], tasks: [...data.tasks, { ...MOCK_TASKS[0], id: "t-900", assigneeId: "u-101" }] };
-eq("akses: akun tanpa keterkaitan boleh dikelola Owner; yang hanya memegang tugas ditahan (G3)", [dec(access.decideDeleteOrgUser(personas.owner, free, dataFreeUser)), dec(access.decideChangeOrgUserRole(personas.owner, dataFreeUser.users[6], dataFreeUser)), dec(access.decideChangeOrgUserRole(personas.owner, dataFreeUser.users[7], dataFreeUser))], ["ALLOW", "HAS_TASKS", "ALLOW"]);
+eq("akses: akun tanpa keterkaitan boleh dikelola Owner; yang hanya memegang tugas ditahan (G3)", [dec(access.decideDeleteOrgUser(personas.owner, free, dataFreeUser)), dec(access.decideChangeOrgUserRole(personas.owner, dataFreeUser.users.find((u) => u.id === "u-101"), dataFreeUser)), dec(access.decideChangeOrgUserRole(personas.owner, dataFreeUser.users.find((u) => u.id === "u-102"), dataFreeUser))], ["ALLOW", "HAS_TASKS", "ALLOW"]);
 
 // Guest dan aktor kosong: semuanya ditolak (fail-closed)
 for (const who of ["guest", "nobody"]) {

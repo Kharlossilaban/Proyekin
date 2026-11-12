@@ -72,7 +72,7 @@ const ANGGOTA = {
   path: "/anggota",
   h1: "Anggota",
   section: "Semua Anggota",
-  count: "5 anggota",
+  count: "6 anggota", // U4-7 (U4-O9): Admin Kantor kedua Rina Wulandari (u-006) ditambahkan ke seed
   listLabel: "Daftar anggota tim",
   tableLabel: "Daftar anggota tim",
   tableHeaders: ["Nama", "Email", "Role"],
@@ -83,6 +83,7 @@ const ANGGOTA = {
     { id: "u-003", title: "Ahmad Rizal", values: ["ahmad@proyekin.id", "Mandor"] },
     { id: "u-004", title: "Dewi Lestari", values: ["dewi@proyekin.id", "Anggota Tim"] },
     { id: "u-005", title: "Eko Prasetyo", values: ["eko@proyekin.id", "Mandor"] },
+    { id: "u-006", title: "Rina Wulandari", values: ["rina@proyekin.id", "Admin Kantor"] },
   ],
 };
 const PAGES = [LAPORAN, DOKUMEN, ANGGOTA];

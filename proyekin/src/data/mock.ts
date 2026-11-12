@@ -15,6 +15,9 @@ export const MOCK_USERS: User[] = [
   { id: "u-003", name: "Ahmad Rizal", email: "ahmad@proyekin.id", role: "MANDOR", avatar: "/avatars/ahmad.png" },
   { id: "u-004", name: "Dewi Lestari", email: "dewi@proyekin.id", role: "ANGGOTA", avatar: "/avatars/dewi.png" },
   { id: "u-005", name: "Eko Prasetyo", email: "eko@proyekin.id", role: "MANDOR", avatar: "/avatars/eko.png" },
+  // Admin Kantor kedua (keputusan pemilik U4-O9, U4-7): untuk menguji penetapan, penggantian, dan pencabutan Admin
+  // principal. SENGAJA tidak menjadi Admin principal maupun anggota proyek mana pun di seed.
+  { id: "u-006", name: "Rina Wulandari", email: "rina@proyekin.id", role: "ADMIN" },
 ];
 
 export const MOCK_PROJECTS: Project[] = [
