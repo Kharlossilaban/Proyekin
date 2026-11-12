@@ -195,6 +195,9 @@ async function checkListPage(page, vpName, vp, userId, shotName) {
     rec(`${tag}: tabel tersembunyi`, (await evaluate(READ_TABLE(page.tableLabel))) === null);
     rec(`${tag}: jumlah kartu = jumlah baris sumber (${page.records.length}) dan satu li per kartu`, data.cards.length === page.records.length && data.liCount === page.records.length, `${data.cards.length}`);
     rec(`${tag}: urutan kartu sesuai data`, same(data.cards.map((c) => c.id), page.records.map((r) => r.id)), JSON.stringify(data.cards.map((c) => c.id)));
+    // U4-7: RecordCard kini punya prop `actions` opsional; konsumen lama tidak memakainya → tanpa area aksi dan tanpa tombol.
+    const legacy = await evaluate(`(() => { const list = [...document.querySelectorAll('ul[data-slot="record-card-list"]')].find((u) => u.checkVisibility() && u.getAttribute("aria-label") === ${q(page.listLabel)}); return { actions: list.querySelectorAll('[data-slot="record-card-actions"]').length, buttons: list.querySelectorAll("button").length }; })()`);
+    rec(`${tag}: konsumen lama RecordCard tanpa area aksi dan tanpa tombol (U4-7 backward-compatible)`, legacy.actions === 0 && legacy.buttons === 0, JSON.stringify(legacy));
     const sectionOk = await evaluate(`(() => { const s = document.querySelector('[data-slot="records-mobile"]'); return !!s && s.checkVisibility() && s.querySelector("h2")?.textContent.trim() === ${q(page.section)} && s.textContent.includes(${q(page.count)}); })()`);
     rec(`${tag}: judul bagian "${page.section}" dan jumlah "${page.count}" tampil`, sectionOk);
     page.records.forEach((r, i) => {

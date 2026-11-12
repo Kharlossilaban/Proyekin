@@ -24,6 +24,7 @@ const rec = (name, ok, detail = "") => {
   } else console.log("ok:  ", name, detail);
 };
 const q = (s) => JSON.stringify(s);
+const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 
 const dev = spawn(process.execPath, ["node_modules/next/dist/bin/next", "dev", "-p", String(APP_PORT)], { cwd: ROOT, stdio: "ignore" });
 const browser = await createBrowser({ cdpPort: 9555 });
@@ -240,6 +241,58 @@ await goto("/style-guide");
   await waitFor(async () => (await visible('[role="dialog"]')) === 0, 5000, "dialog non-destruktif tertutup");
 }
 
+// A6b. U4-7: ConfirmDialog dengan pesan galat dari pemanggil (errorMessage) dan penjaga kirim ganda
+{
+  await focus('[data-demo="confirm-custom-error"]');
+  await pressKey("Enter");
+  await waitFor(() => visible('[role="dialog"]'), 5000, "dialog galat spesifik");
+  // Dua klik dalam satu tick: hanya satu proses yang berjalan (tombol tidak boleh memicu onConfirm dua kali).
+  await evaluate(`(() => { const c = [...document.querySelectorAll('[role="dialog"] button')].find((b) => b.textContent.includes("Coba proses contoh")); c.click(); c.click(); return true; })()`);
+  await sleep(150);
+  const during = await evaluate(`(() => { const c = [...document.querySelectorAll('[role="dialog"] button')].find((b) => b.textContent.includes("Coba proses contoh")); return { busy: c.getAttribute("aria-busy"), disabled: c.disabled }; })()`);
+  rec("confirm U4-7: saat memproses tombol konfirmasi dikunci (kirim ganda dicegah)", during.busy === "true", JSON.stringify(during));
+  await waitFor(() => evaluate(`!!document.querySelector('[role="dialog"] [role="alert"]')`), 8000, "pesan galat");
+  const err = await evaluate(`(() => { const d = document.querySelector('[role="dialog"]'); const alerts = [...d.querySelectorAll('[role="alert"]')]; const c = [...d.querySelectorAll("button")].find((b) => b.textContent.includes("Coba proses contoh")); return { alerts: alerts.map((a) => a.textContent.trim()), busy: c.getAttribute("aria-busy"), open: !!d.checkVisibility() }; })()`);
+  rec("confirm U4-7: galat menampilkan pesan dari pemanggil (bukan bawaan), satu alert, dialog tetap terbuka, tombol aktif lagi",
+    same(err.alerts, ["Contoh gagal karena sebab yang diketahui. Tidak ada data yang diubah."]) && err.open && err.busy !== "true", JSON.stringify(err));
+  await checkAxe("1280 dengan ConfirmDialog galat spesifik");
+  await shotViewport("confirm-dialog-galat-spesifik-1280");
+  await pressKey("Escape");
+  await waitFor(async () => (await visible('[role="dialog"]')) === 0, 5000, "dialog galat tertutup");
+  await sleep(300);
+  rec("confirm U4-7: Esc menutup dialog galat dan fokus kembali ke pemicu", (await active()).demo === "confirm-custom-error");
+  await pressKey("Enter");
+  await waitFor(() => visible('[role="dialog"]'), 5000, "dialog galat dibuka lagi");
+  rec("confirm U4-7: membuka ulang dialog membersihkan galat sebelumnya", !(await evaluate(`!!document.querySelector('[role="dialog"] [role="alert"]')`)));
+  await pressKey("Escape");
+  await waitFor(async () => (await visible('[role="dialog"]')) === 0, 5000, "dialog galat tertutup lagi");
+}
+
+// A6c. U4-7: RecordCard dengan actions (contoh baru) dan contoh lama tanpa aksi
+{
+  const info = await evaluate(`(() => {
+    const oldCards = [...document.querySelectorAll('#kartu-data [data-slot="record-card"]')];
+    const newCards = [...document.querySelectorAll('#kartu-data-aksi [data-slot="record-card"]')];
+    return {
+      oldCount: oldCards.length,
+      oldActions: oldCards.filter((c) => c.querySelector('[data-slot="record-card-actions"]')).length,
+      oldInteractive: oldCards.reduce((n, c) => n + c.querySelectorAll("a, button, input, select, textarea, [tabindex]").length, 0),
+      newCount: newCards.length,
+      newActionsLast: newCards.map((c) => c.lastElementChild?.getAttribute("data-slot")),
+      newButtons: newCards.map((c) => [...c.querySelectorAll('[data-slot="record-card-actions"] button')].map((b) => b.textContent.trim())),
+      cardClickable: newCards.some((c) => c.tagName === "A" || c.hasAttribute("onclick") || c.getAttribute("role") === "button" || c.hasAttribute("tabindex")),
+    };
+  })()`);
+  rec("RecordCard U4-7: contoh lama tetap 3 kartu tanpa area aksi dan tanpa elemen interaktif", info.oldCount === 3 && info.oldActions === 0 && info.oldInteractive === 0, JSON.stringify(info));
+  rec("RecordCard U4-7: contoh baru — area aksi terpisah sebagai elemen terakhir kartu", info.newCount === 2 && info.newActionsLast.every((s) => s === "record-card-actions"), JSON.stringify(info.newActionsLast));
+  rec("RecordCard U4-7: tombol aksi memakai nama yang menyebut entitas; kartu sendiri tidak dapat diklik",
+    same(info.newButtons, [["Keluarkan dari proyek Ahmad Rizal (contoh)"], ["Ganti Admin Siti Aminah (contoh)", "Cabut Admin Siti Aminah (contoh)"]]) && !info.cardClickable, JSON.stringify(info));
+  await evaluate(`[...document.querySelectorAll('#kartu-data-aksi button')].find((b) => b.textContent.includes("Keluarkan dari proyek")).click()`);
+  await sleep(200);
+  rec("RecordCard U4-7: aksi contoh dapat dipakai (status diumumkan, tanpa perubahan data)", (await evaluate(`document.querySelector('[data-demo="record-cards-actions-result"]').textContent`)) === "Keluarkan dari proyek dipilih (contoh). Tidak ada data yang berubah.");
+  await shotElement("#kartu-data-aksi", "kartu-data-aksi-1280");
+}
+
 // A7. axe + overflow 1280, tangkapan layar
 await checkAxe("1280 halaman style-guide");
 await checkOverflow("1280");
@@ -262,7 +315,8 @@ await checkAxe("375 mobile halaman style-guide");
 
 // C1. target sentuh >= 44x44, font input >= 16px
 const MEASURE = (region) => `(() => { const root = document.querySelector(${q(region)}); const sel = 'a[href], button, input:not([type="hidden"]), select, textarea, [role="tab"]'; return [...root.querySelectorAll(sel)].filter((e) => e.checkVisibility()).map((e) => { const card = e.tagName === "A" ? e.closest('[data-slot="task-card"]') : null; const host = card ?? e; const r = host.getBoundingClientRect(); return { tag: e.tagName.toLowerCase() + (e.type ? ":" + e.type : ""), name: (e.getAttribute("aria-label") || e.textContent || e.id || "").trim().slice(0, 36), viaCard: !!card, w: Math.round(r.width * 10) / 10, h: Math.round(r.height * 10) / 10 }; }); })()`;
-const REGIONS = ['#kontrol-sentuh [data-demo="touch"]', "#tabs", "#konfirmasi", "#pola-mobile"];
+// U4-7: #kartu-data-aksi (RecordCard dengan actions) ditambahkan; wilayah lama tetap.
+const REGIONS = ['#kontrol-sentuh [data-demo="touch"]', "#tabs", "#konfirmasi", "#pola-mobile", "#kartu-data-aksi"];
 results.measurements.touchTargets = {};
 for (const region of REGIONS) {
   const items = await evaluate(MEASURE(region));

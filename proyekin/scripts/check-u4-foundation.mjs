@@ -596,6 +596,16 @@ eq("status yang dapat dipilih di form: tanpa Arsip (J7)", labels.PROJECT_STATUS_
     store.resetMockStore();
     off7();
   }
+  // 9h. komponen bersama (M4): backward-compatible
+  {
+    const confirm = codeOf("components/ui/confirm-dialog.tsx");
+    const recordCard = codeOf("components/ui/record-card.tsx");
+    const del = codeOf("components/projects/project-delete-dialog.tsx");
+    check("U4-7 ConfirmDialog: pesan bawaan tetap 'Aksi gagal diproses. Coba lagi.' dan dipakai bila errorMessage tidak diberikan/kosong", /CONFIRM_DIALOG_DEFAULT_ERROR = "Aksi gagal diproses\. Coba lagi\."/.test(confirm) && /return text \|\| CONFIRM_DIALOG_DEFAULT_ERROR/.test(confirm));
+    check("U4-7 ConfirmDialog: penjaga kirim ganda (ref) dan kunci tutup saat memproses", /if \(busyRef\.current\) return;/.test(confirm) && (confirm.match(/busyRef\.current = false/g) ?? []).length === 2);
+    check("U4-7 ConfirmDialog: dialog hapus proyek U4-6 tidak memakai errorMessage (perilaku lama tetap)", !/errorMessage/.test(del) && /<ConfirmDialog/.test(del));
+    check("U4-7 RecordCard: area aksi hanya dirender bila prop actions diberikan; kartu tetap bukan tautan/tombol", /\{actions \? \(/.test(recordCard) && /data-slot="record-card-actions"/.test(recordCard) && !/onClick|href=|role="button"|tabIndex/.test(recordCard));
+  }
   check("U4-7 store: tanpa pemeriksaan role sendiri (memakai helper access.ts), tanpa penyimpanan permanen atau jaringan", !/\.role\b/.test(codeOf("lib/mock-store.ts")) && /isEligibleProjectMember/.test(codeOf("lib/mock-store.ts")) && /isEligibleAdminPrincipal/.test(codeOf("lib/mock-store.ts")) && !/localStorage|sessionStorage|fetch\(/.test(codeOf("lib/mock-store.ts")));
 }
 

@@ -20,6 +20,7 @@ import {
   MobilePatternsDemo,
   PagePatternsDemo,
   ProgressDemo,
+  RecordCardActionsDemo,
   RecordCardDemo,
   TabsDemo,
   TouchControlsDemo,
@@ -137,6 +138,9 @@ export default function StyleGuidePage() {
         </Section>
         <Section id="kartu-data" title="Kartu data (RecordCard)" description="Pasangan label-nilai untuk daftar responsif di bawah lg (Laporan, Dokumen, Anggota). Hanya presentasi; tidak interaktif.">
           <RecordCardDemo />
+        </Section>
+        <Section id="kartu-data-aksi" title="Kartu data dengan aksi (RecordCard actions, U4-7)" description="Aksi opsional di area terpisah di bawah kartu; selalu terlihat, target sentuh 44px. Kartu sendiri tidak dapat diklik.">
+          <RecordCardActionsDemo />
         </Section>
         <Section id="responsif" title="Pratinjau responsif">
           <ResponsivePreview />

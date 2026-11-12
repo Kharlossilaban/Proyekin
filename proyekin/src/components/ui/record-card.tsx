@@ -21,15 +21,21 @@ type RecordCardProps = Omit<React.ComponentProps<"div">, "title"> & {
   leading?: React.ReactNode;
   /** Seluruh kolom tabel pasangannya, selain yang menjadi judul. */
   fields: readonly RecordField[];
+  /**
+   * Aksi opsional (U4-7), mis. tombol "Keluarkan dari proyek". Dirender di area terpisah di bagian BAWAH kartu (dibatasi garis),
+   * terlihat tanpa hover. Kartu sendiri tetap tidak dapat diklik. Tanpa prop ini, kartu persis sama seperti sebelumnya.
+   * Pakai `Button size="touch"` agar target sentuh minimal 44px; nama aksesibel sebaiknya menyebut entitasnya.
+   */
+  actions?: React.ReactNode;
 };
 
 /**
- * Kartu data PRESENTASI SAJA untuk daftar responsif di bawah `lg` (satu kolom di 375px, dua kolom di 768px).
- * Pasangan tabel di `lg` ke atas. Tidak interaktif: tanpa tautan, aksi, atau efek hover, karena halaman yang memakainya
- * belum memiliki halaman detail. Bila nanti perlu tautan, pakai pola `TaskCard`/kartu proyek (tautan teregang), jangan
- * menambah aksi di komponen ini. Label dan nilai memakai `<dl>` semantik agar pembaca layar membacanya berpasangan.
+ * Kartu data untuk daftar responsif di bawah `lg` (satu kolom di 375px, dua kolom di 768px); pasangan tabel di `lg` ke atas.
+ * Kartu TIDAK interaktif: tanpa tautan teregang atau efek hover. Bila perlu tautan, pakai pola `TaskCard`/kartu proyek.
+ * Aksi hanya lewat prop `actions` (area terpisah di bawah), tidak pernah menjadikan seluruh kartu target klik.
+ * Label dan nilai memakai `<dl>` semantik agar pembaca layar membacanya berpasangan.
  */
-function RecordCard({ title, titleAs: Title = "h3", eyebrow, leading, fields, className, ...props }: RecordCardProps) {
+function RecordCard({ title, titleAs: Title = "h3", eyebrow, leading, fields, actions, className, ...props }: RecordCardProps) {
   return (
     <Card data-slot="record-card" className={cn("gap-3 p-4", className)} {...props}>
       <div className="flex items-start gap-3">
@@ -47,6 +53,12 @@ function RecordCard({ title, titleAs: Title = "h3", eyebrow, leading, fields, cl
           </React.Fragment>
         ))}
       </dl>
+      {actions ? (
+        // `mt-auto`: di grid dua kolom (kartu setinggi baris) area aksi tetap menempel di bawah kartu.
+        <div data-slot="record-card-actions" className="mt-auto flex flex-col gap-2 border-t border-border pt-3 sm:flex-row sm:flex-wrap">
+          {actions}
+        </div>
+      ) : null}
     </Card>
   );
 }

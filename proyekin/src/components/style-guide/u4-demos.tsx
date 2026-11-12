@@ -169,6 +169,20 @@ export function ConfirmDemo() {
             setResult("Pengiriman contoh dikonfirmasi (simulasi). Tidak ada data yang berubah.");
           }}
         />
+
+        {/* U4-7: pesan galat dari pemanggil. Contoh ini selalu gagal agar keadaan galat dapat dilihat dan diuji. */}
+        <ConfirmDialog
+          trigger={<Button variant="outline" size="touch" data-demo="confirm-custom-error">Contoh galat spesifik</Button>}
+          title="Proses contoh yang gagal?"
+          description="Ini hanya contoh tampilan. Konfirmasi selalu gagal untuk memperlihatkan pesan galat dari pemanggil."
+          confirmLabel="Coba proses contoh"
+          destructive={false}
+          errorMessage={(error) => (error instanceof Error && error.message === "CONTOH" ? "Contoh gagal karena sebab yang diketahui. Tidak ada data yang diubah." : "")}
+          onConfirm={async () => {
+            await sleep(400);
+            throw new Error("CONTOH");
+          }}
+        />
       </div>
       <p role="status" data-demo="confirm-result" className="text-sm text-graphite">
         {result}
@@ -278,6 +292,58 @@ export function RecordCardDemo() {
           ]}
         />
       </RecordCardList>
+    </div>
+  );
+}
+
+/**
+ * RecordCard dengan prop `actions` (U4-7): aksi di area terpisah di bawah kartu, selalu terlihat (tanpa hover), kartu tidak
+ * dapat diklik. Contoh lama di #kartu-data sengaja tidak diubah (tetap tanpa aksi).
+ */
+export function RecordCardActionsDemo() {
+  const [result, setResult] = React.useState("Belum ada aksi.");
+  const pick = (what: string) => setResult(`${what} dipilih (contoh). Tidak ada data yang berubah.`);
+  return (
+    <div className="flex flex-col gap-4" data-demo="record-cards-actions">
+      <p className="max-w-2xl text-sm text-graphite">
+        Prop <code className="font-mono text-xs">actions</code> opsional. Tombol memakai ukuran sentuh 44px dan nama aksesibel yang menyebut
+        entitasnya. Tanpa prop ini kartu tampil persis seperti contoh di atas.
+      </p>
+      <RecordCardList label="Contoh kartu data dengan aksi" className="lg:grid lg:grid-cols-3">
+        <RecordCard
+          title="Ahmad Rizal"
+          fields={[
+            { label: "Peran", value: <Badge variant="success">Mandor</Badge> },
+            { label: "Email", value: "ahmad@proyekin.id" },
+          ]}
+          actions={
+            <Button variant="outline" size="touch" className="w-full text-destructive sm:w-auto" onClick={() => pick("Keluarkan dari proyek")}>
+              Keluarkan dari proyek<span className="sr-only"> Ahmad Rizal (contoh)</span>
+            </Button>
+          }
+        />
+        <RecordCard
+          title="Siti Aminah"
+          className="bg-accent"
+          fields={[
+            { label: "Peran", value: <Badge variant="info">Admin Kantor</Badge> },
+            { label: "Email", value: "siti@proyekin.id" },
+          ]}
+          actions={
+            <>
+              <Button variant="outline" size="touch" className="w-full sm:w-auto" onClick={() => pick("Ganti Admin")}>
+                Ganti Admin<span className="sr-only"> Siti Aminah (contoh)</span>
+              </Button>
+              <Button variant="outline" size="touch" className="w-full text-destructive sm:w-auto" onClick={() => pick("Cabut Admin")}>
+                Cabut Admin<span className="sr-only"> Siti Aminah (contoh)</span>
+              </Button>
+            </>
+          }
+        />
+      </RecordCardList>
+      <p role="status" data-demo="record-cards-actions-result" className="text-sm text-graphite">
+        {result}
+      </p>
     </div>
   );
 }

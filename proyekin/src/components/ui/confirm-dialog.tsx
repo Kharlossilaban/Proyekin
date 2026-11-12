@@ -32,7 +32,16 @@ type ConfirmDialogProps = {
   onOpenChange?: (open: boolean) => void;
   /** Rincian tambahan di bawah deskripsi (mis. daftar dampak). */
   children?: React.ReactNode;
+  /**
+   * Pesan galat bila `onConfirm` gagal (U4-7). Teks tetap, atau fungsi yang menerima galat yang dilempar `onConfirm` sehingga
+   * pemanggil dapat menampilkan sebab yang spesifik. Tanpa prop ini (atau bila fungsi mengembalikan teks kosong) dipakai
+   * pesan bawaan "Aksi gagal diproses. Coba lagi." — perilaku pemanggil lama tidak berubah.
+   */
+  errorMessage?: string | ((error: unknown) => string);
 };
+
+/** Pesan galat bawaan ConfirmDialog (dipertahankan untuk semua pemanggil yang tidak memberi `errorMessage`). */
+export const CONFIRM_DIALOG_DEFAULT_ERROR = "Aksi gagal diproses. Coba lagi.";
 
 /**
  * Dialog konfirmasi di atas primitive Dialog (focus trap, Esc, dan pengembalian fokus ke pemicu ditangani Base UI).
@@ -50,11 +59,14 @@ function ConfirmDialog({
   open: openProp,
   onOpenChange,
   children,
+  errorMessage,
 }: ConfirmDialogProps) {
   const [openState, setOpenState] = React.useState(false);
   const [busy, setBusy] = React.useState(false);
-  const [failed, setFailed] = React.useState(false);
+  const [failure, setFailure] = React.useState<string | null>(null);
   const cancelRef = React.useRef<HTMLButtonElement>(null);
+  // Penjaga kirim ganda: state `busy` baru terlihat setelah render, sehingga dua klik dalam satu tick bisa lolos.
+  const busyRef = React.useRef(false);
   const open = openProp ?? openState;
 
   const applyOpen = (next: boolean) => {
@@ -63,21 +75,30 @@ function ConfirmDialog({
   };
 
   const handleOpenChange = (next: boolean) => {
-    if (busy) return;
-    setFailed(false);
+    if (busyRef.current) return;
+    setFailure(null);
     applyOpen(next);
   };
 
+  const describeFailure = (error: unknown): string => {
+    const text = typeof errorMessage === "function" ? errorMessage(error) : errorMessage;
+    return text || CONFIRM_DIALOG_DEFAULT_ERROR;
+  };
+
   async function handleConfirm() {
+    if (busyRef.current) return;
+    busyRef.current = true;
     setBusy(true);
-    setFailed(false);
+    setFailure(null);
     try {
       await onConfirm();
+      busyRef.current = false;
       setBusy(false);
       applyOpen(false);
-    } catch {
+    } catch (error) {
+      busyRef.current = false;
       setBusy(false);
-      setFailed(true);
+      setFailure(describeFailure(error));
     }
   }
 
@@ -90,9 +111,9 @@ function ConfirmDialog({
           <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
         {children}
-        {failed ? (
-          <p role="alert" className="text-sm text-destructive">
-            Aksi gagal diproses. Coba lagi.
+        {failure ? (
+          <p role="alert" data-slot="confirm-dialog-error" className="text-sm text-destructive">
+            {failure}
           </p>
         ) : null}
         <DialogFooter className="[&>button]:w-full sm:[&>button]:w-auto">
