@@ -187,6 +187,8 @@ export function getTeamActionFailureText(reason: string, ctx: TeamFailureContext
       return `${member} sudah tidak terdaftar di proyek ini. ${NO_CHANGE}`;
     case "USER_NOT_FOUND":
       return `Data pengguna ini tidak ditemukan. ${NO_CHANGE}`;
+    case "PROJECT_NOT_FOUND":
+      return `Proyek ini sudah tidak ada di data demo. ${NO_CHANGE}`;
     case "INVALID_CANDIDATE":
       return `Pilihan ini tidak memenuhi syarat. Pilih dari daftar yang tersedia. ${NO_CHANGE}`;
     case "HAS_TASKS":

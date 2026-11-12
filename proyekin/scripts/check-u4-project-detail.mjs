@@ -201,6 +201,22 @@ const stat = (key) => evaluate(`(() => { const c = document.querySelector('[data
 // U4-6: aksi ubah/hapus hanya untuk role berhak. Daftar tombol yang diharapkan ditulis sebagai literal (bukan dari access.ts):
 // Owner = Ubah proyek + Hapus proyek (kecuali Arsip), Admin principal = Ubah proyek, Mandor/Anggota Tim = tidak ada.
 const expectedActions = (p, id) => (id === "p-005" ? [] : p.key === "budi" ? ["Ubah proyek", "Hapus proyek"] : p.key === "siti" ? ["Ubah proyek"] : []);
+// U4-7: tab Tim kini memuat aksi tim untuk role yang berhak (literal, bukan dari access.ts). Owner: Tambah anggota, Ganti/Cabut Admin di
+// baris Admin, Keluarkan dari proyek di tiap anggota, atau Tetapkan Admin bila belum ada Admin. Admin principal: Tambah anggota saja.
+// Mandor/Anggota Tim dan proyek Arsip: tetap tanpa aksi. Tombol baris muncul DUA kali karena kartu (tersembunyi di lg) dan tabel
+// sama-sama ada di DOM; checkReadOnly menghitung semua tombol di <main> (perilaku pemeriksaan lama tidak diubah).
+const TEAM_ROW_ACTIONS = {
+  "p-001": ["Ganti Admin Siti Aminah", "Cabut Admin Siti Aminah", "Keluarkan dari proyek Ahmad Rizal", "Keluarkan dari proyek Dewi Lestari", "Keluarkan dari proyek Eko Prasetyo"],
+  "p-002": ["Ganti Admin Siti Aminah", "Cabut Admin Siti Aminah", "Keluarkan dari proyek Ahmad Rizal", "Keluarkan dari proyek Eko Prasetyo"],
+};
+const expectedTeamActions = (p, id) =>
+  id === "p-005"
+    ? []
+    : p.key === "budi"
+      ? ["Ubah proyek", "Hapus proyek", "Tambah anggota", ...(TEAM_ROW_ACTIONS[id] ? [...TEAM_ROW_ACTIONS[id], ...TEAM_ROW_ACTIONS[id]] : ["Tetapkan Admin"])]
+      : p.key === "siti"
+        ? ["Ubah proyek", "Tambah anggota"]
+        : [];
 async function checkReadOnly(label, actions = []) {
   const info = await evaluate(`(() => ({
     buttons: [...document.querySelectorAll("main button")].filter((b) => !b.closest('[role="tablist"]')).map((b) => b.textContent.trim()),
@@ -322,7 +338,7 @@ for (const p of PERSONAS) {
         const tw = await evaluate(`(() => { const c = document.querySelector('[data-slot="project-team-table"] [data-slot="table-container"]'); return c ? { scroll: c.scrollWidth, client: c.clientWidth } : null; })()`);
         rec(`${tag}: tabel tim muat tanpa gulir horizontal di 1280`, !!tw && tw.scroll <= tw.client + 1, JSON.stringify(tw));
       }
-      await checkReadOnly(`${tag} tim`, expectedActions(p, id));
+      await checkReadOnly(`${tag} tim`, expectedTeamActions(p, id));
       if (["budi p-001", "ahmad p-001"].includes(tag)) await shot(`${p.key}-${id}-tim-1280`);
       await checkAxe(`${tag} tim 1280`);
       await checkOverflow(`${tag} tim 1280`);

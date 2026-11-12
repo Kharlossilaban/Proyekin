@@ -317,7 +317,7 @@ export function RecordCardActionsDemo() {
             { label: "Email", value: "ahmad@proyekin.id" },
           ]}
           actions={
-            <Button variant="outline" size="touch" className="w-full text-destructive sm:w-auto" onClick={() => pick("Keluarkan dari proyek")}>
+            <Button variant="outline" size="touch" className="w-full sm:w-auto" onClick={() => pick("Keluarkan dari proyek")}>
               Keluarkan dari proyek<span className="sr-only"> Ahmad Rizal (contoh)</span>
             </Button>
           }
@@ -334,7 +334,7 @@ export function RecordCardActionsDemo() {
               <Button variant="outline" size="touch" className="w-full sm:w-auto" onClick={() => pick("Ganti Admin")}>
                 Ganti Admin<span className="sr-only"> Siti Aminah (contoh)</span>
               </Button>
-              <Button variant="outline" size="touch" className="w-full text-destructive sm:w-auto" onClick={() => pick("Cabut Admin")}>
+              <Button variant="outline" size="touch" className="w-full sm:w-auto" onClick={() => pick("Cabut Admin")}>
                 Cabut Admin<span className="sr-only"> Siti Aminah (contoh)</span>
               </Button>
             </>

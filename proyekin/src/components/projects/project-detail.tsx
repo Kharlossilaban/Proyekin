@@ -2,8 +2,8 @@
 
 // Detail proyek (U4-5) dengan aksi ubah dan hapus proyek (U4-6). Aksi HANYA muncul untuk role yang berhak menurut
 // `access.ts` (`canEditProject`: Owner atau Admin principal proyek itu; `canDeleteProject`: Owner) dan tidak pernah pada
-// proyek Arsip. Tanpa tambah/keluarkan anggota atau penetapan Admin (U4-7), tanpa detail atau ubah tugas (U4-9/U4-10),
-// dan tanpa tautan ke detail tugas. Mandor, Anggota Tim, dan Guest tidak melihat aksi apa pun.
+// proyek Arsip. Kelola anggota dan Admin penanggung jawab (U4-7) ada di tab Tim (`ProjectTeamPanel`). Tanpa detail atau ubah
+// tugas (U4-9/U4-10) dan tanpa tautan ke detail tugas. Mandor, Anggota Tim, dan Guest tidak melihat aksi apa pun.
 //
 // Seluruh aturan akses datang dari `access.ts` (satu sumber); komponen ini tidak menulis ulang aturan role:
 // - boleh membuka proyek ini        → `canViewProject` (via AccessGuard; URL langsung dan navigasi klien sama)
@@ -22,12 +22,13 @@
 import * as React from "react";
 import Link from "next/link";
 import { notFound, usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ArrowLeft, CircleCheck, Clock, ListChecks, ListTodo, Lock, Pencil, TriangleAlert, Users, X } from "lucide-react";
+import { ArrowLeft, CircleCheck, Clock, ListChecks, ListTodo, Lock, Pencil, TriangleAlert, X } from "lucide-react";
 
 import { AccessGuard } from "@/components/auth/access-guard";
 import { useCurrentUser } from "@/components/auth/use-current-user";
 import { ProjectDeleteDialog } from "@/components/projects/project-delete-dialog";
 import { ProjectFormDialog } from "@/components/projects/project-form-dialog";
+import { ProjectTeamPanel } from "@/components/projects/project-team-panel";
 import { TaskCard } from "@/components/tasks/task-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -37,7 +38,7 @@ import { DemoDataNotice } from "@/components/ui/demo-data-notice";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PageHeader } from "@/components/ui/page-header";
 import { ProgressBar } from "@/components/ui/progress-bar";
-import { RecordCard, RecordCardList } from "@/components/ui/record-card";
+import { RecordCardList } from "@/components/ui/record-card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { StatCard } from "@/components/ui/stat-card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -57,14 +58,12 @@ import {
   DENY_REASON_LABELS,
   PROJECT_STATUS_LABELS,
   PROJECT_STATUS_TONES,
-  ROLE_LABELS,
-  ROLE_TONES,
   TASK_PRIORITY_LABELS,
   TASK_PRIORITY_TONES,
   TASK_STATUS_LABELS,
   TASK_STATUS_TONES,
 } from "@/lib/labels";
-import { formatProjectPeriod, getProjectTeam, getUserName, type TeamEntry } from "@/lib/project-relations";
+import { formatProjectPeriod, getUserName } from "@/lib/project-relations";
 import { useMockStore } from "@/lib/use-mock-store";
 import type { Project, Task, User } from "@/types";
 
@@ -218,78 +217,6 @@ function TasksPanel({ tasks, users, ownOnly }: { tasks: readonly Task[]; users: 
                     <TableCell>
                       <ProgressBar value={task.progress} label={`Progres ${task.code}`} />
                     </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </>
-      )}
-    </section>
-  );
-}
-
-function TeamPanel({ team, showEmail }: { team: readonly TeamEntry[]; showEmail: boolean }) {
-  return (
-    <section aria-labelledby="tim-proyek" data-slot="project-team" className="flex min-w-0 flex-col gap-4">
-      <div className="flex flex-col gap-1">
-        <h2 id="tim-proyek" className="text-base font-semibold text-foreground">
-          Tim proyek
-        </h2>
-        <p className="text-sm text-muted-foreground">{team.length} orang terdaftar di proyek ini.</p>
-      </div>
-
-      {team.length === 0 ? (
-        <Card data-slot="project-team-empty">
-          <EmptyState
-            icon={<Users aria-hidden="true" />}
-            title="Belum ada tim di proyek ini"
-            description="Belum ada Admin Kantor penanggung jawab atau anggota yang terdaftar di proyek ini."
-          />
-        </Card>
-      ) : (
-        <>
-          <RecordCardList label="Daftar tim proyek" data-slot="project-team-cards">
-            {team.map(({ user, isAdminPrincipal }) => (
-              <RecordCard
-                key={user.id}
-                title={user.name}
-                data-user-id={user.id}
-                fields={[
-                  {
-                    label: "Peran",
-                    value: (
-                      <span className="flex flex-wrap items-center gap-2">
-                        <Badge variant={ROLE_TONES[user.role]}>{ROLE_LABELS[user.role]}</Badge>
-                        {isAdminPrincipal ? <Badge variant="neutral">Penanggung jawab</Badge> : null}
-                      </span>
-                    ),
-                  },
-                  ...(showEmail ? [{ label: "Email", value: user.email }] : []),
-                ]}
-              />
-            ))}
-          </RecordCardList>
-          <div data-slot="project-team-table" className="hidden lg:block">
-            <Table label="Tabel tim proyek">
-              <TableHeader>
-                <TableRow className="hover:bg-transparent">
-                  <TableHead>Nama</TableHead>
-                  <TableHead>Peran</TableHead>
-                  {showEmail ? <TableHead>Email</TableHead> : null}
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {team.map(({ user, isAdminPrincipal }) => (
-                  <TableRow key={user.id} data-slot="project-team-row" data-user-id={user.id}>
-                    <TableCell className="min-w-48 font-medium text-foreground">{user.name}</TableCell>
-                    <TableCell>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <Badge variant={ROLE_TONES[user.role]}>{ROLE_LABELS[user.role]}</Badge>
-                        {isAdminPrincipal ? <Badge variant="neutral">Penanggung jawab</Badge> : null}
-                      </div>
-                    </TableCell>
-                    {showEmail ? <TableCell className="break-all">{user.email}</TableCell> : null}
                   </TableRow>
                 ))}
               </TableBody>
@@ -512,7 +439,7 @@ function ProjectDetailView({ project }: { project: Project }) {
           </TabsPanel>
           {showTeam ? (
             <TabsPanel value="tim">
-              <TeamPanel team={getProjectTeam(project, data)} showEmail={showEmail} />
+              <ProjectTeamPanel project={project} actor={actor} data={data} showEmail={showEmail} />
             </TabsPanel>
           ) : null}
         </Tabs>
