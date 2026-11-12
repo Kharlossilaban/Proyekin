@@ -20,7 +20,8 @@
     "check:login-touch": "node scripts/check-login-touch.mjs",
     "check:responsive-lists": "node scripts/check-responsive-lists.mjs",
     "check:no-budget": "node scripts/check-no-budget.mjs",
-    "check:u4-project-crud": "node scripts/check-u4-project-crud.mjs"
+    "check:u4-project-crud": "node scripts/check-u4-project-crud.mjs",
+    "check:u4-project-members": "node scripts/check-u4-project-members.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
