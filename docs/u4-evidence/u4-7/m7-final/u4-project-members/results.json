@@ -1,0 +1,592 @@
+{
+  "checks": [
+    {
+      "name": "A budi p-001: tim Admin lalu anggota (urutan tetap)",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "A budi p-001: tombol tim — Tambah anggota, Ganti/Cabut Admin Siti, Keluarkan dari proyek untuk tiap anggota",
+      "ok": true,
+      "detail": "[\"Tambah anggota\",\"Ganti Admin Siti Aminah\",\"Cabut Admin Siti Aminah\",\"Keluarkan dari proyek Ahmad Rizal\",\"Keluarkan dari proyek Dewi Lestari\",\"Keluarkan dari proyek Eko Prasetyo\"]"
+    },
+    {
+      "name": "A budi p-001: kolom tabel Nama, Peran, Email, Aksi",
+      "ok": true,
+      "detail": "[\"Nama\",\"Peran\",\"Email\",\"Aksi\"]"
+    },
+    {
+      "name": "A budi p-001: baris Admin berlatar Warm Highlight dan berteks 'Penanggung jawab' (tidak hanya warna)",
+      "ok": true,
+      "detail": "{\"principal\":\"true\",\"bg\":\"rgb(255, 243, 226)\"}"
+    },
+    {
+      "name": "A budi p-001: tabel tim (4 kolom) muat tanpa gulir horizontal di 1280",
+      "ok": true,
+      "detail": "{\"scroll\":974,\"client\":974}"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-001 tim 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: budi p-001 tim 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "A siti (Admin principal) p-001: hanya Tambah anggota; tanpa Ganti/Cabut/Keluarkan",
+      "ok": true,
+      "detail": "[\"Tambah anggota\"]"
+    },
+    {
+      "name": "A siti p-001: tanpa kolom Aksi (tabel sama seperti U4-5)",
+      "ok": true,
+      "detail": "[\"Nama\",\"Peran\",\"Email\"]"
+    },
+    {
+      "name": "A siti p-002: hanya Tambah anggota",
+      "ok": true,
+      "detail": "[\"Tambah anggota\"]"
+    },
+    {
+      "name": "A ahmad (Mandor) p-001: tab Tim tanpa tombol, tanpa kolom Aksi, tanpa email",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "A eko (Mandor) p-002: tab Tim tanpa tombol, tanpa kolom Aksi, tanpa email",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "A dewi (Anggota Tim) p-001: tanpa tab Tim dan tanpa panel tim",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A rina (Admin Kantor tanpa proyek): /proyek/p-001 → /akses-ditolak",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A rina: daftar proyek kosong (tidak ada proyek yang ditanganinya)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A budi p-005 (Arsip): tanpa tombol apa pun di tab Tim, tanpa slot Tetapkan Admin",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "A budi p-005 (Arsip): state kosong lama dan catatan Arsip tampil",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A budi p-003 (tanpa Admin, tanpa anggota): Tambah anggota + slot kosong dengan Tetapkan Admin",
+      "ok": true,
+      "detail": "[\"Tambah anggota\",\"Tetapkan Admin\"]"
+    },
+    {
+      "name": "A budi p-003: slot Admin kosong bergaris putus-putus",
+      "ok": true,
+      "detail": "dashed"
+    },
+    {
+      "name": "A budi p-003: state kosong mengarahkan ke tombol yang tersedia",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-003 tim kosong 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A budi p-004 (Selesai): aksi tetap tersedia (tidak dikunci)",
+      "ok": true,
+      "detail": "[\"Tambah anggota\",\"Tetapkan Admin\"]"
+    },
+    {
+      "name": "B tambah: dialog berjudul 'Tambah anggota proyek' dengan konteks proyek",
+      "ok": true,
+      "detail": "{\"slot\":\"member-add\",\"title\":\"Tambah anggota proyek\",\"description\":\"Pilih Mandor atau Anggota Tim untuk proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan.\",\"buttons\":[\"Batal\",\"Tambahkan ke proyek\"],\"alerts\":[],\"fieldErrors\":[],\"groups\":[[\"Mandor\",[\"Ahmad Rizal\",\"Eko Prasetyo\"]],[\"Anggota Tim\",[\"Dewi Lestari\"]]],\"options\":[\"Pilih Mandor atau Anggota Tim\",\"Ahmad Rizal\",\"Eko Prasetyo\",\"Dewi Lestari\"],\"value\":\"\",\"invalid\":null,\"text\":\"Tambah anggota proyekPilih Mandor atau Anggota Tim untuk proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan.Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Anggota*Pilih Mandor atau Anggota TimAhmad RizalEko PrasetyoDewi LestariMandor dapat melihat proyek ini, semua tugasnya, dan susunan tim. Anggota Tim hanya melihat tugas miliknya.BatalTambahkan ke proyek\"}"
+    },
+    {
+      "name": "B tambah: kandidat dikelompokkan Mandor / Anggota Tim, hanya nama (tanpa email, tanpa Admin/Owner)",
+      "ok": true,
+      "detail": "[[\"Mandor\",[\"Ahmad Rizal\",\"Eko Prasetyo\"]],[\"Anggota Tim\",[\"Dewi Lestari\"]]]"
+    },
+    {
+      "name": "B tambah: tombol Batal dan 'Tambahkan ke proyek'; catatan data demo tampil",
+      "ok": true,
+      "detail": "[\"Batal\",\"Tambahkan ke proyek\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog tambah anggota 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B tambah: tanpa pilihan → galat 'Pilih satu Mandor atau Anggota Tim.', aria-invalid, fokus ke pilihan",
+      "ok": true,
+      "detail": "{\"e\":[\"Pilih satu Mandor atau Anggota Tim.\"],\"inv\":\"true\",\"act\":{\"tag\":\"SELECT\",\"id\":\"anggota-_r_e_\",\"action\":\"\",\"user\":\"\",\"text\":\"Pilih Mandor atau Anggota TimAhmad RizalEko PrasetyoDewi Les\",\"inDialog\":true}}"
+    },
+    {
+      "name": "B tambah: saat menyimpan tombol memuat (aria-busy), pilihan dan Batal nonaktif",
+      "ok": true,
+      "detail": "{\"busy\":\"true\",\"selectDisabled\":true,\"cancelDisabled\":true}"
+    },
+    {
+      "name": "B tambah: sukses diumumkan '(simulasi)'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B tambah: kirim ganda tidak menggandakan keanggotaan (Ahmad satu kali)",
+      "ok": true,
+      "detail": "[\"u-003\"]"
+    },
+    {
+      "name": "B tambah: fokus kembali ke 'Tambah anggota'",
+      "ok": true,
+      "detail": "{\"tag\":\"BUTTON\",\"id\":\"\",\"action\":\"add-member\",\"user\":\"\",\"text\":\"Tambah anggota\",\"inDialog\":false}"
+    },
+    {
+      "name": "B tambah: slot Admin kosong tetap; teks tim tanpa Admin",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B tambah: data tugas tidak berubah (Tugas (0))",
+      "ok": true,
+      "detail": "Tugas (0)"
+    },
+    {
+      "name": "B tambah: ketiga kandidat ditambahkan berurutan",
+      "ok": true,
+      "detail": "[\"u-003\",\"u-005\",\"u-004\"]"
+    },
+    {
+      "name": "B tambah: kandidat habis → penjelasan tanpa form, hanya tombol Tutup",
+      "ok": true,
+      "detail": "{\"slot\":\"member-add\",\"title\":\"Tambah anggota proyek\",\"description\":\"Pilih Mandor atau Anggota Tim untuk proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan.\",\"buttons\":[\"Tutup\"],\"alerts\":[],\"fieldErrors\":[],\"groups\":null,\"options\":null,\"value\":null,\"invalid\":null,\"text\":\"Tambah anggota proyekPilih Mandor atau Anggota Tim untuk proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan.Semua Mandor dan Anggota Tim sudah terdaftar di proyek ini.Tutup\"}"
+    },
+    {
+      "name": "B siti p-001: semua kandidat sudah anggota → keadaan kosong",
+      "ok": true,
+      "detail": "Tambah anggota proyekPilih Mandor atau Anggota Tim untuk proyek PRJ-001 Renovasi Gedung Kantor Batam.Semua Mandor dan Anggota Tim sudah terdaftar di proyek ini.Tutup"
+    },
+    {
+      "name": "B siti p-002: kandidat hanya Dewi Lestari (Anggota Tim)",
+      "ok": true,
+      "detail": "[[\"Anggota Tim\",[\"Dewi Lestari\"]]]"
+    },
+    {
+      "name": "B siti p-002: Admin principal berhasil menambah Dewi",
+      "ok": true,
+      "detail": "[\"u-002\",\"u-003\",\"u-005\",\"u-004\"]"
+    },
+    {
+      "name": "B siti p-002: Admin principal tetap tanpa tombol Keluarkan untuk anggota baru",
+      "ok": true,
+      "detail": "[\"Tambah anggota\"]"
+    },
+    {
+      "name": "C blokir: Dewi (2 tugas) — dialog tanpa tombol konfirmasi, menyebut jumlah dan bahwa tidak ada data yang diubah",
+      "ok": true,
+      "detail": "{\"slot\":\"member-remove-blocked\",\"title\":\"Dewi Lestari belum dapat dikeluarkan\",\"description\":\"Dewi Lestari tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 2 tugas di proyek ini. Tidak ada data yang diubah.\",\"buttons\":[\"Mengerti\"],\"alerts\":[],\"fieldErrors\":[],\"groups\":null,\"options\":null,\"value\":null,\"invalid\":null,\"text\":\"Dewi Lestari belum dapat dikeluarkanDewi Lestari tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 2 tugas di proyek ini. Tidak ada data yang diubah.Anggota hanya dapat dikeluarkan setelah tidak lagi tercatat sebagai penanggung jawab tugas di proyek ini, termasuk tugas yang sudah selesai.Mengerti\"}"
+    },
+    {
+      "name": "C blokir: tidak menawarkan penugasan ulang (fitur U4-9)",
+      "ok": true,
+      "detail": "Dewi Lestari belum dapat dikeluarkanDewi Lestari tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 2 tugas di proyek ini. Tidak ada data yang diubah.Anggota hanya dapat dikeluarkan setelah tidak lagi tercatat sebagai penanggung jawab tugas di proyek ini, termasuk tugas yang sudah selesai.Mengerti"
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog blokir keluarkan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C blokir: fokus kembali ke tombol Keluarkan milik Dewi; tim tidak berubah",
+      "ok": true,
+      "detail": "{\"tag\":\"BUTTON\",\"id\":\"\",\"action\":\"remove-member\",\"user\":\"u-004\",\"text\":\"Keluarkan dari proyek Dewi Lestari\",\"inDialog\":false}"
+    },
+    {
+      "name": "C blokir: Ahmad (1 tugas Selesai) tetap diblokir dan disebut sudah selesai",
+      "ok": true,
+      "detail": "Ahmad Rizal tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 1 tugas di proyek ini (tugas tersebut sudah selesai). Tidak ada data yang diubah."
+    },
+    {
+      "name": "C konfirmasi: judul, akibat (akses hilang, akun/tugas/data tetap, simulasi), tombol Batal dan 'Keluarkan dari proyek'",
+      "ok": true,
+      "detail": "{\"slot\":null,\"title\":\"Keluarkan Ahmad Rizal dari proyek?\",\"description\":\"Ahmad Rizal tidak lagi dapat membuka proyek PRJ-003 dan namanya hilang dari tim. Akun dan perannya tidak berubah, dan tidak ada tugas atau data lain yang dihapus. Perubahan ini hanya simulasi dan hilang saat halaman dimuat ulang.\",\"buttons\":[\"Batal\",\"Keluarkan dari proyek\"],\"alerts\":[],\"fieldErrors\":[],\"groups\":null,\"options\":null,\"value\":null,\"invalid\":null,\"text\":\"Keluarkan Ahmad Rizal dari proyek?Ahmad Rizal tidak lagi dapat membuka proyek PRJ-003 dan namanya hilang dari tim. Akun dan perannya tidak berubah, dan tidak ada tugas atau data lain yang dihapus. Perubahan ini hanya simulasi dan hilang saat halaman dimuat ulang.BatalKeluarkan dari proyek\"}"
+    },
+    {
+      "name": "C konfirmasi: fokus awal di Batal (aksi destruktif)",
+      "ok": true,
+      "detail": "{\"tag\":\"BUTTON\",\"id\":\"\",\"action\":\"\",\"user\":\"\",\"text\":\"Batal\",\"inDialog\":true}"
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog konfirmasi keluarkan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C batal: tidak ada perubahan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C keluarkan: tombol konfirmasi memuat saat memproses",
+      "ok": true,
+      "detail": "true"
+    },
+    {
+      "name": "C keluarkan: sukses diumumkan '(simulasi)'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C keluarkan: anggota hilang dari tim; fokus ke judul 'Tim proyek'",
+      "ok": true,
+      "detail": "{\"tag\":\"H2\",\"id\":\"tim-proyek\",\"action\":\"\",\"user\":\"\",\"text\":\"Tim proyek\",\"inDialog\":false}"
+    },
+    {
+      "name": "C keluarkan: tanpa kaskade (Tugas (0) tetap; akun Ahmad tetap ada sebagai kandidat)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "C keluarkan: Ahmad kembali menjadi kandidat (akun global tidak dihapus)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D tetapkan: dialog, kandidat hanya Admin Kantor (Siti, Rina), tombol 'Tetapkan Admin'",
+      "ok": true,
+      "detail": "{\"slot\":\"admin-assign\",\"title\":\"Tetapkan Admin penanggung jawab\",\"description\":\"Pilih Admin Kantor yang bertanggung jawab atas proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan. Satu proyek hanya memiliki satu Admin penanggung jawab.\",\"buttons\":[\"Batal\",\"Tetapkan Admin\"],\"alerts\":[],\"fieldErrors\":[],\"groups\":[],\"options\":[\"Pilih Admin Kantor\",\"Siti Aminah\",\"Rina Wulandari\"],\"value\":\"\",\"invalid\":null,\"text\":\"Tetapkan Admin penanggung jawabPilih Admin Kantor yang bertanggung jawab atas proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan. Satu proyek hanya memiliki satu Admin penanggung jawab.Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Admin Kantor*Pilih Admin KantorSiti AminahRina WulandariAdmin yang ditetapkan dapat membuka dan mengubah data proyek ini serta menambah anggota.BatalTetapkan Admin\"}"
+    },
+    {
+      "name": "D tetapkan: tanpa pilihan → 'Pilih satu Admin Kantor.'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D tetapkan: akibat disebut sesuai pilihan",
+      "ok": true,
+      "detail": "Rina Wulandari akan dapat membuka dan mengubah data proyek ini serta menambah anggota."
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog tetapkan Admin 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D tetapkan: sukses diumumkan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D tetapkan: Rina menjadi baris pertama dengan Penanggung jawab; slot kosong hilang; fokus ke 'Ganti Admin'",
+      "ok": true,
+      "detail": "{\"ids\":[\"u-006\"],\"act\":{\"tag\":\"BUTTON\",\"id\":\"\",\"action\":\"replace-admin\",\"user\":\"u-006\",\"text\":\"Ganti Admin Rina Wulandari\",\"inDialog\":false}}"
+    },
+    {
+      "name": "D tetapkan: tim berisi Admin tanpa anggota menampilkan keterangan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D tetapkan: Ringkasan menampilkan Admin baru",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D ganti: 'Admin saat ini: Siti Aminah.'; kandidat tanpa Admin aktif (hanya Rina)",
+      "ok": true,
+      "detail": "{\"slot\":\"admin-replace\",\"title\":\"Ganti Admin penanggung jawab\",\"description\":\"Admin saat ini: Siti Aminah.\",\"buttons\":[\"Batal\",\"Ganti Admin\"],\"alerts\":[],\"fieldErrors\":[],\"groups\":[],\"options\":[\"Pilih Admin Kantor\",\"Rina Wulandari\"],\"value\":\"\",\"invalid\":null,\"text\":\"Ganti Admin penanggung jawabAdmin saat ini: Siti Aminah.Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Admin pengganti*Pilih Admin KantorRina WulandariSetelah diganti, Siti Aminah tidak lagi dapat membuka proyek ini. Akun dan perannya tidak berubah.BatalGanti Admin\"}"
+    },
+    {
+      "name": "D ganti: akibat menyebut Admin lama kehilangan akses dan role tidak berubah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D ganti: sukses diumumkan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D ganti: satu Admin (Rina) di baris pertama; anggota tetap; tugas tetap",
+      "ok": true,
+      "detail": "[\"u-006\",\"u-003\",\"u-004\",\"u-005\"]"
+    },
+    {
+      "name": "D ganti: Ringkasan menampilkan Rina Wulandari",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D akses: tombol Keluar ditemukan untuk berganti persona tanpa muat ulang",
+      "ok": true,
+      "detail": "Keluar"
+    },
+    {
+      "name": "D akses: setelah diganti, Siti (Admin lama) tidak lagi melihat p-001; p-002 tetap",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D akses: Rina (Admin baru) melihat p-001",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D akses: Rina (Admin principal baru) hanya mendapat Tambah anggota",
+      "ok": true,
+      "detail": "[\"Tambah anggota\"]"
+    },
+    {
+      "name": "D cabut: konfirmasi menyebut nama, akibat akses, akun/role/anggota/tugas tetap; tombol Batal dan 'Cabut Admin'",
+      "ok": true,
+      "detail": "{\"slot\":null,\"title\":\"Cabut Siti Aminah sebagai Admin penanggung jawab?\",\"description\":\"Siti Aminah tidak lagi dapat membuka proyek PRJ-001. Proyek tidak memiliki Admin penanggung jawab sampai Anda menetapkan yang baru. Akun dan peran Admin Kantor Siti Aminah tidak berubah, dan anggota serta tugas proyek tetap utuh. Perubahan ini hanya simulasi dan hilang saat halaman dimuat ulang.\",\"buttons\":[\"Batal\",\"Cabut Admin\"],\"alerts\":[],\"fieldErrors\":[],\"groups\":null,\"options\":null,\"value\":null,\"invalid\":null,\"text\":\"Cabut Siti Aminah sebagai Admin penanggung jawab?Siti Aminah tidak lagi dapat membuka proyek PRJ-001. Proyek tidak memiliki Admin penanggung jawab sampai Anda menetapkan yang baru. Akun dan peran Admin Kantor Siti Aminah tidak berubah, dan anggota serta tugas proyek tetap utuh. Perubahan ini hanya simulasi dan hilang saat halaman dimuat ulang.BatalCabut Admin\"}"
+    },
+    {
+      "name": "D cabut: fokus awal di Batal (aksi destruktif)",
+      "ok": true,
+      "detail": "{\"tag\":\"BUTTON\",\"id\":\"\",\"action\":\"\",\"user\":\"\",\"text\":\"Batal\",\"inDialog\":true}"
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog cabut Admin 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D cabut: sukses diumumkan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D cabut: slot kosong kembali; anggota dan tugas tetap; fokus ke 'Tetapkan Admin'",
+      "ok": true,
+      "detail": "{\"ids\":[\"u-003\",\"u-004\",\"u-005\"],\"act\":{\"tag\":\"BUTTON\",\"id\":\"\",\"action\":\"assign-admin\",\"user\":\"\",\"text\":\"Tetapkan Admin\",\"inDialog\":false}}"
+    },
+    {
+      "name": "D cabut: Ringkasan 'Belum ditetapkan'",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "D akses: setelah dicabut, Siti tidak lagi melihat p-001 (p-002 tetap; akun dan role tetap Admin Kantor)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "E hook uji tersedia di development",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "E1 stale tambah: pilihan yang sudah tidak tersedia dikosongkan dengan pesan 'Pilih lagi'",
+      "ok": true,
+      "detail": "{\"slot\":\"member-add\",\"title\":\"Tambah anggota proyek\",\"description\":\"Pilih Mandor atau Anggota Tim untuk proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan.\",\"buttons\":[\"Batal\",\"Tambahkan ke proyek\"],\"alerts\":[],\"fieldErrors\":[\"Pilihan sebelumnya sudah tidak tersedia. Pilih lagi.\"],\"groups\":[[\"Mandor\",[\"Eko Prasetyo\"]],[\"Anggota Tim\",[\"Dewi Lestari\"]]],\"options\":[\"Pilih Mandor atau Anggota Tim\",\"Eko Prasetyo\",\"Dewi Lestari\"],\"value\":\"\",\"invalid\":\"true\",\"text\":\"Tambah anggota proyekPilih Mandor atau Anggota Tim untuk proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan.Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Anggota*Pilih Mandor atau Anggota TimEko PrasetyoDewi LestariMandor dapat melihat proyek ini, semua tugasnya, dan susunan tim. Anggota Tim hanya melihat tugas miliknya.Pilihan sebelumnya sudah tidak tersedia. Pilih lagi.BatalTambahkan ke proyek\"}"
+    },
+    {
+      "name": "E2 stale tambah: ditolak dengan pesan spesifik; dialog tetap terbuka; keanggotaan tidak ganda",
+      "ok": true,
+      "detail": "[\"Eko Prasetyo sudah terdaftar di proyek ini. Tidak ada data yang diubah. Pilih anggota lain.\"]"
+    },
+    {
+      "name": "E3 awal: Ahmad (tanpa tugas) → dialog konfirmasi",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "E3 stale: dialog tidak berganti jenis saat store berubah",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "E3 stale keluarkan: ditolak dengan jumlah tugas aktual; anggota tetap; tugas tidak dihapus",
+      "ok": true,
+      "detail": "[\"Ahmad Rizal tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 1 tugas di proyek ini. Tidak ada data yang diubah.\"]"
+    },
+    {
+      "name": "E4 stale: dialog tetap terbuka walau baris anggota sudah hilang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "E4 stale keluarkan: 'sudah tidak terdaftar', tanpa perubahan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "E5 stale: dialog Tetapkan tetap terbuka walau slot kosong sudah hilang",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "E5 stale tetapkan: 'sudah berubah menjadi Rina Wulandari', Admin tidak diganti",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "E6 stale cabut: 'sudah tidak memiliki Admin penanggung jawab', tanpa perubahan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "E7 stale Arsip: ditolak 'sudah berstatus Arsip'; Dewi tidak ditambahkan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "E7 setelah Arsip: semua tombol tim hilang",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "E8 stale akses: Admin principal yang diganti dialihkan ke Akses Ditolak; anggota tidak ditambahkan",
+      "ok": true,
+      "detail": "/akses-ditolak"
+    },
+    {
+      "name": "F 375 budi: kartu (bukan tabel), Admin pertama berlatar Warm Highlight, area aksi di bawah tiap kartu",
+      "ok": true,
+      "detail": "[{\"id\":\"u-002\",\"last\":\"record-card-actions\",\"bg\":\"rgb(255, 243, 226)\"},{\"id\":\"u-003\",\"last\":\"record-card-actions\",\"bg\":\"rgb(255, 255, 255)\"},{\"id\":\"u-004\",\"last\":\"record-card-actions\",\"bg\":\"rgb(255, 255, 255)\"},{\"id\":\"u-005\",\"last\":\"record-card-actions\",\"bg\":\"rgb(255, 255, 255)\"}]"
+    },
+    {
+      "name": "F 375 budi: semua tombol tim >= 44x44px",
+      "ok": true,
+      "detail": "[{\"t\":\"Tambah anggota\",\"w\":343,\"h\":44},{\"t\":\"Ganti Admin Siti Aminah\",\"w\":309,\"h\":44},{\"t\":\"Cabut Admin Siti Aminah\",\"w\":309,\"h\":44},{\"t\":\"Keluarkan dari proyek Ahmad Ri\",\"w\":309,\"h\":44},{\"t\":\"Keluarkan dari proyek Dewi Les\",\"w\":309,\"h\":44},{\"t\":\"Keluarkan dari proyek Eko Pras\",\"w\":309,\"h\":44}]"
+    },
+    {
+      "name": "overflow halaman: budi p-001 tim 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-001 tim 375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dialog blokir 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog blokir 375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "F 375: tombol dialog (termasuk X) >= 44px",
+      "ok": true,
+      "detail": "[44,44]"
+    },
+    {
+      "name": "overflow halaman: dialog tambah 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog tambah 375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "F 375: pilihan kandidat 44px, font >= 16px",
+      "ok": true,
+      "detail": "{\"h\":44,\"fs\":16}"
+    },
+    {
+      "name": "F 375 ahmad (Mandor): read-only — tanpa tombol, tanpa email",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "overflow halaman: ahmad p-001 tim 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: ahmad p-001 tim 375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "F 768 budi: kartu dua kolom (dua kartu sebaris)",
+      "ok": true,
+      "detail": "[408,408,613,613]"
+    },
+    {
+      "name": "overflow halaman: budi p-001 tim 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi p-001 tim 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: dialog ganti 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: dialog ganti 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "F: tanpa kata anggaran/nominal Rp, tanpa Tukang, tanpa istilah 'Admin principal' di UI",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "G build production berhasil",
+      "ok": true,
+      "detail": "f C:\\proyekin_project\\package-lock.json as the root directory.\n To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.\n   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.\n Detected additional lockfiles: \n   * C:\\proyekin_project\\proyekin\\package-lock.json\n\n"
+    },
+    {
+      "name": "G keluaran build (387 berkas .next/static + .next/server) tanpa penanda hook uji",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "G next start: window.__PROYEKIN_TEST__ tidak terdefinisi di halaman detail",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "G next start: tidak ada route debug publik (/u4-spike 404 di build biasa)",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "measurements": {
+    "axe budi p-001 tim 1280": [],
+    "axe budi p-003 tim kosong 1280": [],
+    "axe dialog tambah anggota 1280": [],
+    "axe dialog blokir keluarkan 1280": [],
+    "axe dialog konfirmasi keluarkan 1280": [],
+    "axe dialog tetapkan Admin 1280": [],
+    "login siti@proyekin.id": true,
+    "login rina@proyekin.id": true,
+    "axe dialog cabut Admin 1280": [],
+    "axe budi p-001 tim 375": [],
+    "axe dialog blokir 375": [],
+    "axe dialog tambah 375": [],
+    "axe ahmad p-001 tim 375": [],
+    "axe budi p-001 tim 768": [],
+    "axe dialog ganti 768": []
+  },
+  "failures": []
+}

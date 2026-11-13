@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-11-06 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: **U4-0 sampai U4-5 PASS, U4-6 PASS WITH NOTES, U4-7 sampai U4-12 NOT STARTED; U5 PLANNING ONLY**; rencana U4-5..U4-12 tertulis di `docs/U4-PLAN.md`, draf U5 di `docs/U5-PLAN.md`; **keputusan final Owner 2026-10-28: Dokumen tetap dengan scope visual sempit (F1), anggaran dihapus total (F2); pembersihan kode anggaran sudah dieksekusi dan terverifikasi, evidence `docs/u4-evidence/budget-cleanup/`**; workflow skill dan evaluasi visual dicatat, lihat "Milestone workflow")
+Terakhir diperbarui: 2026-11-13 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: **U4-0 sampai U4-5 PASS, U4-6 dan U4-7 PASS WITH NOTES, berikutnya Dashboard Access Correction (terpisah), U4-8 sampai U4-12 NOT STARTED; U5 PLANNING ONLY**; rencana U4-5..U4-12 tertulis di `docs/U4-PLAN.md`, draf U5 di `docs/U5-PLAN.md`; **keputusan final Owner 2026-10-28: Dokumen tetap dengan scope visual sempit (F1), anggaran dihapus total (F2); pembersihan kode anggaran sudah dieksekusi dan terverifikasi, evidence `docs/u4-evidence/budget-cleanup/`**; workflow skill dan evaluasi visual dicatat, lihat "Milestone workflow")
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -123,7 +123,9 @@ Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pe
 |---|---|
 | U4-0, U4-1, U4-2, U4-3, U4-4, **U4-5** | **PASS** (bukti: bagian di bawah dan `docs/u4-evidence/`; U4-5: `U4-5-PROJECT-DETAIL.md`) |
 | U4-6 (buat, ubah, hapus proyek) | **PASS WITH NOTES** (verifikasi final 2026-11-06; `docs/u4-evidence/U4-6-PROJECT-CRUD.md`) |
-| U4-7, U4-8, U4-9, U4-10, U4-11, U4-12 | **NOT STARTED** (tidak ada commit, evidence, atau skrip uji; `/tugas/[id]` masih placeholder; `/dashboard`, `/tugas`, `/anggota` masih tampilan lama tanpa fitur U4) |
+| U4-7 (kelola anggota proyek, Admin penanggung jawab) | **PASS WITH NOTES** (verifikasi final M7 2026-11-13; `docs/u4-evidence/U4-7-PROJECT-MEMBERS.md`) |
+| Dashboard Access Correction | **NEXT** — disetujui Owner, pekerjaan terpisah setelah push U4-7 dan sebelum U4-8 (scope, uji, commit, evidence sendiri) |
+| U4-8, U4-9, U4-10, U4-11, U4-12 | **NOT STARTED** (tidak ada commit, evidence, atau skrip uji; `/tugas/[id]` masih placeholder; `/dashboard`, `/tugas`, `/anggota` masih tampilan lama tanpa fitur U4) |
 | U5 (Laporan Harian, Dokumen) | **PLANNING ONLY**: draf `docs/U5-PLAN.md` berstatus **DRAFT / NOT APPROVED FOR IMPLEMENTATION**; tidak ada kode U5 |
 
 Commit `709487b`, `e5b197e`, `88b0bb7`, `951b9d7` adalah perbaikan responsif/aksesibilitas pada halaman placeholder dan **bukan** kemajuan U4-5 s.d. U4-12 (tidak mengubah data, `access.ts`, guard, atau business logic).
@@ -216,6 +218,14 @@ Commit `709487b`, `e5b197e`, `88b0bb7`, `951b9d7` adalah perbaikan responsif/aks
 - **Temuan visual:** 18 tangkapan 375/768/1280 dilihat. Kuat: hierarki dialog, fokus awal terlihat (Batal sebagai default hapus), penolakan hapus menyebut penghalang, target sentuh ≥ 44px. Lemah: keadaan "dihapus" 1280 terasa kosong; footer dialog tambah terpotong setelah galat di 1280×900 dan tidak sticky di 375; tombol destruktif di posisi atas pada 375.
 - **Risiko terbuka:** peringatan dev Next.js `/proyek/[projectId]` (`params` di luar `<Suspense>`) sudah ada sejak U4-5; 9 temuan `code-review` medium yang belum diperbaiki (copy petunjuk status ambigu, banner `?dibuat=1` muncul lagi saat Back, alasan gagal hapus generik pada jalur race, kebersihan kode); `/u4-spike` masih dipakai uji (U4-10).
 
+**U4-7 — kelola anggota proyek dan Admin penanggung jawab: selesai, PASS WITH NOTES** (verifikasi final M7 2026-11-13; detail, aturan, matriks, hasil uji, evaluasi visual, dan keterbatasan di `docs/u4-evidence/U4-7-PROJECT-MEMBERS.md`, bukti di `docs/u4-evidence/u4-7/`). Representasi UI di atas mock, **bukan** otorisasi/keamanan dan **tidak production-ready**; tanpa backend, database, atau otorisasi server. Tanpa role baru, tanpa Tukang, tanpa anggaran (F2), tanpa dependency baru.
+- **Isi:** tab Tim di detail proyek. Owner: tambah anggota, keluarkan anggota, tetapkan/ganti/cabut Admin penanggung jawab. Admin principal: tambah anggota saja. Mandor: read-only tanpa email. Anggota Tim: tanpa tab Tim. Arsip tanpa aksi; Selesai tetap dapat diubah. Semua pesan sukses menyebut "(simulasi)".
+- **Aturan (satu sumber `access.ts`):** anggota hanya Mandor/Anggota Tim; Admin principal hanya Admin Kantor, satu per proyek (§7A); keluarkan Owner saja (G9) dan diblokir selama anggota tercatat di tugas apa pun termasuk Selesai (G3); cabut Admin Owner saja (keputusan pemilik U4-O10); tanpa kaskade. Setiap aksi diputuskan ulang saat menyimpan terhadap data terbaru (keadaan stale ditolak dengan pesan spesifik).
+- **Seed:** Admin Kantor kedua **Rina Wulandari** (`u-006`, keputusan pemilik U4-O9), tidak menjadi Admin principal atau anggota proyek mana pun.
+- **Komponen bersama:** `RecordCard` slot `actions` opsional dan `ConfirmDialog` `errorMessage` opsional + penjaga klik ganda; tanpa prop, perilaku lama tetap.
+- **Pengujian aktual (2026-11-13, output + exit code, kode final `5670102`):** `check:u4-project-members` (baru) 114/114 termasuk verifikasi production (hook uji tidak ada di 387 berkas build dan tidak tersedia pada `next start`); `check:u4-access` 201/201 pada 3 run berturut-turut setelah perbaikan race hidrasi harness (`5670102`; diagnostik CPU 6×: pola lama 1/4, pola baru 4/4); `check:u4-projects` 261/261; `check:u4-project-detail` 642/642; `check:u4-project-crud` 129/129; `check:responsive-lists` 467/467; `check:u4-components` 72/72; `check:u4-foundation` 412/412; `check:dynamic-routes` dan `check:browser` lolos; `check:no-budget` 22/22; `check:contrast` 57/57; `check:tokens`; lint 0 error (1 warning lama); typecheck; build. `check:login-touch`: **4/244 gagal di tree utama** (logo 92x40 vs 91x40, `logo.tsx` Owner belum di-commit), 244/244 di worktree isi commit.
+- **Risiko terbuka:** Dashboard belum mengikuti lingkup proyek (Dashboard Access Correction berikutnya); login UI kedua tanpa muat ulang tertahan di `/masuk` pada `next dev` (temuan terpisah); dialog Tetapkan/Ganti setelah Admin berubah tetap menampilkan pilihan lama (aman, simpan ditolak); `/u4-spike` masih dipakai uji (U4-10).
+
 ## Milestone workflow: skill dan evaluasi visual (2026-10-26)
 Perubahan **cara kerja**, bukan perubahan aplikasi: tidak ada source code, komponen, mock data, atau business logic yang diubah. Aturan lengkap, tabel skill, contoh pemanggilan, dan checklist fallback ada di `CLAUDE.md` §8; ringkasan di `AGENTS.md` bagian Skill Strategy (commit `4f95dbe`).
 
@@ -241,7 +251,7 @@ Perubahan **cara kerja**, bukan perubahan aplikasi: tidak ada source code, kompo
 | U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) — **selesai, merged** |
 | U2 | App shell: sidebar, header, navigasi per role, responsif — **selesai, merged** |
 | U3 | Halaman auth (UI, mock) — **selesai, merged** (PASS WITH NOTES; catatan di Technical backlog) |
-| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 s.d. U4-5 **PASS**; U4-6 **PASS WITH NOTES**; U4-7 s.d. U4-12 **NOT STARTED**, menunggu persetujuan per langkah; rencana di `docs/U4-PLAN.md`). **Tanpa anggaran (F2):** kode anggaran sudah dihapus (2026-10-28, terverifikasi); U4-6 form tidak boleh memuatnya, U4-12 mempertahankan penjaga Dashboard |
+| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 s.d. U4-5 **PASS**; U4-6 dan U4-7 **PASS WITH NOTES**; Dashboard Access Correction berikutnya (terpisah); U4-8 s.d. U4-12 **NOT STARTED**, menunggu persetujuan per langkah; rencana di `docs/U4-PLAN.md`). **Tanpa anggaran (F2):** kode anggaran sudah dihapus (2026-10-28, terverifikasi); U4-6 form tidak boleh memuatnya, U4-12 mempertahankan penjaga Dashboard |
 | U5 | Laporan Harian, Dokumen — **PLANNING ONLY** (draf `docs/U5-PLAN.md`: DRAFT / NOT APPROVED FOR IMPLEMENTATION; dikerjakan setelah U4 selesai). **Menu Dokumen tetap (F1):** hanya render 3D proyek + foto lampiran laporan harian Mandor (galeri turunan, satu sumber); Mandor mobile-first 375px |
 | U6 | Gantt, landing publik |
 | U7 | Polesan: state kosong/error/loading, aksesibilitas, uji responsif |

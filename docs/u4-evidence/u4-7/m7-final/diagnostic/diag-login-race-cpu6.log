@@ -1,0 +1,10 @@
+{"mode":"lama","trial":1,"rate":6,"hydratedAtFill":false,"landed":false,"path":"/masuk","email":"","err":"Alamat email wajib diisi.","alert":""}
+{"mode":"lama","trial":2,"rate":6,"hydratedAtFill":false,"landed":false,"path":"/masuk","email":"","err":"Alamat email wajib diisi.","alert":""}
+{"mode":"lama","trial":3,"rate":6,"hydratedAtFill":false,"landed":false,"path":"/masuk","email":"","err":"Alamat email wajib diisi.","alert":""}
+{"mode":"lama","trial":4,"rate":6,"hydratedAtFill":true,"landed":true,"path":"/dashboard","email":"siti@proyekin.id","err":null,"alert":""}
+{"mode":"baru","trial":1,"rate":6,"hydratedAtFill":true,"landed":true,"path":"/dashboard","email":"siti@proyekin.id","err":null,"alert":""}
+{"mode":"baru","trial":2,"rate":6,"hydratedAtFill":true,"landed":true,"path":"/dashboard","email":"siti@proyekin.id","err":null,"alert":""}
+{"mode":"baru","trial":3,"rate":6,"hydratedAtFill":true,"landed":true,"path":"/dashboard","email":"siti@proyekin.id","err":null,"alert":""}
+{"mode":"baru","trial":4,"rate":6,"hydratedAtFill":true,"landed":true,"path":"/dashboard","email":"siti@proyekin.id","err":null,"alert":""}
+lama: 1/4 login berhasil; hydratedAtFill=false pada 3
+baru: 4/4 login berhasil; hydratedAtFill=false pada 0

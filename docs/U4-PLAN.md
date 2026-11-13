@@ -27,7 +27,9 @@ Rencana ini tidak mengubah business logic, role, API contract, atau scope MVP. B
 | U4-4 daftar proyek `/proyek` | **PASS** | `9a29fc6`, `U4-4-PROJECTS.md` |
 | U4-5 detail proyek `/proyek/[projectId]` (read-only) | **PASS** (2026-10-28) | commit U4-5, `U4-5-PROJECT-DETAIL.md` |
 | U4-6 buat, ubah, hapus proyek | **PASS WITH NOTES** (verifikasi final 2026-11-06) | commit U4-6, `U4-6-PROJECT-CRUD.md` (catatan: §5 dan §9 evidence) |
-| U4-7 s.d. U4-12 | **NOT STARTED** | tidak ada commit, evidence, atau skrip uji |
+| U4-7 kelola anggota proyek + Admin penanggung jawab | **PASS WITH NOTES** (verifikasi final M7 2026-11-13) | `c7d6b8d`, `f4a95b6`, `4ea5127`, `0597723`, `b9c1abc`, `5670102` + commit M8, `U4-7-PROJECT-MEMBERS.md` (catatan: §17 baseline `logo.tsx` Owner, §18) |
+| Dashboard Access Correction | **NEXT** (disetujui Owner; pekerjaan terpisah setelah push U4-7, sebelum U4-8) | belum ada commit |
+| U4-8 s.d. U4-12 | **NOT STARTED** | tidak ada commit, evidence, atau skrip uji |
 
 Commit `88b0bb7`, `951b9d7`, `709487b`, `e5b197e` adalah perbaikan responsif/aksesibilitas pada halaman placeholder. Bukan kemajuan U4-5 s.d. U4-12.
 
@@ -113,6 +115,8 @@ Commit `88b0bb7`, `951b9d7`, `709487b`, `e5b197e` adalah perbaikan responsif/aks
 
 ### U4-7 — Kelola anggota proyek
 
+> **STATUS: SELESAI, PASS WITH NOTES (verifikasi final M7 2026-11-13).** Rencana di bawah dipertahankan sebagai catatan; hasil aktual ada di `docs/u4-evidence/U4-7-PROJECT-MEMBERS.md`. U4-O3 ditutup: penetapan Admin principal ada di U4-7 (tab Tim), bukan form proyek. Keputusan pemilik yang dicatat di kode: **U4-O9** seed Admin Kantor kedua Rina Wulandari (`u-006`, tanpa proyek); **U4-O10** Owner dapat mencabut Admin principal (hanya relasi, tanpa kaskade); blokir keluarkan anggota (G3) mencakup tugas **Selesai**. Antarmuka: tab Tim di detail proyek (tabel 1280, kartu 375/768); Owner semua aksi, Admin principal hanya Tambah anggota, Mandor read-only. Catatan terbuka: `check:login-touch` 4/244 di tree utama karena `logo.tsx` Owner (244/244 tanpa file itu); login UI kedua tanpa muat ulang tertahan di `/masuk` pada `next dev` (temuan terpisah); harness `check:u4-access` sudah diperbaiki (tunggu hidrasi, `5670102`). Berikutnya: **Dashboard Access Correction** (terpisah) sebelum U4-8.
+
 - **[D]** Tambah anggota (Mandor/Anggota Tim): Owner atau Admin principal proyek itu; **Mandor tidak** (J1). `canAddProjectMember`, `getProjectMemberCandidates`.
 - **[D]** Keluarkan anggota: **Owner saja** (G9, fail-closed: Admin hanya menambah); diblokir selama anggota masih memegang tugas di proyek itu (G3) via `decideRemoveProjectMember` (alasan `HAS_TASKS`).
 - **[D]** Admin principal: satu per proyek, ditetapkan Owner (§7A), kandidat hanya role Admin Kantor (`canAssignAdminPrincipal`, `getAdminPrincipalCandidates`).
@@ -195,7 +199,7 @@ Urutan fisik tetap U4-5 → U4-12 sesuai keputusan pemilik; peta ini hanya menje
 | ID | Keputusan | Memblokir | Catatan |
 |---|---|---|---|
 | U4-O2 | Aturan hapus proyek yang masih memiliki anggota/tugas | U4-6 | `canDeleteProject` tidak memeriksa. |
-| U4-O3 | Penempatan penetapan Admin principal (U4-6 atau U4-7) | U4-6/U4-7 | Usul [R]: U4-7. |
+| U4-O3 | Penempatan penetapan Admin principal (U4-6 atau U4-7) | U4-6/U4-7 | **Ditutup di U4-7 (2026-11-13):** tab Tim di detail proyek, Owner saja. Lihat `U4-7-PROJECT-MEMBERS.md`. |
 | U4-O4 | Hubungan status tugas ↔ progres | U4-9 | J6 membuat progres display-only. |
 | U4-O5 | Pilihan role tujuan saat ubah role global | U4-11 | `U4-1-FOUNDATION.md:113`. |
 | U4-O6 | Isi G6 | semua | Tidak ditemukan di repository. |
