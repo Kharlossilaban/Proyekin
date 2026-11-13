@@ -1,0 +1,24 @@
+{
+ "rate": 1,
+ "trials": 20,
+ "baca_langsung_keadaan_lama": 10,
+ "tak_pernah_konsisten_dalam_5s": 0,
+ "maks_ms_sampai_konsisten": 26,
+ "contoh_keadaan_lama": [
+  {
+   "sel": "Tugas",
+   "panels": 2,
+   "panelHasTugas": false
+  },
+  {
+   "sel": "Tugas",
+   "panels": 2,
+   "panelHasTugas": false
+  },
+  {
+   "sel": "Tugas",
+   "panels": 2,
+   "panelHasTugas": false
+  }
+ ]
+}

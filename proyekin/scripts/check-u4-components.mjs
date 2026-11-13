@@ -124,14 +124,39 @@ await goto("/style-guide");
   await focus('#tabs [role="tab"][aria-selected="true"]');
   const sel = () => evaluate(`document.querySelector('#tabs [role="tab"][aria-selected="true"]').textContent.trim()`);
   const panel = () => evaluate(`[...document.querySelectorAll('#tabs [role="tabpanel"]')].filter((p) => p.checkVisibility()).map((p) => p.textContent.trim())`);
+  // `pressKey` kembali saat event terkirim, BUKAN saat DOM selesai berubah. Tab memindah fokus, `activateOnFocus` lalu mengubah
+  // tab terpilih lewat state React, dan panel berganti SETELAH tab: sesaat dua panel terlihat dan `panel()[0]` masih panel lama
+  // (diagnostik 2026-11-13, throttle 1x: 10 dari 20 pembacaan langsung menangkap keadaan itu; konsisten paling lama 26 ms kemudian).
+  // Dua panel sesaat itu perilaku rancangan Base UI (`TabsPanel` memakai `useTransitionStatus`: panel yang keluar tetap ter-mount
+  // selama transisi keluar), bukan bug komponen; tes ini sengaja menoleransinya dan tidak pernah menguji ketiadaannya.
+  // Karena itu tunggu keadaan aksesibel yang diharapkan (tab terpilih = yang dituju DAN tepat satu panel terlihat, dibaca dalam
+  // SATU evaluasi agar atomik) sebelum asersi. Penantian tidak pernah melempar atau meloloskan asersi: bila keadaan tidak
+  // tercapai dalam 5 detik, keadaan terakhir dicatat (log + measurements) dan asersi di bawahnya tetap dievaluasi lalu gagal.
+  results.measurements.tabsSettleTimeouts = [];
+  const tabState = () =>
+    evaluate(`({ selected: document.querySelector('#tabs [role="tab"][aria-selected="true"]')?.textContent.trim() ?? null, visiblePanels: [...document.querySelectorAll('#tabs [role="tabpanel"]')].filter((p) => p.checkVisibility()).length })`);
+  const settleTab = (expected) =>
+    waitFor(async () => {
+      const s = await tabState();
+      return s.selected === expected && s.visiblePanels === 1;
+    }, 5000, `tab "${expected}" aktif dengan satu panel`).catch(async () => {
+      const last = { expected, ...(await tabState()) };
+      results.measurements.tabsSettleTimeouts.push(last);
+      console.log("CATATAN: tabs tidak mencapai keadaan yang diharapkan dalam 5 detik", JSON.stringify(last));
+      return false;
+    });
   rec("tabs: tab pertama aktif di awal", (await sel()) === "Ringkasan");
   await pressKey("ArrowRight");
-  rec("tabs: ArrowRight memindah dan mengaktifkan tab berikutnya", (await sel()) === "Tugas" && (await panel())[0].includes("Tugas"), await sel());
+  await settleTab("Tugas");
+  rec("tabs: ArrowRight memindah dan mengaktifkan tab berikutnya", (await sel()) === "Tugas" && (await panel())[0]?.includes("Tugas") === true, await sel());
   await pressKey("End");
+  await settleTab("Contoh tab keenam");
   rec("tabs: End ke tab terakhir", (await sel()) === "Contoh tab keenam", await sel());
   await pressKey("Home");
+  await settleTab("Ringkasan");
   rec("tabs: Home ke tab pertama", (await sel()) === "Ringkasan", await sel());
   await pressKey("ArrowLeft");
+  await settleTab("Contoh tab keenam");
   rec("tabs: ArrowLeft dari tab pertama berputar ke tab terakhir", (await sel()) === "Contoh tab keenam", await sel());
   await pressKey("Tab");
   const a = await active();

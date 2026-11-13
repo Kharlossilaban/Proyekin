@@ -1,0 +1,3 @@
+CATATAN: tabs tidak mencapai keadaan yang diharapkan dalam 5 detik {"expected":"Salah","selected":"Tugas","visiblePanels":1}
+FAIL: tabs: ArrowRight memindah dan mengaktifkan tab berikutnya Tugas
+1 masalah dari 72 pemeriksaan.

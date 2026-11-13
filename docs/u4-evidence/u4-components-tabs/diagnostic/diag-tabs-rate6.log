@@ -1,0 +1,8 @@
+{
+ "rate": 6,
+ "trials": 20,
+ "baca_langsung_keadaan_lama": 0,
+ "tak_pernah_konsisten_dalam_5s": 0,
+ "maks_ms_sampai_konsisten": 55,
+ "contoh_keadaan_lama": []
+}
