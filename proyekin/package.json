@@ -21,7 +21,8 @@
     "check:responsive-lists": "node scripts/check-responsive-lists.mjs",
     "check:no-budget": "node scripts/check-no-budget.mjs",
     "check:u4-project-crud": "node scripts/check-u4-project-crud.mjs",
-    "check:u4-project-members": "node scripts/check-u4-project-members.mjs"
+    "check:u4-project-members": "node scripts/check-u4-project-members.mjs",
+    "check:dashboard-access": "node scripts/check-dashboard-access.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

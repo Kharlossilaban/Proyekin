@@ -161,6 +161,9 @@ export function canViewProject(actor: Actor, project: Project, data: AccessData)
 export const getVisibleProjects = (actor: Actor, data: AccessData): Project[] =>
   data.projects.filter((project) => canViewProject(actor, project, data));
 
+/** Pelaku melihat SELURUH proyek organisasi (Owner). Dipakai UI untuk menjelaskan lingkup (Dashboard); sejalan dengan `canViewProject`. */
+export const seesAllProjects = (actor: Actor): boolean => isOwner(actor);
+
 /**
  * Tab "Tim" di detail proyek (U4-5, hanya baca): Owner, Admin principal, dan Mandor anggota proyek itu.
  * Anggota Tim tidak (J5: ia hanya melihat tugas miliknya, tanpa susunan tim). Fail-closed: role lain, Guest, dan

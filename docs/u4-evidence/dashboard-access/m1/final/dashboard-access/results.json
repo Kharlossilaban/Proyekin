@@ -1,0 +1,701 @@
+{
+  "checks": [
+    {
+      "name": "A Owner: semua proyek; 3 aktif, 5 tugas belum Selesai, 2 laporan Terkirim, 4 orang unik",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[\"p-001\",\"p-002\",\"p-003\",\"p-004\",\"p-005\"],\"active\":3,\"pending\":5,\"reports\":2,\"team\":4,\"scope\":\"ALL\"}, hasil {\"projects\":[\"p-001\",\"p-002\",\"p-003\",\"p-004\",\"p-005\"],\"active\":3,\"pending\":5,\"reports\":2,\"team\":4,\"scope\":\"ALL\"}"
+    },
+    {
+      "name": "A Siti (Admin principal p-001, p-002): hanya proyeknya; 2 aktif, 5 tugas, 2 laporan, 4 orang",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[\"p-001\",\"p-002\"],\"active\":2,\"pending\":5,\"reports\":2,\"team\":4,\"scope\":\"ASSIGNED\"}, hasil {\"projects\":[\"p-001\",\"p-002\"],\"active\":2,\"pending\":5,\"reports\":2,\"team\":4,\"scope\":\"ASSIGNED\"}"
+    },
+    {
+      "name": "A Rina tanpa penugasan: tanpa proyek dan semua statistik 0",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[],\"active\":0,\"pending\":0,\"reports\":0,\"team\":0,\"scope\":\"NONE\"}, hasil {\"projects\":[],\"active\":0,\"pending\":0,\"reports\":0,\"team\":0,\"scope\":\"NONE\"}"
+    },
+    {
+      "name": "A Rina setelah ditetapkan di p-001: hanya p-001; 1 aktif, 3 tugas, 1 laporan, 4 orang (Rina + 3 anggota)",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[\"p-001\"],\"active\":1,\"pending\":3,\"reports\":1,\"team\":4,\"scope\":\"ASSIGNED\"}, hasil {\"projects\":[\"p-001\"],\"active\":1,\"pending\":3,\"reports\":1,\"team\":4,\"scope\":\"ASSIGNED\"}"
+    },
+    {
+      "name": "A Siti setelah digantikan di p-001: hanya p-002; 1 aktif, 2 tugas, 1 laporan, 3 orang",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[\"p-002\"],\"active\":1,\"pending\":2,\"reports\":1,\"team\":3,\"scope\":\"ASSIGNED\"}, hasil {\"projects\":[\"p-002\"],\"active\":1,\"pending\":2,\"reports\":1,\"team\":3,\"scope\":\"ASSIGNED\"}"
+    },
+    {
+      "name": "A Owner setelah pergantian: proyek dan tugas tetap; orang unik 5 (Rina Admin p-001, Siti tetap Admin p-002)",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[\"p-001\",\"p-002\",\"p-003\",\"p-004\",\"p-005\"],\"active\":3,\"pending\":5,\"reports\":2,\"team\":5,\"scope\":\"ALL\"}, hasil {\"projects\":[\"p-001\",\"p-002\",\"p-003\",\"p-004\",\"p-005\"],\"active\":3,\"pending\":5,\"reports\":2,\"team\":5,\"scope\":\"ALL\"}"
+    },
+    {
+      "name": "A Rina di p-003 (tanpa anggota/tugas): 1 aktif (Tertunda), 0 tugas, 0 laporan, 1 orang",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[\"p-003\"],\"active\":1,\"pending\":0,\"reports\":0,\"team\":1,\"scope\":\"ASSIGNED\"}, hasil {\"projects\":[\"p-003\"],\"active\":1,\"pending\":0,\"reports\":0,\"team\":1,\"scope\":\"ASSIGNED\"}"
+    },
+    {
+      "name": "A Siti tidak terpengaruh penetapan Rina di p-003",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[\"p-001\",\"p-002\"],\"active\":2,\"pending\":5,\"reports\":2,\"team\":4,\"scope\":\"ASSIGNED\"}, hasil {\"projects\":[\"p-001\",\"p-002\"],\"active\":2,\"pending\":5,\"reports\":2,\"team\":4,\"scope\":\"ASSIGNED\"}"
+    },
+    {
+      "name": "A data uji: Siti memiliki 7 entri tim (2 Admin + 5 keanggotaan) di dua proyek",
+      "ok": true,
+      "detail": "7"
+    },
+    {
+      "name": "A pengguna di beberapa proyek dihitung satu kali (7 entri → 4 orang, bukan jumlah keanggotaan)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A ahmad (Mandor): ringkasan kosong (tanpa akses Dashboard)",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[],\"active\":0,\"pending\":0,\"reports\":0,\"team\":0,\"scope\":\"NONE\"}, hasil {\"projects\":[],\"active\":0,\"pending\":0,\"reports\":0,\"team\":0,\"scope\":\"NONE\"}"
+    },
+    {
+      "name": "A dewi (Anggota Tim): ringkasan kosong (tanpa akses Dashboard)",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[],\"active\":0,\"pending\":0,\"reports\":0,\"team\":0,\"scope\":\"NONE\"}, hasil {\"projects\":[],\"active\":0,\"pending\":0,\"reports\":0,\"team\":0,\"scope\":\"NONE\"}"
+    },
+    {
+      "name": "A tanpa pengguna: ringkasan kosong (tanpa akses Dashboard)",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[],\"active\":0,\"pending\":0,\"reports\":0,\"team\":0,\"scope\":\"NONE\"}, hasil {\"projects\":[],\"active\":0,\"pending\":0,\"reports\":0,\"team\":0,\"scope\":\"NONE\"}"
+    },
+    {
+      "name": "A Guest: ringkasan kosong",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[],\"active\":0,\"pending\":0,\"reports\":0,\"team\":0,\"scope\":\"NONE\"}, hasil {\"projects\":[],\"active\":0,\"pending\":0,\"reports\":0,\"team\":0,\"scope\":\"NONE\"}"
+    },
+    {
+      "name": "A runtime: tugas baru p-001 → Siti 6 tugas belum Selesai",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A runtime: proyek baru tanpa Admin → Owner 6 proyek, 4 aktif",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A runtime: proyek baru tanpa Admin tidak terlihat Siti dan Rina",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A tugas Selesai tidak dihitung tertunda; tugas di luar lingkup tidak dihitung (Rina 0)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A Owner tanpa proyek: lingkup ALL, semua 0",
+      "ok": true,
+      "detail": "diharapkan {\"projects\":[],\"active\":0,\"pending\":0,\"reports\":0,\"team\":0,\"scope\":\"ALL\"}, hasil {\"projects\":[],\"active\":0,\"pending\":0,\"reports\":0,\"team\":0,\"scope\":\"ALL\"}"
+    },
+    {
+      "name": "A copy kosong Owner berbeda dari copy Admin (tidak menyuruh menunggu Owner)",
+      "ok": true,
+      "detail": "{\"title\":\"Belum ada proyek\",\"description\":\"Proyek yang Anda buat di menu Proyek akan muncul di sini beserta ringkasannya.\"}"
+    },
+    {
+      "name": "A kalimat lingkup Owner tanpa proyek tidak menyebut '0 proyek'",
+      "ok": true,
+      "detail": "Belum ada proyek di organisasi."
+    },
+    {
+      "name": "A fungsi ringkasan tidak mengubah data masukan",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "A sumber: dashboard/page.tsx tidak mengimpor MOCK_PROJECTS/MOCK_TASKS/MOCK_REPORTS/MOCK_USERS",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B HTML /dashboard tanpa nama proyek",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B HTML /dashboard tanpa kode proyek PRJ-00x",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B budi 1280: kalimat lingkup",
+      "ok": true,
+      "detail": "\"Ringkasan seluruh 5 proyek organisasi.\""
+    },
+    {
+      "name": "B budi 1280: statistik [3,5,2,4]",
+      "ok": true,
+      "detail": "[3,5,2,4]"
+    },
+    {
+      "name": "B budi 1280: baris tabel proyek [\"PRJ-001\",\"PRJ-002\",\"PRJ-003\",\"PRJ-004\",\"PRJ-005\"]",
+      "ok": true,
+      "detail": "[\"PRJ-001\",\"PRJ-002\",\"PRJ-003\",\"PRJ-004\",\"PRJ-005\"]"
+    },
+    {
+      "name": "B budi 1280: state kosong tidak tampil",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "name": "B budi: label dan keterangan kartu statistik",
+      "ok": true,
+      "detail": "[\"Proyek Aktif # Berjalan atau Tertunda\",\"Tugas Tertunda # Belum Selesai\",\"Laporan Menunggu # Berstatus Terkirim\",\"Anggota Tim # Dihitung sekali per orang\"]"
+    },
+    {
+      "name": "overflow halaman: budi /dashboard 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi /dashboard 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B siti 1280: kalimat lingkup",
+      "ok": true,
+      "detail": "\"Ringkasan 2 proyek yang Anda tangani sebagai Admin penanggung jawab.\""
+    },
+    {
+      "name": "B siti 1280: statistik [2,5,2,4]",
+      "ok": true,
+      "detail": "[2,5,2,4]"
+    },
+    {
+      "name": "B siti 1280: baris tabel proyek [\"PRJ-001\",\"PRJ-002\"]",
+      "ok": true,
+      "detail": "[\"PRJ-001\",\"PRJ-002\"]"
+    },
+    {
+      "name": "B siti 1280: state kosong tidak tampil",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "name": "B siti: label dan keterangan kartu statistik",
+      "ok": true,
+      "detail": "[\"Proyek Aktif # Berjalan atau Tertunda\",\"Tugas Tertunda # Belum Selesai\",\"Laporan Menunggu # Berstatus Terkirim\",\"Anggota Tim # Dihitung sekali per orang\"]"
+    },
+    {
+      "name": "overflow halaman: siti /dashboard 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "axe 0 pelanggaran: siti /dashboard 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B rina 1280: kalimat lingkup",
+      "ok": true,
+      "detail": "\"Belum ada proyek yang Anda tangani sebagai Admin penanggung jawab.\""
+    },
+    {
+      "name": "B rina 1280: statistik [0,0,0,0]",
+      "ok": true,
+      "detail": "[0,0,0,0]"
+    },
+    {
+      "name": "B rina 1280: baris tabel proyek []",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "B rina 1280: state kosong tampil dengan penjelasan",
+      "ok": true,
+      "detail": "\"Belum ada proyek yang Anda tangani Proyek dan ringkasannya muncul di sini setelah Owner menetapkan Anda sebagai Admin penanggung jawab sebuah proyek.\""
+    },
+    {
+      "name": "B rina: label dan keterangan kartu statistik",
+      "ok": true,
+      "detail": "[\"Proyek Aktif # Berjalan atau Tertunda\",\"Tugas Tertunda # Belum Selesai\",\"Laporan Menunggu # Berstatus Terkirim\",\"Anggota Tim # Dihitung sekali per orang\"]"
+    },
+    {
+      "name": "B rina 1280: nama/kode proyek tidak pernah terlihat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: rina /dashboard 1280",
+      "ok": true,
+      "detail": "1280 <= 1280"
+    },
+    {
+      "name": "axe 0 pelanggaran: rina /dashboard 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B budi 768: kalimat lingkup",
+      "ok": true,
+      "detail": "\"Ringkasan seluruh 5 proyek organisasi.\""
+    },
+    {
+      "name": "B budi 768: statistik [3,5,2,4]",
+      "ok": true,
+      "detail": "[3,5,2,4]"
+    },
+    {
+      "name": "B budi 768: baris tabel proyek [\"PRJ-001\",\"PRJ-002\",\"PRJ-003\",\"PRJ-004\",\"PRJ-005\"]",
+      "ok": true,
+      "detail": "[\"PRJ-001\",\"PRJ-002\",\"PRJ-003\",\"PRJ-004\",\"PRJ-005\"]"
+    },
+    {
+      "name": "B budi 768: state kosong tidak tampil",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "name": "overflow halaman: budi /dashboard 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi /dashboard 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B siti 768: kalimat lingkup",
+      "ok": true,
+      "detail": "\"Ringkasan 2 proyek yang Anda tangani sebagai Admin penanggung jawab.\""
+    },
+    {
+      "name": "B siti 768: statistik [2,5,2,4]",
+      "ok": true,
+      "detail": "[2,5,2,4]"
+    },
+    {
+      "name": "B siti 768: baris tabel proyek [\"PRJ-001\",\"PRJ-002\"]",
+      "ok": true,
+      "detail": "[\"PRJ-001\",\"PRJ-002\"]"
+    },
+    {
+      "name": "B siti 768: state kosong tidak tampil",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "name": "overflow halaman: siti /dashboard 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: siti /dashboard 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B rina 768: kalimat lingkup",
+      "ok": true,
+      "detail": "\"Belum ada proyek yang Anda tangani sebagai Admin penanggung jawab.\""
+    },
+    {
+      "name": "B rina 768: statistik [0,0,0,0]",
+      "ok": true,
+      "detail": "[0,0,0,0]"
+    },
+    {
+      "name": "B rina 768: baris tabel proyek []",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "B rina 768: state kosong tampil dengan penjelasan",
+      "ok": true,
+      "detail": "\"Belum ada proyek yang Anda tangani Proyek dan ringkasannya muncul di sini setelah Owner menetapkan Anda sebagai Admin penanggung jawab sebuah proyek.\""
+    },
+    {
+      "name": "B rina 768: nama/kode proyek tidak pernah terlihat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: rina /dashboard 768",
+      "ok": true,
+      "detail": "768 <= 768"
+    },
+    {
+      "name": "axe 0 pelanggaran: rina /dashboard 768",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B budi 375: kalimat lingkup",
+      "ok": true,
+      "detail": "\"Ringkasan seluruh 5 proyek organisasi.\""
+    },
+    {
+      "name": "B budi 375: statistik [3,5,2,4]",
+      "ok": true,
+      "detail": "[3,5,2,4]"
+    },
+    {
+      "name": "B budi 375: baris tabel proyek [\"PRJ-001\",\"PRJ-002\",\"PRJ-003\",\"PRJ-004\",\"PRJ-005\"]",
+      "ok": true,
+      "detail": "[\"PRJ-001\",\"PRJ-002\",\"PRJ-003\",\"PRJ-004\",\"PRJ-005\"]"
+    },
+    {
+      "name": "B budi 375: state kosong tidak tampil",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "name": "overflow halaman: budi /dashboard 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: budi /dashboard 375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B siti 375: kalimat lingkup",
+      "ok": true,
+      "detail": "\"Ringkasan 2 proyek yang Anda tangani sebagai Admin penanggung jawab.\""
+    },
+    {
+      "name": "B siti 375: statistik [2,5,2,4]",
+      "ok": true,
+      "detail": "[2,5,2,4]"
+    },
+    {
+      "name": "B siti 375: baris tabel proyek [\"PRJ-001\",\"PRJ-002\"]",
+      "ok": true,
+      "detail": "[\"PRJ-001\",\"PRJ-002\"]"
+    },
+    {
+      "name": "B siti 375: state kosong tidak tampil",
+      "ok": true,
+      "detail": "null"
+    },
+    {
+      "name": "overflow halaman: siti /dashboard 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: siti /dashboard 375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B rina 375: kalimat lingkup",
+      "ok": true,
+      "detail": "\"Belum ada proyek yang Anda tangani sebagai Admin penanggung jawab.\""
+    },
+    {
+      "name": "B rina 375: statistik [0,0,0,0]",
+      "ok": true,
+      "detail": "[0,0,0,0]"
+    },
+    {
+      "name": "B rina 375: baris tabel proyek []",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "B rina 375: state kosong tampil dengan penjelasan",
+      "ok": true,
+      "detail": "\"Belum ada proyek yang Anda tangani Proyek dan ringkasannya muncul di sini setelah Owner menetapkan Anda sebagai Admin penanggung jawab sebuah proyek.\""
+    },
+    {
+      "name": "B rina 375: nama/kode proyek tidak pernah terlihat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "overflow halaman: rina /dashboard 375",
+      "ok": true,
+      "detail": "375 <= 375"
+    },
+    {
+      "name": "axe 0 pelanggaran: rina /dashboard 375",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B hook uji development tersedia",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B rina setelah ditetapkan di p-001 (tanpa muat ulang): lingkup 1 proyek",
+      "ok": true,
+      "detail": "\"Ringkasan 1 proyek yang Anda tangani sebagai Admin penanggung jawab.\""
+    },
+    {
+      "name": "B rina setelah ditetapkan: statistik [1,3,1,4]",
+      "ok": true,
+      "detail": "[1,3,1,4]"
+    },
+    {
+      "name": "B rina setelah ditetapkan: hanya PRJ-001; state kosong hilang",
+      "ok": true,
+      "detail": "[\"PRJ-001\"]"
+    },
+    {
+      "name": "axe 0 pelanggaran: rina setelah ditetapkan 1280",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B rina setelah dicabut: kembali kosong, statistik 0",
+      "ok": true,
+      "detail": "{\"scope\":\"Belum ada proyek yang Anda tangani sebagai Admin penanggung jawab.\",\"stats\":[0,0,0,0],\"rows\":[],\"empty\":true,\"emptyText\":\"Belum ada proyek yang Anda tangani Proyek dan ringkasannya muncul di sini setelah Owner menetapkan Anda sebagai Admin penanggung jawab sebuah proyek.\",\"labels\":[\"Proyek Aktif # Berjalan atau Tertunda\",\"Tugas Tertunda # Belum Selesai\",\"Laporan Menunggu # Berstatus Terkirim\",\"Anggota Tim # Dihitung sekali per orang\"]}"
+    },
+    {
+      "name": "B rina: tugas runtime di p-001 (di luar lingkupnya) tidak menambah statistiknya",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B rina ditetapkan lagi di p-001: tugas runtime ikut terhitung [1,4,1,4]",
+      "ok": true,
+      "detail": "[1,4,1,4]"
+    },
+    {
+      "name": "B ahmad: /dashboard dialihkan ke Akses Ditolak tanpa data proyek terlihat",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "B dewi: /dashboard dialihkan ke Akses Ditolak tanpa data proyek terlihat",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "measurements": {
+    "budi 1280": {
+      "scope": "Ringkasan seluruh 5 proyek organisasi.",
+      "stats": [
+        3,
+        5,
+        2,
+        4
+      ],
+      "rows": [
+        "PRJ-001",
+        "PRJ-002",
+        "PRJ-003",
+        "PRJ-004",
+        "PRJ-005"
+      ],
+      "empty": false,
+      "emptyText": null,
+      "labels": [
+        "Proyek Aktif # Berjalan atau Tertunda",
+        "Tugas Tertunda # Belum Selesai",
+        "Laporan Menunggu # Berstatus Terkirim",
+        "Anggota Tim # Dihitung sekali per orang"
+      ]
+    },
+    "axe budi /dashboard 1280": [],
+    "siti 1280": {
+      "scope": "Ringkasan 2 proyek yang Anda tangani sebagai Admin penanggung jawab.",
+      "stats": [
+        2,
+        5,
+        2,
+        4
+      ],
+      "rows": [
+        "PRJ-001",
+        "PRJ-002"
+      ],
+      "empty": false,
+      "emptyText": null,
+      "labels": [
+        "Proyek Aktif # Berjalan atau Tertunda",
+        "Tugas Tertunda # Belum Selesai",
+        "Laporan Menunggu # Berstatus Terkirim",
+        "Anggota Tim # Dihitung sekali per orang"
+      ]
+    },
+    "axe siti /dashboard 1280": [],
+    "rina 1280": {
+      "scope": "Belum ada proyek yang Anda tangani sebagai Admin penanggung jawab.",
+      "stats": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "rows": [],
+      "empty": true,
+      "emptyText": "Belum ada proyek yang Anda tangani Proyek dan ringkasannya muncul di sini setelah Owner menetapkan Anda sebagai Admin penanggung jawab sebuah proyek.",
+      "labels": [
+        "Proyek Aktif # Berjalan atau Tertunda",
+        "Tugas Tertunda # Belum Selesai",
+        "Laporan Menunggu # Berstatus Terkirim",
+        "Anggota Tim # Dihitung sekali per orang"
+      ]
+    },
+    "axe rina /dashboard 1280": [],
+    "budi 768": {
+      "scope": "Ringkasan seluruh 5 proyek organisasi.",
+      "stats": [
+        3,
+        5,
+        2,
+        4
+      ],
+      "rows": [
+        "PRJ-001",
+        "PRJ-002",
+        "PRJ-003",
+        "PRJ-004",
+        "PRJ-005"
+      ],
+      "empty": false,
+      "emptyText": null,
+      "labels": [
+        "Proyek Aktif # Berjalan atau Tertunda",
+        "Tugas Tertunda # Belum Selesai",
+        "Laporan Menunggu # Berstatus Terkirim",
+        "Anggota Tim # Dihitung sekali per orang"
+      ]
+    },
+    "axe budi /dashboard 768": [],
+    "siti 768": {
+      "scope": "Ringkasan 2 proyek yang Anda tangani sebagai Admin penanggung jawab.",
+      "stats": [
+        2,
+        5,
+        2,
+        4
+      ],
+      "rows": [
+        "PRJ-001",
+        "PRJ-002"
+      ],
+      "empty": false,
+      "emptyText": null,
+      "labels": [
+        "Proyek Aktif # Berjalan atau Tertunda",
+        "Tugas Tertunda # Belum Selesai",
+        "Laporan Menunggu # Berstatus Terkirim",
+        "Anggota Tim # Dihitung sekali per orang"
+      ]
+    },
+    "axe siti /dashboard 768": [],
+    "rina 768": {
+      "scope": "Belum ada proyek yang Anda tangani sebagai Admin penanggung jawab.",
+      "stats": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "rows": [],
+      "empty": true,
+      "emptyText": "Belum ada proyek yang Anda tangani Proyek dan ringkasannya muncul di sini setelah Owner menetapkan Anda sebagai Admin penanggung jawab sebuah proyek.",
+      "labels": [
+        "Proyek Aktif # Berjalan atau Tertunda",
+        "Tugas Tertunda # Belum Selesai",
+        "Laporan Menunggu # Berstatus Terkirim",
+        "Anggota Tim # Dihitung sekali per orang"
+      ]
+    },
+    "axe rina /dashboard 768": [],
+    "budi 375": {
+      "scope": "Ringkasan seluruh 5 proyek organisasi.",
+      "stats": [
+        3,
+        5,
+        2,
+        4
+      ],
+      "rows": [
+        "PRJ-001",
+        "PRJ-002",
+        "PRJ-003",
+        "PRJ-004",
+        "PRJ-005"
+      ],
+      "empty": false,
+      "emptyText": null,
+      "labels": [
+        "Proyek Aktif # Berjalan atau Tertunda",
+        "Tugas Tertunda # Belum Selesai",
+        "Laporan Menunggu # Berstatus Terkirim",
+        "Anggota Tim # Dihitung sekali per orang"
+      ]
+    },
+    "axe budi /dashboard 375": [],
+    "siti 375": {
+      "scope": "Ringkasan 2 proyek yang Anda tangani sebagai Admin penanggung jawab.",
+      "stats": [
+        2,
+        5,
+        2,
+        4
+      ],
+      "rows": [
+        "PRJ-001",
+        "PRJ-002"
+      ],
+      "empty": false,
+      "emptyText": null,
+      "labels": [
+        "Proyek Aktif # Berjalan atau Tertunda",
+        "Tugas Tertunda # Belum Selesai",
+        "Laporan Menunggu # Berstatus Terkirim",
+        "Anggota Tim # Dihitung sekali per orang"
+      ]
+    },
+    "axe siti /dashboard 375": [],
+    "rina 375": {
+      "scope": "Belum ada proyek yang Anda tangani sebagai Admin penanggung jawab.",
+      "stats": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "rows": [],
+      "empty": true,
+      "emptyText": "Belum ada proyek yang Anda tangani Proyek dan ringkasannya muncul di sini setelah Owner menetapkan Anda sebagai Admin penanggung jawab sebuah proyek.",
+      "labels": [
+        "Proyek Aktif # Berjalan atau Tertunda",
+        "Tugas Tertunda # Belum Selesai",
+        "Laporan Menunggu # Berstatus Terkirim",
+        "Anggota Tim # Dihitung sekali per orang"
+      ]
+    },
+    "axe rina /dashboard 375": [],
+    "rina setelah ditetapkan p-001": {
+      "scope": "Ringkasan 1 proyek yang Anda tangani sebagai Admin penanggung jawab.",
+      "stats": [
+        1,
+        3,
+        1,
+        4
+      ],
+      "rows": [
+        "PRJ-001"
+      ],
+      "empty": false,
+      "emptyText": null,
+      "labels": [
+        "Proyek Aktif # Berjalan atau Tertunda",
+        "Tugas Tertunda # Belum Selesai",
+        "Laporan Menunggu # Berstatus Terkirim",
+        "Anggota Tim # Dihitung sekali per orang"
+      ]
+    },
+    "axe rina setelah ditetapkan 1280": []
+  },
+  "failures": []
+}

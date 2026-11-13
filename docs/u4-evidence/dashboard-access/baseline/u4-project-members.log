@@ -1,0 +1,128 @@
+
+> proyekin@0.1.0 check:u4-project-members
+> node scripts/check-u4-project-members.mjs ../docs/u4-evidence/dashboard-access/baseline/u4-project-members
+
+ok:   A budi p-001: tim Admin lalu anggota (urutan tetap) ["u-002","u-003","u-004","u-005"]
+ok:   A budi p-001: tombol tim — Tambah anggota, Ganti/Cabut Admin Siti, Keluarkan dari proyek untuk tiap anggota ["Tambah anggota","Ganti Admin Siti Aminah","Cabut Admin Siti Aminah","Keluarkan dari proyek Ahmad Rizal","Keluarkan dari proyek Dewi Lestari","Keluarkan dari proyek Eko Prasetyo"]
+ok:   A budi p-001: kolom tabel Nama, Peran, Email, Aksi ["Nama","Peran","Email","Aksi"]
+ok:   A budi p-001: baris Admin berlatar Warm Highlight dan berteks 'Penanggung jawab' (tidak hanya warna) {"principal":"true","bg":"rgb(255, 243, 226)"}
+ok:   A budi p-001: tabel tim (4 kolom) muat tanpa gulir horizontal di 1280 {"scroll":974,"client":974}
+ok:   axe 0 pelanggaran: budi p-001 tim 1280 
+ok:   overflow halaman: budi p-001 tim 1280 1280 <= 1280
+ok:   A siti (Admin principal) p-001: hanya Tambah anggota; tanpa Ganti/Cabut/Keluarkan ["Tambah anggota"]
+ok:   A siti p-001: tanpa kolom Aksi (tabel sama seperti U4-5) ["Nama","Peran","Email"]
+ok:   A siti p-002: hanya Tambah anggota ["Tambah anggota"]
+ok:   A ahmad (Mandor) p-001: tab Tim tanpa tombol, tanpa kolom Aksi, tanpa email []
+ok:   A eko (Mandor) p-002: tab Tim tanpa tombol, tanpa kolom Aksi, tanpa email []
+ok:   A dewi (Anggota Tim) p-001: tanpa tab Tim dan tanpa panel tim 
+ok:   A rina (Admin Kantor tanpa proyek): /proyek/p-001 → /akses-ditolak 
+ok:   A rina: daftar proyek kosong (tidak ada proyek yang ditanganinya) 
+ok:   A budi p-005 (Arsip): tanpa tombol apa pun di tab Tim, tanpa slot Tetapkan Admin []
+ok:   A budi p-005 (Arsip): state kosong lama dan catatan Arsip tampil 
+ok:   A budi p-003 (tanpa Admin, tanpa anggota): Tambah anggota + slot kosong dengan Tetapkan Admin ["Tambah anggota","Tetapkan Admin"]
+ok:   A budi p-003: slot Admin kosong bergaris putus-putus dashed
+ok:   A budi p-003: state kosong mengarahkan ke tombol yang tersedia 
+ok:   axe 0 pelanggaran: budi p-003 tim kosong 1280 
+ok:   A budi p-004 (Selesai): aksi tetap tersedia (tidak dikunci) ["Tambah anggota","Tetapkan Admin"]
+ok:   B tambah: dialog berjudul 'Tambah anggota proyek' dengan konteks proyek {"slot":"member-add","title":"Tambah anggota proyek","description":"Pilih Mandor atau Anggota Tim untuk proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan.","buttons":["Batal","Tambahkan ke proyek"],"alerts":[],"fieldErrors":[],"groups":[["Mandor",["Ahmad Rizal","Eko Prasetyo"]],["Anggota Tim",["Dewi Lestari"]]],"options":["Pilih Mandor atau Anggota Tim","Ahmad Rizal","Eko Prasetyo","Dewi Lestari"],"value":"","invalid":null,"text":"Tambah anggota proyekPilih Mandor atau Anggota Tim untuk proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan.Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Anggota*Pilih Mandor atau Anggota TimAhmad RizalEko PrasetyoDewi LestariMandor dapat melihat proyek ini, semua tugasnya, dan susunan tim. Anggota Tim hanya melihat tugas miliknya.BatalTambahkan ke proyek"}
+ok:   B tambah: kandidat dikelompokkan Mandor / Anggota Tim, hanya nama (tanpa email, tanpa Admin/Owner) [["Mandor",["Ahmad Rizal","Eko Prasetyo"]],["Anggota Tim",["Dewi Lestari"]]]
+ok:   B tambah: tombol Batal dan 'Tambahkan ke proyek'; catatan data demo tampil ["Batal","Tambahkan ke proyek"]
+ok:   axe 0 pelanggaran: dialog tambah anggota 1280 
+ok:   B tambah: tanpa pilihan → galat 'Pilih satu Mandor atau Anggota Tim.', aria-invalid, fokus ke pilihan {"e":["Pilih satu Mandor atau Anggota Tim."],"inv":"true","act":{"tag":"SELECT","id":"anggota-_r_e_","action":"","user":"","text":"Pilih Mandor atau Anggota TimAhmad RizalEko PrasetyoDewi Les","inDialog":true}}
+ok:   B tambah: saat menyimpan tombol memuat (aria-busy), pilihan dan Batal nonaktif {"busy":"true","selectDisabled":true,"cancelDisabled":true}
+ok:   B tambah: sukses diumumkan '(simulasi)' 
+ok:   B tambah: kirim ganda tidak menggandakan keanggotaan (Ahmad satu kali) ["u-003"]
+ok:   B tambah: fokus kembali ke 'Tambah anggota' {"tag":"BUTTON","id":"","action":"add-member","user":"","text":"Tambah anggota","inDialog":false}
+ok:   B tambah: slot Admin kosong tetap; teks tim tanpa Admin 
+ok:   B tambah: data tugas tidak berubah (Tugas (0)) Tugas (0)
+ok:   B tambah: ketiga kandidat ditambahkan berurutan ["u-003","u-005","u-004"]
+ok:   B tambah: kandidat habis → penjelasan tanpa form, hanya tombol Tutup {"slot":"member-add","title":"Tambah anggota proyek","description":"Pilih Mandor atau Anggota Tim untuk proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan.","buttons":["Tutup"],"alerts":[],"fieldErrors":[],"groups":null,"options":null,"value":null,"invalid":null,"text":"Tambah anggota proyekPilih Mandor atau Anggota Tim untuk proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan.Semua Mandor dan Anggota Tim sudah terdaftar di proyek ini.Tutup"}
+ok:   B siti p-001: semua kandidat sudah anggota → keadaan kosong Tambah anggota proyekPilih Mandor atau Anggota Tim untuk proyek PRJ-001 Renovasi Gedung Kantor Batam.Semua Mandor dan Anggota Tim sudah terdaftar di proyek ini.Tutup
+ok:   B siti p-002: kandidat hanya Dewi Lestari (Anggota Tim) [["Anggota Tim",["Dewi Lestari"]]]
+ok:   B siti p-002: Admin principal berhasil menambah Dewi ["u-002","u-003","u-005","u-004"]
+ok:   B siti p-002: Admin principal tetap tanpa tombol Keluarkan untuk anggota baru ["Tambah anggota"]
+ok:   C blokir: Dewi (2 tugas) — dialog tanpa tombol konfirmasi, menyebut jumlah dan bahwa tidak ada data yang diubah {"slot":"member-remove-blocked","title":"Dewi Lestari belum dapat dikeluarkan","description":"Dewi Lestari tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 2 tugas di proyek ini. Tidak ada data yang diubah.","buttons":["Mengerti"],"alerts":[],"fieldErrors":[],"groups":null,"options":null,"value":null,"invalid":null,"text":"Dewi Lestari belum dapat dikeluarkanDewi Lestari tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 2 tugas di proyek ini. Tidak ada data yang diubah.Anggota hanya dapat dikeluarkan setelah tidak lagi tercatat sebagai penanggung jawab tugas di proyek ini, termasuk tugas yang sudah selesai.Mengerti"}
+ok:   C blokir: tidak menawarkan penugasan ulang (fitur U4-9) Dewi Lestari belum dapat dikeluarkanDewi Lestari tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 2 tugas di proyek ini. Tidak ada data yang diubah.Anggota hanya dapat dikeluarkan setelah tidak lagi tercatat sebagai penanggung jawab tugas di proyek ini, termasuk tugas yang sudah selesai.Mengerti
+ok:   axe 0 pelanggaran: dialog blokir keluarkan 1280 
+ok:   C blokir: fokus kembali ke tombol Keluarkan milik Dewi; tim tidak berubah {"tag":"BUTTON","id":"","action":"remove-member","user":"u-004","text":"Keluarkan dari proyek Dewi Lestari","inDialog":false}
+ok:   C blokir: Ahmad (1 tugas Selesai) tetap diblokir dan disebut sudah selesai Ahmad Rizal tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 1 tugas di proyek ini (tugas tersebut sudah selesai). Tidak ada data yang diubah.
+ok:   C konfirmasi: judul, akibat (akses hilang, akun/tugas/data tetap, simulasi), tombol Batal dan 'Keluarkan dari proyek' {"slot":null,"title":"Keluarkan Ahmad Rizal dari proyek?","description":"Ahmad Rizal tidak lagi dapat membuka proyek PRJ-003 dan namanya hilang dari tim. Akun dan perannya tidak berubah, dan tidak ada tugas atau data lain yang dihapus. Perubahan ini hanya simulasi dan hilang saat halaman dimuat ulang.","buttons":["Batal","Keluarkan dari proyek"],"alerts":[],"fieldErrors":[],"groups":null,"options":null,"value":null,"invalid":null,"text":"Keluarkan Ahmad Rizal dari proyek?Ahmad Rizal tidak lagi dapat membuka proyek PRJ-003 dan namanya hilang dari tim. Akun dan perannya tidak berubah, dan tidak ada tugas atau data lain yang dihapus. Perubahan ini hanya simulasi dan hilang saat halaman dimuat ulang.BatalKeluarkan dari proyek"}
+ok:   C konfirmasi: fokus awal di Batal (aksi destruktif) {"tag":"BUTTON","id":"","action":"","user":"","text":"Batal","inDialog":true}
+ok:   axe 0 pelanggaran: dialog konfirmasi keluarkan 1280 
+ok:   C batal: tidak ada perubahan 
+ok:   C keluarkan: tombol konfirmasi memuat saat memproses true
+ok:   C keluarkan: sukses diumumkan '(simulasi)' 
+ok:   C keluarkan: anggota hilang dari tim; fokus ke judul 'Tim proyek' {"tag":"H2","id":"tim-proyek","action":"","user":"","text":"Tim proyek","inDialog":false}
+ok:   C keluarkan: tanpa kaskade (Tugas (0) tetap; akun Ahmad tetap ada sebagai kandidat) 
+ok:   C keluarkan: Ahmad kembali menjadi kandidat (akun global tidak dihapus) 
+ok:   D tetapkan: dialog, kandidat hanya Admin Kantor (Siti, Rina), tombol 'Tetapkan Admin' {"slot":"admin-assign","title":"Tetapkan Admin penanggung jawab","description":"Pilih Admin Kantor yang bertanggung jawab atas proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan. Satu proyek hanya memiliki satu Admin penanggung jawab.","buttons":["Batal","Tetapkan Admin"],"alerts":[],"fieldErrors":[],"groups":[],"options":["Pilih Admin Kantor","Siti Aminah","Rina Wulandari"],"value":"","invalid":null,"text":"Tetapkan Admin penanggung jawabPilih Admin Kantor yang bertanggung jawab atas proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan. Satu proyek hanya memiliki satu Admin penanggung jawab.Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Admin Kantor*Pilih Admin KantorSiti AminahRina WulandariAdmin yang ditetapkan dapat membuka dan mengubah data proyek ini serta menambah anggota.BatalTetapkan Admin"}
+ok:   D tetapkan: tanpa pilihan → 'Pilih satu Admin Kantor.' 
+ok:   D tetapkan: akibat disebut sesuai pilihan Rina Wulandari akan dapat membuka dan mengubah data proyek ini serta menambah anggota.
+ok:   axe 0 pelanggaran: dialog tetapkan Admin 1280 
+ok:   D tetapkan: sukses diumumkan 
+ok:   D tetapkan: Rina menjadi baris pertama dengan Penanggung jawab; slot kosong hilang; fokus ke 'Ganti Admin' {"ids":["u-006"],"act":{"tag":"BUTTON","id":"","action":"replace-admin","user":"u-006","text":"Ganti Admin Rina Wulandari","inDialog":false}}
+ok:   D tetapkan: tim berisi Admin tanpa anggota menampilkan keterangan 
+ok:   D tetapkan: Ringkasan menampilkan Admin baru 
+ok:   D ganti: 'Admin saat ini: Siti Aminah.'; kandidat tanpa Admin aktif (hanya Rina) {"slot":"admin-replace","title":"Ganti Admin penanggung jawab","description":"Admin saat ini: Siti Aminah.","buttons":["Batal","Ganti Admin"],"alerts":[],"fieldErrors":[],"groups":[],"options":["Pilih Admin Kantor","Rina Wulandari"],"value":"","invalid":null,"text":"Ganti Admin penanggung jawabAdmin saat ini: Siti Aminah.Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Admin pengganti*Pilih Admin KantorRina WulandariSetelah diganti, Siti Aminah tidak lagi dapat membuka proyek ini. Akun dan perannya tidak berubah.BatalGanti Admin"}
+ok:   D ganti: akibat menyebut Admin lama kehilangan akses dan role tidak berubah 
+ok:   D ganti: sukses diumumkan 
+ok:   D ganti: satu Admin (Rina) di baris pertama; anggota tetap; tugas tetap ["u-006","u-003","u-004","u-005"]
+ok:   D ganti: Ringkasan menampilkan Rina Wulandari 
+ok:   D akses: tombol Keluar ditemukan untuk berganti persona tanpa muat ulang Keluar
+ok:   D akses: setelah diganti, Siti (Admin lama) tidak lagi melihat p-001; p-002 tetap 
+ok:   D akses: Rina (Admin baru) melihat p-001 
+ok:   D akses: Rina (Admin principal baru) hanya mendapat Tambah anggota ["Tambah anggota"]
+ok:   D cabut: konfirmasi menyebut nama, akibat akses, akun/role/anggota/tugas tetap; tombol Batal dan 'Cabut Admin' {"slot":null,"title":"Cabut Siti Aminah sebagai Admin penanggung jawab?","description":"Siti Aminah tidak lagi dapat membuka proyek PRJ-001. Proyek tidak memiliki Admin penanggung jawab sampai Anda menetapkan yang baru. Akun dan peran Admin Kantor Siti Aminah tidak berubah, dan anggota serta tugas proyek tetap utuh. Perubahan ini hanya simulasi dan hilang saat halaman dimuat ulang.","buttons":["Batal","Cabut Admin"],"alerts":[],"fieldErrors":[],"groups":null,"options":null,"value":null,"invalid":null,"text":"Cabut Siti Aminah sebagai Admin penanggung jawab?Siti Aminah tidak lagi dapat membuka proyek PRJ-001. Proyek tidak memiliki Admin penanggung jawab sampai Anda menetapkan yang baru. Akun dan peran Admin Kantor Siti Aminah tidak berubah, dan anggota serta tugas proyek tetap utuh. Perubahan ini hanya simulasi dan hilang saat halaman dimuat ulang.BatalCabut Admin"}
+ok:   D cabut: fokus awal di Batal (aksi destruktif) {"tag":"BUTTON","id":"","action":"","user":"","text":"Batal","inDialog":true}
+ok:   axe 0 pelanggaran: dialog cabut Admin 1280 
+ok:   D cabut: sukses diumumkan 
+ok:   D cabut: slot kosong kembali; anggota dan tugas tetap; fokus ke 'Tetapkan Admin' {"ids":["u-003","u-004","u-005"],"act":{"tag":"BUTTON","id":"","action":"assign-admin","user":"","text":"Tetapkan Admin","inDialog":false}}
+ok:   D cabut: Ringkasan 'Belum ditetapkan' 
+ok:   D akses: setelah dicabut, Siti tidak lagi melihat p-001 (p-002 tetap; akun dan role tetap Admin Kantor) 
+ok:   E hook uji tersedia di development 
+ok:   E1 stale tambah: pilihan yang sudah tidak tersedia dikosongkan dengan pesan 'Pilih lagi' {"slot":"member-add","title":"Tambah anggota proyek","description":"Pilih Mandor atau Anggota Tim untuk proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan.","buttons":["Batal","Tambahkan ke proyek"],"alerts":[],"fieldErrors":["Pilihan sebelumnya sudah tidak tersedia. Pilih lagi."],"groups":[["Mandor",["Eko Prasetyo"]],["Anggota Tim",["Dewi Lestari"]]],"options":["Pilih Mandor atau Anggota Tim","Eko Prasetyo","Dewi Lestari"],"value":"","invalid":"true","text":"Tambah anggota proyekPilih Mandor atau Anggota Tim untuk proyek PRJ-003 Pengerjaan Jalan Akses Pelabuhan.Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Anggota*Pilih Mandor atau Anggota TimEko PrasetyoDewi LestariMandor dapat melihat proyek ini, semua tugasnya, dan susunan tim. Anggota Tim hanya melihat tugas miliknya.Pilihan sebelumnya sudah tidak tersedia. Pilih lagi.BatalTambahkan ke proyek"}
+ok:   E2 stale tambah: ditolak dengan pesan spesifik; dialog tetap terbuka; keanggotaan tidak ganda ["Eko Prasetyo sudah terdaftar di proyek ini. Tidak ada data yang diubah. Pilih anggota lain."]
+ok:   E3 awal: Ahmad (tanpa tugas) → dialog konfirmasi 
+ok:   E3 stale: dialog tidak berganti jenis saat store berubah 
+ok:   E3 stale keluarkan: ditolak dengan jumlah tugas aktual; anggota tetap; tugas tidak dihapus ["Ahmad Rizal tidak dapat dikeluarkan karena masih tercatat sebagai penanggung jawab 1 tugas di proyek ini. Tidak ada data yang diubah."]
+ok:   E4 stale: dialog tetap terbuka walau baris anggota sudah hilang 
+ok:   E4 stale keluarkan: 'sudah tidak terdaftar', tanpa perubahan 
+ok:   E5 stale: dialog Tetapkan tetap terbuka walau slot kosong sudah hilang 
+ok:   E5 stale tetapkan: 'sudah berubah menjadi Rina Wulandari', Admin tidak diganti 
+ok:   E6 stale cabut: 'sudah tidak memiliki Admin penanggung jawab', tanpa perubahan 
+ok:   E7 stale Arsip: ditolak 'sudah berstatus Arsip'; Dewi tidak ditambahkan 
+ok:   E7 setelah Arsip: semua tombol tim hilang []
+ok:   E8 stale akses: Admin principal yang diganti dialihkan ke Akses Ditolak; anggota tidak ditambahkan /akses-ditolak
+ok:   F 375 budi: kartu (bukan tabel), Admin pertama berlatar Warm Highlight, area aksi di bawah tiap kartu [{"id":"u-002","last":"record-card-actions","bg":"rgb(255, 243, 226)"},{"id":"u-003","last":"record-card-actions","bg":"rgb(255, 255, 255)"},{"id":"u-004","last":"record-card-actions","bg":"rgb(255, 255, 255)"},{"id":"u-005","last":"record-card-actions","bg":"rgb(255, 255, 255)"}]
+ok:   F 375 budi: semua tombol tim >= 44x44px [{"t":"Tambah anggota","w":343,"h":44},{"t":"Ganti Admin Siti Aminah","w":309,"h":44},{"t":"Cabut Admin Siti Aminah","w":309,"h":44},{"t":"Keluarkan dari proyek Ahmad Ri","w":309,"h":44},{"t":"Keluarkan dari proyek Dewi Les","w":309,"h":44},{"t":"Keluarkan dari proyek Eko Pras","w":309,"h":44}]
+ok:   overflow halaman: budi p-001 tim 375 375 <= 375
+ok:   axe 0 pelanggaran: budi p-001 tim 375 
+ok:   overflow halaman: dialog blokir 375 375 <= 375
+ok:   axe 0 pelanggaran: dialog blokir 375 
+ok:   F 375: tombol dialog (termasuk X) >= 44px [44,44]
+ok:   overflow halaman: dialog tambah 375 375 <= 375
+ok:   axe 0 pelanggaran: dialog tambah 375 
+ok:   F 375: pilihan kandidat 44px, font >= 16px {"h":44,"fs":16}
+ok:   F 375 ahmad (Mandor): read-only — tanpa tombol, tanpa email []
+ok:   overflow halaman: ahmad p-001 tim 375 375 <= 375
+ok:   axe 0 pelanggaran: ahmad p-001 tim 375 
+ok:   F 768 budi: kartu dua kolom (dua kartu sebaris) [408,408,613,613]
+ok:   overflow halaman: budi p-001 tim 768 768 <= 768
+ok:   axe 0 pelanggaran: budi p-001 tim 768 
+ok:   overflow halaman: dialog ganti 768 768 <= 768
+ok:   axe 0 pelanggaran: dialog ganti 768 
+ok:   F: tanpa kata anggaran/nominal Rp, tanpa Tukang, tanpa istilah 'Admin principal' di UI 
+Build production (npm run build) ...
+ok:   G build production berhasil f C:\proyekin_project\package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\proyekin_project\proyekin\package-lock.json
+
+
+ok:   G keluaran build (387 berkas .next/static + .next/server) tanpa penanda hook uji 
+ok:   G next start: window.__PROYEKIN_TEST__ tidak terdefinisi di halaman detail 
+ok:   G next start: tidak ada route debug publik (/u4-spike 404 di build biasa) 
+
+Semua 114 pemeriksaan lolos.
+EXIT=0

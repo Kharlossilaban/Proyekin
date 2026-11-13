@@ -113,7 +113,10 @@ for (const path of [`/proyek/p-8${fresh}`, `/tugas/t-8${fresh}`, `/proyek/abc-${
 // Guard URL pada route nyata (U4-3): konten halaman ADA di markup HTML prerender (hanya disembunyikan dengan `hidden`).
 // Ini keterbatasan mock/prerender yang disengaja dan diuji agar tidak disalahpahami sebagai kontrol keamanan.
 results.guardHtml = {};
-for (const [path, marker] of [["/dashboard", "Ringkasan proyek dan aktivitas tim"], ["/anggota", "Manajemen anggota tim"]]) {
+// Dashboard Access Correction (2026-11-13): deskripsi lama "Ringkasan proyek dan aktivitas tim" diganti kalimat lingkup per
+// pengguna, dan DATA proyek tidak lagi ada di markup (diuji di check:dashboard-access). Penanda kini teks statis Dashboard yang
+// masih dirender di dalam guard; syarat asersi (konten di markup + dibungkus hidden + placeholder) tidak berubah.
+for (const [path, marker] of [["/dashboard", "Memuat ringkasan dashboard"], ["/anggota", "Manajemen anggota tim"]]) {
   const page = await get(path);
   const m = markup(page.html);
   results.guardHtml[path] = {

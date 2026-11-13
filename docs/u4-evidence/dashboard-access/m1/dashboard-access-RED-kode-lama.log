@@ -1,0 +1,74 @@
+FAIL: A modul lib/dashboard-summary.ts tersedia Cannot find module 'C:\Users\PONGO\AppData\Local\Temp\claude\***\***\scratchpad\dwt\proyekin\src\lib\dashboard-summary.ts' imported from C:\Users\PONGO\AppData\Local\Temp\claude\***\***\scratchpad\dwt\proyekin\scripts\check-dashboard-access.mjs
+FAIL: A sumber: dashboard/page.tsx tidak mengimpor MOCK_PROJECTS/MOCK_TASKS/MOCK_REPORTS/MOCK_USERS 
+FAIL: B HTML /dashboard tanpa nama proyek Renovasi Gedung Kantor Batam | Pembangunan Gudang Logistik Tanjung Pinang | Pengerjaan Jalan Akses Pelabuhan | Pembangunan Pos Keamanan Batang Tembesi | Perbaikan Jembatan Kayu Angkut
+FAIL: B HTML /dashboard tanpa kode proyek PRJ-00x 
+FAIL: B budi 1280: kalimat lingkup null
+FAIL: B budi 1280: statistik [3,5,2,4] [null,null,null,null]
+FAIL: B budi 1280: baris tabel proyek ["PRJ-001","PRJ-002","PRJ-003","PRJ-004","PRJ-005"] []
+ok:   B budi 1280: state kosong tidak tampil null
+FAIL: B budi: label dan keterangan kartu statistik []
+ok:   overflow halaman: budi /dashboard 1280 1280 <= 1280
+ok:   axe 0 pelanggaran: budi /dashboard 1280 
+FAIL: B siti 1280: kalimat lingkup null
+FAIL: B siti 1280: statistik [2,5,2,4] [null,null,null,null]
+FAIL: B siti 1280: baris tabel proyek ["PRJ-001","PRJ-002"] []
+ok:   B siti 1280: state kosong tidak tampil null
+FAIL: B siti: label dan keterangan kartu statistik []
+ok:   overflow halaman: siti /dashboard 1280 1280 <= 1280
+ok:   axe 0 pelanggaran: siti /dashboard 1280 
+FAIL: B rina 1280: kalimat lingkup null
+FAIL: B rina 1280: statistik [0,0,0,0] [null,null,null,null]
+ok:   B rina 1280: baris tabel proyek [] []
+FAIL: B rina 1280: state kosong tampil dengan penjelasan null
+FAIL: B rina: label dan keterangan kartu statistik []
+FAIL: B rina 1280: nama/kode proyek tidak pernah terlihat 
+ok:   overflow halaman: rina /dashboard 1280 1280 <= 1280
+ok:   axe 0 pelanggaran: rina /dashboard 1280 
+FAIL: B budi 768: kalimat lingkup null
+FAIL: B budi 768: statistik [3,5,2,4] [null,null,null,null]
+FAIL: B budi 768: baris tabel proyek ["PRJ-001","PRJ-002","PRJ-003","PRJ-004","PRJ-005"] []
+ok:   B budi 768: state kosong tidak tampil null
+ok:   overflow halaman: budi /dashboard 768 768 <= 768
+ok:   axe 0 pelanggaran: budi /dashboard 768 
+FAIL: B siti 768: kalimat lingkup null
+FAIL: B siti 768: statistik [2,5,2,4] [null,null,null,null]
+FAIL: B siti 768: baris tabel proyek ["PRJ-001","PRJ-002"] []
+ok:   B siti 768: state kosong tidak tampil null
+ok:   overflow halaman: siti /dashboard 768 768 <= 768
+ok:   axe 0 pelanggaran: siti /dashboard 768 
+FAIL: B rina 768: kalimat lingkup null
+FAIL: B rina 768: statistik [0,0,0,0] [null,null,null,null]
+ok:   B rina 768: baris tabel proyek [] []
+FAIL: B rina 768: state kosong tampil dengan penjelasan null
+FAIL: B rina 768: nama/kode proyek tidak pernah terlihat 
+ok:   overflow halaman: rina /dashboard 768 768 <= 768
+ok:   axe 0 pelanggaran: rina /dashboard 768 
+FAIL: B budi 375: kalimat lingkup null
+FAIL: B budi 375: statistik [3,5,2,4] [null,null,null,null]
+FAIL: B budi 375: baris tabel proyek ["PRJ-001","PRJ-002","PRJ-003","PRJ-004","PRJ-005"] []
+ok:   B budi 375: state kosong tidak tampil null
+ok:   overflow halaman: budi /dashboard 375 375 <= 375
+ok:   axe 0 pelanggaran: budi /dashboard 375 
+FAIL: B siti 375: kalimat lingkup null
+FAIL: B siti 375: statistik [2,5,2,4] [null,null,null,null]
+FAIL: B siti 375: baris tabel proyek ["PRJ-001","PRJ-002"] []
+ok:   B siti 375: state kosong tidak tampil null
+ok:   overflow halaman: siti /dashboard 375 375 <= 375
+ok:   axe 0 pelanggaran: siti /dashboard 375 
+FAIL: B rina 375: kalimat lingkup null
+FAIL: B rina 375: statistik [0,0,0,0] [null,null,null,null]
+ok:   B rina 375: baris tabel proyek [] []
+FAIL: B rina 375: state kosong tampil dengan penjelasan null
+FAIL: B rina 375: nama/kode proyek tidak pernah terlihat 
+ok:   overflow halaman: rina /dashboard 375 375 <= 375
+ok:   axe 0 pelanggaran: rina /dashboard 375 
+file:///C:/Users/PONGO/AppData/Local/Temp/claude/***/scratchpad/dwt/proyekin/scripts/lib/cdp.mjs:33
+  throw new Error(`Timeout: ${label}`);
+        ^
+
+Error: Timeout: dashboard siap rina sebelum penetapan
+    at waitFor (file:///C:/Users/PONGO/AppData/Local/Temp/claude/***/scratchpad/dwt/proyekin/scripts/lib/cdp.mjs:33:9)
+    at async file:///C:/Users/PONGO/AppData/Local/Temp/claude/***/scratchpad/dwt/proyekin/scripts/check-dashboard-access.mjs:249:1
+
+Node.js v24.18.0
+EXIT=1

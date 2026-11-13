@@ -1,0 +1,7 @@
+
+> proyekin@0.1.0 check:no-budget
+> node scripts/check-no-budget.mjs
+
+
+Semua 22 pemeriksaan lolos.
+EXIT=0

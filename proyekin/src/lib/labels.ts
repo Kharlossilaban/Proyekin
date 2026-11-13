@@ -3,6 +3,7 @@
 
 import type { DeadlineState } from "@/lib/demo-date";
 import type { DenyReason, ProjectDeleteBlockerReason } from "@/lib/access";
+import type { DashboardScope } from "@/lib/dashboard-summary";
 import type { ProjectStatus, Role, TaskPriority, TaskStatus } from "@/types";
 
 /** Sama dengan varian `Badge`. */
@@ -233,3 +234,41 @@ export const getTaskStatusLabel = (key: string): string => lookup(TASK_STATUS_LA
 export const getTaskPriorityLabel = (key: string): string => lookup(TASK_PRIORITY_LABELS, key);
 export const getReportStatusLabel = (key: string): string => lookup(REPORT_STATUS_LABELS, key);
 export const getDocumentStatusLabel = (key: string): string => lookup(DOCUMENT_STATUS_LABELS, key);
+
+// ---------- Dashboard (Dashboard Access Correction, 2026-11-13) ----------
+// Copy disusun dengan design:ux-copy. Istilah status memakai label resmi di atas agar konsisten dengan halaman lain.
+
+export const DASHBOARD_TEXT = {
+  loading: "Memuat ringkasan dashboard",
+  stats: {
+    activeProjects: { label: "Proyek Aktif", description: `${PROJECT_STATUS_LABELS.ON_PROGRESS} atau ${PROJECT_STATUS_LABELS.PAUSED}` },
+    pendingTasks: { label: "Tugas Tertunda", description: `Belum ${TASK_STATUS_LABELS.DONE}` },
+    pendingReports: { label: "Laporan Menunggu", description: `Berstatus ${REPORT_STATUS_LABELS.SUBMITTED}` },
+    teamMembers: { label: "Anggota Tim", description: "Dihitung sekali per orang" },
+  },
+} as const;
+
+/** Kalimat lingkup di bawah judul Dashboard. `scope` dari `getDashboardSummary` (access.ts), bukan dari role di UI. */
+export function getDashboardScopeText(scope: DashboardScope, projectCount: number): string {
+  switch (scope) {
+    case "ALL":
+      return projectCount > 0 ? `Ringkasan seluruh ${projectCount} proyek organisasi.` : "Belum ada proyek di organisasi.";
+    case "ASSIGNED":
+      return `Ringkasan ${projectCount} proyek yang Anda tangani sebagai Admin penanggung jawab.`;
+    case "NONE":
+      return "Belum ada proyek yang Anda tangani sebagai Admin penanggung jawab.";
+  }
+}
+
+/**
+ * State kosong tabel proyek Dashboard per lingkup. Owner (ALL) tanpa proyek diarahkan ke menu Proyek; Admin tanpa proyek
+ * diberi tahu bahwa Owner yang menetapkan Admin penanggung jawab (Admin tidak dapat menetapkan dirinya sendiri).
+ */
+export function getDashboardEmptyText(scope: DashboardScope): { title: string; description: string } {
+  return scope === "ALL"
+    ? { title: "Belum ada proyek", description: "Proyek yang Anda buat di menu Proyek akan muncul di sini beserta ringkasannya." }
+    : {
+        title: "Belum ada proyek yang Anda tangani",
+        description: "Proyek dan ringkasannya muncul di sini setelah Owner menetapkan Anda sebagai Admin penanggung jawab sebuah proyek.",
+      };
+}

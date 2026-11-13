@@ -1,6 +1,6 @@
 # PROYEKIN — Ringkasan Project
 
-Terakhir diperbarui: 2026-11-13 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: **U4-0 sampai U4-5 PASS, U4-6 dan U4-7 PASS WITH NOTES, berikutnya Dashboard Access Correction (terpisah), U4-8 sampai U4-12 NOT STARTED; U5 PLANNING ONLY**; rencana U4-5..U4-12 tertulis di `docs/U4-PLAN.md`, draf U5 di `docs/U5-PLAN.md`; **keputusan final Owner 2026-10-28: Dokumen tetap dengan scope visual sempit (F1), anggaran dihapus total (F2); pembersihan kode anggaran sudah dieksekusi dan terverifikasi, evidence `docs/u4-evidence/budget-cleanup/`**; workflow skill dan evaluasi visual dicatat, lihat "Milestone workflow")
+Terakhir diperbarui: 2026-11-13 (U3 merged ke `main`; U4 berjalan bertahap di `feat/u4-core-ui`: **U4-0 sampai U4-5 PASS, U4-6, U4-7, dan Dashboard Access Correction PASS WITH NOTES, U4-8 sampai U4-12 NOT STARTED (U4-8..U4-10 disetujui Owner, dikerjakan berurutan); U5 PLANNING ONLY**; rencana U4-5..U4-12 tertulis di `docs/U4-PLAN.md`, draf U5 di `docs/U5-PLAN.md`; **keputusan final Owner 2026-10-28: Dokumen tetap dengan scope visual sempit (F1), anggaran dihapus total (F2); pembersihan kode anggaran sudah dieksekusi dan terverifikasi, evidence `docs/u4-evidence/budget-cleanup/`**; workflow skill dan evaluasi visual dicatat, lihat "Milestone workflow")
 
 ## Hierarki acuan
 1. `docs/deep-research-report.md` — spesifikasi bisnis dan scope MVP (utama; ada "Catatan Keputusan Pemilik" di akhir).
@@ -124,7 +124,7 @@ Rencana final U4 (U4-0 sampai U4-12, fail-closed, prinsip platform) disetujui pe
 | U4-0, U4-1, U4-2, U4-3, U4-4, **U4-5** | **PASS** (bukti: bagian di bawah dan `docs/u4-evidence/`; U4-5: `U4-5-PROJECT-DETAIL.md`) |
 | U4-6 (buat, ubah, hapus proyek) | **PASS WITH NOTES** (verifikasi final 2026-11-06; `docs/u4-evidence/U4-6-PROJECT-CRUD.md`) |
 | U4-7 (kelola anggota proyek, Admin penanggung jawab) | **PASS WITH NOTES** (verifikasi final M7 2026-11-13; `docs/u4-evidence/U4-7-PROJECT-MEMBERS.md`) |
-| Dashboard Access Correction | **NEXT** — disetujui Owner, pekerjaan terpisah setelah push U4-7 dan sebelum U4-8 (scope, uji, commit, evidence sendiri) |
+| Dashboard Access Correction | **PASS WITH NOTES** (2026-11-13; `docs/u4-evidence/DASHBOARD-ACCESS-CORRECTION.md`): Dashboard hanya menurunkan data dari proyek dalam lingkup pengguna aktif (Admin hanya proyek principal-nya; Rina tanpa penugasan tidak melihat data; Anggota Tim = orang unik termasuk Admin principal); mock, bukan otorisasi |
 | U4-8, U4-9, U4-10, U4-11, U4-12 | **NOT STARTED** (tidak ada commit, evidence, atau skrip uji; `/tugas/[id]` masih placeholder; `/dashboard`, `/tugas`, `/anggota` masih tampilan lama tanpa fitur U4) |
 | U5 (Laporan Harian, Dokumen) | **PLANNING ONLY**: draf `docs/U5-PLAN.md` berstatus **DRAFT / NOT APPROVED FOR IMPLEMENTATION**; tidak ada kode U5 |
 
@@ -251,7 +251,7 @@ Perubahan **cara kerja**, bukan perubahan aplikasi: tidak ada source code, kompo
 | U1 | Design system: komponen dasar (Button, Input, Card, Badge, Table, Dialog) — **selesai, merged** |
 | U2 | App shell: sidebar, header, navigasi per role, responsif — **selesai, merged** |
 | U3 | Halaman auth (UI, mock) — **selesai, merged** (PASS WITH NOTES; catatan di Technical backlog) |
-| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 s.d. U4-5 **PASS**; U4-6 dan U4-7 **PASS WITH NOTES**; Dashboard Access Correction berikutnya (terpisah); U4-8 s.d. U4-12 **NOT STARTED**, menunggu persetujuan per langkah; rencana di `docs/U4-PLAN.md`). **Tanpa anggaran (F2):** kode anggaran sudah dihapus (2026-10-28, terverifikasi); U4-6 form tidak boleh memuatnya, U4-12 mempertahankan penjaga Dashboard |
+| U4 | Dashboard, Proyek, Tugas, Anggota — **berjalan bertahap** (U4-0 s.d. U4-5 **PASS**; U4-6, U4-7, dan Dashboard Access Correction **PASS WITH NOTES**; U4-8 s.d. U4-12 **NOT STARTED**, menunggu persetujuan per langkah; rencana di `docs/U4-PLAN.md`). **Tanpa anggaran (F2):** kode anggaran sudah dihapus (2026-10-28, terverifikasi); U4-6 form tidak boleh memuatnya, U4-12 mempertahankan penjaga Dashboard |
 | U5 | Laporan Harian, Dokumen — **PLANNING ONLY** (draf `docs/U5-PLAN.md`: DRAFT / NOT APPROVED FOR IMPLEMENTATION; dikerjakan setelah U4 selesai). **Menu Dokumen tetap (F1):** hanya render 3D proyek + foto lampiran laporan harian Mandor (galeri turunan, satu sumber); Mandor mobile-first 375px |
 | U6 | Gantt, landing publik |
 | U7 | Polesan: state kosong/error/loading, aksesibilitas, uji responsif |

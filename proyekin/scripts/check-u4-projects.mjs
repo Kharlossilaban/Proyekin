@@ -338,7 +338,9 @@ await setViewport({ width: 1280, height: 900 });
   const mainReady = (what) => waitFor(() => evaluate(`!!document.querySelector("main h1")?.checkVisibility()`), 20000, what);
   const mainText = () => evaluate(`document.querySelector("main").textContent`);
   const DASH_HEADERS = ["Kode", "Nama Proyek", "Status", "Progres"];
-  const DASH_CODES = ["PRJ-001", "PRJ-002", "PRJ-003", "PRJ-004", "PRJ-005"];
+  // Dashboard Access Correction (keputusan Owner 2026-11-13): Admin Kantor hanya melihat proyek yang Admin principal-nya
+  // dirinya. Sebelumnya asersi ini mengharapkan Siti melihat kelima proyek (kebocoran yang dikoreksi); Owner tetap 5.
+  const DASH_CODES = { budi: ["PRJ-001", "PRJ-002", "PRJ-003", "PRJ-004", "PRJ-005"], siti: ["PRJ-001", "PRJ-002"] };
   const DASH_STATS = ["Proyek Aktif", "Tugas Tertunda", "Laporan Menunggu", "Anggota Tim"];
   const VIEWPORTS = [
     [{ width: 1280, height: 900 }, "1280"],
@@ -353,12 +355,14 @@ await setViewport({ width: 1280, height: 900 });
       await setSession(p.id);
       await navigate("/dashboard");
       await waitFor(() => evaluate(`[...document.querySelectorAll("h1")].some((h) => h.textContent.trim() === "Dashboard" && h.checkVisibility())`), 20000, `dashboard ${p.key} ${label}`);
+      // Dashboard dirender di klien dari store + sesi (Dashboard Access Correction): tunggu ringkasan siap sebelum membaca tabel.
+      await waitFor(() => evaluate(`!!document.querySelector('[data-slot="dashboard"][data-state="ready"]')?.checkVisibility()`), 20000, `dashboard siap ${p.key} ${label}`);
       const hits = findForbidden(await mainText(), UI_FORBIDDEN);
       rec(`${p.key} dashboard ${label}: tanpa kata anggaran atau nominal rupiah`, hits.length === 0, hits.join(" | "));
       const headers = await evaluate(`[...document.querySelectorAll("main table th")].map((e) => e.textContent.trim())`);
       rec(`${p.key} dashboard ${label}: kolom tabel proyek persis ${DASH_HEADERS.join(", ")} (tanpa kolom anggaran)`, same(headers, DASH_HEADERS), JSON.stringify(headers));
       const rows = await evaluate(`[...document.querySelectorAll("main table tbody tr")].map((r) => ({ cells: r.cells.length, code: r.cells[0].textContent.trim() }))`);
-      rec(`${p.key} dashboard ${label}: 5 baris proyek, masing-masing 4 sel`, same(rows.map((r) => r.code), DASH_CODES) && rows.every((r) => r.cells === 4), JSON.stringify(rows));
+      rec(`${p.key} dashboard ${label}: ${DASH_CODES[p.key].length} baris proyek dalam lingkup, masing-masing 4 sel`, same(rows.map((r) => r.code), DASH_CODES[p.key]) && rows.every((r) => r.cells === 4), JSON.stringify(rows));
       const text = await mainText();
       rec(`${p.key} dashboard ${label}: kartu statistik tersisa hanya ${DASH_STATS.join(", ")}`, DASH_STATS.every((s) => text.includes(s)));
       await checkOverflow(`${p.key} /dashboard ${label}`);

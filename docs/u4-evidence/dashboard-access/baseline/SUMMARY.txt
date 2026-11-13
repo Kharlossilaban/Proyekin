@@ -1,0 +1,17 @@
+lint EXIT=0 12s | ✖ 1 problem (0 errors, 1 warning)
+typecheck EXIT=0 3s | 
+check:contrast EXIT=0 1s | 57/57 pasangan lolos.
+check:tokens EXIT=0 2s | Tidak ada warna mentah. Semua memakai token.
+check:u4-foundation EXIT=0 2s | Semua 412 pemeriksaan lolos.
+check:no-budget EXIT=0 2s | Semua 22 pemeriksaan lolos.
+build EXIT=0 9s | 
+check:u4-components EXIT=0 26s | Semua 72 pemeriksaan lolos.
+check:u4-access EXIT=0 122s | Semua 201 pemeriksaan lolos.
+check:u4-projects EXIT=0 48s | Semua 261 pemeriksaan lolos.
+check:u4-project-detail EXIT=0 74s | Semua 642 pemeriksaan lolos.
+check:u4-project-crud EXIT=0 51s | Semua 129 pemeriksaan lolos.
+check:u4-project-members EXIT=0 89s | Semua 114 pemeriksaan lolos.
+check:responsive-lists EXIT=0 28s | Semua 467 pemeriksaan lolos.
+check:login-touch EXIT=1 72s | 4 masalah dari 244 pemeriksaan.
+check:dynamic-routes EXIT=0 26s | Semua pemeriksaan lolos.
+check:browser EXIT=0 114s | Semua pemeriksaan lolos.

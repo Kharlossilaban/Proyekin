@@ -28,7 +28,7 @@ Rencana ini tidak mengubah business logic, role, API contract, atau scope MVP. B
 | U4-5 detail proyek `/proyek/[projectId]` (read-only) | **PASS** (2026-10-28) | commit U4-5, `U4-5-PROJECT-DETAIL.md` |
 | U4-6 buat, ubah, hapus proyek | **PASS WITH NOTES** (verifikasi final 2026-11-06) | commit U4-6, `U4-6-PROJECT-CRUD.md` (catatan: §5 dan §9 evidence) |
 | U4-7 kelola anggota proyek + Admin penanggung jawab | **PASS WITH NOTES** (verifikasi final M7 2026-11-13) | `c7d6b8d`, `f4a95b6`, `4ea5127`, `0597723`, `b9c1abc`, `5670102` + commit M8, `U4-7-PROJECT-MEMBERS.md` (catatan: §17 baseline `logo.tsx` Owner, §18) |
-| Dashboard Access Correction | **NEXT** (disetujui Owner; pekerjaan terpisah setelah push U4-7, sebelum U4-8) | belum ada commit |
+| Dashboard Access Correction | **PASS WITH NOTES** (2026-11-13; pekerjaan terpisah sebelum U4-8) | commit Dashboard Access Correction, `DASHBOARD-ACCESS-CORRECTION.md` (catatan: §7 baseline `logo.tsx`, timing `u4-components`) |
 | U4-8 s.d. U4-12 | **NOT STARTED** | tidak ada commit, evidence, atau skrip uji |
 
 Commit `88b0bb7`, `951b9d7`, `709487b`, `e5b197e` adalah perbaikan responsif/aksesibilitas pada halaman placeholder. Bukan kemajuan U4-5 s.d. U4-12.

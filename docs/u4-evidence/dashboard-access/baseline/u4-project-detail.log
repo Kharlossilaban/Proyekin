@@ -1,0 +1,649 @@
+
+> proyekin@0.1.0 check:u4-project-detail
+> node scripts/check-u4-project-detail.mjs ../docs/u4-evidence/dashboard-access/baseline/u4-project-detail
+
+ok:   HTML /proyek/p-001: memuat nama proyek dan penanda detail (kontrak U4-0) 
+ok:   HTML /proyek/p-001: status memuat (data-state=loading) dan skeleton, belum ada tab 
+ok:   HTML /proyek/p-001: tidak memuat judul tugas, nama tugas, atau email anggota 
+ok:   budi (Owner): /proyek/p-001 (dalam lingkup) siap detail
+ok:   budi p-001: tab = ringkasan, tugas, tim ["ringkasan","tugas","tim"]
+ok:   budi p-001: tab Ringkasan terpilih awal 
+ok:   budi p-001: label tab Tugas memuat jumlah tugas dalam lingkup 
+ok:   budi p-001: header memuat kode, nama, tautan kembali ke daftar {"h1":"Renovasi Gedung Kantor Batam","eyebrow":"PRJ-001","back":"/proyek"}
+ok:   budi p-001: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab Informasi proyekKodePRJ-001StatusBerjalanKlienPT. Properti NusantaraLokasiBalai Kota Batam, Kepulauan RiauPeriode15 Jan 2026 – 30 Jun 2026Admin Kantor penanggung jawabSiti AminahDeskripsiRenovasi tota
+ok:   budi p-001: ringkasan memuat deskripsi proyek 
+ok:   budi p-001: progres proyek 45% 
+ok:   budi p-001: hitungan tugas (total 4, progres 1, selesai 1, terlambat 2) {"total":{"value":"4","note":"2 belum dimulai"},"prog":{"value":"1","note":null},"done":{"value":"1","note":null},"overdue":{"value":"2","note":"terhadap tanggal acuan demo"}}
+ok:   budi p-001: judul ringkasan tugas umum 
+ok:   budi p-001: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini) Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini.
+ok:   budi p-001: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama) 
+ok:   budi p-001 ringkasan: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Hapus proyek); tanpa form/input saat dialog tertutup ["Ubah proyek","Hapus proyek"]
+ok:   budi p-001 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-001 ringkasan: tanpa kata anggaran atau nominal rupiah 
+ok:   budi p-001: proyek non-Arsip tanpa penanda Hanya baca 
+ok:   axe 0 pelanggaran: budi p-001 ringkasan 1280 
+ok:   overflow halaman: budi p-001 ringkasan 1280 1280 <= 1280
+ok:   budi p-001: tab Tugas (tabel) hanya memuat tugas dalam lingkup ["t-001","t-002","t-003","t-006"] ["t-001","t-002","t-003","t-006"]
+ok:   budi p-001: kartu mobile tersembunyi di 1280 
+ok:   budi p-001: baris t-001 memuat kode, judul, penanggung jawab Ahmad Rizal, status Selesai, tenggat 15 Feb 2026 TSK-001Pembongkaran dinding partisi lantai 1Ahmad RizalTinggiSelesai15 Feb 2026100%
+ok:   budi p-001: baris t-002 memuat kode, judul, penanggung jawab Dewi Lestari, status Dalam Progres, tenggat 28 Feb 2026, Terlambat TSK-002Pengecekan sistem kelistrikan lamaDewi LestariTinggiDalam Progres28 Feb 2026Terlambat60%
+ok:   budi p-001: baris t-003 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 5 Mar 2026, Terlambat TSK-003Pembersihan material sisa pembongkaranEko PrasetyoSedangBelum Dimulai5 Mar 2026Terlambat0%
+ok:   budi p-001: baris t-006 memuat kode, judul, penanggung jawab Dewi Lestari, status Belum Dimulai, tenggat 1 Apr 2026 TSK-006Pemasangan keramik lobbyDewi LestariSedangBelum Dimulai1 Apr 2026Mendatang0%
+ok:   budi p-001: catatan lingkup tugas (semua tugas proyek) 
+ok:   budi p-001: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas Tenggat mengikuti tanggal acuan demo 21 Maret 2026.
+ok:   budi p-001: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat) {"scroll":974,"client":974}
+ok:   budi p-001 tugas: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Hapus proyek); tanpa form/input saat dialog tertutup ["Ubah proyek","Hapus proyek"]
+ok:   budi p-001 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-001 tugas: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: budi p-001 tugas 1280 
+ok:   overflow halaman: budi p-001 tugas 1280 1280 <= 1280
+ok:   budi p-001: tab Tim (tabel) memuat 4 orang: Admin principal lalu anggota ["u-002","u-003","u-004","u-005"]
+ok:   budi p-001: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, email tampil Siti AminahAdmin KantorPenanggung jawabsiti@proyekin.idGanti Admin Siti AminahCabut Admin Siti Aminah
+ok:   budi p-001: baris tim Ahmad Rizal — peran Mandor, email tampil Ahmad RizalMandorahmad@proyekin.idKeluarkan dari proyek Ahmad Rizal
+ok:   budi p-001: baris tim Dewi Lestari — peran Anggota Tim, email tampil Dewi LestariAnggota Timdewi@proyekin.idKeluarkan dari proyek Dewi Lestari
+ok:   budi p-001: baris tim Eko Prasetyo — peran Mandor, email tampil Eko PrasetyoMandoreko@proyekin.idKeluarkan dari proyek Eko Prasetyo
+ok:   budi p-001: tab Tim memuat kolom Email 
+ok:   budi p-001: tabel tim muat tanpa gulir horizontal di 1280 {"scroll":974,"client":974}
+ok:   budi p-001 tim: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Hapus proyek, Tambah anggota, Ganti Admin Siti Aminah, Cabut Admin Siti Aminah, Keluarkan dari proyek Ahmad Rizal, Keluarkan dari proyek Dewi Lestari, Keluarkan dari proyek Eko Prasetyo, Ganti Admin Siti Aminah, Cabut Admin Siti Aminah, Keluarkan dari proyek Ahmad Rizal, Keluarkan dari proyek Dewi Lestari, Keluarkan dari proyek Eko Prasetyo); tanpa form/input saat dialog tertutup ["Ubah proyek","Hapus proyek","Tambah anggota","Ganti Admin Siti Aminah","Cabut Admin Siti Aminah","Keluarkan dari proyek Ahmad Rizal","Keluarkan dari proyek Dewi Lestari","Keluarkan dari proyek Eko Prasetyo","Ganti Admin Siti Aminah","Cabut Admin Siti Aminah","Keluarkan dari proyek Ahmad Rizal","Keluarkan dari proyek Dewi Lestari","Keluarkan dari proyek Eko Prasetyo"]
+ok:   budi p-001 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-001 tim: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: budi p-001 tim 1280 
+ok:   overflow halaman: budi p-001 tim 1280 1280 <= 1280
+ok:   budi (Owner): /proyek/p-002 (dalam lingkup) siap detail
+ok:   budi p-002: tab = ringkasan, tugas, tim ["ringkasan","tugas","tim"]
+ok:   budi p-002: tab Ringkasan terpilih awal 
+ok:   budi p-002: label tab Tugas memuat jumlah tugas dalam lingkup 
+ok:   budi p-002: header memuat kode, nama, tautan kembali ke daftar {"h1":"Pembangunan Gudang Logistik Tanjung Pinang","eyebrow":"PRJ-002","back":"/proyek"}
+ok:   budi p-002: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab Informasi proyekKodePRJ-002StatusBerjalanKlienCV. Jaya Abadi LogisticsLokasiKec. Sungai Manggis, Kepulauan RiauPeriode1 Mar 2026 – 15 Sep 2026Admin Kantor penanggung jawabSiti AminahDeskripsiPembangun
+ok:   budi p-002: ringkasan memuat deskripsi proyek 
+ok:   budi p-002: progres proyek 20% 
+ok:   budi p-002: hitungan tugas (total 2, progres 1, selesai 0, terlambat 0) {"total":{"value":"2","note":"1 belum dimulai"},"prog":{"value":"1","note":null},"done":{"value":"0","note":null},"overdue":{"value":"0","note":"terhadap tanggal acuan demo"}}
+ok:   budi p-002: judul ringkasan tugas umum 
+ok:   budi p-002: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini) Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini.
+ok:   budi p-002: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama) 
+ok:   budi p-002 ringkasan: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Hapus proyek); tanpa form/input saat dialog tertutup ["Ubah proyek","Hapus proyek"]
+ok:   budi p-002 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-002 ringkasan: tanpa kata anggaran atau nominal rupiah 
+ok:   budi p-002: proyek non-Arsip tanpa penanda Hanya baca 
+ok:   axe 0 pelanggaran: budi p-002 ringkasan 1280 
+ok:   overflow halaman: budi p-002 ringkasan 1280 1280 <= 1280
+ok:   budi p-002: tab Tugas (tabel) hanya memuat tugas dalam lingkup ["t-004","t-005"] ["t-004","t-005"]
+ok:   budi p-002: kartu mobile tersembunyi di 1280 
+ok:   budi p-002: baris t-004 memuat kode, judul, penanggung jawab Ahmad Rizal, status Dalam Progres, tenggat 10 Apr 2026 TSK-004Pembuatan pondasi footplateAhmad RizalTinggiDalam Progres10 Apr 2026Mendatang35%
+ok:   budi p-002: baris t-005 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 25 Mar 2026 TSK-005Pemesanan baja WF untuk strukturEko PrasetyoTinggiBelum Dimulai25 Mar 2026Mendatang0%
+ok:   budi p-002: catatan lingkup tugas (semua tugas proyek) 
+ok:   budi p-002: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas Tenggat mengikuti tanggal acuan demo 21 Maret 2026.
+ok:   budi p-002: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat) {"scroll":974,"client":974}
+ok:   budi p-002 tugas: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Hapus proyek); tanpa form/input saat dialog tertutup ["Ubah proyek","Hapus proyek"]
+ok:   budi p-002 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-002 tugas: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: budi p-002 tugas 1280 
+ok:   overflow halaman: budi p-002 tugas 1280 1280 <= 1280
+ok:   budi p-002: tab Tim (tabel) memuat 3 orang: Admin principal lalu anggota ["u-002","u-003","u-005"]
+ok:   budi p-002: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, email tampil Siti AminahAdmin KantorPenanggung jawabsiti@proyekin.idGanti Admin Siti AminahCabut Admin Siti Aminah
+ok:   budi p-002: baris tim Ahmad Rizal — peran Mandor, email tampil Ahmad RizalMandorahmad@proyekin.idKeluarkan dari proyek Ahmad Rizal
+ok:   budi p-002: baris tim Eko Prasetyo — peran Mandor, email tampil Eko PrasetyoMandoreko@proyekin.idKeluarkan dari proyek Eko Prasetyo
+ok:   budi p-002: tab Tim memuat kolom Email 
+ok:   budi p-002: tabel tim muat tanpa gulir horizontal di 1280 {"scroll":974,"client":974}
+ok:   budi p-002 tim: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Hapus proyek, Tambah anggota, Ganti Admin Siti Aminah, Cabut Admin Siti Aminah, Keluarkan dari proyek Ahmad Rizal, Keluarkan dari proyek Eko Prasetyo, Ganti Admin Siti Aminah, Cabut Admin Siti Aminah, Keluarkan dari proyek Ahmad Rizal, Keluarkan dari proyek Eko Prasetyo); tanpa form/input saat dialog tertutup ["Ubah proyek","Hapus proyek","Tambah anggota","Ganti Admin Siti Aminah","Cabut Admin Siti Aminah","Keluarkan dari proyek Ahmad Rizal","Keluarkan dari proyek Eko Prasetyo","Ganti Admin Siti Aminah","Cabut Admin Siti Aminah","Keluarkan dari proyek Ahmad Rizal","Keluarkan dari proyek Eko Prasetyo"]
+ok:   budi p-002 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-002 tim: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: budi p-002 tim 1280 
+ok:   overflow halaman: budi p-002 tim 1280 1280 <= 1280
+ok:   budi (Owner): /proyek/p-003 (dalam lingkup) siap detail
+ok:   budi p-003: tab = ringkasan, tugas, tim ["ringkasan","tugas","tim"]
+ok:   budi p-003: tab Ringkasan terpilih awal 
+ok:   budi p-003: label tab Tugas memuat jumlah tugas dalam lingkup 
+ok:   budi p-003: header memuat kode, nama, tautan kembali ke daftar {"h1":"Pengerjaan Jalan Akses Pelabuhan","eyebrow":"PRJ-003","back":"/proyek"}
+ok:   budi p-003: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab Informasi proyekKodePRJ-003StatusTertundaKlienDinas PU Kepulauan RiauLokasiPelabuhan Tanjung PinangPeriode1 Nov 2025 – 30 Apr 2026Admin Kantor penanggung jawabBelum ditetapkanDeskripsiRehabilitasi jal
+ok:   budi p-003: ringkasan memuat deskripsi proyek 
+ok:   budi p-003: progres proyek 60% 
+ok:   budi p-003: hitungan tugas (total 0, progres 0, selesai 0, terlambat 0) {"total":{"value":"0","note":"0 belum dimulai"},"prog":{"value":"0","note":null},"done":{"value":"0","note":null},"overdue":{"value":"0","note":"terhadap tanggal acuan demo"}}
+ok:   budi p-003: judul ringkasan tugas umum 
+ok:   budi p-003: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini) Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini.
+ok:   budi p-003: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama) 
+ok:   budi p-003 ringkasan: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Hapus proyek); tanpa form/input saat dialog tertutup ["Ubah proyek","Hapus proyek"]
+ok:   budi p-003 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-003 ringkasan: tanpa kata anggaran atau nominal rupiah 
+ok:   budi p-003: proyek non-Arsip tanpa penanda Hanya baca 
+ok:   axe 0 pelanggaran: budi p-003 ringkasan 1280 
+ok:   overflow halaman: budi p-003 ringkasan 1280 1280 <= 1280
+ok:   budi p-003: tab Tugas (tabel) hanya memuat tugas dalam lingkup [] []
+ok:   budi p-003: kartu mobile tersembunyi di 1280 
+ok:   budi p-003: catatan lingkup tugas (semua tugas proyek) 
+ok:   budi p-003: state kosong tugas tampil 
+ok:   budi p-003: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas Tenggat mengikuti tanggal acuan demo 21 Maret 2026.
+ok:   budi p-003 tugas: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Hapus proyek); tanpa form/input saat dialog tertutup ["Ubah proyek","Hapus proyek"]
+ok:   budi p-003 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-003 tugas: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: budi p-003 tugas 1280 
+ok:   overflow halaman: budi p-003 tugas 1280 1280 <= 1280
+ok:   budi p-003: tab Tim (tabel) memuat 0 orang: Admin principal lalu anggota []
+ok:   budi p-003: tab Tim kosong: tanpa tabel, tanpa email 
+ok:   budi p-003: state kosong tim tampil 
+ok:   budi p-003 tim: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Hapus proyek, Tambah anggota, Tetapkan Admin); tanpa form/input saat dialog tertutup ["Ubah proyek","Hapus proyek","Tambah anggota","Tetapkan Admin"]
+ok:   budi p-003 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-003 tim: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: budi p-003 tim 1280 
+ok:   overflow halaman: budi p-003 tim 1280 1280 <= 1280
+ok:   budi (Owner): /proyek/p-004 (dalam lingkup) siap detail
+ok:   budi p-004: tab = ringkasan, tugas, tim ["ringkasan","tugas","tim"]
+ok:   budi p-004: tab Ringkasan terpilih awal 
+ok:   budi p-004: label tab Tugas memuat jumlah tugas dalam lingkup 
+ok:   budi p-004: header memuat kode, nama, tautan kembali ke daftar {"h1":"Pembangunan Pos Keamanan Batang Tembesi","eyebrow":"PRJ-004","back":"/proyek"}
+ok:   budi p-004: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab Informasi proyekKodePRJ-004StatusSelesaiKlienPT. Batamindo Industri PerkasaLokasiKawasan Industri BATAMINDOPeriode1 Jun 2025 – 31 Okt 2025Admin Kantor penanggung jawabBelum ditetapkanDeskripsiPembangu
+ok:   budi p-004: ringkasan memuat deskripsi proyek 
+ok:   budi p-004: progres proyek 100% 
+ok:   budi p-004: hitungan tugas (total 0, progres 0, selesai 0, terlambat 0) {"total":{"value":"0","note":"0 belum dimulai"},"prog":{"value":"0","note":null},"done":{"value":"0","note":null},"overdue":{"value":"0","note":"terhadap tanggal acuan demo"}}
+ok:   budi p-004: judul ringkasan tugas umum 
+ok:   budi p-004: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini) Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini.
+ok:   budi p-004: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama) 
+ok:   budi p-004 ringkasan: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Hapus proyek); tanpa form/input saat dialog tertutup ["Ubah proyek","Hapus proyek"]
+ok:   budi p-004 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-004 ringkasan: tanpa kata anggaran atau nominal rupiah 
+ok:   budi p-004: proyek non-Arsip tanpa penanda Hanya baca 
+ok:   axe 0 pelanggaran: budi p-004 ringkasan 1280 
+ok:   overflow halaman: budi p-004 ringkasan 1280 1280 <= 1280
+ok:   budi p-004: tab Tugas (tabel) hanya memuat tugas dalam lingkup [] []
+ok:   budi p-004: kartu mobile tersembunyi di 1280 
+ok:   budi p-004: catatan lingkup tugas (semua tugas proyek) 
+ok:   budi p-004: state kosong tugas tampil 
+ok:   budi p-004: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas Tenggat mengikuti tanggal acuan demo 21 Maret 2026.
+ok:   budi p-004 tugas: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Hapus proyek); tanpa form/input saat dialog tertutup ["Ubah proyek","Hapus proyek"]
+ok:   budi p-004 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-004 tugas: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: budi p-004 tugas 1280 
+ok:   overflow halaman: budi p-004 tugas 1280 1280 <= 1280
+ok:   budi p-004: tab Tim (tabel) memuat 0 orang: Admin principal lalu anggota []
+ok:   budi p-004: tab Tim kosong: tanpa tabel, tanpa email 
+ok:   budi p-004: state kosong tim tampil 
+ok:   budi p-004 tim: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Hapus proyek, Tambah anggota, Tetapkan Admin); tanpa form/input saat dialog tertutup ["Ubah proyek","Hapus proyek","Tambah anggota","Tetapkan Admin"]
+ok:   budi p-004 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-004 tim: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: budi p-004 tim 1280 
+ok:   overflow halaman: budi p-004 tim 1280 1280 <= 1280
+ok:   budi (Owner): /proyek/p-005 (dalam lingkup) siap detail
+ok:   budi p-005: tab = ringkasan, tugas, tim ["ringkasan","tugas","tim"]
+ok:   budi p-005: tab Ringkasan terpilih awal 
+ok:   budi p-005: label tab Tugas memuat jumlah tugas dalam lingkup 
+ok:   budi p-005: header memuat kode, nama, tautan kembali ke daftar {"h1":"Perbaikan Jembatan Kayu Angkut","eyebrow":"PRJ-005","back":"/proyek"}
+ok:   budi p-005: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab Informasi proyekKodePRJ-005StatusArsipKlienDesa Batu AngkutLokasiDesa Batu Angkut, Kepulauan RiauPeriode1 Agu 2024 – 31 Des 2024Admin Kantor penanggung jawabBelum ditetapkanDeskripsiPerbaikan struktur
+ok:   budi p-005: ringkasan memuat deskripsi proyek 
+ok:   budi p-005: progres proyek 100% 
+ok:   budi p-005: hitungan tugas (total 0, progres 0, selesai 0, terlambat 0) {"total":{"value":"0","note":"0 belum dimulai"},"prog":{"value":"0","note":null},"done":{"value":"0","note":null},"overdue":{"value":"0","note":"terhadap tanggal acuan demo"}}
+ok:   budi p-005: judul ringkasan tugas umum 
+ok:   budi p-005: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini) Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini.
+ok:   budi p-005: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama) 
+ok:   budi p-005 ringkasan: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   budi p-005 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-005 ringkasan: tanpa kata anggaran atau nominal rupiah 
+ok:   budi p-005: proyek Arsip ditandai Hanya baca dan catatan hanya baca tampil Proyek berstatus Arsip bersifat hanya baca.
+ok:   axe 0 pelanggaran: budi p-005 ringkasan 1280 
+ok:   overflow halaman: budi p-005 ringkasan 1280 1280 <= 1280
+ok:   budi p-005: tab Tugas (tabel) hanya memuat tugas dalam lingkup [] []
+ok:   budi p-005: kartu mobile tersembunyi di 1280 
+ok:   budi p-005: catatan lingkup tugas (semua tugas proyek) 
+ok:   budi p-005: state kosong tugas tampil 
+ok:   budi p-005: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas Tenggat mengikuti tanggal acuan demo 21 Maret 2026.
+ok:   budi p-005 tugas: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   budi p-005 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-005 tugas: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: budi p-005 tugas 1280 
+ok:   overflow halaman: budi p-005 tugas 1280 1280 <= 1280
+ok:   budi p-005: tab Tim (tabel) memuat 0 orang: Admin principal lalu anggota []
+ok:   budi p-005: tab Tim kosong: tanpa tabel, tanpa email 
+ok:   budi p-005: state kosong tim tampil 
+ok:   budi p-005 tim: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   budi p-005 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   budi p-005 tim: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: budi p-005 tim 1280 
+ok:   overflow halaman: budi p-005 tim 1280 1280 <= 1280
+ok:   siti (Admin Kantor): /proyek/p-001 (dalam lingkup) siap detail
+ok:   siti p-001: tab = ringkasan, tugas, tim ["ringkasan","tugas","tim"]
+ok:   siti p-001: tab Ringkasan terpilih awal 
+ok:   siti p-001: label tab Tugas memuat jumlah tugas dalam lingkup 
+ok:   siti p-001: header memuat kode, nama, tautan kembali ke daftar {"h1":"Renovasi Gedung Kantor Batam","eyebrow":"PRJ-001","back":"/proyek"}
+ok:   siti p-001: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab Informasi proyekKodePRJ-001StatusBerjalanKlienPT. Properti NusantaraLokasiBalai Kota Batam, Kepulauan RiauPeriode15 Jan 2026 – 30 Jun 2026Admin Kantor penanggung jawabSiti AminahDeskripsiRenovasi tota
+ok:   siti p-001: ringkasan memuat deskripsi proyek 
+ok:   siti p-001: progres proyek 45% 
+ok:   siti p-001: hitungan tugas (total 4, progres 1, selesai 1, terlambat 2) {"total":{"value":"4","note":"2 belum dimulai"},"prog":{"value":"1","note":null},"done":{"value":"1","note":null},"overdue":{"value":"2","note":"terhadap tanggal acuan demo"}}
+ok:   siti p-001: judul ringkasan tugas umum 
+ok:   siti p-001: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini) Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini.
+ok:   siti p-001: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama) 
+ok:   siti p-001 ringkasan: tombol di luar tab hanya aksi yang berhak (Ubah proyek); tanpa form/input saat dialog tertutup ["Ubah proyek"]
+ok:   siti p-001 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   siti p-001 ringkasan: tanpa kata anggaran atau nominal rupiah 
+ok:   siti p-001: proyek non-Arsip tanpa penanda Hanya baca 
+ok:   axe 0 pelanggaran: siti p-001 ringkasan 1280 
+ok:   overflow halaman: siti p-001 ringkasan 1280 1280 <= 1280
+ok:   siti p-001: tab Tugas (tabel) hanya memuat tugas dalam lingkup ["t-001","t-002","t-003","t-006"] ["t-001","t-002","t-003","t-006"]
+ok:   siti p-001: kartu mobile tersembunyi di 1280 
+ok:   siti p-001: baris t-001 memuat kode, judul, penanggung jawab Ahmad Rizal, status Selesai, tenggat 15 Feb 2026 TSK-001Pembongkaran dinding partisi lantai 1Ahmad RizalTinggiSelesai15 Feb 2026100%
+ok:   siti p-001: baris t-002 memuat kode, judul, penanggung jawab Dewi Lestari, status Dalam Progres, tenggat 28 Feb 2026, Terlambat TSK-002Pengecekan sistem kelistrikan lamaDewi LestariTinggiDalam Progres28 Feb 2026Terlambat60%
+ok:   siti p-001: baris t-003 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 5 Mar 2026, Terlambat TSK-003Pembersihan material sisa pembongkaranEko PrasetyoSedangBelum Dimulai5 Mar 2026Terlambat0%
+ok:   siti p-001: baris t-006 memuat kode, judul, penanggung jawab Dewi Lestari, status Belum Dimulai, tenggat 1 Apr 2026 TSK-006Pemasangan keramik lobbyDewi LestariSedangBelum Dimulai1 Apr 2026Mendatang0%
+ok:   siti p-001: catatan lingkup tugas (semua tugas proyek) 
+ok:   siti p-001: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas Tenggat mengikuti tanggal acuan demo 21 Maret 2026.
+ok:   siti p-001: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat) {"scroll":974,"client":974}
+ok:   siti p-001 tugas: tombol di luar tab hanya aksi yang berhak (Ubah proyek); tanpa form/input saat dialog tertutup ["Ubah proyek"]
+ok:   siti p-001 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   siti p-001 tugas: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: siti p-001 tugas 1280 
+ok:   overflow halaman: siti p-001 tugas 1280 1280 <= 1280
+ok:   siti p-001: tab Tim (tabel) memuat 4 orang: Admin principal lalu anggota ["u-002","u-003","u-004","u-005"]
+ok:   siti p-001: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, email tampil Siti AminahAdmin KantorPenanggung jawabsiti@proyekin.id
+ok:   siti p-001: baris tim Ahmad Rizal — peran Mandor, email tampil Ahmad RizalMandorahmad@proyekin.id
+ok:   siti p-001: baris tim Dewi Lestari — peran Anggota Tim, email tampil Dewi LestariAnggota Timdewi@proyekin.id
+ok:   siti p-001: baris tim Eko Prasetyo — peran Mandor, email tampil Eko PrasetyoMandoreko@proyekin.id
+ok:   siti p-001: tab Tim memuat kolom Email 
+ok:   siti p-001: tabel tim muat tanpa gulir horizontal di 1280 {"scroll":974,"client":974}
+ok:   siti p-001 tim: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Tambah anggota); tanpa form/input saat dialog tertutup ["Ubah proyek","Tambah anggota"]
+ok:   siti p-001 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   siti p-001 tim: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: siti p-001 tim 1280 
+ok:   overflow halaman: siti p-001 tim 1280 1280 <= 1280
+ok:   siti (Admin Kantor): /proyek/p-002 (dalam lingkup) siap detail
+ok:   siti p-002: tab = ringkasan, tugas, tim ["ringkasan","tugas","tim"]
+ok:   siti p-002: tab Ringkasan terpilih awal 
+ok:   siti p-002: label tab Tugas memuat jumlah tugas dalam lingkup 
+ok:   siti p-002: header memuat kode, nama, tautan kembali ke daftar {"h1":"Pembangunan Gudang Logistik Tanjung Pinang","eyebrow":"PRJ-002","back":"/proyek"}
+ok:   siti p-002: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab Informasi proyekKodePRJ-002StatusBerjalanKlienCV. Jaya Abadi LogisticsLokasiKec. Sungai Manggis, Kepulauan RiauPeriode1 Mar 2026 – 15 Sep 2026Admin Kantor penanggung jawabSiti AminahDeskripsiPembangun
+ok:   siti p-002: ringkasan memuat deskripsi proyek 
+ok:   siti p-002: progres proyek 20% 
+ok:   siti p-002: hitungan tugas (total 2, progres 1, selesai 0, terlambat 0) {"total":{"value":"2","note":"1 belum dimulai"},"prog":{"value":"1","note":null},"done":{"value":"0","note":null},"overdue":{"value":"0","note":"terhadap tanggal acuan demo"}}
+ok:   siti p-002: judul ringkasan tugas umum 
+ok:   siti p-002: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini) Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini.
+ok:   siti p-002: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama) 
+ok:   siti p-002 ringkasan: tombol di luar tab hanya aksi yang berhak (Ubah proyek); tanpa form/input saat dialog tertutup ["Ubah proyek"]
+ok:   siti p-002 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   siti p-002 ringkasan: tanpa kata anggaran atau nominal rupiah 
+ok:   siti p-002: proyek non-Arsip tanpa penanda Hanya baca 
+ok:   axe 0 pelanggaran: siti p-002 ringkasan 1280 
+ok:   overflow halaman: siti p-002 ringkasan 1280 1280 <= 1280
+ok:   siti p-002: tab Tugas (tabel) hanya memuat tugas dalam lingkup ["t-004","t-005"] ["t-004","t-005"]
+ok:   siti p-002: kartu mobile tersembunyi di 1280 
+ok:   siti p-002: baris t-004 memuat kode, judul, penanggung jawab Ahmad Rizal, status Dalam Progres, tenggat 10 Apr 2026 TSK-004Pembuatan pondasi footplateAhmad RizalTinggiDalam Progres10 Apr 2026Mendatang35%
+ok:   siti p-002: baris t-005 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 25 Mar 2026 TSK-005Pemesanan baja WF untuk strukturEko PrasetyoTinggiBelum Dimulai25 Mar 2026Mendatang0%
+ok:   siti p-002: catatan lingkup tugas (semua tugas proyek) 
+ok:   siti p-002: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas Tenggat mengikuti tanggal acuan demo 21 Maret 2026.
+ok:   siti p-002: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat) {"scroll":974,"client":974}
+ok:   siti p-002 tugas: tombol di luar tab hanya aksi yang berhak (Ubah proyek); tanpa form/input saat dialog tertutup ["Ubah proyek"]
+ok:   siti p-002 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   siti p-002 tugas: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: siti p-002 tugas 1280 
+ok:   overflow halaman: siti p-002 tugas 1280 1280 <= 1280
+ok:   siti p-002: tab Tim (tabel) memuat 3 orang: Admin principal lalu anggota ["u-002","u-003","u-005"]
+ok:   siti p-002: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, email tampil Siti AminahAdmin KantorPenanggung jawabsiti@proyekin.id
+ok:   siti p-002: baris tim Ahmad Rizal — peran Mandor, email tampil Ahmad RizalMandorahmad@proyekin.id
+ok:   siti p-002: baris tim Eko Prasetyo — peran Mandor, email tampil Eko PrasetyoMandoreko@proyekin.id
+ok:   siti p-002: tab Tim memuat kolom Email 
+ok:   siti p-002: tabel tim muat tanpa gulir horizontal di 1280 {"scroll":974,"client":974}
+ok:   siti p-002 tim: tombol di luar tab hanya aksi yang berhak (Ubah proyek, Tambah anggota); tanpa form/input saat dialog tertutup ["Ubah proyek","Tambah anggota"]
+ok:   siti p-002 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   siti p-002 tim: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: siti p-002 tim 1280 
+ok:   overflow halaman: siti p-002 tim 1280 1280 <= 1280
+ok:   siti (Admin Kantor): URL langsung /proyek/p-003 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   siti (Admin Kantor): URL langsung /proyek/p-004 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   siti (Admin Kantor): URL langsung /proyek/p-005 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   ahmad (Mandor): /proyek/p-001 (dalam lingkup) siap detail
+ok:   ahmad p-001: tab = ringkasan, tugas, tim ["ringkasan","tugas","tim"]
+ok:   ahmad p-001: tab Ringkasan terpilih awal 
+ok:   ahmad p-001: label tab Tugas memuat jumlah tugas dalam lingkup 
+ok:   ahmad p-001: header memuat kode, nama, tautan kembali ke daftar {"h1":"Renovasi Gedung Kantor Batam","eyebrow":"PRJ-001","back":"/proyek"}
+ok:   ahmad p-001: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab Informasi proyekKodePRJ-001StatusBerjalanKlienPT. Properti NusantaraLokasiBalai Kota Batam, Kepulauan RiauPeriode15 Jan 2026 – 30 Jun 2026Admin Kantor penanggung jawabSiti AminahDeskripsiRenovasi tota
+ok:   ahmad p-001: ringkasan memuat deskripsi proyek 
+ok:   ahmad p-001: progres proyek 45% 
+ok:   ahmad p-001: hitungan tugas (total 4, progres 1, selesai 1, terlambat 2) {"total":{"value":"4","note":"2 belum dimulai"},"prog":{"value":"1","note":null},"done":{"value":"1","note":null},"overdue":{"value":"2","note":"terhadap tanggal acuan demo"}}
+ok:   ahmad p-001: judul ringkasan tugas umum 
+ok:   ahmad p-001: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini) Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini.
+ok:   ahmad p-001: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama) 
+ok:   ahmad p-001 ringkasan: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   ahmad p-001 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   ahmad p-001 ringkasan: tanpa kata anggaran atau nominal rupiah 
+ok:   ahmad p-001: proyek non-Arsip tanpa penanda Hanya baca 
+ok:   axe 0 pelanggaran: ahmad p-001 ringkasan 1280 
+ok:   overflow halaman: ahmad p-001 ringkasan 1280 1280 <= 1280
+ok:   ahmad p-001: tab Tugas (tabel) hanya memuat tugas dalam lingkup ["t-001","t-002","t-003","t-006"] ["t-001","t-002","t-003","t-006"]
+ok:   ahmad p-001: kartu mobile tersembunyi di 1280 
+ok:   ahmad p-001: baris t-001 memuat kode, judul, penanggung jawab Ahmad Rizal, status Selesai, tenggat 15 Feb 2026 TSK-001Pembongkaran dinding partisi lantai 1Ahmad RizalTinggiSelesai15 Feb 2026100%
+ok:   ahmad p-001: baris t-002 memuat kode, judul, penanggung jawab Dewi Lestari, status Dalam Progres, tenggat 28 Feb 2026, Terlambat TSK-002Pengecekan sistem kelistrikan lamaDewi LestariTinggiDalam Progres28 Feb 2026Terlambat60%
+ok:   ahmad p-001: baris t-003 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 5 Mar 2026, Terlambat TSK-003Pembersihan material sisa pembongkaranEko PrasetyoSedangBelum Dimulai5 Mar 2026Terlambat0%
+ok:   ahmad p-001: baris t-006 memuat kode, judul, penanggung jawab Dewi Lestari, status Belum Dimulai, tenggat 1 Apr 2026 TSK-006Pemasangan keramik lobbyDewi LestariSedangBelum Dimulai1 Apr 2026Mendatang0%
+ok:   ahmad p-001: catatan lingkup tugas (semua tugas proyek) 
+ok:   ahmad p-001: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas Tenggat mengikuti tanggal acuan demo 21 Maret 2026.
+ok:   ahmad p-001: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat) {"scroll":974,"client":974}
+ok:   ahmad p-001 tugas: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   ahmad p-001 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   ahmad p-001 tugas: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: ahmad p-001 tugas 1280 
+ok:   overflow halaman: ahmad p-001 tugas 1280 1280 <= 1280
+ok:   ahmad p-001: tab Tim (tabel) memuat 4 orang: Admin principal lalu anggota ["u-002","u-003","u-004","u-005"]
+ok:   ahmad p-001: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, TANPA email Siti AminahAdmin KantorPenanggung jawab
+ok:   ahmad p-001: baris tim Ahmad Rizal — peran Mandor, TANPA email Ahmad RizalMandor
+ok:   ahmad p-001: baris tim Dewi Lestari — peran Anggota Tim, TANPA email Dewi LestariAnggota Tim
+ok:   ahmad p-001: baris tim Eko Prasetyo — peran Mandor, TANPA email Eko PrasetyoMandor
+ok:   ahmad p-001: tab Tim tanpa kolom Email dan tanpa alamat email sama sekali 
+ok:   ahmad p-001: tabel tim muat tanpa gulir horizontal di 1280 {"scroll":974,"client":974}
+ok:   ahmad p-001 tim: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   ahmad p-001 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   ahmad p-001 tim: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: ahmad p-001 tim 1280 
+ok:   overflow halaman: ahmad p-001 tim 1280 1280 <= 1280
+ok:   ahmad (Mandor): /proyek/p-002 (dalam lingkup) siap detail
+ok:   ahmad p-002: tab = ringkasan, tugas, tim ["ringkasan","tugas","tim"]
+ok:   ahmad p-002: tab Ringkasan terpilih awal 
+ok:   ahmad p-002: label tab Tugas memuat jumlah tugas dalam lingkup 
+ok:   ahmad p-002: header memuat kode, nama, tautan kembali ke daftar {"h1":"Pembangunan Gudang Logistik Tanjung Pinang","eyebrow":"PRJ-002","back":"/proyek"}
+ok:   ahmad p-002: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab Informasi proyekKodePRJ-002StatusBerjalanKlienCV. Jaya Abadi LogisticsLokasiKec. Sungai Manggis, Kepulauan RiauPeriode1 Mar 2026 – 15 Sep 2026Admin Kantor penanggung jawabSiti AminahDeskripsiPembangun
+ok:   ahmad p-002: ringkasan memuat deskripsi proyek 
+ok:   ahmad p-002: progres proyek 20% 
+ok:   ahmad p-002: hitungan tugas (total 2, progres 1, selesai 0, terlambat 0) {"total":{"value":"2","note":"1 belum dimulai"},"prog":{"value":"1","note":null},"done":{"value":"0","note":null},"overdue":{"value":"0","note":"terhadap tanggal acuan demo"}}
+ok:   ahmad p-002: judul ringkasan tugas umum 
+ok:   ahmad p-002: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini) Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini.
+ok:   ahmad p-002: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama) 
+ok:   ahmad p-002 ringkasan: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   ahmad p-002 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   ahmad p-002 ringkasan: tanpa kata anggaran atau nominal rupiah 
+ok:   ahmad p-002: proyek non-Arsip tanpa penanda Hanya baca 
+ok:   axe 0 pelanggaran: ahmad p-002 ringkasan 1280 
+ok:   overflow halaman: ahmad p-002 ringkasan 1280 1280 <= 1280
+ok:   ahmad p-002: tab Tugas (tabel) hanya memuat tugas dalam lingkup ["t-004","t-005"] ["t-004","t-005"]
+ok:   ahmad p-002: kartu mobile tersembunyi di 1280 
+ok:   ahmad p-002: baris t-004 memuat kode, judul, penanggung jawab Ahmad Rizal, status Dalam Progres, tenggat 10 Apr 2026 TSK-004Pembuatan pondasi footplateAhmad RizalTinggiDalam Progres10 Apr 2026Mendatang35%
+ok:   ahmad p-002: baris t-005 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 25 Mar 2026 TSK-005Pemesanan baja WF untuk strukturEko PrasetyoTinggiBelum Dimulai25 Mar 2026Mendatang0%
+ok:   ahmad p-002: catatan lingkup tugas (semua tugas proyek) 
+ok:   ahmad p-002: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas Tenggat mengikuti tanggal acuan demo 21 Maret 2026.
+ok:   ahmad p-002: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat) {"scroll":974,"client":974}
+ok:   ahmad p-002 tugas: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   ahmad p-002 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   ahmad p-002 tugas: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: ahmad p-002 tugas 1280 
+ok:   overflow halaman: ahmad p-002 tugas 1280 1280 <= 1280
+ok:   ahmad p-002: tab Tim (tabel) memuat 3 orang: Admin principal lalu anggota ["u-002","u-003","u-005"]
+ok:   ahmad p-002: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, TANPA email Siti AminahAdmin KantorPenanggung jawab
+ok:   ahmad p-002: baris tim Ahmad Rizal — peran Mandor, TANPA email Ahmad RizalMandor
+ok:   ahmad p-002: baris tim Eko Prasetyo — peran Mandor, TANPA email Eko PrasetyoMandor
+ok:   ahmad p-002: tab Tim tanpa kolom Email dan tanpa alamat email sama sekali 
+ok:   ahmad p-002: tabel tim muat tanpa gulir horizontal di 1280 {"scroll":974,"client":974}
+ok:   ahmad p-002 tim: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   ahmad p-002 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   ahmad p-002 tim: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: ahmad p-002 tim 1280 
+ok:   overflow halaman: ahmad p-002 tim 1280 1280 <= 1280
+ok:   ahmad (Mandor): URL langsung /proyek/p-003 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   ahmad (Mandor): URL langsung /proyek/p-004 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   ahmad (Mandor): URL langsung /proyek/p-005 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   eko (Mandor): /proyek/p-001 (dalam lingkup) siap detail
+ok:   eko p-001: tab = ringkasan, tugas, tim ["ringkasan","tugas","tim"]
+ok:   eko p-001: tab Ringkasan terpilih awal 
+ok:   eko p-001: label tab Tugas memuat jumlah tugas dalam lingkup 
+ok:   eko p-001: header memuat kode, nama, tautan kembali ke daftar {"h1":"Renovasi Gedung Kantor Batam","eyebrow":"PRJ-001","back":"/proyek"}
+ok:   eko p-001: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab Informasi proyekKodePRJ-001StatusBerjalanKlienPT. Properti NusantaraLokasiBalai Kota Batam, Kepulauan RiauPeriode15 Jan 2026 – 30 Jun 2026Admin Kantor penanggung jawabSiti AminahDeskripsiRenovasi tota
+ok:   eko p-001: ringkasan memuat deskripsi proyek 
+ok:   eko p-001: progres proyek 45% 
+ok:   eko p-001: hitungan tugas (total 4, progres 1, selesai 1, terlambat 2) {"total":{"value":"4","note":"2 belum dimulai"},"prog":{"value":"1","note":null},"done":{"value":"1","note":null},"overdue":{"value":"2","note":"terhadap tanggal acuan demo"}}
+ok:   eko p-001: judul ringkasan tugas umum 
+ok:   eko p-001: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini) Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini.
+ok:   eko p-001: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama) 
+ok:   eko p-001 ringkasan: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   eko p-001 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   eko p-001 ringkasan: tanpa kata anggaran atau nominal rupiah 
+ok:   eko p-001: proyek non-Arsip tanpa penanda Hanya baca 
+ok:   axe 0 pelanggaran: eko p-001 ringkasan 1280 
+ok:   overflow halaman: eko p-001 ringkasan 1280 1280 <= 1280
+ok:   eko p-001: tab Tugas (tabel) hanya memuat tugas dalam lingkup ["t-001","t-002","t-003","t-006"] ["t-001","t-002","t-003","t-006"]
+ok:   eko p-001: kartu mobile tersembunyi di 1280 
+ok:   eko p-001: baris t-001 memuat kode, judul, penanggung jawab Ahmad Rizal, status Selesai, tenggat 15 Feb 2026 TSK-001Pembongkaran dinding partisi lantai 1Ahmad RizalTinggiSelesai15 Feb 2026100%
+ok:   eko p-001: baris t-002 memuat kode, judul, penanggung jawab Dewi Lestari, status Dalam Progres, tenggat 28 Feb 2026, Terlambat TSK-002Pengecekan sistem kelistrikan lamaDewi LestariTinggiDalam Progres28 Feb 2026Terlambat60%
+ok:   eko p-001: baris t-003 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 5 Mar 2026, Terlambat TSK-003Pembersihan material sisa pembongkaranEko PrasetyoSedangBelum Dimulai5 Mar 2026Terlambat0%
+ok:   eko p-001: baris t-006 memuat kode, judul, penanggung jawab Dewi Lestari, status Belum Dimulai, tenggat 1 Apr 2026 TSK-006Pemasangan keramik lobbyDewi LestariSedangBelum Dimulai1 Apr 2026Mendatang0%
+ok:   eko p-001: catatan lingkup tugas (semua tugas proyek) 
+ok:   eko p-001: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas Tenggat mengikuti tanggal acuan demo 21 Maret 2026.
+ok:   eko p-001: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat) {"scroll":974,"client":974}
+ok:   eko p-001 tugas: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   eko p-001 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   eko p-001 tugas: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: eko p-001 tugas 1280 
+ok:   overflow halaman: eko p-001 tugas 1280 1280 <= 1280
+ok:   eko p-001: tab Tim (tabel) memuat 4 orang: Admin principal lalu anggota ["u-002","u-003","u-004","u-005"]
+ok:   eko p-001: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, TANPA email Siti AminahAdmin KantorPenanggung jawab
+ok:   eko p-001: baris tim Ahmad Rizal — peran Mandor, TANPA email Ahmad RizalMandor
+ok:   eko p-001: baris tim Dewi Lestari — peran Anggota Tim, TANPA email Dewi LestariAnggota Tim
+ok:   eko p-001: baris tim Eko Prasetyo — peran Mandor, TANPA email Eko PrasetyoMandor
+ok:   eko p-001: tab Tim tanpa kolom Email dan tanpa alamat email sama sekali 
+ok:   eko p-001: tabel tim muat tanpa gulir horizontal di 1280 {"scroll":974,"client":974}
+ok:   eko p-001 tim: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   eko p-001 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   eko p-001 tim: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: eko p-001 tim 1280 
+ok:   overflow halaman: eko p-001 tim 1280 1280 <= 1280
+ok:   eko (Mandor): /proyek/p-002 (dalam lingkup) siap detail
+ok:   eko p-002: tab = ringkasan, tugas, tim ["ringkasan","tugas","tim"]
+ok:   eko p-002: tab Ringkasan terpilih awal 
+ok:   eko p-002: label tab Tugas memuat jumlah tugas dalam lingkup 
+ok:   eko p-002: header memuat kode, nama, tautan kembali ke daftar {"h1":"Pembangunan Gudang Logistik Tanjung Pinang","eyebrow":"PRJ-002","back":"/proyek"}
+ok:   eko p-002: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab Informasi proyekKodePRJ-002StatusBerjalanKlienCV. Jaya Abadi LogisticsLokasiKec. Sungai Manggis, Kepulauan RiauPeriode1 Mar 2026 – 15 Sep 2026Admin Kantor penanggung jawabSiti AminahDeskripsiPembangun
+ok:   eko p-002: ringkasan memuat deskripsi proyek 
+ok:   eko p-002: progres proyek 20% 
+ok:   eko p-002: hitungan tugas (total 2, progres 1, selesai 0, terlambat 0) {"total":{"value":"2","note":"1 belum dimulai"},"prog":{"value":"1","note":null},"done":{"value":"0","note":null},"overdue":{"value":"0","note":"terhadap tanggal acuan demo"}}
+ok:   eko p-002: judul ringkasan tugas umum 
+ok:   eko p-002: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini) Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini.
+ok:   eko p-002: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama) 
+ok:   eko p-002 ringkasan: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   eko p-002 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   eko p-002 ringkasan: tanpa kata anggaran atau nominal rupiah 
+ok:   eko p-002: proyek non-Arsip tanpa penanda Hanya baca 
+ok:   axe 0 pelanggaran: eko p-002 ringkasan 1280 
+ok:   overflow halaman: eko p-002 ringkasan 1280 1280 <= 1280
+ok:   eko p-002: tab Tugas (tabel) hanya memuat tugas dalam lingkup ["t-004","t-005"] ["t-004","t-005"]
+ok:   eko p-002: kartu mobile tersembunyi di 1280 
+ok:   eko p-002: baris t-004 memuat kode, judul, penanggung jawab Ahmad Rizal, status Dalam Progres, tenggat 10 Apr 2026 TSK-004Pembuatan pondasi footplateAhmad RizalTinggiDalam Progres10 Apr 2026Mendatang35%
+ok:   eko p-002: baris t-005 memuat kode, judul, penanggung jawab Eko Prasetyo, status Belum Dimulai, tenggat 25 Mar 2026 TSK-005Pemesanan baja WF untuk strukturEko PrasetyoTinggiBelum Dimulai25 Mar 2026Mendatang0%
+ok:   eko p-002: catatan lingkup tugas (semua tugas proyek) 
+ok:   eko p-002: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas Tenggat mengikuti tanggal acuan demo 21 Maret 2026.
+ok:   eko p-002: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat) {"scroll":974,"client":974}
+ok:   eko p-002 tugas: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   eko p-002 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   eko p-002 tugas: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: eko p-002 tugas 1280 
+ok:   overflow halaman: eko p-002 tugas 1280 1280 <= 1280
+ok:   eko p-002: tab Tim (tabel) memuat 3 orang: Admin principal lalu anggota ["u-002","u-003","u-005"]
+ok:   eko p-002: baris tim Siti Aminah — peran Admin Kantor, Penanggung jawab, TANPA email Siti AminahAdmin KantorPenanggung jawab
+ok:   eko p-002: baris tim Ahmad Rizal — peran Mandor, TANPA email Ahmad RizalMandor
+ok:   eko p-002: baris tim Eko Prasetyo — peran Mandor, TANPA email Eko PrasetyoMandor
+ok:   eko p-002: tab Tim tanpa kolom Email dan tanpa alamat email sama sekali 
+ok:   eko p-002: tabel tim muat tanpa gulir horizontal di 1280 {"scroll":974,"client":974}
+ok:   eko p-002 tim: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   eko p-002 tim: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   eko p-002 tim: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: eko p-002 tim 1280 
+ok:   overflow halaman: eko p-002 tim 1280 1280 <= 1280
+ok:   eko (Mandor): URL langsung /proyek/p-003 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   eko (Mandor): URL langsung /proyek/p-004 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   eko (Mandor): URL langsung /proyek/p-005 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   dewi (Anggota Tim): /proyek/p-001 (dalam lingkup) siap detail
+ok:   dewi p-001: tab = ringkasan, tugas ["ringkasan","tugas"]
+ok:   dewi p-001: tab Ringkasan terpilih awal 
+ok:   dewi p-001: label tab Tugas memuat jumlah tugas dalam lingkup 
+ok:   dewi p-001: panel Tim tidak ada di DOM (bukan hanya disembunyikan) 
+ok:   dewi p-001: header memuat kode, nama, tautan kembali ke daftar {"h1":"Renovasi Gedung Kantor Batam","eyebrow":"PRJ-001","back":"/proyek"}
+ok:   dewi p-001: ringkasan memuat kode, status, klien, lokasi, periode, Admin penanggung jawab Informasi proyekKodePRJ-001StatusBerjalanKlienPT. Properti NusantaraLokasiBalai Kota Batam, Kepulauan RiauPeriode15 Jan 2026 – 30 Jun 2026Admin Kantor penanggung jawabSiti AminahDeskripsiRenovasi tota
+ok:   dewi p-001: ringkasan memuat deskripsi proyek 
+ok:   dewi p-001: progres proyek 45% 
+ok:   dewi p-001: hitungan tugas (total 2, progres 1, selesai 0, terlambat 1) {"total":{"value":"2","note":"1 belum dimulai"},"prog":{"value":"1","note":null},"done":{"value":"0","note":null},"overdue":{"value":"1","note":"terhadap tanggal acuan demo"}}
+ok:   dewi p-001: judul ringkasan tugas Anda 
+ok:   dewi p-001: DemoDataNotice tampil dengan tanggal acuan demo 21 Maret 2026 (bukan hari ini) Data demo. Perubahan yang Anda buat hanya disimpan sementara di memori tab ini dan hilang saat halaman dimuat ulang. Tidak ada data yang dikirim atau disimpan ke server.Status tenggat dihitung terhadap tanggal acuan demo 21 Maret 2026, bukan tanggal hari ini.
+ok:   dewi p-001: DemoDataNotice berada SETELAH tab (isi tab tidak terdorong ke bawah layar pertama) 
+ok:   dewi p-001 ringkasan: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   dewi p-001 ringkasan: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   dewi p-001 ringkasan: tanpa kata anggaran atau nominal rupiah 
+ok:   dewi p-001: proyek non-Arsip tanpa penanda Hanya baca 
+ok:   axe 0 pelanggaran: dewi p-001 ringkasan 1280 
+ok:   overflow halaman: dewi p-001 ringkasan 1280 1280 <= 1280
+ok:   dewi p-001: tab Tugas (tabel) hanya memuat tugas dalam lingkup ["t-002","t-006"] ["t-002","t-006"]
+ok:   dewi p-001: kartu mobile tersembunyi di 1280 
+ok:   dewi p-001: baris t-002 memuat kode, judul, penanggung jawab Dewi Lestari, status Dalam Progres, tenggat 28 Feb 2026, Terlambat TSK-002Pengecekan sistem kelistrikan lamaDewi LestariTinggiDalam Progres28 Feb 2026Terlambat60%
+ok:   dewi p-001: baris t-006 memuat kode, judul, penanggung jawab Dewi Lestari, status Belum Dimulai, tenggat 1 Apr 2026 TSK-006Pemasangan keramik lobbyDewi LestariSedangBelum Dimulai1 Apr 2026Mendatang0%
+ok:   dewi p-001: catatan lingkup tugas (hanya milik sendiri) 
+ok:   dewi p-001: keterangan acuan tenggat (21 Maret 2026) tampil langsung di tab Tugas Tenggat mengikuti tanggal acuan demo 21 Maret 2026.
+ok:   dewi p-001: tabel tugas muat tanpa gulir horizontal di 1280 (semua kolom termasuk persen progres terlihat) {"scroll":974,"client":974}
+ok:   dewi p-001: Anggota Tim tidak melihat judul tugas milik orang lain 
+ok:   dewi p-001 tugas: tombol di luar tab hanya aksi yang berhak (tidak ada); tanpa form/input saat dialog tertutup []
+ok:   dewi p-001 tugas: satu-satunya tautan di halaman adalah kembali ke /proyek (tanpa tautan detail tugas) ["/proyek"]
+ok:   dewi p-001 tugas: tanpa kata anggaran atau nominal rupiah 
+ok:   axe 0 pelanggaran: dewi p-001 tugas 1280 
+ok:   overflow halaman: dewi p-001 tugas 1280 1280 <= 1280
+ok:   dewi p-001: tidak ada email atau susunan tim di halaman 
+ok:   dewi (Anggota Tim): URL langsung /proyek/p-002 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   dewi (Anggota Tim): URL langsung /proyek/p-003 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   dewi (Anggota Tim): URL langsung /proyek/p-004 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   dewi (Anggota Tim): URL langsung /proyek/p-005 (di luar lingkup) → akses ditolak, konten tidak sempat terlihat hasil denied
+ok:   budi p-003: proyek tanpa tim dan tanpa tugas siap detail
+ok:   budi p-003: Admin penanggung jawab "Belum ditetapkan" dan hitungan tugas 0 
+ok:   budi p-003: tab Tugas (0) menampilkan state kosong yang jelas 
+ok:   budi p-003: tab Tim menampilkan state kosong yang jelas 
+ok:   budi p-004: proyek tanpa tim dan tanpa tugas siap detail
+ok:   budi p-004: Admin penanggung jawab "Belum ditetapkan" dan hitungan tugas 0 
+ok:   budi p-004: tab Tugas (0) menampilkan state kosong yang jelas 
+ok:   budi p-004: tab Tim menampilkan state kosong yang jelas 
+ok:   budi p-005: proyek tanpa tim dan tanpa tugas siap detail
+ok:   budi p-005: Admin penanggung jawab "Belum ditetapkan" dan hitungan tugas 0 
+ok:   budi p-005: tab Tugas (0) menampilkan state kosong yang jelas 
+ok:   budi p-005: tab Tim menampilkan state kosong yang jelas 
+ok:   ID tidak dikenal /proyek/p-999 → not-found yang jelas dengan tautan kembali {"text":"Proyek tidak ditemukanID tidak dikenal, atau data demo yang dibuat selama sesi ini hilang karena halaman dimuat ulang.Kembali ke daftar proyek","href":"/proyek"}
+ok:   not-found: tidak ada konten detail 
+ok:   axe 0 pelanggaran: not-found 1280 
+ok:   tanpa sesi (Owner demo, mode pengembangan): /proyek/p-001 terbuka dengan tab lengkap 
+ok:   budi: klik proyek di daftar → detail p-001 tanpa muat ulang 
+ok:   budi: tautan Daftar proyek kembali ke /proyek tanpa muat ulang 
+ok:   siti: klik proyek di daftar → detail p-001 tanpa muat ulang 
+ok:   siti: tautan Daftar proyek kembali ke /proyek tanpa muat ulang 
+ok:   ahmad: klik proyek di daftar → detail p-001 tanpa muat ulang 
+ok:   ahmad: tautan Daftar proyek kembali ke /proyek tanpa muat ulang 
+ok:   eko: klik proyek di daftar → detail p-001 tanpa muat ulang 
+ok:   eko: tautan Daftar proyek kembali ke /proyek tanpa muat ulang 
+ok:   dewi: klik proyek di daftar → detail p-001 tanpa muat ulang 
+ok:   dewi: tautan Daftar proyek kembali ke /proyek tanpa muat ulang 
+ok:   siti: navigasi KLIEN ke /proyek/p-003 (di luar lingkup) → akses ditolak tanpa muat ulang, konten tidak sempat terlihat hasil denied
+ok:   siti: navigasi KLIEN ke /proyek/p-005 (di luar lingkup) → akses ditolak tanpa muat ulang, konten tidak sempat terlihat hasil denied
+ok:   ahmad: navigasi KLIEN ke /proyek/p-003 (di luar lingkup) → akses ditolak tanpa muat ulang, konten tidak sempat terlihat hasil denied
+ok:   dewi: navigasi KLIEN ke /proyek/p-002 (di luar lingkup) → akses ditolak tanpa muat ulang, konten tidak sempat terlihat hasil denied
+ok:   dewi: navigasi KLIEN ke /proyek/p-005 (di luar lingkup) → akses ditolak tanpa muat ulang, konten tidak sempat terlihat hasil denied
+ok:   runtime: tugas baru di proyek seed p-003 → detail p-003 lewat navigasi klien tanpa muat ulang 
+ok:   runtime: label tab Tugas (1) dan hitungan tugas 1 
+ok:   runtime: tugas runtime TSK-007 tampil di tab Tugas dengan penanggung jawab "Belum ditugaskan" TSK-007Tugas uji runtime (p-003)Belum ditugaskanRendahBelum Dimulai—0%
+ok:   runtime: proyek runtime p-006 terbuka lewat navigasi klien (Owner), tanpa muat ulang 
+ok:   runtime: ringkasan p-006 memuat nama, status Draf, klien (uji), dan Admin "Belum ditetapkan" Informasi proyekKodePRJ-006StatusDrafKlien(uji)Lokasi(uji)Periode21 Mar 2026 – 21 Mar 2026Admin Kantor penanggung jawabBelum ditetapkanDeskripsiDibuat di memori
+ok:   runtime: p-006 tanpa tim → state kosong tim 
+ok:   budi 768: detail p-001 siap detail
+ok:   overflow halaman: budi p-001 ringkasan 768 768 <= 768
+ok:   axe 0 pelanggaran: budi p-001 ringkasan 768 
+ok:   budi 768: tab Tugas memakai kartu (tabel tersembunyi) sesuai lingkup ["t-001","t-002","t-003","t-006"]
+ok:   overflow halaman: budi p-001 tugas 768 768 <= 768
+ok:   axe 0 pelanggaran: budi p-001 tugas 768 
+ok:   budi 768: tab Tim memakai kartu (tabel tersembunyi) ["u-002","u-003","u-004","u-005"]
+ok:   overflow halaman: budi p-001 tim 768 768 <= 768
+ok:   axe 0 pelanggaran: budi p-001 tim 768 
+ok:   siti 768: detail p-002 siap detail
+ok:   overflow halaman: siti p-002 ringkasan 768 768 <= 768
+ok:   axe 0 pelanggaran: siti p-002 ringkasan 768 
+ok:   siti 768: tab Tugas memakai kartu (tabel tersembunyi) sesuai lingkup ["t-004","t-005"]
+ok:   overflow halaman: siti p-002 tugas 768 768 <= 768
+ok:   axe 0 pelanggaran: siti p-002 tugas 768 
+ok:   siti 768: tab Tim memakai kartu (tabel tersembunyi) ["u-002","u-003","u-005"]
+ok:   overflow halaman: siti p-002 tim 768 768 <= 768
+ok:   axe 0 pelanggaran: siti p-002 tim 768 
+ok:   ahmad 768: detail p-001 siap detail
+ok:   overflow halaman: ahmad p-001 ringkasan 768 768 <= 768
+ok:   axe 0 pelanggaran: ahmad p-001 ringkasan 768 
+ok:   ahmad 768: tab Tugas memakai kartu (tabel tersembunyi) sesuai lingkup ["t-001","t-002","t-003","t-006"]
+ok:   overflow halaman: ahmad p-001 tugas 768 768 <= 768
+ok:   axe 0 pelanggaran: ahmad p-001 tugas 768 
+ok:   ahmad 768: tab Tim memakai kartu (tabel tersembunyi) ["u-002","u-003","u-004","u-005"]
+ok:   overflow halaman: ahmad p-001 tim 768 768 <= 768
+ok:   axe 0 pelanggaran: ahmad p-001 tim 768 
+ok:   dewi 768: detail p-001 siap detail
+ok:   overflow halaman: dewi p-001 ringkasan 768 768 <= 768
+ok:   axe 0 pelanggaran: dewi p-001 ringkasan 768 
+ok:   dewi 768: tab Tugas memakai kartu (tabel tersembunyi) sesuai lingkup ["t-002","t-006"]
+ok:   overflow halaman: dewi p-001 tugas 768 768 <= 768
+ok:   axe 0 pelanggaran: dewi p-001 tugas 768 
+ok:   budi mobile 375: emulasi sentuh aktif dan detail p-001 siap detail
+ok:   budi mobile 375: tautan kembali dan semua tab >= 44x44px {"back":{"w":112,"h":44},"tabs":[{"name":"ringkasan","w":101,"h":44},{"name":"tugas","w":91,"h":44},{"name":"tim","w":56,"h":44}],"hidden":false}
+ok:   budi mobile 375: kontrol utama tampil permanen (bukan hover-only) 
+ok:   budi mobile 375: ketuk tab ringkasan berpindah panel 
+ok:   overflow halaman: budi p-001 ringkasan 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: budi p-001 ringkasan 375 mobile 
+ok:   budi mobile 375: ketuk tab tugas berpindah panel 
+ok:   budi mobile 375: kartu tugas satu kolom sesuai lingkup, tabel tersembunyi [{"id":"t-001","left":16,"right":359,"w":343},{"id":"t-002","left":16,"right":359,"w":343},{"id":"t-003","left":16,"right":359,"w":343},{"id":"t-006","left":16,"right":359,"w":343}]
+ok:   budi mobile 375: kartu tugas pertama sudah terlihat di layar pertama (mulai di atas 560px dari 800px) top 512px
+ok:   budi mobile 375: kartu t-001 memuat kode, judul, status, penanggung jawab dari relasi User TSK-001Pembongkaran dinding partisi lantai 1SelesaiPrioritas Tinggi100%Penanggung jawab: Ahmad Rizal
+ok:   overflow halaman: budi p-001 tugas 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: budi p-001 tugas 375 mobile 
+ok:   budi mobile 375: ketuk tab tim berpindah panel 
+ok:   budi mobile 375: kartu tim satu kolom (4 orang), tabel tersembunyi 
+ok:   overflow halaman: budi p-001 tim 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: budi p-001 tim 375 mobile 
+ok:   siti mobile 375: emulasi sentuh aktif dan detail p-002 siap detail
+ok:   siti mobile 375: tautan kembali dan semua tab >= 44x44px {"back":{"w":112,"h":44},"tabs":[{"name":"ringkasan","w":101,"h":44},{"name":"tugas","w":91,"h":44},{"name":"tim","w":56,"h":44}],"hidden":false}
+ok:   siti mobile 375: kontrol utama tampil permanen (bukan hover-only) 
+ok:   siti mobile 375: ketuk tab ringkasan berpindah panel 
+ok:   overflow halaman: siti p-002 ringkasan 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: siti p-002 ringkasan 375 mobile 
+ok:   siti mobile 375: ketuk tab tugas berpindah panel 
+ok:   siti mobile 375: kartu tugas satu kolom sesuai lingkup, tabel tersembunyi [{"id":"t-004","left":16,"right":359,"w":343},{"id":"t-005","left":16,"right":359,"w":343}]
+ok:   siti mobile 375: kartu tugas pertama sudah terlihat di layar pertama (mulai di atas 560px dari 800px) top 512px
+ok:   siti mobile 375: kartu t-004 memuat kode, judul, status, penanggung jawab dari relasi User TSK-004Pembuatan pondasi footplateDalam ProgresPrioritas TinggiMendatang · 10 Apr 202635%Penanggung jawab: Ahmad Rizal
+ok:   overflow halaman: siti p-002 tugas 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: siti p-002 tugas 375 mobile 
+ok:   siti mobile 375: ketuk tab tim berpindah panel 
+ok:   siti mobile 375: kartu tim satu kolom (3 orang), tabel tersembunyi 
+ok:   overflow halaman: siti p-002 tim 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: siti p-002 tim 375 mobile 
+ok:   ahmad mobile 375: emulasi sentuh aktif dan detail p-001 siap detail
+ok:   ahmad mobile 375: tautan kembali dan semua tab >= 44x44px {"back":{"w":112,"h":44},"tabs":[{"name":"ringkasan","w":101,"h":44},{"name":"tugas","w":91,"h":44},{"name":"tim","w":56,"h":44}],"hidden":false}
+ok:   ahmad mobile 375: kontrol utama tampil permanen (bukan hover-only) 
+ok:   ahmad mobile 375: ketuk tab ringkasan berpindah panel 
+ok:   overflow halaman: ahmad p-001 ringkasan 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: ahmad p-001 ringkasan 375 mobile 
+ok:   ahmad mobile 375: ketuk tab tugas berpindah panel 
+ok:   ahmad mobile 375: kartu tugas satu kolom sesuai lingkup, tabel tersembunyi [{"id":"t-001","left":16,"right":359,"w":343},{"id":"t-002","left":16,"right":359,"w":343},{"id":"t-003","left":16,"right":359,"w":343},{"id":"t-006","left":16,"right":359,"w":343}]
+ok:   ahmad mobile 375: kartu tugas pertama sudah terlihat di layar pertama (mulai di atas 560px dari 800px) top 490px
+ok:   ahmad mobile 375: kartu t-001 memuat kode, judul, status, penanggung jawab dari relasi User TSK-001Pembongkaran dinding partisi lantai 1SelesaiPrioritas Tinggi100%Penanggung jawab: Ahmad Rizal
+ok:   overflow halaman: ahmad p-001 tugas 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: ahmad p-001 tugas 375 mobile 
+ok:   ahmad mobile 375: ketuk tab tim berpindah panel 
+ok:   ahmad mobile 375: kartu tim satu kolom (4 orang), tabel tersembunyi, tanpa email 
+ok:   overflow halaman: ahmad p-001 tim 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: ahmad p-001 tim 375 mobile 
+ok:   dewi mobile 375: emulasi sentuh aktif dan detail p-001 siap detail
+ok:   dewi mobile 375: tautan kembali dan semua tab >= 44x44px {"back":{"w":112,"h":44},"tabs":[{"name":"ringkasan","w":101,"h":44},{"name":"tugas","w":91,"h":44}],"hidden":false}
+ok:   dewi mobile 375: kontrol utama tampil permanen (bukan hover-only) 
+ok:   dewi mobile 375: ketuk tab ringkasan berpindah panel 
+ok:   overflow halaman: dewi p-001 ringkasan 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: dewi p-001 ringkasan 375 mobile 
+ok:   dewi mobile 375: ketuk tab tugas berpindah panel 
+ok:   dewi mobile 375: kartu tugas satu kolom sesuai lingkup, tabel tersembunyi [{"id":"t-002","left":16,"right":359,"w":343},{"id":"t-006","left":16,"right":359,"w":343}]
+ok:   dewi mobile 375: kartu tugas pertama sudah terlihat di layar pertama (mulai di atas 560px dari 800px) top 490px
+ok:   dewi mobile 375: kartu t-002 memuat kode, judul, status, penanggung jawab dari relasi User TSK-002Pengecekan sistem kelistrikan lamaDalam ProgresPrioritas TinggiTerlambat · 28 Feb 202660%Penanggung jawab: Dewi Lestari
+ok:   overflow halaman: dewi p-001 tugas 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: dewi p-001 tugas 375 mobile 
+ok:   budi mobile 375: Arsip p-005 siap, penanda Hanya baca dan catatan tampil, tanpa tombol di luar tab 
+ok:   overflow halaman: budi p-005 375 mobile 375 <= 375
+ok:   axe 0 pelanggaran: budi p-005 ringkasan 375 mobile 
+ok:   keyboard: detail siap untuk uji tab 
+ok:   keyboard: ArrowRight memindahkan dan mengaktifkan tab Tugas (panel berganti) 
+ok:   keyboard: End ke tab terakhir (Tim) 
+ok:   keyboard: Home ke tab pertama (Ringkasan) 
+ok:   budi: nama penanggung jawab diambil dari relasi User, bukan salinan teks legacy Task.assigneeName (tabel) legacy muncul: false
+ok:   ahmad: nama penanggung jawab diambil dari relasi User, bukan salinan teks legacy Task.assigneeName (tabel) legacy muncul: false
+ok:   dewi: nama penanggung jawab diambil dari relasi User, bukan salinan teks legacy Task.assigneeName (tabel) legacy muncul: false
+ok:   dewi mobile 375: kartu tugas juga memakai nama dari relasi User (bukan salinan legacy) 
+ok:   guest: URL langsung /proyek/p-001 → akses ditolak, konten detail tidak pernah terlihat denied
+ok:   guest: /proyek/p-001 tanpa sidebar App Shell dan tanpa nama proyek yang terlihat 
+ok:   guest: URL langsung /proyek/p-003 → akses ditolak, konten detail tidak pernah terlihat denied
+ok:   guest: /proyek/p-003 tanpa sidebar App Shell dan tanpa nama proyek yang terlihat 
+
+Semua 642 pemeriksaan lolos.
+EXIT=0
