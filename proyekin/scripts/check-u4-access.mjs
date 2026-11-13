@@ -131,6 +131,28 @@ async function shot(name) {
 const sidebarLinks = (kind) => evaluate(`[...document.querySelectorAll('[data-slot="sidebar-${kind}"] nav a')].map((a) => a.textContent.trim())`);
 const fill = (sel, value) =>
   evaluate(`(() => { const el = document.querySelector(${q(sel)}); Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set.call(el, ${q(value)}); el.dispatchEvent(new Event("input", { bubbles: true })); return true; })()`);
+/**
+ * Isi form login hanya setelah React menghidrasi kedua input, lalu tunggu sampai React MENERIMA nilainya (prop `value`
+ * input terkendali = isian). Tanpa ini, isian sebelum hidrasi hilang dan login tertahan di /masuk ("Alamat email wajib
+ * diisi.") — race harness, terbukti di U4-6 §5 dan diagnostik U4-7 M7 (CPU 6×). Bila nilai tidak diterima, submit tetap
+ * dijalankan sehingga asersi login yang ada yang gagal; tidak ada asersi yang dilewati.
+ */
+const reactPropsOf = (sel) => `(() => { const el = document.querySelector(${q(sel)}); const k = el && Object.keys(el).find((x) => x.startsWith("__reactProps")); return k ? el[k] : null; })()`;
+async function fillLogin(email, password) {
+  const hydrated = await waitFor(
+    () => evaluate(`["#email", "#password"].every((s) => { const el = document.querySelector(s); return !!el && el.checkVisibility() && Object.keys(el).some((k) => k.startsWith("__reactProps")); })`),
+    60000,
+    "form login terhidrasi",
+  ).catch(() => false);
+  await fill("#email", email);
+  await fill("#password", password);
+  const accepted = await waitFor(
+    () => evaluate(`${reactPropsOf("#email")}?.value === ${q(email)} && ${reactPropsOf("#password")}?.value === ${q(password)}`),
+    15000,
+    "isian login diterima React",
+  ).catch(() => false);
+  if (!hydrated || !accepted) results.notes.push(`fillLogin ${email}: hydrated=${hydrated} accepted=${accepted}`);
+}
 /** Setelah mengklik tautan klien: tunggu path berubah dari `from` (halaman asal masih tampak "allowed" sesaat). */
 const afterClick = (from) => waitFor(async () => ((await evaluate(`location.pathname`)) !== from ? true : null), 15000, `path berubah dari ${from}`);const MARK = "__u43Marker";
 const setMark = () => evaluate(`window.${MARK} = "m" + Date.now(); window.${MARK}`);
@@ -150,8 +172,7 @@ for (const p of PERSONAS) {
   await navigate("/masuk");
   await evaluate(`sessionStorage.clear()`);
   await navigate("/masuk");
-  await fill("#email", p.email);
-  await fill("#password", "kata-sandi-demo-1");
+  await fillLogin(p.email, "kata-sandi-demo-1");
   await clickEl('form button[type="submit"]');
   const landed = await waitFor(async () => ((await evaluate(`location.pathname`)) === p.landing ? p.landing : null), 20000, `login ${p.key}`).catch(() => null);
   rec(`${p.key} (${p.role}): login diarahkan ke ${p.landing}`, landed === p.landing, `path ${await evaluate("location.pathname")}`);
@@ -297,8 +318,7 @@ for (const p of PERSONAS.filter((x) => x.key === "ahmad" || x.key === "dewi")) {
   await evaluate(`sessionStorage.clear()`);
   await navigate("/masuk");
   rec(`${p.key} mobile: emulasi sentuh aktif`, (await evaluate(`navigator.maxTouchPoints`)) > 0 && (await evaluate(`innerWidth`)) === 375);
-  await fill("#email", p.email);
-  await fill("#password", "kata-sandi-demo-1");
+  await fillLogin(p.email, "kata-sandi-demo-1");
   await tap('form button[type="submit"]');
   const landed = await waitFor(async () => ((await evaluate(`location.pathname`)) === p.landing ? p.landing : null), 20000, `login mobile ${p.key}`).catch(() => null);
   rec(`${p.key} mobile: login (ketuk) diarahkan ke ${p.landing}`, landed === p.landing);
@@ -412,8 +432,7 @@ await setViewport({ width: 1280, height: 900 });
     }, 90000, "akun Guest uji termuat");
     await evaluate(`sessionStorage.clear()`);
     await navigate("/masuk");
-    await fill("#email", GUEST_EMAIL);
-    await fill("#password", "apa-saja");
+    await fillLogin(GUEST_EMAIL, "apa-saja");
     await clickEl('form button[type="submit"]');
     rec("guest: login diarahkan ke /akses-ditolak (tanpa App Shell)", (await outcome("section")) === "denied");
     rec("guest: tidak ada sidebar di DOM", !(await evaluate(`!!document.querySelector('[data-slot="sidebar-desktop"]')`)));
